@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctea2qykjpd3c"]
+
+[ext_resource type="Script" path="res://src/battle_character_actor.gd" id="1_dy7n5"]
+
+[node name="battle_combatant" type="Node2D"]
+script = ExtResource("1_dy7n5")
+
+[node name="combatant_sfx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="combatant_sfx_defeat" type="AudioStreamPlayer2D" parent="."]

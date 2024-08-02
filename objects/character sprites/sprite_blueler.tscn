@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy45r1tjxrvqv"]
+
+[ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_mtdsp"]
+[ext_resource type="Texture2D" uid="uid://ber45r4ahcunl" path="res://sprites/blueler_sprite_modified.png" id="2_tgb2x"]
+
+[node name="sprite_blueler" instance=ExtResource("1_mtdsp")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_tgb2x")

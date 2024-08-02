@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgukwp2uc78mx"]
+
+[ext_resource type="PackedScene" uid="uid://ctea2qykjpd3c" path="res://objects/battle_combatant.tscn" id="1_7aqvf"]
+[ext_resource type="Script" path="res://src/scripts/battle_character_actor_manager.gd" id="1_neeyr"]
+[ext_resource type="Script" path="res://src/s_select_character.gd" id="2_5mdt7"]
+[ext_resource type="Script" path="res://src/scripts/battle_starter.gd" id="3_8yjjp"]
+
+[node name="battle_scene" type="Node2D"]
+
+[node name="BattleActors" type="Node" parent="."]
+
+[node name="PartyMemberActors" type="Node" parent="BattleActors"]
+script = ExtResource("1_neeyr")
+
+[node name="battle_combatant" parent="BattleActors/PartyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(245, 165)
+
+[node name="battle_combatant2" parent="BattleActors/PartyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(240, 120)
+
+[node name="battle_combatant3" parent="BattleActors/PartyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(241, 214)
+
+[node name="battle_combatant4" parent="BattleActors/PartyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(243, 257)
+
+[node name="battle_combatant5" parent="BattleActors/PartyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(246, 299)
+
+[node name="EnemyMemberActors" type="Node" parent="BattleActors"]
+script = ExtResource("1_neeyr")
+
+[node name="battle_combatant" parent="BattleActors/EnemyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(245, 165)
+
+[node name="battle_combatant2" parent="BattleActors/EnemyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(240, 120)
+
+[node name="battle_combatant3" parent="BattleActors/EnemyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(241, 214)
+
+[node name="battle_combatant4" parent="BattleActors/EnemyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(243, 257)
+
+[node name="battle_combatant5" parent="BattleActors/EnemyMemberActors" instance=ExtResource("1_7aqvf")]
+position = Vector2(246, 299)
+
+[node name="BattleStateMachine" type="Node" parent="."]
+
+[node name="Starter" type="Node" parent="BattleStateMachine"]
+script = ExtResource("3_8yjjp")
+
+[node name="SelectCharacter" type="Node" parent="BattleStateMachine"]
+script = ExtResource("2_5mdt7")
+
+[node name="SelectTarget" type="Node" parent="BattleStateMachine"]
+
+[node name="Behaviour" type="Node" parent="BattleStateMachine"]
+
+[connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/PartyMemberActors" method="add_actors"]
+[connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/EnemyMemberActors" method="add_actors"]

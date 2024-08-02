@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf4s1n8tbgm7o"]
+
+[ext_resource type="Script" path="res://src/buttons/button_party_member.gd" id="1_b3wad"]
+
+[node name="PartyMemberButton" type="Button"]
+anchors_preset = -1
+anchor_right = 0.821
+anchor_bottom = 0.309
+offset_right = -595.792
+offset_bottom = -0.23201
+scale = Vector2(2.703, 1)
+script = ExtResource("1_b3wad")
+
+[connection signal="pressed" from="." to="." method="open_character"]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=3 format=3 uid="uid://cwtgv8cirs6b7"]
+
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_jw4i2"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="2_dte3y"]
+
+[resource]
+script = ExtResource("1_jw4i2")
+name = "Pass"
+learnable = false
+power = 0
+stamina_cost = 0
+skill_scope = -1
+skill_element = ExtResource("2_dte3y")
+skill_animation = Array[Resource("res://src/rpg_skill_animation.gd")]([])

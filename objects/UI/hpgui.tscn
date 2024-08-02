@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bta702emm1p4b"]
+
+[ext_resource type="Script" path="res://objects/UI/hpgui.gd" id="1_dmg4y"]
+[ext_resource type="StyleBox" uid="uid://pr3lsbr0mu53" path="res://misc/material/hp_bar_style.tres" id="2_uckqt"]
+[ext_resource type="StyleBox" uid="uid://bp821ifm25r1a" path="res://misc/material/hp_bar_empty_style.tres" id="2_wqwuf"]
+[ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="4_5ehvm"]
+
+[node name="HPGUI_1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -947.0
+offset_bottom = -567.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dmg4y")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = 197.0
+offset_bottom = 54.0
+theme_override_styles/background = ExtResource("2_wqwuf")
+theme_override_styles/fill = ExtResource("2_uckqt")
+value = 40.59
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 196.0
+offset_bottom = 27.0
+text = "Sample"
+
+[node name="StaminaContainer" parent="." instance=ExtResource("4_5ehvm")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 3.0
+offset_top = 56.0
+offset_right = 195.0
+offset_bottom = 73.0

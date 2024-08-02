@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0j2rpxn00nk3"]
+
+[ext_resource type="Script" path="res://scenes/party_member_menu.gd" id="1_kaflw"]
+[ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hb0oj"]
+[ext_resource type="Texture2D" uid="uid://brbeh87yj31g4" path="res://sprites/right_button.png" id="3_47gvg"]
+[ext_resource type="Texture2D" uid="uid://b07yc7xxliuvq" path="res://sprites/left_button.png" id="4_ckj7i"]
+[ext_resource type="FontFile" uid="uid://c0dmv52byuhka" path="res://misc/fonts/ShermlockOpen.ttf" id="5_wq0tu"]
+
+[node name="PartyMember menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 278.0
+offset_top = 205.0
+offset_right = 868.0
+offset_bottom = 530.0
+script = ExtResource("1_kaflw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 77.0
+offset_right = 285.0
+offset_bottom = 117.0
+
+[node name="Strength" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Vitality" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Dexterity" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Magpow" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Agility" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="->" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 265.0
+offset_right = 590.0
+offset_bottom = 325.0
+texture_normal = ExtResource("3_47gvg")
+stretch_mode = 0
+
+[node name="<-" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_top = 264.0
+offset_right = 60.0
+offset_bottom = 324.0
+texture_normal = ExtResource("4_ckj7i")
+stretch_mode = 0
+
+[node name="Name" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -287.0
+offset_top = -8.0
+offset_right = 71.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("5_wq0tu")
+theme_override_font_sizes/normal_font_size = 50
+text = "Redler"
+fit_content = true
+
+[connection signal="pressed" from="Panel/->" to="." method="next_character"]
+[connection signal="pressed" from="Panel/<-" to="." method="prev_character"]

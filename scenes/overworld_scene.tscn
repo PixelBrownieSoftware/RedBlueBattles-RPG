@@ -1,0 +1,230 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckmw47six2iym"]
+
+[ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
+[ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/redler.tres" id="2_r4jfg"]
+[ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/blueler.tres" id="3_f2hvt"]
+[ext_resource type="Script" path="res://src/buttons/button_group.gd" id="3_lfn7i"]
+[ext_resource type="Resource" uid="uid://dcfu24v3efmrk" path="res://data/groups/test_enemies.tres" id="4_ifbpk"]
+[ext_resource type="PackedScene" uid="uid://d0j2rpxn00nk3" path="res://objects/UI/party_member_menu.tscn" id="6_a36ul"]
+[ext_resource type="Script" path="res://scenes/extra_skills_menu.gd" id="7_jfqex"]
+[ext_resource type="Script" path="res://scenes/button_select_skill.gd" id="8_pstvk"]
+
+[node name="OverworldMenu" type="Node2D"]
+script = ExtResource("1_gsfbw")
+battle_scene = "res://scenes/battle_scene.tscn"
+starters = Array[Resource("res://src/battle_character_base.gd")]([ExtResource("2_r4jfg"), ExtResource("3_f2hvt")])
+selected_group = ExtResource("4_ifbpk")
+
+[node name="MenuBar" type="MenuBar" parent="."]
+offset_left = 114.0
+offset_top = 66.0
+offset_right = 529.0
+offset_bottom = 335.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuBar"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 73.0
+offset_right = 118.0
+offset_bottom = 113.0
+theme_override_constants/separation = 21
+
+[node name="To battle" type="Button" parent="MenuBar/HBoxContainer"]
+layout_mode = 2
+text = "Fight"
+script = ExtResource("3_lfn7i")
+selected_group = ExtResource("4_ifbpk")
+
+[node name="Party" type="Button" parent="MenuBar/HBoxContainer"]
+layout_mode = 2
+text = "Party"
+
+[node name="PartyMember menu" parent="." instance=ExtResource("6_a36ul")]
+visible = false
+
+[node name="ExtraSkills" parent="PartyMember menu/Panel" index="7"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 91.0
+offset_bottom = 31.0
+
+[node name="ExtraSkillsMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 293.0
+offset_top = 229.0
+offset_right = 1008.0
+offset_bottom = 567.0
+script = ExtResource("7_jfqex")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExtraSkillsMenu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillButton" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton2" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton3" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton4" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton5" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton6" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton7" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillButton" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton2" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton3" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton4" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton5" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton6" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton7" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillButton" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton2" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton3" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton4" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton5" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton6" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton7" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillButton" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton2" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton3" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton4" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton5" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton6" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton7" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="Back2" type="Button" parent="ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Level selector" type="Node" parent="."]
+
+[connection signal="load_battle" from="MenuBar/HBoxContainer/To battle" to="." method="load_battle"]
+[connection signal="pressed" from="MenuBar/HBoxContainer/To battle" to="MenuBar/HBoxContainer/To battle" method="_on_pressed"]
+[connection signal="pressed" from="MenuBar/HBoxContainer/Party" to="." method="load_party"]
+[connection signal="go_to_ex_skills" from="PartyMember menu" to="ExtraSkillsMenu" method="open_menu"]
+[connection signal="pressed" from="PartyMember menu/Panel/Back" to="." method="main_menu"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/Back2" to="." method="main_menu"]
+
+[editable path="PartyMember menu"]

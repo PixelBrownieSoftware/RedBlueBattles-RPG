@@ -1,0 +1,575 @@
+[gd_scene load_steps=29 format=3 uid="uid://ckkn8g3r0etlr"]
+
+[ext_resource type="Script" path="res://src/scripts/battle_character_actor_manager.gd" id="1_3w2at"]
+[ext_resource type="Script" path="res://src/scripts/battle_state_machine.gd" id="2_4cala"]
+[ext_resource type="Script" path="res://src/scripts/battle_starter.gd" id="3_8yjjp"]
+[ext_resource type="Script" path="res://src/scripts/battle_character_skills.gd" id="5_agysm"]
+[ext_resource type="Script" path="res://src/scripts/battle_queue_state.gd" id="6_sc1mp"]
+[ext_resource type="Script" path="res://src/scripts/battle_press_turn_state.gd" id="7_am20o"]
+[ext_resource type="Script" path="res://src/scripts/battle_variables.gd" id="7_amfna"]
+[ext_resource type="Script" path="res://src/scripts/battle_process_state.gd" id="7_x53et"]
+[ext_resource type="Script" path="res://src/scripts/target_menu.gd" id="8_1e15q"]
+[ext_resource type="Script" path="res://src/scripts/battle_end_state.gd" id="8_j42ai"]
+[ext_resource type="AudioStream" uid="uid://bhd5xcufnsukj" path="res://sound/pass_turn.wav" id="8_l5wts"]
+[ext_resource type="Script" path="res://src/scripts/battle_npc_behaviour.gd" id="9_h0ylf"]
+[ext_resource type="PackedScene" uid="uid://brv4ht0orkykc" path="res://objects/UI/target_button.tscn" id="9_uq7lp"]
+[ext_resource type="Script" path="res://src/scripts/skill_menu.gd" id="10_fffb2"]
+[ext_resource type="Script" path="res://src/move_target_selector.gd" id="10_g8410"]
+[ext_resource type="PackedScene" uid="uid://b02fnxe32db18" path="res://objects/UI/skill_button.tscn" id="11_gjgmc"]
+[ext_resource type="Script" path="res://scenes/expereince_watcher.gd" id="13_brywo"]
+[ext_resource type="Script" path="res://src/scripts/BattleFXFactory.gd" id="15_3gnxd"]
+[ext_resource type="Script" path="res://scenes/BattleCamera2D.gd" id="17_rggii"]
+[ext_resource type="Script" path="res://scenes/press_turn_ui.gd" id="18_d32v8"]
+[ext_resource type="PackedScene" uid="uid://o47wvssmmis2" path="res://objects/UI/press_turn_icon.tscn" id="18_iu8l8"]
+[ext_resource type="Script" path="res://scenes/notification_skill.gd" id="22_g4le8"]
+
+[sub_resource type="Animation" id="Animation_r7yil"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gl2hr"]
+resource_local_to_scene = true
+resource_name = "menu_hide"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, -127)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tsgoh"]
+resource_local_to_scene = true
+resource_name = "menu_show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, -127), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n8b7w"]
+_data = {
+"RESET": SubResource("Animation_r7yil"),
+"menu_hide": SubResource("Animation_gl2hr"),
+"menu_show": SubResource("Animation_tsgoh")
+}
+
+[sub_resource type="Animation" id="Animation_wd45m"]
+resource_name = "notification_up"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6wx8"]
+_data = {
+"notification_up": SubResource("Animation_wd45m")
+}
+
+[node name="battle_scene" type="Node2D"]
+
+[node name="BattleActors" type="Node" parent="."]
+
+[node name="PartyMemberActors" type="Node" parent="BattleActors" node_paths=PackedStringArray("position_nodes")]
+script = ExtResource("1_3w2at")
+position_nodes = NodePath("../PartyPositions")
+
+[node name="EnemyMemberActors" type="Node" parent="BattleActors" node_paths=PackedStringArray("position_nodes")]
+script = ExtResource("1_3w2at")
+position_nodes = NodePath("../EnemyPositions")
+
+[node name="EnemyPositions" type="Node" parent="BattleActors"]
+
+[node name="1" type="Node2D" parent="BattleActors/EnemyPositions"]
+position = Vector2(610, 269)
+
+[node name="2" type="Node2D" parent="BattleActors/EnemyPositions"]
+position = Vector2(595, 406)
+
+[node name="3" type="Node2D" parent="BattleActors/EnemyPositions"]
+position = Vector2(665, 330)
+
+[node name="4" type="Node2D" parent="BattleActors/EnemyPositions"]
+position = Vector2(656, 500)
+
+[node name="5" type="Node2D" parent="BattleActors/EnemyPositions"]
+position = Vector2(605, 581)
+
+[node name="PartyPositions" type="Node" parent="BattleActors"]
+
+[node name="1" type="Node2D" parent="BattleActors/PartyPositions"]
+position = Vector2(205, 249)
+
+[node name="2" type="Node2D" parent="BattleActors/PartyPositions"]
+position = Vector2(191, 406)
+
+[node name="3" type="Node2D" parent="BattleActors/PartyPositions"]
+position = Vector2(151, 319)
+
+[node name="4" type="Node2D" parent="BattleActors/PartyPositions"]
+position = Vector2(151, 497)
+
+[node name="5" type="Node2D" parent="BattleActors/PartyPositions"]
+position = Vector2(202, 582)
+
+[node name="BattleStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("2_4cala")
+starting_state = NodePath("Starter")
+
+[node name="Starter" type="Node" parent="BattleStateMachine" node_paths=PackedStringArray("queue_state")]
+script = ExtResource("3_8yjjp")
+queue_state = NodePath("../Queue")
+
+[node name="Queue" type="Node" parent="BattleStateMachine" node_paths=PackedStringArray("select_move_state")]
+script = ExtResource("6_sc1mp")
+select_move_state = NodePath("../Select")
+
+[node name="Select" type="Node" parent="BattleStateMachine" node_paths=PackedStringArray("preform_move")]
+script = ExtResource("5_agysm")
+preform_move = NodePath("../Process")
+
+[node name="Process" type="Node" parent="BattleStateMachine" node_paths=PackedStringArray("after_process_state")]
+script = ExtResource("7_x53et")
+after_process_state = NodePath("../PressTurn")
+
+[node name="PressTurn" type="Node" parent="BattleStateMachine" node_paths=PackedStringArray("queue_state")]
+script = ExtResource("7_am20o")
+queue_state = NodePath("../EndBattle")
+
+[node name="PressTurnSounds" type="AudioStreamPlayer2D" parent="BattleStateMachine/PressTurn"]
+stream = ExtResource("8_l5wts")
+
+[node name="EndBattle" type="Node" parent="BattleStateMachine" node_paths=PackedStringArray("queue_state")]
+script = ExtResource("8_j42ai")
+overworld_scene = "res://scenes/overworld_scene.tscn"
+queue_state = NodePath("../Queue")
+
+[node name="Variables" type="Node" parent="."]
+script = ExtResource("7_amfna")
+final_press_turn_flag = 5
+
+[node name="Behaviour" type="Node" parent="Variables"]
+script = ExtResource("9_h0ylf")
+
+[node name="MoveTargetSelect" type="Node" parent="Variables"]
+script = ExtResource("10_g8410")
+
+[node name="ExpereinceWatcher" type="Node" parent="Variables"]
+script = ExtResource("13_brywo")
+
+[node name="Score" type="RichTextLabel" parent="Variables/ExpereinceWatcher"]
+offset_left = 925.0
+offset_top = 577.0
+offset_right = 1154.0
+offset_bottom = 643.0
+
+[node name="Score Add" type="RichTextLabel" parent="Variables/ExpereinceWatcher"]
+offset_left = 925.0
+offset_top = 495.0
+offset_right = 1154.0
+offset_bottom = 561.0
+
+[node name="UIAlign" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(140, 0)
+layout_direction = 1
+offset_left = 12.0
+offset_top = 572.0
+offset_right = 1132.65
+offset_bottom = 647.0
+theme_override_constants/separation = 215
+
+[node name="Target Menu" type="Panel" parent="."]
+visible = false
+offset_right = 1005.0
+offset_bottom = 135.0
+script = ExtResource("8_1e15q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Target Menu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = -45.5
+offset_right = -31.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" parent="Target Menu/HBoxContainer" instance=ExtResource("9_uq7lp")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" parent="Target Menu/HBoxContainer" instance=ExtResource("9_uq7lp")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" parent="Target Menu/HBoxContainer" instance=ExtResource("9_uq7lp")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button4" parent="Target Menu/HBoxContainer" instance=ExtResource("9_uq7lp")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button5" parent="Target Menu/HBoxContainer" instance=ExtResource("9_uq7lp")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button6" parent="Target Menu/HBoxContainer" instance=ExtResource("9_uq7lp")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button7" parent="Target Menu/HBoxContainer" instance=ExtResource("9_uq7lp")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button8" parent="Target Menu/HBoxContainer" instance=ExtResource("9_uq7lp")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="back" type="Button" parent="Target Menu"]
+layout_mode = 2
+offset_left = 887.0
+offset_top = 156.0
+offset_right = 1000.0
+offset_bottom = 187.0
+text = "Back"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Target Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_n8b7w")
+}
+
+[node name="Attack Menu" type="Panel" parent="."]
+visible = false
+offset_right = 1002.0
+offset_bottom = 125.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+script = ExtResource("10_fffb2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Attack Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.0
+offset_top = -40.5
+offset_right = 483.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" parent="Attack Menu/HBoxContainer" instance=ExtResource("11_gjgmc")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" parent="Attack Menu/HBoxContainer" instance=ExtResource("11_gjgmc")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" parent="Attack Menu/HBoxContainer" instance=ExtResource("11_gjgmc")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button4" parent="Attack Menu/HBoxContainer" instance=ExtResource("11_gjgmc")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button5" parent="Attack Menu/HBoxContainer" instance=ExtResource("11_gjgmc")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button6" parent="Attack Menu/HBoxContainer" instance=ExtResource("11_gjgmc")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button7" parent="Attack Menu/HBoxContainer" instance=ExtResource("11_gjgmc")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button8" parent="Attack Menu/HBoxContainer" instance=ExtResource("11_gjgmc")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Attack Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_n8b7w")
+}
+
+[node name="BattleFXFactory" type="Node" parent="."]
+script = ExtResource("15_3gnxd")
+
+[node name="BattleCamera2D" type="Camera2D" parent="."]
+position = Vector2(578, 322)
+script = ExtResource("17_rggii")
+
+[node name="PressTurnUI" type="CanvasLayer" parent="."]
+script = ExtResource("18_d32v8")
+
+[node name="PressTurnContainer" type="VBoxContainer" parent="PressTurnUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_top = 20.235
+offset_bottom = 333.235
+grow_horizontal = 0
+pivot_offset = Vector2(995, 147.765)
+theme_override_constants/separation = 40
+
+[node name="PressTurnIcon" parent="PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="PressTurnIcon2" parent="PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="PressTurnIcon3" parent="PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="PressTurnIcon4" parent="PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="PressTurnIcon5" parent="PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="PressTurnIcon6" parent="PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="Notification Panel" type="Panel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 237.0
+offset_top = 35.0
+offset_right = 624.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(192.5, 33)
+script = ExtResource("22_g4le8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Notification Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.5
+offset_top = -20.5
+offset_right = 183.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "OK"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Notification Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_m6wx8")
+}
+
+[connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/PartyMemberActors" method="add_characters"]
+[connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/EnemyMemberActors" method="add_characters"]
+[connection signal="change_state" from="BattleStateMachine/Starter" to="BattleStateMachine" method="change_state"]
+[connection signal="change_state" from="BattleStateMachine/Queue" to="BattleStateMachine" method="change_state"]
+[connection signal="turn_icon_handle" from="BattleStateMachine/Queue" to="PressTurnUI" method="turn_icon_change"]
+[connection signal="behaviour_call" from="BattleStateMachine/Select" to="Variables/Behaviour" method="behaviour_process"]
+[connection signal="change_state" from="BattleStateMachine/Select" to="BattleStateMachine" method="change_state"]
+[connection signal="show_skills" from="BattleStateMachine/Select" to="Attack Menu" method="show_skills"]
+[connection signal="change_state" from="BattleStateMachine/Process" to="BattleStateMachine" method="change_state"]
+[connection signal="notifcation_anim" from="BattleStateMachine/Process" to="Notification Panel" method="notificaiton_up"]
+[connection signal="put_damage_numbers" from="BattleStateMachine/Process" to="Variables/ExpereinceWatcher" method="exp_points_calc"]
+[connection signal="put_damage_numbers" from="BattleStateMachine/Process" to="BattleFXFactory" method="spawn_damage_obj"]
+[connection signal="change_state" from="BattleStateMachine/PressTurn" to="BattleStateMachine" method="change_state"]
+[connection signal="turn_icon_handle" from="BattleStateMachine/PressTurn" to="PressTurnUI" method="turn_icon_change"]
+[connection signal="change_state" from="BattleStateMachine/EndBattle" to="BattleStateMachine" method="change_state"]
+[connection signal="get_targets" from="Variables/Behaviour" to="Variables/MoveTargetSelect" method="get_targets_from_move"]
+[connection signal="start_process_state" from="Variables/Behaviour" to="BattleStateMachine/Select" method="start_processing"]
+[connection signal="back_to_attack_menu" from="Target Menu" to="Attack Menu" method="show_menu"]
+[connection signal="start_process_state" from="Target Menu" to="BattleStateMachine/Select" method="start_processing"]
+[connection signal="load_character" from="Target Menu/HBoxContainer/Button" to="Target Menu" method="on_select_character"]
+[connection signal="pressed" from="Target Menu/HBoxContainer/Button" to="Target Menu/HBoxContainer/Button" method="_on_pressed"]
+[connection signal="load_character" from="Target Menu/HBoxContainer/Button2" to="Target Menu" method="on_select_character"]
+[connection signal="pressed" from="Target Menu/HBoxContainer/Button2" to="Target Menu/HBoxContainer/Button2" method="_on_pressed"]
+[connection signal="load_character" from="Target Menu/HBoxContainer/Button3" to="Target Menu" method="on_select_character"]
+[connection signal="pressed" from="Target Menu/HBoxContainer/Button3" to="Target Menu/HBoxContainer/Button3" method="_on_pressed"]
+[connection signal="load_character" from="Target Menu/HBoxContainer/Button4" to="Target Menu" method="on_select_character"]
+[connection signal="pressed" from="Target Menu/HBoxContainer/Button4" to="Target Menu/HBoxContainer/Button4" method="_on_pressed"]
+[connection signal="load_character" from="Target Menu/HBoxContainer/Button5" to="Target Menu" method="on_select_character"]
+[connection signal="pressed" from="Target Menu/HBoxContainer/Button5" to="Target Menu/HBoxContainer/Button5" method="_on_pressed"]
+[connection signal="load_character" from="Target Menu/HBoxContainer/Button6" to="Target Menu" method="on_select_character"]
+[connection signal="pressed" from="Target Menu/HBoxContainer/Button6" to="Target Menu/HBoxContainer/Button6" method="_on_pressed"]
+[connection signal="load_character" from="Target Menu/HBoxContainer/Button7" to="Target Menu" method="on_select_character"]
+[connection signal="pressed" from="Target Menu/HBoxContainer/Button7" to="Target Menu/HBoxContainer/Button7" method="_on_pressed"]
+[connection signal="load_character" from="Target Menu/HBoxContainer/Button8" to="Target Menu" method="on_select_character"]
+[connection signal="pressed" from="Target Menu/HBoxContainer/Button8" to="Target Menu/HBoxContainer/Button8" method="_on_pressed"]
+[connection signal="pressed" from="Target Menu/back" to="Target Menu" method="back"]
+[connection signal="animation_finished" from="Target Menu/AnimationPlayer" to="Target Menu" method="_on_animation_player_animation_finished"]
+[connection signal="call_target_menu" from="Attack Menu" to="Target Menu" method="show_targets"]
+[connection signal="get_targets" from="Attack Menu" to="Variables/MoveTargetSelect" method="get_targets_from_move"]
+[connection signal="load_skill" from="Attack Menu/HBoxContainer/Button" to="Attack Menu" method="on_button_select_skill"]
+[connection signal="pressed" from="Attack Menu/HBoxContainer/Button" to="Attack Menu/HBoxContainer/Button" method="_on_pressed"]
+[connection signal="load_skill" from="Attack Menu/HBoxContainer/Button2" to="Attack Menu" method="on_button_select_skill"]
+[connection signal="pressed" from="Attack Menu/HBoxContainer/Button2" to="Attack Menu/HBoxContainer/Button2" method="_on_pressed"]
+[connection signal="load_skill" from="Attack Menu/HBoxContainer/Button3" to="Attack Menu" method="on_button_select_skill"]
+[connection signal="pressed" from="Attack Menu/HBoxContainer/Button3" to="Attack Menu/HBoxContainer/Button3" method="_on_pressed"]
+[connection signal="load_skill" from="Attack Menu/HBoxContainer/Button4" to="Attack Menu" method="on_button_select_skill"]
+[connection signal="pressed" from="Attack Menu/HBoxContainer/Button4" to="Attack Menu/HBoxContainer/Button4" method="_on_pressed"]
+[connection signal="load_skill" from="Attack Menu/HBoxContainer/Button5" to="Attack Menu" method="on_button_select_skill"]
+[connection signal="pressed" from="Attack Menu/HBoxContainer/Button5" to="Attack Menu/HBoxContainer/Button5" method="_on_pressed"]
+[connection signal="load_skill" from="Attack Menu/HBoxContainer/Button6" to="Attack Menu" method="on_button_select_skill"]
+[connection signal="pressed" from="Attack Menu/HBoxContainer/Button6" to="Attack Menu/HBoxContainer/Button6" method="_on_pressed"]
+[connection signal="load_skill" from="Attack Menu/HBoxContainer/Button7" to="Attack Menu" method="on_button_select_skill"]
+[connection signal="pressed" from="Attack Menu/HBoxContainer/Button7" to="Attack Menu/HBoxContainer/Button7" method="_on_pressed"]
+[connection signal="load_skill" from="Attack Menu/HBoxContainer/Button8" to="Attack Menu" method="on_button_select_skill"]
+[connection signal="pressed" from="Attack Menu/HBoxContainer/Button8" to="Attack Menu/HBoxContainer/Button8" method="_on_pressed"]
+[connection signal="animation_finished" from="Attack Menu/AnimationPlayer" to="Attack Menu" method="_on_animation_player_animation_finished"]
+
+[editable path="PressTurnUI/PressTurnContainer/PressTurnIcon"]
+[editable path="PressTurnUI/PressTurnContainer/PressTurnIcon2"]
+[editable path="PressTurnUI/PressTurnContainer/PressTurnIcon3"]
+[editable path="PressTurnUI/PressTurnContainer/PressTurnIcon4"]
+[editable path="PressTurnUI/PressTurnContainer/PressTurnIcon5"]
+[editable path="PressTurnUI/PressTurnContainer/PressTurnIcon6"]

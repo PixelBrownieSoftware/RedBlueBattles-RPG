@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://crcw4qncionf1"]
+
+[ext_resource type="Script" path="res://src/battle_character_data.gd" id="1_ion37"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="2_7gqn8"]
+
+[sub_resource type="Resource" id="Resource_q5ruh"]
+script = ExtResource("2_7gqn8")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[node name="data" type="Node"]
+script = ExtResource("1_ion37")
+stats2 = SubResource("Resource_q5ruh")

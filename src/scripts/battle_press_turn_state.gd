@@ -1,0 +1,31 @@
+extends battle_state
+class_name battle_press_turn_state
+ 
+signal turn_icon_handle(ind, type)
+@export var queue_state : battle_state
+
+func start_state():
+	match battle_globals.final_press_turn_flag:
+		PRESS_TURN.PT.NORMAL:
+			if battle_globals.pressed_turn > 0:
+				battle_globals.pressed_turn -= 1
+				turn_icon_handle.emit(battle_globals.net_turn, "disappear")
+			else:if battle_globals.turn > 0:
+				battle_globals.turn -= 1
+				turn_icon_handle.emit(battle_globals.turn, "disappear")
+		PRESS_TURN.PT.WEAK:
+			if battle_globals.turn > 0:
+				battle_globals.pressed_turn += 1
+				battle_globals.turn -= 1
+				$PressTurnSounds.play()
+				turn_icon_handle.emit(battle_globals.turn, "press")
+			else:
+				battle_globals.pressed_turn -= 1
+				turn_icon_handle.emit(battle_globals.pressed_turn, "disappear")
+		PRESS_TURN.PT.ABSORB:
+			pass
+	print("Press turn: " + str(battle_globals.net_turn))
+	print("Normal turn: " + str(battle_globals.turn))
+	print("Pressed turn: " + str(battle_globals.pressed_turn))
+	await get_tree().create_timer(0.2).timeout
+	change_state.emit(queue_state)

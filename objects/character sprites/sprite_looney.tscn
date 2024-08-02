@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ar0q4v0pjsk"]
+
+[ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_wwuws"]
+[ext_resource type="Texture2D" uid="uid://7cwr4p5jvm0c" path="res://sprites/looney_sprite_sheet.png" id="2_anp4n"]
+
+[node name="sprite_looney" instance=ExtResource("1_wwuws")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_anp4n")
+hframes = 2
+vframes = 1
