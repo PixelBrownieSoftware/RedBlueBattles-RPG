@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmv0o1ywk4p43"]
+
+[ext_resource type="Script" path="res://src/battle_characeter_lock.gd" id="1_1mkx6"]
+
+[node name="LevelLock" type="Node"]
+script = ExtResource("1_1mkx6")

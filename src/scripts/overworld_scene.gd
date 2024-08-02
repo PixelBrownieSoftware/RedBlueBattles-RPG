@@ -20,18 +20,19 @@ func debug_stuff():
 
 func main_menu():
 	$MenuBar/HBoxContainer/Party.visible = true
-	$"MenuBar/HBoxContainer/To battle".visible = true
+	#$"MenuBar/HBoxContainer/To battle".visible = true
 	$"PartyMember menu".visible = false
 	$ExtraSkillsMenu.visible = false
 
 func load_battle(selected_group):
 	$"MenuBar/HBoxContainer".visible = false
 	for battle_character_member : battle_group_member in selected_group.opponents:
-		CharacterFactory.create_new_character(battle_character_member.character,EnemyMembers , battle_character_member.level)
+		var level : int =  randi() % battle_character_member.max_level + battle_character_member.min_level
+		CharacterFactory.create_new_character(battle_character_member.character,EnemyMembers , level)
 	await FadeScene.fade_bg(Color.BLACK, 0.7)
 	get_tree().change_scene_to_file(battle_scene)
 
 func load_party():
-	$MenuBar/HBoxContainer/Party.visible = false
+	#$MenuBar/HBoxContainer/Party.visible = false
 	$"MenuBar/HBoxContainer/To battle".visible = false
 	$"PartyMember menu".activate()

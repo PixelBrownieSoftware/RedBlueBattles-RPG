@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=10 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/redler.tres" id="2_r4jfg"]
 [ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/blueler.tres" id="3_f2hvt"]
-[ext_resource type="Script" path="res://src/buttons/button_group.gd" id="3_lfn7i"]
 [ext_resource type="Resource" uid="uid://dcfu24v3efmrk" path="res://data/groups/test_enemies.tres" id="4_ifbpk"]
 [ext_resource type="PackedScene" uid="uid://d0j2rpxn00nk3" path="res://objects/UI/party_member_menu.tscn" id="6_a36ul"]
 [ext_resource type="Script" path="res://scenes/extra_skills_menu.gd" id="7_jfqex"]
+[ext_resource type="PackedScene" uid="uid://cks6y325db8c4" path="res://objects/UI/battle_select_button.tscn" id="8_0fx3b"]
 [ext_resource type="Script" path="res://scenes/button_select_skill.gd" id="8_pstvk"]
+[ext_resource type="PackedScene" uid="uid://bmv0o1ywk4p43" path="res://objects/misc/level_lock.tscn" id="9_e0sob"]
 
 [node name="OverworldMenu" type="Node2D"]
 script = ExtResource("1_gsfbw")
@@ -29,12 +30,6 @@ offset_right = 118.0
 offset_bottom = 113.0
 theme_override_constants/separation = 21
 
-[node name="To battle" type="Button" parent="MenuBar/HBoxContainer"]
-layout_mode = 2
-text = "Fight"
-script = ExtResource("3_lfn7i")
-selected_group = ExtResource("4_ifbpk")
-
 [node name="Party" type="Button" parent="MenuBar/HBoxContainer"]
 layout_mode = 2
 text = "Party"
@@ -49,6 +44,7 @@ offset_right = 91.0
 offset_bottom = 31.0
 
 [node name="ExtraSkillsMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 293.0
@@ -218,13 +214,80 @@ script = ExtResource("8_pstvk")
 layout_mode = 2
 text = "Back"
 
-[node name="Level selector" type="Node" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
+offset_left = 268.0
+offset_top = 45.0
+offset_right = 989.0
+offset_bottom = 484.0
+current_tab = 2
 
-[connection signal="load_battle" from="MenuBar/HBoxContainer/To battle" to="." method="load_battle"]
-[connection signal="pressed" from="MenuBar/HBoxContainer/To battle" to="MenuBar/HBoxContainer/To battle" method="_on_pressed"]
+[node name="Greenler" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="To battle" parent="TabContainer/Greenler" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+offset_left = 98.0
+offset_top = 178.0
+offset_right = 145.0
+offset_bottom = 209.0
+
+[node name="To battle2" parent="TabContainer/Greenler" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+offset_left = 528.0
+offset_top = 181.0
+offset_right = 575.0
+offset_bottom = 212.0
+
+[node name="Beno" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Malculus" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="LevelLock" parent="TabContainer/Malculus" instance=ExtResource("9_e0sob")]
+cost = 999
+
+[node name="To battle" parent="TabContainer/Malculus/LevelLock" instance=ExtResource("8_0fx3b")]
+offset_left = 438.0
+offset_top = 332.0
+offset_right = 485.0
+offset_bottom = 363.0
+
+[node name="To battle2" parent="TabContainer/Malculus/LevelLock" instance=ExtResource("8_0fx3b")]
+offset_left = 677.0
+offset_top = 336.0
+offset_right = 724.0
+offset_bottom = 367.0
+
+[node name="Unlocker" type="Control" parent="TabContainer/Malculus"]
+anchors_preset = 0
+offset_left = 243.0
+offset_top = 114.0
+offset_right = 407.0
+offset_bottom = 200.0
+
+[node name="UnlockButton" type="Button" parent="TabContainer/Malculus/Unlocker"]
+layout_mode = 0
+offset_right = 161.0
+offset_bottom = 56.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Malculus/Unlocker"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 56.0
+offset_right = 162.0
+offset_bottom = 91.0
+bbcode_enabled = true
+text = "[center]Price: 1000[/center]"
+fit_content = true
+
 [connection signal="pressed" from="MenuBar/HBoxContainer/Party" to="." method="load_party"]
 [connection signal="go_to_ex_skills" from="PartyMember menu" to="ExtraSkillsMenu" method="open_menu"]
 [connection signal="pressed" from="PartyMember menu/Panel/Back" to="." method="main_menu"]
 [connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/Back2" to="." method="main_menu"]
+[connection signal="tab_changed" from="TabContainer/Malculus" to="TabContainer/Malculus/LevelLock" method="on_tab_open"]
+[connection signal="pressed" from="TabContainer/Malculus/Unlocker/UnlockButton" to="TabContainer/Malculus/LevelLock" method="unlock"]
 
 [editable path="PartyMember menu"]
