@@ -5,7 +5,8 @@ enum SKILL_ANIMATION_TYPE {
 	CALCULATION,
 	MOVE_TO,
 	ANIMATION,
-	WAIT
+	WAIT,
+	FX_ANIMATION
 }
 @export var skill_animation : SKILL_ANIMATION_TYPE
 @export var time_amount : float = -1.0

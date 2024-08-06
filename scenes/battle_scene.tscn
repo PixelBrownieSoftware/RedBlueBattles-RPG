@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckkn8g3r0etlr"]
+[gd_scene load_steps=30 format=3 uid="uid://ckkn8g3r0etlr"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_character_actor_manager.gd" id="1_3w2at"]
 [ext_resource type="Script" path="res://src/scripts/battle_state_machine.gd" id="2_4cala"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://scenes/press_turn_ui.gd" id="18_d32v8"]
 [ext_resource type="PackedScene" uid="uid://o47wvssmmis2" path="res://objects/UI/press_turn_icon.tscn" id="18_iu8l8"]
 [ext_resource type="Script" path="res://scenes/notification_skill.gd" id="22_g4le8"]
+[ext_resource type="Script" path="res://scenes/exp_bonuses_menu.gd" id="23_ioo5t"]
 
 [sub_resource type="Animation" id="Animation_r7yil"]
 length = 0.001
@@ -510,6 +511,29 @@ libraries = {
 "": SubResource("AnimationLibrary_m6wx8")
 }
 
+[node name="EXP Bonuses" type="Panel" parent="."]
+visible = false
+offset_left = 208.0
+offset_top = 75.0
+offset_right = 721.0
+offset_bottom = 342.0
+script = ExtResource("23_ioo5t")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EXP Bonuses"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 512.0
+offset_bottom = 259.0
+
+[node name="Continue" type="Button" parent="EXP Bonuses"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 270.0
+offset_right = 272.0
+offset_bottom = 312.0
+text = "Continue"
+
 [connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/PartyMemberActors" method="add_characters"]
 [connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/EnemyMemberActors" method="add_characters"]
 [connection signal="change_state" from="BattleStateMachine/Starter" to="BattleStateMachine" method="change_state"]
@@ -525,6 +549,7 @@ libraries = {
 [connection signal="change_state" from="BattleStateMachine/PressTurn" to="BattleStateMachine" method="change_state"]
 [connection signal="turn_icon_handle" from="BattleStateMachine/PressTurn" to="PressTurnUI" method="turn_icon_change"]
 [connection signal="change_state" from="BattleStateMachine/EndBattle" to="BattleStateMachine" method="change_state"]
+[connection signal="show_exp_results_menu" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="on_menu_show"]
 [connection signal="get_targets" from="Variables/Behaviour" to="Variables/MoveTargetSelect" method="get_targets_from_move"]
 [connection signal="start_process_state" from="Variables/Behaviour" to="BattleStateMachine/Select" method="start_processing"]
 [connection signal="back_to_attack_menu" from="Target Menu" to="Attack Menu" method="show_menu"]
@@ -566,6 +591,7 @@ libraries = {
 [connection signal="load_skill" from="Attack Menu/HBoxContainer/Button8" to="Attack Menu" method="on_button_select_skill"]
 [connection signal="pressed" from="Attack Menu/HBoxContainer/Button8" to="Attack Menu/HBoxContainer/Button8" method="_on_pressed"]
 [connection signal="animation_finished" from="Attack Menu/AnimationPlayer" to="Attack Menu" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="EXP Bonuses/Continue" to="BattleStateMachine/EndBattle" method="leave_battle"]
 
 [editable path="PressTurnUI/PressTurnContainer/PressTurnIcon"]
 [editable path="PressTurnUI/PressTurnContainer/PressTurnIcon2"]

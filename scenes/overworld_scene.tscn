@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=12 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/redler.tres" id="2_r4jfg"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cks6y325db8c4" path="res://objects/UI/battle_select_button.tscn" id="8_0fx3b"]
 [ext_resource type="Script" path="res://scenes/button_select_skill.gd" id="8_pstvk"]
 [ext_resource type="PackedScene" uid="uid://bmv0o1ywk4p43" path="res://objects/misc/level_lock.tscn" id="9_e0sob"]
+[ext_resource type="Resource" uid="uid://thxc3wo4wjm0" path="res://data/groups/g_easy_battle_1.tres" id="9_uy58t"]
+[ext_resource type="Resource" uid="uid://crtnxxemdyj67" path="res://data/groups/g_hard_battle_1.tres" id="10_6sv04"]
 
 [node name="OverworldMenu" type="Node2D"]
 script = ExtResource("1_gsfbw")
@@ -219,10 +221,8 @@ offset_left = 268.0
 offset_top = 45.0
 offset_right = 989.0
 offset_bottom = 484.0
-current_tab = 2
 
 [node name="Greenler" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="To battle" parent="TabContainer/Greenler" instance=ExtResource("8_0fx3b")]
@@ -231,6 +231,8 @@ offset_left = 98.0
 offset_top = 178.0
 offset_right = 145.0
 offset_bottom = 209.0
+text = "Easy fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("9_uy58t")])
 
 [node name="To battle2" parent="TabContainer/Greenler" instance=ExtResource("8_0fx3b")]
 layout_mode = 2
@@ -238,28 +240,24 @@ offset_left = 528.0
 offset_top = 181.0
 offset_right = 575.0
 offset_bottom = 212.0
+text = "Hard fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_6sv04")])
 
 [node name="Beno" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
 [node name="Malculus" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
+tab_close_display_policy = 1
 
-[node name="LevelLock" parent="TabContainer/Malculus" instance=ExtResource("9_e0sob")]
+[node name="LevelLock" parent="TabContainer/Malculus" node_paths=PackedStringArray("unlocker_button", "unlocker_text", "unlocker", "fight_buttons") instance=ExtResource("9_e0sob")]
 cost = 999
-
-[node name="To battle" parent="TabContainer/Malculus/LevelLock" instance=ExtResource("8_0fx3b")]
-offset_left = 438.0
-offset_top = 332.0
-offset_right = 485.0
-offset_bottom = 363.0
-
-[node name="To battle2" parent="TabContainer/Malculus/LevelLock" instance=ExtResource("8_0fx3b")]
-offset_left = 677.0
-offset_top = 336.0
-offset_right = 724.0
-offset_bottom = 367.0
+unlocker_button = NodePath("../Unlocker/UnlockButton")
+unlocker_text = NodePath("../Unlocker/RichTextLabel")
+unlocker = NodePath("../Unlocker")
+fight_buttons = [NodePath("../To battle"), NodePath("../To battle2")]
 
 [node name="Unlocker" type="Control" parent="TabContainer/Malculus"]
 anchors_preset = 0
@@ -283,11 +281,28 @@ bbcode_enabled = true
 text = "[center]Price: 1000[/center]"
 fit_content = true
 
+[node name="To battle" parent="TabContainer/Malculus" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 256.0
+offset_right = 217.0
+offset_bottom = 287.0
+
+[node name="To battle2" parent="TabContainer/Malculus" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 260.0
+offset_right = 456.0
+offset_bottom = 291.0
+
 [connection signal="pressed" from="MenuBar/HBoxContainer/Party" to="." method="load_party"]
 [connection signal="go_to_ex_skills" from="PartyMember menu" to="ExtraSkillsMenu" method="open_menu"]
 [connection signal="pressed" from="PartyMember menu/Panel/Back" to="." method="main_menu"]
 [connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/Back2" to="." method="main_menu"]
-[connection signal="tab_changed" from="TabContainer/Malculus" to="TabContainer/Malculus/LevelLock" method="on_tab_open"]
+[connection signal="tab_clicked" from="TabContainer" to="TabContainer/Malculus/LevelLock" method="on_tab_open"]
+[connection signal="tab_selected" from="TabContainer" to="TabContainer/Malculus/LevelLock" method="on_tab_open"]
+[connection signal="load_battle" from="TabContainer/Greenler/To battle" to="." method="load_battle"]
+[connection signal="load_battle" from="TabContainer/Greenler/To battle2" to="." method="load_battle"]
 [connection signal="pressed" from="TabContainer/Malculus/Unlocker/UnlockButton" to="TabContainer/Malculus/LevelLock" method="unlock"]
 
 [editable path="PartyMember menu"]

@@ -20,8 +20,8 @@ luck = 0.5
 script = ExtResource("3_3pmul")
 strength = 2
 vitality = 3
-magic_pow = 1
-dexterity = 1
+magic_pow = 3
+dexterity = 2
 agility = 1
 luck = 1
 

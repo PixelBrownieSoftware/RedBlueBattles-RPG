@@ -5,6 +5,7 @@ extends Node
 @export var unlocker_button : Button
 @export var unlocker_text : RichTextLabel
 @export var unlocker : Control
+@export var fight_buttons : Array[Button]
 
 func unlock():
 	GlobalVariables.expereince_score -= cost
@@ -17,5 +18,5 @@ func on_tab_open(tab: int):
 		unlocker_button.pressed.connect(unlock)
 		unlocker_button.disabled = cost > GlobalVariables.expereince_score
 		unlocker.visible = true
-		for button : Button in get_children():
+		for button : Button in fight_buttons:
 			button.disabled = true

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://u6rmk7cwgbqj"]
+[gd_scene load_steps=10 format=3 uid="uid://u6rmk7cwgbqj"]
 
 [ext_resource type="Script" path="res://objects/misc/hit_fx.gd" id="1_siypt"]
 [ext_resource type="Texture2D" uid="uid://bh0uy04tf38vl" path="res://sprites/hit_fx.png" id="1_yiord"]
 [ext_resource type="Shader" path="res://objects/misc/hit_fx.gdshader" id="2_2dbdq"]
+[ext_resource type="FontFile" uid="uid://bn7h7hhogw0vg" path="res://misc/fonts/Shermlock.ttf" id="5_vk7go"]
 [ext_resource type="FontFile" uid="uid://dcx0qhol8qtdq" path="res://misc/fonts/times new roman bold italic.ttf" id="6_rcv4h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_so8vq"]
@@ -58,12 +59,137 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
+"values": [Vector2(-34, -15), Vector2(-34, -15)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DamageNumber:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AdditionalText:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AdditionalText:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_8jy7q"]
+resource_name = "miss_animation"
+length = 0.551
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(-1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageNumber:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DamageNumber:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
 "values": [Vector2(-23, -15), Vector2(-23, -15)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DamageNumber:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pccph"]
 _data = {
-"damage_animation": SubResource("Animation_nkgii")
+"damage_animation": SubResource("Animation_nkgii"),
+"miss_animation": SubResource("Animation_8jy7q")
 }
 
 [node name="HitFx" type="Node2D"]
@@ -82,14 +208,12 @@ libraries = {
 }
 
 [node name="DamageNumber" type="RichTextLabel" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
+anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.0
+offset_left = -34.0
 offset_top = -15.0
-offset_right = 23.0
+offset_right = 33.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -102,7 +226,34 @@ theme_override_fonts/normal_font = ExtResource("6_rcv4h")
 theme_override_font_sizes/normal_font_size = 21
 theme_override_font_sizes/bold_font_size = 19
 bbcode_enabled = true
-text = "[center]3[/center]"
+text = "[center]0[/center]"
+fit_content = true
+scroll_active = false
+tab_size = 6
+shortcut_keys_enabled = false
+
+[node name="AdditionalText" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -37.0
+offset_right = 19.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.222202
+pivot_offset = Vector2(36.8208, 16.8963)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.132152, 0.0837514, 0.058088, 1)
+theme_override_colors/font_outline_color = Color(0.55861, 0.597745, 0.608227, 1)
+theme_override_fonts/normal_font = ExtResource("5_vk7go")
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 19
+bbcode_enabled = true
+text = "[center]WEAK[/center]"
 fit_content = true
 scroll_active = false
 tab_size = 6

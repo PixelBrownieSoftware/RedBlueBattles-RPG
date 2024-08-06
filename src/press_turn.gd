@@ -1,9 +1,11 @@
 class_name PRESS_TURN
 enum PT {
-	ABSORB = 5,
-	REFLECT = 4,
-	VOID = 3,
-	CRITICAL = 2,
-	WEAK = 1 ,
+	MISS = 99,
+	ABSORB,
+	REFLECT,
+	VOID,
+	LUCKY,
+	CRITICAL,
+	WEAK ,
 	NORMAL = 0
 }

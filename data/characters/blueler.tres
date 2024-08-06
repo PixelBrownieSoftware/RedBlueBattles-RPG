@@ -21,7 +21,7 @@ script = ExtResource("4_onqjm")
 strength = 1
 vitality = 3
 magic_pow = 2
-dexterity = 1
+dexterity = 2
 agility = 1
 luck = 1
 

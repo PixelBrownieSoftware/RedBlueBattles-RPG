@@ -46,6 +46,7 @@ var pass_turn : rpg_skill = preload("res://data/Skills/pass.tres")
 @export var assigned_data : battle_character_base
 
 signal play_damage_sound()
+signal miss_effect()
 signal defeat_event()
 
 func assign_signal(function : Callable):
@@ -84,11 +85,47 @@ func level_up():
 	expereince_to_NL += expereince_to_NL * 1.3
 	health = max_health
 
-func damage_character(attacker: battle_character_data, skill :rpg_skill) -> int:
+func damage_character(attacker: battle_character_data, skill :rpg_skill):
+	var return_val = {}
 	var damage_amount : int
 	damage_amount = (attacker.strength * skill.power) / vitality
-	damage(damage_amount)
-	return damage_amount
+	var dodge_chance : float = attacker.dexterity
+	var will_hit = stat_chance(attacker.dexterity, agility, 0.65)
+	var is_lucky = stat_chance(attacker.luck, luck, -0.8)
+	var calculated_PT : PRESS_TURN.PT = PRESS_TURN.PT.NORMAL
+	var el_affinity : float = get_elemental_affinity(skill.skill_element)
+	if el_affinity >= 2:
+		calculated_PT = PRESS_TURN.PT.WEAK
+	else: if el_affinity < 2 && el_affinity > 0:
+		calculated_PT = PRESS_TURN.PT.NORMAL
+	else: if el_affinity == 0:
+		calculated_PT = PRESS_TURN.PT.VOID
+	else: if el_affinity < 0 && el_affinity > -2:
+		calculated_PT = PRESS_TURN.PT.REFLECT
+	else:
+		calculated_PT = PRESS_TURN.PT.ABSORB
+	if calculated_PT < PRESS_TURN.PT.VOID:
+		if is_lucky:
+			damage_amount *= 1.4
+			calculated_PT = PRESS_TURN.PT.LUCKY
+	if !will_hit:
+		damage_amount = 0
+		calculated_PT = PRESS_TURN.PT.MISS
+	else:
+		damage(damage_amount)
+	return_val["Press_turn"] = calculated_PT
+	return_val["Amount"] = damage_amount
+	return return_val
+	
+func stat_chance(user_val : int, targ_val : int, connect_max : float):
+	var total : int = user_val + targ_val
+	var user_modify: float = user_val * (float)(user_val * connect_max)
+	var attack_connect_chance : float = (user_modify/total)
+	var will_hit : float = randf()
+	if will_hit > attack_connect_chance:
+		return false
+	return true
+
 
 func damage(dmg : int):
 	health -= dmg

@@ -25,6 +25,9 @@ func play_hurt_sound():
 	$combatant_sfx.stream = hurt_sound
 	$combatant_sfx.play()
 	
+func miss_anim():
+	pass
+	
 func defeat_anim():
 	await get_tree().create_timer(0.2).timeout
 	$combatant_sfx_defeat.stream = defeat_sound

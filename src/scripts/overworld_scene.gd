@@ -23,6 +23,7 @@ func main_menu():
 	#$"MenuBar/HBoxContainer/To battle".visible = true
 	$"PartyMember menu".visible = false
 	$ExtraSkillsMenu.visible = false
+	$TabContainer.visible = true
 
 func load_battle(selected_group):
 	$"MenuBar/HBoxContainer".visible = false
@@ -34,5 +35,6 @@ func load_battle(selected_group):
 
 func load_party():
 	#$MenuBar/HBoxContainer/Party.visible = false
-	$"MenuBar/HBoxContainer/To battle".visible = false
+	$TabContainer.visible = false
+	#$"MenuBar/HBoxContainer/To battle".visible = false
 	$"PartyMember menu".activate()
