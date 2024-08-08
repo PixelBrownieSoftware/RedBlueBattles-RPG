@@ -27,7 +27,7 @@ var pass_turn : rpg_skill = preload("res://data/Skills/pass.tres")
 		for original_skill : rpg_skill in assigned_data.skills:
 			if original_skill.requirements_met(self):
 				skills_arr.push_back(original_skill)
-		for skill : rpg_skill in GlobalVariables.get_all_chara_exsk(self):
+		for skill : rpg_skill in extra_skills:
 			if skill.requirements_met(self):
 				skills_arr.push_back(skill)
 		print(skills_arr)
@@ -68,7 +68,10 @@ func new_data(base_data : battle_character_base, level):
 		level_up()
 
 func assign_skill(move : rpg_skill):
-	extra_skills.append(move)
+	var met_requirements = move.requirements_met(self)
+	var already_exists = assigned_data.skills.rfind(move) != -1
+	if met_requirements && !already_exists:
+		extra_skills.append(move)
 
 func level_up():
 	var skills_before : Array[rpg_skill] = get_skills
@@ -90,7 +93,7 @@ func damage_character(attacker: battle_character_data, skill :rpg_skill):
 	var damage_amount : int
 	damage_amount = (attacker.strength * skill.power) / vitality
 	var dodge_chance : float = attacker.dexterity
-	var will_hit = stat_chance(attacker.dexterity, agility, 0.65)
+	var will_hit = stat_chance(attacker.dexterity, agility, 0.75)
 	var is_lucky = stat_chance(attacker.luck, luck, -0.8)
 	var calculated_PT : PRESS_TURN.PT = PRESS_TURN.PT.NORMAL
 	var el_affinity : float = get_elemental_affinity(skill.skill_element)

@@ -3,11 +3,13 @@ class_name battle_end_state
 @export var overworld_scene : String
 @export var queue_state : battle_state
 signal show_exp_results_menu(results_list, total)
+signal show_moves_learned(moves_learned)
 var results_list = {}
 
 func start_state():
 	var dead_players : int =0
 	var dead_enemies : int =0
+	var new_moves_learned : Array[rpg_skill]
 	results_list = {}
 	results_list["Defeated"] = 0
 	results_list["Alive"] = 0
@@ -23,18 +25,23 @@ func start_state():
 		var chara : battle_character_data = character as battle_character_data
 		if chara.health <= 0:
 			for skill in chara.get_learnable_skills:
-				GlobalVariables.add_extra_skill(skill)
+				var ex_skills = GlobalVariables.add_extra_skill(skill)
+				if !ex_skills:
+					new_moves_learned.append(skill)
+				
 			dead_enemies += 1
 			results_list["Defeated"] += 0.04
 
 	if dead_players == PartyMembers.get_children().size():
 		total_exp = $"../../Variables/ExpereinceWatcher".local_exp_score + get_bonus()
+		show_moves_learned.emit(new_moves_learned)
 		show_exp_results_menu.emit(results_list, total_exp)
 		return
 	
 	if dead_enemies == EnemyMembers.get_children().size():
 		results_list["All_Defeated"] = 0.1
 		total_exp = $"../../Variables/ExpereinceWatcher".local_exp_score + get_bonus()
+		show_moves_learned.emit(new_moves_learned)
 		show_exp_results_menu.emit(results_list, total_exp)
 		return
 	change_state.emit(queue_state)

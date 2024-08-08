@@ -4,7 +4,8 @@ class_name battle_process_state
 @export var after_process_state : battle_state
 signal put_damage_numbers(user,targ,dmg, pt)
 signal notifcation_anim(skill)
-var battle_fx_anim_done = false
+signal spawn_battle_fx(anim_name, battle_char)
+signal finish_anim()
 
 func start_state():
 	var skill : rpg_skill = battle_globals.selected_move
@@ -27,7 +28,9 @@ func process_move(skill : rpg_skill):
 		match anim.skill_animation:
 			anim.SKILL_ANIMATION_TYPE.WAIT:
 				await get_tree().create_timer(anim.time_amount).timeout
-			#anim.SKILL_ANIMATION_TYPE.FX_ANIMATION:
+			anim.SKILL_ANIMATION_TYPE.FX_ANIMATION:
+				spawn_battle_fx.emit(anim.animation_name, character_target)
+				await finish_anim
 				#1. Spawn the FX
 				#2. Set the fx done variable to false
 				#3. Wait for it to be true
@@ -55,4 +58,4 @@ func process_move(skill : rpg_skill):
 				await get_tree().create_timer(1.5).timeout
 	
 func fx_anim_done():
-	battle_fx_anim_done = true
+	finish_anim.emit()

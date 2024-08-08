@@ -139,7 +139,7 @@ tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0002),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -523,8 +523,8 @@ script = ExtResource("23_ioo5t")
 layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
-offset_right = 512.0
-offset_bottom = 259.0
+offset_right = 216.0
+offset_bottom = 207.0
 
 [node name="Continue" type="Button" parent="EXP Bonuses"]
 layout_mode = 0
@@ -533,6 +533,13 @@ offset_top = 270.0
 offset_right = 272.0
 offset_bottom = 312.0
 text = "Continue"
+
+[node name="Learned Skills" type="RichTextLabel" parent="EXP Bonuses"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 5.0
+offset_right = 506.0
+offset_bottom = 261.0
 
 [connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/PartyMemberActors" method="add_characters"]
 [connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/EnemyMemberActors" method="add_characters"]
@@ -546,10 +553,12 @@ text = "Continue"
 [connection signal="notifcation_anim" from="BattleStateMachine/Process" to="Notification Panel" method="notificaiton_up"]
 [connection signal="put_damage_numbers" from="BattleStateMachine/Process" to="Variables/ExpereinceWatcher" method="exp_points_calc"]
 [connection signal="put_damage_numbers" from="BattleStateMachine/Process" to="BattleFXFactory" method="spawn_damage_obj"]
+[connection signal="spawn_battle_fx" from="BattleStateMachine/Process" to="BattleFXFactory" method="spawn_attack_effect"]
 [connection signal="change_state" from="BattleStateMachine/PressTurn" to="BattleStateMachine" method="change_state"]
 [connection signal="turn_icon_handle" from="BattleStateMachine/PressTurn" to="PressTurnUI" method="turn_icon_change"]
 [connection signal="change_state" from="BattleStateMachine/EndBattle" to="BattleStateMachine" method="change_state"]
 [connection signal="show_exp_results_menu" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="on_menu_show"]
+[connection signal="show_moves_learned" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="show_moves_learned"]
 [connection signal="get_targets" from="Variables/Behaviour" to="Variables/MoveTargetSelect" method="get_targets_from_move"]
 [connection signal="start_process_state" from="Variables/Behaviour" to="BattleStateMachine/Select" method="start_processing"]
 [connection signal="back_to_attack_menu" from="Target Menu" to="Attack Menu" method="show_menu"]
@@ -591,6 +600,7 @@ text = "Continue"
 [connection signal="load_skill" from="Attack Menu/HBoxContainer/Button8" to="Attack Menu" method="on_button_select_skill"]
 [connection signal="pressed" from="Attack Menu/HBoxContainer/Button8" to="Attack Menu/HBoxContainer/Button8" method="_on_pressed"]
 [connection signal="animation_finished" from="Attack Menu/AnimationPlayer" to="Attack Menu" method="_on_animation_player_animation_finished"]
+[connection signal="battle_fx_anim_done" from="BattleFXFactory" to="BattleStateMachine/Process" method="fx_anim_done"]
 [connection signal="pressed" from="EXP Bonuses/Continue" to="BattleStateMachine/EndBattle" method="leave_battle"]
 
 [editable path="PressTurnUI/PressTurnContainer/PressTurnIcon"]

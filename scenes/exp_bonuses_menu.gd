@@ -6,3 +6,6 @@ func on_menu_show(results, total):
 		visible = true
 	$RichTextLabel.text += "Total: " + str(total)
 	
+func show_moves_learned(moves_learned):
+	for skill : rpg_skill in moves_learned:
+		$"Learned Skills".text += "Learned " + skill.name + "\n"

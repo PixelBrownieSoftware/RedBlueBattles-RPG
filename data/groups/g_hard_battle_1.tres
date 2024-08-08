@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_6l4ep"]
 script = ExtResource("2_i54po")
 character = ExtResource("1_lypay")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("3_voufl")])
 min_level = 3
 max_level = 6
 

@@ -46,7 +46,6 @@ offset_right = 91.0
 offset_bottom = 31.0
 
 [node name="ExtraSkillsMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 293.0
@@ -212,11 +211,146 @@ layout_mode = 2
 text = "Ember"
 script = ExtResource("8_pstvk")
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillButton" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton2" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton3" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton4" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton5" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton6" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton7" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillButton" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton2" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton3" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton4" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton5" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton6" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton7" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillButton" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton2" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton3" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton4" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton5" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton6" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
+[node name="SkillButton7" type="Button" parent="ExtraSkillsMenu/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Ember"
+script = ExtResource("8_pstvk")
+
 [node name="Back2" type="Button" parent="ExtraSkillsMenu/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
+[node name="MoveDesc" type="Panel" parent="ExtraSkillsMenu"]
+layout_mode = 0
+offset_left = 463.0
+offset_right = 719.0
+offset_bottom = 282.0
+
+[node name="move desk text" type="RichTextLabel" parent="ExtraSkillsMenu/MoveDesc"]
+layout_mode = 0
+offset_right = 251.0
+offset_bottom = 236.0
+text = "fefef"
+
+[node name="Equip skill" type="Button" parent="ExtraSkillsMenu/MoveDesc"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 246.0
+offset_right = 198.0
+offset_bottom = 277.0
+text = "Assign"
+
 [node name="TabContainer" type="TabContainer" parent="."]
+visible = false
 offset_left = 268.0
 offset_top = 45.0
 offset_right = 989.0
@@ -298,7 +432,155 @@ offset_bottom = 291.0
 [connection signal="pressed" from="MenuBar/HBoxContainer/Party" to="." method="load_party"]
 [connection signal="go_to_ex_skills" from="PartyMember menu" to="ExtraSkillsMenu" method="open_menu"]
 [connection signal="pressed" from="PartyMember menu/Panel/Back" to="." method="main_menu"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton2" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton2" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton2" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton3" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton3" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton3" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton4" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton4" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton4" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton5" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton5" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton5" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton6" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton6" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton6" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton7" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton7" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer/SkillButton7" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton2" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton2" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton2" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton3" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton3" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton3" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton4" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton4" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton4" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton5" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton5" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton5" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton6" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton6" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton6" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton7" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton7" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer2/SkillButton7" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton2" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton2" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton2" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton3" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton3" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton3" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton4" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton4" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton4" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton5" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton5" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton5" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton6" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton6" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton6" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton7" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton7" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer3/SkillButton7" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton2" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton2" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton2" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton3" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton3" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton3" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton4" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton4" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton4" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton5" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton5" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton5" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton6" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton6" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton6" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton7" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton7" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer4/SkillButton7" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton2" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton2" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton2" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton3" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton3" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton3" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton4" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton4" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton4" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton5" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton5" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton5" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton6" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton6" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton6" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton7" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton7" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer5/SkillButton7" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton2" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton2" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton2" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton3" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton3" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton3" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton4" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton4" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton4" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton5" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton5" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton5" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton6" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton6" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton6" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton7" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton7" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer6/SkillButton7" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton2" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton2" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton2" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton2" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton3" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton3" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton3" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton3" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton4" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton4" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton4" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton4" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton5" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton5" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton5" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton5" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton6" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton6" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton6" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton6" method="_on_pressed"]
+[connection signal="focus_entered" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton7" method="hover_move_desc"]
+[connection signal="load_skill" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton7" to="ExtraSkillsMenu" method="add_skill"]
+[connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton7" to="ExtraSkillsMenu/VBoxContainer/HBoxContainer7/SkillButton7" method="_on_pressed"]
 [connection signal="pressed" from="ExtraSkillsMenu/VBoxContainer/Back2" to="." method="main_menu"]
+[connection signal="pressed" from="ExtraSkillsMenu/MoveDesc/Equip skill" to="ExtraSkillsMenu" method="assign_skill"]
 [connection signal="tab_clicked" from="TabContainer" to="TabContainer/Malculus/LevelLock" method="on_tab_open"]
 [connection signal="tab_selected" from="TabContainer" to="TabContainer/Malculus/LevelLock" method="on_tab_open"]
 [connection signal="load_battle" from="TabContainer/Greenler/To battle" to="." method="load_battle"]

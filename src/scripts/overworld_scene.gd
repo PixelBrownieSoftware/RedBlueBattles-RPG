@@ -29,7 +29,9 @@ func load_battle(selected_group):
 	$"MenuBar/HBoxContainer".visible = false
 	for battle_character_member : battle_group_member in selected_group.opponents:
 		var level : int =  randi() % battle_character_member.max_level + battle_character_member.min_level
-		CharacterFactory.create_new_character(battle_character_member.character,EnemyMembers , level)
+		var character : battle_character_data = CharacterFactory.create_new_character(battle_character_member.character,EnemyMembers , level)
+		for skill in battle_character_member.skills:
+			character.assign_skill(skill)
 	await FadeScene.fade_bg(Color.BLACK, 0.7)
 	get_tree().change_scene_to_file(battle_scene)
 

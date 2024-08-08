@@ -28,11 +28,12 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "menu_show":
 		var index = 0
 		for targ in globals.targets:
-			var targ_button = get_child(0).get_child(index)
-			targ_button.selected_character = targ
-			targ_button.show_hp()
-			targ_button.text = targ.name
-			targ_button.show_anim()
+			if targ.health > 0:
+				var targ_button = get_child(0).get_child(index)
+				targ_button.selected_character = targ
+				targ_button.show_hp()
+				targ_button.text = targ.name
+				targ_button.show_anim()
 			index += 1
 	else: if anim_name == "menu_hide":
 		if to_next_state:

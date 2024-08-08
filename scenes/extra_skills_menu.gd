@@ -1,5 +1,6 @@
 extends Control
 var chara : battle_character_data
+var selected_skill : rpg_skill
 var buttons : Array[Button]
 
 func open_menu(character : battle_character_data):
@@ -20,4 +21,17 @@ func open_menu(character : battle_character_data):
 	visible = true
 
 func add_skill(move):
-	GlobalVariables.assign_skill(chara,move)
+	selected_skill = move
+	var description : String = ""
+	description += "Name: " + move.name + "\n"
+	description += "Stat requirements:" + "\n"
+	description += "Strength: " + str(move.stat_requirement.strength)  + "\n"
+	description += "Vitality: " + str(move.stat_requirement.vitality)  + "\n"
+	description += "Dexterity: " + str(move.stat_requirement.dexterity)  + "\n"
+	description += "Agility: " + str(move.stat_requirement.agility)  + "\n"
+	description += "Magic power: " + str(move.stat_requirement.strength)  + "\n"
+	description += "Luck: " + str(move.stat_requirement.luck)  + "\n"
+	$"MoveDesc/move desk text".text = description
+
+func assign_skill():
+	GlobalVariables.assign_skill(chara,selected_skill)

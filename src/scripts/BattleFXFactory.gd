@@ -22,4 +22,7 @@ func spawn_attack_effect(object : String, target : battle_character_data):
 		var key_object = load("res://objects/misc/battle effects/" + object + ".tscn")
 		objects[object] = key_object
 	var projectile = objects[object].instantiate()
+	add_child(projectile)
+	projectile.position = actor.position
+	await projectile.animation_player.animation_finished
 	battle_fx_anim_done.emit()

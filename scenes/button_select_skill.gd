@@ -9,7 +9,8 @@ func _on_pressed():
 	load_skill.emit(selected_skill)
 
 func _process(delta):
-	if GlobalVariables.get_all_chara_exsk(character).find(selected_skill):
-		modulate = Color.RED
-	else:
-		modulate = Color.AQUA
+	if character != null:
+		if character.extra_skills.rfind(selected_skill) != -1:
+			modulate = Color.RED
+		else:
+			modulate = Color.AQUA
