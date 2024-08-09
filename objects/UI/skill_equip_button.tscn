@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cshn1uy4w7mwl"]
+
+[ext_resource type="Script" path="res://scenes/button_select_skill.gd" id="1_v1665"]
+
+[node name="SkillEquipButton" type="Button"]
+anchors_preset = -1
+anchor_right = 0.051
+anchor_bottom = 0.048
+offset_right = -58.752
+offset_bottom = -31.104
+text = "Ember"
+script = ExtResource("1_v1665")
+
+[connection signal="focus_entered" from="." to="." method="hover_move_desc"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

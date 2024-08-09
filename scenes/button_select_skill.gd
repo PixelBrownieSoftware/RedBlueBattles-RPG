@@ -10,7 +10,9 @@ func _on_pressed():
 
 func _process(delta):
 	if character != null:
-		if character.extra_skills.rfind(selected_skill) != -1:
+		var already_equipped_by_someone_else =  GlobalVariables.equipped_extra_skills[selected_skill.name] != null
+		
+		if character.extra_skills.rfind(selected_skill) != -1 || already_equipped_by_someone_else:
 			modulate = Color.RED
 		else:
 			modulate = Color.AQUA

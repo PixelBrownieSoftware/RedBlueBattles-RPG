@@ -12,6 +12,7 @@ func reset_multipiler():
 	multilplier = 1
 
 @export var extra_skills : Array[rpg_skill]
+@export var equipped_extra_skills = {}
 
 #Check whether the skill exists in the extra skills bit
 func add_extra_skill(skill : rpg_skill) -> bool:
@@ -19,6 +20,7 @@ func add_extra_skill(skill : rpg_skill) -> bool:
 		return true
 	print(extra_skills.size())
 	extra_skills.append(skill)
+	equipped_extra_skills[skill.name] = null
 	print("Gained " + skill.name + "!")
 	print(extra_skills.size())
 	return false
@@ -34,5 +36,7 @@ func assign_skill(chara : battle_character_data, extra_skill : rpg_skill):
 	var ind = chara.extra_skills.rfind(extra_skill)
 	if ind == -1:
 		chara.assign_skill(extra_skill)
+		equipped_extra_skills[extra_skill.name] = chara
 	else:
 		chara.extra_skills.remove_at(ind)
+		equipped_extra_skills[extra_skill.name] = null
