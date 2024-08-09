@@ -1,34 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0j2rpxn00nk3"]
+[gd_scene load_steps=5 format=3 uid="uid://d0j2rpxn00nk3"]
 
-[ext_resource type="Script" path="res://scenes/party_member_menu.gd" id="1_kaflw"]
+[ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_hq8uu"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hb0oj"]
-[ext_resource type="Texture2D" uid="uid://brbeh87yj31g4" path="res://sprites/right_button.png" id="3_47gvg"]
-[ext_resource type="Texture2D" uid="uid://b07yc7xxliuvq" path="res://sprites/left_button.png" id="4_ckj7i"]
+[ext_resource type="PackedScene" uid="uid://dolrm8q8r70u6" path="res://objects/UI/skill_menu_button.tscn" id="4_2ddop"]
 [ext_resource type="FontFile" uid="uid://c0dmv52byuhka" path="res://misc/fonts/ShermlockOpen.ttf" id="5_wq0tu"]
 
-[node name="PartyMember menu" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="PartyMember menu" type="TabBar"]
 offset_left = 278.0
 offset_top = 205.0
 offset_right = 868.0
 offset_bottom = 530.0
-script = ExtResource("1_kaflw")
+script = ExtResource("1_hq8uu")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 1.427
 anchor_bottom = 1.0
+offset_right = 0.0699463
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
 offset_left = 38.0
-offset_top = 89.0
-offset_right = 230.0
-offset_bottom = 160.0
+offset_top = 120.4
+offset_right = 231.0
+offset_bottom = 193.4
 
 [node name="Strength" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
 layout_mode = 2
@@ -44,23 +42,6 @@ layout_mode = 2
 
 [node name="Agility" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
 layout_mode = 2
-
-[node name="->" type="TextureButton" parent="Panel"]
-layout_mode = 0
-offset_left = 530.0
-offset_top = 265.0
-offset_right = 590.0
-offset_bottom = 325.0
-texture_normal = ExtResource("3_47gvg")
-stretch_mode = 0
-
-[node name="<-" type="TextureButton" parent="Panel"]
-layout_mode = 0
-offset_top = 264.0
-offset_right = 60.0
-offset_bottom = 324.0
-texture_normal = ExtResource("4_ckj7i")
-stretch_mode = 0
 
 [node name="Name" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
@@ -112,21 +93,78 @@ offset_right = 494.0
 offset_bottom = 94.0
 text = "Level up"
 
-[node name="Back" type="Button" parent="Panel"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 329.0
-offset_right = 590.0
-offset_bottom = 360.0
-
 [node name="ExtraSkills" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 345.0
-offset_top = 81.0
-offset_right = 436.0
-offset_bottom = 112.0
+offset_left = 462.0
+offset_top = 104.0
+offset_right = 553.0
+offset_bottom = 135.0
 text = "Extra skills"
 
-[connection signal="pressed" from="Panel/->" to="." method="next_character"]
-[connection signal="pressed" from="Panel/<-" to="." method="prev_character"]
+[node name="Health" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 72.0
+offset_right = 237.0
+offset_bottom = 112.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 169.0
+offset_right = 587.0
+offset_bottom = 319.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+
+[node name="skill_menu_button" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button2" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button3" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button4" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button5" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button6" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button7" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button8" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button9" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button10" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="SkillDesc" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 5.0
+offset_right = 825.0
+offset_bottom = 317.0
+
+[connection signal="tab_selected" from="." to="." method="_on_tab_selected"]
+[connection signal="pressed" from="Panel/Expereince/LevelUpButton" to="." method="level_up"]
 [connection signal="pressed" from="Panel/ExtraSkills" to="." method="go_to_extra_skills"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button2" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button3" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button4" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button5" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button6" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button7" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button8" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button9" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button10" to="." method="load_skill"]

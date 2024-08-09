@@ -2,9 +2,11 @@ extends Control
 @export var chara : battle_character_data
 var selected_skill : rpg_skill
 var buttons : Array[Button]
+signal close_party_menu()
 
 func open_menu(character : battle_character_data):
 	chara = character
+	close_party_menu.emit()
 	for button_horiz in get_child(0).get_children():
 		for button in button_horiz.get_children():
 			buttons.append(button)
@@ -24,8 +26,9 @@ func open_menu(character : battle_character_data):
 func display_skills():
 	var description : String = ""
 	description += "Name: " + selected_skill.name
-	if GlobalVariables.equipped_extra_skills[selected_skill.name] != null:
-		var character_colour = chara.assigned_data.character_colour
+	var character_skill_assigned : battle_character_data = GlobalVariables.equipped_extra_skills[selected_skill.name]
+	if character_skill_assigned != null:
+		var character_colour = character_skill_assigned.assigned_data.character_colour
 		description += " ([color=" + character_colour.to_html()+ "]" + GlobalVariables.equipped_extra_skills[selected_skill.name].name+ "[/color])"
 	description += "\n"
 	description += "Stat requirements:" + "\n"

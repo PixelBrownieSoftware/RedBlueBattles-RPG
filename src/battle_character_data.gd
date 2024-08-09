@@ -8,7 +8,7 @@ class_name battle_character_data
 @export var max_stamina : int:
 	get:
 		return assigned_data.stamina
-@export var stamina : int = 1
+@export var stamina : int = 0
 @export var extra_skills : Array[rpg_skill]
 
 @export var strength : int = 1
@@ -56,6 +56,7 @@ func new_data(base_data : battle_character_base, level):
 	assigned_data = base_data
 	max_health = base_data.health
 	health = max_health
+	stamina = 0
 	expereince_to_NL = base_data.base_exp_to_NL
 	strength = base_data.stats.strength
 	vitality = base_data.stats.vitality
@@ -75,18 +76,28 @@ func assign_skill(move : rpg_skill):
 
 func level_up():
 	var skills_before : Array[rpg_skill] = get_skills
+	current_level += 1
 	max_health += assigned_data.stat_increase.health_min + randi() % assigned_data.stat_increase.health_max
-	strength += 1 if fmod(assigned_data.stat_increase.strength * float(current_level), 1) == 0 else 0
-	vitality += 1 if fmod(assigned_data.stat_increase.vitality * float(current_level), 1) == 0 else 0
-	magic_pow += 1 if fmod(assigned_data.stat_increase.magic_pow * float(current_level), 1) == 0 else 0
-	dexterity += 1 if fmod(assigned_data.stat_increase.dexterity * float(current_level), 1) == 0 else 0
-	agility +=  1 if fmod(assigned_data.stat_increase.agility * float(current_level), 1) == 0 else 0
-	luck += 1 if fmod(assigned_data.stat_increase.luck * float(current_level), 1) == 0 else 0
+	#print(fmod(assigned_data.stat_increase.strength * float(current_level), 1))
+	strength += increase_stat(assigned_data.stat_increase.strength)#if fmod(assigned_data.stat_increase.strength * float(current_level), 1) == 0 else 0
+	vitality += increase_stat(assigned_data.stat_increase.vitality)
+	magic_pow += increase_stat(assigned_data.stat_increase.magic_pow)
+	dexterity += increase_stat(assigned_data.stat_increase.dexterity)
+	agility +=  increase_stat(assigned_data.stat_increase.agility)
+	luck += increase_stat(assigned_data.stat_increase.luck)
 	for move in assigned_data.skills:
 		if move.requirements_met(self) && !skills_before.rfind(move):
 			print(name + " learned " + move.name + "!")
-	expereince_to_NL += expereince_to_NL * 1.3
+	expereince_to_NL += expereince_to_NL * (2.5 * (0.85**current_level))
 	health = max_health
+	
+func increase_stat(stat_increase : float) -> int:
+	var prev =  floor(stat_increase * float(current_level - 1))
+	var now = floor(stat_increase * float(current_level))
+	var result = now - prev
+	if result >= 1:
+		return 1
+	return 0
 
 func damage_character(attacker: battle_character_data, skill :rpg_skill):
 	var return_val = {}

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=8 format=3 uid="uid://cpgb8iguvjhyr"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=9 format=3 uid="uid://cpgb8iguvjhyr"]
 
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_0kwq3"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="2_3x88f"]
@@ -17,6 +17,15 @@ skill_animation = 0
 time_amount = -1.0
 animation_name = ""
 
+[sub_resource type="Resource" id="Resource_ynuo8"]
+script = ExtResource("2_ocios")
+strength = 6
+vitality = 1
+magic_pow = 4
+dexterity = 4
+agility = 1
+luck = 1
+
 [sub_resource type="Resource" id="Resource_la8fa"]
 script = ExtResource("2_ocios")
 strength = 1
@@ -33,6 +42,7 @@ learnable = true
 power = 5
 stamina_cost = 1
 stats = SubResource("Resource_la8fa")
+stat_requirement = SubResource("Resource_ynuo8")
 skill_scope = 1
 skill_element = ExtResource("2_3x88f")
 skill_animation = Array[ExtResource("2_bixim")]([SubResource("Resource_sqcaa"), SubResource("Resource_r5eps")])

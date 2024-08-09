@@ -47,15 +47,16 @@ func process_move(skill : rpg_skill):
 					actor_user.play_animation("idle")
 			anim.SKILL_ANIMATION_TYPE.CALCULATION:
 				var attack_result = {}
-				attack_result = character_target.damage_character(character_user, skill)
-				var damage_num  = attack_result["Amount"]
-				var calculated_PT = attack_result["Press_turn"]
-				print(calculated_PT)
-				if battle_globals.final_press_turn_flag < calculated_PT:
-					battle_globals.final_press_turn_flag = calculated_PT
-				print(damage_num)
-				put_damage_numbers.emit(character_user, character_target, damage_num, calculated_PT)
-				await get_tree().create_timer(1.5).timeout
+				if character_target.health > 0:
+					attack_result = character_target.damage_character(character_user, skill)
+					var damage_num  = attack_result["Amount"]
+					var calculated_PT = attack_result["Press_turn"]
+					print(calculated_PT)
+					if battle_globals.final_press_turn_flag < calculated_PT:
+						battle_globals.final_press_turn_flag = calculated_PT
+					print(damage_num)
+					put_damage_numbers.emit(character_user, character_target, damage_num, calculated_PT)
+					await get_tree().create_timer(1.5).timeout
 	
 func fx_anim_done():
 	finish_anim.emit()

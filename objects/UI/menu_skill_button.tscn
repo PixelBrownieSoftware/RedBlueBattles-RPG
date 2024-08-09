@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://chjy1ie8uq3dh"]
+
+[ext_resource type="PackedScene" uid="uid://b02fnxe32db18" path="res://objects/UI/skill_button.tscn" id="1_57t0n"]
+
+[node name="Menu Skill button" instance=ExtResource("1_57t0n")]
+anchors_preset = -1
+anchor_right = 0.148
+anchor_bottom = 0.194
+offset_left = -1.0
+offset_top = 0.0
+offset_right = -29.496
+offset_bottom = -94.712
+
+[node name="StaminaContainer" parent="." index="1"]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -21.0
+offset_top = 36.0
+offset_right = 171.0
+offset_bottom = 57.0

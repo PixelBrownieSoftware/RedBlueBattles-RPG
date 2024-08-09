@@ -12,6 +12,19 @@ enum SCOPE {ALLY, FOE, ALL, NONE = -1}
 @export var skill_element : element = preload("res://data/elements/None.tres")
 @export var skill_animation : Array[rpg_skill_animation]
 
+func get_desc() -> String:
+	var desc : String
+	desc += name + "\n"
+	desc += "Power: " + str(power) + "\n"
+	desc += "Stamina Cost: " + str(stamina_cost) + "\n"
+	desc += "Element: " + skill_element.name + "\n"
+	var scope : String
+	match skill_scope:
+		SCOPE.FOE:
+			scope= "To enemy"
+	desc += "Scope: " + scope + "\n"
+	return desc
+
 func requirements_met(chara : battle_character_data) -> bool:
 	var str_req : bool = (chara.strength >= stat_requirement.strength)
 	var vit_req : bool = (chara.vitality >= stat_requirement.vitality)

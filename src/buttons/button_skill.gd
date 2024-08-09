@@ -1,8 +1,7 @@
 extends Button
 class_name button_skill
 
-@export
-var selected_skill : rpg_skill
+@export var selected_skill : rpg_skill
 signal load_skill(skill : rpg_skill)
 var can_afford : bool = true
 

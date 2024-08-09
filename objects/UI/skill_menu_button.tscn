@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dolrm8q8r70u6"]
+
+[ext_resource type="Script" path="res://objects/UI/skill_show_button.gd" id="1_fcsqg"]
+
+[node name="skill_menu_button" type="Button"]
+script = ExtResource("1_fcsqg")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
