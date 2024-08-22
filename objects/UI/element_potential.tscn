@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://mugpveucbeey"]
+
+[ext_resource type="Script" path="res://objects/UI/element_potential.gd" id="1_nlf7e"]
+
+[node name="ElementPotential" type="Control"]
+layout_mode = 3
+anchor_right = 0.047
+anchor_bottom = 0.079
+offset_right = -54.144
+offset_bottom = -51.192
+script = ExtResource("1_nlf7e")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "3443"

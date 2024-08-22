@@ -39,6 +39,11 @@ func level_up():
 	current_character.level_up()
 	load_skill_buttons()
 
+func set_elements():
+	for potential in $Panel/Potential.get_children():
+		potential.character= current_character
+		potential.set_potential()
+
 func _process(delta):
 	if current_character != null:
 		$Panel/Name.text = current_character.name
@@ -56,6 +61,7 @@ func _process(delta):
 			$Panel/InBattle.text = "Enabled"
 		else:
 			$Panel/InBattle.text = "Disabled"
+		set_elements()
 			
 func _on_tab_selected(tab):
 	load_skill_buttons()

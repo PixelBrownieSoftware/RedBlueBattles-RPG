@@ -39,6 +39,6 @@ stat_increase = SubResource("Resource_r4ocw")
 skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_32uhm"), ExtResource("3_k4kwr"), ExtResource("4_qjnwe")])
 behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
 elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
-elemental_affections = Array[Resource("res://src/elemental_affection.gd")]([])
+elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
 character_colour = Color(0.635294, 1, 0.443137, 1)
 animation_player_loc = "sprite_greenler"

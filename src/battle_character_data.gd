@@ -142,19 +142,19 @@ func get_element_potential_modifiers(skill :rpg_skill):
 		-2:
 			modifiers["stamina_discount"] = 1
 			modifiers["damage_multipler"] = 0.8
-			modifiers["requirement_discount"] = 6
+			modifiers["requirement_discount"] = 2
 		-3:
 			modifiers["stamina_discount"] = 2
 			modifiers["damage_multipler"] = 0.75
-			modifiers["requirement_discount"] = 6
+			modifiers["requirement_discount"] = 3
 		-4:
 			modifiers["stamina_discount"] = 2
 			modifiers["damage_multipler"] = 0.6
-			modifiers["requirement_discount"] = 6
+			modifiers["requirement_discount"] = 4
 		-5:
 			modifiers["stamina_discount"] = 2
 			modifiers["damage_multipler"] = 0.6
-			modifiers["requirement_discount"] = 6
+			modifiers["requirement_discount"] = 5
 		-6:
 			modifiers["stamina_discount"] = 3
 			modifiers["damage_multipler"] = 0.55
@@ -165,6 +165,7 @@ func damage_character(attacker: battle_character_data, skill :rpg_skill):
 	var return_val = {}
 	var damage_amount : int
 	var modifiers = attacker.get_element_potential_modifiers(skill)
+	print("Multiplier " + str(modifiers["damage_multipler"]))
 	damage_amount = ((attacker.strength * skill.power) / vitality) * modifiers["damage_multipler"]
 	var dodge_chance : float = attacker.dexterity
 	var will_hit = stat_chance(attacker.dexterity, agility, 0.85)
@@ -198,9 +199,9 @@ func stat_chance(user_val : int, targ_val : int, connect_max : float):
 	var total : int = user_val + targ_val
 	var user_modify: float = user_val * (float)(user_val * connect_max)
 	var attack_connect_chance : float = (user_modify/total)
-	print("Connection: " + str(attack_connect_chance))
+	#print("Connection: " + str(attack_connect_chance))
 	var will_hit : float = randf()
-	print("Roll: " + str(will_hit))
+	#print("Roll: " + str(will_hit))
 	if will_hit > attack_connect_chance:
 		return false
 	return true

@@ -27,27 +27,28 @@ func get_desc() -> String:
 	return desc
 
 func get_requirements(chara : battle_character_data, stat) -> int:
-	#var potential : int = chara.get_elemental_potential(skill_element) * -1
-	#var total: int  = stat + affection
-	#total = clampi(total, 0, 999)
-	#return total
-	return 0
-
-func requirements_met(chara : battle_character_data) -> bool:
+	var potential : int = chara.get_element_potential_modifiers(self)["requirement_discount"]
+	var total: int  = stat + potential
+	total = clampi(total, 0, 999)
+	return total
+	
+func requirements_met(chara : battle_character_data):
 	#The higher the potential, the lower the requirements
 	#It may also do more damage
-	var str_req : int = get_requirements(chara,stat_requirement.strength)
-	var vit_req : int = get_requirements(chara,stat_requirement.vitality)
-	var luc_req : int =get_requirements(chara,stat_requirement.luck)
-	var ag_req : int = get_requirements(chara,stat_requirement.agility)
-	var mag_req : int = get_requirements(chara,stat_requirement.magic_pow)
-	var dex_req : int = get_requirements(chara,stat_requirement.dexterity)
+	var results =  {}
+	results["str_req"] = get_requirements(chara,stat_requirement.strength)
+	results["vit_req"] = get_requirements(chara,stat_requirement.vitality)
+	results["luc_req"] = get_requirements(chara,stat_requirement.luck)
+	results["agi_req"] = get_requirements(chara,stat_requirement.agility)
+	results["mag_req"] = get_requirements(chara,stat_requirement.magic_pow)
+	results["dex_req"] = get_requirements(chara,stat_requirement.dexterity)
 	
-	var str_req_sati : bool = (chara.strength >= str_req)
-	var vit_req_sati : bool = (chara.vitality >= vit_req)
-	var luc_req_sati : bool = (chara.luck >= luc_req)
-	var ag_req_sati : bool = (chara.agility >= ag_req)
-	var mag_req_sati : bool = (chara.magic_pow >= mag_req)
-	var dex_req_sati : bool = (chara.dexterity >= dex_req)
-	return str_req_sati && vit_req_sati && luc_req_sati && ag_req_sati && mag_req_sati && dex_req_sati
+	var str_req_sati : bool = (chara.strength >= results["str_req"])
+	var vit_req_sati : bool = (chara.vitality >= results["vit_req"])
+	var luc_req_sati : bool = (chara.luck >= results["luc_req"])
+	var agi_req_sati : bool = (chara.agility >= results["agi_req"])
+	var mag_req_sati : bool = (chara.magic_pow >= results["mag_req"])
+	var dex_req_sati : bool = (chara.dexterity >= results["dex_req"])
+	results["req_met"] = str_req_sati && vit_req_sati && luc_req_sati && agi_req_sati && mag_req_sati && dex_req_sati
+	return results
 

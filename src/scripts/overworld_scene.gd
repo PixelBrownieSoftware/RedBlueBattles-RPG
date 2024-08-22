@@ -12,7 +12,7 @@ func _ready():
 	await FadeScene.fade_bg(Color(Color.BLACK, 0), 0.5)
 	if PartyMembers.get_child_count() == 0:
 		for ch in starters:
-			CharacterFactory.create_new_character(ch,PartyMembers, 5)
+			CharacterFactory.create_new_character(ch,PartyMembers, 1)
 	for member : battle_character_data in PartyMembers.get_children():
 		var tab : party_member_tab = party_member_menu.instantiate()
 		tab.current_character = member
@@ -58,6 +58,9 @@ func load_battle(selected_group):
 	GlobalVariables.current_battle = selected_group
 	await FadeScene.fade_bg(Color.BLACK, 0.7)
 	get_tree().change_scene_to_file(battle_scene)
+
+func _process(delta):
+	$"Exp count".text = "Expereince: " + str(GlobalVariables.expereince_score)
 
 func load_party():
 	#TODO: We should play an animation rather than crudely disabling and enabling menus

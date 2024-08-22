@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0j2rpxn00nk3"]
+[gd_scene load_steps=13 format=3 uid="uid://d0j2rpxn00nk3"]
 
 [ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_hq8uu"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hb0oj"]
 [ext_resource type="PackedScene" uid="uid://dolrm8q8r70u6" path="res://objects/UI/skill_menu_button.tscn" id="4_2ddop"]
+[ext_resource type="PackedScene" uid="uid://mugpveucbeey" path="res://objects/UI/element_potential.tscn" id="5_6bjww"]
 [ext_resource type="FontFile" uid="uid://c0dmv52byuhka" path="res://misc/fonts/ShermlockOpen.ttf" id="5_wq0tu"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="6_4btt1"]
+[ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="7_lv2s7"]
+[ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="8_488yq"]
+[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="9_6e756"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="10_58yae"]
+[ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="11_wydnp"]
+[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="12_7rres"]
 
 [node name="PartyMember menu" type="TabBar"]
 offset_left = 278.0
@@ -155,6 +163,42 @@ offset_top = 144.0
 offset_right = 545.0
 offset_bottom = 175.0
 text = "Get into battle"
+
+[node name="Potential" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 225.0
+offset_right = 297.0
+offset_bottom = 288.0
+theme_override_constants/separation = 45
+
+[node name="Fire" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("6_4btt1")
+
+[node name="Ice" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("7_lv2s7")
+
+[node name="Electric" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("8_488yq")
+
+[node name="Psychic" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("9_6e756")
+
+[node name="Wind" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("10_58yae")
+
+[node name="Strike" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("11_wydnp")
+
+[node name="Peirce" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("12_7rres")
 
 [node name="SkillDesc" type="RichTextLabel" parent="."]
 layout_mode = 0

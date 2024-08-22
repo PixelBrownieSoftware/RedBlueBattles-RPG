@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=24 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="2_r4jfg"]
@@ -7,8 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://cshn1uy4w7mwl" path="res://objects/UI/skill_equip_button.tscn" id="7_u8djp"]
 [ext_resource type="PackedScene" uid="uid://cks6y325db8c4" path="res://objects/UI/battle_select_button.tscn" id="8_0fx3b"]
 [ext_resource type="PackedScene" uid="uid://bmv0o1ywk4p43" path="res://objects/misc/level_lock.tscn" id="9_e0sob"]
+[ext_resource type="Resource" uid="uid://023p7lm5i3xw" path="res://data/groups/greenler/tutorial.tres" id="10_2cfhv"]
+[ext_resource type="Resource" uid="uid://dwuivec0bu3ha" path="res://data/groups/greenler/g_easy_battle_1.tres" id="10_x3xdn"]
+[ext_resource type="Resource" uid="uid://crtnxxemdyj67" path="res://data/groups/greenler/g_hard_battle_1.tres" id="11_3rcoc"]
 [ext_resource type="Script" path="res://src/active_party_members.gd" id="11_byyvb"]
+[ext_resource type="Resource" uid="uid://bhgpt6ai8y88a" path="res://data/groups/greenler/g_boss.tres" id="12_86m7a"]
 [ext_resource type="PackedScene" uid="uid://cf4s1n8tbgm7o" path="res://objects/UI/member_select_button.tscn" id="12_tpcla"]
+[ext_resource type="Resource" uid="uid://dfanj3jqa78ce" path="res://data/groups/beno/b_easy_battle_1.tres" id="13_4mt5m"]
+[ext_resource type="Resource" uid="uid://blfjp3c2qq664" path="res://data/groups/beno/b_hard_battle_1.tres" id="14_oc1m6"]
+[ext_resource type="Resource" uid="uid://mv0dwrjyce2a" path="res://data/groups/beno/b_boss.tres" id="15_6m0ag"]
+[ext_resource type="Resource" uid="uid://dp0nw3gmr76s8" path="res://data/groups/lord red/lr_easy_battle_1.tres" id="16_j7iww"]
+[ext_resource type="Resource" uid="uid://cgkv2dxx8u451" path="res://data/groups/lord red/lr_hard_battle_1.tres" id="17_85800"]
+[ext_resource type="Resource" uid="uid://ck8pds420p0t0" path="res://data/groups/lord red/lr_boss.tres" id="18_4vcfm"]
 
 [sub_resource type="Animation" id="Animation_1vcaa"]
 length = 0.001
@@ -428,6 +438,7 @@ offset_right = 763.0
 offset_bottom = 496.0
 
 [node name="ExtraSkillsMenu" type="Panel" parent="MainMenu"]
+visible = false
 layout_mode = 0
 offset_left = 175.0
 offset_top = 196.0
@@ -638,151 +649,151 @@ offset_bottom = -51.0
 text = "Back"
 
 [node name="EnemySelectTabs" type="TabContainer" parent="MainMenu"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -778.0
+offset_left = 86.0
 offset_top = 100.0
-offset_right = -57.0
+offset_right = 807.0
 offset_bottom = 539.0
 
 [node name="Greenler" type="TabBar" parent="MainMenu/EnemySelectTabs"]
 layout_mode = 2
 
-[node name="To battle" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
+[node name="Tutorial" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
 layout_mode = 2
-offset_left = 98.0
-offset_top = 178.0
-offset_right = 145.0
-offset_bottom = 209.0
-text = "Easy fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+offset_left = 289.0
+offset_top = 232.0
+offset_right = 372.0
+offset_bottom = 263.0
+text = "Tutorial"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_2cfhv")])
 
-[node name="To battle2" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
+[node name="Easy" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
 layout_mode = 2
-offset_left = 528.0
+offset_left = 100.0
 offset_top = 181.0
-offset_right = 575.0
+offset_right = 183.0
 offset_bottom = 212.0
-text = "Hard fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+text = "Easy fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_x3xdn")])
 
-[node name="To battle3" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
+[node name="Hard" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
 layout_mode = 2
-offset_left = 304.0
-offset_top = 102.0
-offset_right = 390.0
-offset_bottom = 133.0
+offset_left = 507.0
+offset_top = 183.0
+offset_right = 593.0
+offset_bottom = 214.0
+text = "Hard fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("11_3rcoc")])
+
+[node name="Boss" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+offset_left = 305.0
+offset_top = 123.0
+offset_right = 388.0
+offset_bottom = 154.0
 text = "Boss"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("12_86m7a")])
 
 [node name="Beno" type="TabBar" parent="MainMenu/EnemySelectTabs"]
 visible = false
 layout_mode = 2
 
-[node name="To battle" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
+[node name="Easy" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 178.0
 offset_right = 145.0
 offset_bottom = 209.0
 text = "Easy fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("13_4mt5m")])
 
-[node name="To battle2" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
+[node name="Hard" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
-offset_left = 528.0
+offset_left = 488.0
 offset_top = 181.0
-offset_right = 575.0
+offset_right = 574.0
 offset_bottom = 212.0
 text = "Hard fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("14_oc1m6")])
 
-[node name="To battle3" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
+[node name="Boss" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
-offset_left = 304.0
-offset_top = 102.0
-offset_right = 390.0
-offset_bottom = 133.0
+offset_left = 284.0
+offset_top = 128.0
+offset_right = 367.0
+offset_bottom = 159.0
 text = "Boss"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("15_6m0ag")])
 
 [node name="Lord Red" type="TabBar" parent="MainMenu/EnemySelectTabs"]
 visible = false
 layout_mode = 2
 
-[node name="To battle" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
+[node name="Easy" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 178.0
 offset_right = 145.0
 offset_bottom = 209.0
 text = "Easy fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("16_j7iww")])
 
-[node name="To battle2" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
+[node name="Hard" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 181.0
-offset_right = 575.0
-offset_bottom = 212.0
+offset_left = 421.0
+offset_top = 184.0
+offset_right = 507.0
+offset_bottom = 215.0
 text = "Hard fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("17_85800")])
 
-[node name="To battle3" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
+[node name="Boss" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
-offset_left = 304.0
-offset_top = 102.0
-offset_right = 390.0
-offset_bottom = 133.0
+offset_left = 261.0
+offset_top = 97.0
+offset_right = 344.0
+offset_bottom = 128.0
 text = "Boss"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("18_4vcfm")])
 
 [node name="Malculus" type="TabBar" parent="MainMenu/EnemySelectTabs"]
 visible = false
 layout_mode = 2
 tab_close_display_policy = 1
 
-[node name="To battle" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
+[node name="Easy" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 178.0
 offset_right = 145.0
 offset_bottom = 209.0
 text = "Easy fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("16_j7iww")])
 
-[node name="To battle2" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
+[node name="Hard" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 181.0
-offset_right = 575.0
-offset_bottom = 212.0
+offset_left = 415.0
+offset_top = 175.0
+offset_right = 514.0
+offset_bottom = 206.0
 text = "Hard fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("17_85800")])
 
-[node name="To battle3" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
+[node name="Boss" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
-offset_left = 304.0
-offset_top = 102.0
-offset_right = 390.0
-offset_bottom = 133.0
+offset_left = 291.0
+offset_top = 104.0
+offset_right = 374.0
+offset_bottom = 135.0
 text = "Boss"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
-
-[node name="To battle4" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
-layout_mode = 0
-offset_left = 304.0
-offset_top = 102.0
-offset_right = 390.0
-offset_bottom = 133.0
-text = "Boss"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([null])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("18_4vcfm")])
 
 [node name="PartyMemberTabs" type="TabContainer" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 200.0
+offset_left = 816.0
 offset_top = 144.0
-offset_right = 759.0
+offset_right = 1375.0
 offset_bottom = 545.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
@@ -791,7 +802,6 @@ libraries = {
 }
 
 [node name="Party" type="Button" parent="MainMenu"]
-visible = false
 layout_mode = 2
 offset_left = 823.0
 offset_top = 295.0
@@ -809,6 +819,10 @@ offset_bottom = 347.0
 disabled = true
 text = "Enemies"
 
+[node name="Exp count" type="RichTextLabel" parent="."]
+offset_right = 246.0
+offset_bottom = 72.0
+
 [connection signal="pressed" from="BackToMenu" to="." method="main_menu"]
 [connection signal="pressed" from="Unlocker/UnlockButton" to="LevelLock" method="unlock"]
 [connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="close_party_menu"]
@@ -817,18 +831,18 @@ text = "Enemies"
 [connection signal="pressed" from="MainMenu/ExtraSkillsMenu/Back2" to="." method="load_party"]
 [connection signal="tab_clicked" from="MainMenu/EnemySelectTabs" to="LevelLock" method="on_tab_open"]
 [connection signal="tab_selected" from="MainMenu/EnemySelectTabs" to="LevelLock" method="on_tab_open"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/To battle" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/To battle2" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/To battle3" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/To battle" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/To battle2" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/To battle3" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/To battle" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/To battle2" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/To battle3" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/To battle" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/To battle2" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/To battle3" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/To battle4" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/Tutorial" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/Easy" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/Hard" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/Boss" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/Easy" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/Hard" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/Boss" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Easy" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Hard" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Boss" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Easy" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Hard" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Boss" to="." method="load_battle"]
 [connection signal="pressed" from="MainMenu/Party" to="." method="load_party"]
 [connection signal="pressed" from="MainMenu/Enemies" to="." method="load_enemy_menu"]

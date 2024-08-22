@@ -34,21 +34,16 @@ func display_skills():
 		description += " ([color=" + character_colour.to_html()+ "]" + GlobalVariables.equipped_extra_skills[selected_skill.name].name+ "[/color])"
 	description += "\n"
 	description += "Stat requirements:" + "\n"
-	#var get_potential_modifiers = ch
-	var str_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.strength)
-	var vit_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.vitality)
-	var dex_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.dexterity)
-	var agi_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.agility)
-	var mag_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.magic_pow)
-	var luc_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.luck)
-	description += display_stat("Strength",str_req , chara.strength)
-	description += display_stat("Vitality", vit_req, chara.vitality)
-	description += display_stat("Dexterity", dex_req, chara.dexterity)
-	description += display_stat("Agility", agi_req, chara.agility)
-	description += display_stat("Magic power", mag_req, chara.magic_pow)
-	description += display_stat("Luck", luc_req, chara.luck)
+	var req_met = selected_skill.requirements_met(chara)
+
+	description += display_stat("Strength",req_met["str_req"] , chara.strength)
+	description += display_stat("Vitality", req_met["vit_req"], chara.vitality)
+	description += display_stat("Dexterity", req_met["dex_req"], chara.dexterity)
+	description += display_stat("Agility", req_met["agi_req"], chara.agility)
+	description += display_stat("Magic power", req_met["mag_req"], chara.magic_pow)
+	description += display_stat("Luck", req_met["luc_req"], chara.luck)
 	$"MoveDesc/move desk text".text = description
-	if selected_skill.requirements_met(chara):
+	if req_met["req_met"]:
 		$"MoveDesc/Equip skill".disabled = false
 	else:
 		$"MoveDesc/Equip skill".disabled = true
