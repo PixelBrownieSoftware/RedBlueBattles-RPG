@@ -12,5 +12,6 @@ base_exp_to_NL = 50
 skills = Array[Resource("res://src/scripts/skill.gd")]([])
 behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
 elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_malculus"

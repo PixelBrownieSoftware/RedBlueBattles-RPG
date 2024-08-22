@@ -811,8 +811,8 @@ text = "Enemies"
 
 [connection signal="pressed" from="BackToMenu" to="." method="main_menu"]
 [connection signal="pressed" from="Unlocker/UnlockButton" to="LevelLock" method="unlock"]
-[connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="go_to_extra_menu"]
 [connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="close_party_menu"]
+[connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="go_to_extra_menu"]
 [connection signal="pressed" from="MainMenu/ExtraSkillsMenu/MoveDesc/Equip skill" to="MainMenu/ExtraSkillsMenu" method="assign_skill"]
 [connection signal="pressed" from="MainMenu/ExtraSkillsMenu/Back2" to="." method="load_party"]
 [connection signal="tab_clicked" from="MainMenu/EnemySelectTabs" to="LevelLock" method="on_tab_open"]
