@@ -30,7 +30,7 @@ func start_state():
 	
 	battle_globals.current_character = queue[0]
 	use_turn()
-	while queue[0].health <= 0:
+	while battle_globals.current_character.health <= 0:
 		battle_globals.current_character = queue[0]
 		use_turn()
 	change_state.emit(select_move_state)

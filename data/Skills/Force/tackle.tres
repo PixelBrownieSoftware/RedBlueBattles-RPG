@@ -19,19 +19,19 @@ animation_name = ""
 
 [sub_resource type="Resource" id="Resource_tq2yn"]
 script = ExtResource("3_skvfi")
-strength = 4
+strength = 6
 vitality = 2
-magic_pow = 1
-dexterity = 1
-agility = 1
-luck = 1
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
 
 [resource]
 script = ExtResource("1_efrbl")
 name = "Tackle"
 learnable = true
-power = 8
-stamina_cost = 2
+power = 10
+stamina_cost = 3
 repeat_min = 1
 repeat_max = 1
 stat_requirement = SubResource("Resource_tq2yn")

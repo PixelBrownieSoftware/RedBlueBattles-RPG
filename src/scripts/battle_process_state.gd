@@ -18,7 +18,7 @@ func start_state():
 func process_move(skill : rpg_skill):
 	var character_target : battle_character_data = battle_globals.target_character
 	var character_user : battle_character_data = battle_globals.current_character
-	character_user.stamina -= skill.stamina_cost
+	character_user.stamina -= skill.get_final_cost(character_user)
 	await get_tree().create_timer(0.2).timeout
 	notifcation_anim.emit(skill)
 	await get_tree().create_timer(1.2).timeout

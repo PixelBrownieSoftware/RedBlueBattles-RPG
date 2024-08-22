@@ -29,8 +29,9 @@ func _on_animation_player_animation_finished(anim_name):
 		for sk in menu_skills:
 			var skill_button = get_child(0).get_child(index) as button_skill
 			skill_button.selected_skill = sk
+			skill_button.current_char = globals.current_character
 			skill_button.text = sk.name
-			var afford : bool = (globals.current_character.stamina >= sk.stamina_cost)
+			var afford : bool = (globals.current_character.stamina >= sk.get_final_cost(globals.current_character))
 			skill_button.show_anim(afford)
 			index += 1
 	else: if anim_name == "menu_hide":

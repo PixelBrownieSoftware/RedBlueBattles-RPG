@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=6 format=3 uid="uid://divek06ecodu1"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=7 format=3 uid="uid://divek06ecodu1"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_5aghu"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_01hq5"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_7pv4a"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_l0guj"]
 
 [sub_resource type="Resource" id="Resource_aiu6g"]
@@ -33,8 +34,9 @@ base_exp_score = 50
 base_exp_to_NL = 50
 stats = SubResource("Resource_alhf3")
 stat_increase = SubResource("Resource_aiu6g")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_7pv4a")])
 behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
 elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
 character_colour = Color(3.22476e-06, 0.821183, 0.163293, 1)
 animation_player_loc = "sprite_greendori"

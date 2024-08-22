@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=7 format=3 uid="uid://bouqpmerlatxl"]
+
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_fkhev"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_gr43k"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="2_lnlsl"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_7in1t"]
+
+[sub_resource type="Resource" id="Resource_axopw"]
+script = ExtResource("2_gr43k")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_d3vo2"]
+script = ExtResource("3_7in1t")
+strength = 4
+vitality = 4
+magic_pow = 7
+dexterity = 0
+agility = 0
+luck = 1
+
+[resource]
+script = ExtResource("1_fkhev")
+name = "Fire blast"
+learnable = true
+power = 12
+stamina_cost = 6
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_d3vo2")
+skill_scope = 1
+skill_element = ExtResource("2_lnlsl")
+skill_animation = Array[ExtResource("2_gr43k")]([SubResource("Resource_axopw")])

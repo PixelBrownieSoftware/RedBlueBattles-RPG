@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=7 format=3 uid="uid://ddccocy0dls7i"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=8 format=3 uid="uid://ddccocy0dls7i"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_ngkni"]
 [ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/Skills/Strike/slash.tres" id="2_f5bds"]
+[ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/Skills/Fire/ember.tres" id="3_81ndn"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="3_ychq3"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_unf74"]
 
@@ -34,7 +35,7 @@ base_exp_score = 50
 base_exp_to_NL = 50
 stats = SubResource("Resource_5ye8n")
 stat_increase = SubResource("Resource_tu5uw")
-skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_f5bds")])
+skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_f5bds"), ExtResource("3_81ndn")])
 behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
 elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
 elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])

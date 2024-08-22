@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=25 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="2_r4jfg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://dfanj3jqa78ce" path="res://data/groups/beno/b_easy_battle_1.tres" id="13_4mt5m"]
 [ext_resource type="Resource" uid="uid://blfjp3c2qq664" path="res://data/groups/beno/b_hard_battle_1.tres" id="14_oc1m6"]
 [ext_resource type="Resource" uid="uid://mv0dwrjyce2a" path="res://data/groups/beno/b_boss.tres" id="15_6m0ag"]
+[ext_resource type="Resource" uid="uid://oooh4cgtb157" path="res://data/groups/beno/b_mini_boss.tres" id="16_b75sr"]
 [ext_resource type="Resource" uid="uid://dp0nw3gmr76s8" path="res://data/groups/lord red/lr_easy_battle_1.tres" id="16_j7iww"]
 [ext_resource type="Resource" uid="uid://cgkv2dxx8u451" path="res://data/groups/lord red/lr_hard_battle_1.tres" id="17_85800"]
 [ext_resource type="Resource" uid="uid://ck8pds420p0t0" path="res://data/groups/lord red/lr_boss.tres" id="18_4vcfm"]
@@ -716,6 +717,15 @@ offset_bottom = 212.0
 text = "Hard fight"
 battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("14_oc1m6")])
 
+[node name="Buckler" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 211.0
+offset_right = 392.0
+offset_bottom = 242.0
+text = "Mini boss"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("16_b75sr")])
+
 [node name="Boss" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
 layout_mode = 0
 offset_left = 284.0
@@ -837,6 +847,7 @@ offset_bottom = 72.0
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/Boss" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/Easy" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/Hard" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/Buckler" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/Boss" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Easy" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Hard" to="." method="load_battle"]

@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://bwkdvau2fffjw"]
+
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_fyshi"]
+[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_vvfah"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_7ahjy"]
+[ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/Skills/Peirce/shoot.tres" id="2_n3vyi"]
+[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="2_v8pxt"]
+[ext_resource type="Resource" uid="uid://1t2mb83d8mp2" path="res://data/Skills/Peirce/machine_gun.tres" id="3_1nsgx"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="3_7jj0a"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_ucfia"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="4_wt48y"]
+
+[sub_resource type="Resource" id="Resource_iul6m"]
+script = ExtResource("1_vvfah")
+behaviouir_conditions = Array[Resource("res://src/battle_character_behaviour.gd")]([])
+condition = 2
+
+[sub_resource type="Resource" id="Resource_8grxn"]
+script = ExtResource("3_7jj0a")
+elemental = ExtResource("2_v8pxt")
+affinity = 0.5
+
+[sub_resource type="Resource" id="Resource_upx2g"]
+script = ExtResource("4_wt48y")
+elemental = ExtResource("2_v8pxt")
+potential = 6
+
+[sub_resource type="Resource" id="Resource_octy3"]
+script = ExtResource("2_7ahjy")
+health_min = 3
+health_max = 4
+strength = 0.4
+vitality = 0.2
+magic_pow = 0.1
+dexterity = 0.6
+agility = 0.3
+luck = 0.3
+
+[sub_resource type="Resource" id="Resource_a74rd"]
+script = ExtResource("3_ucfia")
+strength = 3
+vitality = 4
+magic_pow = 1
+dexterity = 6
+agility = 4
+luck = 2
+
+[resource]
+script = ExtResource("1_fyshi")
+name = "Daleth"
+health = 20
+stamina = 7
+base_exp_score = 1250
+base_exp_to_NL = 50
+stats = SubResource("Resource_a74rd")
+stat_increase = SubResource("Resource_octy3")
+skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_n3vyi"), ExtResource("3_1nsgx")])
+behaviour = Array[ExtResource("1_vvfah")]([SubResource("Resource_iul6m")])
+elemental_affinities = Array[ExtResource("3_7jj0a")]([SubResource("Resource_8grxn")])
+elemental_potential = Array[ExtResource("4_wt48y")]([SubResource("Resource_upx2g")])
+character_colour = Color(1, 1, 1, 1)
+animation_player_loc = "sprite_buckler"

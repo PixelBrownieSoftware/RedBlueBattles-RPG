@@ -25,6 +25,12 @@ func get_desc() -> String:
 			scope= "To enemy"
 	desc += "Scope: " + scope + "\n"
 	return desc
+	
+func get_final_cost(chara : battle_character_data):
+	var potential : int = chara.get_element_potential_modifiers(self)["stamina_discount"]
+	var total: int  = stamina_cost + potential
+	total = clampi(total, 0, 999)
+	return total
 
 func get_requirements(chara : battle_character_data, stat) -> int:
 	var potential : int = chara.get_element_potential_modifiers(self)["requirement_discount"]

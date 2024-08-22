@@ -36,12 +36,18 @@ func display_skills():
 	description += "Stat requirements:" + "\n"
 	var req_met = selected_skill.requirements_met(chara)
 
-	description += display_stat("Strength",req_met["str_req"] , chara.strength)
-	description += display_stat("Vitality", req_met["vit_req"], chara.vitality)
-	description += display_stat("Dexterity", req_met["dex_req"], chara.dexterity)
-	description += display_stat("Agility", req_met["agi_req"], chara.agility)
-	description += display_stat("Magic power", req_met["mag_req"], chara.magic_pow)
-	description += display_stat("Luck", req_met["luc_req"], chara.luck)
+	if req_met["str_req"] > 0:
+		description += display_stat("Strength",req_met["str_req"] , chara.strength)
+	if req_met["vit_req"] > 0:
+		description += display_stat("Vitality", req_met["vit_req"], chara.vitality)
+	if req_met["dex_req"] > 0:
+		description += display_stat("Dexterity", req_met["dex_req"], chara.dexterity)
+	if req_met["agi_req"] > 0:
+		description += display_stat("Agility", req_met["agi_req"], chara.agility)
+	if req_met["mag_req"] > 0:
+		description += display_stat("Magic power", req_met["mag_req"], chara.magic_pow)
+	if req_met["luc_req"] > 0:
+		description += display_stat("Luck", req_met["luc_req"], chara.luck)
 	$"MoveDesc/move desk text".text = description
 	if req_met["req_met"]:
 		$"MoveDesc/Equip skill".disabled = false
