@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0fltiebam8a2"]
+
+[ext_resource type="Script" path="res://objects/UI/stamina_gui.gd" id="1_py6ju"]
+[ext_resource type="Texture2D" uid="uid://cbgcdtcj2dbnb" path="res://sprites/stamina_gui.png" id="2_3gpd2"]
+
+[node name="StaminaContainer" type="HBoxContainer"]
+anchors_preset = -1
+anchor_right = 0.167
+anchor_bottom = 0.032
+offset_right = -0.384018
+offset_bottom = 0.264
+theme_override_constants/separation = 3
+script = ExtResource("1_py6ju")
+
+[node name="Stamina" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina4" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina5" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina6" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina7" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina8" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina9" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina10" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina11" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina12" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina13" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina14" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3
+
+[node name="Stamina15" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3gpd2")
+stretch_mode = 3

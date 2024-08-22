@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://dxcyusg00opvd"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_edqap"]
+[ext_resource type="Resource" uid="uid://dn8iqklx4h2v7" path="res://data/characters/Enemies/trunko.tres" id="1_xv827"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_uiya5"]
+[ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="3_6ixe2"]
+[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_ys2ab"]
+[ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="5_xbbp0"]
+
+[sub_resource type="Resource" id="Resource_xyyck"]
+script = ExtResource("2_uiya5")
+character = ExtResource("1_xv827")
+skills = Array[Resource("res://src/scripts/skill.gd")]([])
+min_level = 9
+max_level = 11
+
+[sub_resource type="Resource" id="Resource_4e182"]
+script = ExtResource("2_uiya5")
+character = ExtResource("3_6ixe2")
+skills = Array[Resource("res://src/scripts/skill.gd")]([])
+min_level = 9
+max_level = 11
+
+[sub_resource type="Resource" id="Resource_ik5r1"]
+script = ExtResource("2_uiya5")
+character = ExtResource("4_ys2ab")
+skills = Array[Resource("res://src/scripts/skill.gd")]([])
+min_level = 9
+max_level = 11
+
+[sub_resource type="Resource" id="Resource_8cjgq"]
+script = ExtResource("2_uiya5")
+character = ExtResource("5_xbbp0")
+skills = Array[Resource("res://src/scripts/skill.gd")]([])
+min_level = 9
+max_level = 11
+
+[resource]
+script = ExtResource("1_edqap")
+opponents = Array[ExtResource("2_uiya5")]([SubResource("Resource_xyyck"), SubResource("Resource_4e182"), SubResource("Resource_ik5r1"), SubResource("Resource_8cjgq")])
+unlockables = Array[Resource("res://src/battle_character_base.gd")]([])

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://btttyyvon1ur7"]
+[gd_scene load_steps=6 format=3 uid="uid://btttyyvon1ur7"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_43nnm"]
+[ext_resource type="Texture2D" uid="uid://cpimagv4prdu1" path="res://sprites/redler_sprite_sheet.png" id="2_kyfqr"]
 
 [sub_resource type="Animation" id="Animation_l3fi4"]
 resource_name = "attack"
@@ -19,7 +20,7 @@ tracks/0/keys = {
 "values": [5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 14, 15, 16, 17, 18, 19, 19, 19]
 }
 
-[sub_resource type="Animation" id="Animation_50wu5"]
+[sub_resource type="Animation" id="Animation_4xkss"]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -37,10 +38,18 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7u3h"]
 _data = {
 "attack": SubResource("Animation_l3fi4"),
-"idle": SubResource("Animation_50wu5")
+"idle": SubResource("Animation_4xkss")
 }
 
 [node name="sprite_redler" instance=ExtResource("1_43nnm")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-6, 10)
+texture = ExtResource("2_kyfqr")
+offset = Vector2(6, -10)
+hframes = 5
+vframes = 5
+frame = 5
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {

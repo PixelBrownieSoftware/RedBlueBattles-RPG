@@ -277,6 +277,10 @@ queue_state = NodePath("../Queue")
 
 [node name="Variables" type="Node" parent="."]
 script = ExtResource("7_amfna")
+is_player_turn = null
+turn = null
+pressed_turn = null
+net_turn = null
 final_press_turn_flag = 5
 
 [node name="Behaviour" type="Node" parent="Variables"]
@@ -557,6 +561,7 @@ offset_bottom = 261.0
 [connection signal="change_state" from="BattleStateMachine/PressTurn" to="BattleStateMachine" method="change_state"]
 [connection signal="turn_icon_handle" from="BattleStateMachine/PressTurn" to="PressTurnUI" method="turn_icon_change"]
 [connection signal="change_state" from="BattleStateMachine/EndBattle" to="BattleStateMachine" method="change_state"]
+[connection signal="show_characters_join" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="show_characters"]
 [connection signal="show_exp_results_menu" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="on_menu_show"]
 [connection signal="show_moves_learned" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="show_moves_learned"]
 [connection signal="get_targets" from="Variables/Behaviour" to="Variables/MoveTargetSelect" method="get_targets_from_move"]

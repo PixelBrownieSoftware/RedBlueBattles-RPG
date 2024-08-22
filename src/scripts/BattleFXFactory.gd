@@ -12,7 +12,7 @@ func spawn_damage_obj(user : battle_character_data, target : battle_character_da
 	var hit = hit_prefab.instantiate()
 	add_child(hit)
 	hit.position = actor.position
-	var is_player = $"../Variables".is_player_team(target)
+	var is_player = GlobalVariables.is_player_team(target)
 	hit.set_values(number, is_player, target.assigned_data.character_colour, pt)
 
 func spawn_attack_effect(object : String, target : battle_character_data):

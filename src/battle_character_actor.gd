@@ -49,13 +49,15 @@ func fade_character_colour(colour: Color):
 
 func assign_data(data : battle_character_data):
 	character_data = data
-	character_data.play_damage_sound.connect(play_hurt_sound)
+	character_data.play_damage.connect(play_hurt_sound)
 	character_data.defeat_event.connect(defeat_anim)
 	var locate_anim = load("res://objects/character sprites/" + data.assigned_data.animation_player_loc + ".tscn")
 	if locate_anim != null:
 		var sprite = locate_anim.instantiate()
 		add_child(sprite)
 		character_sprite = sprite.get_child(0)
+		if !GlobalVariables.is_player_team(data):
+			character_sprite.flip_h = true
 		character_anim = sprite.get_child(1)
 		print(character_anim.animation_finished.get_connections())
 		character_anim.animation_finished.connect(character_anim_finished)

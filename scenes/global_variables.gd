@@ -13,6 +13,22 @@ func reset_multipiler():
 
 @export var extra_skills : Array[rpg_skill]
 @export var equipped_extra_skills = {}
+@export var enabled_party_members = {}
+var current_battle : battle_group_data
+
+func is_player_team(char_data : battle_character_data) -> bool:
+	var list = PartyMembers.get_children()
+	for char in list:
+		if char == char_data:
+			return true
+	return false
+	
+func get_enabled_party_members_count() -> int:
+	var number = 0
+	for member_enabled in enabled_party_members:
+		if enabled_party_members[member_enabled]:
+			number += 1
+	return number
 
 #Check whether the skill exists in the extra skills bit
 func add_extra_skill(skill : rpg_skill) -> bool:
@@ -34,6 +50,12 @@ func add_extra_skill(skill : rpg_skill) -> bool:
 	
 func assign_skill(chara : battle_character_data, extra_skill : rpg_skill):
 	var ind = chara.extra_skills.rfind(extra_skill)
+	var chara_exists = equipped_extra_skills[extra_skill.name]
+	if chara_exists:
+		ind = chara_exists.extra_skills.rfind(extra_skill)
+		chara_exists.extra_skills.remove_at(ind)
+		equipped_extra_skills[extra_skill.name] = null
+		return
 	if ind == -1:
 		chara.assign_skill(extra_skill)
 		equipped_extra_skills[extra_skill.name] = chara

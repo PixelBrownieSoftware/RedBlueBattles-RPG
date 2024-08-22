@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=3 format=3 uid="uid://dtiii6cayoafh"]
+
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_wqaa5"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_rqa54"]
+
+[resource]
+script = ExtResource("1_wqaa5")
+name = ""
+health = 1
+stamina = 4
+base_exp_score = 50
+base_exp_to_NL = 50
+skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_rqa54")])
+behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
+elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+elemental_affections = Array[Resource("res://src/elemental_affection.gd")]([])
+character_colour = Color(1, 1, 1, 1)
+animation_player_loc = "sprite_pinkler"

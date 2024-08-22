@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=6 format=3 uid="uid://cmfai7ydcxm8h"]
+
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_2uves"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="2_csj46"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_wkhle"]
+
+[sub_resource type="Resource" id="Resource_g2hmx"]
+script = ExtResource("2_wkhle")
+health_min = 2
+health_max = 5
+strength = 0.5
+vitality = 0.3
+magic_pow = 0.5
+dexterity = 0.75
+agility = 0.3
+luck = 0.5
+
+[sub_resource type="Resource" id="Resource_1ol2t"]
+script = ExtResource("2_csj46")
+strength = 3
+vitality = 2
+magic_pow = 1
+dexterity = 5
+agility = 2
+luck = 3
+
+[resource]
+script = ExtResource("1_2uves")
+name = "Buckler"
+health = 29
+stamina = 5
+base_exp_score = 50
+base_exp_to_NL = 50
+stats = SubResource("Resource_1ol2t")
+stat_increase = SubResource("Resource_g2hmx")
+skills = Array[Resource("res://src/scripts/skill.gd")]([])
+behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
+elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+character_colour = Color(1, 0.615686, 0, 1)
+animation_player_loc = "sprite_buckler"

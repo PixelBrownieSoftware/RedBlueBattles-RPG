@@ -95,10 +95,10 @@ text = "Level up"
 
 [node name="ExtraSkills" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 462.0
-offset_top = 104.0
-offset_right = 553.0
-offset_bottom = 135.0
+offset_left = -2.0
+offset_top = 382.0
+offset_right = 831.0
+offset_bottom = 413.0
 text = "Extra skills"
 
 [node name="Health" type="RichTextLabel" parent="Panel"]
@@ -148,6 +148,14 @@ layout_mode = 2
 [node name="skill_menu_button10" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
 layout_mode = 2
 
+[node name="InBattle" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 144.0
+offset_right = 545.0
+offset_bottom = 175.0
+text = "Get into battle"
+
 [node name="SkillDesc" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 596.0
@@ -168,3 +176,4 @@ offset_bottom = 317.0
 [connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button8" to="." method="load_skill"]
 [connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button9" to="." method="load_skill"]
 [connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button10" to="." method="load_skill"]
+[connection signal="pressed" from="Panel/InBattle" to="." method="enable_disable_partymember"]

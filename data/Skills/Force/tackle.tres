@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=8 format=3 uid="uid://c23sjcxxaxmqd"]
+
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_efrbl"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_v4irn"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="2_vtcsv"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_skvfi"]
+
+[sub_resource type="Resource" id="Resource_5gpwh"]
+script = ExtResource("2_v4irn")
+skill_animation = 2
+time_amount = -1.0
+animation_name = "attack"
+
+[sub_resource type="Resource" id="Resource_60m24"]
+script = ExtResource("2_v4irn")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_tq2yn"]
+script = ExtResource("3_skvfi")
+strength = 4
+vitality = 2
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("1_efrbl")
+name = "Tackle"
+learnable = true
+power = 8
+stamina_cost = 2
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_tq2yn")
+skill_scope = 1
+skill_element = ExtResource("2_vtcsv")
+skill_animation = Array[ExtResource("2_v4irn")]([SubResource("Resource_5gpwh"), SubResource("Resource_60m24")])

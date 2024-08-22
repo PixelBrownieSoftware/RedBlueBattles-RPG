@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmse8ww6eqj2y"]
+
+[ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_op2uv"]
+[ext_resource type="Texture2D" uid="uid://dwno7piq1vxb2" path="res://sprites/beno_sprite_sheet.png" id="2_cl1vf"]
+
+[sub_resource type="Animation" id="Animation_k3se4"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_beno/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_jb1xy"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_beno/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vm3x7"]
+_data = {
+"attack": SubResource("Animation_k3se4"),
+"idle": SubResource("Animation_jb1xy")
+}
+
+[node name="sprite_beno" instance=ExtResource("1_op2uv")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_cl1vf")
+offset = Vector2(-5, -7)
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_vm3x7")
+}

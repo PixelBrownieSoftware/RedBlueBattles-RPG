@@ -11,7 +11,7 @@ func get_targets_from_move(skill : rpg_skill):
 			else:
 				targets.append_array(EnemyMembers.get_children())
 		skill.SCOPE.FOE:
-			if globals.is_player_team(globals.current_character):
+			if GlobalVariables.is_player_team(globals.current_character):
 				targets.append_array(EnemyMembers.get_children())
 			else:
 				targets.append_array(PartyMembers.get_children())

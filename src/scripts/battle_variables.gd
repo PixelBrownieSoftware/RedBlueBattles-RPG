@@ -20,13 +20,6 @@ class_name battle_variables
 		returned_actors.append_array(($"../BattleActors/EnemyMemberActors".get_children() as Array[battle_character_actor]))
 		return returned_actors
 
-func is_player_team(char_data : battle_character_data) -> bool:
-	var list = PartyMembers.get_children()
-	for char in list:
-		if char == char_data:
-			return true
-	return false
-
 func get_actor(char_data : battle_character_data) -> battle_character_actor:
 	for chara_actor : battle_character_actor in all_actors:
 		if chara_actor.character_data == char_data:

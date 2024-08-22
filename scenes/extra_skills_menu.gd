@@ -11,7 +11,10 @@ func open_menu(character : battle_character_data):
 		for button in button_horiz.get_children():
 			buttons.append(button)
 			button.visible = false
+	update_skills()
+	visible = true
 	
+func update_skills():
 	var skill_ind : int = 0
 	for skill in GlobalVariables.extra_skills:
 		var button = buttons[skill_ind]
@@ -21,8 +24,7 @@ func open_menu(character : battle_character_data):
 		button.text = skill.name
 		button.visible = true
 		skill_ind += 1
-	visible = true
-
+		
 func display_skills():
 	var description : String = ""
 	description += "Name: " + selected_skill.name
@@ -32,12 +34,19 @@ func display_skills():
 		description += " ([color=" + character_colour.to_html()+ "]" + GlobalVariables.equipped_extra_skills[selected_skill.name].name+ "[/color])"
 	description += "\n"
 	description += "Stat requirements:" + "\n"
-	description += display_stat("Strength", selected_skill.stat_requirement.strength, chara.strength)
-	description += display_stat("Vitality", selected_skill.stat_requirement.vitality, chara.vitality)
-	description += display_stat("Dexterity", selected_skill.stat_requirement.dexterity, chara.dexterity)
-	description += display_stat("Agility", selected_skill.stat_requirement.agility, chara.agility)
-	description += display_stat("Magic power", selected_skill.stat_requirement.magic_pow, chara.magic_pow)
-	description += display_stat("Luck", selected_skill.stat_requirement.luck, chara.luck)
+	#var get_potential_modifiers = ch
+	var str_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.strength)
+	var vit_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.vitality)
+	var dex_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.dexterity)
+	var agi_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.agility)
+	var mag_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.magic_pow)
+	var luc_req = selected_skill.get_requirements(chara, selected_skill.stat_requirement.luck)
+	description += display_stat("Strength",str_req , chara.strength)
+	description += display_stat("Vitality", vit_req, chara.vitality)
+	description += display_stat("Dexterity", dex_req, chara.dexterity)
+	description += display_stat("Agility", agi_req, chara.agility)
+	description += display_stat("Magic power", mag_req, chara.magic_pow)
+	description += display_stat("Luck", luc_req, chara.luck)
 	$"MoveDesc/move desk text".text = description
 	if selected_skill.requirements_met(chara):
 		$"MoveDesc/Equip skill".disabled = false
@@ -58,3 +67,4 @@ func add_skill(move):
 func assign_skill():
 	GlobalVariables.assign_skill(chara,selected_skill)
 	display_skills()
+	update_skills()

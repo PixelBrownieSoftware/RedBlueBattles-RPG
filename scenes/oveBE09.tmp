@@ -1,0 +1,813 @@
+[gd_scene load_steps=18 format=3 uid="uid://ckmw47six2iym"]
+
+[ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
+[ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="2_r4jfg"]
+[ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/Playable/blueler.tres" id="3_f2hvt"]
+[ext_resource type="Resource" uid="uid://dcfu24v3efmrk" path="res://data/groups/test_enemies.tres" id="4_ifbpk"]
+[ext_resource type="Script" path="res://scenes/extra_skills_menu.gd" id="7_jfqex"]
+[ext_resource type="PackedScene" uid="uid://cshn1uy4w7mwl" path="res://objects/UI/skill_equip_button.tscn" id="7_u8djp"]
+[ext_resource type="PackedScene" uid="uid://cks6y325db8c4" path="res://objects/UI/battle_select_button.tscn" id="8_0fx3b"]
+[ext_resource type="PackedScene" uid="uid://bmv0o1ywk4p43" path="res://objects/misc/level_lock.tscn" id="9_e0sob"]
+[ext_resource type="Resource" uid="uid://thxc3wo4wjm0" path="res://data/groups/greenler/easy_battle_1.tres" id="9_uy58t"]
+[ext_resource type="Resource" uid="uid://crtnxxemdyj67" path="res://data/groups/greenler/hard_battle_1.tres" id="10_6sv04"]
+[ext_resource type="Resource" uid="uid://bhgpt6ai8y88a" path="res://data/groups/greenler/boss.tres" id="10_noox3"]
+[ext_resource type="Script" path="res://src/active_party_members.gd" id="11_byyvb"]
+[ext_resource type="PackedScene" uid="uid://cf4s1n8tbgm7o" path="res://objects/UI/member_select_button.tscn" id="12_tpcla"]
+
+[sub_resource type="Animation" id="Animation_dmynu"]
+resource_name = "to_enemy_menu"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySelectTabs:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySelectTabs:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-778, 100), Vector2(86, 100)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PartyMemberTabs:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PartyMemberTabs:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(200, 144), Vector2(816, 144)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Party:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Party:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Enemies:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Enemies:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_1vcaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Party:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemies:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemies:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExtraSkillsMenu:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(175, 196)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExtraSkillsMenu:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExtraSkillsMenu/Back2:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ExtraSkillsMenu/Back2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nkjg2"]
+resource_name = "to_extra_skills"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PartyMemberTabs:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PartyMemberTabs:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(200, 144), Vector2(200, -370)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Party:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Party:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExtraSkillsMenu:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(175, 644), Vector2(175, 196)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExtraSkillsMenu:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Enemies:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Enemies:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ExtraSkillsMenu/Back2:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ExtraSkillsMenu/Back2:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gytn"]
+_data = {
+"RESET": SubResource("Animation_1vcaa"),
+"to_enemy_menu": SubResource("Animation_dmynu"),
+"to_extra_skills": SubResource("Animation_nkjg2")
+}
+
+[node name="OverworldMenu" type="Node2D"]
+script = ExtResource("1_gsfbw")
+battle_scene = "res://scenes/battle_scene.tscn"
+starters = Array[Resource("res://src/battle_character_base.gd")]([ExtResource("2_r4jfg"), ExtResource("3_f2hvt")])
+selected_group = ExtResource("4_ifbpk")
+
+[node name="MenuBar" type="MenuBar" parent="."]
+offset_left = 114.0
+offset_top = 66.0
+offset_right = 529.0
+offset_bottom = 335.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuBar"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 73.0
+offset_right = 118.0
+offset_bottom = 113.0
+theme_override_constants/separation = 21
+
+[node name="BackToMenu" type="Button" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 806.0
+offset_top = 546.0
+offset_right = 851.0
+offset_bottom = 577.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="LevelLock" parent="." node_paths=PackedStringArray("unlocker_button", "unlocker_text", "unlocker") instance=ExtResource("9_e0sob")]
+cost = 999
+unlocker_button = NodePath("../Unlocker/UnlockButton")
+unlocker_text = NodePath("../Unlocker/RichTextLabel")
+unlocker = NodePath("../Unlocker")
+
+[node name="Unlocker" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 511.0
+offset_top = 159.0
+offset_right = 675.0
+offset_bottom = 245.0
+
+[node name="UnlockButton" type="Button" parent="Unlocker"]
+visible = false
+layout_mode = 0
+offset_right = 161.0
+offset_bottom = 56.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Unlocker"]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = 56.0
+offset_right = 162.0
+offset_bottom = 91.0
+bbcode_enabled = true
+text = "[center]Price: 1000[/center]"
+fit_content = true
+
+[node name="ActivePartyMembers" type="Panel" parent="."]
+visible = false
+offset_left = 3.0
+offset_top = 136.0
+offset_right = 119.0
+offset_bottom = 311.0
+script = ExtResource("11_byyvb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ActivePartyMembers"]
+layout_mode = 0
+offset_right = 115.0
+offset_bottom = 171.0
+
+[node name="PartyMemberButton" parent="ActivePartyMembers/VBoxContainer" instance=ExtResource("12_tpcla")]
+layout_mode = 2
+text = "Redler"
+
+[node name="PartyMemberButton2" parent="ActivePartyMembers/VBoxContainer" instance=ExtResource("12_tpcla")]
+layout_mode = 2
+
+[node name="PartyMemberButton3" parent="ActivePartyMembers/VBoxContainer" instance=ExtResource("12_tpcla")]
+layout_mode = 2
+
+[node name="PartyMemberButton4" parent="ActivePartyMembers/VBoxContainer" instance=ExtResource("12_tpcla")]
+layout_mode = 2
+
+[node name="PartyMemberButton5" parent="ActivePartyMembers/VBoxContainer" instance=ExtResource("12_tpcla")]
+layout_mode = 2
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 763.0
+offset_bottom = 496.0
+
+[node name="ExtraSkillsMenu" type="Panel" parent="MainMenu"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 196.0
+offset_right = 890.0
+offset_bottom = 534.0
+script = ExtResource("7_jfqex")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/ExtraSkillsMenu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillEquipButton" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton2" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton3" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton4" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton5" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton6" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton7" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenu/ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillEquipButton" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton2" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton3" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton4" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton5" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton6" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton7" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainMenu/ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillEquipButton" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer3" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton2" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer3" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton3" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer3" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton4" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer3" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton5" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer3" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton6" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer3" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton7" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer3" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MainMenu/ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillEquipButton" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer4" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton2" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer4" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton3" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer4" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton4" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer4" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton5" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer4" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton6" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer4" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton7" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer4" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MainMenu/ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillEquipButton" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer5" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton2" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer5" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton3" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer5" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton4" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer5" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton5" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer5" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton6" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer5" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton7" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer5" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MainMenu/ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillEquipButton" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer6" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton2" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer6" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton3" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer6" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton4" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer6" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton5" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer6" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton6" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer6" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton7" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer6" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="MainMenu/ExtraSkillsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillEquipButton" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer7" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton2" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer7" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton3" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer7" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton4" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer7" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton5" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer7" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton6" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer7" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="SkillEquipButton7" parent="MainMenu/ExtraSkillsMenu/VBoxContainer/HBoxContainer7" instance=ExtResource("7_u8djp")]
+layout_mode = 2
+
+[node name="MoveDesc" type="Panel" parent="MainMenu/ExtraSkillsMenu"]
+layout_mode = 0
+offset_left = 463.0
+offset_right = 719.0
+offset_bottom = 282.0
+
+[node name="move desk text" type="RichTextLabel" parent="MainMenu/ExtraSkillsMenu/MoveDesc"]
+layout_mode = 0
+offset_right = 251.0
+offset_bottom = 236.0
+bbcode_enabled = true
+text = "fefef"
+
+[node name="Equip skill" type="Button" parent="MainMenu/ExtraSkillsMenu/MoveDesc"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 246.0
+offset_right = 198.0
+offset_bottom = 277.0
+text = "Assign"
+
+[node name="Back2" type="Button" parent="MainMenu/ExtraSkillsMenu"]
+layout_mode = 2
+offset_left = -58.0
+offset_top = -82.0
+offset_right = 686.0
+offset_bottom = -51.0
+text = "Back"
+
+[node name="EnemySelectTabs" type="TabContainer" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -778.0
+offset_top = 100.0
+offset_right = -57.0
+offset_bottom = 539.0
+
+[node name="Greenler" type="TabBar" parent="MainMenu/EnemySelectTabs"]
+layout_mode = 2
+
+[node name="To battle" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+offset_left = 98.0
+offset_top = 178.0
+offset_right = 145.0
+offset_bottom = 209.0
+text = "Easy fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("9_uy58t")])
+
+[node name="To battle2" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+offset_left = 528.0
+offset_top = 181.0
+offset_right = 575.0
+offset_bottom = 212.0
+text = "Hard fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_6sv04")])
+
+[node name="To battle3" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+offset_left = 304.0
+offset_top = 102.0
+offset_right = 390.0
+offset_bottom = 133.0
+text = "Boss"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_noox3")])
+
+[node name="Beno" type="TabBar" parent="MainMenu/EnemySelectTabs"]
+visible = false
+layout_mode = 2
+
+[node name="To battle" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 178.0
+offset_right = 145.0
+offset_bottom = 209.0
+text = "Easy fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("9_uy58t")])
+
+[node name="To battle2" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 181.0
+offset_right = 575.0
+offset_bottom = 212.0
+text = "Hard fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_6sv04")])
+
+[node name="To battle3" parent="MainMenu/EnemySelectTabs/Beno" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 102.0
+offset_right = 390.0
+offset_bottom = 133.0
+text = "Boss"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_noox3")])
+
+[node name="Lord Red" type="TabBar" parent="MainMenu/EnemySelectTabs"]
+visible = false
+layout_mode = 2
+
+[node name="To battle" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 178.0
+offset_right = 145.0
+offset_bottom = 209.0
+text = "Easy fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("9_uy58t")])
+
+[node name="To battle2" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 181.0
+offset_right = 575.0
+offset_bottom = 212.0
+text = "Hard fight"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_6sv04")])
+
+[node name="To battle3" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 102.0
+offset_right = 390.0
+offset_bottom = 133.0
+text = "Boss"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_noox3")])
+
+[node name="Malculus" type="TabBar" parent="MainMenu/EnemySelectTabs"]
+visible = false
+layout_mode = 2
+tab_close_display_policy = 1
+
+[node name="To battle" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 256.0
+offset_right = 217.0
+offset_bottom = 287.0
+
+[node name="To battle2" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 260.0
+offset_right = 456.0
+offset_bottom = 291.0
+
+[node name="PartyMemberTabs" type="TabContainer" parent="MainMenu"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 144.0
+offset_right = 759.0
+offset_bottom = 545.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_2gytn")
+}
+
+[node name="Party" type="Button" parent="MainMenu"]
+visible = false
+layout_mode = 2
+offset_left = 823.0
+offset_top = 295.0
+offset_right = 872.0
+offset_bottom = 335.0
+disabled = true
+text = "Party"
+
+[node name="Enemies" type="Button" parent="MainMenu"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 307.0
+offset_right = 86.0
+offset_bottom = 347.0
+disabled = true
+text = "Enemies"
+
+[connection signal="pressed" from="BackToMenu" to="." method="main_menu"]
+[connection signal="pressed" from="Unlocker/UnlockButton" to="LevelLock" method="unlock"]
+[connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="close_party_menu"]
+[connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="go_to_extra_menu"]
+[connection signal="pressed" from="MainMenu/ExtraSkillsMenu/MoveDesc/Equip skill" to="MainMenu/ExtraSkillsMenu" method="assign_skill"]
+[connection signal="pressed" from="MainMenu/ExtraSkillsMenu/Back2" to="." method="load_party"]
+[connection signal="tab_clicked" from="MainMenu/EnemySelectTabs" to="LevelLock" method="on_tab_open"]
+[connection signal="tab_selected" from="MainMenu/EnemySelectTabs" to="LevelLock" method="on_tab_open"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/To battle" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/To battle2" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Greenler/To battle3" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/To battle" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/To battle2" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Beno/To battle3" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/To battle" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/To battle2" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/To battle3" to="." method="load_battle"]
+[connection signal="pressed" from="MainMenu/Party" to="." method="load_party"]
+[connection signal="pressed" from="MainMenu/Enemies" to="." method="load_enemy_menu"]

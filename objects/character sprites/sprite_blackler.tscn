@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce1uenremjx0k"]
+
+[ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_po85i"]
+[ext_resource type="Texture2D" uid="uid://bn5uvfkbpaj2h" path="res://sprites/blackler_sprite_sheet.png" id="2_q2o7c"]
+
+[sub_resource type="Animation" id="Animation_mboyh"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_blackler/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dk5te"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_blackler/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ah3md"]
+_data = {
+"attack": SubResource("Animation_dk5te"),
+"idle": SubResource("Animation_mboyh")
+}
+
+[node name="sprite_blackler" instance=ExtResource("1_po85i")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_q2o7c")
+vframes = 3
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_ah3md")
+}

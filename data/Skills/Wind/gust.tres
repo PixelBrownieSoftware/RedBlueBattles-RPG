@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=5 format=3 uid="uid://dqnlpi4jpmla8"]
+
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_45tpr"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_cn71c"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="2_yv4n1"]
+
+[sub_resource type="Resource" id="Resource_81xe2"]
+script = ExtResource("2_cn71c")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[resource]
+script = ExtResource("1_45tpr")
+name = "Gust"
+learnable = true
+power = 7
+stamina_cost = 1
+repeat_min = 1
+repeat_max = 1
+skill_scope = 1
+skill_element = ExtResource("2_yv4n1")
+skill_animation = Array[ExtResource("2_cn71c")]([SubResource("Resource_81xe2")])

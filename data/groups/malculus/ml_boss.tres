@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=5 format=3 uid="uid://bi5h1a7lf2yl1"]
+
+[ext_resource type="Resource" uid="uid://cquom4g51vu7d" path="res://data/characters/Bosses/malculus.tres" id="1_6i7jd"]
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_rlcc1"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_fcpnp"]
+
+[sub_resource type="Resource" id="Resource_518pq"]
+script = ExtResource("2_fcpnp")
+character = ExtResource("1_6i7jd")
+skills = Array[Resource("res://src/scripts/skill.gd")]([])
+min_level = 15
+max_level = 15
+
+[resource]
+script = ExtResource("1_rlcc1")
+opponents = Array[ExtResource("2_fcpnp")]([SubResource("Resource_518pq")])
+unlockables = Array[Resource("res://src/battle_character_base.gd")]([])

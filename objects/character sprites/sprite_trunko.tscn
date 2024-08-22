@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsktlmyqvwtu7"]
+
+[ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_3jate"]
+[ext_resource type="Texture2D" uid="uid://brel1gi2kl6js" path="res://sprites/trunko_sprite_sheet.png" id="2_lgmru"]
+
+[sub_resource type="Animation" id="Animation_rl5ka"]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_trunko/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 3]
+}
+
+[sub_resource type="Animation" id="Animation_u215r"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_trunko/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v34oi"]
+_data = {
+"attack": SubResource("Animation_rl5ka"),
+"idle": SubResource("Animation_u215r")
+}
+
+[node name="sprite_trunko" instance=ExtResource("1_3jate")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_lgmru")
+hframes = 2
+frame = 3
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_v34oi")
+}

@@ -17,13 +17,11 @@ class_name battle_character_data
 @export var dexterity : int = 1
 @export var agility : int = 1
 @export var luck : int = 1
-var default_attack : rpg_skill = preload("res://data/Skills/attack.tres")
-var pass_turn : rpg_skill = preload("res://data/Skills/pass.tres")
+var pass_turn : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
 
 @export var get_skills : Array[rpg_skill]:
 	get:
 		var skills_arr : Array[rpg_skill]
-		skills_arr.push_front(default_attack)
 		for original_skill : rpg_skill in assigned_data.skills:
 			if original_skill.requirements_met(self):
 				skills_arr.push_back(original_skill)
@@ -42,16 +40,24 @@ var pass_turn : rpg_skill = preload("res://data/Skills/pass.tres")
 				skills_arr_new.append(skill)
 		return skills_arr_new
 
-@export var stats2 : rpg_stats
+#@export var stats2 : rpg_stats
 @export var assigned_data : battle_character_base
 
-signal play_damage_sound()
+signal play_damage()
 signal miss_effect()
 signal defeat_event()
+signal on_character_start_turn()
+signal on_character_end_turn()
 
 func assign_signal(function : Callable):
-	play_damage_sound.connect(function)
+	play_damage.connect(function)
 
+func assign_start_turn_signal(function : Callable):
+	on_character_start_turn.connect(function)
+
+func assign_end_turn_signal(function : Callable):
+	on_character_end_turn.connect(function)
+	
 func new_data(base_data : battle_character_base, level):
 	assigned_data = base_data
 	max_health = base_data.health
@@ -64,8 +70,7 @@ func new_data(base_data : battle_character_base, level):
 	dexterity = base_data.stats.dexterity
 	agility = base_data.stats.agility
 	luck = base_data.stats.luck
-	current_level = level
-	for l in level:
+	for l in level - 1:
 		level_up()
 
 func assign_skill(move : rpg_skill):
@@ -99,12 +104,70 @@ func increase_stat(stat_increase : float) -> int:
 		return 1
 	return 0
 
+func get_element_potential_modifiers(skill :rpg_skill):
+	var modifiers = {}
+	modifiers["stamina_discount"] = 0
+	modifiers["damage_multipler"] = 1.0
+	modifiers["requirement_discount"] = 0
+	var potential = get_elemental_potential(skill.skill_element)
+	match potential:
+		6:
+			modifiers["stamina_discount"] = -3
+			modifiers["damage_multipler"] = 1.7
+			modifiers["requirement_discount"] = -6
+		5:
+			modifiers["stamina_discount"] = -2
+			modifiers["damage_multipler"] = 1.6
+			modifiers["requirement_discount"] = -5
+		4:
+			modifiers["stamina_discount"] = -2
+			modifiers["damage_multipler"] = 1.55
+			modifiers["requirement_discount"] = -4
+		3:
+			modifiers["stamina_discount"] = -1
+			modifiers["damage_multipler"] = 1.35
+			modifiers["requirement_discount"] = -3
+		2:
+			modifiers["stamina_discount"] = -1
+			modifiers["damage_multipler"] = 1.2
+			modifiers["requirement_discount"] = -2
+		1:
+			modifiers["stamina_discount"] = 0
+			modifiers["damage_multipler"] = 1.1
+			modifiers["requirement_discount"] = -1
+		-1:
+			modifiers["stamina_discount"] = 1
+			modifiers["damage_multipler"] = 0.95
+			modifiers["requirement_discount"] = 1
+		-2:
+			modifiers["stamina_discount"] = 1
+			modifiers["damage_multipler"] = 0.8
+			modifiers["requirement_discount"] = 6
+		-3:
+			modifiers["stamina_discount"] = 2
+			modifiers["damage_multipler"] = 0.75
+			modifiers["requirement_discount"] = 6
+		-4:
+			modifiers["stamina_discount"] = 2
+			modifiers["damage_multipler"] = 0.6
+			modifiers["requirement_discount"] = 6
+		-5:
+			modifiers["stamina_discount"] = 2
+			modifiers["damage_multipler"] = 0.6
+			modifiers["requirement_discount"] = 6
+		-6:
+			modifiers["stamina_discount"] = 3
+			modifiers["damage_multipler"] = 0.55
+			modifiers["requirement_discount"] = 6
+	return modifiers
+
 func damage_character(attacker: battle_character_data, skill :rpg_skill):
 	var return_val = {}
 	var damage_amount : int
-	damage_amount = (attacker.strength * skill.power) / vitality
+	var modifiers = attacker.get_element_potential_modifiers(skill)
+	damage_amount = ((attacker.strength * skill.power) / vitality) * modifiers["damage_multipler"]
 	var dodge_chance : float = attacker.dexterity
-	var will_hit = stat_chance(attacker.dexterity, agility, 0.75)
+	var will_hit = stat_chance(attacker.dexterity, agility, 0.85)
 	var is_lucky = stat_chance(attacker.luck, luck, -0.8)
 	var calculated_PT : PRESS_TURN.PT = PRESS_TURN.PT.NORMAL
 	var el_affinity : float = get_elemental_affinity(skill.skill_element)
@@ -135,7 +198,9 @@ func stat_chance(user_val : int, targ_val : int, connect_max : float):
 	var total : int = user_val + targ_val
 	var user_modify: float = user_val * (float)(user_val * connect_max)
 	var attack_connect_chance : float = (user_modify/total)
+	print("Connection: " + str(attack_connect_chance))
 	var will_hit : float = randf()
+	print("Roll: " + str(will_hit))
 	if will_hit > attack_connect_chance:
 		return false
 	return true
@@ -143,7 +208,7 @@ func stat_chance(user_val : int, targ_val : int, connect_max : float):
 
 func damage(dmg : int):
 	health -= dmg
-	play_damage_sound.emit()
+	play_damage.emit()
 	health = clampi(health,0 , max_health)
 	if health == 0:
 		defeat_event.emit()
@@ -158,3 +223,8 @@ func get_elemental_affinity(el : element) -> float:
 			return elemental.affinity
 	return 1.0
 	
+func get_elemental_potential(el : element) -> int:
+	for elemental in assigned_data.elemental_potential:
+		if el == elemental.elemental:
+			return elemental.potential
+	return 0

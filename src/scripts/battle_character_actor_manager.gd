@@ -13,6 +13,9 @@ func add_characters(group, actor_group):
 	if actor_group != self:
 		return
 	for chara in group.get_children():
+		if group == PartyMembers:
+			if !GlobalVariables.enabled_party_members[chara]:
+				continue
 		var actor = base_character_actor.instantiate()
 		actor.position = position_nodes.get_child(chara.get_index()).position
 		actor.assign_data(chara)
@@ -22,6 +25,9 @@ func add_characters(group, actor_group):
 		if group == PartyMembers:
 			var chara_ui = base_character_ui.instantiate()
 			chara_ui.character_data = chara
+			chara.assign_signal(chara_ui.damage)
+			chara.assign_start_turn_signal(chara_ui.enable_ui)
+			chara.assign_end_turn_signal(chara_ui.disable_ui)
 			$"../../UIAlign".add_child(chara_ui)
 			actor.hurt_sound = hurt_sound_player
 			actor.defeat_sound = defeat_sound_player

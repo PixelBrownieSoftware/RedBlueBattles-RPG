@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="element" load_steps=2 format=3 uid="uid://bifw64maj2juu"]
+
+[ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_6of3v"]
+
+[resource]
+script = ExtResource("1_6of3v")
+name = "Force"

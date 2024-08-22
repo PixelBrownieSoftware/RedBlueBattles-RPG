@@ -1,13 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0vkoxgyyxhag"]
-
-[ext_resource type="Texture2D" uid="uid://cpimagv4prdu1" path="res://sprites/redler_sprite_sheet.png" id="1_26mpu"]
+[gd_scene format=3 uid="uid://c0vkoxgyyxhag"]
 
 [node name="sprite_base" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_26mpu")
-hframes = 5
-vframes = 5
+hframes = 3
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")

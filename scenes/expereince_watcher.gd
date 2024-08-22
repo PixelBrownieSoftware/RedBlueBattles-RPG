@@ -7,10 +7,11 @@ signal set_multiplier(mult)
 func _ready():
 	set_multiplier.connect(GlobalVariables.set_multiplier)
 
+
 func exp_points_calc(user : battle_character_data, target : battle_character_data, damage : int, press_turn: PRESS_TURN.PT):
 	#TODO: make the fomrmula 
 	# (dmg/target.max_health) * (user.level/target.level) * target.base_exp_score
-	if !$"..".is_player_team(user):
+	if !GlobalVariables.is_player_team(user):
 		return
 	match press_turn:
 		PRESS_TURN.PT.CRITICAL:

@@ -4,6 +4,7 @@ class_name battle_end_state
 @export var queue_state : battle_state
 signal show_exp_results_menu(results_list, total)
 signal show_moves_learned(moves_learned)
+signal show_characters_join(characters)
 var results_list = {}
 
 func start_state():
@@ -41,8 +42,17 @@ func start_state():
 	if dead_enemies == EnemyMembers.get_children().size():
 		results_list["All_Defeated"] = 0.1
 		total_exp = $"../../Variables/ExpereinceWatcher".local_exp_score + get_bonus()
+		var gained_characters : Array[battle_character_base]
+		for character in GlobalVariables.current_battle.unlockables:
+			for member : battle_character_data in PartyMembers.get_children():
+				if member.assigned_data == character:
+					break
+				else:
+					gained_characters.append(character)
+					CharacterFactory.create_new_character(character,PartyMembers, 1)
 		show_moves_learned.emit(new_moves_learned)
 		show_exp_results_menu.emit(results_list, total_exp)
+		show_characters_join.emit(gained_characters)
 		return
 	change_state.emit(queue_state)
 
@@ -56,6 +66,9 @@ func leave_battle():
 	var bonus : int = get_bonus()
 	GlobalVariables.expereince_score += $"../../Variables/ExpereinceWatcher".local_exp_score
 	GlobalVariables.expereince_score += bonus
+	for character in PartyMembers.get_children():
+		var chara : battle_character_data = character as battle_character_data
+		chara.health = chara.max_health
 	for character in EnemyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
 		chara.queue_free()

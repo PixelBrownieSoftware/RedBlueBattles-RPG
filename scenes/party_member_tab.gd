@@ -2,6 +2,7 @@ extends TabBar
 class_name party_member_tab
 var current_character : battle_character_data
 signal go_to_ex_skills(character)
+signal toggle_party_member(member)
 
 func go_to_extra_skills():
 	go_to_ex_skills.emit(current_character)
@@ -10,6 +11,15 @@ func go_to_extra_skills():
 func load_skill(skill):
 	$SkillDesc.text = skill.get_desc()
 	
+func enable_disable_partymember():
+	if GlobalVariables.get_enabled_party_members_count() > 1:
+		GlobalVariables.enabled_party_members[current_character] = !GlobalVariables.enabled_party_members[current_character]
+	else:
+		if !GlobalVariables.enabled_party_members[current_character]:
+			GlobalVariables.enabled_party_members[current_character] = !GlobalVariables.enabled_party_members[current_character]
+	toggle_party_member.emit(current_character)
+
+
 func load_skill_buttons():
 	for button in $Panel/ScrollContainer/VBoxContainer.get_children():
 		button.visible = false
@@ -41,9 +51,11 @@ func _process(delta):
 		$Panel/VBoxContainer/Dexterity.render_stamina_max(current_character.dexterity, 10)
 		$Panel/VBoxContainer/Magpow.render_stamina_max(current_character.magic_pow, 10)
 		$Panel/VBoxContainer/Agility.render_stamina_max(current_character.agility, 10)
-	
-
-
-
+		var enabled_member = GlobalVariables.enabled_party_members[current_character]
+		if enabled_member:
+			$Panel/InBattle.text = "Enabled"
+		else:
+			$Panel/InBattle.text = "Disabled"
+			
 func _on_tab_selected(tab):
 	load_skill_buttons()

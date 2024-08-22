@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhbseyus4wf23"]
+
+[ext_resource type="Script" path="res://objects/UI/purchase_character_button.gd" id="1_frvuu"]
+
+[node name="PurchaseCharacterButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 163.0
+offset_bottom = 84.0
+script = ExtResource("1_frvuu")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 42.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 43.0
+offset_right = 172.0
+offset_bottom = 72.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

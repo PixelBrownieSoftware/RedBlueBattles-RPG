@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://7ijo3ogp78gt"]
+
+[ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_23e6t"]
+[ext_resource type="Texture2D" uid="uid://u5e0oj6rr87k" path="res://sprites/malculus_sprite_sheet.png" id="2_nq6t2"]
+
+[sub_resource type="Animation" id="Animation_12vls"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_malculus/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nw2jf"]
+resource_name = "attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_malculus/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vu1mq"]
+_data = {
+"attack": SubResource("Animation_nw2jf"),
+"idle": SubResource("Animation_12vls")
+}
+
+[node name="sprite_malculus" instance=ExtResource("1_23e6t")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_nq6t2")
+frame = 4
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_vu1mq")
+}

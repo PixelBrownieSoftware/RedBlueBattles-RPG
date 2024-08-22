@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=2 format=3 uid="uid://1hhl1ce3yyl6"]
+
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_4lwdj"]
+
+[resource]
+script = ExtResource("1_4lwdj")
+name = "Beno"
+health = 1
+stamina = 4
+base_exp_score = 50
+base_exp_to_NL = 50
+skills = Array[Resource("res://src/scripts/skill.gd")]([])
+behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
+elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+character_colour = Color(1, 1, 1, 1)
+animation_player_loc = "sprite_beno"

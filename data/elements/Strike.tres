@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="element" load_steps=2 format=3 uid="uid://5en31hxrc1ca"]
+
+[ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_meq1u"]
+
+[resource]
+script = ExtResource("1_meq1u")
+name = "Strike"

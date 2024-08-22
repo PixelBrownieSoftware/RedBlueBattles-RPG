@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=2 format=3 uid="uid://c6horxrkgmnn2"]
+
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_vtfyv"]
+
+[resource]
+script = ExtResource("1_vtfyv")
+name = ""
+health = 1
+stamina = 4
+base_exp_score = 50
+base_exp_to_NL = 50
+skills = Array[Resource("res://src/scripts/skill.gd")]([])
+behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
+elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+character_colour = Color(0.0117647, 0.858824, 1, 1)
+animation_player_loc = ""

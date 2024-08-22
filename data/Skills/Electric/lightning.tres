@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=5 format=3 uid="uid://bhvnvarvl483s"]
+
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_dxrcd"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_3u3ug"]
+[ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="2_brvv5"]
+
+[sub_resource type="Resource" id="Resource_njce7"]
+script = ExtResource("2_3u3ug")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[resource]
+script = ExtResource("1_dxrcd")
+name = "Lightning"
+learnable = true
+power = 15
+stamina_cost = 6
+repeat_min = null
+repeat_max = null
+skill_scope = 1
+skill_element = ExtResource("2_brvv5")
+skill_animation = Array[ExtResource("2_3u3ug")]([SubResource("Resource_njce7")])
