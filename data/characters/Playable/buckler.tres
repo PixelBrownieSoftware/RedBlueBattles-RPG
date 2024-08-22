@@ -36,5 +36,6 @@ stat_increase = SubResource("Resource_g2hmx")
 skills = Array[Resource("res://src/scripts/skill.gd")]([])
 behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
 elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
 character_colour = Color(1, 0.615686, 0, 1)
 animation_player_loc = "sprite_buckler"

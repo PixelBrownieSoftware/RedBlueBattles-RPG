@@ -1,18 +1,42 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=3 format=3 uid="uid://bpamjdagrg4s"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=7 format=3 uid="uid://bpamjdagrg4s"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_quvnl"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_54a2p"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="3_2dk5e"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_kgt6p"]
+
+[sub_resource type="Resource" id="Resource_wnv47"]
+script = ExtResource("3_2dk5e")
+health_min = 1
+health_max = 1
+strength = 0.5
+vitality = 0.5
+magic_pow = 0.5
+dexterity = 0.5
+agility = 0.5
+luck = 0.5
+
+[sub_resource type="Resource" id="Resource_jd7yk"]
+script = ExtResource("4_kgt6p")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
 
 [resource]
 script = ExtResource("1_quvnl")
-name = ""
+name = "Blackler"
 health = 1
 stamina = 4
 base_exp_score = 50
 base_exp_to_NL = 50
+stats = SubResource("Resource_jd7yk")
+stat_increase = SubResource("Resource_wnv47")
 skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_54a2p")])
 behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
 elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
-elemental_affections = Array[Resource("res://src/elemental_affection.gd")]([])
+elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_blackler"

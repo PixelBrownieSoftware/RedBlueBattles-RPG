@@ -36,5 +36,6 @@ stat_increase = SubResource("Resource_aiu6g")
 skills = Array[Resource("res://src/scripts/skill.gd")]([])
 behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
 elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
 character_colour = Color(3.22476e-06, 0.821183, 0.163293, 1)
 animation_player_loc = "sprite_greendori"
