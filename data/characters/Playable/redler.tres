@@ -1,23 +1,10 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=13 format=3 uid="uid://hchecnhgg381"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=8 format=3 uid="uid://hchecnhgg381"]
 
-[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="1_1onrx"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_nuv7u"]
-[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_brwlu"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_t1ad7"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_3pmul"]
-[ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="3_opqiy"]
 [ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/Skills/Fire/ember.tres" id="4_ftoxy"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="5_40dp6"]
-
-[sub_resource type="Resource" id="Resource_yxmgj"]
-script = ExtResource("2_brwlu")
-elemental = ExtResource("1_1onrx")
-affinity = 0.5
-
-[sub_resource type="Resource" id="Resource_40me8"]
-script = ExtResource("2_brwlu")
-elemental = ExtResource("3_opqiy")
-affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_yt1im"]
 script = ExtResource("2_t1ad7")
@@ -50,7 +37,7 @@ stats = SubResource("Resource_h63ju")
 stat_increase = SubResource("Resource_yt1im")
 skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("4_ftoxy"), ExtResource("5_40dp6")])
 behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
-elemental_affinities = Array[ExtResource("2_brwlu")]([SubResource("Resource_yxmgj"), SubResource("Resource_40me8")])
+elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
 elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
 character_colour = Color(1, 0.0666667, 0.188235, 1)
 animation_player_loc = "sprite_redler"

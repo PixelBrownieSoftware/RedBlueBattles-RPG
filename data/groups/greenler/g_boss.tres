@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=5 format=3 uid="uid://bhgpt6ai8y88a"]
 
-[ext_resource type="Resource" uid="uid://bcjoka06yw8pm" path="res://data/characters/Bosses/greenler.tres" id="1_nhmly"]
+[ext_resource type="Resource" uid="uid://bcjoka06yw8pm" path="res://data/characters/Bosses/greenler.tres" id="1_f5e3f"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_vd15c"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_caloy"]
 
 [sub_resource type="Resource" id="Resource_edg03"]
 script = ExtResource("2_caloy")
-character = ExtResource("1_nhmly")
+character = ExtResource("1_f5e3f")
 skills = Array[Resource("res://src/scripts/skill.gd")]([])
 min_level = 5
 max_level = 5
