@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=27 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="2_r4jfg"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://dwuivec0bu3ha" path="res://data/groups/greenler/g_easy_battle_1.tres" id="10_x3xdn"]
 [ext_resource type="Resource" uid="uid://crtnxxemdyj67" path="res://data/groups/greenler/g_hard_battle_1.tres" id="11_3rcoc"]
 [ext_resource type="Script" path="res://src/active_party_members.gd" id="11_byyvb"]
+[ext_resource type="Resource" uid="uid://bi65oqj2v3400" path="res://data/groups/greenler/g_easy_battle_2.tres" id="12_1ae5g"]
 [ext_resource type="Resource" uid="uid://bhgpt6ai8y88a" path="res://data/groups/greenler/g_boss.tres" id="12_86m7a"]
 [ext_resource type="PackedScene" uid="uid://cf4s1n8tbgm7o" path="res://objects/UI/member_select_button.tscn" id="12_tpcla"]
 [ext_resource type="Resource" uid="uid://dfanj3jqa78ce" path="res://data/groups/beno/b_easy_battle_1.tres" id="13_4mt5m"]
@@ -20,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://dp0nw3gmr76s8" path="res://data/groups/lord red/lr_easy_battle_1.tres" id="16_j7iww"]
 [ext_resource type="Resource" uid="uid://cgkv2dxx8u451" path="res://data/groups/lord red/lr_hard_battle_1.tres" id="17_85800"]
 [ext_resource type="Resource" uid="uid://ck8pds420p0t0" path="res://data/groups/lord red/lr_boss.tres" id="18_4vcfm"]
+[ext_resource type="Resource" uid="uid://cylk1tknykcp2" path="res://data/groups/lord red/mini_boss_greendori.tres" id="22_wu8v1"]
 
 [sub_resource type="Animation" id="Animation_1vcaa"]
 length = 0.001
@@ -657,6 +659,7 @@ offset_right = 807.0
 offset_bottom = 539.0
 
 [node name="Greenler" type="TabBar" parent="MainMenu/EnemySelectTabs"]
+visible = false
 layout_mode = 2
 
 [node name="Tutorial" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
@@ -675,7 +678,7 @@ offset_top = 181.0
 offset_right = 183.0
 offset_bottom = 212.0
 text = "Easy fight"
-battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_x3xdn")])
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("10_x3xdn"), ExtResource("12_1ae5g")])
 
 [node name="Hard" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
 layout_mode = 2
@@ -736,7 +739,6 @@ text = "Boss"
 battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("15_6m0ag")])
 
 [node name="Lord Red" type="TabBar" parent="MainMenu/EnemySelectTabs"]
-visible = false
 layout_mode = 2
 
 [node name="Easy" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
@@ -765,6 +767,15 @@ offset_right = 344.0
 offset_bottom = 128.0
 text = "Boss"
 battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("18_4vcfm")])
+
+[node name="Greendori" parent="MainMenu/EnemySelectTabs/Lord Red" instance=ExtResource("8_0fx3b")]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 216.0
+offset_right = 346.0
+offset_bottom = 247.0
+text = "Mini boss"
+battle_groups = Array[Resource("res://src/battle_group_data.gd")]([ExtResource("22_wu8v1")])
 
 [node name="Malculus" type="TabBar" parent="MainMenu/EnemySelectTabs"]
 visible = false
@@ -852,6 +863,7 @@ offset_bottom = 72.0
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Easy" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Hard" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Boss" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/Greendori" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Easy" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Hard" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Boss" to="." method="load_battle"]

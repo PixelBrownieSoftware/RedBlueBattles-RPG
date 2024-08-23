@@ -48,8 +48,9 @@ func start_state():
 				if member.assigned_data == character:
 					break
 				else:
-					gained_characters.append(character)
-					CharacterFactory.create_new_character(character,PartyMembers, 1)
+					if gained_characters.rfind(character) == -1:
+						gained_characters.append(character)
+						CharacterFactory.create_new_character(character,PartyMembers, 1)
 		show_moves_learned.emit(new_moves_learned)
 		show_exp_results_menu.emit(results_list, total_exp)
 		show_characters_join.emit(gained_characters)

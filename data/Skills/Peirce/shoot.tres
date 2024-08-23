@@ -19,7 +19,7 @@ animation_name = ""
 [resource]
 script = ExtResource("1_b8t2c")
 name = "Shoot"
-learnable = true
+learnable = false
 power = 8
 stamina_cost = 0
 repeat_min = 1

@@ -18,6 +18,10 @@ func update_skills():
 	var skill_ind : int = 0
 	for skill in GlobalVariables.extra_skills:
 		var button = buttons[skill_ind]
+		if chara.get_skills.rfind(skill) != -1:
+			button.disabled = true
+		else:
+			button.disabled = false
 		button.selected_skill = skill
 		button.character = chara
 		button.load_skill.connect(add_skill)
