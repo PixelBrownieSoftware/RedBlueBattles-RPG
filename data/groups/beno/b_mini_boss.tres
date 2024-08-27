@@ -1,18 +1,20 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=6 format=3 uid="uid://oooh4cgtb157"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=8 format=3 uid="uid://oooh4cgtb157"]
 
 [ext_resource type="Resource" uid="uid://bwkdvau2fffjw" path="res://data/characters/Bosses/daleth.tres" id="1_mnhtg"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_moivp"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_u40lg"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_t47q2"]
 [ext_resource type="Resource" uid="uid://cmfai7ydcxm8h" path="res://data/characters/Playable/buckler.tres" id="4_nh1dg"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="5_7tbg6"]
 
 [sub_resource type="Resource" id="Resource_cb6jb"]
 script = ExtResource("1_u40lg")
 character = ExtResource("1_mnhtg")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[ExtResource("3_t47q2")]([])
 min_level = 8
 max_level = 8
 
 [resource]
 script = ExtResource("1_moivp")
 opponents = Array[ExtResource("1_u40lg")]([SubResource("Resource_cb6jb")])
-unlockables = Array[Resource("res://src/battle_character_base.gd")]([ExtResource("4_nh1dg")])
+unlockables = Array[ExtResource("5_7tbg6")]([ExtResource("4_nh1dg")])

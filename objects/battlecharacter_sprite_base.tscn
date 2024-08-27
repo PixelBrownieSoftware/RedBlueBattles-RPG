@@ -8,3 +8,5 @@ vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
+
+[node name="sound_player" type="AudioStreamPlayer2D" parent="."]

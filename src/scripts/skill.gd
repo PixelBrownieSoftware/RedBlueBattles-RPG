@@ -57,4 +57,3 @@ func requirements_met(chara : battle_character_data):
 	var dex_req_sati : bool = (chara.dexterity >= results["dex_req"])
 	results["req_met"] = str_req_sati && vit_req_sati && luc_req_sati && agi_req_sati && mag_req_sati && dex_req_sati
 	return results
-

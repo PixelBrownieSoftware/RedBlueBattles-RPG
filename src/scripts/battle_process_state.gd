@@ -49,6 +49,7 @@ func process_move(skill : rpg_skill):
 							await actor_user.anim_finish_signal
 						actor_user.play_animation("idle")
 				anim.SKILL_ANIMATION_TYPE.CALCULATION:
+					#TODO: Maybe put in overwhelm
 					var attack_result = {}
 					if character_target.health > 0:
 						attack_result = character_target.damage_character(character_user, skill)
@@ -58,8 +59,10 @@ func process_move(skill : rpg_skill):
 						if battle_globals.final_press_turn_flag < calculated_PT:
 							battle_globals.final_press_turn_flag = calculated_PT
 						print(damage_num)
+						if calculated_PT != PRESS_TURN.PT.MISS:
+							spawn_battle_fx.emit("physical_hit_fx", character_target)
 						put_damage_numbers.emit(character_user, character_target, damage_num, calculated_PT)
-						await get_tree().create_timer(1.5).timeout
+						await get_tree().create_timer(0.4).timeout
 	character_user.on_character_end_turn.emit()
 	
 func fx_anim_done():

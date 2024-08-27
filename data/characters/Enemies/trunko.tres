@@ -1,14 +1,27 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=8 format=3 uid="uid://dn8iqklx4h2v7"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://dn8iqklx4h2v7"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_13rwa"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_63kko"]
+[ext_resource type="Resource" uid="uid://cy1rleskpxi3b" path="res://data/elements/Dark.tres" id="2_71t50"]
+[ext_resource type="Script" path="res://src/battle_character_behaviour.gd" id="2_l4qfo"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_xc3ee"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_c6uqx"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="3_k0xex"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_kc5rl"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="3_vt0xm"]
+[ext_resource type="Resource" uid="uid://5xy2ge6rh0qf" path="res://data/Skills/Dark/shadow_ball.tres" id="4_xeiwk"]
+[ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="5_skbw1"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_eib6d"]
 
 [sub_resource type="Resource" id="Resource_wfdlb"]
 script = ExtResource("1_63kko")
-behaviouir_conditions = Array[Resource("res://src/battle_character_behaviour.gd")]([])
+behaviouir_conditions = Array[ExtResource("2_l4qfo")]([])
 condition = 2
+
+[sub_resource type="Resource" id="Resource_mk3vo"]
+script = ExtResource("3_kc5rl")
+elemental = ExtResource("2_71t50")
+potential = 5
 
 [sub_resource type="Resource" id="Resource_bv32j"]
 script = ExtResource("2_xc3ee")
@@ -23,25 +36,25 @@ luck = 0.5
 
 [sub_resource type="Resource" id="Resource_1xov1"]
 script = ExtResource("3_c6uqx")
-strength = 1
-vitality = 1
-magic_pow = 1
-dexterity = 1
+strength = 2
+vitality = 5
+magic_pow = 6
+dexterity = 2
 agility = 1
 luck = 1
 
 [resource]
 script = ExtResource("1_13rwa")
-name = ""
-health = 1
-stamina = 4
+name = "Trunko"
+health = 32
+stamina = 8
 base_exp_score = 50
 base_exp_to_NL = 50
 stats = SubResource("Resource_1xov1")
 stat_increase = SubResource("Resource_bv32j")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[ExtResource("7_eib6d")]([ExtResource("3_k0xex"), ExtResource("4_xeiwk"), ExtResource("5_skbw1")])
 behaviour = Array[ExtResource("1_63kko")]([SubResource("Resource_wfdlb")])
-elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
-elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
+elemental_affinities = Array[ExtResource("3_vt0xm")]([])
+elemental_potential = Array[ExtResource("3_kc5rl")]([SubResource("Resource_mk3vo")])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_trunko"

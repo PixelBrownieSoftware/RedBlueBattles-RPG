@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0j2rpxn00nk3"]
+[gd_scene load_steps=19 format=3 uid="uid://d0j2rpxn00nk3"]
 
 [ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_hq8uu"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hb0oj"]
@@ -12,6 +12,12 @@
 [ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="10_58yae"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="11_wydnp"]
 [ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="12_7rres"]
+[ext_resource type="Texture2D" uid="uid://ro16bqpwgidv" path="res://sprites/GUI/gui_str.png" id="12_a3wp7"]
+[ext_resource type="Texture2D" uid="uid://c2ejrubsxhqmf" path="res://sprites/GUI/gui_vit.png" id="13_2tnhq"]
+[ext_resource type="Texture2D" uid="uid://dieyq5lsg0wlf" path="res://sprites/GUI/gui_dex.png" id="14_rrg6y"]
+[ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/mag_pow.png" id="15_37bqv"]
+[ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="16_b7e8q"]
+[ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="17_8uxp1"]
 
 [node name="PartyMember menu" type="TabBar"]
 offset_left = 278.0
@@ -28,28 +34,6 @@ anchor_bottom = 1.0
 offset_right = 0.0699463
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 120.4
-offset_right = 231.0
-offset_bottom = 193.4
-
-[node name="Strength" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
-layout_mode = 2
-
-[node name="Vitality" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
-layout_mode = 2
-
-[node name="Dexterity" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
-layout_mode = 2
-
-[node name="Magpow" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
-layout_mode = 2
-
-[node name="Agility" parent="Panel/VBoxContainer" instance=ExtResource("2_hb0oj")]
-layout_mode = 2
 
 [node name="Name" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
@@ -111,15 +95,15 @@ text = "Extra skills"
 
 [node name="Health" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 72.0
-offset_right = 237.0
-offset_bottom = 112.0
+offset_left = 85.0
+offset_top = 43.0
+offset_right = 312.0
+offset_bottom = 83.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 169.0
+offset_left = 332.0
+offset_top = 217.0
 offset_right = 587.0
 offset_bottom = 319.0
 
@@ -199,6 +183,64 @@ element_subject = ExtResource("11_wydnp")
 [node name="Peirce" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
 layout_mode = 2
 element_subject = ExtResource("12_7rres")
+
+[node name="Stats" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 62.0
+offset_right = 659.0
+offset_bottom = 211.0
+scale = Vector2(0.6, 1)
+
+[node name="Icons" type="VBoxContainer" parent="Panel/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Str" type="TextureRect" parent="Panel/Stats/Icons"]
+layout_mode = 2
+texture = ExtResource("12_a3wp7")
+
+[node name="Vit" type="TextureRect" parent="Panel/Stats/Icons"]
+layout_mode = 2
+texture = ExtResource("13_2tnhq")
+
+[node name="Dex" type="TextureRect" parent="Panel/Stats/Icons"]
+layout_mode = 2
+texture = ExtResource("14_rrg6y")
+
+[node name="MagPow" type="TextureRect" parent="Panel/Stats/Icons"]
+layout_mode = 2
+texture = ExtResource("15_37bqv")
+
+[node name="Agi" type="TextureRect" parent="Panel/Stats/Icons"]
+layout_mode = 2
+texture = ExtResource("16_b7e8q")
+
+[node name="Luc" type="TextureRect" parent="Panel/Stats/Icons"]
+layout_mode = 2
+texture = ExtResource("17_8uxp1")
+
+[node name="Stats" type="VBoxContainer" parent="Panel/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Strength" parent="Panel/Stats/Stats" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Vitality" parent="Panel/Stats/Stats" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Dexterity" parent="Panel/Stats/Stats" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Magpow" parent="Panel/Stats/Stats" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Agility" parent="Panel/Stats/Stats" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
+
+[node name="Luck" parent="Panel/Stats/Stats" instance=ExtResource("2_hb0oj")]
+layout_mode = 2
 
 [node name="SkillDesc" type="RichTextLabel" parent="."]
 layout_mode = 0

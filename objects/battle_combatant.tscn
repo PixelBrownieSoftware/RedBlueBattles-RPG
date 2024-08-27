@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctea2qykjpd3c"]
+[gd_scene load_steps=3 format=3 uid="uid://ctea2qykjpd3c"]
 
 [ext_resource type="Script" path="res://src/battle_character_actor.gd" id="1_dy7n5"]
+[ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="2_3wq5g"]
 
 [node name="battle_combatant" type="Node2D"]
 script = ExtResource("1_dy7n5")
@@ -8,3 +9,5 @@ script = ExtResource("1_dy7n5")
 [node name="combatant_sfx" type="AudioStreamPlayer2D" parent="."]
 
 [node name="combatant_sfx_defeat" type="AudioStreamPlayer2D" parent="."]
+
+[node name="BattleFxBase" parent="." instance=ExtResource("2_3wq5g")]

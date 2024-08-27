@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=8 format=3 uid="uid://d0yqr5txk5fat"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=12 format=3 uid="uid://d0yqr5txk5fat"]
 
+[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_t4rho"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_vwyw1"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_dym0v"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_f6e3g"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="2_gxco0"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_qjt1d"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_k1h7g"]
 [ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="3_kml5k"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_mfh57"]
 
 [sub_resource type="Resource" id="Resource_lmoca"]
 script = ExtResource("2_qjt1d")
@@ -35,9 +39,9 @@ base_exp_score = 50
 base_exp_to_NL = 50
 stats = SubResource("Resource_xlw38")
 stat_increase = SubResource("Resource_lmoca")
-skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_f6e3g"), ExtResource("3_kml5k")])
-behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
-elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
-elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
+skills = Array[ExtResource("5_mfh57")]([ExtResource("2_f6e3g"), ExtResource("3_kml5k")])
+behaviour = Array[ExtResource("1_t4rho")]([])
+elemental_affinities = Array[ExtResource("2_dym0v")]([])
+elemental_potential = Array[ExtResource("3_k1h7g")]([])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_greendori"

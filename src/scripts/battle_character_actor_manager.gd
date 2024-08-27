@@ -21,13 +21,17 @@ func add_characters(group, actor_group):
 		actor.assign_data(chara)
 		actor.hurt_sound = hurt_sound_enemy
 		actor.defeat_sound = defeat_sound_enemy
+		actor.character_anim.play("idle")
 		add_child(actor)
 		if group == PartyMembers:
 			var chara_ui = base_character_ui.instantiate()
 			chara_ui.character_data = chara
+			chara_ui.init_dmg_bar()
 			chara.assign_signal(chara_ui.damage)
 			chara.assign_start_turn_signal(chara_ui.enable_ui)
+			chara.assign_start_turn_signal(actor.play_idle_active)
 			chara.assign_end_turn_signal(chara_ui.disable_ui)
+			chara.assign_end_turn_signal(actor.play_idle)
 			$"../../UIAlign".add_child(chara_ui)
 			actor.hurt_sound = hurt_sound_player
 			actor.defeat_sound = defeat_sound_player

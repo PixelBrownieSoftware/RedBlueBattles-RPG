@@ -1,5 +1,6 @@
 extends Node
 class_name battle_character_data
+const divider : float = 8.4
 @export var current_level : int = 1
 @export var expereince_to_NL : int = 1
 
@@ -161,12 +162,23 @@ func get_element_potential_modifiers(skill :rpg_skill):
 			modifiers["requirement_discount"] = 6
 	return modifiers
 
+
 func damage_character(attacker: battle_character_data, skill :rpg_skill):
 	var return_val = {}
 	var damage_amount : int
+	
 	var modifiers = attacker.get_element_potential_modifiers(skill)
 	print("Multiplier " + str(modifiers["damage_multipler"]))
-	damage_amount = ((attacker.strength * skill.power) / vitality) * modifiers["damage_multipler"]
+	
+	var str = (attacker.strength * skill.skill_element.stats.strength)/divider
+	var agi = (attacker.agility * skill.skill_element.stats.agility)/divider
+	var vit = (attacker.vitality * skill.skill_element.stats.vitality)/divider
+	var mag = (attacker.magic_pow * skill.skill_element.stats.magic_pow)/divider
+	var dex = (attacker.dexterity * skill.skill_element.stats.dexterity)/divider
+	var luc = (attacker.luck * skill.skill_element.stats.luck)/divider
+	var stat_element = ((str+ dex + luc + agi + mag + vit)) * (skill.power)
+	
+	damage_amount = ((stat_element * skill.power) / vitality) * modifiers["damage_multipler"]
 	var dodge_chance : float = attacker.dexterity
 	var will_hit = stat_chance(attacker.dexterity, agility, 0.85)
 	var is_lucky = stat_chance(attacker.luck, luck, -0.8)
@@ -177,6 +189,7 @@ func damage_character(attacker: battle_character_data, skill :rpg_skill):
 	else: if el_affinity < 2 && el_affinity > 0:
 		calculated_PT = PRESS_TURN.PT.NORMAL
 	else: if el_affinity == 0:
+		damage_amount = 0
 		calculated_PT = PRESS_TURN.PT.VOID
 	else: if el_affinity < 0 && el_affinity > -2:
 		calculated_PT = PRESS_TURN.PT.REFLECT

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=18 format=3 uid="uid://d4d5i5yhsjaxb"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=20 format=3 uid="uid://d4d5i5yhsjaxb"]
 
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="1_bhovt"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_m7wf6"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_ms8r3"]
+[ext_resource type="Script" path="res://src/battle_character_behaviour.gd" id="2_6faby"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_duwrj"]
 [ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/Skills/Strike/slash.tres" id="2_u27re"]
 [ext_resource type="Resource" uid="uid://bouqpmerlatxl" path="res://data/Skills/Fire/fire_blast.tres" id="3_1qgdd"]
@@ -10,10 +11,11 @@
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="4_qehjo"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="4_sdopj"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="5_mck7o"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="8_u5sfq"]
 
 [sub_resource type="Resource" id="Resource_syr7f"]
 script = ExtResource("1_m7wf6")
-behaviouir_conditions = Array[Resource("res://src/battle_character_behaviour.gd")]([])
+behaviouir_conditions = Array[ExtResource("2_6faby")]([])
 condition = 2
 
 [sub_resource type="Resource" id="Resource_bl3pc"]
@@ -65,7 +67,7 @@ base_exp_score = 50
 base_exp_to_NL = 2100
 stats = SubResource("Resource_mrwpr")
 stat_increase = SubResource("Resource_uo6mr")
-skills = Array[Resource("res://src/scripts/skill.gd")]([ExtResource("2_u27re"), ExtResource("3_1qgdd")])
+skills = Array[ExtResource("8_u5sfq")]([ExtResource("2_u27re"), ExtResource("3_1qgdd")])
 behaviour = Array[ExtResource("1_m7wf6")]([SubResource("Resource_syr7f")])
 elemental_affinities = Array[ExtResource("2_duwrj")]([SubResource("Resource_bl3pc"), SubResource("Resource_jbmuy")])
 elemental_potential = Array[ExtResource("4_sdopj")]([SubResource("Resource_h42uu"), SubResource("Resource_2vy8q")])

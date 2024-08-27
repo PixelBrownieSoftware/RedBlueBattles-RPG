@@ -17,6 +17,15 @@ func play_animation(anim : String):
 	anim_finished_flag =false
 	character_anim.play(anim)
 	
+func play_idle():
+	play_animation_loop("idle")
+	
+func play_idle_active():
+	play_animation_loop("idle_active")
+	
+func play_animation_loop(anim : String):
+	character_anim.play(anim)
+	
 func character_anim_finished(anim):
 	anim_finish_signal.emit()
 	anim_finished_flag = true

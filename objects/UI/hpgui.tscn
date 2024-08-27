@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bta702emm1p4b"]
+[gd_scene load_steps=12 format=3 uid="uid://bta702emm1p4b"]
 
 [ext_resource type="Script" path="res://objects/UI/hpgui.gd" id="1_dmg4y"]
 [ext_resource type="StyleBox" uid="uid://pr3lsbr0mu53" path="res://misc/material/hp_bar_style.tres" id="2_uckqt"]
 [ext_resource type="StyleBox" uid="uid://bp821ifm25r1a" path="res://misc/material/hp_bar_empty_style.tres" id="2_wqwuf"]
+[ext_resource type="StyleBox" uid="uid://pjd0ykgsvpmm" path="res://misc/material/hp_bar_damage_style.tres" id="3_r6tqb"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="4_5ehvm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h62qd"]
 
 [sub_resource type="Animation" id="Animation_hf84b"]
 length = 0.001
@@ -93,15 +96,26 @@ anchors_preset = 0
 offset_right = 211.0
 offset_bottom = 85.0
 
-[node name="ProgressBar" type="ProgressBar" parent="Offset"]
+[node name="DamageBar" type="ProgressBar" parent="Offset"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 32.0
 offset_right = 197.0
 offset_bottom = 54.0
 theme_override_styles/background = ExtResource("2_wqwuf")
+theme_override_styles/fill = ExtResource("3_r6tqb")
+value = 100.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="Offset"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = 197.0
+offset_bottom = 54.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_h62qd")
 theme_override_styles/fill = ExtResource("2_uckqt")
-value = 40.59
+value = 59.43
 show_percentage = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Offset"]
@@ -114,9 +128,6 @@ text = "Sample"
 
 [node name="StaminaContainer" parent="Offset" instance=ExtResource("4_5ehvm")]
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 3.0
 offset_top = 56.0
 offset_right = 195.0

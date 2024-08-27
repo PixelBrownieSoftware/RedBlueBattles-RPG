@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://babqagg2fcn2q"]
+
+[ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="1_k0r0c"]
+[ext_resource type="AudioStream" uid="uid://bl58fppla38yw" path="res://sound/electric_shock.wav" id="2_rhpvr"]
+[ext_resource type="Texture2D" uid="uid://dh5xhn3yicxsn" path="res://sprites/electric_fx.png" id="3_y21i7"]
+
+[sub_resource type="Animation" id="Animation_nkyj2"]
+resource_name = "fx_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("electric_fx:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1, 0.133333, 0.166667, 0.233333, 0.266667, 0.333333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 1, 0, 3, 2, 4, 3, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("audio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("electric_fx:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n03jb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("electric_fx:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("audio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("electric_fx:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mlpvu"]
+_data = {
+"RESET": SubResource("Animation_n03jb"),
+"fx_animation": SubResource("Animation_nkyj2")
+}
+
+[node name="ElectricFx" instance=ExtResource("1_k0r0c")]
+
+[node name="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_mlpvu")
+}
+
+[node name="audio" parent="." index="1"]
+stream = ExtResource("2_rhpvr")
+
+[node name="electric_fx" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("3_y21i7")
+hframes = 3
+vframes = 2

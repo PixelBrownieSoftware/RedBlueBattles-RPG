@@ -70,6 +70,7 @@ func leave_battle():
 	for character in PartyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
 		chara.health = chara.max_health
+		chara.stamina = 0
 	for character in EnemyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
 		chara.queue_free()

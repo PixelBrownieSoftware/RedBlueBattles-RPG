@@ -8,11 +8,11 @@ func create_new_character(base : battle_character_base, party, level) -> battle_
 	chara.new_data(base, level)
 	chara.name = base.name
 	party.add_child(chara)
-	var counter : int = -1
+	var counter : int = 0
 	for cha in party.get_children():
 		if cha.assigned_data == base:
 			counter += 1
-	if counter > 0:
+	if counter > 1:
 		chara.name = base.name + " " + alphabet[counter - 1]
 	if party == PartyMembers:
 		if GlobalVariables.get_enabled_party_members_count() <= 5:

@@ -1,11 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://rkne61jchiv8"]
+[gd_scene load_steps=7 format=3 uid="uid://c7fbel1h3unhg"]
 
 [ext_resource type="Texture2D" uid="uid://bt5us58b8w086" path="res://sprites/fire_fx.png" id="1_7j6xk"]
-[ext_resource type="Script" path="res://objects/misc/battle effects/battle_fx.gd" id="1_c8tmr"]
+[ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="1_qcrey"]
+[ext_resource type="AudioStream" uid="uid://cswai4l4yb8nb" path="res://sound/fire.wav" id="2_pwncw"]
 
-[sub_resource type="Animation" id="Animation_iekad"]
+[sub_resource type="Animation" id="Animation_mwpjy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("audio:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("audio:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_rwhqj"]
 resource_name = "fx_animation"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,10 +40,10 @@ tracks/0/path = NodePath("flame_sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.0333334, 0.133333, 0.233333, 0.333333, 0.433333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 4, 2, 3]
+"values": [0, 1, 4, 2, 3, 2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -37,30 +64,57 @@ tracks/2/path = NodePath("flame_sprite:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.7),
+"times": PackedFloat32Array(0.0666667, 0.266667, 0.566667, 0.766667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0kffv"]
-_data = {
-"fx_animation": SubResource("Animation_iekad")
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("audio:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("audio:pitch_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.9]
 }
 
-[node name="FireFx" type="Node2D" node_paths=PackedStringArray("animation_player")]
-script = ExtResource("1_c8tmr")
-animation_player = NodePath("AnimationPlayer")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_35rcg"]
+_data = {
+"RESET": SubResource("Animation_mwpjy"),
+"fx_animation": SubResource("Animation_rwhqj")
+}
 
-[node name="flame_sprite" type="Sprite2D" parent="."]
-scale = Vector2(1.21429, 1.21429)
+[node name="FireFx" instance=ExtResource("1_qcrey")]
+
+[node name="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_35rcg")
+}
+
+[node name="audio" parent="." index="1"]
+stream = ExtResource("2_pwncw")
+
+[node name="flame_sprite" type="Sprite2D" parent="." index="2"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(4, 4)
 texture = ExtResource("1_7j6xk")
 offset = Vector2(0, -17.5)
 hframes = 3
 vframes = 2
-frame = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_0kffv")
-}
+frame = 2
