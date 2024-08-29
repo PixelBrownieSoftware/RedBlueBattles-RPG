@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://j1bssc0acabu"]
 
 [ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="1_nlnae"]
-[ext_resource type="Texture2D" uid="uid://bdm0iiq8vn1yq" path="res://sprites/effects_hit.png" id="2_pfgtw"]
+[ext_resource type="Texture2D" uid="uid://bdm0iiq8vn1yq" path="res://sprites/effects/effects_hit.png" id="2_pfgtw"]
 
 [sub_resource type="Animation" id="Animation_t1agt"]
 resource_name = "fx_animation"

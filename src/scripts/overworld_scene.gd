@@ -20,7 +20,7 @@ func _ready():
 		tab.go_to_ex_skills.connect($MainMenu/ExtraSkillsMenu.open_menu)
 		tab.load_skill_buttons()
 		$MainMenu/PartyMemberTabs.add_child(tab)
-	debug_stuff()
+	#debug_stuff()
 	
 func close_party_menu():
 	previous_menu = "extra_menu"
@@ -31,8 +31,12 @@ func close_party_menu():
 func debug_stuff():
 	GlobalVariables.expereince_score = 1000000
 	var chara : battle_character_data = PartyMembers.get_child(0)
-	GlobalVariables.add_extra_skill(preload("res://data/Skills/Ice/icicle.tres"))
-	GlobalVariables.add_extra_skill(preload("res://data/Skills/Force/rampage.tres"))
+	var dir = DirAccess.get_directories_at("res://data/Skills/")
+	for folder in dir:
+		var moves = DirAccess.get_files_at("res://data/Skills/" + folder)
+		for move_name in moves:
+			var move : rpg_skill = ResourceLoader.load("res://data/Skills/" + folder + "/" + move_name)
+			GlobalVariables.add_extra_skill(move)
 	#GlobalVariables.get_all_chara_exsk(chara)
 
 func load_enemy_menu():

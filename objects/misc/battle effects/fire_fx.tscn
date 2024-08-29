@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7fbel1h3unhg"]
 
-[ext_resource type="Texture2D" uid="uid://bt5us58b8w086" path="res://sprites/fire_fx.png" id="1_7j6xk"]
+[ext_resource type="Texture2D" uid="uid://bt5us58b8w086" path="res://sprites/effects/fire_fx.png" id="1_7j6xk"]
 [ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="1_qcrey"]
 [ext_resource type="AudioStream" uid="uid://cswai4l4yb8nb" path="res://sound/fire.wav" id="2_pwncw"]
 

@@ -1,17 +1,59 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=2 format=3 uid="uid://1hhl1ce3yyl6"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=16 format=3 uid="uid://1hhl1ce3yyl6"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_4lwdj"]
+[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_7pksv"]
+[ext_resource type="Script" path="res://src/battle_character_behaviour.gd" id="2_i4hge"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_x5rhp"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_hucbd"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="4_h8bfo"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_bgy05"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="6_mohs8"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="7_36uke"]
+[ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/Skills/Peirce/shoot.tres" id="7_y2suu"]
+[ext_resource type="Resource" uid="uid://1t2mb83d8mp2" path="res://data/Skills/Peirce/machine_gun.tres" id="8_5kc7o"]
+
+[sub_resource type="Resource" id="Resource_pli85"]
+script = ExtResource("1_7pksv")
+behaviouir_conditions = Array[ExtResource("2_i4hge")]([])
+condition = 2
+
+[sub_resource type="Resource" id="Resource_i4w0r"]
+script = ExtResource("2_x5rhp")
+elemental = ExtResource("4_h8bfo")
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_rccwk"]
+script = ExtResource("6_mohs8")
+health_min = 1
+health_max = 1
+strength = 0.29
+vitality = 0.38
+magic_pow = 0.12
+dexterity = 0.45
+agility = 0.37
+luck = 0.285
+
+[sub_resource type="Resource" id="Resource_jdtyv"]
+script = ExtResource("7_36uke")
+strength = 4
+vitality = 3
+magic_pow = 1
+dexterity = 5
+agility = 1
+luck = 2
 
 [resource]
 script = ExtResource("1_4lwdj")
 name = "Beno"
-health = 1
+health = 28
 stamina = 4
 base_exp_score = 50
 base_exp_to_NL = 50
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
-behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
-elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
-elemental_potential = Array[Resource("res://src/elemental_potential.gd")]([])
-character_colour = Color(1, 1, 1, 1)
+stats = SubResource("Resource_jdtyv")
+stat_increase = SubResource("Resource_rccwk")
+skills = Array[ExtResource("5_bgy05")]([ExtResource("7_y2suu"), ExtResource("8_5kc7o")])
+behaviour = Array[ExtResource("1_7pksv")]([SubResource("Resource_pli85")])
+elemental_affinities = Array[ExtResource("2_x5rhp")]([SubResource("Resource_i4w0r")])
+elemental_potential = Array[ExtResource("3_hucbd")]([])
+character_colour = Color(0.383492, 0.394515, 0.915503, 1)
 animation_player_loc = "sprite_beno"

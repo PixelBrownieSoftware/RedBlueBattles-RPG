@@ -19,17 +19,23 @@ const divider : float = 8.4
 @export var agility : int = 1
 @export var luck : int = 1
 var pass_turn : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
-
+@export var get_natural_skills : Array[rpg_skill]:
+	get:
+		var skills_arr : Array[rpg_skill]
+		for original_skill : rpg_skill in assigned_data.skills:
+			if original_skill.requirements_met(self)["req_met"]:
+				skills_arr.push_back(original_skill)
+		return skills_arr
+		
 @export var get_skills : Array[rpg_skill]:
 	get:
 		var skills_arr : Array[rpg_skill]
 		for original_skill : rpg_skill in assigned_data.skills:
-			if original_skill.requirements_met(self):
+			if original_skill.requirements_met(self)["req_met"]:
 				skills_arr.push_back(original_skill)
 		for skill : rpg_skill in extra_skills:
-			if skill.requirements_met(self):
+			if skill.requirements_met(self)["req_met"]:
 				skills_arr.push_back(skill)
-		print(skills_arr)
 		return skills_arr
 		
 @export var get_learnable_skills: Array[rpg_skill]:

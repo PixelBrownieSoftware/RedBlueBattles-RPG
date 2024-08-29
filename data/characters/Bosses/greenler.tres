@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=14 format=3 uid="uid://bcjoka06yw8pm"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://bcjoka06yw8pm"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_asvms"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_n6i0t"]
@@ -10,11 +10,12 @@
 [ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="3_k4kwr"]
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="4_nhdvh"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_3tv5s"]
+[ext_resource type="Resource" uid="uid://dqjbrdfm4xf7c" path="res://data/Skills/Electric/zeus_spear.tres" id="9_4uwce"]
 
 [sub_resource type="Resource" id="Resource_crmr6"]
 script = ExtResource("3_4d838")
 elemental = ExtResource("4_nhdvh")
-potential = 2
+potential = 3
 
 [sub_resource type="Resource" id="Resource_r4ocw"]
 script = ExtResource("2_a2j4d")
@@ -45,7 +46,7 @@ base_exp_score = 120
 base_exp_to_NL = 50
 stats = SubResource("Resource_tt8x0")
 stat_increase = SubResource("Resource_r4ocw")
-skills = Array[ExtResource("5_3tv5s")]([ExtResource("2_32uhm"), ExtResource("3_k4kwr")])
+skills = Array[ExtResource("5_3tv5s")]([ExtResource("2_32uhm"), ExtResource("3_k4kwr"), ExtResource("9_4uwce")])
 behaviour = Array[ExtResource("1_asvms")]([])
 elemental_affinities = Array[ExtResource("2_qgbai")]([])
 elemental_potential = Array[ExtResource("3_4d838")]([SubResource("Resource_crmr6")])

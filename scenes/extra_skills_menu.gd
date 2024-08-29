@@ -16,12 +16,14 @@ func open_menu(character : battle_character_data):
 	
 func update_skills():
 	var skill_ind : int = 0
+	$"Extra skills limit/limit".text = "Extra skills slots left: " + str(GlobalVariables.extra_skills_limit - chara.extra_skills.size())
 	for skill in GlobalVariables.extra_skills:
 		var button = buttons[skill_ind]
-		if chara.get_skills.rfind(skill) != -1:
+		if chara.get_natural_skills.rfind(skill) != -1:
 			button.disabled = true
 		else:
 			button.disabled = false
+		
 		button.selected_skill = skill
 		button.character = chara
 		button.load_skill.connect(add_skill)
@@ -70,6 +72,10 @@ func add_skill(move):
 	display_skills()
 
 func assign_skill():
+	var skill_limit_exceeded = GlobalVariables.extra_skills_limit == chara.extra_skills.size()
+	if skill_limit_exceeded:
+		if GlobalVariables.equipped_extra_skills[selected_skill.name] != chara:
+			return
 	GlobalVariables.assign_skill(chara,selected_skill)
 	display_skills()
 	update_skills()

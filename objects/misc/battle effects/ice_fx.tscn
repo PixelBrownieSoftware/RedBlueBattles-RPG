@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctqhionquaio8"]
 
 [ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="1_rkpnr"]
-[ext_resource type="Texture2D" uid="uid://drvt3fjhyr7k4" path="res://sprites/ice_fx.png" id="2_s7xyx"]
+[ext_resource type="Texture2D" uid="uid://drvt3fjhyr7k4" path="res://sprites/effects/ice_fx.png" id="2_s7xyx"]
 [ext_resource type="AudioStream" uid="uid://b4x45g5pohff2" path="res://sound/ice.wav" id="3_6jl2x"]
 
 [sub_resource type="Animation" id="Animation_fcl4q"]

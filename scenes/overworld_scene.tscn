@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=30 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="2_8515p"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cf4s1n8tbgm7o" path="res://objects/UI/member_select_button.tscn" id="12_tpcla"]
 [ext_resource type="Resource" uid="uid://dfanj3jqa78ce" path="res://data/groups/beno/b_easy_battle_1.tres" id="13_4mt5m"]
 [ext_resource type="Resource" uid="uid://blfjp3c2qq664" path="res://data/groups/beno/b_hard_battle_1.tres" id="14_oc1m6"]
+[ext_resource type="Resource" uid="uid://cb257wlalldep" path="res://data/groups/greenler/g_easy_battle_3.tres" id="14_xs2ru"]
 [ext_resource type="Resource" uid="uid://mv0dwrjyce2a" path="res://data/groups/beno/b_boss.tres" id="15_6m0ag"]
 [ext_resource type="Resource" uid="uid://oooh4cgtb157" path="res://data/groups/beno/b_mini_boss.tres" id="16_b75sr"]
 [ext_resource type="Resource" uid="uid://dp0nw3gmr76s8" path="res://data/groups/lord red/lr_easy_battle_1.tres" id="16_j7iww"]
@@ -443,7 +444,6 @@ offset_right = 763.0
 offset_bottom = 496.0
 
 [node name="ExtraSkillsMenu" type="Panel" parent="MainMenu"]
-visible = false
 layout_mode = 0
 offset_left = 175.0
 offset_top = 196.0
@@ -453,8 +453,8 @@ script = ExtResource("7_jfqex")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/ExtraSkillsMenu"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 712.0
+offset_bottom = 335.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/ExtraSkillsMenu/VBoxContainer"]
 layout_mode = 2
@@ -626,24 +626,39 @@ layout_mode = 2
 
 [node name="MoveDesc" type="Panel" parent="MainMenu/ExtraSkillsMenu"]
 layout_mode = 0
-offset_left = 463.0
-offset_right = 719.0
-offset_bottom = 282.0
+offset_left = 724.0
+offset_top = 1.0
+offset_right = 988.0
+offset_bottom = 335.0
 
 [node name="move desk text" type="RichTextLabel" parent="MainMenu/ExtraSkillsMenu/MoveDesc"]
 layout_mode = 0
-offset_right = 251.0
-offset_bottom = 236.0
+offset_right = 256.0
+offset_bottom = 286.0
 bbcode_enabled = true
 text = "fefef"
 
 [node name="Equip skill" type="Button" parent="MainMenu/ExtraSkillsMenu/MoveDesc"]
 layout_mode = 0
-offset_left = 63.0
-offset_top = 246.0
-offset_right = 198.0
-offset_bottom = 277.0
+offset_left = 29.0
+offset_top = 297.0
+offset_right = 164.0
+offset_bottom = 328.0
 text = "Assign"
+
+[node name="Extra skills limit" type="Panel" parent="MainMenu/ExtraSkillsMenu"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -42.0
+offset_right = 705.0
+offset_bottom = -6.0
+
+[node name="limit" type="RichTextLabel" parent="MainMenu/ExtraSkillsMenu/Extra skills limit"]
+layout_mode = 0
+offset_right = 705.0
+offset_bottom = 35.0
+bbcode_enabled = true
+text = "fefef"
 
 [node name="Back2" type="Button" parent="MainMenu/ExtraSkillsMenu"]
 layout_mode = 2
@@ -654,10 +669,11 @@ offset_bottom = -51.0
 text = "Back"
 
 [node name="EnemySelectTabs" type="TabContainer" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 86.0
+offset_left = -778.0
 offset_top = 100.0
-offset_right = 807.0
+offset_right = -57.0
 offset_bottom = 539.0
 current_tab = 0
 
@@ -681,7 +697,7 @@ offset_top = 181.0
 offset_right = 183.0
 offset_bottom = 212.0
 text = "Easy fight"
-battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("10_x3xdn"), ExtResource("12_1ae5g")])
+battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("10_x3xdn"), ExtResource("12_1ae5g"), ExtResource("14_xs2ru")])
 
 [node name="Hard" parent="MainMenu/EnemySelectTabs/Greenler" instance=ExtResource("8_0fx3b")]
 layout_mode = 2
@@ -828,10 +844,10 @@ battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("18_4vcfm")])
 [node name="PartyMemberTabs" type="TabContainer" parent="MainMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 816.0
-offset_top = 144.0
-offset_right = 1375.0
-offset_bottom = 545.0
+offset_left = 200.0
+offset_top = -370.0
+offset_right = 759.0
+offset_bottom = 31.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
 libraries = {
@@ -839,6 +855,7 @@ libraries = {
 }
 
 [node name="Party" type="Button" parent="MainMenu"]
+visible = false
 layout_mode = 2
 offset_left = 823.0
 offset_top = 295.0

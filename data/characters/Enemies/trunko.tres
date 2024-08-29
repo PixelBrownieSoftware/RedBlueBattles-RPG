@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://dn8iqklx4h2v7"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=20 format=3 uid="uid://dn8iqklx4h2v7"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_13rwa"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_63kko"]
@@ -9,14 +9,21 @@
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="3_k0xex"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_kc5rl"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="3_vt0xm"]
+[ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="4_8baoh"]
 [ext_resource type="Resource" uid="uid://5xy2ge6rh0qf" path="res://data/Skills/Dark/shadow_ball.tres" id="4_xeiwk"]
 [ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="5_skbw1"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_eib6d"]
+[ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/Skills/Electric/lightning.tres" id="11_yfat8"]
 
 [sub_resource type="Resource" id="Resource_wfdlb"]
 script = ExtResource("1_63kko")
 behaviouir_conditions = Array[ExtResource("2_l4qfo")]([])
 condition = 2
+
+[sub_resource type="Resource" id="Resource_66i3f"]
+script = ExtResource("3_vt0xm")
+elemental = ExtResource("4_8baoh")
+affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_mk3vo"]
 script = ExtResource("3_kc5rl")
@@ -52,9 +59,9 @@ base_exp_score = 50
 base_exp_to_NL = 50
 stats = SubResource("Resource_1xov1")
 stat_increase = SubResource("Resource_bv32j")
-skills = Array[ExtResource("7_eib6d")]([ExtResource("3_k0xex"), ExtResource("4_xeiwk"), ExtResource("5_skbw1")])
+skills = Array[ExtResource("7_eib6d")]([ExtResource("3_k0xex"), ExtResource("4_xeiwk"), ExtResource("5_skbw1"), ExtResource("11_yfat8")])
 behaviour = Array[ExtResource("1_63kko")]([SubResource("Resource_wfdlb")])
-elemental_affinities = Array[ExtResource("3_vt0xm")]([])
+elemental_affinities = Array[ExtResource("3_vt0xm")]([SubResource("Resource_66i3f")])
 elemental_potential = Array[ExtResource("3_kc5rl")]([SubResource("Resource_mk3vo")])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_trunko"

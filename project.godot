@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Turn based RPG system"
+config/name="Red blue Battles"
+config/name_localized={
+"ja": "赤青戦い"
+}
 run/main_scene="res://scenes/overworld_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"

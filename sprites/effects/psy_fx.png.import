@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxyrwt2iapsr"
-path="res://.godot/imported/lightning strike 1.png-55f39e807ca73646f9e20582ca8ab172.ctex"
+uid="uid://kycj7pu1wcjs"
+path="res://.godot/imported/psy_fx.png-76bed71d5f81fe98ebcc900e89e1a44c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/lightning strike 1.png"
-dest_files=["res://.godot/imported/lightning strike 1.png-55f39e807ca73646f9e20582ca8ab172.ctex"]
+source_file="res://sprites/effects/psy_fx.png"
+dest_files=["res://.godot/imported/psy_fx.png-76bed71d5f81fe98ebcc900e89e1a44c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drkti4fio550h"
-path="res://.godot/imported/fxsAnim.png-65d13cb17a45a38b1c0235d5b5939c86.ctex"
+uid="uid://b2rjl6idvuceq"
+path="res://.godot/imported/effects_shoot.png-7f85ff747c28eaf725f73a0d6862feb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/fxsAnim.png"
-dest_files=["res://.godot/imported/fxsAnim.png-65d13cb17a45a38b1c0235d5b5939c86.ctex"]
+source_file="res://sprites/effects/effects_shoot.png"
+dest_files=["res://.godot/imported/effects_shoot.png-7f85ff747c28eaf725f73a0d6862feb6.ctex"]
 
 [params]
 

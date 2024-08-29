@@ -28,7 +28,7 @@ luck = 1
 
 [resource]
 script = ExtResource("1_8yd1n")
-name = "Attack"
+name = "Slash"
 learnable = false
 power = 5
 stamina_cost = 0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh0uy04tf38vl"
-path="res://.godot/imported/hit_fx.png-8d34f9601a5092f5a39089c04abb08fe.ctex"
+uid="uid://bwdhjrya1xryw"
+path="res://.godot/imported/psy_anim.png-0ef7bb7d207a9139a389e54b8f76e919.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/hit_fx.png"
-dest_files=["res://.godot/imported/hit_fx.png-8d34f9601a5092f5a39089c04abb08fe.ctex"]
+source_file="res://sprites/effects/psy_anim.png"
+dest_files=["res://.godot/imported/psy_anim.png-0ef7bb7d207a9139a389e54b8f76e919.ctex"]
 
 [params]
 

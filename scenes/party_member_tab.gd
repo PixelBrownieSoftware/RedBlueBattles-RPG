@@ -25,9 +25,6 @@ func load_skill_buttons():
 		button.visible = false
 	var index : int = 0
 	for skill in current_character.get_skills:
-		#Yeah, I know there are less crude ways to do this, but it's only one action!
-		if skill.name == "Attack":
-			continue
 		var button = $Panel/ScrollContainer/VBoxContainer.get_child(index)
 		button.text = skill.name
 		button.selected_skill = skill

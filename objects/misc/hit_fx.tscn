@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://u6rmk7cwgbqj"]
 
 [ext_resource type="Script" path="res://objects/misc/hit_fx.gd" id="1_siypt"]
-[ext_resource type="Texture2D" uid="uid://bh0uy04tf38vl" path="res://sprites/hit_fx.png" id="1_yiord"]
+[ext_resource type="Texture2D" uid="uid://bh0uy04tf38vl" path="res://sprites/effects/hit_fx.png" id="1_yiord"]
 [ext_resource type="Shader" path="res://objects/misc/hit_fx.gdshader" id="2_2dbdq"]
 [ext_resource type="FontFile" uid="uid://bn7h7hhogw0vg" path="res://misc/fonts/Shermlock.ttf" id="5_vk7go"]
 [ext_resource type="FontFile" uid="uid://dcx0qhol8qtdq" path="res://misc/fonts/times new roman bold italic.ttf" id="6_rcv4h"]
@@ -398,8 +398,8 @@ pivot_offset = Vector2(52, 26)
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_colors/default_color = Color(0.678431, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.132152, 0.0837514, 0.058088, 1)
 theme_override_colors/font_outline_color = Color(0.682656, 0.575422, 0.339192, 1)
+theme_override_colors/font_shadow_color = Color(0.132152, 0.0837514, 0.058088, 1)
 theme_override_fonts/normal_font = ExtResource("6_rcv4h")
 theme_override_font_sizes/normal_font_size = 21
 theme_override_font_sizes/bold_font_size = 19
@@ -425,8 +425,8 @@ pivot_offset = Vector2(31.0233, 17.4499)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.132152, 0.0837514, 0.058088, 1)
 theme_override_colors/font_outline_color = Color(0.55861, 0.597745, 0.608227, 1)
+theme_override_colors/font_shadow_color = Color(0.132152, 0.0837514, 0.058088, 1)
 theme_override_fonts/normal_font = ExtResource("5_vk7go")
 theme_override_font_sizes/normal_font_size = 21
 theme_override_font_sizes/bold_font_size = 19

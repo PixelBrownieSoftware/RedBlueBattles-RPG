@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=7 format=3 uid="uid://buhnvgb0e82yd"]
+
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_c6cyu"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_fxxct"]
+[ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="3_ats7q"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_o82rt"]
+
+[sub_resource type="Resource" id="Resource_2al5r"]
+script = ExtResource("2_fxxct")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_aqqqm"]
+script = ExtResource("4_o82rt")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("1_c6cyu")
+name = "Blizzard"
+learnable = true
+power = 21
+stamina_cost = 8
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_aqqqm")
+skill_scope = 1
+skill_element = ExtResource("3_ats7q")
+skill_animation = Array[ExtResource("2_fxxct")]([SubResource("Resource_2al5r")])

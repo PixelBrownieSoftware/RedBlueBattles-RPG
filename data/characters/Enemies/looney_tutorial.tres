@@ -51,7 +51,7 @@ luck = 2
 
 [resource]
 script = ExtResource("5_inc8k")
-name = "Looney"
+name = "Nitwit"
 health = 15
 stamina = 4
 base_exp_score = 25

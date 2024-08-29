@@ -8,6 +8,8 @@ func behaviour_process():
 	var best_behaviours = {}
 	var character_skills : Array[rpg_skill] = battle_globals.current_character.get_skills
 	for skill in character_skills:
+		if battle_globals.current_character.stamina < skill.get_final_cost(battle_globals.current_character):
+			continue
 		var targets :  Array[battle_character_data]
 		get_targets.emit(skill)
 		for character in battle_globals.targets:
@@ -50,10 +52,16 @@ func find_target_conditions(conditions : Array[battle_character_behaviour], move
 						
 func find_move_behaviour(behaviour : battle_move_behaviour) -> Array[rpg_skill]:
 	var skills : Array[rpg_skill]
-	var character_skills : Array[rpg_skill] = battle_globals.current_character.get_skills
+	var chara = battle_globals.current_character
+	var character_skills : Array[rpg_skill] = chara.get_skills
+	for skill in skills:
+		if chara.stamina < skill.get_final_cost(chara):
+			skills.remove_at(skills.rfind(skill))
 	match behaviour.condition:
 			battle_move_behaviour.MOVE_BEHAVIOUR_CONDITION.SPECIFIC:
 				for skill in character_skills:
+					if chara.stamina < skill.get_final_cost(chara):
+						continue
 					if skill == behaviour.specific_skill:
 						skills.append(skill)
 						return skills
@@ -61,6 +69,8 @@ func find_move_behaviour(behaviour : battle_move_behaviour) -> Array[rpg_skill]:
 			battle_move_behaviour.MOVE_BEHAVIOUR_CONDITION.ELEMENT:
 				#TODO: look through all the elements of this type
 				for skill in character_skills:
+					if chara.stamina < skill.get_final_cost(chara):
+						continue
 					if skill.skill_element == behaviour.specific_element:
 						skills.append(skill)
 	return skills

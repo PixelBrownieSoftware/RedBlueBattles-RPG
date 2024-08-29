@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh5xhn3yicxsn"
-path="res://.godot/imported/electric_fx.png-9f78e8b716f2f4c0ad2feedabe0ae690.ctex"
+uid="uid://dsfe7hh7dfbex"
+path="res://.godot/imported/flame strike.png-5bc6b7798a7464ea64cab4ba64d2c9e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/electric_fx.png"
-dest_files=["res://.godot/imported/electric_fx.png-9f78e8b716f2f4c0ad2feedabe0ae690.ctex"]
+source_file="res://sprites/effects/flame strike.png"
+dest_files=["res://.godot/imported/flame strike.png-5bc6b7798a7464ea64cab4ba64d2c9e6.ctex"]
 
 [params]
 

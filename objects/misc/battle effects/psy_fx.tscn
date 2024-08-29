@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsrf8asskwe2"]
+
+[ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="1_f03o5"]
+[ext_resource type="AudioStream" uid="uid://bkq8n33mo78f4" path="res://sound/psy_shock.wav" id="2_kiuu5"]
+[ext_resource type="Texture2D" uid="uid://kycj7pu1wcjs" path="res://sprites/effects/psy_fx.png" id="2_uwhwg"]
+
+[sub_resource type="Animation" id="Animation_yty4k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("psy_fx:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("psy_fx:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3txvb"]
+resource_name = "fx_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("psy_fx:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.166667, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.3, 3), Vector2(0.3, 3), Vector2(3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("psy_fx:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38u3c"]
+_data = {
+"RESET": SubResource("Animation_yty4k"),
+"fx_animation": SubResource("Animation_3txvb")
+}
+
+[node name="PsyFx" instance=ExtResource("1_f03o5")]
+
+[node name="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_38u3c")
+}
+
+[node name="audio" parent="." index="1"]
+stream = ExtResource("2_kiuu5")
+
+[node name="psy_fx" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_uwhwg")

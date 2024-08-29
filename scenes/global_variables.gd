@@ -4,6 +4,7 @@ class_name global_variables
 @export var debug_mode : bool = false
 @export var expereince_score : int = 0
 var multilplier: float = 1
+var extra_skills_limit = 3
 
 func set_multiplier(mul):
 	multilplier = mul
@@ -48,6 +49,14 @@ func add_extra_skill(skill : rpg_skill) -> bool:
 			#skills.append(skill)		
 	#return skills
 	
+func save_data():
+	#TODO: SAVE-
+	#- party data (stats, level, members)
+	#- experience
+	#- which extra skills exist and which ones are equippied on who
+	#- additional flags (NOT YET IMPLEMENTED)
+	pass
+
 func assign_skill(chara : battle_character_data, extra_skill : rpg_skill):
 	var ind = chara.extra_skills.rfind(extra_skill)
 	var chara_exists = equipped_extra_skills[extra_skill.name]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqbe7hw7ccmkc"
-path="res://.godot/imported/froststrike.png-6f93fca1b02279e91f00f421b334ae6d.ctex"
+path="res://.godot/imported/froststrike.png-fa19ddb4737140a7c3630dd3ba0332af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/froststrike.png"
-dest_files=["res://.godot/imported/froststrike.png-6f93fca1b02279e91f00f421b334ae6d.ctex"]
+source_file="res://sprites/effects/froststrike.png"
+dest_files=["res://.godot/imported/froststrike.png-fa19ddb4737140a7c3630dd3ba0332af.ctex"]
 
 [params]
 
