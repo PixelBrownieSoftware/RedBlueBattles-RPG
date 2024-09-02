@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="element" load_steps=2 format=3 uid="uid://denev0eb5urku"]
-
-[ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_oec30"]
-
-[resource]
-script = ExtResource("1_oec30")
-name = "Light"

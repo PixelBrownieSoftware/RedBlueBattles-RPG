@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=16 format=3 uid="uid://8s6w1jqap08l"]
+
+[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_h8r4c"]
+[ext_resource type="Script" path="res://src/battle_character_behaviour.gd" id="2_vccbg"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="3_g288e"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="4_xwmdp"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="5_4q2cf"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_l1x2b"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_4h8a7"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="8_otdkf"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="9_ug850"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="10_f7glw"]
+
+[sub_resource type="Resource" id="Resource_sax6w"]
+script = ExtResource("2_vccbg")
+condition = 0
+compare = 0
+percentage = 0.32
+elemental = 0.0
+exact_number = 0
+
+[sub_resource type="Resource" id="Resource_040w8"]
+script = ExtResource("1_h8r4c")
+behaviouir_conditions = Array[ExtResource("2_vccbg")]([SubResource("Resource_sax6w")])
+condition = 2
+
+[sub_resource type="Resource" id="Resource_iqb27"]
+script = ExtResource("3_g288e")
+elemental = ExtResource("4_xwmdp")
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_6lsdj"]
+script = ExtResource("9_ug850")
+health_min = 3
+health_max = 3
+strength = 0.13
+vitality = 0.28
+magic_pow = 0.055
+dexterity = 0.365
+agility = 0.37
+luck = 0.275
+
+[sub_resource type="Resource" id="Resource_eui2d"]
+script = ExtResource("10_f7glw")
+strength = 2
+vitality = 2
+magic_pow = 1
+dexterity = 2
+agility = 1
+luck = 2
+
+[resource]
+script = ExtResource("6_l1x2b")
+name = "Nitwit"
+health = 26
+stamina = 4
+base_exp_score = 25
+base_exp_to_NL = 50
+stats = SubResource("Resource_eui2d")
+stat_increase = SubResource("Resource_6lsdj")
+skills = Array[ExtResource("7_4h8a7")]([ExtResource("8_otdkf")])
+behaviour = Array[ExtResource("1_h8r4c")]([SubResource("Resource_040w8")])
+elemental_affinities = Array[ExtResource("3_g288e")]([SubResource("Resource_iqb27")])
+elemental_potential = Array[ExtResource("5_4q2cf")]([])
+character_colour = Color(1, 1, 1, 1)
+animation_player_loc = "sprite_looney"

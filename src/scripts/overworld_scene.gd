@@ -20,7 +20,7 @@ func _ready():
 		tab.go_to_ex_skills.connect($MainMenu/ExtraSkillsMenu.open_menu)
 		tab.load_skill_buttons()
 		$MainMenu/PartyMemberTabs.add_child(tab)
-	#debug_stuff()
+	debug_stuff()
 	
 func close_party_menu():
 	previous_menu = "extra_menu"

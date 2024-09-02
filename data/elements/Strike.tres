@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="element" load_steps=4 format=3 uid="uid://5en31hxrc1ca"]
+[gd_resource type="Resource" script_class="element" load_steps=7 format=3 uid="uid://5en31hxrc1ca"]
 
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_2uek1"]
 [ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_meq1u"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_2hboc"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_y41r5"]
+[ext_resource type="Texture2D" uid="uid://ba35uqo2jr3ys" path="res://sprites/GUI/elements_strike.png" id="3_ru4dr"]
 
 [sub_resource type="Resource" id="Resource_h86ba"]
 script = ExtResource("2_2hboc")
@@ -18,3 +21,6 @@ luck = 0.0
 script = ExtResource("1_meq1u")
 name = "Strike"
 stats = SubResource("Resource_h86ba")
+icon = ExtResource("3_ru4dr")
+effects_to_remove = Array[ExtResource("2_y41r5")]([])
+effects_to_add = Array[ExtResource("1_2uek1")]([])

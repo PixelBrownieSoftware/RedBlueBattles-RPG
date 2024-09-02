@@ -1,18 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://mugpveucbeey"]
+[gd_scene load_steps=3 format=3 uid="uid://mugpveucbeey"]
 
 [ext_resource type="Script" path="res://objects/UI/element_potential.gd" id="1_nlf7e"]
+[ext_resource type="Texture2D" uid="uid://ba35uqo2jr3ys" path="res://sprites/GUI/elements_strike.png" id="2_ukfl8"]
 
 [node name="ElementPotential" type="Control"]
 layout_mode = 3
-anchor_right = 0.047
+anchor_right = 0.101
 anchor_bottom = 0.079
-offset_right = -54.144
-offset_bottom = -51.192
+offset_right = -58.352
+offset_bottom = -25.192
 script = ExtResource("1_nlf7e")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 51.0
+offset_bottom = 23.0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ukfl8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(37.165, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 bbcode_enabled = true
-text = "3443"
+text = "2321"
+fit_content = true
+scroll_active = false
+tab_size = 2

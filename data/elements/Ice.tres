@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="element" load_steps=4 format=3 uid="uid://crru00x2wa00j"]
+[gd_resource type="Resource" script_class="element" load_steps=8 format=3 uid="uid://crru00x2wa00j"]
 
 [ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_nwt47"]
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_qutlt"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_3nmbo"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_gok5j"]
+[ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status effects/burn.tres" id="3_uhpsj"]
+[ext_resource type="Texture2D" uid="uid://btkper5utqey3" path="res://sprites/GUI/elements_ice.png" id="4_g2mlu"]
 
 [sub_resource type="Resource" id="Resource_tb7rd"]
 script = ExtResource("2_3nmbo")
@@ -18,3 +22,6 @@ luck = 0.0
 script = ExtResource("1_nwt47")
 name = "Ice"
 stats = SubResource("Resource_tb7rd")
+icon = ExtResource("4_g2mlu")
+effects_to_remove = Array[ExtResource("2_gok5j")]([ExtResource("3_uhpsj")])
+effects_to_add = Array[ExtResource("1_qutlt")]([])

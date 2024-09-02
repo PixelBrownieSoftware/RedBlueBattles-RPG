@@ -1,5 +1,7 @@
 extends Node
+class_name battle_fx_factory
 var hit_prefab = preload("res://objects/misc/hit_fx.tscn")
+var status_info_prefab = preload("res://objects/UI/status_effect_notification.tscn")
 var objects = {}
 signal battle_fx_anim_done()
 
@@ -14,6 +16,19 @@ func spawn_damage_obj(user : battle_character_data, target : battle_character_da
 	hit.position = actor.position
 	var is_player = GlobalVariables.is_player_team(target)
 	hit.set_values(number, is_player, target.assigned_data.character_colour, pt)
+
+func spawn_status_add_effect_info(status):
+	var actor : battle_character_actor = $"../Variables".get_actor($"../Variables".target_character)
+	var status_info = status_info_prefab.instantiate()
+	status_info.position = actor.position
+	status_info.status_effect_notif(status, true)
+	
+func spawn_status_remove_effect_info(status):
+	var actor : battle_character_actor = $"../Variables".get_actor($"../Variables".target_character)
+	var status_info = status_info_prefab.instantiate()
+	status_info.position = actor.position
+	add_child(status_info)
+	status_info.status_effect_notif(status, false)
 
 func spawn_attack_effect(object : String, target : battle_character_data):
 	var actor : battle_character_actor = $"../Variables".get_actor(target)

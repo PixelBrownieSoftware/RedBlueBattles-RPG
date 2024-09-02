@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ckkn8g3r0etlr"]
+[gd_scene load_steps=31 format=3 uid="uid://ckkn8g3r0etlr"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_character_actor_manager.gd" id="1_3w2at"]
 [ext_resource type="Script" path="res://src/scripts/battle_state_machine.gd" id="2_4cala"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://o47wvssmmis2" path="res://objects/UI/press_turn_icon.tscn" id="18_iu8l8"]
 [ext_resource type="Script" path="res://scenes/notification_skill.gd" id="22_g4le8"]
 [ext_resource type="Script" path="res://scenes/exp_bonuses_menu.gd" id="23_ioo5t"]
+[ext_resource type="Script" path="res://src/buttons/analyse_button.gd" id="24_hhfo5"]
 
 [sub_resource type="Animation" id="Animation_r7yil"]
 length = 0.001
@@ -201,13 +202,17 @@ _data = {
 
 [node name="BattleActors" type="Node" parent="."]
 
-[node name="PartyMemberActors" type="Node" parent="BattleActors" node_paths=PackedStringArray("position_nodes")]
+[node name="PartyMemberActors" type="Node" parent="BattleActors" node_paths=PackedStringArray("position_nodes", "fx_factory", "exp_watch")]
 script = ExtResource("1_3w2at")
 position_nodes = NodePath("../PartyPositions")
+fx_factory = NodePath("../../BattleFXFactory")
+exp_watch = NodePath("../../Variables/ExpereinceWatcher")
 
-[node name="EnemyMemberActors" type="Node" parent="BattleActors" node_paths=PackedStringArray("position_nodes")]
+[node name="EnemyMemberActors" type="Node" parent="BattleActors" node_paths=PackedStringArray("position_nodes", "fx_factory", "exp_watch")]
 script = ExtResource("1_3w2at")
 position_nodes = NodePath("../EnemyPositions")
+fx_factory = NodePath("../../BattleFXFactory")
+exp_watch = NodePath("../../Variables/ExpereinceWatcher")
 
 [node name="EnemyPositions" type="Node" parent="BattleActors"]
 
@@ -293,24 +298,24 @@ script = ExtResource("10_g8410")
 script = ExtResource("13_brywo")
 
 [node name="Score" type="RichTextLabel" parent="Variables/ExpereinceWatcher"]
-offset_left = 925.0
+offset_left = 993.0
 offset_top = 577.0
 offset_right = 1154.0
 offset_bottom = 643.0
 
 [node name="Score Add" type="RichTextLabel" parent="Variables/ExpereinceWatcher"]
-offset_left = 925.0
-offset_top = 495.0
-offset_right = 1154.0
-offset_bottom = 561.0
+offset_left = 979.0
+offset_top = 552.0
+offset_right = 1123.0
+offset_bottom = 585.0
 
 [node name="UIAlign" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(140, 0)
 layout_direction = 1
-offset_left = 12.0
-offset_top = 572.0
-offset_right = 1132.65
-offset_bottom = 647.0
+offset_left = 8.0
+offset_top = 525.0
+offset_right = 1128.65
+offset_bottom = 600.0
 theme_override_constants/separation = 215
 
 [node name="Target Menu" type="Panel" parent="."]
@@ -545,6 +550,23 @@ offset_top = 5.0
 offset_right = 506.0
 offset_bottom = 261.0
 
+[node name="Character stats" type="TabContainer" parent="."]
+visible = false
+z_index = 97
+offset_left = 7.0
+offset_top = 123.0
+offset_right = 784.0
+offset_bottom = 514.0
+
+[node name="Analyse" type="Button" parent="."]
+z_index = 99
+offset_left = 995.0
+offset_top = 490.0
+offset_right = 1116.0
+offset_bottom = 536.0
+text = "Analyse"
+script = ExtResource("24_hhfo5")
+
 [connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/PartyMemberActors" method="add_characters"]
 [connection signal="add_characters" from="BattleStateMachine/Starter" to="BattleActors/EnemyMemberActors" method="add_characters"]
 [connection signal="change_state" from="BattleStateMachine/Starter" to="BattleStateMachine" method="change_state"]
@@ -607,6 +629,7 @@ offset_bottom = 261.0
 [connection signal="animation_finished" from="Attack Menu/AnimationPlayer" to="Attack Menu" method="_on_animation_player_animation_finished"]
 [connection signal="battle_fx_anim_done" from="BattleFXFactory" to="BattleStateMachine/Process" method="fx_anim_done"]
 [connection signal="pressed" from="EXP Bonuses/Continue" to="BattleStateMachine/EndBattle" method="leave_battle"]
+[connection signal="pressed" from="Analyse" to="Analyse" method="_on_pressed"]
 
 [editable path="PressTurnUI/PressTurnContainer/PressTurnIcon"]
 [editable path="PressTurnUI/PressTurnContainer/PressTurnIcon2"]

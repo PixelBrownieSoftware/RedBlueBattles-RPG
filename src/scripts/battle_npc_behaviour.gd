@@ -4,7 +4,12 @@ signal get_targets(skill)
 signal start_process_state()
 
 func behaviour_process():
-	#var behaviours = battle_globals.current_character.assigned_data.behaviour
+	#var behaviours
+	#if battle_globals.current_character.override_behaviour != null:
+		#behaviours = battle_globals.current_character.override_behaviour
+	#else:
+		#behaviours = battle_globals.current_character.assigned_data.behaviour
+		
 	var best_behaviours = {}
 	var character_skills : Array[rpg_skill] = battle_globals.current_character.get_skills
 	for skill in character_skills:

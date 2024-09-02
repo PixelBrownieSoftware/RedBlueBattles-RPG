@@ -1,8 +1,9 @@
 extends Control
 
 @export var character_data : battle_character_data
+var status_effect_icon_prefab = preload("res://objects/UI/status_effect_icon.tscn")
 var old_health
-
+signal update_status_effect(status)
 
 func _process(delta):
 	if character_data != null:
@@ -24,6 +25,16 @@ func init_dmg_bar():
 	$Offset/DamageBar.value = old_health
 	$Offset/DamageBar.max_value = character_data.max_health
 	
+func update_status(status : status_effect):
+	update_status_effect.emit(status)
+
+func add_status_effect(status : status_effect):
+	var status_gui = status_effect_icon_prefab.instantiate()
+	status_gui.set_icon(status)
+	update_status_effect.connect(status_gui.update_status)
+	update_status_effect.emit(status)
+	$Offset/StatusEffects.add_child(status_gui)
+
 func damage():
 	$AnimationPlayer.play("damage")
 	$Offset/DamageBar.value = old_health

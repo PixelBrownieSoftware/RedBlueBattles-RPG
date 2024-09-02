@@ -1,7 +1,26 @@
-[gd_resource type="Resource" script_class="element" load_steps=2 format=3 uid="uid://dgra6r7q0f6n1"]
+[gd_resource type="Resource" script_class="element" load_steps=7 format=3 uid="uid://dgra6r7q0f6n1"]
 
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_br5sl"]
 [ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_nj2ca"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_4v2ai"]
+[ext_resource type="Texture2D" uid="uid://bqsuse00m8kn8" path="res://sprites/GUI/elements_psy.png" id="3_mrgyl"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="5_noh1j"]
+
+[sub_resource type="Resource" id="Resource_vwhmr"]
+script = ExtResource("5_noh1j")
+health_min = 1
+health_max = 1
+strength = 0.0
+vitality = 0.0
+magic_pow = 0.8
+dexterity = 0.0
+agility = 0.0
+luck = 0.3
 
 [resource]
 script = ExtResource("1_nj2ca")
 name = "Psychic"
+stats = SubResource("Resource_vwhmr")
+icon = ExtResource("3_mrgyl")
+effects_to_remove = Array[ExtResource("2_4v2ai")]([])
+effects_to_add = Array[ExtResource("1_br5sl")]([])

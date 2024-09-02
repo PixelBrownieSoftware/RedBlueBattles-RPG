@@ -1,5 +1,5 @@
 extends Node
-
+class_name exp_watcher
 @export var multiplier : float = 1
 var local_exp_score : int = 0
 signal set_multiplier(mult)

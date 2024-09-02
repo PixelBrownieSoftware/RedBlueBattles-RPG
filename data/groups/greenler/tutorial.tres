@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=7 format=3 uid="uid://023p7lm5i3xw"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_0dy0l"]
-[ext_resource type="Resource" uid="uid://8s6w1jqap08l" path="res://data/characters/Enemies/looney_tutorial.tres" id="2_2j37c"]
+[ext_resource type="Resource" uid="uid://8s6w1jqap08l" path="res://data/characters/Enemies/nitwit.tres" id="2_2j37c"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_3sbad"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_2um12"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="5_egqrt"]

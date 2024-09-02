@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="status_effect" load_steps=11 format=3 uid="uid://boopskh5scdtx"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_d7etf"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_8n41o"]
+[ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status effects/burn.tres" id="2_meou1"]
+[ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="4_wo0kc"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="5_rbuvr"]
+[ext_resource type="Texture2D" uid="uid://bm3dhbdtoa8ij" path="res://sprites/GUI/status_effects_wet.png" id="6_6ifud"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="6_esm27"]
+
+[sub_resource type="Resource" id="Resource_y56vc"]
+script = ExtResource("2_8n41o")
+elemental = ExtResource("4_wo0kc")
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_hugev"]
+script = ExtResource("2_8n41o")
+elemental = ExtResource("5_rbuvr")
+affinity = -1.0
+
+[sub_resource type="Resource" id="Resource_f6tb1"]
+script = ExtResource("6_esm27")
+strength = -1
+vitality = -1
+magic_pow = 0
+dexterity = -2
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("1_d7etf")
+name = "Wet"
+turn_duration = 2
+effects_to_remove = Array[ExtResource("1_d7etf")]([ExtResource("2_meou1")])
+elemental_affinity_change = Array[ExtResource("2_8n41o")]([SubResource("Resource_y56vc"), SubResource("Resource_hugev")])
+stat_changes = SubResource("Resource_f6tb1")
+icon = ExtResource("6_6ifud")
+round_start = false
+after_action = true
+turn_start = false

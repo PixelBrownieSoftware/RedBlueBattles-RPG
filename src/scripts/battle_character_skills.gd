@@ -11,7 +11,7 @@ func start_state():
 	if GlobalVariables.debug_mode:
 		show_skills.emit(battle_globals.current_character.get_skills)
 		return
-	if GlobalVariables.is_player_team(battle_globals.current_character):
+	if GlobalVariables.is_player_team(battle_globals.current_character) && battle_globals.current_character.override_behaviour.size() == 0:
 		$"../../Target Menu".visible = false
 		print("Menu stuff")
 		show_skills.emit(battle_globals.current_character.get_skills)

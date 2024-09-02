@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="status_effect" load_steps=10 format=3 uid="uid://tves5bwqkwdx"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_86skb"]
+[ext_resource type="Resource" uid="uid://d337xaf1p2n4w" path="res://data/status effects/smirk.tres" id="2_0o3gc"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_iglsl"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="3_4oa1h"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_apc6w"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="4_m0vrs"]
+
+[sub_resource type="Resource" id="Resource_pyclm"]
+script = ExtResource("2_iglsl")
+elemental = ExtResource("3_4oa1h")
+affinity = 1.5
+
+[sub_resource type="Resource" id="Resource_1ron5"]
+script = ExtResource("2_iglsl")
+elemental = ExtResource("4_m0vrs")
+affinity = 1.5
+
+[sub_resource type="Resource" id="Resource_rt5ws"]
+script = ExtResource("4_apc6w")
+strength = -1
+vitality = 3
+magic_pow = 0
+dexterity = -1
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("1_86skb")
+name = "Fear"
+turn_duration = 4
+effects_to_remove = Array[ExtResource("1_86skb")]([ExtResource("2_0o3gc")])
+elemental_affinity_change = Array[ExtResource("2_iglsl")]([SubResource("Resource_pyclm"), SubResource("Resource_1ron5")])
+stat_changes = SubResource("Resource_rt5ws")
+round_start = false
+after_action = true
+turn_start = false

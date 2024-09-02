@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_p2qgk"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_quvnl"]
-[ext_resource type="Resource" uid="uid://cy1rleskpxi3b" path="res://data/elements/Dark.tres" id="1_sqlcm"]
-[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Light.tres" id="1_whnob"]
+[ext_resource type="Resource" uid="uid://cy1rleskpxi3b" path="res://data/elements/Bio.tres" id="1_sqlcm"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="1_whnob"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_54a2p"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_rlc8q"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_4ixop"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="3_g1mh3"]
-[ext_resource type="Resource" uid="uid://5xy2ge6rh0qf" path="res://data/Skills/Dark/shadow_ball.tres" id="3_qdcke"]
+[ext_resource type="Resource" uid="uid://5xy2ge6rh0qf" path="res://data/Skills/Bio/shadow_ball.tres" id="3_qdcke"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_bi2rs"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_jji3t"]
 

@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=7 format=3 uid="uid://cd376waxto2ys"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://cd376waxto2ys"]
 
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_ac63l"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_sfbx6"]
+[ext_resource type="Resource" uid="uid://b3d4hvninv1y5" path="res://data/status effects/bleed.tres" id="2_567n5"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_qj4f8"]
 [ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_vt2l3"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="3_pgx38"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_0kiuh"]
+
+[sub_resource type="Resource" id="Resource_gmhi4"]
+script = ExtResource("1_ac63l")
+status = ExtResource("2_567n5")
+chance = 0.225
 
 [sub_resource type="Resource" id="Resource_67860"]
 script = ExtResource("2_vt2l3")
@@ -32,3 +40,6 @@ stat_requirement = SubResource("Resource_yynfe")
 skill_scope = 1
 skill_element = ExtResource("3_pgx38")
 skill_animation = Array[ExtResource("2_vt2l3")]([SubResource("Resource_67860")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_qj4f8")]([])
+effects_to_add = Array[ExtResource("1_ac63l")]([SubResource("Resource_gmhi4")])

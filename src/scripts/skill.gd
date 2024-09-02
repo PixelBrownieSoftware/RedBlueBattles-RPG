@@ -12,6 +12,9 @@ enum SCOPE {ALLY, FOE, ALL, NONE = -1}
 @export var skill_scope : SCOPE = SCOPE.FOE
 @export var skill_element : element = preload("res://data/elements/None.tres")
 @export var skill_animation : Array[rpg_skill_animation]
+@export var usable_by_anyone : bool = false	#stuff like pass and anything exclusive for status effects
+@export var effects_to_remove : Array[status_effect]
+@export var effects_to_add : Array[status_effect_chance]
 
 func get_desc() -> String:
 	var desc : String

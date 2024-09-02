@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=6 format=3 uid="uid://btk2gxcepjeit"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=8 format=3 uid="uid://btk2gxcepjeit"]
 
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_7mklq"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_v7ls0"]
 [ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_7baix"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_qk8wm"]
 [ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="3_v8e35"]
 
 [sub_resource type="Resource" id="Resource_585o4"]
@@ -27,3 +29,6 @@ repeat_max = 1
 skill_scope = 1
 skill_element = ExtResource("3_v8e35")
 skill_animation = Array[ExtResource("2_7baix")]([SubResource("Resource_585o4"), SubResource("Resource_tip5p")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_qk8wm")]([])
+effects_to_add = Array[ExtResource("1_7mklq")]([])

@@ -1,7 +1,26 @@
-[gd_resource type="Resource" script_class="element" load_steps=2 format=3 uid="uid://bklqrvbv5vcp1"]
+[gd_resource type="Resource" script_class="element" load_steps=7 format=3 uid="uid://bklqrvbv5vcp1"]
 
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_igsq2"]
 [ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_ul6vu"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_60sxc"]
+[ext_resource type="Texture2D" uid="uid://yxvdts8cqdwo" path="res://sprites/GUI/elements_wnd.png" id="3_svkx7"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="4_glomh"]
+
+[sub_resource type="Resource" id="Resource_ladsp"]
+script = ExtResource("4_glomh")
+health_min = 1
+health_max = 1
+strength = 0.0
+vitality = 0.0
+magic_pow = 0.3
+dexterity = 0.2
+agility = 0.7
+luck = 0.0
 
 [resource]
 script = ExtResource("1_ul6vu")
 name = "Wind"
+stats = SubResource("Resource_ladsp")
+icon = ExtResource("3_svkx7")
+effects_to_remove = Array[ExtResource("2_60sxc")]([])
+effects_to_add = Array[ExtResource("1_igsq2")]([])

@@ -842,12 +842,11 @@ text = "Boss"
 battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("18_4vcfm")])
 
 [node name="PartyMemberTabs" type="TabContainer" parent="MainMenu"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 200.0
-offset_top = -370.0
+offset_top = 144.0
 offset_right = 759.0
-offset_bottom = 31.0
+offset_bottom = 545.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
 libraries = {

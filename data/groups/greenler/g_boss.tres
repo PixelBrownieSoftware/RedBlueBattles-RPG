@@ -1,19 +1,35 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=7 format=3 uid="uid://bhgpt6ai8y88a"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://bhgpt6ai8y88a"]
 
 [ext_resource type="Resource" uid="uid://bcjoka06yw8pm" path="res://data/characters/Bosses/greenler.tres" id="1_f5e3f"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_vd15c"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_caloy"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_imtdy"]
+[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_62i7i"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="5_0nb2f"]
+[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/aqua.tres" id="5_6ch63"]
 
 [sub_resource type="Resource" id="Resource_edg03"]
 script = ExtResource("2_caloy")
 character = ExtResource("1_f5e3f")
 skills = Array[ExtResource("3_imtdy")]([])
-min_level = 5
-max_level = 5
+min_level = 8
+max_level = 8
+
+[sub_resource type="Resource" id="Resource_3x272"]
+script = ExtResource("2_caloy")
+character = ExtResource("4_62i7i")
+skills = Array[ExtResource("3_imtdy")]([ExtResource("5_6ch63")])
+min_level = 6
+max_level = 6
+
+[sub_resource type="Resource" id="Resource_m6k54"]
+script = ExtResource("2_caloy")
+character = ExtResource("4_62i7i")
+skills = Array[ExtResource("3_imtdy")]([ExtResource("5_6ch63")])
+min_level = 6
+max_level = 6
 
 [resource]
 script = ExtResource("1_vd15c")
-opponents = Array[ExtResource("2_caloy")]([SubResource("Resource_edg03")])
+opponents = Array[ExtResource("2_caloy")]([SubResource("Resource_edg03"), SubResource("Resource_3x272"), SubResource("Resource_m6k54")])
 unlockables = Array[ExtResource("5_0nb2f")]([])

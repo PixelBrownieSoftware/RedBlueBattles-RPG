@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="status_effect" load_steps=6 format=3 uid="uid://bkcch0kv2s2fg"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_7gsib"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_0bkhw"]
+[ext_resource type="Texture2D" uid="uid://dhaibh1w4xrus" path="res://sprites/GUI/status_effects1.png" id="3_67253"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_wbd1n"]
+
+[sub_resource type="Resource" id="Resource_mdv30"]
+script = ExtResource("4_wbd1n")
+strength = 0
+vitality = 0
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("1_7gsib")
+name = "Poision"
+turn_duration = 4
+effects_to_remove = Array[ExtResource("1_7gsib")]([])
+elemental_affinity_change = Array[ExtResource("2_0bkhw")]([])
+stat_changes = SubResource("Resource_mdv30")
+icon = ExtResource("3_67253")
+round_start = false
+after_action = true
+turn_start = false

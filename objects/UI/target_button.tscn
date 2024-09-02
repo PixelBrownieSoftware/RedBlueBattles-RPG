@@ -112,4 +112,11 @@ libraries = {
 "": SubResource("AnimationLibrary_w7h2v")
 }
 
+[node name="Status" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 136.0
+offset_right = 144.0
+offset_bottom = 170.0
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

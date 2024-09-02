@@ -1,4 +1,9 @@
 extends character_element_relationship_ui
 
 func set_potential():
-	$RichTextLabel.text = element_subject.name + " " + str(character.get_elemental_potential(element_subject))
+	$HBoxContainer/RichTextLabel.text = str(character.get_elemental_potential(element_subject))
+	$HBoxContainer/TextureRect.texture = element_subject.icon
+	
+func set_affinity():
+	$HBoxContainer/RichTextLabel.text = str(character.get_elemental_affinity(element_subject))
+	$HBoxContainer/TextureRect.texture = element_subject.icon

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="element" load_steps=9 format=3 uid="uid://denev0eb5urku"]
+
+[ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_oec30"]
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_wvybl"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_15uvi"]
+[ext_resource type="Resource" uid="uid://boopskh5scdtx" path="res://data/status effects/wet.tres" id="2_hyrhn"]
+[ext_resource type="Texture2D" uid="uid://kjhkgjbjd6hm" path="res://sprites/GUI/elements_wtr.png" id="4_hf8nh"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="4_vb2gy"]
+
+[sub_resource type="Resource" id="Resource_rybox"]
+script = ExtResource("1_wvybl")
+status = ExtResource("2_hyrhn")
+chance = 0.143
+
+[sub_resource type="Resource" id="Resource_5srgh"]
+script = ExtResource("4_vb2gy")
+health_min = 1
+health_max = 1
+strength = 0.3
+vitality = 0.1
+magic_pow = 0.6
+dexterity = 0.0
+agility = 0.0
+luck = 0.0
+
+[resource]
+script = ExtResource("1_oec30")
+name = "Water"
+stats = SubResource("Resource_5srgh")
+icon = ExtResource("4_hf8nh")
+effects_to_remove = Array[ExtResource("2_15uvi")]([])
+effects_to_add = Array[ExtResource("1_wvybl")]([SubResource("Resource_rybox")])

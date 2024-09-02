@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=9 format=3 uid="uid://cgoisyv034l7v"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_d8ob7"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_7nos7"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_poek1"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_skaoj"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="5_t0lbw"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="6_u8bai"]
+
+[sub_resource type="Resource" id="Resource_ys52q"]
+script = ExtResource("4_skaoj")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_dtu50"]
+script = ExtResource("6_u8bai")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("3_poek1")
+name = "Aqua"
+learnable = true
+power = 8
+stamina_cost = 4
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_dtu50")
+skill_scope = 1
+skill_element = ExtResource("5_t0lbw")
+skill_animation = Array[ExtResource("4_skaoj")]([SubResource("Resource_ys52q")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_7nos7")]([])
+effects_to_add = Array[ExtResource("1_d8ob7")]([])
