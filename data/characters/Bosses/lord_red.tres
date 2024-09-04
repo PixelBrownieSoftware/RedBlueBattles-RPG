@@ -64,6 +64,7 @@ script = ExtResource("1_ms8r3")
 name = "Lord Red"
 health = 35
 stamina = 10
+stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 2100
 stats = SubResource("Resource_mrwpr")

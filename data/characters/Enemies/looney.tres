@@ -33,9 +33,9 @@ affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_6lsdj"]
 script = ExtResource("2_vohvs")
-health_min = 1
-health_max = 3
-strength = 0.33
+health_min = 2
+health_max = 4
+strength = 0.53
 vitality = 0.28
 magic_pow = 0.055
 dexterity = 0.365
@@ -56,6 +56,7 @@ script = ExtResource("1_l7f4l")
 name = "Looney"
 health = 16
 stamina = 4
+stamina_increase_levels = Array[int]([])
 base_exp_score = 100
 base_exp_to_NL = 50
 stats = SubResource("Resource_eui2d")

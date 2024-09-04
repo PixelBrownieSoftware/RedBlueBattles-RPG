@@ -5,6 +5,8 @@ func get_targets_from_move(skill : rpg_skill):
 	var targets : Array[battle_character_data]
 	#TODO: Check if the user is in the party memebers team
 	match skill.skill_scope:
+		skill.SCOPE.SELF:
+			targets.append(globals.current_character)
 		skill.SCOPE.ALLY:
 			if globals.is_player_team(globals.current_character):
 				targets.append_array(PartyMembers.get_children())
@@ -22,6 +24,6 @@ func get_targets_from_move(skill : rpg_skill):
 			globals.targets.clear()
 	if targets.size() > 0:
 		for targ : battle_character_data in targets:
-			if targ.health == 0:
+			if targ.health <= 0:
 				targets.erase(targ)
 	globals.targets = targets

@@ -1,11 +1,20 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func save_game():
+	#TODO: Save:
+	#- Party members:
+	#	- max health
+	#	- exp to next level
+	#	- level
+	
+	#- Globals:
+	#	- expereince
+	#	- extra skills
+	#	- who has the extra skills equipped
+	
+	for character in PartyMembers.get_children():
+		pass
+	
+func load_game():
 	pass

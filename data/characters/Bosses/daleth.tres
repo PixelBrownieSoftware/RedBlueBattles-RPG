@@ -52,6 +52,7 @@ script = ExtResource("1_fyshi")
 name = "Daleth"
 health = 20
 stamina = 7
+stamina_increase_levels = Array[int]([])
 base_exp_score = 1250
 base_exp_to_NL = 50
 stats = SubResource("Resource_a74rd")

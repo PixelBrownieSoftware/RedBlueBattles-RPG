@@ -522,6 +522,7 @@ libraries = {
 
 [node name="EXP Bonuses" type="Panel" parent="."]
 visible = false
+z_index = 97
 offset_left = 208.0
 offset_top = 75.0
 offset_right = 721.0
@@ -559,6 +560,7 @@ offset_right = 784.0
 offset_bottom = 514.0
 
 [node name="Analyse" type="Button" parent="."]
+visible = false
 z_index = 99
 offset_left = 995.0
 offset_top = 490.0

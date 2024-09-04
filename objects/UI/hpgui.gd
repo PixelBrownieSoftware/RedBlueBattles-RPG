@@ -7,10 +7,12 @@ signal update_status_effect(status)
 
 func _process(delta):
 	if character_data != null:
-		$Offset/RichTextLabel.text = character_data.name + " HP " + str(character_data.health) + "/" +str(character_data.max_health) 
+		var hp_clamp: int = 0
+		hp_clamp = clampi(character_data.health ,0 ,character_data.max_health)
+		$Offset/RichTextLabel.text = character_data.name + " HP " + str(hp_clamp) + "/" +str(character_data.max_health) 
 		$Offset/HealthBar.max_value = character_data.max_health
 		$Offset/HealthBar.min_value = 0
-		$Offset/HealthBar.value = character_data.health
+		$Offset/HealthBar.value = clampi(character_data.health, 0, character_data.max_health)
 		$Offset/HealthBar.get("theme_override_styles/fill").bg_color = character_data.assigned_data.character_colour
 		$Offset/StaminaContainer.render_stamina(character_data.stamina, character_data.max_stamina)
 

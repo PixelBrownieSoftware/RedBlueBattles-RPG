@@ -59,9 +59,10 @@ func process_move(skill : rpg_skill):
 						if battle_globals.final_press_turn_flag < calculated_PT:
 							battle_globals.final_press_turn_flag = calculated_PT
 						print(damage_num)
-						if calculated_PT != PRESS_TURN.PT.MISS:
-							spawn_battle_fx.emit("physical_hit_fx", character_target)
-						put_damage_numbers.emit(character_user, character_target, damage_num, calculated_PT)
+						if skill.power > 0:							
+							if calculated_PT != PRESS_TURN.PT.MISS:
+								spawn_battle_fx.emit("physical_hit_fx", character_target)
+							put_damage_numbers.emit(character_user, character_target, damage_num, calculated_PT)
 						await get_tree().create_timer(0.4).timeout
 	character_user.update_current_status_effects("after_action")
 	character_user.on_character_end_turn.emit()

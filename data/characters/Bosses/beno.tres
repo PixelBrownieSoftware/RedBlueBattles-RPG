@@ -47,6 +47,7 @@ script = ExtResource("1_4lwdj")
 name = "Beno"
 health = 28
 stamina = 4
+stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 50
 stats = SubResource("Resource_jdtyv")

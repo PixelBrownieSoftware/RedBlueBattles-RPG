@@ -3,6 +3,7 @@ class_name battle_character_base
 @export var name: String
 @export var health : int = 1
 @export var stamina : int = 4
+@export var stamina_increase_levels: Array[int] 
 @export var base_exp_score : int = 50
 @export var base_exp_to_NL : int = 50
 @export var stats : rpg_stats = rpg_stats.new()

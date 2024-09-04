@@ -10,3 +10,9 @@ func _on_pressed() -> void:
 		$"../Character stats".visible = false
 		is_on = false
 		text = "Analyse"
+
+func force_off():
+	$"../Character stats".visible = false
+	visible = false
+	is_on = false
+	text = "Analyse"

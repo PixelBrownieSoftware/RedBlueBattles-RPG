@@ -11,7 +11,7 @@
 script = ExtResource("2_61brf")
 skill_animation = 2
 time_amount = -1.0
-animation_name = "attacj"
+animation_name = "attack"
 
 [sub_resource type="Resource" id="Resource_mvrbw"]
 script = ExtResource("2_61brf")

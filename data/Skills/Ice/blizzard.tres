@@ -34,5 +34,6 @@ stat_requirement = SubResource("Resource_aqqqm")
 skill_scope = 1
 skill_element = ExtResource("3_ats7q")
 skill_animation = Array[ExtResource("2_fxxct")]([SubResource("Resource_2al5r")])
+usable_by_anyone = false
 effects_to_remove = Array[ExtResource("2_kytf5")]([])
 effects_to_add = Array[ExtResource("1_v2rud")]([])

@@ -6,9 +6,7 @@ const divider : float = 8.4
 
 @export var max_health : int = 1
 @export var health : int = 1
-@export var max_stamina : int:
-	get:
-		return assigned_data.stamina
+@export var max_stamina : int = 1
 @export var stamina : int = 0
 @export var extra_skills : Array[rpg_skill]
 
@@ -125,6 +123,7 @@ func new_data(base_data : battle_character_base, level):
 	max_health = base_data.health
 	health = max_health
 	stamina = 0
+	max_stamina = assigned_data.stamina
 	expereince_to_NL = base_data.base_exp_to_NL
 	strength = base_data.stats.strength
 	vitality = base_data.stats.vitality
@@ -144,6 +143,9 @@ func assign_skill(move : rpg_skill):
 func level_up():
 	var skills_before : Array[rpg_skill] = get_skills
 	current_level += 1
+	for increase_stamina in assigned_data.stamina_increase_levels:
+		if increase_stamina == current_level:
+			max_stamina += 1
 	max_health += assigned_data.stat_increase.health_min + randi() % assigned_data.stat_increase.health_max
 	#print(fmod(assigned_data.stat_increase.strength * float(current_level), 1))
 	strength += increase_stat(assigned_data.stat_increase.strength)#if fmod(assigned_data.stat_increase.strength * float(current_level), 1) == 0 else 0
@@ -155,7 +157,7 @@ func level_up():
 	for move in assigned_data.skills:
 		if move.requirements_met(self) && !skills_before.rfind(move):
 			print(name + " learned " + move.name + "!")
-	expereince_to_NL += expereince_to_NL * (2.5 * (0.85**current_level))
+	expereince_to_NL += expereince_to_NL * (2.5 * (0.8**current_level))
 	health = max_health
 	
 func increase_stat(stat_increase : float) -> int:
@@ -241,7 +243,7 @@ func damage_character(attacker: battle_character_data, skill :rpg_skill):
 	
 	damage_amount = ((stat_element * skill.power) / vitality_net) * modifiers["damage_multipler"]
 	var dodge_chance : float = attacker.dexterity_net
-	var will_hit = stat_chance(attacker.dexterity_net, agility_net, 0.85)
+	var will_hit = stat_chance(attacker.dexterity_net, agility_net, 0.95)
 	var is_lucky = stat_chance(attacker.luck_net, luck_net, -0.8)
 	var calculated_PT : PRESS_TURN.PT = PRESS_TURN.PT.NORMAL
 	var el_affinity : float = get_elemental_affinity(skill.skill_element)
@@ -271,7 +273,8 @@ func damage_character(attacker: battle_character_data, skill :rpg_skill):
 		apply_status_effects(skill.effects_to_add)
 		remove_status_effects(skill.effects_to_remove)
 		calculated_Press_Turn = calculated_PT
-		damage(damage_amount)
+		if skill.power > 0:
+			damage(damage_amount)
 	return_val["Press_turn"] = calculated_PT
 	return_val["Amount"] = damage_amount
 	return return_val
@@ -313,6 +316,12 @@ func remove_status_effects(effects : Array[status_effect]):
 		if status_found != -1:
 			status_effects.remove_at(status_found)
 
+func has_status(status : status_effect) -> bool:
+	for stat in status_effects:
+		if stat.name == status.name:
+			return true
+	return false
+
 func stat_chance(user_val : int, targ_val : int, connect_max : float):
 	var total : int = user_val + targ_val
 	var user_modify: float = user_val * (float)(user_val * connect_max)
@@ -329,8 +338,8 @@ func damage(dmg : int):
 	health -= dmg
 	put_damage_numbers.emit(null, self, dmg, calculated_Press_Turn)
 	play_damage.emit()
-	health = clampi(health,0 , max_health)
-	if health == 0:
+	health = clampi(health,-999 , max_health)
+	if health <= 0:
 		defeat_event.emit()
 	
 func change_stamina(dmg : int):

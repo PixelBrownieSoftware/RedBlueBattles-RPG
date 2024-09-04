@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://de6wj54ei6lv3"]
+[gd_scene load_steps=21 format=3 uid="uid://de6wj54ei6lv3"]
 
 [ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_1rjvt"]
 [ext_resource type="FontFile" uid="uid://c0dmv52byuhka" path="res://misc/fonts/ShermlockOpen.ttf" id="2_w6jcd"]
@@ -18,7 +18,6 @@
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="16_6lmuf"]
 [ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="16_ut362"]
 [ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="17_8v6xx"]
-[ext_resource type="Resource" uid="uid://cy1rleskpxi3b" path="res://data/elements/Bio.tres" id="17_ypa7d"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="18_t6j2b"]
 [ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="20_1m8jh"]
 
@@ -170,6 +169,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Affinity" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 257.0
 offset_right = 298.0
@@ -196,10 +196,6 @@ element_subject = ExtResource("9_nahjt")
 layout_mode = 2
 element_subject = ExtResource("16_6lmuf")
 
-[node name="Bio" parent="Panel/Affinity" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("17_ypa7d")
-
 [node name="Psychic" parent="Panel/Affinity" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
 element_subject = ExtResource("8_2oud5")
@@ -217,6 +213,7 @@ layout_mode = 2
 element_subject = ExtResource("11_0bjol")
 
 [node name="Potential" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 225.0
 offset_right = 297.0
@@ -242,10 +239,6 @@ element_subject = ExtResource("9_nahjt")
 [node name="Water" parent="Panel/Potential" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
 element_subject = ExtResource("16_6lmuf")
-
-[node name="Bio" parent="Panel/Potential" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("17_ypa7d")
 
 [node name="Psychic" parent="Panel/Potential" instance=ExtResource("4_l6rp1")]
 layout_mode = 2

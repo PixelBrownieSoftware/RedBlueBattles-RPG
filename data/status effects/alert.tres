@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="status_effect" load_steps=6 format=3 uid="uid://c7rp1p26br7gk"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_m62hl"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_uixat"]
+[ext_resource type="Texture2D" uid="uid://dxtfbaf0xvmv6" path="res://sprites/GUI/status_effects_alrt.png" id="3_5uir8"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_yhwxe"]
+
+[sub_resource type="Resource" id="Resource_wykrk"]
+script = ExtResource("3_yhwxe")
+strength = 0
+vitality = 0
+magic_pow = 0
+dexterity = 6
+agility = 6
+luck = 0
+
+[resource]
+script = ExtResource("1_m62hl")
+name = "Alert"
+turn_duration = 3
+effects_to_remove = Array[ExtResource("1_m62hl")]([])
+elemental_affinity_change = Array[ExtResource("2_uixat")]([])
+stat_changes = SubResource("Resource_wykrk")
+icon = ExtResource("3_5uir8")
+round_start = false
+after_action = false
+turn_start = true

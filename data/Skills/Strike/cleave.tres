@@ -21,10 +21,10 @@ animation_name = ""
 
 [sub_resource type="Resource" id="Resource_yynfe"]
 script = ExtResource("4_0kiuh")
-strength = 5
+strength = 7
 vitality = 1
 magic_pow = 1
-dexterity = 3
+dexterity = 4
 agility = 1
 luck = 1
 
@@ -32,7 +32,7 @@ luck = 1
 script = ExtResource("1_sfbx6")
 name = "Cleave"
 learnable = true
-power = 8
+power = 7
 stamina_cost = 4
 repeat_min = 1
 repeat_max = 1

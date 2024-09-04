@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://gfxvnfosvc0l"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_878jp"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_xmo2w"]
+[ext_resource type="Resource" uid="uid://c7rp1p26br7gk" path="res://data/status effects/alert.tres" id="2_5rjgk"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_60qfh"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_ilqcn"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="5_1e3rt"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="6_8ruxm"]
+
+[sub_resource type="Resource" id="Resource_klgnv"]
+script = ExtResource("1_878jp")
+status = ExtResource("2_5rjgk")
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_x6hpf"]
+script = ExtResource("4_ilqcn")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_2drpp"]
+script = ExtResource("6_8ruxm")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 5
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("3_60qfh")
+name = "Dodge"
+learnable = true
+power = 0
+stamina_cost = 3
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_2drpp")
+skill_scope = 3
+skill_element = ExtResource("5_1e3rt")
+skill_animation = Array[ExtResource("4_ilqcn")]([SubResource("Resource_x6hpf")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("1_xmo2w")]([])
+effects_to_add = Array[ExtResource("1_878jp")]([SubResource("Resource_klgnv")])

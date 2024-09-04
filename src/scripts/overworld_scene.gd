@@ -56,7 +56,9 @@ func main_menu():
 func load_battle(selected_group):
 	$"MenuBar/HBoxContainer".visible = false
 	for battle_character_member : battle_group_member in selected_group.opponents:
-		var level : int =  randi() % battle_character_member.max_level + battle_character_member.min_level
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var level : int =  rng.randi_range(battle_character_member.min_level, battle_character_member.max_level)
 		var character : battle_character_data = CharacterFactory.create_new_character(battle_character_member.character,EnemyMembers , level)
 		for skill in battle_character_member.skills:
 			character.assign_skill(skill)

@@ -1,32 +1,34 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://crtnxxemdyj67"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=13 format=3 uid="uid://crtnxxemdyj67"]
 
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="1_f8ljr"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_od7tk"]
+[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="2_7qpbn"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_i54po"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_fyteb"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="3_x5rwq"]
+[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="4_adxnp"]
 [ext_resource type="Resource" uid="uid://btljbcdehpvvv" path="res://data/Skills/Peirce/stab_frenzy.tres" id="5_08jot"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_ig7xh"]
 
 [sub_resource type="Resource" id="Resource_6l4ep"]
 script = ExtResource("2_i54po")
-character = ExtResource("1_f8ljr")
-skills = Array[ExtResource("3_fyteb")]([])
-min_level = 3
+character = ExtResource("2_7qpbn")
+skills = Array[ExtResource("3_fyteb")]([ExtResource("4_adxnp")])
+min_level = 5
 max_level = 6
 
 [sub_resource type="Resource" id="Resource_eu67n"]
 script = ExtResource("2_i54po")
 character = ExtResource("3_x5rwq")
-skills = Array[ExtResource("3_fyteb")]([ExtResource("5_08jot")])
-min_level = 2
+skills = Array[ExtResource("3_fyteb")]([ExtResource("5_08jot"), ExtResource("4_adxnp")])
+min_level = 5
 max_level = 7
 
 [sub_resource type="Resource" id="Resource_e5mwj"]
 script = ExtResource("2_i54po")
 character = ExtResource("1_f8ljr")
 skills = Array[ExtResource("3_fyteb")]([])
-min_level = 3
+min_level = 5
 max_level = 7
 
 [resource]

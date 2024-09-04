@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://b2dyk0jh6s4m4"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_gvhw7"]
+[ext_resource type="Resource" uid="uid://dttvaj5cg8ujv" path="res://data/status effects/sleepy.tres" id="2_3oxfj"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_phkta"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_hg05o"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_maog5"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="5_iuwvq"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="6_guane"]
+
+[sub_resource type="Resource" id="Resource_c16ml"]
+script = ExtResource("1_gvhw7")
+status = ExtResource("2_3oxfj")
+chance = 0.697
+
+[sub_resource type="Resource" id="Resource_trao5"]
+script = ExtResource("4_maog5")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_alara"]
+script = ExtResource("6_guane")
+strength = 5
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 3
+
+[resource]
+script = ExtResource("3_hg05o")
+name = "Drowsy punch"
+learnable = true
+power = 5
+stamina_cost = 3
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_alara")
+skill_scope = 1
+skill_element = ExtResource("5_iuwvq")
+skill_animation = Array[ExtResource("4_maog5")]([SubResource("Resource_trao5")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_phkta")]([])
+effects_to_add = Array[ExtResource("1_gvhw7")]([SubResource("Resource_c16ml")])

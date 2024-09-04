@@ -1,15 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://mugpveucbeey"]
+[gd_scene load_steps=6 format=3 uid="uid://mugpveucbeey"]
 
 [ext_resource type="Script" path="res://objects/UI/element_potential.gd" id="1_nlf7e"]
+[ext_resource type="Texture2D" uid="uid://bxbyjk127rn6n" path="res://sprites/GUI/affinity_icon_wk.png" id="2_kytoc"]
 [ext_resource type="Texture2D" uid="uid://ba35uqo2jr3ys" path="res://sprites/GUI/elements_strike.png" id="2_ukfl8"]
+[ext_resource type="Texture2D" uid="uid://rt48kk0n5u84" path="res://sprites/GUI/affinity_icon_norm.png" id="3_jrvqx"]
+[ext_resource type="Texture2D" uid="uid://4l2tmg0okxw" path="res://sprites/GUI/affinity_icon_imm.png" id="4_o8lgw"]
 
-[node name="ElementPotential" type="Control"]
+[node name="ElementPotential" type="Control" node_paths=PackedStringArray("affinity_texture")]
 layout_mode = 3
 anchor_right = 0.101
 anchor_bottom = 0.079
 offset_right = -58.352
 offset_bottom = -25.192
 script = ExtResource("1_nlf7e")
+affinity_texture = NodePath("HBoxContainer/TextureRect/Affinity/AffIcon")
+weak_icon = ExtResource("2_kytoc")
+normal_icon = ExtResource("3_jrvqx")
+immune_icon = ExtResource("4_o8lgw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -22,10 +29,25 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 texture = ExtResource("2_ukfl8")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+[node name="Affinity" type="Control" parent="HBoxContainer/TextureRect"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AffIcon" type="TextureRect" parent="HBoxContainer/TextureRect/Affinity"]
+layout_mode = 2
+offset_left = 21.0
+offset_right = 37.0
+offset_bottom = 23.0
+texture = ExtResource("2_ukfl8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/TextureRect/Affinity"]
 clip_contents = false
 custom_minimum_size = Vector2(37.165, 0)
 layout_mode = 2
+offset_left = 18.0
+offset_right = 55.165
+offset_bottom = 23.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 bbcode_enabled = true

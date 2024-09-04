@@ -1,7 +1,7 @@
 extends Resource
 class_name rpg_skill
 
-enum SCOPE {ALLY, FOE, ALL, NONE = -1}
+enum SCOPE {ALLY, FOE, ALL, SELF, NONE = -1}
 @export var name : String = "Empty"
 @export var learnable : bool = true
 @export var power : int = 0

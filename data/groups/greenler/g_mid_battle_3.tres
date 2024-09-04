@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://ct7xuwkcj8wl4"]
+
+[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_7de35"]
+[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="2_8bkg7"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_vci26"]
+[ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_6kwcd"]
+[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="5_d5jxx"]
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_ejthe"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_f4s71"]
+
+[sub_resource type="Resource" id="Resource_8asq2"]
+script = ExtResource("1_7de35")
+character = ExtResource("2_8bkg7")
+skills = Array[ExtResource("3_vci26")]([ExtResource("5_d5jxx")])
+min_level = 3
+max_level = 5
+
+[sub_resource type="Resource" id="Resource_0g08n"]
+script = ExtResource("1_7de35")
+character = ExtResource("4_6kwcd")
+skills = Array[ExtResource("3_vci26")]([ExtResource("5_d5jxx")])
+min_level = 4
+max_level = 5
+
+[resource]
+script = ExtResource("5_ejthe")
+opponents = Array[ExtResource("1_7de35")]([SubResource("Resource_8asq2"), SubResource("Resource_0g08n")])
+unlockables = Array[ExtResource("6_f4s71")]([])

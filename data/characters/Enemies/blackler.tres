@@ -52,6 +52,7 @@ script = ExtResource("1_quvnl")
 name = "Blackler"
 health = 35
 stamina = 6
+stamina_increase_levels = Array[int]([])
 base_exp_score = 240
 base_exp_to_NL = 50
 stats = SubResource("Resource_vbqke")

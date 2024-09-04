@@ -42,6 +42,7 @@ script = ExtResource("1_g2426")
 name = "Skar"
 health = 24
 stamina = 4
+stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 50
 stats = SubResource("Resource_70rxe")

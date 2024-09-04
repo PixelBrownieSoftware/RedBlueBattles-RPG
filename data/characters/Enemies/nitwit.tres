@@ -54,6 +54,7 @@ script = ExtResource("6_l1x2b")
 name = "Nitwit"
 health = 26
 stamina = 4
+stamina_increase_levels = Array[int]([])
 base_exp_score = 25
 base_exp_to_NL = 50
 stats = SubResource("Resource_eui2d")

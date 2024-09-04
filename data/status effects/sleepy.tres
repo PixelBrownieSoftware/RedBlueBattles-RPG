@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="status_stamina" load_steps=16 format=3 uid="uid://dttvaj5cg8ujv"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_imjlf"]
+[ext_resource type="Resource" uid="uid://d337xaf1p2n4w" path="res://data/status effects/smirk.tres" id="2_fw7lq"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_uwg4u"]
+[ext_resource type="Script" path="res://src/scripts/status effects/status_stamina.gd" id="3_kssg8"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="3_tuh6u"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="4_38c2d"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="5_2mdwv"]
+[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="6_lo0gs"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="8_d6at4"]
+[ext_resource type="Texture2D" uid="uid://d4lwexiwdko0f" path="res://sprites/GUI/status_effects_slp.png" id="8_i6bpv"]
+
+[sub_resource type="Resource" id="Resource_qjguu"]
+script = ExtResource("2_uwg4u")
+elemental = ExtResource("3_tuh6u")
+affinity = 1.4
+
+[sub_resource type="Resource" id="Resource_corun"]
+script = ExtResource("2_uwg4u")
+elemental = ExtResource("4_38c2d")
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_x6vcr"]
+script = ExtResource("2_uwg4u")
+elemental = ExtResource("5_2mdwv")
+affinity = 1.4
+
+[sub_resource type="Resource" id="Resource_2s075"]
+script = ExtResource("2_uwg4u")
+elemental = ExtResource("6_lo0gs")
+affinity = 1.7
+
+[sub_resource type="Resource" id="Resource_kaj6f"]
+script = ExtResource("8_d6at4")
+strength = -1
+vitality = -1
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("3_kssg8")
+damage = 2
+name = "Sleepy"
+turn_duration = 2
+effects_to_remove = Array[ExtResource("1_imjlf")]([ExtResource("2_fw7lq")])
+elemental_affinity_change = Array[ExtResource("2_uwg4u")]([SubResource("Resource_qjguu"), SubResource("Resource_corun"), SubResource("Resource_x6vcr"), SubResource("Resource_2s075")])
+stat_changes = SubResource("Resource_kaj6f")
+icon = ExtResource("8_i6bpv")
+round_start = true
+after_action = false
+turn_start = false

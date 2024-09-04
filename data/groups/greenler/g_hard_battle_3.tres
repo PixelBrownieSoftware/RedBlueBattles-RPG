@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=9 format=3 uid="uid://b5kkykiffgsmm"]
+
+[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_vc010"]
+[ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_1hlna"]
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="2_3f3uy"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_b7qsy"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="3_u0grw"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_bnadn"]
+
+[sub_resource type="Resource" id="Resource_dsucs"]
+script = ExtResource("1_vc010")
+character = ExtResource("2_1hlna")
+skills = Array[ExtResource("3_b7qsy")]([ExtResource("4_bnadn")])
+min_level = 7
+max_level = 7
+
+[sub_resource type="Resource" id="Resource_63c3t"]
+script = ExtResource("1_vc010")
+character = ExtResource("2_1hlna")
+skills = Array[ExtResource("3_b7qsy")]([ExtResource("4_bnadn")])
+min_level = 6
+max_level = 7
+
+[resource]
+script = ExtResource("2_3f3uy")
+opponents = Array[ExtResource("1_vc010")]([SubResource("Resource_dsucs"), SubResource("Resource_63c3t")])
+unlockables = Array[ExtResource("3_u0grw")]([])

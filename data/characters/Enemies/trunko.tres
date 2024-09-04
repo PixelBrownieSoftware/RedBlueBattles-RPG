@@ -55,6 +55,7 @@ script = ExtResource("1_13rwa")
 name = "Trunko"
 health = 32
 stamina = 8
+stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 50
 stats = SubResource("Resource_1xov1")

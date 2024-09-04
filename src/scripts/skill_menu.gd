@@ -33,6 +33,17 @@ func _on_animation_player_animation_finished(anim_name):
 			skill_button.text = sk.name
 			var afford : bool = (globals.current_character.stamina >= sk.get_final_cost(globals.current_character))
 			skill_button.show_anim(afford)
+			#A hack to make sure that players don't waste stamina
+			if sk.power == 0:
+				if sk.skill_scope == sk.SCOPE.SELF:
+					var has_status : bool = false
+					for status in sk.effects_to_add:
+						if !globals.current_character.has_status(status.status):
+							has_status = true
+					skill_button.show_anim(has_status)
 			index += 1
+		$"../Analyse".visible = true
+		$"../Character stats".visible = false
 	else: if anim_name == "menu_hide":
+		$"../Analyse".force_off()
 		call_target_menu.emit()

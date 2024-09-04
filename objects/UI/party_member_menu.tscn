@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0j2rpxn00nk3"]
+[gd_scene load_steps=21 format=3 uid="uid://d0j2rpxn00nk3"]
 
 [ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_hq8uu"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hb0oj"]
@@ -10,7 +10,6 @@
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="8_488yq"]
 [ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="9_6e756"]
 [ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="10_58yae"]
-[ext_resource type="Resource" uid="uid://cy1rleskpxi3b" path="res://data/elements/Bio.tres" id="10_f0s8o"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="11_wydnp"]
 [ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="12_7rres"]
 [ext_resource type="Texture2D" uid="uid://ro16bqpwgidv" path="res://sprites/GUI/gui_str.png" id="12_a3wp7"]
@@ -179,10 +178,6 @@ element_subject = ExtResource("10_58yae")
 layout_mode = 2
 element_subject = ExtResource("12_waq1x")
 
-[node name="Bio" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
-layout_mode = 2
-element_subject = ExtResource("10_f0s8o")
-
 [node name="Psychic" parent="Panel/Potential" instance=ExtResource("5_6bjww")]
 layout_mode = 2
 element_subject = ExtResource("9_6e756")
@@ -226,10 +221,6 @@ element_subject = ExtResource("10_58yae")
 [node name="Water" parent="Panel/Affinity" instance=ExtResource("5_6bjww")]
 layout_mode = 2
 element_subject = ExtResource("12_waq1x")
-
-[node name="Bio" parent="Panel/Affinity" instance=ExtResource("5_6bjww")]
-layout_mode = 2
-element_subject = ExtResource("10_f0s8o")
 
 [node name="Psychic" parent="Panel/Affinity" instance=ExtResource("5_6bjww")]
 layout_mode = 2

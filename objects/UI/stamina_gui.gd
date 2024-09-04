@@ -18,10 +18,11 @@ func render_points(current):
 	
 func render_stamina_max(current, max):
 	for i in get_children().size():
+		var stamina_offset : int = current -1
 		var st : TextureRect = get_child(i) as TextureRect
 		if i >= max:
 			st.texture = null
-		else:if i > current:
+		else:if i > stamina_offset:
 			st.texture = stamina_gui_empty
-		else:if i <= current:
+		else:if i <= stamina_offset:
 			st.texture = stamina_gui

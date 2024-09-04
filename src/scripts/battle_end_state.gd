@@ -12,26 +12,34 @@ func start_state():
 	var dead_enemies : int =0
 	var new_moves_learned : Array[rpg_skill]
 	results_list = {}
-	results_list["Defeated"] = 0
-	results_list["Alive"] = 0
 	var total_exp : int = 0
 	for character in PartyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
 		if chara.health <= 0:
 			dead_players += 1
 		else:
-			results_list["Alive"] += 0.02
+			if !results_list.has("Alive"):
+				results_list["Alive"] = 0.02
+			else:
+				results_list["Alive"] += 0.02
 				
 	for character in EnemyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
 		if chara.health <= 0:
+			if chara.health <= -(chara.max_health /2):
+				if !results_list.has("Overwhelm"):
+					results_list["Overwhelm"] = 0.08
+				else:
+					results_list["Overwhelm"] += 0.08
 			for skill in chara.get_learnable_skills:
 				var ex_skills = GlobalVariables.add_extra_skill(skill)
 				if !ex_skills:
 					new_moves_learned.append(skill)
-				
 			dead_enemies += 1
-			results_list["Defeated"] += 0.04
+			if !results_list.has("Defeated"):
+				results_list["Defeated"] = 0.04
+			else:
+				results_list["Defeated"] += 0.04
 
 	if dead_players == PartyMembers.get_children().size():
 		total_exp = $"../../Variables/ExpereinceWatcher".local_exp_score + get_bonus()
@@ -71,6 +79,7 @@ func leave_battle():
 		var chara : battle_character_data = character as battle_character_data
 		chara.health = chara.max_health
 		chara.stamina = 0
+		chara.status_effects.clear()
 	for character in EnemyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
 		chara.queue_free()
