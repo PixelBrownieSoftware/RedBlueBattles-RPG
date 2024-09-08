@@ -6,6 +6,7 @@ class_name battle_character_base
 @export var stamina_increase_levels: Array[int] 
 @export var base_exp_score : int = 50
 @export var base_exp_to_NL : int = 50
+@export var exp_req_multipler : float = 1.2
 @export var stats : rpg_stats = rpg_stats.new()
 @export var stat_increase : rpg_stats_increase = rpg_stats_increase.new()
 @export var skills : Array[rpg_skill]

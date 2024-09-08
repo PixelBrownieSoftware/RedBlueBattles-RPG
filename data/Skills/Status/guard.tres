@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://rqxuxduuoe7e"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_8iuxo"]
+[ext_resource type="Resource" uid="uid://0ga3ybabf28e" path="res://data/status effects/guard.tres" id="2_qvqlj"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="3_o1hxw"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="4_xr2sv"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="5_h45qq"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="6_mk3jf"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="7_idiqk"]
+
+[sub_resource type="Resource" id="Resource_klgnv"]
+script = ExtResource("1_8iuxo")
+status = ExtResource("2_qvqlj")
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_x6hpf"]
+script = ExtResource("5_h45qq")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_2drpp"]
+script = ExtResource("7_idiqk")
+strength = 1
+vitality = 5
+magic_pow = 1
+dexterity = 0
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("4_xr2sv")
+name = "Guard"
+learnable = true
+power = 0
+stamina_cost = 3
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_2drpp")
+skill_scope = 3
+skill_element = ExtResource("6_mk3jf")
+skill_animation = Array[ExtResource("5_h45qq")]([SubResource("Resource_x6hpf")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("3_o1hxw")]([])
+effects_to_add = Array[ExtResource("1_8iuxo")]([SubResource("Resource_klgnv")])

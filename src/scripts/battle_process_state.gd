@@ -11,6 +11,7 @@ func start_state():
 	var skill : rpg_skill = battle_globals.selected_move
 	if skill.name == "Pass":
 		battle_globals.final_press_turn_flag= PRESS_TURN.PT.WEAK
+		battle_globals.current_character.update_current_status_effects("after_action")
 	else:
 		await process_move(skill)
 	change_state.emit(after_process_state)

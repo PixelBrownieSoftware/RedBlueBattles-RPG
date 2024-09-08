@@ -15,7 +15,20 @@ func reset_multipiler():
 @export var extra_skills : Array[rpg_skill]
 @export var equipped_extra_skills = {}
 @export var enabled_party_members = {}
+@export var element_lookup = {}
 var current_battle : battle_group_data
+
+func _ready():
+	var elements = DirAccess.get_files_at("res://data/elements/")
+	for element_obj in elements:
+		var el : element = ResourceLoader.load("res://data/elements/" + element_obj)
+		element_lookup[el.name] = el
+		
+func get_element(element_name : String):
+	if element_lookup.find_key(element_name) != -1:
+		return element_lookup[element_name]
+	else:
+		return element_lookup["None"]
 
 func is_player_team(char_data : battle_character_data) -> bool:
 	var list = PartyMembers.get_children()
@@ -23,6 +36,9 @@ func is_player_team(char_data : battle_character_data) -> bool:
 		if char == char_data:
 			return true
 	return false
+
+func who_has_equippied_skill(skill : rpg_skill):
+	return equipped_extra_skills[skill.name]
 	
 func get_enabled_party_members_count() -> int:
 	var number = 0

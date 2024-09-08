@@ -39,6 +39,7 @@ stamina = 8
 stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 50
+exp_req_multipler = 1.2
 stats = SubResource("Resource_alhf3")
 stat_increase = SubResource("Resource_aiu6g")
 skills = Array[ExtResource("5_v3ja6")]([ExtResource("2_7pv4a"), ExtResource("3_kjm5o"), ExtResource("4_rtyii")])

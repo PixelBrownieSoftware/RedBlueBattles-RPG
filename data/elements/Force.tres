@@ -22,5 +22,6 @@ script = ExtResource("1_6of3v")
 name = "Force"
 stats = SubResource("Resource_kmr2b")
 icon = ExtResource("3_esnmf")
+colour = Color(0.705882, 0.211765, 0.0980392, 1)
 effects_to_remove = Array[ExtResource("2_y8586")]([])
 effects_to_add = Array[ExtResource("1_vh2ir")]([])

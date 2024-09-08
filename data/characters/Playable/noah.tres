@@ -1,16 +1,22 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=2 format=3 uid="uid://c6horxrkgmnn2"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=6 format=3 uid="uid://c6horxrkgmnn2"]
 
+[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_kkhhn"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_vtfyv"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_jt3ox"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_5kefn"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_g7kbe"]
 
 [resource]
 script = ExtResource("1_vtfyv")
 name = ""
 health = 1
 stamina = 4
+stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 50
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
-behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
-elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+skills = Array[ExtResource("5_g7kbe")]([])
+behaviour = Array[ExtResource("1_kkhhn")]([])
+elemental_affinities = Array[ExtResource("2_jt3ox")]([])
+elemental_potential = Array[ExtResource("3_5kefn")]([])
 character_colour = Color(0.0117647, 0.858824, 1, 1)
 animation_player_loc = ""

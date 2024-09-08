@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=18 format=3 uid="uid://dml8a01r6lspa"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://dml8a01r6lspa"]
 
 [ext_resource type="Script" path="res://src/battle_character_behaviour.gd" id="1_0k5gn"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_2yjyx"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_vohvs"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_ktknx"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="3_rpnl5"]
-[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="4_l63mg"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="4_m1aoi"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="6_bv86h"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="6_fy71s"]
@@ -28,7 +27,7 @@ condition = 2
 
 [sub_resource type="Resource" id="Resource_363iu"]
 script = ExtResource("3_rpnl5")
-elemental = ExtResource("4_l63mg")
+elementalName = "Peirce"
 affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_6lsdj"]
@@ -59,11 +58,12 @@ stamina = 4
 stamina_increase_levels = Array[int]([])
 base_exp_score = 100
 base_exp_to_NL = 50
+exp_req_multipler = 1.2
 stats = SubResource("Resource_eui2d")
 stat_increase = SubResource("Resource_6lsdj")
 skills = Array[ExtResource("6_bv86h")]([ExtResource("6_fy71s"), ExtResource("7_65ps6"), ExtResource("10_lqq0k")])
 behaviour = Array[ExtResource("1_2yjyx")]([SubResource("Resource_040w8")])
 elemental_affinities = Array[ExtResource("3_rpnl5")]([SubResource("Resource_363iu")])
 elemental_potential = Array[ExtResource("4_m1aoi")]([])
-character_colour = Color(1, 1, 1, 1)
+character_colour = Color(1, 1, 0.439216, 1)
 animation_player_loc = "sprite_looney"

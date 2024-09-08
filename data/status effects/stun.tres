@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="status_stamina" load_steps=11 format=3 uid="uid://wispo6h3laxy"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_ufeoe"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_hmyxn"]
+[ext_resource type="Texture2D" uid="uid://cqfku5mmtu332" path="res://sprites/GUI/status_effects_stun.png" id="3_6txq7"]
+[ext_resource type="Script" path="res://src/scripts/status effects/status_stamina.gd" id="3_c7koj"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_fehtm"]
+
+[sub_resource type="Resource" id="Resource_0wxbl"]
+script = ExtResource("2_hmyxn")
+elementalName = "Psychic"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_vywig"]
+script = ExtResource("2_hmyxn")
+elementalName = "Force"
+affinity = 1.4
+
+[sub_resource type="Resource" id="Resource_alr80"]
+script = ExtResource("2_hmyxn")
+elementalName = "Peirce"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_e7c37"]
+script = ExtResource("2_hmyxn")
+elementalName = "Strike"
+affinity = 0.8
+
+[sub_resource type="Resource" id="Resource_pnhiv"]
+script = ExtResource("4_fehtm")
+strength = 0
+vitality = 0
+magic_pow = 0
+dexterity = -3
+agility = -3
+luck = 0
+
+[resource]
+script = ExtResource("3_c7koj")
+damage = -1
+name = "Stun"
+turn_duration = 3
+effects_to_remove = Array[ExtResource("1_ufeoe")]([])
+elemental_affinity_change = Array[ExtResource("2_hmyxn")]([SubResource("Resource_0wxbl"), SubResource("Resource_vywig"), SubResource("Resource_alr80"), SubResource("Resource_e7c37")])
+stat_changes = SubResource("Resource_pnhiv")
+icon = ExtResource("3_6txq7")
+round_start = false
+after_action = true
+turn_start = false
+contribute_multipler = true

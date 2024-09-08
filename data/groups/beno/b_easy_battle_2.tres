@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://d2e0kkck4eqkb"]
+
+[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_a6iep"]
+[ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_x4qfn"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_exgp8"]
+[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_8vxrt"]
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_8f6dy"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_jw0ns"]
+
+[sub_resource type="Resource" id="Resource_anqou"]
+script = ExtResource("1_a6iep")
+character = ExtResource("2_x4qfn")
+skills = Array[ExtResource("3_exgp8")]([])
+min_level = 1
+max_level = 4
+
+[sub_resource type="Resource" id="Resource_m0muy"]
+script = ExtResource("1_a6iep")
+character = ExtResource("4_8vxrt")
+skills = Array[ExtResource("3_exgp8")]([])
+min_level = 1
+max_level = 4
+
+[sub_resource type="Resource" id="Resource_bbg61"]
+script = ExtResource("1_a6iep")
+character = ExtResource("2_x4qfn")
+skills = Array[ExtResource("3_exgp8")]([])
+min_level = 1
+max_level = 3
+
+[resource]
+script = ExtResource("5_8f6dy")
+opponents = Array[ExtResource("1_a6iep")]([SubResource("Resource_anqou"), SubResource("Resource_m0muy"), SubResource("Resource_bbg61")])
+unlockables = Array[ExtResource("6_jw0ns")]([])

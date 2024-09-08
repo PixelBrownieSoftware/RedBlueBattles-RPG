@@ -1,13 +1,12 @@
-[gd_resource type="Resource" script_class="status_effect" load_steps=7 format=3 uid="uid://brwcqw4l2qpkq"]
+[gd_resource type="Resource" script_class="status_effect" load_steps=6 format=3 uid="uid://brwcqw4l2qpkq"]
 
 [ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_ct0sr"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_kttb3"]
-[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="3_0f85n"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_up87e"]
 
 [sub_resource type="Resource" id="Resource_vcn8s"]
 script = ExtResource("2_kttb3")
-elemental = ExtResource("3_0f85n")
+elementalName = "Force"
 affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_81kem"]
@@ -29,3 +28,4 @@ stat_changes = SubResource("Resource_81kem")
 round_start = true
 after_action = false
 turn_start = false
+contribute_multipler = true

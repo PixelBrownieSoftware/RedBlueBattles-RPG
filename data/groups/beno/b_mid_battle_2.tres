@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://i5x8b1jqq320"]
+
+[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_7mpj1"]
+[ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="2_bb13t"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_8scd1"]
+[ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/Skills/Force/oily_punch.tres" id="4_3iovk"]
+[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_gn5lo"]
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_0s3a4"]
+[ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/Skills/Electric/lightning.tres" id="5_vgh3l"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_h3yhr"]
+
+[sub_resource type="Resource" id="Resource_anqou"]
+script = ExtResource("1_7mpj1")
+character = ExtResource("2_bb13t")
+skills = Array[ExtResource("3_8scd1")]([ExtResource("4_3iovk"), ExtResource("5_vgh3l")])
+min_level = 3
+max_level = 6
+
+[sub_resource type="Resource" id="Resource_m0muy"]
+script = ExtResource("1_7mpj1")
+character = ExtResource("4_gn5lo")
+skills = Array[ExtResource("3_8scd1")]([])
+min_level = 4
+max_level = 6
+
+[resource]
+script = ExtResource("5_0s3a4")
+opponents = Array[ExtResource("1_7mpj1")]([SubResource("Resource_anqou"), SubResource("Resource_m0muy")])
+unlockables = Array[ExtResource("6_h3yhr")]([])

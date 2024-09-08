@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="element" load_steps=7 format=3 uid="uid://bwtglqquja4h1"]
+[gd_resource type="Resource" script_class="element" load_steps=9 format=3 uid="uid://bwtglqquja4h1"]
 
 [ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_mjug8"]
 [ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_txuk7"]
+[ext_resource type="Resource" uid="uid://wispo6h3laxy" path="res://data/status effects/stun.tres" id="2_6uvii"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_8krkx"]
 [ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_hvus2"]
 [ext_resource type="Texture2D" uid="uid://dtl8500ages7g" path="res://sprites/GUI/elements_elc.png" id="3_whqs6"]
+
+[sub_resource type="Resource" id="Resource_rna0d"]
+script = ExtResource("1_txuk7")
+status = ExtResource("2_6uvii")
+chance = 0.24
 
 [sub_resource type="Resource" id="Resource_a1lj2"]
 script = ExtResource("2_8krkx")
@@ -22,5 +28,6 @@ script = ExtResource("1_mjug8")
 name = "Electric"
 stats = SubResource("Resource_a1lj2")
 icon = ExtResource("3_whqs6")
+colour = Color(0.984314, 1, 0.211765, 1)
 effects_to_remove = Array[ExtResource("2_hvus2")]([])
-effects_to_add = Array[ExtResource("1_txuk7")]([])
+effects_to_add = Array[ExtResource("1_txuk7")]([SubResource("Resource_rna0d")])

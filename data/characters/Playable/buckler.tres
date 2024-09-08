@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=11 format=3 uid="uid://cmfai7ydcxm8h"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=13 format=3 uid="uid://cmfai7ydcxm8h"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_2uves"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_hn0rp"]
@@ -7,16 +7,22 @@
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_wkhle"]
 [ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/Skills/Peirce/shoot.tres" id="2_xjg6k"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_uwtcv"]
+[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="4_g1hkk"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_vjj4i"]
+
+[sub_resource type="Resource" id="Resource_m80m4"]
+script = ExtResource("3_uwtcv")
+elemental = ExtResource("4_g1hkk")
+potential = 6
 
 [sub_resource type="Resource" id="Resource_g2hmx"]
 script = ExtResource("2_wkhle")
 health_min = 2
 health_max = 5
-strength = 0.5
+strength = 0.4
 vitality = 0.3
-magic_pow = 0.5
-dexterity = 0.75
+magic_pow = 0.1
+dexterity = 0.58
 agility = 0.3
 luck = 0.5
 
@@ -33,15 +39,16 @@ luck = 3
 script = ExtResource("1_2uves")
 name = "Buckler"
 health = 29
-stamina = 5
-stamina_increase_levels = Array[int]([])
+stamina = 6
+stamina_increase_levels = Array[int]([10, 13, 15])
 base_exp_score = 50
-base_exp_to_NL = 50
+base_exp_to_NL = 350
+exp_req_multipler = 1.2
 stats = SubResource("Resource_1ol2t")
 stat_increase = SubResource("Resource_g2hmx")
 skills = Array[ExtResource("5_vjj4i")]([ExtResource("2_xjg6k")])
 behaviour = Array[ExtResource("1_hn0rp")]([])
 elemental_affinities = Array[ExtResource("2_f6u3f")]([])
-elemental_potential = Array[ExtResource("3_uwtcv")]([])
+elemental_potential = Array[ExtResource("3_uwtcv")]([SubResource("Resource_m80m4")])
 character_colour = Color(1, 0.615686, 0, 1)
 animation_player_loc = "sprite_buckler"

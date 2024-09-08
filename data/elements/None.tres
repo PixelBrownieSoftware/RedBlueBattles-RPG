@@ -1,7 +1,12 @@
-[gd_resource type="Resource" script_class="element" load_steps=2 format=3 uid="uid://s418qyh2m41u"]
+[gd_resource type="Resource" script_class="element" load_steps=4 format=3 uid="uid://s418qyh2m41u"]
 
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_aip2b"]
 [ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_co12r"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_502dn"]
 
 [resource]
 script = ExtResource("1_co12r")
 name = "None"
+colour = Color(1, 1, 1, 1)
+effects_to_remove = Array[ExtResource("2_502dn")]([])
+effects_to_add = Array[ExtResource("1_aip2b")]([])

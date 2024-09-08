@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=16 format=3 uid="uid://8s6w1jqap08l"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://8s6w1jqap08l"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_h8r4c"]
 [ext_resource type="Script" path="res://src/battle_character_behaviour.gd" id="2_vccbg"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="3_g288e"]
-[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="4_xwmdp"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="5_4q2cf"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_l1x2b"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_4h8a7"]
@@ -26,7 +25,7 @@ condition = 2
 
 [sub_resource type="Resource" id="Resource_iqb27"]
 script = ExtResource("3_g288e")
-elemental = ExtResource("4_xwmdp")
+elementalName = "Fire"
 affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_6lsdj"]
@@ -42,7 +41,7 @@ luck = 0.275
 
 [sub_resource type="Resource" id="Resource_eui2d"]
 script = ExtResource("10_f7glw")
-strength = 2
+strength = 1
 vitality = 2
 magic_pow = 1
 dexterity = 2
@@ -52,11 +51,12 @@ luck = 2
 [resource]
 script = ExtResource("6_l1x2b")
 name = "Nitwit"
-health = 26
+health = 45
 stamina = 4
 stamina_increase_levels = Array[int]([])
 base_exp_score = 25
 base_exp_to_NL = 50
+exp_req_multipler = 1.2
 stats = SubResource("Resource_eui2d")
 stat_increase = SubResource("Resource_6lsdj")
 skills = Array[ExtResource("7_4h8a7")]([ExtResource("8_otdkf")])

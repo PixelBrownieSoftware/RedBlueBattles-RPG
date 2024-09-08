@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=9 format=3 uid="uid://b5kkykiffgsmm"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://b5kkykiffgsmm"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_vc010"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_1hlna"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_b7qsy"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="3_u0grw"]
 [ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_bnadn"]
+[ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/Skills/Force/oily_punch.tres" id="5_o4j7r"]
 
 [sub_resource type="Resource" id="Resource_dsucs"]
 script = ExtResource("1_vc010")
 character = ExtResource("2_1hlna")
-skills = Array[ExtResource("3_b7qsy")]([ExtResource("4_bnadn")])
+skills = Array[ExtResource("3_b7qsy")]([ExtResource("5_o4j7r")])
 min_level = 7
 max_level = 7
 

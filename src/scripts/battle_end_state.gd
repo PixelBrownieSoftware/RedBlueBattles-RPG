@@ -83,6 +83,7 @@ func leave_battle():
 	for character in EnemyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
 		chara.queue_free()
+	SaveSystem.save_game()
 	await get_tree().create_timer(0.4).timeout
 	await FadeScene.fade_bg(Color.BLACK, 0.6)
 	get_tree().change_scene_to_file(overworld_scene)

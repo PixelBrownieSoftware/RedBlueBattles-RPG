@@ -29,5 +29,6 @@ script = ExtResource("1_dc5go")
 name = "Fire"
 stats = SubResource("Resource_gsqv2")
 icon = ExtResource("4_1enud")
+colour = Color(0.85098, 0.470588, 0.388235, 1)
 effects_to_remove = Array[ExtResource("2_1n5hi")]([ExtResource("4_sf0n1")])
 effects_to_add = Array[ExtResource("1_pdioo")]([SubResource("Resource_lv5y3")])

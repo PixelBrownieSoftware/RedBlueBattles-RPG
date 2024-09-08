@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://bsyluugevdlwg"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_ticml"]
+[ext_resource type="Resource" uid="uid://dafhkmba7uni1" path="res://data/status effects/flammable.tres" id="2_rmi20"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="3_vub6e"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="4_e73q3"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="5_nerhl"]
+[ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="6_qy4if"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="7_i5tby"]
+
+[sub_resource type="Resource" id="Resource_aprj8"]
+script = ExtResource("1_ticml")
+status = ExtResource("2_rmi20")
+chance = 0.7
+
+[sub_resource type="Resource" id="Resource_d1o76"]
+script = ExtResource("5_nerhl")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_n5dbx"]
+script = ExtResource("7_i5tby")
+strength = 4
+vitality = 1
+magic_pow = 1
+dexterity = 2
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("4_e73q3")
+name = "Oily slash"
+learnable = true
+power = 6
+stamina_cost = 2
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_n5dbx")
+skill_scope = 1
+skill_element = ExtResource("6_qy4if")
+skill_animation = Array[ExtResource("5_nerhl")]([SubResource("Resource_d1o76")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("3_vub6e")]([])
+effects_to_add = Array[ExtResource("1_ticml")]([SubResource("Resource_aprj8")])

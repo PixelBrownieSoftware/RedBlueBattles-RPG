@@ -28,5 +28,6 @@ script = ExtResource("1_oec30")
 name = "Water"
 stats = SubResource("Resource_5srgh")
 icon = ExtResource("4_hf8nh")
+colour = Color(0.25098, 0.556863, 1, 1)
 effects_to_remove = Array[ExtResource("2_15uvi")]([])
 effects_to_add = Array[ExtResource("1_wvybl")]([SubResource("Resource_rybox")])

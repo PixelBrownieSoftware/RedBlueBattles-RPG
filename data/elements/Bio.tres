@@ -19,8 +19,9 @@ luck = 0.1
 
 [resource]
 script = ExtResource("1_w812u")
-name = "Bio"
+name = "Plant"
 stats = SubResource("Resource_o018h")
 icon = ExtResource("3_fgvqc")
+colour = Color(0.415686, 0.745098, 0.188235, 1)
 effects_to_remove = Array[ExtResource("2_0qkwl")]([])
 effects_to_add = Array[ExtResource("1_5hgws")]([])

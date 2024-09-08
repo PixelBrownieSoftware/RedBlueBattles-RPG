@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://bog42i8lb7wr0"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=20 format=3 uid="uid://bog42i8lb7wr0"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_6omnb"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_hkc4q"]
@@ -10,8 +10,14 @@
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_onqjm"]
 [ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="5_24amv"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="6_3ri31"]
+[ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="6_ddvyw"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_1jd67"]
 [ext_resource type="Resource" uid="uid://ddo5u7jkibmw1" path="res://data/Skills/Ice/blue_blast.tres" id="10_670kk"]
+
+[sub_resource type="Resource" id="Resource_bpmx4"]
+script = ExtResource("2_yj48s")
+elementalName = "Fire"
+affinity = 1.0
 
 [sub_resource type="Resource" id="Resource_rxp4k"]
 script = ExtResource("2_wkuab")
@@ -23,24 +29,29 @@ script = ExtResource("2_wkuab")
 elemental = ExtResource("3_demxa")
 potential = -2
 
+[sub_resource type="Resource" id="Resource_aycwc"]
+script = ExtResource("2_wkuab")
+elemental = ExtResource("6_ddvyw")
+potential = 1
+
 [sub_resource type="Resource" id="Resource_yt1im"]
 script = ExtResource("3_uahto")
 health_min = 2
 health_max = 5
-strength = 0.215
+strength = 0.315
 vitality = 0.35
 magic_pow = 0.39
-dexterity = 0.5
-agility = 0.23
-luck = 0.5
+dexterity = 0.45
+agility = 0.4
+luck = 0.2
 
 [sub_resource type="Resource" id="Resource_h63ju"]
 script = ExtResource("4_onqjm")
-strength = 1
+strength = 2
 vitality = 3
 magic_pow = 2
 dexterity = 2
-agility = 1
+agility = 2
 luck = 1
 
 [resource]
@@ -50,12 +61,13 @@ health = 22
 stamina = 6
 stamina_increase_levels = Array[int]([])
 base_exp_score = 50
-base_exp_to_NL = 600
+base_exp_to_NL = 365
+exp_req_multipler = 1.1
 stats = SubResource("Resource_h63ju")
 stat_increase = SubResource("Resource_yt1im")
 skills = Array[ExtResource("7_1jd67")]([ExtResource("5_24amv"), ExtResource("6_3ri31"), ExtResource("10_670kk")])
 behaviour = Array[ExtResource("1_6omnb")]([])
-elemental_affinities = Array[ExtResource("2_yj48s")]([])
-elemental_potential = Array[ExtResource("2_wkuab")]([SubResource("Resource_rxp4k"), SubResource("Resource_qx5en")])
+elemental_affinities = Array[ExtResource("2_yj48s")]([SubResource("Resource_bpmx4")])
+elemental_potential = Array[ExtResource("2_wkuab")]([SubResource("Resource_rxp4k"), SubResource("Resource_qx5en"), SubResource("Resource_aycwc")])
 character_colour = Color(0.245911, 0.520267, 0.986298, 1)
 animation_player_loc = "sprite_blueler"

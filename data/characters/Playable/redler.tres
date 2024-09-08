@@ -21,12 +21,12 @@ condition = 2
 
 [sub_resource type="Resource" id="Resource_o3g53"]
 script = ExtResource("2_4lcgt")
-elemental = ExtResource("1_nere0")
+elementalName = "Fire"
 affinity = 0.5
 
 [sub_resource type="Resource" id="Resource_ng7tn"]
 script = ExtResource("2_4lcgt")
-elemental = ExtResource("3_ei662")
+elementalName = "Ice"
 affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_fnsma"]
@@ -47,7 +47,7 @@ strength = 0.445
 vitality = 0.5
 magic_pow = 0.5
 dexterity = 0.5
-agility = 0.35
+agility = 0.37
 luck = 0.3
 
 [sub_resource type="Resource" id="Resource_h63ju"]
@@ -57,16 +57,17 @@ vitality = 3
 magic_pow = 3
 dexterity = 2
 agility = 1
-luck = 1
+luck = 2
 
 [resource]
 script = ExtResource("1_nuv7u")
 name = "Redler"
 health = 25
 stamina = 4
-stamina_increase_levels = Array[int]([4, 7, 12])
+stamina_increase_levels = Array[int]([4, 7, 9, 12])
 base_exp_score = 50
-base_exp_to_NL = 250
+base_exp_to_NL = 328
+exp_req_multipler = 1.45
 stats = SubResource("Resource_h63ju")
 stat_increase = SubResource("Resource_yt1im")
 skills = Array[ExtResource("8_ysb20")]([ExtResource("4_ftoxy"), ExtResource("5_40dp6"), ExtResource("11_6o5nc")])

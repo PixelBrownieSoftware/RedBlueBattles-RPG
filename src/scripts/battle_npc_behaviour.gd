@@ -13,6 +13,12 @@ func behaviour_process():
 	var best_behaviours = {}
 	var character_skills : Array[rpg_skill] = battle_globals.current_character.get_skills
 	for skill in character_skills:
+		if skill.skill_scope == skill.SCOPE.SELF:
+			var skip_this = true
+			for status in skill.effects_to_add:
+				if !battle_globals.current_character.has_status(status.status):
+					skip_this = false
+					break
 		if battle_globals.current_character.stamina < skill.get_final_cost(battle_globals.current_character):
 			continue
 		var targets :  Array[battle_character_data]

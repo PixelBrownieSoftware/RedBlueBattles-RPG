@@ -16,11 +16,12 @@ enum SCOPE {ALLY, FOE, ALL, SELF, NONE = -1}
 @export var effects_to_remove : Array[status_effect]
 @export var effects_to_add : Array[status_effect_chance]
 
-func get_desc() -> String:
+func get_desc(chara : battle_character_data) -> String:
 	var desc : String
+	var final_st = get_final_cost(chara)
 	desc += name + "\n"
 	desc += "Power: " + str(power) + "\n"
-	desc += "Stamina Cost: " + str(stamina_cost) + "\n"
+	desc += "Stamina Cost: " + str(stamina_cost) + " (" + str(final_st) + ")" + "\n"
 	desc += "Element: " + skill_element.name + "\n"
 	var scope : String
 	match skill_scope:
@@ -29,7 +30,8 @@ func get_desc() -> String:
 	desc += "Scope: " + scope + "\n"
 	return desc
 	
-func get_final_cost(chara : battle_character_data):
+	
+func get_final_cost(chara : battle_character_data) -> int:
 	var potential : int = chara.get_element_potential_modifiers(self)["stamina_discount"]
 	var total: int  = stamina_cost + potential
 	total = clampi(total, 0, 999)
@@ -51,6 +53,7 @@ func requirements_met(chara : battle_character_data):
 	results["agi_req"] = get_requirements(chara,stat_requirement.agility)
 	results["mag_req"] = get_requirements(chara,stat_requirement.magic_pow)
 	results["dex_req"] = get_requirements(chara,stat_requirement.dexterity)
+	results["stamina_req"] = get_final_cost(chara)
 	
 	var str_req_sati : bool = (chara.strength >= results["str_req"])
 	var vit_req_sati : bool = (chara.vitality >= results["vit_req"])
@@ -58,5 +61,6 @@ func requirements_met(chara : battle_character_data):
 	var agi_req_sati : bool = (chara.agility >= results["agi_req"])
 	var mag_req_sati : bool = (chara.magic_pow >= results["mag_req"])
 	var dex_req_sati : bool = (chara.dexterity >= results["dex_req"])
-	results["req_met"] = str_req_sati && vit_req_sati && luc_req_sati && agi_req_sati && mag_req_sati && dex_req_sati
+	var stamina_req_sati : bool = (chara.max_stamina >= results["stamina_req"])
+	results["req_met"] = str_req_sati && vit_req_sati && luc_req_sati && agi_req_sati && mag_req_sati && dex_req_sati && stamina_req_sati
 	return results

@@ -10,7 +10,7 @@ func go_to_extra_skills():
 	load_skill_buttons()
 
 func load_skill(skill):
-	$SkillDesc.text = skill.get_desc()
+	$SkillDesc.text = skill.get_desc(current_character)
 	
 func enable_disable_partymember():
 	if GlobalVariables.get_enabled_party_members_count() > 1:

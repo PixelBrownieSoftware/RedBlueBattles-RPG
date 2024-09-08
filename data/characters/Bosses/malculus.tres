@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=19 format=3 uid="uid://cquom4g51vu7d"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=16 format=3 uid="uid://cquom4g51vu7d"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_0vmby"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_enux8"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_vjepx"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_4k8ha"]
-[ext_resource type="Resource" uid="uid://cy1rleskpxi3b" path="res://data/elements/Bio.tres" id="3_gg5y4"]
-[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="4_0aqd3"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_g0kg4"]
 [ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/Skills/Strike/slash.tres" id="6_lejrf"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="6_ns276"]
@@ -15,14 +13,9 @@
 [ext_resource type="Resource" uid="uid://bouqpmerlatxl" path="res://data/Skills/Fire/fire_blast.tres" id="9_qxi2o"]
 [ext_resource type="Resource" uid="uid://buhnvgb0e82yd" path="res://data/Skills/Ice/blizzard.tres" id="10_wvbr4"]
 
-[sub_resource type="Resource" id="Resource_418ce"]
-script = ExtResource("2_vjepx")
-elemental = ExtResource("3_gg5y4")
-affinity = 0.5
-
 [sub_resource type="Resource" id="Resource_1g3wa"]
 script = ExtResource("2_vjepx")
-elemental = ExtResource("4_0aqd3")
+elementalName = "Water"
 affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_2y283"]
@@ -53,11 +46,12 @@ stamina = 12
 stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 50
+exp_req_multipler = 1.2
 stats = SubResource("Resource_do15a")
 stat_increase = SubResource("Resource_2y283")
 skills = Array[ExtResource("5_g0kg4")]([ExtResource("6_lejrf"), ExtResource("7_oxxjt"), ExtResource("8_g26uq"), ExtResource("9_qxi2o"), ExtResource("10_wvbr4")])
 behaviour = Array[ExtResource("1_0vmby")]([])
-elemental_affinities = Array[ExtResource("2_vjepx")]([SubResource("Resource_418ce"), SubResource("Resource_1g3wa")])
+elemental_affinities = Array[ExtResource("2_vjepx")]([SubResource("Resource_1g3wa")])
 elemental_potential = Array[ExtResource("3_4k8ha")]([])
 character_colour = Color(0.490196, 0.0745098, 1, 1)
 animation_player_loc = "sprite_malculus"

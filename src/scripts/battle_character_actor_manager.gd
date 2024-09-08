@@ -24,7 +24,7 @@ func add_characters(group, actor_group):
 		tab.name = chara.name
 		tab.load_skill_buttons()
 		$"../../Character stats".add_child(tab)
-		
+		chara.increase_multiplier.connect(exp_watch.increase_multiplier)
 		var actor = base_character_actor.instantiate()
 		actor.position = position_nodes.get_child(chara.get_index()).position
 		actor.assign_data(chara)

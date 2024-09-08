@@ -91,6 +91,7 @@ var pass_turn : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
 var calculated_Press_Turn
 
 signal play_damage()
+signal increase_multiplier(amount)
 signal add_status_effect(status_fx)
 signal update_status_effect(status_fx)
 signal remove_status_effect(status_fx)
@@ -157,7 +158,7 @@ func level_up():
 	for move in assigned_data.skills:
 		if move.requirements_met(self) && !skills_before.rfind(move):
 			print(name + " learned " + move.name + "!")
-	expereince_to_NL += expereince_to_NL * (2.5 * (0.8**current_level))
+	expereince_to_NL += expereince_to_NL * (assigned_data.exp_req_multipler * (0.8**current_level))
 	health = max_health
 	
 func increase_stat(stat_increase : float) -> int:
@@ -307,6 +308,9 @@ func apply_status_effects(effects : Array[status_effect_chance]):
 				var status_instance = status.status.duplicate()
 				add_status_effect.emit(status_instance)
 				status_effects.push_front(status_instance)
+				if !GlobalVariables.is_player_team(self):
+					if status.status.contribute_multipler:
+						increase_multiplier.emit(0.25)
 				await get_tree().create_timer(0.5).timeout
 				print(name + " got " + status.status.name)
 			
@@ -349,7 +353,8 @@ func change_stamina(dmg : int):
 func get_elemental_affinity(el : element) -> float:
 	var elemental_aff : float = 1
 	for elemental in assigned_data.elemental_affinities:
-		if el == elemental.elemental:
+		var element_look = GlobalVariables.get_element(elemental.elementalName)
+		if el == element_look:
 			elemental_aff = elemental.affinity
 	for eff in status_effects:
 		elemental_aff += eff.find_elemental_change(el)
@@ -357,7 +362,8 @@ func get_elemental_affinity(el : element) -> float:
 	
 func get_base_elemental_affinity(el : element) -> float:
 	for elemental in assigned_data.elemental_affinities:
-		if el == elemental.elemental:
+		var element_look = GlobalVariables.get_element(elemental.elementalName)
+		if el == element_look:
 			return elemental.affinity
 	return 1.0
 	

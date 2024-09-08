@@ -7,6 +7,8 @@ signal set_multiplier(mult)
 func _ready():
 	set_multiplier.connect(GlobalVariables.set_multiplier)
 
+func increase_multiplier(amount):
+	multiplier += amount
 
 func exp_points_calc(user : battle_character_data, target : battle_character_data, damage : int, press_turn: PRESS_TURN.PT):
 	#TODO: make the fomrmula 

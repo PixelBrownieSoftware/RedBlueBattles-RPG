@@ -22,5 +22,6 @@ script = ExtResource("1_ul6vu")
 name = "Wind"
 stats = SubResource("Resource_ladsp")
 icon = ExtResource("3_svkx7")
+colour = Color(0.513726, 0.898039, 0.705882, 1)
 effects_to_remove = Array[ExtResource("2_60sxc")]([])
 effects_to_add = Array[ExtResource("1_igsq2")]([])

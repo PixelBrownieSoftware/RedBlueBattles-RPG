@@ -21,12 +21,12 @@ condition = 2
 
 [sub_resource type="Resource" id="Resource_bl3pc"]
 script = ExtResource("2_duwrj")
-elemental = ExtResource("1_bhovt")
+elementalName = "Fire"
 affinity = 0.0
 
 [sub_resource type="Resource" id="Resource_jbmuy"]
 script = ExtResource("2_duwrj")
-elemental = ExtResource("3_2mqp0")
+elementalName = "Ice"
 affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_h42uu"]
@@ -67,6 +67,7 @@ stamina = 10
 stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 2100
+exp_req_multipler = 1.2
 stats = SubResource("Resource_mrwpr")
 stat_increase = SubResource("Resource_uo6mr")
 skills = Array[ExtResource("8_u5sfq")]([ExtResource("2_u27re"), ExtResource("3_1qgdd"), ExtResource("11_toe8j")])

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg0i56a6ot0ju"]
+
+[ext_resource type="Script" path="res://scenes/title_screen.gd" id="1_5y3j7"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_5y3j7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 99.0
+offset_bottom = 128.0
+
+[node name="New game" type="Button" parent="Control"]
+offset_left = 179.0
+offset_top = 144.0
+offset_right = 302.0
+offset_bottom = 183.0
+text = "New game"
+
+[node name="Load game" type="Button" parent="Control"]
+offset_left = 178.0
+offset_top = 202.0
+offset_right = 301.0
+offset_bottom = 241.0
+text = "Load game"
+
+[connection signal="pressed" from="Control/New game" to="." method="new_game"]
+[connection signal="pressed" from="Control/Load game" to="." method="load_game"]

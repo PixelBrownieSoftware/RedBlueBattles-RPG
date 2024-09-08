@@ -23,5 +23,6 @@ script = ExtResource("1_nwt47")
 name = "Ice"
 stats = SubResource("Resource_tb7rd")
 icon = ExtResource("4_g2mlu")
+colour = Color(0.372549, 0.85098, 1, 1)
 effects_to_remove = Array[ExtResource("2_gok5j")]([ExtResource("3_uhpsj")])
 effects_to_add = Array[ExtResource("1_qutlt")]([])

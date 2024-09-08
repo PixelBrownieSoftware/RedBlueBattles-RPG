@@ -1,29 +1,22 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://c5b5xn00b2y5h"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://c5b5xn00b2y5h"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_cufwe"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="2_nsr2o"]
-[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="2_ppos5"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="3_yakf7"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ywmoy"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_2e418"]
 [ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/Skills/Strike/multi_slash.tres" id="4_2f1e5"]
+[ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/Skills/Strike/frost_strike.tres" id="5_6t47a"]
 [ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/Playable/blueler.tres" id="6_wth3c"]
-
-[sub_resource type="Resource" id="Resource_j05sh"]
-script = ExtResource("1_cufwe")
-character = ExtResource("2_ppos5")
-skills = Array[ExtResource("3_ywmoy")]([ExtResource("4_2f1e5")])
-min_level = 8
-max_level = 8
 
 [sub_resource type="Resource" id="Resource_pptr6"]
 script = ExtResource("1_cufwe")
 character = ExtResource("4_2e418")
-skills = Array[ExtResource("3_ywmoy")]([])
-min_level = 8
-max_level = 8
+skills = Array[ExtResource("3_ywmoy")]([ExtResource("4_2f1e5"), ExtResource("5_6t47a")])
+min_level = 9
+max_level = 9
 
 [resource]
 script = ExtResource("2_nsr2o")
-opponents = Array[ExtResource("1_cufwe")]([SubResource("Resource_j05sh"), SubResource("Resource_pptr6")])
+opponents = Array[ExtResource("1_cufwe")]([SubResource("Resource_pptr6")])
 unlockables = Array[ExtResource("3_yakf7")]([ExtResource("6_wth3c")])

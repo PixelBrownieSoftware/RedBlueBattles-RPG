@@ -1,49 +1,51 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=13 format=3 uid="uid://b28wvrjcfr86c"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=15 format=3 uid="uid://b28wvrjcfr86c"]
 
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="1_3m652"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_qlv6m"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_w4h3m"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_e6itp"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="3_up201"]
 [ext_resource type="Resource" uid="uid://dtiii6cayoafh" path="res://data/characters/Enemies/pinkler.tres" id="4_xu6ls"]
 [ext_resource type="Resource" uid="uid://dn8iqklx4h2v7" path="res://data/characters/Enemies/trunko.tres" id="5_okecl"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="6_65sl4"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="9_kc4h1"]
 
 [sub_resource type="Resource" id="Resource_abv0h"]
 script = ExtResource("2_w4h3m")
 character = ExtResource("1_3m652")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[ExtResource("3_e6itp")]([])
 min_level = 10
 max_level = 14
 
 [sub_resource type="Resource" id="Resource_wcqd3"]
 script = ExtResource("2_w4h3m")
 character = ExtResource("3_up201")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[ExtResource("3_e6itp")]([])
 min_level = 10
 max_level = 14
 
 [sub_resource type="Resource" id="Resource_81oks"]
 script = ExtResource("2_w4h3m")
 character = ExtResource("4_xu6ls")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[ExtResource("3_e6itp")]([])
 min_level = 10
 max_level = 14
 
 [sub_resource type="Resource" id="Resource_lbuj2"]
 script = ExtResource("2_w4h3m")
 character = ExtResource("5_okecl")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[ExtResource("3_e6itp")]([])
 min_level = 10
 max_level = 15
 
 [sub_resource type="Resource" id="Resource_511ey"]
 script = ExtResource("2_w4h3m")
 character = ExtResource("6_65sl4")
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
+skills = Array[ExtResource("3_e6itp")]([])
 min_level = 10
 max_level = 14
 
 [resource]
 script = ExtResource("1_qlv6m")
 opponents = Array[ExtResource("2_w4h3m")]([SubResource("Resource_abv0h"), SubResource("Resource_wcqd3"), SubResource("Resource_81oks"), SubResource("Resource_lbuj2"), SubResource("Resource_511ey")])
-unlockables = Array[Resource("res://src/battle_character_base.gd")]([])
+unlockables = Array[ExtResource("9_kc4h1")]([])

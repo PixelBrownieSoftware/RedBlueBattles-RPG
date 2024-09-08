@@ -19,7 +19,7 @@ condition = 2
 
 [sub_resource type="Resource" id="Resource_8grxn"]
 script = ExtResource("3_7jj0a")
-elemental = ExtResource("2_v8pxt")
+elementalName = "Peirce"
 affinity = 0.5
 
 [sub_resource type="Resource" id="Resource_upx2g"]
@@ -55,6 +55,7 @@ stamina = 7
 stamina_increase_levels = Array[int]([])
 base_exp_score = 1250
 base_exp_to_NL = 50
+exp_req_multipler = 1.2
 stats = SubResource("Resource_a74rd")
 stat_increase = SubResource("Resource_octy3")
 skills = Array[ExtResource("7_p5uj5")]([ExtResource("2_n3vyi"), ExtResource("3_1nsgx")])

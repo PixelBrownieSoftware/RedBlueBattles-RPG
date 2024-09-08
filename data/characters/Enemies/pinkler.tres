@@ -1,33 +1,30 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=20 format=3 uid="uid://dtiii6cayoafh"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://dtiii6cayoafh"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_up7ke"]
-[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="1_vak2t"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_wqaa5"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_j608l"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_rqa54"]
-[ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="3_g6k3p"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="3_yiw13"]
 [ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/Skills/Psychic/brain_shock.tres" id="3_ysjp7"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_dulu4"]
 [ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="4_fwymy"]
-[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="4_qpgtc"]
 [ext_resource type="Resource" uid="uid://c23sjcxxaxmqd" path="res://data/Skills/Force/tackle.tres" id="5_yvrt3"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="6_y7h01"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="8_wjr2e"]
 
 [sub_resource type="Resource" id="Resource_ajvb6"]
 script = ExtResource("2_j608l")
-elemental = ExtResource("1_vak2t")
+elementalName = "Fire"
 affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_14opm"]
 script = ExtResource("2_j608l")
-elemental = ExtResource("3_g6k3p")
+elementalName = "Ice"
 affinity = 0.6
 
 [sub_resource type="Resource" id="Resource_kn8ud"]
 script = ExtResource("2_j608l")
-elemental = ExtResource("4_qpgtc")
+elementalName = "Psychic"
 affinity = 0.35
 
 [sub_resource type="Resource" id="Resource_khvt7"]
@@ -58,11 +55,12 @@ stamina = 6
 stamina_increase_levels = Array[int]([])
 base_exp_score = 120
 base_exp_to_NL = 50
+exp_req_multipler = 1.2
 stats = SubResource("Resource_882jo")
 stat_increase = SubResource("Resource_khvt7")
 skills = Array[ExtResource("8_wjr2e")]([ExtResource("2_rqa54"), ExtResource("3_ysjp7"), ExtResource("4_fwymy"), ExtResource("5_yvrt3")])
 behaviour = Array[ExtResource("1_up7ke")]([])
 elemental_affinities = Array[ExtResource("2_j608l")]([SubResource("Resource_ajvb6"), SubResource("Resource_14opm"), SubResource("Resource_kn8ud")])
 elemental_potential = Array[ExtResource("6_y7h01")]([])
-character_colour = Color(1, 1, 1, 1)
+character_colour = Color(0.984314, 0.592157, 0.905882, 1)
 animation_player_loc = "sprite_pinkler"

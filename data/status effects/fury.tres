@@ -26,3 +26,4 @@ icon = ExtResource("4_mqw4s")
 round_start = false
 after_action = true
 turn_start = false
+contribute_multipler = true

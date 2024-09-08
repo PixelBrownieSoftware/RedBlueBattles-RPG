@@ -10,4 +10,3 @@ func _ready():
 func change_state(state : battle_state):
 	current_state = state
 	current_state.start_state()
-

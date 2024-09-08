@@ -36,11 +36,13 @@ func _on_animation_player_animation_finished(anim_name):
 			#A hack to make sure that players don't waste stamina
 			if sk.power == 0:
 				if sk.skill_scope == sk.SCOPE.SELF:
-					var has_status : bool = false
+					var skip_this = true
 					for status in sk.effects_to_add:
 						if !globals.current_character.has_status(status.status):
-							has_status = true
-					skill_button.show_anim(has_status)
+							skip_this = false
+							break
+					if skip_this:
+						skill_button.show_anim(false)
 			index += 1
 		$"../Analyse".visible = true
 		$"../Character stats".visible = false

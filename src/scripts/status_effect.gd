@@ -11,10 +11,11 @@ class_name status_effect
 @export var round_start : bool = false
 @export var after_action : bool = false
 @export var turn_start : bool = false
+@export var contribute_multipler : bool = false
 
 func find_elemental_change(el : element) -> float:
 	for elemental in elemental_affinity_change:
-		if elemental.elemental == el:
+		if GlobalVariables.get_element(elemental.elementalName) == el:
 			return elemental.affinity
 	return 0
 
