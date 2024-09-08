@@ -43,7 +43,7 @@ script = ExtResource("3_ucfia")
 strength = 3
 vitality = 4
 magic_pow = 1
-dexterity = 6
+dexterity = 5
 agility = 4
 luck = 2
 
@@ -53,7 +53,7 @@ name = "Daleth"
 health = 20
 stamina = 7
 stamina_increase_levels = Array[int]([])
-base_exp_score = 1250
+base_exp_score = 150
 base_exp_to_NL = 50
 exp_req_multipler = 1.2
 stats = SubResource("Resource_a74rd")

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://t6j2xsd5p21d"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=12 format=3 uid="uid://t6j2xsd5p21d"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_8gwl5"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_klvr0"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ae4jx"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_dw26n"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_qt4e1"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="5_2fkon"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_fwj4k"]
@@ -11,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_8asq2"]
 script = ExtResource("1_8gwl5")
 character = ExtResource("2_klvr0")
-skills = Array[ExtResource("3_ae4jx")]([])
+skills = Array[ExtResource("3_ae4jx")]([ExtResource("4_dw26n")])
 min_level = 3
 max_level = 5
 

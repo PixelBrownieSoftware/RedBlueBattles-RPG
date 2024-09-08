@@ -36,12 +36,13 @@ func level_up():
 	GlobalVariables.expereince_score -= current_character.expereince_to_NL
 	current_character.level_up()
 	load_skill_buttons()
+	SaveSystem.save_game()
 
 func set_elements():
-	for potential in $Panel/Potential.get_children():
+	for potential in $Panel/PA/Potential.get_children():
 		potential.character= current_character
 		potential.set_potential()
-	for affinity in $Panel/Affinity.get_children():
+	for affinity in $Panel/PA/Affinity.get_children():
 		affinity.character= current_character
 		affinity.set_affinity()
 const max_stats = 25

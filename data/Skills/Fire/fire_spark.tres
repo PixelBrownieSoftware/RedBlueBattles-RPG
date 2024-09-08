@@ -21,12 +21,12 @@ animation_name = ""
 
 [sub_resource type="Resource" id="Resource_v13km"]
 script = ExtResource("6_rpp4t")
-strength = 0
-vitality = 0
+strength = 1
+vitality = 1
 magic_pow = 4
 dexterity = 4
 agility = 2
-luck = 0
+luck = 1
 
 [resource]
 script = ExtResource("3_00117")

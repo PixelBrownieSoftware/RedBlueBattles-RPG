@@ -68,10 +68,10 @@ var pass_turn : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
 		var skills_arr : Array[rpg_skill]
 		for original_skill : rpg_skill in assigned_data.skills:
 			if original_skill.requirements_met(self)["req_met"]:
-				skills_arr.push_back(original_skill)
+				skills_arr.append(original_skill)
 		for skill : rpg_skill in extra_skills:
 			if skill.requirements_met(self)["req_met"]:
-				skills_arr.push_back(skill)
+				skills_arr.append(skill)
 		return skills_arr
 		
 @export var get_learnable_skills: Array[rpg_skill]:

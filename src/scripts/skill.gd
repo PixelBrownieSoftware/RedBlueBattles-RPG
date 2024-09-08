@@ -47,6 +47,14 @@ func requirements_met(chara : battle_character_data):
 	#The higher the potential, the lower the requirements
 	#It may also do more damage
 	var results =  {}
+	results["str_req_og"] = stat_requirement.strength
+	results["vit_req_og"] = stat_requirement.vitality
+	results["luc_req_og"] = stat_requirement.luck
+	results["agi_req_og"] = stat_requirement.agility
+	results["mag_req_og"] = stat_requirement.magic_pow
+	results["dex_req_og"] = stat_requirement.dexterity
+	results["stamina_req_og"] = stamina_cost
+	
 	results["str_req"] = get_requirements(chara,stat_requirement.strength)
 	results["vit_req"] = get_requirements(chara,stat_requirement.vitality)
 	results["luc_req"] = get_requirements(chara,stat_requirement.luck)

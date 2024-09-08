@@ -12,4 +12,4 @@ func show_moves_learned(moves_learned):
 
 func show_characters(characters):
 	for character : battle_character_base in characters:
-		$"Learned Skills".text += character.name + "\n"
+		$"Learned Skills".text += character.name + " has joined the party!\n"

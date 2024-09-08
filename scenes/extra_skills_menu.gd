@@ -42,18 +42,23 @@ func display_skills():
 	description += "Stat requirements:" + "\n"
 	var req_met = selected_skill.requirements_met(chara)
 
-	if req_met["str_req"] > 0:
+	if req_met["str_req_og"] > 1:
 		description += display_stat("Strength",req_met["str_req"] , chara.strength)
-	if req_met["vit_req"] > 0:
+	if req_met["vit_req_og"] > 1:
 		description += display_stat("Vitality", req_met["vit_req"], chara.vitality)
-	if req_met["dex_req"] > 0:
+	if req_met["dex_req_og"] > 1:
 		description += display_stat("Dexterity", req_met["dex_req"], chara.dexterity)
-	if req_met["agi_req"] > 0:
+	if req_met["agi_req_og"] > 1:
 		description += display_stat("Agility", req_met["agi_req"], chara.agility)
-	if req_met["mag_req"] > 0:
+	if req_met["mag_req_og"] > 1:
 		description += display_stat("Magic power", req_met["mag_req"], chara.magic_pow)
-	if req_met["luc_req"] > 0:
+	if req_met["luc_req_og"] > 1:
 		description += display_stat("Luck", req_met["luc_req"], chara.luck)
+	if selected_skill.effects_to_add.size() > 0:
+		description += "Status inflict:\n"
+		for status in selected_skill.effects_to_add:
+			description += "	-" + status.status.name + " (" + str(status.chance * 100) + "%)\n"
+	
 	$"MoveDesc/move desk text".text = description
 	if req_met["req_met"]:
 		$"MoveDesc/Equip skill".disabled = false

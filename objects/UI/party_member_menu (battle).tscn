@@ -3,3 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://d0j2rpxn00nk3" path="res://objects/UI/party_member_menu.tscn" id="1_kjmhm"]
 
 [node name="PartyMember menu" instance=ExtResource("1_kjmhm")]
+
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button2" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button3" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button4" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button5" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button6" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button7" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button8" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button9" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button10" to="." method="load_skill"]

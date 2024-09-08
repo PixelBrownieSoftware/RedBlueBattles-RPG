@@ -17,12 +17,6 @@ func start_state():
 			else:
 				battle_globals.pressed_turn -= 1
 				turn_icon_handle.emit(battle_globals.pressed_turn, "disappear")
-		PRESS_TURN.PT.ABSORB:
-			var remaining: int = battle_globals.net_turn
-			for i in range(remaining):
-				if battle_globals.net_turn == 0:
-					break
-				use_turn()
 		PRESS_TURN.PT.REFLECT:
 			for i in range(3):
 				if battle_globals.net_turn == 0:

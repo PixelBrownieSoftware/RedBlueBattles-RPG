@@ -12,18 +12,54 @@ offset_right = 99.0
 offset_bottom = 128.0
 
 [node name="New game" type="Button" parent="Control"]
-offset_left = 179.0
-offset_top = 144.0
-offset_right = 302.0
-offset_bottom = 183.0
+layout_mode = 0
+offset_left = 376.0
+offset_top = 251.0
+offset_right = 499.0
+offset_bottom = 290.0
 text = "New game"
 
 [node name="Load game" type="Button" parent="Control"]
-offset_left = 178.0
-offset_top = 202.0
-offset_right = 301.0
-offset_bottom = 241.0
+layout_mode = 0
+offset_left = 375.0
+offset_top = 309.0
+offset_right = 498.0
+offset_bottom = 348.0
 text = "Load game"
+
+[node name="Title" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 48.0
+offset_right = 753.0
+offset_bottom = 115.0
+bbcode_enabled = true
+text = "[center]Red Blue[/center]
+[center]BATTLES[/center]"
+tab_size = 7
+
+[node name="MadeBy" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 599.0
+offset_right = 1148.0
+offset_bottom = 639.0
+bbcode_enabled = true
+text = "Made by PinkBunnySoftware 2024"
+fit_content = true
+tab_size = 7
+
+[node name="MadeBy2" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 571.0
+offset_right = 376.0
+offset_bottom = 640.0
+bbcode_enabled = true
+text = "This game uses an autosave system.
+It will save when you finish a battle or level up a character."
+fit_content = true
+tab_size = 7
 
 [connection signal="pressed" from="Control/New game" to="." method="new_game"]
 [connection signal="pressed" from="Control/Load game" to="." method="load_game"]

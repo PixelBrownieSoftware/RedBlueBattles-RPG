@@ -10,8 +10,8 @@ func save_game():
 	file.store_16(PartyMembers.get_children().size())
 	for player : battle_character_data in PartyMembers.get_children():
 		character_equip_skills[player.name] = []
-		print("filename " + player.assigned_data.resource_path)
-		file.store_pascal_string(player.assigned_data.resource_path)
+		print("filename " + str(typeof(GlobalVariables.character_uid_lookup[player.name])))
+		file.store_64(GlobalVariables.character_uid_lookup[player.name])
 		file.store_pascal_string(player.name)
 		file.store_32(player.max_health)
 		file.store_8(player.max_stamina)
@@ -19,17 +19,18 @@ func save_game():
 	
 	for skill in GlobalVariables.extra_skills:
 		var who_has_skill = GlobalVariables.who_has_equippied_skill(skill)
+		var skill_UID = GlobalVariables.skill_uid_lookup[skill.name]
 		if who_has_skill == null:
-			character_equip_skills["None"].append(skill.resource_path)
+			character_equip_skills["None"].append(skill_UID)
 		else:
-			character_equip_skills[who_has_skill.name].append(skill.resource_path)
+			character_equip_skills[who_has_skill.name].append(skill_UID)
 	#GlobalVariables.extra_skills.size()
 	file.store_32(character_equip_skills.keys().size())
 	for chrEquip in character_equip_skills.keys():
 		file.store_pascal_string(chrEquip)
 		file.store_32(character_equip_skills[chrEquip].size())
 		for skill_name in character_equip_skills[chrEquip]:
-			file.store_pascal_string(skill_name)
+			file.store_64(skill_name)
 	file.close()
 	
 	
@@ -50,12 +51,14 @@ func load_game():
 	GlobalVariables.expereince_score = file.get_32()
 	var party_member_count = file.get_16()
 	for i in range(party_member_count):
-		var obj_name = file.get_pascal_string()
+		var obj_uid = file.get_64()
+		print(ResourceUID.id_to_text(obj_uid))
 		var character_name = file.get_pascal_string()
 		var max_health = file.get_32()
 		var max_stamina = file.get_8()
 		var level = file.get_32()
-		var load_obj = load(obj_name)
+		var resource_loc = ResourceUID.id_to_text(obj_uid)
+		var load_obj = load(resource_loc)
 		var character = CharacterFactory.create_new_character(load_obj, PartyMembers, level)
 		character.max_health = max_health
 		character.max_stamina = max_stamina
@@ -65,8 +68,8 @@ func load_game():
 		var character_name = file.get_pascal_string()
 		var skill_on_character_count = file.get_32()
 		for i2 in range(skill_on_character_count):
-			var skill_name = file.get_pascal_string()
-			var skill_obj =load(skill_name)
+			var skill_name = file.get_64()
+			var skill_obj =load(ResourceUID.id_to_text(skill_name))
 			GlobalVariables.add_extra_skill(skill_obj)
 			if character_name != "None":
 				for chara in PartyMembers.get_children():

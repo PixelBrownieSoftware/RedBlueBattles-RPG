@@ -16,6 +16,8 @@ func reset_multipiler():
 @export var equipped_extra_skills = {}
 @export var enabled_party_members = {}
 @export var element_lookup = {}
+@export var skill_uid_lookup = {}	#This is specifically for save data
+@export var character_uid_lookup = {}	#This is specifically for save data
 var current_battle : battle_group_data
 
 func _ready():
@@ -23,7 +25,29 @@ func _ready():
 	for element_obj in elements:
 		var el : element = ResourceLoader.load("res://data/elements/" + element_obj)
 		element_lookup[el.name] = el
+	load_all_skills()
+	load_all_charcters()
+			
+func load_all_skills():
+	var dir = DirAccess.get_directories_at("res://data/Skills/")
+	for folder in dir:
+		var moves = DirAccess.get_files_at("res://data/Skills/" + folder)
+		for move_name in moves:
+			var loc = "res://data/Skills/" + folder + "/" + move_name
+			var move : rpg_skill = ResourceLoader.load(loc)
+			skill_uid_lookup[move.name] = ResourceLoader.get_resource_uid(loc)
+
+func load_all_charcters():
+	var dir = DirAccess.get_directories_at("res://data/characters/")
+	for folder in dir:
+		var characters = DirAccess.get_files_at("res://data/characters/" + folder)
+		for character_name in characters:
+			var loc = "res://data/characters/" + folder + "/" + character_name
+			var character : battle_character_base = ResourceLoader.load(loc)
+			print(typeof(ResourceLoader.get_resource_uid(loc)))
+			character_uid_lookup[character.name] = ResourceLoader.get_resource_uid(loc)
 		
+
 func get_element(element_name : String):
 	if element_lookup.find_key(element_name) != -1:
 		return element_lookup[element_name]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=54 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="2_8515p"]
@@ -42,6 +42,12 @@
 [ext_resource type="Resource" uid="uid://bi5h1a7lf2yl1" path="res://data/groups/malculus/ml_boss.tres" id="31_lth0m"]
 [ext_resource type="Resource" uid="uid://dxcyusg00opvd" path="res://data/groups/malculus/ml_easy_battle_1.tres" id="39_3yf01"]
 [ext_resource type="Resource" uid="uid://b28wvrjcfr86c" path="res://data/groups/malculus/ml_hard_battle_1.tres" id="40_h4muc"]
+[ext_resource type="Texture2D" uid="uid://ro16bqpwgidv" path="res://sprites/GUI/gui_str.png" id="43_71yog"]
+[ext_resource type="Texture2D" uid="uid://c2ejrubsxhqmf" path="res://sprites/GUI/gui_vit.png" id="44_6ay7a"]
+[ext_resource type="Texture2D" uid="uid://dieyq5lsg0wlf" path="res://sprites/GUI/gui_dex.png" id="45_netp6"]
+[ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/mag_pow.png" id="46_wvy3d"]
+[ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="47_oagt6"]
+[ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="48_sxbv2"]
 
 [sub_resource type="Animation" id="Animation_1vcaa"]
 length = 0.001
@@ -124,6 +130,42 @@ tracks/6/path = NodePath("ExtraSkillsMenu/Back2:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Info Stats:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(141, 46)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Info Stats:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Info Stats:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -228,6 +270,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Info Stats:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_nkjg2"]
@@ -354,11 +408,124 @@ tracks/9/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_hho0c"]
+resource_name = "to_info_menu"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PartyMemberTabs:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PartyMemberTabs:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(200, 144), Vector2(-816, 144)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Party:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Party:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Enemies:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Enemies:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Info Stats:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Info Stats:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Info Stats:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(854, 46), Vector2(141, 46)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2gytn"]
 _data = {
 "RESET": SubResource("Animation_1vcaa"),
 "to_enemy_menu": SubResource("Animation_dmynu"),
-"to_extra_skills": SubResource("Animation_nkjg2")
+"to_extra_skills": SubResource("Animation_nkjg2"),
+"to_info_menu": SubResource("Animation_hho0c")
 }
 
 [node name="OverworldMenu" type="Node2D"]
@@ -687,10 +854,11 @@ offset_bottom = -51.0
 text = "Back"
 
 [node name="EnemySelectTabs" type="TabContainer" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 86.0
+offset_left = -778.0
 offset_top = 100.0
-offset_right = 807.0
+offset_right = -57.0
 offset_bottom = 539.0
 current_tab = 0
 
@@ -984,10 +1152,10 @@ group = NodePath("../../../Boss")
 [node name="PartyMemberTabs" type="TabContainer" parent="MainMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 816.0
-offset_top = 144.0
-offset_right = 1375.0
-offset_bottom = 545.0
+offset_left = 200.0
+offset_top = -370.0
+offset_right = 759.0
+offset_bottom = 31.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
 libraries = {
@@ -995,6 +1163,7 @@ libraries = {
 }
 
 [node name="Party" type="Button" parent="MainMenu"]
+visible = false
 layout_mode = 2
 offset_left = 823.0
 offset_top = 295.0
@@ -1011,6 +1180,104 @@ offset_right = 86.0
 offset_bottom = 347.0
 disabled = true
 text = "Enemies"
+
+[node name="Info Stats" type="Panel" parent="MainMenu"]
+visible = false
+layout_mode = 0
+offset_left = 141.0
+offset_top = 46.0
+offset_right = 881.0
+offset_bottom = 557.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/Info Stats"]
+layout_mode = 0
+offset_right = 352.0
+offset_bottom = 112.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Info Stats/ScrollContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "[u][b]Game information[/b][/u]"
+
+[node name="strength" type="HBoxContainer" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/strength"]
+layout_mode = 2
+texture = ExtResource("43_71yog")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/strength"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Strength"
+
+[node name="vitality" type="HBoxContainer" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/vitality"]
+layout_mode = 2
+texture = ExtResource("44_6ay7a")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/vitality"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Vitality"
+
+[node name="dexterity" type="HBoxContainer" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/dexterity"]
+layout_mode = 2
+texture = ExtResource("45_netp6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/dexterity"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Dexterity"
+
+[node name="magic power" type="HBoxContainer" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/magic power"]
+layout_mode = 2
+texture = ExtResource("46_wvy3d")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/magic power"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Magic power"
+fit_content = true
+
+[node name="agility" type="HBoxContainer" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/agility"]
+layout_mode = 2
+texture = ExtResource("47_oagt6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/agility"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Agility"
+fit_content = true
+
+[node name="luck" type="HBoxContainer" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/luck"]
+layout_mode = 2
+texture = ExtResource("48_sxbv2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Info Stats/ScrollContainer/VBoxContainer/luck"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Luck
+"
+fit_content = true
 
 [node name="Exp count" type="RichTextLabel" parent="."]
 offset_right = 246.0

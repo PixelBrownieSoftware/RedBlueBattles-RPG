@@ -36,6 +36,9 @@ func debug_stuff():
 		var moves = DirAccess.get_files_at("res://data/Skills/" + folder)
 		for move_name in moves:
 			var move : rpg_skill = ResourceLoader.load("res://data/Skills/" + folder + "/" + move_name)
+			if move.name == "Pass":
+				var uid = ResourceLoader.get_resource_uid("res://data/Skills/" + folder + "/" + move_name)
+				print(ResourceUID.id_to_text(uid))
 			GlobalVariables.add_extra_skill(move)
 	#GlobalVariables.get_all_chara_exsk(chara)
 
