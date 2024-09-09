@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_efrbl"]
 [ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_l1s0p"]
 [ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_v4irn"]
-[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="2_vtcsv"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_skvfi"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="5_8ni2a"]
 
 [sub_resource type="Resource" id="Resource_5gpwh"]
 script = ExtResource("2_v4irn")
@@ -33,12 +33,12 @@ script = ExtResource("1_efrbl")
 name = "Tackle"
 learnable = true
 power = 7
-stamina_cost = 3
+stamina_cost = 4
 repeat_min = 1
 repeat_max = 1
 stat_requirement = SubResource("Resource_tq2yn")
 skill_scope = 1
-skill_element = ExtResource("2_vtcsv")
+skill_element = ExtResource("5_8ni2a")
 skill_animation = Array[ExtResource("2_v4irn")]([SubResource("Resource_5gpwh"), SubResource("Resource_60m24")])
 usable_by_anyone = false
 effects_to_remove = Array[ExtResource("2_l1s0p")]([])

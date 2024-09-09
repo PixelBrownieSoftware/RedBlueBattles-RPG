@@ -23,9 +23,9 @@ animation_name = ""
 script = ExtResource("4_fr64h")
 strength = 1
 vitality = 1
-magic_pow = 1
-dexterity = 1
-agility = 1
+magic_pow = 9
+dexterity = 4
+agility = 8
 luck = 1
 
 [resource]
@@ -34,8 +34,8 @@ name = "Lightning"
 learnable = true
 power = 15
 stamina_cost = 2
-repeat_min = null
-repeat_max = null
+repeat_min = 1
+repeat_max = 1
 stat_requirement = SubResource("Resource_ovqxs")
 skill_scope = 1
 skill_element = ExtResource("2_brvv5")

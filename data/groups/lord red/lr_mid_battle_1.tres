@@ -1,30 +1,36 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://cwrjy4fq7xmd0"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=16 format=3 uid="uid://cwrjy4fq7xmd0"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_ns6rn"]
 [ext_resource type="Resource" uid="uid://dtiii6cayoafh" path="res://data/characters/Enemies/pinkler.tres" id="2_nf3h2"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_khw36"]
 [ext_resource type="Resource" uid="uid://dn8iqklx4h2v7" path="res://data/characters/Enemies/trunko.tres" id="4_ikroa"]
+[ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/Skills/Force/oily_punch.tres" id="4_p2h3r"]
+[ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/Skills/Electric/lightning.tres" id="5_6r4yp"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_do8dk"]
+[ext_resource type="Resource" uid="uid://ccvqwy5iklcp" path="res://data/Skills/Psychic/sweet_dreams.tres" id="6_84b7w"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_m3jf0"]
+[ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="7_gmiy0"]
+[ext_resource type="Resource" uid="uid://ckwmj5smm05b2" path="res://data/Skills/Fire/fire_spark.tres" id="9_m214q"]
+[ext_resource type="Resource" uid="uid://dpafsbbvb34br" path="res://data/Skills/Wind/hurricaine.tres" id="10_ipmbp"]
 
 [sub_resource type="Resource" id="Resource_3lo37"]
 script = ExtResource("1_ns6rn")
 character = ExtResource("2_nf3h2")
-skills = Array[ExtResource("3_khw36")]([])
+skills = Array[ExtResource("3_khw36")]([ExtResource("4_p2h3r"), ExtResource("6_84b7w")])
 min_level = 5
 max_level = 9
 
 [sub_resource type="Resource" id="Resource_32ucd"]
 script = ExtResource("1_ns6rn")
 character = ExtResource("4_ikroa")
-skills = Array[ExtResource("3_khw36")]([])
+skills = Array[ExtResource("3_khw36")]([ExtResource("5_6r4yp"), ExtResource("6_84b7w"), ExtResource("7_gmiy0")])
 min_level = 4
 max_level = 8
 
 [sub_resource type="Resource" id="Resource_xea3k"]
 script = ExtResource("1_ns6rn")
 character = ExtResource("4_ikroa")
-skills = Array[ExtResource("3_khw36")]([])
+skills = Array[ExtResource("3_khw36")]([ExtResource("9_m214q"), ExtResource("10_ipmbp")])
 min_level = 6
 max_level = 9
 

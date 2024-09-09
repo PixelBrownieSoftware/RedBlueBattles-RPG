@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://bwkdvau2fffjw"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=18 format=3 uid="uid://bwkdvau2fffjw"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_fyshi"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_vvfah"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_ucfia"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="4_wt48y"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_p5uj5"]
+[ext_resource type="Resource" uid="uid://7d4pyh5sdmj0" path="res://data/Skills/Peirce/burn_shot.tres" id="10_v46or"]
 
 [sub_resource type="Resource" id="Resource_iul6m"]
 script = ExtResource("1_vvfah")
@@ -53,12 +54,12 @@ name = "Daleth"
 health = 20
 stamina = 7
 stamina_increase_levels = Array[int]([])
-base_exp_score = 150
+base_exp_score = 95
 base_exp_to_NL = 50
 exp_req_multipler = 1.2
 stats = SubResource("Resource_a74rd")
 stat_increase = SubResource("Resource_octy3")
-skills = Array[ExtResource("7_p5uj5")]([ExtResource("2_n3vyi"), ExtResource("3_1nsgx")])
+skills = Array[ExtResource("7_p5uj5")]([ExtResource("2_n3vyi"), ExtResource("3_1nsgx"), ExtResource("10_v46or")])
 behaviour = Array[ExtResource("1_vvfah")]([SubResource("Resource_iul6m")])
 elemental_affinities = Array[ExtResource("3_7jj0a")]([SubResource("Resource_8grxn")])
 elemental_potential = Array[ExtResource("4_wt48y")]([SubResource("Resource_upx2g")])

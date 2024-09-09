@@ -1,19 +1,39 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=7 format=3 uid="uid://mv0dwrjyce2a"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=15 format=3 uid="uid://mv0dwrjyce2a"]
 
 [ext_resource type="Resource" uid="uid://1hhl1ce3yyl6" path="res://data/characters/Bosses/beno.tres" id="1_d2q1l"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_vn0yf"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_tt5g3"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_y3t1s"]
+[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="4_5qlni"]
+[ext_resource type="Resource" uid="uid://7d4pyh5sdmj0" path="res://data/Skills/Peirce/burn_shot.tres" id="5_8kgku"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="5_jtw4r"]
+[ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="6_61bkv"]
+[ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/Skills/Electric/lightning.tres" id="7_frfw5"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="8_vhby1"]
+[ext_resource type="Resource" uid="uid://by44w8wph66l2" path="res://data/Skills/Psychic/nightmare.tres" id="9_a25tu"]
 
 [sub_resource type="Resource" id="Resource_ogrk5"]
 script = ExtResource("2_tt5g3")
 character = ExtResource("1_d2q1l")
-skills = Array[ExtResource("3_y3t1s")]([])
-min_level = 10
-max_level = 10
+skills = Array[ExtResource("3_y3t1s")]([ExtResource("4_5qlni"), ExtResource("5_8kgku")])
+min_level = 15
+max_level = 15
+
+[sub_resource type="Resource" id="Resource_sa3n7"]
+script = ExtResource("2_tt5g3")
+character = ExtResource("6_61bkv")
+skills = Array[ExtResource("3_y3t1s")]([ExtResource("7_frfw5")])
+min_level = 12
+max_level = 12
+
+[sub_resource type="Resource" id="Resource_wmvn0"]
+script = ExtResource("2_tt5g3")
+character = ExtResource("6_61bkv")
+skills = Array[ExtResource("3_y3t1s")]([ExtResource("8_vhby1"), ExtResource("9_a25tu")])
+min_level = 12
+max_level = 12
 
 [resource]
 script = ExtResource("1_vn0yf")
-opponents = Array[ExtResource("2_tt5g3")]([SubResource("Resource_ogrk5")])
+opponents = Array[ExtResource("2_tt5g3")]([SubResource("Resource_ogrk5"), SubResource("Resource_sa3n7"), SubResource("Resource_wmvn0")])
 unlockables = Array[ExtResource("5_jtw4r")]([])

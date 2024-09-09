@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=7 format=3 uid="uid://ck8pds420p0t0"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=9 format=3 uid="uid://ck8pds420p0t0"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_flh4k"]
 [ext_resource type="Resource" uid="uid://d4d5i5yhsjaxb" path="res://data/characters/Bosses/lord_red.tres" id="1_lranj"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_ot5lq"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_yc5v0"]
+[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/guard.tres" id="4_kub5h"]
+[ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/Skills/Strike/oily_slash.tres" id="5_ndpvh"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_6e4ds"]
 
 [sub_resource type="Resource" id="Resource_2rbxt"]
 script = ExtResource("2_ot5lq")
 character = ExtResource("1_lranj")
-skills = Array[ExtResource("3_yc5v0")]([])
-min_level = 10
-max_level = 10
+skills = Array[ExtResource("3_yc5v0")]([ExtResource("4_kub5h"), ExtResource("5_ndpvh")])
+min_level = 15
+max_level = 15
 
 [resource]
 script = ExtResource("1_flh4k")

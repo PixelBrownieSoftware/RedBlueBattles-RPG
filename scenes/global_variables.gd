@@ -21,31 +21,54 @@ func reset_multipiler():
 var current_battle : battle_group_data
 
 func _ready():
-	var elements = DirAccess.get_files_at("res://data/elements/")
-	for element_obj in elements:
-		var el : element = ResourceLoader.load("res://data/elements/" + element_obj)
-		element_lookup[el.name] = el
+	#You have no idea how long it took for me to figure this out
+	ProjectSettings.load_resource_pack("res://RB_Battles.pck")
+	var elements
+	if OS.is_debug_build():
+		print("FUCK")
+		elements = DirAccess.get_files_at("res://data/elements/")#elements = ResourceLoader.load("res://data/elements/")#
+		for element_obj in elements:
+			var el : element = ResourceLoader.load("res://data/elements/" + element_obj)
+			element_lookup[el.name] = el
+	else:
+		elements = DirAccess.get_files_at("res://data/elements/")
+		for element_obj in elements:
+			print(element_obj)
+			var el : element = ResourceLoader.load("res://data/elements/" + unfuck_file_name(element_obj))
+			element_lookup[el.name] = el
 	load_all_skills()
 	load_all_charcters()
+
+#godot likes to do this stupid .remap shit with the resource files when compiled
+func unfuck_file_name(file_name : String) -> String:
+	if file_name.matchn("*.tres.remap"):
+		file_name = file_name.replace(".remap", "")
+	return file_name
 			
 func load_all_skills():
 	var dir = DirAccess.get_directories_at("res://data/Skills/")
 	for folder in dir:
 		var moves = DirAccess.get_files_at("res://data/Skills/" + folder)
 		for move_name in moves:
-			var loc = "res://data/Skills/" + folder + "/" + move_name
+			var loc = "res://data/Skills/" + folder + "/" + unfuck_file_name(move_name)
+			var loc_OG = "res://data/Skills/" + folder + "/" + move_name
 			var move : rpg_skill = ResourceLoader.load(loc)
-			skill_uid_lookup[move.name] = ResourceLoader.get_resource_uid(loc)
+			var uid = ResourceLoader.get_resource_uid(loc_OG)
+			skill_uid_lookup[move.name] = uid
+			print("Filename " + "res://data/Skills/" + folder + "/" + unfuck_file_name(move_name))
+			print("Loaded skill ID: " + str(skill_uid_lookup[move.name]))
+			
 
 func load_all_charcters():
 	var dir = DirAccess.get_directories_at("res://data/characters/")
 	for folder in dir:
 		var characters = DirAccess.get_files_at("res://data/characters/" + folder)
 		for character_name in characters:
-			var loc = "res://data/characters/" + folder + "/" + character_name
+			var loc = "res://data/characters/" + folder + "/" + unfuck_file_name(character_name)
 			var character : battle_character_base = ResourceLoader.load(loc)
-			print(typeof(ResourceLoader.get_resource_uid(loc)))
+			#print(str(ResourceLoader.get_resource_uid(loc)))
 			character_uid_lookup[character.name] = ResourceLoader.get_resource_uid(loc)
+			print("Looaded character ID: " + str(character_uid_lookup[character.name]))
 		
 
 func get_element(element_name : String):
