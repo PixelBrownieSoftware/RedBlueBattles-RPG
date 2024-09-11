@@ -13,6 +13,15 @@ func reset_multipiler():
 	multilplier = 1
 
 @export var extra_skills : Array[rpg_skill]
+@export var global_flags = {
+	"greenler_defeated" : false,
+	"beno_defeated" : false,
+	"lord_red_defeated" : false,
+	"malculus_defeated" : false,
+	"greendori_defeated" : false,
+	"daleth_defeated" : false,
+	"blueler_unlocked" : false
+}	#string and bool
 @export var equipped_extra_skills = {}
 @export var enabled_party_members = {}
 @export var element_lookup = {}
@@ -38,6 +47,13 @@ func _ready():
 			element_lookup[el.name] = el
 	load_all_skills()
 	load_all_charcters()
+
+func set_flag(flag : global_flag) -> void:
+	global_flags[flag.name] = flag.flag
+func set_flag_raw(flag_name : String, flag : bool) -> void:
+	global_flags[flag_name] = flag
+func check_flag(flag : global_flag) -> bool:
+	return global_flags[flag.name] == flag.flag
 
 #godot likes to do this stupid .remap shit with the resource files when compiled
 func unfuck_file_name(file_name : String) -> String:

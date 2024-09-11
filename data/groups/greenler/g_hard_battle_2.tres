@@ -4,10 +4,10 @@
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_8llrt"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="2_xljxi"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_jv28s"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="3_phf1c"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_d886g"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="4_ef0xt"]
 [ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/Skills/Strike/oily_slash.tres" id="6_1ijs1"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="7_j2pmk"]
 
 [sub_resource type="Resource" id="Resource_qj4yx"]
 script = ExtResource("1_51ita")
@@ -26,4 +26,4 @@ max_level = 7
 [resource]
 script = ExtResource("2_xljxi")
 opponents = Array[ExtResource("1_51ita")]([SubResource("Resource_qj4yx"), SubResource("Resource_ba0rl")])
-unlockables = Array[ExtResource("3_phf1c")]([])
+rewards = Array[ExtResource("7_j2pmk")]([])

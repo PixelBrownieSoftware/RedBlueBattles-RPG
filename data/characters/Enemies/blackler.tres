@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://bpamjdagrg4s"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://bpamjdagrg4s"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_p2qgk"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_quvnl"]
@@ -13,7 +13,17 @@
 
 [sub_resource type="Resource" id="Resource_tuaft"]
 script = ExtResource("2_rlc8q")
-elementalName = "Water"
+elementalName = "Ice"
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_3c4ae"]
+script = ExtResource("2_rlc8q")
+elementalName = "Psychic"
+affinity = 0.5
+
+[sub_resource type="Resource" id="Resource_ibkix"]
+script = ExtResource("2_rlc8q")
+elementalName = "Wind"
 affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_jytey"]
@@ -54,7 +64,7 @@ stats = SubResource("Resource_vbqke")
 stat_increase = SubResource("Resource_8tgh7")
 skills = Array[ExtResource("7_jji3t")]([ExtResource("2_54a2p"), ExtResource("8_p11ln")])
 behaviour = Array[ExtResource("1_p2qgk")]([])
-elemental_affinities = Array[ExtResource("2_rlc8q")]([SubResource("Resource_tuaft")])
+elemental_affinities = Array[ExtResource("2_rlc8q")]([SubResource("Resource_tuaft"), SubResource("Resource_3c4ae"), SubResource("Resource_ibkix")])
 elemental_potential = Array[ExtResource("3_4ixop")]([SubResource("Resource_jytey")])
 character_colour = Color(0.168627, 0.188235, 0.223529, 1)
 animation_player_loc = "sprite_blackler"

@@ -550,6 +550,7 @@ offset_left = 266.0
 offset_top = 5.0
 offset_right = 506.0
 offset_bottom = 261.0
+bbcode_enabled = true
 
 [node name="Character stats" type="TabContainer" parent="."]
 visible = false
@@ -585,9 +586,9 @@ script = ExtResource("24_hhfo5")
 [connection signal="change_state" from="BattleStateMachine/PressTurn" to="BattleStateMachine" method="change_state"]
 [connection signal="turn_icon_handle" from="BattleStateMachine/PressTurn" to="PressTurnUI" method="turn_icon_change"]
 [connection signal="change_state" from="BattleStateMachine/EndBattle" to="BattleStateMachine" method="change_state"]
-[connection signal="show_characters_join" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="show_characters"]
 [connection signal="show_exp_results_menu" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="on_menu_show"]
 [connection signal="show_moves_learned" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="show_moves_learned"]
+[connection signal="show_other_rewards" from="BattleStateMachine/EndBattle" to="EXP Bonuses" method="show_rewards"]
 [connection signal="get_targets" from="Variables/Behaviour" to="Variables/MoveTargetSelect" method="get_targets_from_move"]
 [connection signal="start_process_state" from="Variables/Behaviour" to="BattleStateMachine/Select" method="start_processing"]
 [connection signal="back_to_attack_menu" from="Target Menu" to="Attack Menu" method="show_menu"]

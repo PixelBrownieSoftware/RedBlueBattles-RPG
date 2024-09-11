@@ -1,8 +1,8 @@
 extends Button
 class_name button_group
 
-@export
-var battle_groups : Array[battle_group_data]
+@export var battle_groups : Array[battle_group_data]
+#TODO: Maybe put a flag requirement
 signal load_battle(group : battle_group_data)
 
 func _on_pressed():

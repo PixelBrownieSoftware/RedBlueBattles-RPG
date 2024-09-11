@@ -2,4 +2,4 @@ extends Resource
 class_name battle_group_data
 
 @export var opponents : Array[battle_group_member]
-@export var unlockables : Array[battle_character_base]
+@export var rewards : Array[battle_group_reward]

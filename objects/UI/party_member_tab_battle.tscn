@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://de6wj54ei6lv3"]
+[gd_scene load_steps=20 format=3 uid="uid://de6wj54ei6lv3"]
 
 [ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_1rjvt"]
 [ext_resource type="FontFile" uid="uid://c0dmv52byuhka" path="res://misc/fonts/ShermlockOpen.ttf" id="2_w6jcd"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://c2ejrubsxhqmf" path="res://sprites/GUI/gui_vit.png" id="13_ncolc"]
 [ext_resource type="Texture2D" uid="uid://dieyq5lsg0wlf" path="res://sprites/GUI/gui_dex.png" id="14_ahu5u"]
 [ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/mag_pow.png" id="15_82o7y"]
-[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="16_6lmuf"]
 [ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="16_ut362"]
 [ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="17_8v6xx"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="18_t6j2b"]
@@ -188,6 +187,18 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 45
 
+[node name="Strike" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
+layout_mode = 2
+element_subject = ExtResource("10_b6n74")
+
+[node name="Force" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
+layout_mode = 2
+element_subject = ExtResource("20_1m8jh")
+
+[node name="Peirce" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
+layout_mode = 2
+element_subject = ExtResource("11_0bjol")
+
 [node name="Fire" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
 element_subject = ExtResource("5_a11vb")
@@ -204,25 +215,9 @@ element_subject = ExtResource("7_reu8a")
 layout_mode = 2
 element_subject = ExtResource("9_nahjt")
 
-[node name="Water" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("16_6lmuf")
-
 [node name="Psychic" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
 element_subject = ExtResource("8_2oud5")
-
-[node name="Strike" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("10_b6n74")
-
-[node name="Force" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("20_1m8jh")
-
-[node name="Peirce" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("11_0bjol")
 
 [node name="AffinityTxt" type="RichTextLabel" parent="Panel/PA"]
 layout_mode = 2
@@ -233,6 +228,18 @@ fit_content = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 45
+
+[node name="Strike" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
+layout_mode = 2
+element_subject = ExtResource("10_b6n74")
+
+[node name="Force" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
+layout_mode = 2
+element_subject = ExtResource("20_1m8jh")
+
+[node name="Peirce" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
+layout_mode = 2
+element_subject = ExtResource("11_0bjol")
 
 [node name="Fire" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
@@ -250,25 +257,9 @@ element_subject = ExtResource("7_reu8a")
 layout_mode = 2
 element_subject = ExtResource("9_nahjt")
 
-[node name="Water" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("16_6lmuf")
-
 [node name="Psychic" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
 element_subject = ExtResource("8_2oud5")
-
-[node name="Strike" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("10_b6n74")
-
-[node name="Force" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("20_1m8jh")
-
-[node name="Peirce" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
-layout_mode = 2
-element_subject = ExtResource("11_0bjol")
 
 [node name="SkillDesc" type="RichTextLabel" parent="."]
 layout_mode = 0

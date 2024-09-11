@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_x4qfn"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_exgp8"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_8vxrt"]
-[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/guard.tres" id="4_i62vj"]
+[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="4_i62vj"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_8f6dy"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_jw0ns"]
 

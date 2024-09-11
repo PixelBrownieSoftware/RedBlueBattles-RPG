@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="status_stamina" load_steps=7 format=3 uid="uid://ccpgmbb03eoy0"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_w2lwt"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_ad715"]
+[ext_resource type="Script" path="res://src/scripts/status effects/status_stamina.gd" id="3_22pmy"]
+[ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="3_kcsty"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_evvlp"]
+
+[sub_resource type="Resource" id="Resource_wjec8"]
+script = ExtResource("4_evvlp")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("3_22pmy")
+damage = 1
+name = "Energise"
+turn_duration = 2
+effects_to_remove = Array[ExtResource("1_w2lwt")]([])
+elemental_affinity_change = Array[ExtResource("2_ad715")]([])
+stat_changes = SubResource("Resource_wjec8")
+icon = ExtResource("3_kcsty")
+round_start = true
+after_action = false
+turn_start = false
+contribute_multipler = false

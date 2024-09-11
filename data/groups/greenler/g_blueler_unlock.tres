@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://c5b5xn00b2y5h"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=18 format=3 uid="uid://c5b5xn00b2y5h"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_cufwe"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="2_nsr2o"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="3_yakf7"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ywmoy"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_2e418"]
 [ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/Skills/Strike/multi_slash.tres" id="4_2f1e5"]
 [ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/Skills/Strike/frost_strike.tres" id="5_6t47a"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="6_777f1"]
 [ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/Playable/blueler.tres" id="6_wth3c"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="7_wt765"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_character.gd" id="8_frs68"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_change_flag.gd" id="10_cnqid"]
 
 [sub_resource type="Resource" id="Resource_pptr6"]
 script = ExtResource("1_cufwe")
@@ -16,7 +19,32 @@ skills = Array[ExtResource("3_ywmoy")]([ExtResource("4_2f1e5"), ExtResource("5_6
 min_level = 9
 max_level = 9
 
+[sub_resource type="Resource" id="Resource_b8fjo"]
+script = ExtResource("7_wt765")
+name = "blueler_unlocked"
+flag = false
+
+[sub_resource type="Resource" id="Resource_3rc7l"]
+script = ExtResource("8_frs68")
+character = ExtResource("6_wth3c")
+flag_req = SubResource("Resource_b8fjo")
+
+[sub_resource type="Resource" id="Resource_0387p"]
+script = ExtResource("7_wt765")
+name = "blueler_unlocked"
+flag = true
+
+[sub_resource type="Resource" id="Resource_3youw"]
+script = ExtResource("7_wt765")
+name = "blueler_unlocked"
+flag = false
+
+[sub_resource type="Resource" id="Resource_2cubw"]
+script = ExtResource("10_cnqid")
+flag_change = SubResource("Resource_0387p")
+flag_req = SubResource("Resource_3youw")
+
 [resource]
 script = ExtResource("2_nsr2o")
 opponents = Array[ExtResource("1_cufwe")]([SubResource("Resource_pptr6")])
-unlockables = Array[ExtResource("3_yakf7")]([ExtResource("6_wth3c")])
+rewards = Array[ExtResource("6_777f1")]([SubResource("Resource_3rc7l"), SubResource("Resource_2cubw")])

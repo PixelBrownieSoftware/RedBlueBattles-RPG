@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=6 format=3 uid="uid://cxdrcs4ad6h2m"]
+
+[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_ano1t"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_8qyjm"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_f2dup"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="4_8hbnq"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_j7tjq"]
+
+[resource]
+script = ExtResource("4_8hbnq")
+name = "Chirema"
+health = 50
+stamina = 4
+stamina_increase_levels = Array[int]([])
+base_exp_score = 50
+base_exp_to_NL = 50
+exp_req_multipler = 1.2
+skills = Array[ExtResource("5_j7tjq")]([])
+behaviour = Array[ExtResource("1_ano1t")]([])
+elemental_affinities = Array[ExtResource("2_8qyjm")]([])
+elemental_potential = Array[ExtResource("3_f2dup")]([])
+character_colour = Color(1, 1, 1, 1)
+animation_player_loc = ""

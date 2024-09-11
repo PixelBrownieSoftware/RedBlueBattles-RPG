@@ -30,14 +30,14 @@ luck = 1
 
 [resource]
 script = ExtResource("4_xr2sv")
-name = "Guard"
+name = "Protect"
 learnable = true
 power = 0
 stamina_cost = 3
 repeat_min = 1
 repeat_max = 1
 stat_requirement = SubResource("Resource_2drpp")
-skill_scope = 3
+skill_scope = 0
 skill_element = ExtResource("6_mk3jf")
 skill_animation = Array[ExtResource("5_h45qq")]([SubResource("Resource_x6hpf")])
 usable_by_anyone = false

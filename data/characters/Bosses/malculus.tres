@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=16 format=3 uid="uid://cquom4g51vu7d"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://cquom4g51vu7d"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_0vmby"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_enux8"]
@@ -15,8 +15,13 @@
 
 [sub_resource type="Resource" id="Resource_1g3wa"]
 script = ExtResource("2_vjepx")
-elementalName = "Water"
+elementalName = "Psychic"
 affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_d7lqc"]
+script = ExtResource("2_vjepx")
+elementalName = "Strike"
+affinity = 0.5
 
 [sub_resource type="Resource" id="Resource_2y283"]
 script = ExtResource("6_ns276")
@@ -51,7 +56,7 @@ stats = SubResource("Resource_do15a")
 stat_increase = SubResource("Resource_2y283")
 skills = Array[ExtResource("5_g0kg4")]([ExtResource("6_lejrf"), ExtResource("7_oxxjt"), ExtResource("8_g26uq"), ExtResource("9_qxi2o"), ExtResource("10_wvbr4")])
 behaviour = Array[ExtResource("1_0vmby")]([])
-elemental_affinities = Array[ExtResource("2_vjepx")]([SubResource("Resource_1g3wa")])
+elemental_affinities = Array[ExtResource("2_vjepx")]([SubResource("Resource_1g3wa"), SubResource("Resource_d7lqc")])
 elemental_potential = Array[ExtResource("3_4k8ha")]([])
 character_colour = Color(0.490196, 0.0745098, 1, 1)
 animation_player_loc = "sprite_malculus"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=15 format=3 uid="uid://mv0dwrjyce2a"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=23 format=3 uid="uid://mv0dwrjyce2a"]
 
 [ext_resource type="Resource" uid="uid://1hhl1ce3yyl6" path="res://data/characters/Bosses/beno.tres" id="1_d2q1l"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_vn0yf"]
@@ -6,11 +6,14 @@
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_y3t1s"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="4_5qlni"]
 [ext_resource type="Resource" uid="uid://7d4pyh5sdmj0" path="res://data/Skills/Peirce/burn_shot.tres" id="5_8kgku"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="5_jtw4r"]
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="6_61bkv"]
 [ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/Skills/Electric/lightning.tres" id="7_frfw5"]
 [ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="8_vhby1"]
 [ext_resource type="Resource" uid="uid://by44w8wph66l2" path="res://data/Skills/Psychic/nightmare.tres" id="9_a25tu"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="10_ublpx"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_extra_skill_count.gd" id="11_ofga1"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="12_34ttg"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_change_flag.gd" id="13_1pyci"]
 
 [sub_resource type="Resource" id="Resource_ogrk5"]
 script = ExtResource("2_tt5g3")
@@ -33,7 +36,31 @@ skills = Array[ExtResource("3_y3t1s")]([ExtResource("8_vhby1"), ExtResource("9_a
 min_level = 12
 max_level = 12
 
+[sub_resource type="Resource" id="Resource_ocdq1"]
+script = ExtResource("12_34ttg")
+name = "beno_defeated"
+flag = false
+
+[sub_resource type="Resource" id="Resource_tfxkb"]
+script = ExtResource("11_ofga1")
+flag_req = SubResource("Resource_ocdq1")
+
+[sub_resource type="Resource" id="Resource_85o5b"]
+script = ExtResource("12_34ttg")
+name = "beno_defeated"
+flag = true
+
+[sub_resource type="Resource" id="Resource_i2fuj"]
+script = ExtResource("12_34ttg")
+name = "beno_defeated"
+flag = false
+
+[sub_resource type="Resource" id="Resource_ff5tw"]
+script = ExtResource("13_1pyci")
+flag_change = SubResource("Resource_85o5b")
+flag_req = SubResource("Resource_i2fuj")
+
 [resource]
 script = ExtResource("1_vn0yf")
 opponents = Array[ExtResource("2_tt5g3")]([SubResource("Resource_ogrk5"), SubResource("Resource_sa3n7"), SubResource("Resource_wmvn0")])
-unlockables = Array[ExtResource("5_jtw4r")]([])
+rewards = Array[ExtResource("10_ublpx")]([SubResource("Resource_tfxkb"), SubResource("Resource_ff5tw")])

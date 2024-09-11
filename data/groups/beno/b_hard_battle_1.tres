@@ -8,10 +8,10 @@
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="4_3wyrl"]
 [ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/aqua.tres" id="4_tybo8"]
 [ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="5_us18a"]
-[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/guard.tres" id="6_1knvm"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_nsd3w"]
+[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="7_ecw5g"]
 [ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/Skills/Psychic/brain_shock.tres" id="8_abavw"]
 [ext_resource type="Resource" uid="uid://btljbcdehpvvv" path="res://data/Skills/Peirce/stab_frenzy.tres" id="10_soji2"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="11_o7jjk"]
 
 [sub_resource type="Resource" id="Resource_anqou"]
 script = ExtResource("2_6smlj")
@@ -23,7 +23,7 @@ max_level = 7
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("2_6smlj")
 character = ExtResource("4_3wyrl")
-skills = Array[ExtResource("3_jxq45")]([ExtResource("5_us18a"), ExtResource("6_1knvm"), ExtResource("8_abavw")])
+skills = Array[ExtResource("3_jxq45")]([ExtResource("5_us18a"), ExtResource("7_ecw5g"), ExtResource("8_abavw")])
 min_level = 6
 max_level = 8
 
@@ -37,4 +37,4 @@ max_level = 8
 [resource]
 script = ExtResource("3_yelng")
 opponents = Array[ExtResource("2_6smlj")]([SubResource("Resource_anqou"), SubResource("Resource_m0muy"), SubResource("Resource_jchnv")])
-unlockables = Array[ExtResource("6_nsd3w")]([])
+rewards = Array[ExtResource("11_o7jjk")]([])

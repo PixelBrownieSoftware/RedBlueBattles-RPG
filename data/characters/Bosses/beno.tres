@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://1hhl1ce3yyl6"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://1hhl1ce3yyl6"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_4lwdj"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_7pksv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_x5rhp"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_hucbd"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_bgy05"]
+[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="5_x42lh"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="6_mohs8"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="7_36uke"]
 [ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/Skills/Peirce/shoot.tres" id="7_y2suu"]
@@ -20,6 +21,11 @@ condition = 2
 script = ExtResource("2_x5rhp")
 elementalName = "Wind"
 affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_10mbn"]
+script = ExtResource("3_hucbd")
+elemental = ExtResource("5_x42lh")
+potential = 6
 
 [sub_resource type="Resource" id="Resource_rccwk"]
 script = ExtResource("6_mohs8")
@@ -46,8 +52,8 @@ script = ExtResource("1_4lwdj")
 name = "Beno"
 health = 28
 stamina = 4
-stamina_increase_levels = Array[int]([])
-base_exp_score = 50
+stamina_increase_levels = Array[int]([5, 7])
+base_exp_score = 120
 base_exp_to_NL = 50
 exp_req_multipler = 1.2
 stats = SubResource("Resource_jdtyv")
@@ -55,6 +61,6 @@ stat_increase = SubResource("Resource_rccwk")
 skills = Array[ExtResource("5_bgy05")]([ExtResource("7_y2suu"), ExtResource("8_5kc7o")])
 behaviour = Array[ExtResource("1_7pksv")]([SubResource("Resource_pli85")])
 elemental_affinities = Array[ExtResource("2_x5rhp")]([SubResource("Resource_i4w0r")])
-elemental_potential = Array[ExtResource("3_hucbd")]([])
+elemental_potential = Array[ExtResource("3_hucbd")]([SubResource("Resource_10mbn")])
 character_colour = Color(0.383492, 0.394515, 0.915503, 1)
 animation_player_loc = "sprite_beno"

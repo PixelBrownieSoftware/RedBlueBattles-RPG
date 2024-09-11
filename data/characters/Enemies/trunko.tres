@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=19 format=3 uid="uid://dn8iqklx4h2v7"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=21 format=3 uid="uid://dn8iqklx4h2v7"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_13rwa"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_63kko"]
@@ -23,6 +23,16 @@ condition = 2
 script = ExtResource("3_vt0xm")
 elementalName = "Electric"
 affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_tpu3a"]
+script = ExtResource("3_vt0xm")
+elementalName = "Fire"
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_bqy8s"]
+script = ExtResource("3_vt0xm")
+elementalName = "Psychic"
+affinity = 0.0
 
 [sub_resource type="Resource" id="Resource_mk3vo"]
 script = ExtResource("3_kc5rl")
@@ -62,7 +72,7 @@ stats = SubResource("Resource_1xov1")
 stat_increase = SubResource("Resource_bv32j")
 skills = Array[ExtResource("7_eib6d")]([ExtResource("3_k0xex"), ExtResource("4_xeiwk"), ExtResource("5_skbw1"), ExtResource("11_yfat8")])
 behaviour = Array[ExtResource("1_63kko")]([SubResource("Resource_wfdlb")])
-elemental_affinities = Array[ExtResource("3_vt0xm")]([SubResource("Resource_66i3f")])
+elemental_affinities = Array[ExtResource("3_vt0xm")]([SubResource("Resource_66i3f"), SubResource("Resource_tpu3a"), SubResource("Resource_bqy8s")])
 elemental_potential = Array[ExtResource("3_kc5rl")]([SubResource("Resource_mk3vo")])
 character_colour = Color(0.439216, 0.572549, 0.745098, 1)
 animation_player_loc = "sprite_trunko"

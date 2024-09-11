@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=13 format=3 uid="uid://divek06ecodu1"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=30 format=3 uid="uid://divek06ecodu1"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_5aghu"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_pokjo"]
@@ -9,7 +9,68 @@
 [ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="3_kjm5o"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_l0guj"]
 [ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/Skills/Psychic/brain_shock.tres" id="4_rtyii"]
+[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="4_sgeh2"]
+[ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="5_eycqs"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_v3ja6"]
+[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="6_3lvmp"]
+[ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="7_051b7"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="8_jrwmc"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="9_k3lfs"]
+
+[sub_resource type="Resource" id="Resource_obi67"]
+script = ExtResource("2_ykyot")
+elementalName = "Ice"
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_tcx3v"]
+script = ExtResource("2_ykyot")
+elementalName = "Force"
+affinity = 1.5
+
+[sub_resource type="Resource" id="Resource_1s64d"]
+script = ExtResource("2_ykyot")
+elementalName = "Fire"
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_qhvjl"]
+script = ExtResource("2_ykyot")
+elementalName = "Electric"
+affinity = 0.0
+
+[sub_resource type="Resource" id="Resource_eiu1a"]
+script = ExtResource("2_ykyot")
+elementalName = "Wind"
+affinity = 0.6
+
+[sub_resource type="Resource" id="Resource_nc0lf"]
+script = ExtResource("3_h7i08")
+elemental = ExtResource("4_sgeh2")
+potential = -2
+
+[sub_resource type="Resource" id="Resource_2qvge"]
+script = ExtResource("3_h7i08")
+elemental = ExtResource("5_eycqs")
+potential = -5
+
+[sub_resource type="Resource" id="Resource_86agf"]
+script = ExtResource("3_h7i08")
+elemental = ExtResource("6_3lvmp")
+potential = 4
+
+[sub_resource type="Resource" id="Resource_np1dq"]
+script = ExtResource("3_h7i08")
+elemental = ExtResource("7_051b7")
+potential = 1
+
+[sub_resource type="Resource" id="Resource_2g20j"]
+script = ExtResource("3_h7i08")
+elemental = ExtResource("8_jrwmc")
+potential = 1
+
+[sub_resource type="Resource" id="Resource_ltfai"]
+script = ExtResource("3_h7i08")
+elemental = ExtResource("9_k3lfs")
+potential = 3
 
 [sub_resource type="Resource" id="Resource_aiu6g"]
 script = ExtResource("2_01hq5")
@@ -17,7 +78,7 @@ health_min = 2
 health_max = 3
 strength = 0.12
 vitality = 0.3
-magic_pow = 0.695
+magic_pow = 0.73
 dexterity = 0.4
 agility = 0.5
 luck = 0.5
@@ -36,15 +97,15 @@ script = ExtResource("1_5aghu")
 name = "Greendori"
 health = 14
 stamina = 8
-stamina_increase_levels = Array[int]([])
+stamina_increase_levels = Array[int]([5, 7, 8, 10])
 base_exp_score = 50
-base_exp_to_NL = 50
-exp_req_multipler = 1.2
+base_exp_to_NL = 470
+exp_req_multipler = 1.28
 stats = SubResource("Resource_alhf3")
 stat_increase = SubResource("Resource_aiu6g")
 skills = Array[ExtResource("5_v3ja6")]([ExtResource("2_7pv4a"), ExtResource("3_kjm5o"), ExtResource("4_rtyii")])
 behaviour = Array[ExtResource("1_pokjo")]([])
-elemental_affinities = Array[ExtResource("2_ykyot")]([])
-elemental_potential = Array[ExtResource("3_h7i08")]([])
+elemental_affinities = Array[ExtResource("2_ykyot")]([SubResource("Resource_obi67"), SubResource("Resource_tcx3v"), SubResource("Resource_1s64d"), SubResource("Resource_qhvjl"), SubResource("Resource_eiu1a")])
+elemental_potential = Array[ExtResource("3_h7i08")]([SubResource("Resource_nc0lf"), SubResource("Resource_2qvge"), SubResource("Resource_86agf"), SubResource("Resource_np1dq"), SubResource("Resource_2g20j"), SubResource("Resource_ltfai")])
 character_colour = Color(3.22476e-06, 0.821183, 0.163293, 1)
 animation_player_loc = "sprite_greendori"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_acoil"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ar3ma"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_c3eff"]
-[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/guard.tres" id="4_ter5t"]
+[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="4_ter5t"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_cskfn"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_d5o37"]
 

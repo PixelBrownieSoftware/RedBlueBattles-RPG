@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=16 format=3 uid="uid://cwrjy4fq7xmd0"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=18 format=3 uid="uid://cwrjy4fq7xmd0"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_ns6rn"]
 [ext_resource type="Resource" uid="uid://dtiii6cayoafh" path="res://data/characters/Enemies/pinkler.tres" id="2_nf3h2"]
@@ -12,6 +12,14 @@
 [ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="7_gmiy0"]
 [ext_resource type="Resource" uid="uid://ckwmj5smm05b2" path="res://data/Skills/Fire/fire_spark.tres" id="9_m214q"]
 [ext_resource type="Resource" uid="uid://dpafsbbvb34br" path="res://data/Skills/Wind/hurricaine.tres" id="10_ipmbp"]
+[ext_resource type="Resource" uid="uid://cg1y38p3lcd7t" path="res://data/characters/Enemies/dr_reynholm.tres" id="11_j2nch"]
+
+[sub_resource type="Resource" id="Resource_c1v2j"]
+script = ExtResource("1_ns6rn")
+character = ExtResource("11_j2nch")
+skills = Array[ExtResource("3_khw36")]([])
+min_level = 8
+max_level = 8
 
 [sub_resource type="Resource" id="Resource_3lo37"]
 script = ExtResource("1_ns6rn")
@@ -36,5 +44,5 @@ max_level = 9
 
 [resource]
 script = ExtResource("5_do8dk")
-opponents = Array[ExtResource("1_ns6rn")]([SubResource("Resource_3lo37"), SubResource("Resource_32ucd"), SubResource("Resource_xea3k")])
+opponents = Array[ExtResource("1_ns6rn")]([SubResource("Resource_c1v2j"), SubResource("Resource_3lo37"), SubResource("Resource_32ucd"), SubResource("Resource_xea3k")])
 unlockables = Array[ExtResource("6_m3jf0")]([])

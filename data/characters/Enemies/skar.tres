@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=16 format=3 uid="uid://cgrs5l53n7sfw"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://cgrs5l53n7sfw"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_fjrhe"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_g2426"]
@@ -16,6 +16,11 @@
 script = ExtResource("2_22arb")
 elementalName = "Fire"
 affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_xdx7c"]
+script = ExtResource("2_22arb")
+elementalName = "Ice"
+affinity = 0.5
 
 [sub_resource type="Resource" id="Resource_f0ngb"]
 script = ExtResource("4_mq33a")
@@ -55,7 +60,7 @@ stats = SubResource("Resource_70rxe")
 stat_increase = SubResource("Resource_ti7ox")
 skills = Array[ExtResource("6_p4niw")]([ExtResource("2_y1cq2"), ExtResource("3_xysan"), ExtResource("6_12uh4")])
 behaviour = Array[ExtResource("1_fjrhe")]([])
-elemental_affinities = Array[ExtResource("2_22arb")]([SubResource("Resource_8c3we")])
+elemental_affinities = Array[ExtResource("2_22arb")]([SubResource("Resource_8c3we"), SubResource("Resource_xdx7c")])
 elemental_potential = Array[ExtResource("4_mq33a")]([SubResource("Resource_f0ngb")])
 character_colour = Color(0.282353, 0.776471, 0.870588, 1)
 animation_player_loc = "sprite_skar"

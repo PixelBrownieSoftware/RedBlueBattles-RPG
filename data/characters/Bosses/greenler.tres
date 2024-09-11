@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://bcjoka06yw8pm"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=18 format=3 uid="uid://bcjoka06yw8pm"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_asvms"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_n6i0t"]
@@ -11,6 +11,21 @@
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="4_nhdvh"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_3tv5s"]
 [ext_resource type="Resource" uid="uid://dqjbrdfm4xf7c" path="res://data/Skills/Electric/zeus_spear.tres" id="9_4uwce"]
+
+[sub_resource type="Resource" id="Resource_ld0mn"]
+script = ExtResource("2_qgbai")
+elementalName = "Electric"
+affinity = 0.3
+
+[sub_resource type="Resource" id="Resource_d6e82"]
+script = ExtResource("2_qgbai")
+elementalName = "Ice"
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_ap8gi"]
+script = ExtResource("2_qgbai")
+elementalName = "Peirce"
+affinity = 0.8
 
 [sub_resource type="Resource" id="Resource_crmr6"]
 script = ExtResource("3_4d838")
@@ -50,7 +65,7 @@ stats = SubResource("Resource_tt8x0")
 stat_increase = SubResource("Resource_r4ocw")
 skills = Array[ExtResource("5_3tv5s")]([ExtResource("2_32uhm"), ExtResource("3_k4kwr"), ExtResource("9_4uwce")])
 behaviour = Array[ExtResource("1_asvms")]([])
-elemental_affinities = Array[ExtResource("2_qgbai")]([])
+elemental_affinities = Array[ExtResource("2_qgbai")]([SubResource("Resource_ld0mn"), SubResource("Resource_d6e82"), SubResource("Resource_ap8gi")])
 elemental_potential = Array[ExtResource("3_4d838")]([SubResource("Resource_crmr6")])
 character_colour = Color(0.635294, 1, 0.443137, 1)
 animation_player_loc = "sprite_greenler"

@@ -26,9 +26,11 @@ func _ready() -> void:
 					battle_group["opp"][member.character.name]["min_lvl"] =member.min_level
 				if battle_group["opp"][member.character.name]["max_lvl"] < member.max_level:
 					battle_group["opp"][member.character.name]["max_lvl"] =member.max_level
-			for member in gr.unlockables:
-				var txt = "[color=" + member.character_colour.to_html() + "]" + member.name + "[/color]"
-				battle_group["unl"].append(txt)
+			for member in gr.rewards:
+				if !GlobalVariables.check_flag(member.flag_req):
+					var txt = member.display_reward()
+					battle_group["unl"].append(txt)
+					
 		$RichTextLabel.text += "[u]" +group.text + "[/u]\n"
 		for gr in battle_group["opp"].keys():
 			var obj =  battle_group["opp"][gr]

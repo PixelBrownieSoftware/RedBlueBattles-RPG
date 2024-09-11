@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=12 format=3 uid="uid://c1icwtpdayr6w"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=14 format=3 uid="uid://c1icwtpdayr6w"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_m4f67"]
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="2_xh1t3"]
@@ -7,24 +7,26 @@
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_ujugj"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_jarxi"]
 [ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="5_jnju4"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_aox0n"]
+[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="6_qwckg"]
 [ext_resource type="Resource" uid="uid://ckwmj5smm05b2" path="res://data/Skills/Fire/fire_spark.tres" id="7_rnli4"]
+[ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/Skills/Status/fire_sheild.tres" id="8_ed3ed"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="9_7vknm"]
 
 [sub_resource type="Resource" id="Resource_anqou"]
 script = ExtResource("1_m4f67")
 character = ExtResource("2_xh1t3")
-skills = Array[ExtResource("3_jbran")]([ExtResource("4_1pcle"), ExtResource("5_jnju4")])
+skills = Array[ExtResource("3_jbran")]([ExtResource("4_1pcle"), ExtResource("5_jnju4"), ExtResource("6_qwckg")])
 min_level = 2
 max_level = 5
 
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("1_m4f67")
 character = ExtResource("4_ujugj")
-skills = Array[ExtResource("3_jbran")]([ExtResource("7_rnli4")])
+skills = Array[ExtResource("3_jbran")]([ExtResource("7_rnli4"), ExtResource("8_ed3ed")])
 min_level = 3
 max_level = 5
 
 [resource]
 script = ExtResource("5_jarxi")
 opponents = Array[ExtResource("1_m4f67")]([SubResource("Resource_anqou"), SubResource("Resource_m0muy")])
-unlockables = Array[ExtResource("6_aox0n")]([])
+rewards = Array[ExtResource("9_7vknm")]([])

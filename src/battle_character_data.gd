@@ -245,6 +245,8 @@ func damage_character(attacker: battle_character_data, skill :rpg_skill):
 	damage_amount = ((stat_element * skill.power) / vitality_net) * modifiers["damage_multipler"]
 	var dodge_chance : float = attacker.dexterity_net
 	var will_hit = stat_chance(attacker.dexterity_net, agility_net, 0.95)
+	if skill.power == 0 || skill.skill_element.name == "None":	#crude assumption of status move
+		will_hit = 99
 	var is_lucky = stat_chance(attacker.luck_net, luck_net, -0.8)
 	var calculated_PT : PRESS_TURN.PT = PRESS_TURN.PT.NORMAL
 	var el_affinity : float = get_elemental_affinity(skill.skill_element)
