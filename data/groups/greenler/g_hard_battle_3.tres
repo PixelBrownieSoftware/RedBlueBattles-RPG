@@ -4,9 +4,9 @@
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_1hlna"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="2_3f3uy"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_b7qsy"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="3_u0grw"]
 [ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_bnadn"]
 [ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/Skills/Force/oily_punch.tres" id="5_o4j7r"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="6_vy2d7"]
 
 [sub_resource type="Resource" id="Resource_dsucs"]
 script = ExtResource("1_vc010")
@@ -25,4 +25,4 @@ max_level = 7
 [resource]
 script = ExtResource("2_3f3uy")
 opponents = Array[ExtResource("1_vc010")]([SubResource("Resource_dsucs"), SubResource("Resource_63c3t")])
-unlockables = Array[ExtResource("3_u0grw")]([])
+rewards = Array[ExtResource("6_vy2d7")]([])

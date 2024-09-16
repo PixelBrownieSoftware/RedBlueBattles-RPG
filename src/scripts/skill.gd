@@ -34,7 +34,10 @@ func get_desc(chara : battle_character_data) -> String:
 func get_final_cost(chara : battle_character_data) -> int:
 	var potential : int = chara.get_element_potential_modifiers(self)["stamina_discount"]
 	var total: int  = stamina_cost + potential
-	total = clampi(total, 0, 999)
+	if stamina_cost > 0:
+		total = clampi(total, 1, 999)
+	else:
+		total = clampi(total, 0, 999)
 	return total
 
 func get_requirements(chara : battle_character_data, stat) -> int:

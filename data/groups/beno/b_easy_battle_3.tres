@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_c3eff"]
 [ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="4_ter5t"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_cskfn"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_d5o37"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="5_gn8lt"]
 
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("1_acoil")
@@ -24,4 +24,4 @@ max_level = 3
 [resource]
 script = ExtResource("5_cskfn")
 opponents = Array[ExtResource("1_acoil")]([SubResource("Resource_m0muy"), SubResource("Resource_bbg61")])
-unlockables = Array[ExtResource("6_d5o37")]([])
+rewards = Array[ExtResource("5_gn8lt")]([])

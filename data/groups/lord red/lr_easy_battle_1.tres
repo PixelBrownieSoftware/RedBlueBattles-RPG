@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_6upsl"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ct4ry"]
 [ext_resource type="Resource" uid="uid://dn8iqklx4h2v7" path="res://data/characters/Enemies/trunko.tres" id="3_vhhci"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_4xxmj"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="5_uf5uo"]
 
 [sub_resource type="Resource" id="Resource_3lo37"]
 script = ExtResource("2_6upsl")
@@ -24,4 +24,4 @@ max_level = 4
 [resource]
 script = ExtResource("1_f52yl")
 opponents = Array[ExtResource("2_6upsl")]([SubResource("Resource_3lo37"), SubResource("Resource_32ucd")])
-unlockables = Array[ExtResource("6_4xxmj")]([])
+rewards = Array[ExtResource("5_uf5uo")]([])

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_u2fjj"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_ys2ab"]
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="5_xbbp0"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="8_4i4qm"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="7_jh06x"]
 
 [sub_resource type="Resource" id="Resource_xyyck"]
 script = ExtResource("2_uiya5")
@@ -40,4 +40,4 @@ max_level = 11
 [resource]
 script = ExtResource("1_edqap")
 opponents = Array[ExtResource("2_uiya5")]([SubResource("Resource_xyyck"), SubResource("Resource_4e182"), SubResource("Resource_ik5r1"), SubResource("Resource_8cjgq")])
-unlockables = Array[ExtResource("8_4i4qm")]([])
+rewards = Array[ExtResource("7_jh06x")]([])

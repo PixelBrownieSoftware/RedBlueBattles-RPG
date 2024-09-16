@@ -1,16 +1,95 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=2 format=3 uid="uid://bcwoh7nmviaaf"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=26 format=3 uid="uid://bcwoh7nmviaaf"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_nplyj"]
+[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_wasgu"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_x4nml"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_wcnw3"]
+[ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="4_vejs7"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_a0npk"]
+[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="5_bucce"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="6_2122v"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="6_auvfh"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="6_h1pcc"]
+[ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/Skills/Strike/slash.tres" id="6_sle31"]
+[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="7_f5q5v"]
+[ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/Skills/Peirce/shoot.tres" id="7_ny4w1"]
+[ext_resource type="Resource" uid="uid://ccvqwy5iklcp" path="res://data/Skills/Psychic/sweet_dreams.tres" id="8_l58w7"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="8_pe84l"]
+
+[sub_resource type="Resource" id="Resource_7isx8"]
+script = ExtResource("2_x4nml")
+elementalName = "Strike"
+affinity = 0.6
+
+[sub_resource type="Resource" id="Resource_xbc5s"]
+script = ExtResource("2_x4nml")
+elementalName = "Psychic"
+affinity = 0.8
+
+[sub_resource type="Resource" id="Resource_n0boc"]
+script = ExtResource("2_x4nml")
+elementalName = "Wind"
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_pmmee"]
+script = ExtResource("3_wcnw3")
+elemental = ExtResource("4_vejs7")
+potential = 3
+
+[sub_resource type="Resource" id="Resource_dbm5b"]
+script = ExtResource("3_wcnw3")
+elemental = ExtResource("5_bucce")
+potential = 5
+
+[sub_resource type="Resource" id="Resource_i221u"]
+script = ExtResource("3_wcnw3")
+elemental = ExtResource("6_auvfh")
+potential = -1
+
+[sub_resource type="Resource" id="Resource_ffasr"]
+script = ExtResource("3_wcnw3")
+elemental = ExtResource("7_f5q5v")
+potential = 2
+
+[sub_resource type="Resource" id="Resource_5gyfb"]
+script = ExtResource("3_wcnw3")
+elemental = ExtResource("8_pe84l")
+potential = -3
+
+[sub_resource type="Resource" id="Resource_b8n4l"]
+script = ExtResource("6_h1pcc")
+health_min = 3
+health_max = 7
+strength = 0.25
+vitality = 0.3
+magic_pow = 0.3
+dexterity = 0.45
+agility = 0.27
+luck = 0.3
+
+[sub_resource type="Resource" id="Resource_33o2q"]
+script = ExtResource("6_2122v")
+strength = 3
+vitality = 2
+magic_pow = 4
+dexterity = 4
+agility = 3
+luck = 2
 
 [resource]
 script = ExtResource("1_nplyj")
-name = ""
-health = 1
-stamina = 4
+name = "Anne"
+health = 20
+stamina = 8
+stamina_increase_levels = Array[int]([])
 base_exp_score = 50
-base_exp_to_NL = 50
-skills = Array[Resource("res://src/scripts/skill.gd")]([])
-behaviour = Array[Resource("res://src/battle_move_behaviour.gd")]([])
-elemental_affinities = Array[Resource("res://src/element_affinity.gd")]([])
+base_exp_to_NL = 540
+exp_req_multipler = 1.45
+stats = SubResource("Resource_33o2q")
+stat_increase = SubResource("Resource_b8n4l")
+skills = Array[ExtResource("5_a0npk")]([ExtResource("6_sle31"), ExtResource("7_ny4w1"), ExtResource("8_l58w7")])
+behaviour = Array[ExtResource("1_wasgu")]([])
+elemental_affinities = Array[ExtResource("2_x4nml")]([SubResource("Resource_7isx8"), SubResource("Resource_xbc5s"), SubResource("Resource_n0boc")])
+elemental_potential = Array[ExtResource("3_wcnw3")]([SubResource("Resource_pmmee"), SubResource("Resource_dbm5b"), SubResource("Resource_i221u"), SubResource("Resource_ffasr"), SubResource("Resource_5gyfb")])
 character_colour = Color(0.870588, 0.239216, 1, 1)
 animation_player_loc = "sprite_anne"

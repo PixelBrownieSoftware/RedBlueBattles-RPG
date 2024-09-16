@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=9 format=3 uid="uid://oooh4cgtb157"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=18 format=3 uid="uid://oooh4cgtb157"]
 
 [ext_resource type="Resource" uid="uid://bwkdvau2fffjw" path="res://data/characters/Bosses/daleth.tres" id="1_mnhtg"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_moivp"]
@@ -7,6 +7,10 @@
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="4_geol8"]
 [ext_resource type="Resource" uid="uid://bioayifxbn765" path="res://data/Skills/Peirce/poison_needle.tres" id="5_5m500"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="6_oh5jf"]
+[ext_resource type="Resource" uid="uid://cmfai7ydcxm8h" path="res://data/characters/Playable/buckler.tres" id="7_7qiyk"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="8_d11w2"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_character.gd" id="9_cwhro"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_change_flag.gd" id="10_51wwf"]
 
 [sub_resource type="Resource" id="Resource_cb6jb"]
 script = ExtResource("1_u40lg")
@@ -15,7 +19,32 @@ skills = Array[ExtResource("3_t47q2")]([ExtResource("4_geol8"), ExtResource("5_5
 min_level = 11
 max_level = 11
 
+[sub_resource type="Resource" id="Resource_3qdlp"]
+script = ExtResource("8_d11w2")
+name = "daleth_defeated"
+flag = false
+
+[sub_resource type="Resource" id="Resource_ahgdp"]
+script = ExtResource("9_cwhro")
+character = ExtResource("7_7qiyk")
+flag_req = SubResource("Resource_3qdlp")
+
+[sub_resource type="Resource" id="Resource_mtbkt"]
+script = ExtResource("8_d11w2")
+name = "daleth_defeated"
+flag = true
+
+[sub_resource type="Resource" id="Resource_1rt02"]
+script = ExtResource("8_d11w2")
+name = "daleth_defeated"
+flag = false
+
+[sub_resource type="Resource" id="Resource_4tss1"]
+script = ExtResource("10_51wwf")
+flag_change = SubResource("Resource_mtbkt")
+flag_req = SubResource("Resource_1rt02")
+
 [resource]
 script = ExtResource("1_moivp")
 opponents = Array[ExtResource("1_u40lg")]([SubResource("Resource_cb6jb")])
-rewards = Array[ExtResource("6_oh5jf")]([])
+rewards = Array[ExtResource("6_oh5jf")]([SubResource("Resource_ahgdp"), SubResource("Resource_4tss1")])

@@ -18,6 +18,9 @@ func set_values(number, is_player, colour, pt):
 		PRESS_TURN.PT.MISS:
 			$DamageNumber.text ="[center]" + "MISS..."+ "[/center]" 
 			$AnimationPlayer.play("miss_animation")
+		PRESS_TURN.PT.VOID:
+			$DamageNumber.text ="[center]" + "VOID!"+ "[/center]" 
+			$AnimationPlayer.play("block_animation")
 		PRESS_TURN.PT.CRITICAL:
 			$DamageNumber.text =colour_text + "[center]" +str(number) + "[/center]" + "[/color]"
 			$AdditionalText.text = "[center]Critical![/center]"

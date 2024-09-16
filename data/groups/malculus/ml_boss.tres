@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_rlcc1"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_fcpnp"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_crrxb"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="5_seo3t"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="4_ofywq"]
 
 [sub_resource type="Resource" id="Resource_518pq"]
 script = ExtResource("2_fcpnp")
@@ -16,4 +16,4 @@ max_level = 15
 [resource]
 script = ExtResource("1_rlcc1")
 opponents = Array[ExtResource("2_fcpnp")]([SubResource("Resource_518pq")])
-unlockables = Array[ExtResource("5_seo3t")]([])
+rewards = Array[ExtResource("4_ofywq")]([])

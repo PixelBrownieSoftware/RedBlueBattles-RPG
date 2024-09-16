@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=12 format=3 uid="uid://d0yqr5txk5fat"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://d0yqr5txk5fat"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_t4rho"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_vwyw1"]
@@ -9,6 +9,21 @@
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_k1h7g"]
 [ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="3_kml5k"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_mfh57"]
+
+[sub_resource type="Resource" id="Resource_e38ie"]
+script = ExtResource("2_dym0v")
+elementalName = "Peirce"
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_hr3cb"]
+script = ExtResource("2_dym0v")
+elementalName = "Fire"
+affinity = 0.5
+
+[sub_resource type="Resource" id="Resource_skvmx"]
+script = ExtResource("2_dym0v")
+elementalName = "Ice"
+affinity = 0.0
 
 [sub_resource type="Resource" id="Resource_lmoca"]
 script = ExtResource("2_qjt1d")
@@ -43,7 +58,7 @@ stats = SubResource("Resource_xlw38")
 stat_increase = SubResource("Resource_lmoca")
 skills = Array[ExtResource("5_mfh57")]([ExtResource("2_f6e3g"), ExtResource("3_kml5k")])
 behaviour = Array[ExtResource("1_t4rho")]([])
-elemental_affinities = Array[ExtResource("2_dym0v")]([])
+elemental_affinities = Array[ExtResource("2_dym0v")]([SubResource("Resource_e38ie"), SubResource("Resource_hr3cb"), SubResource("Resource_skvmx")])
 elemental_potential = Array[ExtResource("3_k1h7g")]([])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_greendori"

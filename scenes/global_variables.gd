@@ -20,7 +20,8 @@ func reset_multipiler():
 	"malculus_defeated" : false,
 	"greendori_defeated" : false,
 	"daleth_defeated" : false,
-	"blueler_unlocked" : false
+	"blueler_unlocked" : false,
+	"anne_unlocked" : false
 }	#string and bool
 @export var equipped_extra_skills = {}
 @export var enabled_party_members = {}

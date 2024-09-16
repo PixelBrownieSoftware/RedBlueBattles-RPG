@@ -277,7 +277,8 @@ func damage_character(attacker: battle_character_data, skill :rpg_skill):
 		remove_status_effects(skill.effects_to_remove)
 		calculated_Press_Turn = calculated_PT
 		if skill.power > 0:
-			damage(damage_amount)
+			if calculated_PT != PRESS_TURN.PT.VOID:
+				damage(damage_amount)
 	return_val["Press_turn"] = calculated_PT
 	return_val["Amount"] = damage_amount
 	return return_val

@@ -20,6 +20,17 @@ func enable_disable_partymember():
 			GlobalVariables.enabled_party_members[current_character] = !GlobalVariables.enabled_party_members[current_character]
 	toggle_party_member.emit(current_character)
 
+func check_party_member_enabled():
+	if in_battle:
+		return
+	if GlobalVariables.enabled_party_members.find_key(current_character) != -1:
+		var enabled_member = GlobalVariables.enabled_party_members[current_character]
+		if enabled_member:
+			$Panel/InBattle.modulate = Color.PALE_GREEN
+			$Panel/InBattle.text = "Enabled"
+		else:
+			$Panel/InBattle.modulate = Color.PALE_VIOLET_RED
+			$Panel/InBattle.text = "Disabled"
 
 func load_skill_buttons():
 	for button in $Panel/ScrollContainer/VBoxContainer.get_children():
@@ -61,12 +72,7 @@ func _process(delta):
 		$Panel/Stats/Stats/Magpow.render_stamina_max(current_character.magic_pow, max_stats)
 		$Panel/Stats/Stats/Agility.render_stamina_max(current_character.agility, max_stats)
 		$Panel/Stats/Stats/Luck.render_stamina_max(current_character.luck, max_stats)
-		if GlobalVariables.enabled_party_members.find_key(current_character) != null:
-			var enabled_member = GlobalVariables.enabled_party_members[current_character]
-			if enabled_member:
-				$Panel/InBattle.text = "Enabled"
-			else:
-				$Panel/InBattle.text = "Disabled"
+		check_party_member_enabled()
 		set_elements()
 			
 func _on_tab_selected(tab):

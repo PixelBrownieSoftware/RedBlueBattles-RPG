@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://8s6w1jqap08l" path="res://data/characters/Enemies/nitwit.tres" id="2_2j37c"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_3sbad"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_2um12"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="5_egqrt"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="4_7cg3x"]
 
 [sub_resource type="Resource" id="Resource_ljdav"]
 script = ExtResource("2_3sbad")
@@ -16,4 +16,4 @@ max_level = 1
 [resource]
 script = ExtResource("1_0dy0l")
 opponents = Array[ExtResource("2_3sbad")]([SubResource("Resource_ljdav")])
-unlockables = Array[ExtResource("5_egqrt")]([])
+rewards = Array[ExtResource("4_7cg3x")]([])

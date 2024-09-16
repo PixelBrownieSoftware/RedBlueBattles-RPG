@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=55 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="2_8515p"]
@@ -42,6 +42,7 @@
 [ext_resource type="Resource" uid="uid://bi5h1a7lf2yl1" path="res://data/groups/malculus/ml_boss.tres" id="31_lth0m"]
 [ext_resource type="Resource" uid="uid://dxcyusg00opvd" path="res://data/groups/malculus/ml_easy_battle_1.tres" id="39_3yf01"]
 [ext_resource type="Resource" uid="uid://b28wvrjcfr86c" path="res://data/groups/malculus/ml_hard_battle_1.tres" id="40_h4muc"]
+[ext_resource type="Resource" uid="uid://brcuki4a2eqsd" path="res://data/groups/malculus/ml_anne_unlock.tres" id="42_5ira3"]
 [ext_resource type="Texture2D" uid="uid://ro16bqpwgidv" path="res://sprites/GUI/gui_str.png" id="43_71yog"]
 [ext_resource type="Texture2D" uid="uid://c2ejrubsxhqmf" path="res://sprites/GUI/gui_vit.png" id="44_6ay7a"]
 [ext_resource type="Texture2D" uid="uid://dieyq5lsg0wlf" path="res://sprites/GUI/gui_dex.png" id="45_netp6"]
@@ -854,15 +855,15 @@ offset_bottom = -51.0
 text = "Back"
 
 [node name="EnemySelectTabs" type="TabContainer" parent="MainMenu"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -778.0
+offset_left = 86.0
 offset_top = 100.0
-offset_right = -57.0
+offset_right = 807.0
 offset_bottom = 539.0
-current_tab = 0
+current_tab = 3
 
 [node name="Greenler" type="TabBar" parent="MainMenu/EnemySelectTabs"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -1091,37 +1092,9 @@ layout_mode = 2
 group = NodePath("../../../VBoxContainer/Boss")
 
 [node name="Malculus" type="TabBar" parent="MainMenu/EnemySelectTabs"]
-visible = false
 layout_mode = 2
 tab_close_display_policy = 1
 metadata/_tab_index = 3
-
-[node name="Easy" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
-layout_mode = 0
-offset_left = 98.0
-offset_top = 178.0
-offset_right = 145.0
-offset_bottom = 209.0
-text = "Easy fight"
-battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("39_3yf01")])
-
-[node name="Hard" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
-layout_mode = 0
-offset_left = 415.0
-offset_top = 175.0
-offset_right = 514.0
-offset_bottom = 206.0
-text = "Hard fight"
-battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("40_h4muc")])
-
-[node name="Boss" parent="MainMenu/EnemySelectTabs/Malculus" instance=ExtResource("8_0fx3b")]
-layout_mode = 0
-offset_left = 291.0
-offset_top = 104.0
-offset_right = 374.0
-offset_bottom = 135.0
-text = "Boss"
-battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("31_lth0m")])
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/EnemySelectTabs/Malculus"]
 layout_mode = 0
@@ -1137,25 +1110,57 @@ layout_mode = 2
 [node name="Easy" parent="MainMenu/EnemySelectTabs/Malculus/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("group") instance=ExtResource("23_qmmf3")]
 custom_minimum_size = Vector2(200, 270)
 layout_mode = 2
-group = NodePath("../../../Easy")
+group = NodePath("../../../VBoxContainer/Easy")
 
 [node name="Hard" parent="MainMenu/EnemySelectTabs/Malculus/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("group") instance=ExtResource("23_qmmf3")]
 custom_minimum_size = Vector2(200, 270)
 layout_mode = 2
-group = NodePath("../../../Hard")
+group = NodePath("../../../VBoxContainer/Hard")
+
+[node name="Anne Unlock" parent="MainMenu/EnemySelectTabs/Malculus/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("group") instance=ExtResource("23_qmmf3")]
+custom_minimum_size = Vector2(200, 270)
+layout_mode = 2
+group = NodePath("../../../VBoxContainer/Anne Unlock")
 
 [node name="Boss" parent="MainMenu/EnemySelectTabs/Malculus/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("group") instance=ExtResource("23_qmmf3")]
 custom_minimum_size = Vector2(200, 270)
 layout_mode = 2
-group = NodePath("../../../Boss")
+group = NodePath("../../../VBoxContainer/Boss")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/EnemySelectTabs/Malculus"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 71.0
+offset_right = 250.0
+offset_bottom = 190.0
+
+[node name="Easy" parent="MainMenu/EnemySelectTabs/Malculus/VBoxContainer" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+text = "Easy fight"
+battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("39_3yf01")])
+
+[node name="Hard" parent="MainMenu/EnemySelectTabs/Malculus/VBoxContainer" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+text = "Hard fight"
+battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("40_h4muc")])
+
+[node name="Anne Unlock" parent="MainMenu/EnemySelectTabs/Malculus/VBoxContainer" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+text = "Mini boss"
+battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("42_5ira3")])
+
+[node name="Boss" parent="MainMenu/EnemySelectTabs/Malculus/VBoxContainer" instance=ExtResource("8_0fx3b")]
+layout_mode = 2
+text = "Boss"
+battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("31_lth0m")])
 
 [node name="PartyMemberTabs" type="TabContainer" parent="MainMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 200.0
-offset_top = -370.0
-offset_right = 759.0
-offset_bottom = 31.0
+offset_left = 816.0
+offset_top = 144.0
+offset_right = 1375.0
+offset_bottom = 545.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
 libraries = {
@@ -1163,7 +1168,6 @@ libraries = {
 }
 
 [node name="Party" type="Button" parent="MainMenu"]
-visible = false
 layout_mode = 2
 offset_left = 823.0
 offset_top = 295.0
@@ -1307,8 +1311,9 @@ offset_bottom = 72.0
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/VBoxContainer/Hard" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/VBoxContainer/Boss" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Lord Red/VBoxContainer/Greendori" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Easy" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Hard" to="." method="load_battle"]
-[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/Boss" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/VBoxContainer/Easy" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/VBoxContainer/Hard" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/VBoxContainer/Anne Unlock" to="." method="load_battle"]
+[connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/VBoxContainer/Boss" to="." method="load_battle"]
 [connection signal="pressed" from="MainMenu/Party" to="." method="load_party"]
 [connection signal="pressed" from="MainMenu/Enemies" to="." method="load_enemy_menu"]

@@ -27,7 +27,7 @@ func _ready() -> void:
 				if battle_group["opp"][member.character.name]["max_lvl"] < member.max_level:
 					battle_group["opp"][member.character.name]["max_lvl"] =member.max_level
 			for member in gr.rewards:
-				if !GlobalVariables.check_flag(member.flag_req):
+				if GlobalVariables.check_flag(member.flag_req):
 					var txt = member.display_reward()
 					battle_group["unl"].append(txt)
 					

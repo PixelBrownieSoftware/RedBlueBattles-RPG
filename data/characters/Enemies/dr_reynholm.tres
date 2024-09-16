@@ -48,4 +48,4 @@ behaviour = Array[ExtResource("1_uibx8")]([])
 elemental_affinities = Array[ExtResource("2_dgj0r")]([])
 elemental_potential = Array[ExtResource("3_0432o")]([])
 character_colour = Color(1, 1, 1, 1)
-animation_player_loc = "sprite_redler"
+animation_player_loc = "sprite_dr_reyholm"

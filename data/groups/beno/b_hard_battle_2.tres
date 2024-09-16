@@ -8,9 +8,9 @@
 [ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/Skills/Strike/multi_slash.tres" id="4_nd5eh"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_5ny3l"]
 [ext_resource type="Resource" uid="uid://bi4wxsbbe53pp" path="res://data/Skills/Strike/wet_slash.tres" id="5_dny87"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="6_8i2mw"]
 [ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/Skills/Psychic/brain_shock.tres" id="6_quf7e"]
 [ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/Skills/Electric/lightning.tres" id="7_r42ei"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="10_f4gvu"]
 
 [sub_resource type="Resource" id="Resource_anqou"]
 script = ExtResource("1_hahtb")
@@ -36,4 +36,4 @@ max_level = 8
 [resource]
 script = ExtResource("5_5ny3l")
 opponents = Array[ExtResource("1_hahtb")]([SubResource("Resource_anqou"), SubResource("Resource_m0muy"), SubResource("Resource_jchnv")])
-unlockables = Array[ExtResource("6_8i2mw")]([])
+rewards = Array[ExtResource("10_f4gvu")]([])

@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0j2rpxn00nk3"]
+[gd_scene load_steps=21 format=3 uid="uid://d0j2rpxn00nk3"]
 
 [ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_hq8uu"]
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="2_c322i"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hb0oj"]
 [ext_resource type="PackedScene" uid="uid://dolrm8q8r70u6" path="res://objects/UI/skill_menu_button.tscn" id="4_2ddop"]
 [ext_resource type="PackedScene" uid="uid://mugpveucbeey" path="res://objects/UI/element_potential.tscn" id="5_6bjww"]
@@ -35,6 +36,7 @@ anchor_bottom = 1.0
 offset_right = 0.0699463
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_c322i")
 
 [node name="Name" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
@@ -105,7 +107,7 @@ offset_bottom = 83.0
 layout_mode = 0
 offset_left = 458.0
 offset_top = 218.0
-offset_right = 567.0
+offset_right = 572.0
 offset_bottom = 320.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
@@ -147,7 +149,7 @@ offset_left = 458.0
 offset_top = 144.0
 offset_right = 545.0
 offset_bottom = 175.0
-text = "Get into battle"
+text = "Enabled"
 
 [node name="Stats" type="HBoxContainer" parent="Panel"]
 layout_mode = 0

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=13 format=3 uid="uid://cmfai7ydcxm8h"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=14 format=3 uid="uid://cmfai7ydcxm8h"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_2uves"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_hn0rp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_uwtcv"]
 [ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="4_g1hkk"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_vjj4i"]
+[ext_resource type="Resource" uid="uid://dn51uarfcbmjd" path="res://data/Skills/Peirce/shadow_snipe.tres" id="8_q1bkm"]
 
 [sub_resource type="Resource" id="Resource_m80m4"]
 script = ExtResource("3_uwtcv")
@@ -17,19 +18,19 @@ potential = 6
 
 [sub_resource type="Resource" id="Resource_g2hmx"]
 script = ExtResource("2_wkhle")
-health_min = 2
+health_min = 4
 health_max = 5
-strength = 0.4
-vitality = 0.3
+strength = 0.3
+vitality = 0.35
 magic_pow = 0.1
-dexterity = 0.58
+dexterity = 0.64
 agility = 0.3
 luck = 0.5
 
 [sub_resource type="Resource" id="Resource_1ol2t"]
 script = ExtResource("2_csj46")
-strength = 3
-vitality = 2
+strength = 2
+vitality = 3
 magic_pow = 1
 dexterity = 5
 agility = 2
@@ -39,14 +40,14 @@ luck = 3
 script = ExtResource("1_2uves")
 name = "Buckler"
 health = 29
-stamina = 6
-stamina_increase_levels = Array[int]([10, 13, 15])
+stamina = 3
+stamina_increase_levels = Array[int]([4, 6, 7])
 base_exp_score = 50
 base_exp_to_NL = 350
-exp_req_multipler = 1.2
+exp_req_multipler = 1.5
 stats = SubResource("Resource_1ol2t")
 stat_increase = SubResource("Resource_g2hmx")
-skills = Array[ExtResource("5_vjj4i")]([ExtResource("2_xjg6k")])
+skills = Array[ExtResource("5_vjj4i")]([ExtResource("2_xjg6k"), ExtResource("8_q1bkm")])
 behaviour = Array[ExtResource("1_hn0rp")]([])
 elemental_affinities = Array[ExtResource("2_f6u3f")]([])
 elemental_potential = Array[ExtResource("3_uwtcv")]([SubResource("Resource_m80m4")])

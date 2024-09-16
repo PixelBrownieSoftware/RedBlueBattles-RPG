@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://cylk1tknykcp2"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=19 format=3 uid="uid://cylk1tknykcp2"]
 
 [ext_resource type="Resource" uid="uid://divek06ecodu1" path="res://data/characters/Playable/greendori.tres" id="1_8l14j"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_61l4l"]
@@ -6,7 +6,10 @@
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_k2vut"]
 [ext_resource type="Resource" uid="uid://bayu0f57esgkm" path="res://data/characters/Bosses/emily.tres" id="3_xxtb6"]
 [ext_resource type="Resource" uid="uid://d0yqr5txk5fat" path="res://data/characters/Bosses/greta.tres" id="4_4ckxk"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="7_qtc5r"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="6_wu8rf"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="7_51die"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_character.gd" id="7_troax"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_change_flag.gd" id="8_o1k2t"]
 
 [sub_resource type="Resource" id="Resource_xpu6x"]
 script = ExtResource("2_qp8ax")
@@ -29,7 +32,32 @@ skills = Array[ExtResource("3_k2vut")]([])
 min_level = 12
 max_level = 12
 
+[sub_resource type="Resource" id="Resource_cdjmr"]
+script = ExtResource("7_51die")
+name = "greendori_defeated"
+flag = false
+
+[sub_resource type="Resource" id="Resource_iska5"]
+script = ExtResource("7_troax")
+character = ExtResource("1_8l14j")
+flag_req = SubResource("Resource_cdjmr")
+
+[sub_resource type="Resource" id="Resource_n35i5"]
+script = ExtResource("7_51die")
+name = "greendori_defeated"
+flag = true
+
+[sub_resource type="Resource" id="Resource_axy1g"]
+script = ExtResource("7_51die")
+name = "greendori_defeated"
+flag = false
+
+[sub_resource type="Resource" id="Resource_ip3lb"]
+script = ExtResource("8_o1k2t")
+flag_change = SubResource("Resource_n35i5")
+flag_req = SubResource("Resource_axy1g")
+
 [resource]
 script = ExtResource("1_61l4l")
 opponents = Array[ExtResource("2_qp8ax")]([SubResource("Resource_xpu6x"), SubResource("Resource_vofty"), SubResource("Resource_lt7y3")])
-unlockables = Array[ExtResource("7_qtc5r")]([ExtResource("1_8l14j")])
+rewards = Array[ExtResource("6_wu8rf")]([SubResource("Resource_iska5"), SubResource("Resource_ip3lb")])

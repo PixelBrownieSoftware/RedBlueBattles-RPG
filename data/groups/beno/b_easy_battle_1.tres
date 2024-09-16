@@ -7,8 +7,8 @@
 [ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/Skills/Strike/frost_strike.tres" id="4_0wy8y"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_xklcy"]
 [ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/aqua.tres" id="5_1hbgt"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="5_beyat"]
 [ext_resource type="Resource" uid="uid://bjuovr1ld32gp" path="res://data/Skills/Strike/burning_slash.tres" id="6_ecl35"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="8_s6pe3"]
 
 [sub_resource type="Resource" id="Resource_anqou"]
 script = ExtResource("2_rbhru")
@@ -27,4 +27,4 @@ max_level = 4
 [resource]
 script = ExtResource("1_pvmsn")
 opponents = Array[ExtResource("2_rbhru")]([SubResource("Resource_anqou"), SubResource("Resource_m0muy")])
-unlockables = Array[ExtResource("5_beyat")]([])
+rewards = Array[ExtResource("8_s6pe3")]([])

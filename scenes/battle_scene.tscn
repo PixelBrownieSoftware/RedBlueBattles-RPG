@@ -217,19 +217,19 @@ exp_watch = NodePath("../../Variables/ExpereinceWatcher")
 [node name="EnemyPositions" type="Node" parent="BattleActors"]
 
 [node name="1" type="Node2D" parent="BattleActors/EnemyPositions"]
-position = Vector2(610, 269)
+position = Vector2(592, 248)
 
 [node name="2" type="Node2D" parent="BattleActors/EnemyPositions"]
-position = Vector2(595, 406)
+position = Vector2(590, 348)
 
 [node name="3" type="Node2D" parent="BattleActors/EnemyPositions"]
-position = Vector2(665, 330)
+position = Vector2(645, 305)
 
 [node name="4" type="Node2D" parent="BattleActors/EnemyPositions"]
-position = Vector2(656, 500)
+position = Vector2(643, 383)
 
 [node name="5" type="Node2D" parent="BattleActors/EnemyPositions"]
-position = Vector2(605, 581)
+position = Vector2(600, 417)
 
 [node name="PartyPositions" type="Node" parent="BattleActors"]
 
@@ -237,16 +237,16 @@ position = Vector2(605, 581)
 position = Vector2(205, 249)
 
 [node name="2" type="Node2D" parent="BattleActors/PartyPositions"]
-position = Vector2(191, 406)
+position = Vector2(190, 336)
 
 [node name="3" type="Node2D" parent="BattleActors/PartyPositions"]
-position = Vector2(151, 319)
+position = Vector2(137, 292)
 
 [node name="4" type="Node2D" parent="BattleActors/PartyPositions"]
-position = Vector2(151, 497)
+position = Vector2(138, 381)
 
 [node name="5" type="Node2D" parent="BattleActors/PartyPositions"]
-position = Vector2(202, 582)
+position = Vector2(193, 419)
 
 [node name="BattleStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_4cala")
@@ -298,16 +298,16 @@ script = ExtResource("10_g8410")
 script = ExtResource("13_brywo")
 
 [node name="Score" type="RichTextLabel" parent="Variables/ExpereinceWatcher"]
-offset_left = 993.0
-offset_top = 577.0
-offset_right = 1154.0
-offset_bottom = 643.0
+offset_left = 1014.0
+offset_top = 60.0
+offset_right = 1149.0
+offset_bottom = 129.0
 
 [node name="Score Add" type="RichTextLabel" parent="Variables/ExpereinceWatcher"]
-offset_left = 979.0
-offset_top = 552.0
-offset_right = 1123.0
-offset_bottom = 585.0
+offset_left = 1016.0
+offset_top = 4.0
+offset_right = 1149.0
+offset_bottom = 37.0
 
 [node name="UIAlign" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(140, 0)
@@ -455,9 +455,10 @@ script = ExtResource("18_d32v8")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -78.0
-offset_top = 20.235
-offset_bottom = 333.235
+offset_left = -70.0
+offset_top = 147.0
+offset_right = -25.0
+offset_bottom = 528.0
 grow_horizontal = 0
 pivot_offset = Vector2(995, 147.765)
 theme_override_constants/separation = 40
