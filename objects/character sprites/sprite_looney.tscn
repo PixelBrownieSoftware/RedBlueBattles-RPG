@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4ar0q4v0pjsk"]
+[gd_scene load_steps=8 format=3 uid="uid://c4ar0q4v0pjsk"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_wwuws"]
 [ext_resource type="Texture2D" uid="uid://7cwr4p5jvm0c" path="res://sprites/looney_sprite_sheet.png" id="2_anp4n"]
+[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_kmct0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihnjy"]
+resource_local_to_scene = true
+shader = ExtResource("2_kmct0")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
+shader_parameter/character_colour = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
 [sub_resource type="Animation" id="Animation_pmoux"]
 resource_name = "attack"
@@ -42,6 +50,7 @@ _data = {
 [node name="sprite_looney" instance=ExtResource("1_wwuws")]
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_ihnjy")
 texture = ExtResource("2_anp4n")
 hframes = 2
 

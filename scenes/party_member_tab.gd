@@ -40,6 +40,7 @@ func load_skill_buttons():
 		var button = $Panel/ScrollContainer/VBoxContainer.get_child(index)
 		button.text = skill.name
 		button.selected_skill = skill
+		button.assign_skill(current_character)
 		button.visible = true
 		index += 1
 		
@@ -56,22 +57,24 @@ func set_elements():
 	for affinity in $Panel/PA/Affinity.get_children():
 		affinity.character= current_character
 		affinity.set_affinity()
-const max_stats = 25
+const max_stats = 50
 
 func _process(delta):
 	if current_character != null:
-		$Panel/Name.text = current_character.name
-		$Panel/Health.text = "HP: "+  str(current_character.max_health)
+		$Panel/NLH/Name.text = "[center]" + current_character.name + "[/center]"
+		var health_stamina = "[center]"+"Health: "+  str(current_character.max_health) + "[/center]\n"
+		health_stamina += "[center]"+"Stamina: "+  str(current_character.max_stamina) + "[/center]"
+		$Panel/NLH/Health.text = health_stamina
 		if !in_battle:
 			$Panel/Expereince/ExpToNextLevel.text = str(current_character.expereince_to_NL)
 			$Panel/Expereince/LevelUpButton.disabled = current_character.expereince_to_NL > GlobalVariables.expereince_score
-		$Panel/Level.text = "Lv." + str(current_character.current_level)
-		$Panel/Stats/Stats/Strength.render_stamina_max(current_character.strength, max_stats)
-		$Panel/Stats/Stats/Vitality.render_stamina_max(current_character.vitality, max_stats)
-		$Panel/Stats/Stats/Dexterity.render_stamina_max(current_character.dexterity, max_stats)
-		$Panel/Stats/Stats/Magpow.render_stamina_max(current_character.magic_pow, max_stats)
-		$Panel/Stats/Stats/Agility.render_stamina_max(current_character.agility, max_stats)
-		$Panel/Stats/Stats/Luck.render_stamina_max(current_character.luck, max_stats)
+		$Panel/NLH/Level.text = "Lv." + str(current_character.current_level)
+		$Panel/Stats/Stats/Strength.render_stamina_max(current_character.strength_net, current_character.strength_net)
+		$Panel/Stats/Stats/Vitality.render_stamina_max(current_character.vitality_net, current_character.vitality_net)
+		$Panel/Stats/Stats/Dexterity.render_stamina_max(current_character.dexterity_net, current_character.dexterity_net)
+		$Panel/Stats/Stats/Magpow.render_stamina_max(current_character.magic_pow_net, current_character.magic_pow_net)
+		$Panel/Stats/Stats/Agility.render_stamina_max(current_character.agility_net, current_character.agility_net)
+		$Panel/Stats/Stats/Luck.render_stamina_max(current_character.luck_net, current_character.luck_net)
 		check_party_member_enabled()
 		set_elements()
 			

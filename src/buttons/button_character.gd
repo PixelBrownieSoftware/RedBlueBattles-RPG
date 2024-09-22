@@ -29,7 +29,6 @@ func show_hp():
 func _on_pressed():
 	load_character.emit(selected_character)
 
-
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "button_fade_in":
 		disabled = false

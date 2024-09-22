@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_2h6wd"]
 [ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/Skills/Strike/frost_strike.tres" id="4_0wy8y"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_xklcy"]
-[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/aqua.tres" id="5_1hbgt"]
+[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/splash.tres" id="5_1hbgt"]
 [ext_resource type="Resource" uid="uid://bjuovr1ld32gp" path="res://data/Skills/Strike/burning_slash.tres" id="6_ecl35"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="8_s6pe3"]
 

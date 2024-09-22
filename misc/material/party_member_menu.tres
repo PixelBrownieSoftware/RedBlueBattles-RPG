@@ -1,3 +1,24 @@
-[gd_resource type="Theme" format=3 uid="uid://d0rjml5auq708"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d0rjml5auq708"]
+
+[ext_resource type="StyleBox" uid="uid://cvgs3mpxmfh4o" path="res://misc/material/button_texture.tres" id="1_vdj67"]
+[ext_resource type="StyleBox" uid="uid://b8ur7dfju8t0t" path="res://misc/material/gui_box.tres" id="2_2yo4q"]
+[ext_resource type="FontFile" uid="uid://cond2w26pxoen" path="res://misc/fonts/FOT-Rodin Pro EB.otf" id="2_8xg4i"]
+[ext_resource type="FontFile" uid="uid://dcx0qhol8qtdq" path="res://misc/fonts/times new roman bold italic.ttf" id="3_jqvuc"]
+[ext_resource type="StyleBox" uid="uid://pr3lsbr0mu53" path="res://misc/material/hp_bar_style.tres" id="3_qxph7"]
+[ext_resource type="StyleBox" uid="uid://bp821ifm25r1a" path="res://misc/material/hp_bar_empty_style.tres" id="3_s06g5"]
 
 [resource]
+default_font = ExtResource("2_8xg4i")
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 10
+Button/styles/normal = ExtResource("1_vdj67")
+Label/constants/outline_size = 10
+Label/styles/normal = null
+Panel/styles/panel = ExtResource("2_2yo4q")
+PanelContainer/styles/panel = ExtResource("2_2yo4q")
+ProgressBar/constants/outline_size = 10
+ProgressBar/fonts/font = ExtResource("3_jqvuc")
+ProgressBar/styles/background = ExtResource("3_s06g5")
+ProgressBar/styles/fill = ExtResource("3_qxph7")
+RichTextLabel/constants/outline_size = 10
+RichTextLabel/fonts/normal_font = ExtResource("2_8xg4i")

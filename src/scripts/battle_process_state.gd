@@ -13,7 +13,6 @@ func start_state():
 		battle_globals.final_press_turn_flag= PRESS_TURN.PT.WEAK
 		battle_globals.current_character.update_current_status_effects("after_action")
 		battle_globals.current_character.on_character_end_turn.emit()
-	
 	else:
 		await process_move(skill)
 	change_state.emit(after_process_state)
@@ -58,7 +57,7 @@ func process_move(skill : rpg_skill):
 						attack_result = character_target.damage_character(character_user, skill)
 						var damage_num  = attack_result["Amount"]
 						var calculated_PT = attack_result["Press_turn"]
-						print(calculated_PT)
+						print("Press turn number: " + str(calculated_PT))
 						if battle_globals.final_press_turn_flag < calculated_PT:
 							battle_globals.final_press_turn_flag = calculated_PT
 						print(damage_num)

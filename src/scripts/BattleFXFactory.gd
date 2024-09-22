@@ -26,8 +26,8 @@ func spawn_status_add_effect_info(status):
 func spawn_status_remove_effect_info(status):
 	var actor : battle_character_actor = $"../Variables".get_actor($"../Variables".target_character)
 	var status_info = status_info_prefab.instantiate()
-	status_info.position = actor.position
-	add_child(status_info)
+	#status_info.position = actor.position
+	#add_child(status_info)
 	status_info.status_effect_notif(status, false)
 
 func spawn_attack_effect(object : String, target : battle_character_data):

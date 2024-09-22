@@ -64,3 +64,4 @@ elemental_affinities = Array[ExtResource("2_j608l")]([SubResource("Resource_ajvb
 elemental_potential = Array[ExtResource("6_y7h01")]([])
 character_colour = Color(0.984314, 0.592157, 0.905882, 1)
 animation_player_loc = "sprite_pinkler"
+turns = 1

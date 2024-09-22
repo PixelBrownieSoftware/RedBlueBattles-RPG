@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="status_damage" load_steps=8 format=3 uid="uid://b3d4hvninv1y5"]
+[gd_resource type="Resource" script_class="status_damage" load_steps=9 format=3 uid="uid://b3d4hvninv1y5"]
 
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_xdcxb"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_w2iyu"]
 [ext_resource type="Script" path="res://src/scripts/status effects/status_damage.gd" id="3_mt4yc"]
 [ext_resource type="Texture2D" uid="uid://cdddglbaq7knm" path="res://sprites/GUI/status_effects_bld.png" id="5_58lcn"]
@@ -29,7 +30,7 @@ script = ExtResource("3_mt4yc")
 damage = 5
 name = "Bleed"
 turn_duration = 2
-effects_to_remove = null
+effects_to_remove = Array[ExtResource("1_xdcxb")]([])
 elemental_affinity_change = Array[ExtResource("2_w2iyu")]([SubResource("Resource_x2bp6"), SubResource("Resource_8xtgq")])
 stat_changes = SubResource("Resource_edr2d")
 icon = ExtResource("5_58lcn")

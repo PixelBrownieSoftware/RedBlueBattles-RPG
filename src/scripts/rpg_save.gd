@@ -69,6 +69,7 @@ func load_game():
 		var load_obj = load(character_path)
 		var character = CharacterFactory.create_new_character(load_obj, PartyMembers, level)
 		character.max_health = max_health
+		character.health = character.max_health
 		character.max_stamina = max_stamina
 		character.name = character_name
 	var character_skills_count = file.get_32()

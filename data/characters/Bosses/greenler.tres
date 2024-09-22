@@ -69,3 +69,4 @@ elemental_affinities = Array[ExtResource("2_qgbai")]([SubResource("Resource_ld0m
 elemental_potential = Array[ExtResource("3_4d838")]([SubResource("Resource_crmr6")])
 character_colour = Color(0.635294, 1, 0.443137, 1)
 animation_player_loc = "sprite_greenler"
+turns = 1

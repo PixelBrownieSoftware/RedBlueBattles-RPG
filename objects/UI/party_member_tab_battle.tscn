@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://de6wj54ei6lv3"]
+[gd_scene load_steps=22 format=3 uid="uid://de6wj54ei6lv3"]
 
 [ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_1rjvt"]
-[ext_resource type="FontFile" uid="uid://c0dmv52byuhka" path="res://misc/fonts/ShermlockOpen.ttf" id="2_w6jcd"]
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="1_ll2gt"]
 [ext_resource type="PackedScene" uid="uid://dolrm8q8r70u6" path="res://objects/UI/skill_menu_button.tscn" id="3_ht1f0"]
 [ext_resource type="PackedScene" uid="uid://mugpveucbeey" path="res://objects/UI/element_potential.tscn" id="4_l6rp1"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="5_a11vb"]
@@ -16,11 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://dieyq5lsg0wlf" path="res://sprites/GUI/gui_dex.png" id="14_ahu5u"]
 [ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/mag_pow.png" id="15_82o7y"]
 [ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="16_ut362"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="17_0aquq"]
 [ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="17_8v6xx"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="18_t6j2b"]
 [ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="20_1m8jh"]
+[ext_resource type="FontFile" uid="uid://bn7h7hhogw0vg" path="res://misc/fonts/Shermlock.ttf" id="20_q3la5"]
 
 [node name="PartyMemberTabBattle" type="TabBar"]
+theme = ExtResource("1_ll2gt")
 script = ExtResource("1_1rjvt")
 in_battle = true
 
@@ -31,83 +34,6 @@ anchor_right = 1.427
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Name" type="RichTextLabel" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -287.0
-offset_top = -8.0
-offset_right = 71.0
-offset_bottom = 72.0
-grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("2_w6jcd")
-theme_override_font_sizes/normal_font_size = 50
-text = "Redler"
-fit_content = true
-
-[node name="Level" type="RichTextLabel" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 32.0
-offset_top = -1.0
-offset_right = 294.0
-offset_bottom = 79.0
-grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("2_w6jcd")
-theme_override_font_sizes/normal_font_size = 50
-text = "lv."
-fit_content = true
-
-[node name="Health" type="RichTextLabel" parent="Panel"]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 43.0
-offset_right = 312.0
-offset_bottom = 83.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 474.0
-offset_top = 217.0
-offset_right = 587.0
-offset_bottom = 319.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
-layout_mode = 2
-
-[node name="skill_menu_button" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button2" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button3" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button4" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button5" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button6" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button7" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button8" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button9" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
-
-[node name="skill_menu_button10" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
-layout_mode = 2
 
 [node name="Stats" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
@@ -168,12 +94,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PA" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(3.94, 35.495)
 layout_mode = 0
 offset_left = 7.0
 offset_top = 225.0
 offset_right = 440.0
 offset_bottom = 314.0
-theme_override_constants/separation = -5
+theme_override_constants/separation = 5
 
 [node name="PotentialTxt" type="RichTextLabel" parent="Panel/PA"]
 layout_mode = 2
@@ -206,6 +133,10 @@ element_subject = ExtResource("5_a11vb")
 [node name="Ice" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
 element_subject = ExtResource("6_66dbu")
+
+[node name="Water" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
+layout_mode = 2
+element_subject = ExtResource("17_0aquq")
 
 [node name="Electric" parent="Panel/PA/Potential" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
@@ -249,6 +180,10 @@ element_subject = ExtResource("5_a11vb")
 layout_mode = 2
 element_subject = ExtResource("6_66dbu")
 
+[node name="Water" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
+layout_mode = 2
+element_subject = ExtResource("17_0aquq")
+
 [node name="Electric" parent="Panel/PA/Affinity" instance=ExtResource("4_l6rp1")]
 layout_mode = 2
 element_subject = ExtResource("7_reu8a")
@@ -261,9 +196,98 @@ element_subject = ExtResource("9_nahjt")
 layout_mode = 2
 element_subject = ExtResource("8_2oud5")
 
-[node name="SkillDesc" type="RichTextLabel" parent="."]
+[node name="NLH" type="HBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.591
+anchor_bottom = 0.277
+offset_right = 395.0
+offset_bottom = 90.0
+
+[node name="Name" type="RichTextLabel" parent="Panel/NLH"]
+custom_minimum_size = Vector2(174.63, 90)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("20_q3la5")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Redler"
+fit_content = true
+
+[node name="Level" type="RichTextLabel" parent="Panel/NLH"]
+custom_minimum_size = Vector2(93.505, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("20_q3la5")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "lv."
+fit_content = true
+
+[node name="Health" type="RichTextLabel" parent="Panel/NLH"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]43[/center]"
+fit_content = true
+scroll_active = false
+tab_size = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+custom_minimum_size = Vector2(100.665, 20)
 layout_mode = 0
-offset_left = 596.0
-offset_top = 5.0
+offset_left = 434.0
+offset_top = 110.0
+offset_right = 835.0
+offset_bottom = 320.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+custom_minimum_size = Vector2(240, 90)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="skill_menu_button" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="skill_menu_button2" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="skill_menu_button3" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="skill_menu_button4" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="skill_menu_button5" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="skill_menu_button6" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="skill_menu_button7" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="skill_menu_button8" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="skill_menu_button9" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_ht1f0")]
+layout_mode = 2
+
+[node name="SkillDesc" type="RichTextLabel" parent="."]
+z_index = 8
+layout_mode = 0
+offset_left = 430.0
+offset_top = 10.0
 offset_right = 825.0
-offset_bottom = 317.0
+offset_bottom = 101.0
+theme = ExtResource("1_ll2gt")
+bbcode_enabled = true
+
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button2" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button3" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button4" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button5" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button6" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button7" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button8" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button9" to="." method="load_skill"]

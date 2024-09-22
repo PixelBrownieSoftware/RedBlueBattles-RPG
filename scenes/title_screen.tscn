@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bg0i56a6ot0ju"]
+[gd_scene load_steps=4 format=3 uid="uid://bg0i56a6ot0ju"]
 
 [ext_resource type="Script" path="res://scenes/title_screen.gd" id="1_5y3j7"]
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="2_3uq5d"]
+[ext_resource type="FontFile" uid="uid://cw43cux05i6m7" path="res://misc/fonts/impact.ttf" id="3_nxy5x"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_5y3j7")
@@ -10,42 +12,47 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 99.0
 offset_bottom = 128.0
+theme = ExtResource("2_3uq5d")
 
 [node name="New game" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 376.0
-offset_top = 251.0
-offset_right = 499.0
-offset_bottom = 290.0
+offset_left = 521.0
+offset_top = 287.0
+offset_right = 644.0
+offset_bottom = 326.0
 text = "New game"
 
 [node name="Load game" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 375.0
-offset_top = 309.0
-offset_right = 498.0
-offset_bottom = 348.0
+offset_left = 520.0
+offset_top = 345.0
+offset_right = 643.0
+offset_bottom = 384.0
 text = "Load game"
 
 [node name="Title" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 48.0
-offset_right = 753.0
-offset_bottom = 115.0
+offset_left = 338.0
+offset_top = 80.0
+offset_right = 828.0
+offset_bottom = 237.0
+theme_override_colors/font_outline_color = Color(0.140447, 0.140447, 0.140447, 1)
+theme_override_colors/font_shadow_color = Color(0.169245, 0.169245, 0.169245, 1)
+theme_override_fonts/normal_font = ExtResource("3_nxy5x")
+theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]Red Blue[/center]
+text = "[center][color=red]Red[/color] [color=cornflowerblue]Blue[/color] [/center]
 [center]BATTLES[/center]"
 tab_size = 7
 
 [node name="MadeBy" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 872.0
-offset_top = 599.0
+offset_left = 844.0
+offset_top = 609.0
 offset_right = 1148.0
 offset_bottom = 639.0
 bbcode_enabled = true
-text = "Made by PinkBunnySoftware 2024"
+text = "[center]PinkBunnySoftware 2024[/center]"
 fit_content = true
 tab_size = 7
 

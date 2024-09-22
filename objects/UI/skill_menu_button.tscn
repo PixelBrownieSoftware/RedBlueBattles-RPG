@@ -1,8 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://dolrm8q8r70u6"]
+[gd_scene load_steps=4 format=3 uid="uid://dolrm8q8r70u6"]
 
 [ext_resource type="Script" path="res://objects/UI/skill_show_button.gd" id="1_fcsqg"]
+[ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_4b73p"]
+[ext_resource type="Texture2D" uid="uid://dai8gwg4iecxk" path="res://sprites/GUI/elements_frc.png" id="3_1gy1y"]
 
 [node name="skill_menu_button" type="Button"]
+anchors_preset = -1
+anchor_right = 0.467
+anchor_bottom = 0.1
+offset_right = -32.984
+offset_bottom = -26.8
 script = ExtResource("1_fcsqg")
+
+[node name="StaminaContainer" parent="." instance=ExtResource("2_4b73p")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0039604
+anchor_top = 1.15789
+anchor_right = 0.993278
+anchor_bottom = 1.75511
+offset_right = 301.0
+offset_bottom = 0.0
+scale = Vector2(0.905, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ElementIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.00276
+anchor_right = 1.1915
+anchor_bottom = 1.01389
+texture = ExtResource("3_1gy1y")
+expand_mode = 2
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

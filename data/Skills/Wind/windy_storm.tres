@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=12 format=3 uid="uid://bcegta8f76p02"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_g23c4"]
+[ext_resource type="Resource" uid="uid://baoj1lhme3etp" path="res://data/status effects/blind.tres" id="2_1gmdh"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_no6cn"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_k00t5"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_mpp0p"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="5_ujvgx"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="6_07dpx"]
+
+[sub_resource type="Resource" id="Resource_rgc45"]
+script = ExtResource("1_g23c4")
+status = ExtResource("2_1gmdh")
+chance = 0.42
+
+[sub_resource type="Resource" id="Resource_ffy0w"]
+script = ExtResource("4_mpp0p")
+skill_animation = 4
+time_amount = -1.0
+animation_name = "wind_fx"
+
+[sub_resource type="Resource" id="Resource_81xe2"]
+script = ExtResource("4_mpp0p")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_mu8yo"]
+script = ExtResource("6_07dpx")
+strength = 0
+vitality = 0
+magic_pow = 3
+dexterity = 2
+agility = 4
+luck = 0
+
+[resource]
+script = ExtResource("3_k00t5")
+name = "Windy storm"
+learnable = true
+power = 7
+stamina_cost = 2
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_mu8yo")
+skill_scope = 1
+skill_element = ExtResource("5_ujvgx")
+skill_animation = Array[ExtResource("4_mpp0p")]([SubResource("Resource_ffy0w"), SubResource("Resource_81xe2")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_no6cn")]([])
+effects_to_add = Array[ExtResource("1_g23c4")]([SubResource("Resource_rgc45")])

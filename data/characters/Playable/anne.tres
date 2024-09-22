@@ -93,3 +93,4 @@ elemental_affinities = Array[ExtResource("2_x4nml")]([SubResource("Resource_7isx
 elemental_potential = Array[ExtResource("3_wcnw3")]([SubResource("Resource_pmmee"), SubResource("Resource_dbm5b"), SubResource("Resource_i221u"), SubResource("Resource_ffasr"), SubResource("Resource_5gyfb")])
 character_colour = Color(0.870588, 0.239216, 1, 1)
 animation_player_loc = "sprite_anne"
+turns = 1

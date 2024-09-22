@@ -25,4 +25,4 @@ icon = ExtResource("3_67253")
 round_start = false
 after_action = true
 turn_start = false
-contribute_multipler = false
+contribute_multipler = true

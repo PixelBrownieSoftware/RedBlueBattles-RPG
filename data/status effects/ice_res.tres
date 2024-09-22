@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="status_effect" load_steps=8 format=3 uid="uid://6lfsr08aofxo"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="1_uhdp1"]
+[ext_resource type="Resource" uid="uid://cimel63kfbwmx" path="res://data/status effects/frozen.tres" id="2_7cts0"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="3_fv75m"]
+[ext_resource type="Texture2D" uid="uid://bjj6ecj35yum" path="res://sprites/GUI/status_effects_grd.png" id="4_yfy72"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="5_jrqjb"]
+
+[sub_resource type="Resource" id="Resource_hawxi"]
+script = ExtResource("3_fv75m")
+elementalName = "Ice"
+affinity = -1.0
+
+[sub_resource type="Resource" id="Resource_8v47s"]
+script = ExtResource("5_jrqjb")
+strength = 0
+vitality = 1
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("1_uhdp1")
+name = "Ice resistance"
+turn_duration = 2
+effects_to_remove = Array[ExtResource("1_uhdp1")]([ExtResource("2_7cts0")])
+elemental_affinity_change = Array[ExtResource("3_fv75m")]([SubResource("Resource_hawxi")])
+stat_changes = SubResource("Resource_8v47s")
+icon = ExtResource("4_yfy72")
+round_start = true
+after_action = false
+turn_start = false
+contribute_multipler = false

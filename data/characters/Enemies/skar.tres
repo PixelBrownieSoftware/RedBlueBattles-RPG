@@ -64,3 +64,4 @@ elemental_affinities = Array[ExtResource("2_22arb")]([SubResource("Resource_8c3w
 elemental_potential = Array[ExtResource("4_mq33a")]([SubResource("Resource_f0ngb")])
 character_colour = Color(0.282353, 0.776471, 0.870588, 1)
 animation_player_loc = "sprite_skar"
+turns = 1

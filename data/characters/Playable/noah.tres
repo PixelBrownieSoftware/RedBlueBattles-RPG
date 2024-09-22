@@ -1,22 +1,60 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=6 format=3 uid="uid://c6horxrkgmnn2"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://c6horxrkgmnn2"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_kkhhn"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_vtfyv"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_jt3ox"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_5kefn"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="4_h8eqt"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_g7kbe"]
+[ext_resource type="Resource" uid="uid://btk2gxcepjeit" path="res://data/Skills/Peirce/stab.tres" id="6_1o7jf"]
+[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/splash.tres" id="7_gdn37"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="8_a25sj"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="9_fqg46"]
+
+[sub_resource type="Resource" id="Resource_ulojs"]
+script = ExtResource("2_jt3ox")
+elementalName = "Water"
+affinity = 4.0
+
+[sub_resource type="Resource" id="Resource_27prs"]
+script = ExtResource("3_5kefn")
+elemental = ExtResource("4_h8eqt")
+potential = 4
+
+[sub_resource type="Resource" id="Resource_tkrup"]
+script = ExtResource("8_a25sj")
+health_min = 1
+health_max = 1
+strength = 0.5
+vitality = 0.5
+magic_pow = 0.5
+dexterity = 0.5
+agility = 0.5
+luck = 0.5
+
+[sub_resource type="Resource" id="Resource_rvu4r"]
+script = ExtResource("9_fqg46")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
 
 [resource]
 script = ExtResource("1_vtfyv")
-name = ""
-health = 1
+name = "Noah"
+health = 32
 stamina = 4
 stamina_increase_levels = Array[int]([])
 base_exp_score = 50
 base_exp_to_NL = 50
-skills = Array[ExtResource("5_g7kbe")]([])
+exp_req_multipler = 1.2
+stats = SubResource("Resource_rvu4r")
+stat_increase = SubResource("Resource_tkrup")
+skills = Array[ExtResource("5_g7kbe")]([ExtResource("6_1o7jf"), ExtResource("7_gdn37")])
 behaviour = Array[ExtResource("1_kkhhn")]([])
-elemental_affinities = Array[ExtResource("2_jt3ox")]([])
-elemental_potential = Array[ExtResource("3_5kefn")]([])
+elemental_affinities = Array[ExtResource("2_jt3ox")]([SubResource("Resource_ulojs")])
+elemental_potential = Array[ExtResource("3_5kefn")]([SubResource("Resource_27prs")])
 character_colour = Color(0.0117647, 0.858824, 1, 1)
 animation_player_loc = ""

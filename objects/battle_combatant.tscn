@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctea2qykjpd3c"]
+[gd_scene load_steps=4 format=3 uid="uid://ctea2qykjpd3c"]
 
 [ext_resource type="Script" path="res://src/battle_character_actor.gd" id="1_dy7n5"]
 [ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="2_3wq5g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvmo0"]
+radius = 32.0
 
 [node name="battle_combatant" type="Node2D"]
 script = ExtResource("1_dy7n5")
@@ -11,3 +14,12 @@ script = ExtResource("1_dy7n5")
 [node name="combatant_sfx_defeat" type="AudioStreamPlayer2D" parent="."]
 
 [node name="BattleFxBase" parent="." instance=ExtResource("2_3wq5g")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bvmo0")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_clicked"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_hover"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_exit_mouse"]

@@ -20,14 +20,34 @@ func get_desc(chara : battle_character_data) -> String:
 	var desc : String
 	var final_st = get_final_cost(chara)
 	desc += name + "\n"
-	desc += "Power: " + str(power) + "\n"
-	desc += "Stamina Cost: " + str(stamina_cost) + " (" + str(final_st) + ")" + "\n"
-	desc += "Element: " + skill_element.name + "\n"
+	if power > 0:
+		desc += "Power: " + str(power) + "\n"
+	if stamina_cost > 0:
+		if final_st != stamina_cost:
+			var cost_colour = Color.GREEN if stamina_cost > final_st else Color.RED
+			desc += "Stamina Cost: [s]" + str(stamina_cost) + "[/s] ([" + "color=" + cost_colour.to_html() + "]" + str(final_st) + "[/color])" + "\n"
+		else:
+			desc += "Stamina Cost: " + str(stamina_cost) + "\n"
+	desc += "Element: " + "[color=" + skill_element.colour.to_html() + "]" + skill_element.name + "[/color]\n"
 	var scope : String
 	match skill_scope:
+		SCOPE.SELF:
+			scope= "To user"
+		SCOPE.ALLY:
+			scope= "To ally"
 		SCOPE.FOE:
 			scope= "To enemy"
-	desc += "Scope: " + scope + "\n"
+	desc += "Scope: " + scope + "\n\n"
+	if skill_element.effects_to_add.size() > 0:
+		desc += "Elemental Status inflict:\n"
+		for status in skill_element.effects_to_add:
+			desc += "	-" + status.status.name + " (" + str(status.chance * 100) + "%)\n"
+	if effects_to_add.size() > 0:
+		desc += "Status inflict:\n"
+		for status in effects_to_add:
+			desc += "	-" + status.status.name + " (" + str(status.chance * 100) + "%)\n"
+	
+	desc +="\n"
 	return desc
 	
 	

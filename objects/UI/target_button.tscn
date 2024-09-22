@@ -95,17 +95,20 @@ _data = {
 }
 
 [node name="Button" type="Button"]
-offset_left = 35.0
-offset_top = 16.0
-offset_right = 177.0
-offset_bottom = 121.0
+anchors_preset = -1
+anchor_left = 0.0303819
+anchor_top = 0.0246914
+anchor_right = 0.0477431
+anchor_bottom = 0.0555556
 script = ExtResource("1_y1jtd")
+metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = 106.0
-offset_right = 143.0
-offset_bottom = 133.0
+offset_left = -47.0
+offset_top = -39.0
+offset_right = 66.0
+offset_bottom = -12.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -114,10 +117,10 @@ libraries = {
 
 [node name="Status" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 136.0
-offset_right = 144.0
-offset_bottom = 170.0
+offset_left = -58.0
+offset_top = 26.0
+offset_right = 83.0
+offset_bottom = 60.0
 theme_override_constants/separation = 25
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

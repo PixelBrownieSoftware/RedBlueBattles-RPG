@@ -19,6 +19,8 @@ func behaviour_process():
 				if !battle_globals.current_character.has_status(status.status):
 					skip_this = false
 					break
+			if skip_this:
+				continue
 		if battle_globals.current_character.stamina < skill.get_final_cost(battle_globals.current_character):
 			continue
 		var targets :  Array[battle_character_data]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://bi65oqj2v3400"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://bi65oqj2v3400"]
 
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="1_ee8v1"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_tixb4"]
@@ -22,14 +22,7 @@ skills = Array[ExtResource("3_q8c2b")]([])
 min_level = 1
 max_level = 3
 
-[sub_resource type="Resource" id="Resource_ygndr"]
-script = ExtResource("2_tixb4")
-character = ExtResource("1_ee8v1")
-skills = Array[ExtResource("3_q8c2b")]([ExtResource("4_f5txn")])
-min_level = 2
-max_level = 3
-
 [resource]
 script = ExtResource("3_8uw7l")
-opponents = Array[ExtResource("2_tixb4")]([SubResource("Resource_8asq2"), SubResource("Resource_0g08n"), SubResource("Resource_ygndr")])
+opponents = Array[ExtResource("2_tixb4")]([SubResource("Resource_8asq2"), SubResource("Resource_0g08n")])
 rewards = Array[ExtResource("6_np5tj")]([])

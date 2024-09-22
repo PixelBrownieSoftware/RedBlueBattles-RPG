@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="status_effect_tag" load_steps=11 format=3 uid="uid://fsfulyl7vjy8"]
+
+[ext_resource type="Script" path="res://src/status_effect_tags.gd" id="1_oy8u1"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_srlqk"]
+[ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status effects/burn.tres" id="3_7d0ur"]
+[ext_resource type="Script" path="res://src/status_effect_tag_instruction.gd" id="3_utwit"]
+[ext_resource type="Resource" uid="uid://cimel63kfbwmx" path="res://data/status effects/frozen.tres" id="4_xebok"]
+[ext_resource type="Resource" uid="uid://boopskh5scdtx" path="res://data/status effects/wet.tres" id="5_n7o7i"]
+
+[sub_resource type="Resource" id="Resource_b1rk4"]
+script = ExtResource("3_utwit")
+instruction_type = 1
+status_effect_inflict_id = 0
+status_effect_affect_id = 1
+
+[sub_resource type="Resource" id="Resource_em08k"]
+script = ExtResource("3_utwit")
+instruction_type = 2
+status_effect_inflict_id = 0
+status_effect_affect_id = 2
+
+[sub_resource type="Resource" id="Resource_kvdjc"]
+script = ExtResource("3_utwit")
+instruction_type = 2
+status_effect_inflict_id = 1
+status_effect_affect_id = 0
+
+[sub_resource type="Resource" id="Resource_wouop"]
+script = ExtResource("3_utwit")
+instruction_type = 2
+status_effect_inflict_id = 2
+status_effect_affect_id = 1
+
+[resource]
+script = ExtResource("1_oy8u1")
+status_effects = Array[ExtResource("2_srlqk")]([ExtResource("3_7d0ur"), ExtResource("4_xebok"), ExtResource("5_n7o7i")])
+status_table = Array[ExtResource("3_utwit")]([SubResource("Resource_b1rk4"), SubResource("Resource_em08k"), SubResource("Resource_kvdjc"), SubResource("Resource_wouop")])

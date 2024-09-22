@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=21 format=3 uid="uid://hchecnhgg381"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=25 format=3 uid="uid://hchecnhgg381"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_bija1"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="1_nere0"]
@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="3_ei662"]
 [ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/Skills/Fire/ember.tres" id="4_ftoxy"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="5_40dp6"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="7_711hc"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="8_2t3y7"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="8_ysb20"]
 [ext_resource type="Resource" uid="uid://dwvgi77b2bucx" path="res://data/Skills/Fire/red_bash.tres" id="11_6o5nc"]
 
@@ -38,6 +40,16 @@ potential = 3
 script = ExtResource("2_tqdfv")
 elemental = ExtResource("3_ei662")
 potential = -2
+
+[sub_resource type="Resource" id="Resource_6a2tl"]
+script = ExtResource("2_tqdfv")
+elemental = ExtResource("7_711hc")
+potential = -1
+
+[sub_resource type="Resource" id="Resource_5313a"]
+script = ExtResource("2_tqdfv")
+elemental = ExtResource("8_2t3y7")
+potential = 1
 
 [sub_resource type="Resource" id="Resource_yt1im"]
 script = ExtResource("2_t1ad7")
@@ -73,6 +85,7 @@ stat_increase = SubResource("Resource_yt1im")
 skills = Array[ExtResource("8_ysb20")]([ExtResource("5_40dp6"), ExtResource("4_ftoxy"), ExtResource("11_6o5nc")])
 behaviour = Array[ExtResource("1_bija1")]([SubResource("Resource_nocvp")])
 elemental_affinities = Array[ExtResource("2_4lcgt")]([SubResource("Resource_o3g53"), SubResource("Resource_ng7tn")])
-elemental_potential = Array[ExtResource("2_tqdfv")]([SubResource("Resource_fnsma"), SubResource("Resource_kj2vm")])
+elemental_potential = Array[ExtResource("2_tqdfv")]([SubResource("Resource_fnsma"), SubResource("Resource_kj2vm"), SubResource("Resource_6a2tl"), SubResource("Resource_5313a")])
 character_colour = Color(1, 0.0666667, 0.188235, 1)
 animation_player_loc = "sprite_redler"
+turns = 1

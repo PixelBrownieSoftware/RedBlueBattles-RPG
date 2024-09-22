@@ -1,8 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmse8ww6eqj2y"]
+[gd_scene load_steps=10 format=3 uid="uid://dmse8ww6eqj2y"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_op2uv"]
 [ext_resource type="Texture2D" uid="uid://dwno7piq1vxb2" path="res://sprites/beno_sprite_sheet.png" id="2_cl1vf"]
+[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_nwjgo"]
 [ext_resource type="AudioStream" uid="uid://wlxmon7nkn6x" path="res://sound/gunshot.wav" id="3_vt7ko"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u4sd"]
+resource_local_to_scene = true
+shader = ExtResource("2_nwjgo")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
+shader_parameter/character_colour = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="Animation" id="Animation_4ol5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_beno/sound_player:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite_beno/sound_player:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_k3se4"]
 resource_name = "attack"
@@ -59,33 +94,6 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_4ol5s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite_beno/sound_player:stream")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite_beno/sound_player:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vm3x7"]
 _data = {
 "RESET": SubResource("Animation_4ol5s"),
@@ -96,6 +104,7 @@ _data = {
 [node name="sprite_beno" instance=ExtResource("1_op2uv")]
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_8u4sd")
 texture = ExtResource("2_cl1vf")
 offset = Vector2(-5, -7)
 frame = 2

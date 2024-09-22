@@ -9,8 +9,9 @@ func start_character(character : battle_character_data):
 	add_to_queue(character)
 	print(character.name)
 	if character.health > 0:
-		turn_icon_handle.emit(battle_globals.turn, "appear")
-		battle_globals.turn += 1
+		for i in range(character.assigned_data.turns):
+			turn_icon_handle.emit(battle_globals.turn, "appear")
+			battle_globals.turn += 1
 		character.change_stamina(2)
 		character.update_current_status_effects("round_start")
 		await get_tree().create_timer(0.2).timeout

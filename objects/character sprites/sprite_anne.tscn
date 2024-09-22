@@ -1,25 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcean2q0bosvm"]
+[gd_scene load_steps=12 format=3 uid="uid://bcean2q0bosvm"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_3d5dd"]
 [ext_resource type="Texture2D" uid="uid://cqmoyvfkpl637" path="res://sprites/anne_sprite_sheet.png" id="2_bhps1"]
+[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_ly2jb"]
 [ext_resource type="AudioStream" uid="uid://dohb1povbojm1" path="res://sound/slash2.wav" id="3_5sjq1"]
 [ext_resource type="AudioStream" uid="uid://wlxmon7nkn6x" path="res://sound/gunshot.wav" id="4_2wr8y"]
 
-[sub_resource type="Animation" id="Animation_bb5ed"]
-resource_name = "idle"
-length = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite_anne/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxh7h"]
+resource_local_to_scene = true
+shader = ExtResource("2_ly2jb")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
+shader_parameter/character_colour = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
 [sub_resource type="Animation" id="Animation_ho5nf"]
 length = 0.001
@@ -101,6 +93,22 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_bb5ed"]
+resource_name = "idle"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_anne/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_r7qbr"]
 resource_name = "shoot"
 length = 0.8
@@ -152,6 +160,7 @@ _data = {
 [node name="sprite_anne" instance=ExtResource("1_3d5dd")]
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_lxh7h")
 texture = ExtResource("2_bhps1")
 offset = Vector2(32, -9)
 vframes = 3

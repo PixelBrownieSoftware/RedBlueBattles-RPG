@@ -24,10 +24,10 @@ luck = 1
 
 [resource]
 script = ExtResource("3_poek1")
-name = "Aqua"
+name = "Splash"
 learnable = true
-power = 8
-stamina_cost = 4
+power = 4
+stamina_cost = 1
 repeat_min = 1
 repeat_max = 1
 stat_requirement = SubResource("Resource_dtu50")

@@ -3,6 +3,8 @@ class_name exp_watcher
 @export var multiplier : float = 1
 var local_exp_score : int = 0
 signal set_multiplier(mult)
+@export var score_GUI :RichTextLabel
+@export var score_add_GUI:RichTextLabel
 
 func _ready():
 	set_multiplier.connect(GlobalVariables.set_multiplier)
@@ -16,7 +18,7 @@ func exp_points_calc(user : battle_character_data, target : battle_character_dat
 	if !GlobalVariables.is_player_team(user):
 		return
 	match press_turn:
-		PRESS_TURN.PT.CRITICAL:
+		PRESS_TURN.PT.LUCKY:
 			multiplier += 1.5
 		PRESS_TURN.PT.WEAK:
 			multiplier += 1
@@ -27,8 +29,12 @@ func exp_points_calc(user : battle_character_data, target : battle_character_dat
 	print(dmg_perc)
 	local_exp_score += total * multiplier
 	set_multiplier.emit(multiplier)
-	$"Score Add".text = "+ " + str(total) + " (" + str(total * multiplier) + ")"
-	$Score.text = "Score: " + str(local_exp_score) + "\n" + "Multiplier: X " + str(multiplier)
+	if multiplier > 1:
+		score_add_GUI.text = "+ " + str(total) + " (" + str(total * multiplier) + ")"
+	else:
+		score_add_GUI.text = "+ " + str(total)
+		
+	score_GUI.text = "Score: " + str(local_exp_score) + "\n" + " x " + str(multiplier)
 	
 	
 	

@@ -1,6 +1,6 @@
 extends Panel
 
-@onready var globals : battle_variables = get_node("../Variables")
+@onready var globals : battle_variables = get_node("../../Variables")
 signal call_target_menu()
 signal get_targets(skill)
 var menu_skills : Array[rpg_skill]
@@ -10,7 +10,7 @@ var pass_skill : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
 func show_skills(skills : Array[rpg_skill]):
 	menu_skills = skills
 	menu_skills.append(pass_skill)
-	for button : button_skill in get_child(0).get_children():
+	for button : button_skill in $ScrollContainer/VBoxContainer.get_children():
 		button.visible = false
 	var index = 0
 	$AnimationPlayer.play("menu_show")
@@ -27,7 +27,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "menu_show":
 		var index = 0
 		for sk in menu_skills:
-			var skill_button = get_child(0).get_child(index) as button_skill
+			var skill_button : button_skill = $ScrollContainer/VBoxContainer.get_child(index) as button_skill
 			skill_button.selected_skill = sk
 			skill_button.current_char = globals.current_character
 			skill_button.text = sk.name
@@ -49,3 +49,8 @@ func _on_animation_player_animation_finished(anim_name):
 	else: if anim_name == "menu_hide":
 		$"../Analyse".force_off()
 		call_target_menu.emit()
+
+
+func _on_hover(skill : rpg_skill):
+	var description : String = skill.get_desc(globals.current_character)
+	$Panel/MoveInfo.text =description 

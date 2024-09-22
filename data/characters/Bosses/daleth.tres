@@ -65,3 +65,4 @@ elemental_affinities = Array[ExtResource("3_7jj0a")]([SubResource("Resource_8grx
 elemental_potential = Array[ExtResource("4_wt48y")]([SubResource("Resource_upx2g")])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_buckler"
+turns = 1

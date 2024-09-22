@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://7d4pyh5sdmj0"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=12 format=3 uid="uid://7d4pyh5sdmj0"]
 
 [ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_v53hw"]
 [ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status effects/burn.tres" id="2_0w5tp"]
@@ -12,6 +12,12 @@
 script = ExtResource("1_v53hw")
 status = ExtResource("2_0w5tp")
 chance = 0.64
+
+[sub_resource type="Resource" id="Resource_nnn2w"]
+script = ExtResource("4_7t2r5")
+skill_animation = 2
+time_amount = -1.0
+animation_name = "shoot"
 
 [sub_resource type="Resource" id="Resource_ep7yp"]
 script = ExtResource("4_7t2r5")
@@ -39,7 +45,7 @@ repeat_max = 1
 stat_requirement = SubResource("Resource_jnaqj")
 skill_scope = 1
 skill_element = ExtResource("6_ewm7x")
-skill_animation = Array[ExtResource("4_7t2r5")]([SubResource("Resource_ep7yp")])
+skill_animation = Array[ExtResource("4_7t2r5")]([SubResource("Resource_nnn2w"), SubResource("Resource_ep7yp")])
 usable_by_anyone = false
 effects_to_remove = Array[ExtResource("2_ualbt")]([])
 effects_to_add = Array[ExtResource("1_v53hw")]([SubResource("Resource_emqyv")])

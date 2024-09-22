@@ -1,8 +1,9 @@
-[gd_scene load_steps=55 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=58 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="2_8515p"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="2_r4jfg"]
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="7_7jsww"]
 [ext_resource type="Script" path="res://scenes/extra_skills_menu.gd" id="7_jfqex"]
 [ext_resource type="PackedScene" uid="uid://cshn1uy4w7mwl" path="res://objects/UI/skill_equip_button.tscn" id="7_u8djp"]
 [ext_resource type="PackedScene" uid="uid://cks6y325db8c4" path="res://objects/UI/battle_select_button.tscn" id="8_0fx3b"]
@@ -21,11 +22,13 @@
 [ext_resource type="Resource" uid="uid://mv0dwrjyce2a" path="res://data/groups/beno/b_boss.tres" id="15_6m0ag"]
 [ext_resource type="Resource" uid="uid://dbfnut1cd2os4" path="res://data/groups/greenler/g_mid_battle_1.tres" id="15_gqeh7"]
 [ext_resource type="Resource" uid="uid://bgxyl1j31valo" path="res://data/groups/greenler/g_hard_battle_2.tres" id="16_4qcoy"]
+[ext_resource type="Resource" uid="uid://b0jkkx6o725s7" path="res://data/groups/greenler/g_easy_battle_4.tres" id="16_46cee"]
 [ext_resource type="Resource" uid="uid://oooh4cgtb157" path="res://data/groups/beno/b_mini_boss.tres" id="16_b75sr"]
 [ext_resource type="Resource" uid="uid://t6j2xsd5p21d" path="res://data/groups/greenler/g_mid_battle_2.tres" id="16_gao72"]
 [ext_resource type="Resource" uid="uid://dp0nw3gmr76s8" path="res://data/groups/lord red/lr_easy_battle_1.tres" id="16_j7iww"]
 [ext_resource type="Resource" uid="uid://c5b5xn00b2y5h" path="res://data/groups/greenler/g_blueler_unlock.tres" id="16_vbxyg"]
 [ext_resource type="Resource" uid="uid://cgkv2dxx8u451" path="res://data/groups/lord red/lr_hard_battle_1.tres" id="17_85800"]
+[ext_resource type="Resource" uid="uid://bml5fje4pmtfd" path="res://data/groups/greenler/g_easy_battle_5.tres" id="17_mhs2e"]
 [ext_resource type="Resource" uid="uid://b5kkykiffgsmm" path="res://data/groups/greenler/g_hard_battle_3.tres" id="17_mva0b"]
 [ext_resource type="Resource" uid="uid://ct7xuwkcj8wl4" path="res://data/groups/greenler/g_mid_battle_3.tres" id="17_rxvhy"]
 [ext_resource type="Resource" uid="uid://ck8pds420p0t0" path="res://data/groups/lord red/lr_boss.tres" id="18_4vcfm"]
@@ -167,6 +170,18 @@ tracks/9/path = NodePath("Info Stats:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ExtraSkillsMenu:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -346,7 +361,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(175, 644), Vector2(175, 196)]
+"values": [Vector2(115, 644), Vector2(115, 196)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -403,6 +418,18 @@ tracks/9/path = NodePath("ExtraSkillsMenu/Back2:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ExtraSkillsMenu:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -599,6 +626,7 @@ offset_left = 3.0
 offset_top = 136.0
 offset_right = 119.0
 offset_bottom = 311.0
+theme = ExtResource("7_7jsww")
 script = ExtResource("11_byyvb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ActivePartyMembers"]
@@ -635,6 +663,7 @@ offset_left = 175.0
 offset_top = 196.0
 offset_right = 890.0
 offset_bottom = 534.0
+theme = ExtResource("7_7jsww")
 script = ExtResource("7_jfqex")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/ExtraSkillsMenu"]
@@ -848,18 +877,20 @@ text = "fefef"
 
 [node name="Back2" type="Button" parent="MainMenu/ExtraSkillsMenu"]
 layout_mode = 2
-offset_left = -58.0
+offset_left = -2.265
 offset_top = -82.0
-offset_right = 686.0
+offset_right = 741.735
 offset_bottom = -51.0
 text = "Back"
 
 [node name="EnemySelectTabs" type="TabContainer" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 86.0
+offset_left = -778.0
 offset_top = 100.0
-offset_right = 807.0
+offset_right = -57.0
 offset_bottom = 539.0
+theme = ExtResource("7_7jsww")
 current_tab = 3
 
 [node name="Greenler" type="TabBar" parent="MainMenu/EnemySelectTabs"]
@@ -882,7 +913,7 @@ battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("10_2cfhv")])
 [node name="Easy" parent="MainMenu/EnemySelectTabs/Greenler/VBoxContainer" instance=ExtResource("8_0fx3b")]
 layout_mode = 2
 text = "Easy fight"
-battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("10_x3xdn"), ExtResource("12_1ae5g"), ExtResource("14_xs2ru")])
+battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("10_x3xdn"), ExtResource("12_1ae5g"), ExtResource("14_xs2ru"), ExtResource("16_46cee"), ExtResource("17_mhs2e")])
 
 [node name="Medium" parent="MainMenu/EnemySelectTabs/Greenler/VBoxContainer" instance=ExtResource("8_0fx3b")]
 layout_mode = 2
@@ -1155,12 +1186,12 @@ text = "Boss"
 battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("31_lth0m")])
 
 [node name="PartyMemberTabs" type="TabContainer" parent="MainMenu"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 816.0
+offset_left = 200.0
 offset_top = 144.0
-offset_right = 1375.0
+offset_right = 759.0
 offset_bottom = 545.0
+theme = ExtResource("7_7jsww")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
 libraries = {
@@ -1168,11 +1199,13 @@ libraries = {
 }
 
 [node name="Party" type="Button" parent="MainMenu"]
+visible = false
 layout_mode = 2
 offset_left = 823.0
 offset_top = 295.0
-offset_right = 872.0
+offset_right = 886.0
 offset_bottom = 335.0
+theme = ExtResource("7_7jsww")
 disabled = true
 text = "Party"
 
@@ -1180,8 +1213,9 @@ text = "Party"
 layout_mode = 2
 offset_left = 12.0
 offset_top = 307.0
-offset_right = 86.0
+offset_right = 101.0
 offset_bottom = 347.0
+theme = ExtResource("7_7jsww")
 disabled = true
 text = "Enemies"
 
@@ -1284,8 +1318,12 @@ text = "Luck
 fit_content = true
 
 [node name="Exp count" type="RichTextLabel" parent="."]
-offset_right = 246.0
-offset_bottom = 72.0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 1134.0
+offset_bottom = 110.0
+theme = ExtResource("7_7jsww")
+bbcode_enabled = true
 
 [connection signal="pressed" from="BackToMenu" to="." method="main_menu"]
 [connection signal="pressed" from="Unlocker/UnlockButton" to="LevelLock" method="unlock"]

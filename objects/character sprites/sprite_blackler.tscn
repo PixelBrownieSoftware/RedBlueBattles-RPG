@@ -1,22 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce1uenremjx0k"]
+[gd_scene load_steps=8 format=3 uid="uid://ce1uenremjx0k"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_po85i"]
 [ext_resource type="Texture2D" uid="uid://bn5uvfkbpaj2h" path="res://sprites/blackler_sprite_sheet.png" id="2_q2o7c"]
+[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_s1t6f"]
 
-[sub_resource type="Animation" id="Animation_mboyh"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite_blackler/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spm7i"]
+resource_local_to_scene = true
+shader = ExtResource("2_s1t6f")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
+shader_parameter/character_colour = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
 [sub_resource type="Animation" id="Animation_dk5te"]
 resource_name = "attack"
@@ -33,6 +26,21 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_mboyh"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite_blackler/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ah3md"]
 _data = {
 "attack": SubResource("Animation_dk5te"),
@@ -42,6 +50,7 @@ _data = {
 [node name="sprite_blackler" instance=ExtResource("1_po85i")]
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_spm7i")
 texture = ExtResource("2_q2o7c")
 vframes = 3
 

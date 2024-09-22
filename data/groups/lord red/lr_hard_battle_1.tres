@@ -1,18 +1,22 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=13 format=3 uid="uid://cgkv2dxx8u451"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=17 format=3 uid="uid://cgkv2dxx8u451"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_mo17g"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="1_u1wls"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_k7yjc"]
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="3_3vawj"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ymrq6"]
+[ext_resource type="Resource" uid="uid://gudttha38y7d" path="res://data/Skills/Status/ice_sheild.tres" id="4_feap0"]
+[ext_resource type="Resource" uid="uid://ox04fqv8xdm5" path="res://data/Skills/Status/electric_sheild.tres" id="5_b8lmu"]
 [ext_resource type="Resource" uid="uid://dn8iqklx4h2v7" path="res://data/characters/Enemies/trunko.tres" id="5_yjj6u"]
+[ext_resource type="Resource" uid="uid://d0616a0dvxaoj" path="res://data/Skills/Water/typhoon.tres" id="6_3yvqt"]
 [ext_resource type="Resource" uid="uid://dtiii6cayoafh" path="res://data/characters/Enemies/pinkler.tres" id="6_nvbxk"]
+[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="7_4k2fi"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="7_s7rsi"]
 
 [sub_resource type="Resource" id="Resource_e0ymq"]
 script = ExtResource("2_k7yjc")
 character = ExtResource("1_u1wls")
-skills = Array[ExtResource("3_ymrq6")]([])
+skills = Array[ExtResource("3_ymrq6")]([ExtResource("4_feap0"), ExtResource("5_b8lmu")])
 min_level = 9
 max_level = 11
 
@@ -26,7 +30,7 @@ max_level = 12
 [sub_resource type="Resource" id="Resource_lb7to"]
 script = ExtResource("2_k7yjc")
 character = ExtResource("5_yjj6u")
-skills = Array[ExtResource("3_ymrq6")]([])
+skills = Array[ExtResource("3_ymrq6")]([ExtResource("6_3yvqt"), ExtResource("7_4k2fi")])
 min_level = 10
 max_level = 11
 

@@ -19,5 +19,6 @@ skills = Array[ExtResource("5_j7tjq")]([])
 behaviour = Array[ExtResource("1_ano1t")]([])
 elemental_affinities = Array[ExtResource("2_8qyjm")]([])
 elemental_potential = Array[ExtResource("3_f2dup")]([])
-character_colour = Color(1, 1, 1, 1)
+character_colour = Color(0.737255, 0.160784, 0.403922, 1)
 animation_player_loc = ""
+turns = 1

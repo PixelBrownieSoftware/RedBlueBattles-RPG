@@ -1,11 +1,17 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=9 format=3 uid="uid://buhnvgb0e82yd"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://buhnvgb0e82yd"]
 
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_c6cyu"]
 [ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_v2rud"]
+[ext_resource type="Resource" uid="uid://dttvaj5cg8ujv" path="res://data/status effects/sleepy.tres" id="2_beehd"]
 [ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_fxxct"]
 [ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_kytf5"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="3_ats7q"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_o82rt"]
+
+[sub_resource type="Resource" id="Resource_bkiaq"]
+script = ExtResource("1_v2rud")
+status = ExtResource("2_beehd")
+chance = 0.445
 
 [sub_resource type="Resource" id="Resource_2al5r"]
 script = ExtResource("2_fxxct")
@@ -15,9 +21,9 @@ animation_name = ""
 
 [sub_resource type="Resource" id="Resource_aqqqm"]
 script = ExtResource("4_o82rt")
-strength = 1
-vitality = 1
-magic_pow = 1
+strength = 10
+vitality = 5
+magic_pow = 8
 dexterity = 1
 agility = 1
 luck = 1
@@ -27,7 +33,7 @@ script = ExtResource("1_c6cyu")
 name = "Blizzard"
 learnable = true
 power = 21
-stamina_cost = 8
+stamina_cost = 10
 repeat_min = 1
 repeat_max = 1
 stat_requirement = SubResource("Resource_aqqqm")
@@ -36,4 +42,4 @@ skill_element = ExtResource("3_ats7q")
 skill_animation = Array[ExtResource("2_fxxct")]([SubResource("Resource_2al5r")])
 usable_by_anyone = false
 effects_to_remove = Array[ExtResource("2_kytf5")]([])
-effects_to_add = Array[ExtResource("1_v2rud")]([])
+effects_to_add = Array[ExtResource("1_v2rud")]([SubResource("Resource_bkiaq")])

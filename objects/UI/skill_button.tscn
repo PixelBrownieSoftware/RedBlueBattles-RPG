@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b02fnxe32db18"]
+[gd_scene load_steps=10 format=3 uid="uid://b02fnxe32db18"]
 
 [ext_resource type="Script" path="res://src/buttons/button_skill.gd" id="1_06uxy"]
+[ext_resource type="Theme" uid="uid://b7qyogjo30g2i" path="res://misc/material/battle_button.tres" id="1_ds3ya"]
+[ext_resource type="StyleBox" uid="uid://cvgs3mpxmfh4o" path="res://misc/material/button_texture.tres" id="1_oorvk"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hukdw"]
+[ext_resource type="Texture2D" uid="uid://dai8gwg4iecxk" path="res://sprites/GUI/elements_frc.png" id="3_8y42p"]
 
 [sub_resource type="Animation" id="Animation_vip75"]
 length = 0.001
@@ -96,11 +99,18 @@ _data = {
 }
 
 [node name="Button" type="Button"]
-offset_left = 35.0
-offset_top = 16.0
-offset_right = 177.0
-offset_bottom = 121.0
+anchors_preset = -1
+anchor_left = 0.000868056
+anchor_top = 0.00462963
+anchor_right = 0.473
+anchor_bottom = 0.194
+offset_right = -181.896
+offset_bottom = -50.7118
+theme = ExtResource("1_ds3ya")
+theme_override_styles/pressed = ExtResource("1_oorvk")
+theme_override_styles/normal = ExtResource("1_oorvk")
 script = ExtResource("1_06uxy")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -108,10 +118,27 @@ libraries = {
 }
 
 [node name="StaminaContainer" parent="." instance=ExtResource("2_hukdw")]
-layout_mode = 0
-offset_left = -22.0
-offset_top = 110.0
-offset_right = 170.0
-offset_bottom = 131.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.05556
+anchor_right = 0.997238
+anchor_bottom = 1.65278
+offset_right = 301.0
+offset_bottom = 0.0
+scale = Vector2(0.905, 1)
+metadata/_edit_use_anchors_ = true
 
+[node name="ElementIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.00276
+anchor_right = 1.1915
+anchor_bottom = 1.01389
+texture = ExtResource("3_8y42p")
+expand_mode = 2
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_hover"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

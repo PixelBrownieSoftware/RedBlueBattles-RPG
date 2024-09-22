@@ -17,7 +17,7 @@ luck = 1
 
 [resource]
 script = ExtResource("3_22pmy")
-damage = 1
+damage = 2
 name = "Energise"
 turn_duration = 2
 effects_to_remove = Array[ExtResource("1_w2lwt")]([])

@@ -23,14 +23,17 @@ func add_characters(group, actor_group):
 		tab.current_character = chara
 		tab.name = chara.name
 		tab.load_skill_buttons()
-		$"../../Character stats".add_child(tab)
+		$"../../BattleCanvasLayer/Character stats".add_child(tab)
 		chara.increase_multiplier.connect(exp_watch.increase_multiplier)
-		var actor = base_character_actor.instantiate()
+		var actor : battle_character_actor = base_character_actor.instantiate()
 		actor.position = position_nodes.get_child(chara.get_index()).position
 		actor.assign_data(chara)
 		actor.hurt_sound = hurt_sound_enemy
 		actor.defeat_sound = defeat_sound_enemy
 		actor.character_anim.play("idle")
+		actor.hover_character.connect($"../../BattleCanvasLayer/Target Menu/CharacterInfo".on_character_hover) 
+		actor.out_hover_character.connect($"../../BattleCanvasLayer/Target Menu/CharacterInfo".on_character_exit)
+		actor.select_character.connect($"../../BattleCanvasLayer/Target Menu".on_select_character)
 		add_child(actor)
 		chara.put_damage_numbers.connect(fx_factory.spawn_damage_obj)
 		if group == PartyMembers:
@@ -46,7 +49,7 @@ func add_characters(group, actor_group):
 			chara.assign_start_turn_signal(actor.play_idle_active)
 			chara.assign_end_turn_signal(chara_ui.disable_ui)
 			chara.assign_end_turn_signal(actor.play_idle)
-			$"../../UIAlign".add_child(chara_ui)
+			$"../../BattleCanvasLayer/UIAlign".add_child(chara_ui)
 			actor.hurt_sound = hurt_sound_player
 			actor.defeat_sound = defeat_sound_player
 		actor.set_colour(Color(Color.BLACK, 0))

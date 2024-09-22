@@ -10,8 +10,8 @@
 [sub_resource type="Resource" id="Resource_nu1rt"]
 script = ExtResource("2_x2xss")
 skill_animation = 2
-time_amount = -1.0
-animation_name = "attack"
+time_amount = 0.35
+animation_name = "shoot"
 
 [sub_resource type="Resource" id="Resource_p6qim"]
 script = ExtResource("2_x2xss")

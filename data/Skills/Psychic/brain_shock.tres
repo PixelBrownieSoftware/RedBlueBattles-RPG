@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=8 format=3 uid="uid://d1gs83g82ocdx"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=10 format=3 uid="uid://d1gs83g82ocdx"]
 
 [ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_cdgt8"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_tmvtb"]
 [ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_icwlc"]
 [ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_uficm"]
 [ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="3_dso1n"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="6_pbq5s"]
 
 [sub_resource type="Resource" id="Resource_453ef"]
 script = ExtResource("2_uficm")
@@ -18,6 +19,15 @@ skill_animation = 0
 time_amount = -1.0
 animation_name = ""
 
+[sub_resource type="Resource" id="Resource_wirj8"]
+script = ExtResource("6_pbq5s")
+strength = 1
+vitality = 1
+magic_pow = 5
+dexterity = 1
+agility = 1
+luck = 5
+
 [resource]
 script = ExtResource("1_tmvtb")
 name = "Brain shock"
@@ -26,6 +36,7 @@ power = 5
 stamina_cost = 3
 repeat_min = 1
 repeat_max = 3
+stat_requirement = SubResource("Resource_wirj8")
 skill_scope = 1
 skill_element = ExtResource("3_dso1n")
 skill_animation = Array[ExtResource("2_uficm")]([SubResource("Resource_453ef"), SubResource("Resource_oj0td")])

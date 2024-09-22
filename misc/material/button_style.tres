@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://nf16dfmku56o"]
+
+[ext_resource type="FontFile" uid="uid://cond2w26pxoen" path="res://misc/fonts/FOT-Rodin Pro EB.otf" id="1_8v1fs"]
+
+[resource]
+default_font = ExtResource("1_8v1fs")

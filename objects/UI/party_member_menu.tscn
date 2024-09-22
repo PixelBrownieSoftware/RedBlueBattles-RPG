@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0j2rpxn00nk3"]
+[gd_scene load_steps=22 format=3 uid="uid://d0j2rpxn00nk3"]
 
 [ext_resource type="Script" path="res://scenes/party_member_tab.gd" id="1_hq8uu"]
 [ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="2_c322i"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hb0oj"]
 [ext_resource type="PackedScene" uid="uid://dolrm8q8r70u6" path="res://objects/UI/skill_menu_button.tscn" id="4_2ddop"]
 [ext_resource type="PackedScene" uid="uid://mugpveucbeey" path="res://objects/UI/element_potential.tscn" id="5_6bjww"]
-[ext_resource type="FontFile" uid="uid://c0dmv52byuhka" path="res://misc/fonts/ShermlockOpen.ttf" id="5_wq0tu"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="6_4btt1"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="7_lv2s7"]
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="8_488yq"]
@@ -20,12 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/mag_pow.png" id="15_37bqv"]
 [ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="16_b7e8q"]
 [ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="17_8uxp1"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="18_uqudr"]
+[ext_resource type="FontFile" uid="uid://bn7h7hhogw0vg" path="res://misc/fonts/Shermlock.ttf" id="21_2r4g7"]
 
 [node name="PartyMember menu" type="TabBar"]
 offset_left = 278.0
 offset_top = 205.0
 offset_right = 868.0
 offset_bottom = 530.0
+theme = ExtResource("2_c322i")
 script = ExtResource("1_hq8uu")
 
 [node name="Panel" type="Panel" parent="."]
@@ -38,54 +40,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_c322i")
 
-[node name="Name" type="RichTextLabel" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -287.0
-offset_top = -8.0
-offset_right = 71.0
-offset_bottom = 72.0
-grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("5_wq0tu")
-theme_override_font_sizes/normal_font_size = 50
-text = "Redler"
-fit_content = true
-
-[node name="Level" type="RichTextLabel" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 32.0
-offset_top = -1.0
-offset_right = 294.0
-offset_bottom = 79.0
-grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("5_wq0tu")
-theme_override_font_sizes/normal_font_size = 50
-text = "lv."
-fit_content = true
-
 [node name="Expereince" type="Control" parent="Panel"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 9.0
+offset_top = 213.0
+offset_right = 246.0
+offset_bottom = 264.0
 
 [node name="ExpToNextLevel" type="RichTextLabel" parent="Panel/Expereince"]
 layout_mode = 0
-offset_left = 327.0
-offset_top = 69.0
-offset_right = 436.0
-offset_bottom = 102.0
+offset_left = 96.73
+offset_right = 233.73
+offset_bottom = 30.0
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 
 [node name="LevelUpButton" type="Button" parent="Panel/Expereince"]
 layout_mode = 0
-offset_left = 455.0
-offset_top = 63.0
-offset_right = 494.0
-offset_bottom = 94.0
+offset_right = 91.0
+offset_bottom = 31.0
 text = "Level up"
 
 [node name="ExtraSkills" type="Button" parent="Panel"]
@@ -96,22 +70,18 @@ offset_right = 831.0
 offset_bottom = 413.0
 text = "Extra skills"
 
-[node name="Health" type="RichTextLabel" parent="Panel"]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 43.0
-offset_right = 312.0
-offset_bottom = 83.0
-
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+custom_minimum_size = Vector2(100.665, 20)
 layout_mode = 0
-offset_left = 458.0
-offset_top = 218.0
-offset_right = 572.0
-offset_bottom = 320.0
+offset_left = 434.0
+offset_top = 178.0
+offset_right = 775.0
+offset_bottom = 351.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+custom_minimum_size = Vector2(240, 90)
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="skill_menu_button" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
 layout_mode = 2
@@ -143,12 +113,24 @@ layout_mode = 2
 [node name="skill_menu_button10" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
 layout_mode = 2
 
+[node name="skill_menu_button11" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button12" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button13" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
+[node name="skill_menu_button14" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_2ddop")]
+layout_mode = 2
+
 [node name="InBattle" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 458.0
-offset_top = 144.0
-offset_right = 545.0
-offset_bottom = 175.0
+offset_left = 315.0
+offset_top = 218.0
+offset_right = 402.0
+offset_bottom = 249.0
 text = "Enabled"
 
 [node name="Stats" type="HBoxContainer" parent="Panel"]
@@ -211,11 +193,11 @@ layout_mode = 2
 
 [node name="PA" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 225.0
-offset_right = 440.0
-offset_bottom = 314.0
-theme_override_constants/separation = -5
+offset_left = 6.0
+offset_top = 266.0
+offset_right = 429.0
+offset_bottom = 369.0
+theme_override_constants/separation = 3
 
 [node name="PotentialTxt" type="RichTextLabel" parent="Panel/PA"]
 layout_mode = 2
@@ -248,6 +230,10 @@ element_subject = ExtResource("6_4btt1")
 [node name="Ice" parent="Panel/PA/Potential" instance=ExtResource("5_6bjww")]
 layout_mode = 2
 element_subject = ExtResource("7_lv2s7")
+
+[node name="Water" parent="Panel/PA/Potential" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("18_uqudr")
 
 [node name="Electric" parent="Panel/PA/Potential" instance=ExtResource("5_6bjww")]
 layout_mode = 2
@@ -291,6 +277,10 @@ element_subject = ExtResource("6_4btt1")
 layout_mode = 2
 element_subject = ExtResource("7_lv2s7")
 
+[node name="Water" parent="Panel/PA/Affinity" instance=ExtResource("5_6bjww")]
+layout_mode = 2
+element_subject = ExtResource("18_uqudr")
+
 [node name="Electric" parent="Panel/PA/Affinity" instance=ExtResource("5_6bjww")]
 layout_mode = 2
 element_subject = ExtResource("8_488yq")
@@ -303,12 +293,53 @@ element_subject = ExtResource("10_58yae")
 layout_mode = 2
 element_subject = ExtResource("9_6e756")
 
+[node name="NLH" type="HBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.591
+anchor_bottom = 0.277
+offset_left = 11.0
+offset_right = 0.377991
+offset_bottom = -0.0250015
+
+[node name="Name" type="RichTextLabel" parent="Panel/NLH"]
+custom_minimum_size = Vector2(204.99, 90)
+layout_mode = 2
+theme = ExtResource("2_c322i")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("21_2r4g7")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Redler[/center]"
+fit_content = true
+
+[node name="Level" type="RichTextLabel" parent="Panel/NLH"]
+custom_minimum_size = Vector2(54.755, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("21_2r4g7")
+theme_override_font_sizes/normal_font_size = 25
+text = "lv."
+fit_content = true
+
+[node name="Health" type="RichTextLabel" parent="Panel/NLH"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme = ExtResource("2_c322i")
+bbcode_enabled = true
+text = "[center]43[/center]"
+fit_content = true
+scroll_active = false
+tab_size = 6
+
 [node name="SkillDesc" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 596.0
-offset_top = 5.0
-offset_right = 825.0
-offset_bottom = 317.0
+offset_left = 427.0
+offset_top = 29.0
+offset_right = 774.0
+offset_bottom = 169.0
+bbcode_enabled = true
 
 [connection signal="tab_selected" from="." to="." method="_on_tab_selected"]
 [connection signal="pressed" from="Panel/Expereince/LevelUpButton" to="." method="level_up"]
@@ -323,4 +354,8 @@ offset_bottom = 317.0
 [connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button8" to="." method="load_skill"]
 [connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button9" to="." method="load_skill"]
 [connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button10" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button11" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button12" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button13" to="." method="load_skill"]
+[connection signal="load_skill" from="Panel/ScrollContainer/VBoxContainer/skill_menu_button14" to="." method="load_skill"]
 [connection signal="pressed" from="Panel/InBattle" to="." method="enable_disable_partymember"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bta702emm1p4b"]
+[gd_scene load_steps=13 format=3 uid="uid://bta702emm1p4b"]
 
 [ext_resource type="Script" path="res://objects/UI/hpgui.gd" id="1_dmg4y"]
 [ext_resource type="StyleBox" uid="uid://pr3lsbr0mu53" path="res://misc/material/hp_bar_style.tres" id="2_uckqt"]
 [ext_resource type="StyleBox" uid="uid://bp821ifm25r1a" path="res://misc/material/hp_bar_empty_style.tres" id="2_wqwuf"]
 [ext_resource type="StyleBox" uid="uid://pjd0ykgsvpmm" path="res://misc/material/hp_bar_damage_style.tres" id="3_r6tqb"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="4_5ehvm"]
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="5_1adh3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h62qd"]
 
@@ -118,13 +119,25 @@ theme_override_styles/fill = ExtResource("2_uckqt")
 value = 59.43
 show_percentage = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Offset"]
+[node name="Name" type="RichTextLabel" parent="Offset"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 3.0
+offset_top = 10.0
 offset_right = 196.0
-offset_bottom = 27.0
+offset_bottom = 34.0
+theme = ExtResource("5_1adh3")
+bbcode_enabled = true
 text = "Sample"
+
+[node name="Hp" type="RichTextLabel" parent="Offset"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 34.0
+offset_right = 197.0
+offset_bottom = 58.0
+theme = ExtResource("5_1adh3")
+bbcode_enabled = true
+text = "Health"
 
 [node name="StaminaContainer" parent="Offset" instance=ExtResource("4_5ehvm")]
 layout_mode = 0

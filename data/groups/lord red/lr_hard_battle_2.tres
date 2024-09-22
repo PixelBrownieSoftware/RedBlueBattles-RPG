@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=17 format=3 uid="uid://c6yyfxfvklape"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=18 format=3 uid="uid://c6yyfxfvklape"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_57xau"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="2_e4v6s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dtiii6cayoafh" path="res://data/characters/Enemies/pinkler.tres" id="6_yjmra"]
 [ext_resource type="Resource" uid="uid://dpafsbbvb34br" path="res://data/Skills/Wind/hurricaine.tres" id="7_2fb6w"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="7_53bck"]
+[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="8_o3ex5"]
 [ext_resource type="Resource" uid="uid://bouqpmerlatxl" path="res://data/Skills/Fire/fire_blast.tres" id="8_wwpq7"]
 [ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/Skills/Status/fire_sheild.tres" id="9_jtugp"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="11_5xcro"]
@@ -23,7 +24,7 @@ max_level = 11
 [sub_resource type="Resource" id="Resource_y3uje"]
 script = ExtResource("1_57xau")
 character = ExtResource("5_073di")
-skills = Array[ExtResource("3_lcv0p")]([ExtResource("6_sb72s"), ExtResource("7_2fb6w")])
+skills = Array[ExtResource("3_lcv0p")]([ExtResource("6_sb72s"), ExtResource("7_2fb6w"), ExtResource("8_o3ex5")])
 min_level = 11
 max_level = 12
 

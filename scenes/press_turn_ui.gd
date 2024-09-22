@@ -15,6 +15,3 @@ func turn_icon_change(ind, mode):
 func disable_all():
 	for press in $PressTurnContainer.get_children():
 		press.visible = false
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

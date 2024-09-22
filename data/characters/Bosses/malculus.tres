@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://cquom4g51vu7d"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=16 format=3 uid="uid://cquom4g51vu7d"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_0vmby"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_enux8"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="6_ns276"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="7_k1wke"]
 [ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/Skills/Electric/lightning.tres" id="7_oxxjt"]
-[ext_resource type="Resource" uid="uid://5xy2ge6rh0qf" path="res://data/Skills/Bio/shadow_ball.tres" id="8_g26uq"]
 [ext_resource type="Resource" uid="uid://bouqpmerlatxl" path="res://data/Skills/Fire/fire_blast.tres" id="9_qxi2o"]
 [ext_resource type="Resource" uid="uid://buhnvgb0e82yd" path="res://data/Skills/Ice/blizzard.tres" id="10_wvbr4"]
 
@@ -54,9 +53,10 @@ base_exp_to_NL = 50
 exp_req_multipler = 1.2
 stats = SubResource("Resource_do15a")
 stat_increase = SubResource("Resource_2y283")
-skills = Array[ExtResource("5_g0kg4")]([ExtResource("6_lejrf"), ExtResource("7_oxxjt"), ExtResource("8_g26uq"), ExtResource("9_qxi2o"), ExtResource("10_wvbr4")])
+skills = Array[ExtResource("5_g0kg4")]([ExtResource("6_lejrf"), ExtResource("7_oxxjt"), ExtResource("9_qxi2o"), ExtResource("10_wvbr4")])
 behaviour = Array[ExtResource("1_0vmby")]([])
 elemental_affinities = Array[ExtResource("2_vjepx")]([SubResource("Resource_1g3wa"), SubResource("Resource_d7lqc")])
 elemental_potential = Array[ExtResource("3_4k8ha")]([])
 character_colour = Color(0.490196, 0.0745098, 1, 1)
 animation_player_loc = "sprite_malculus"
+turns = 4

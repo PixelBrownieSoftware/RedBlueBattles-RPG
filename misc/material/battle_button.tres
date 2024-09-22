@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b7qyogjo30g2i"]
+
+[ext_resource type="StyleBox" uid="uid://cvgs3mpxmfh4o" path="res://misc/material/button_texture.tres" id="1_8evpe"]
+[ext_resource type="FontFile" uid="uid://cond2w26pxoen" path="res://misc/fonts/FOT-Rodin Pro EB.otf" id="1_od555"]
+
+[resource]
+default_font = ExtResource("1_od555")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.94902, 0.94902, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0.294118, 0.294118, 0.294118, 1)
+Button/constants/outline_size = 10
+Button/styles/normal = ExtResource("1_8evpe")
+Button/styles/pressed = null

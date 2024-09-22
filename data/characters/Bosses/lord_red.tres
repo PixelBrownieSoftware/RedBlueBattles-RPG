@@ -76,3 +76,4 @@ elemental_affinities = Array[ExtResource("2_duwrj")]([SubResource("Resource_bl3p
 elemental_potential = Array[ExtResource("4_sdopj")]([SubResource("Resource_h42uu"), SubResource("Resource_2vy8q")])
 character_colour = Color(0.8, 0.101961, 0.101961, 1)
 animation_player_loc = "sprite_lord_red"
+turns = 3

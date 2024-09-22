@@ -65,3 +65,4 @@ elemental_affinities = Array[ExtResource("3_g288e")]([SubResource("Resource_iqb2
 elemental_potential = Array[ExtResource("5_4q2cf")]([])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_looney"
+turns = 1

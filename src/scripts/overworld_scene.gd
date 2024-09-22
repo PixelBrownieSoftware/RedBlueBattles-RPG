@@ -70,7 +70,14 @@ func load_battle(selected_group):
 	get_tree().change_scene_to_file(battle_scene)
 
 func _process(delta):
-	$"Exp count".text = "Expereince: " + str(GlobalVariables.expereince_score)
+	var descOverall = "Expereince: " + str(GlobalVariables.expereince_score) + "\n\n"
+	if PartyMembers.get_child_count() > 1:
+		descOverall += "Active party members: " + "\n"
+		for party_member_name in GlobalVariables.enabled_party_members:
+			if GlobalVariables.enabled_party_members[party_member_name]:
+				descOverall += "[color=" + party_member_name.assigned_data.character_colour.to_html() + "]" + party_member_name.name + "[/color] "
+		descOverall +=  "\n"
+	$"Exp count".text = descOverall
 
 func load_party():
 	#TODO: We should play an animation rather than crudely disabling and enabling menus
