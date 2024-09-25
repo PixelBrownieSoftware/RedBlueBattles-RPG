@@ -15,7 +15,7 @@ affinity = 1.4
 [sub_resource type="Resource" id="Resource_corun"]
 script = ExtResource("2_uwg4u")
 elementalName = "Force"
-affinity = 1.5
+affinity = 1.0
 
 [sub_resource type="Resource" id="Resource_x6vcr"]
 script = ExtResource("2_uwg4u")
@@ -25,12 +25,12 @@ affinity = 1.4
 [sub_resource type="Resource" id="Resource_2s075"]
 script = ExtResource("2_uwg4u")
 elementalName = "Peirce"
-affinity = 1.7
+affinity = 1.0
 
 [sub_resource type="Resource" id="Resource_moqn5"]
 script = ExtResource("2_uwg4u")
 elementalName = "Strike"
-affinity = 1.3
+affinity = 1.0
 
 [sub_resource type="Resource" id="Resource_kaj6f"]
 script = ExtResource("8_d6at4")

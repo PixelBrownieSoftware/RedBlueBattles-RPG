@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=17 format=3 uid="uid://cgkv2dxx8u451"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=19 format=3 uid="uid://cgkv2dxx8u451"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_mo17g"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="1_u1wls"]
@@ -11,7 +11,9 @@
 [ext_resource type="Resource" uid="uid://d0616a0dvxaoj" path="res://data/Skills/Water/typhoon.tres" id="6_3yvqt"]
 [ext_resource type="Resource" uid="uid://dtiii6cayoafh" path="res://data/characters/Enemies/pinkler.tres" id="6_nvbxk"]
 [ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="7_4k2fi"]
+[ext_resource type="Resource" uid="uid://c8qy2a5takbyp" path="res://data/Skills/Ice/frost_breath.tres" id="7_e3fxm"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="7_s7rsi"]
+[ext_resource type="Resource" uid="uid://buhnvgb0e82yd" path="res://data/Skills/Ice/blizzard.tres" id="12_yaehw"]
 
 [sub_resource type="Resource" id="Resource_e0ymq"]
 script = ExtResource("2_k7yjc")
@@ -23,7 +25,7 @@ max_level = 11
 [sub_resource type="Resource" id="Resource_y3uje"]
 script = ExtResource("2_k7yjc")
 character = ExtResource("3_3vawj")
-skills = Array[ExtResource("3_ymrq6")]([])
+skills = Array[ExtResource("3_ymrq6")]([ExtResource("7_e3fxm")])
 min_level = 9
 max_level = 12
 
@@ -37,7 +39,7 @@ max_level = 11
 [sub_resource type="Resource" id="Resource_e7v6d"]
 script = ExtResource("2_k7yjc")
 character = ExtResource("6_nvbxk")
-skills = Array[ExtResource("3_ymrq6")]([])
+skills = Array[ExtResource("3_ymrq6")]([ExtResource("12_yaehw"), ExtResource("4_feap0")])
 min_level = 8
 max_level = 12
 

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="skill_stamina" load_steps=9 format=3 uid="uid://dk7q5ls4aqsm1"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_h1ac5"]
+[ext_resource type="Resource" uid="uid://0ga3ybabf28e" path="res://data/status effects/guard.tres" id="2_74xgu"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="3_tdx10"]
+[ext_resource type="Script" path="res://src/scripts/skill/skill_stamina_guard.gd" id="4_hjqqt"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="5_gkq0y"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="6_f8vnf"]
+
+[sub_resource type="Resource" id="Resource_jxxny"]
+script = ExtResource("1_h1ac5")
+status = ExtResource("2_74xgu")
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_72eur"]
+script = ExtResource("5_gkq0y")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[resource]
+script = ExtResource("4_hjqqt")
+name = "Guard"
+learnable = false
+power = 1
+stamina_cost = 0
+repeat_min = 1
+repeat_max = 1
+skill_scope = 3
+skill_element = ExtResource("6_f8vnf")
+skill_animation = Array[ExtResource("5_gkq0y")]([SubResource("Resource_72eur")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("3_tdx10")]([])
+effects_to_add = Array[ExtResource("1_h1ac5")]([SubResource("Resource_jxxny")])

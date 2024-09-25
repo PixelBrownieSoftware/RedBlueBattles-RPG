@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=15 format=3 uid="uid://dfumcsshpil4i"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=16 format=3 uid="uid://dfumcsshpil4i"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_kocuw"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ka685"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="6_5sq32"]
 [ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="6_cnqvc"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="9_ehkg7"]
+[ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/Skills/Strike/multi_slash.tres" id="10_m2wsv"]
 
 [sub_resource type="Resource" id="Resource_3lo37"]
 script = ExtResource("1_kocuw")
@@ -29,7 +30,7 @@ max_level = 6
 [sub_resource type="Resource" id="Resource_w5jk5"]
 script = ExtResource("1_kocuw")
 character = ExtResource("4_b6q8w")
-skills = Array[ExtResource("3_ka685")]([ExtResource("6_cnqvc")])
+skills = Array[ExtResource("3_ka685")]([ExtResource("6_cnqvc"), ExtResource("10_m2wsv")])
 min_level = 4
 max_level = 7
 

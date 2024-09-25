@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=72 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="2_8515p"]
@@ -52,6 +52,20 @@
 [ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/mag_pow.png" id="46_wvy3d"]
 [ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="47_oagt6"]
 [ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="48_sxbv2"]
+[ext_resource type="PackedScene" uid="uid://cpp0df3vxsggx" path="res://objects/UI/stat_description_box.tscn" id="53_sl7pk"]
+[ext_resource type="Script" path="res://scenes/ency_stats.gd" id="53_u1kq0"]
+[ext_resource type="Script" path="res://scenes/ency_elements.gd" id="55_ir18w"]
+[ext_resource type="Script" path="res://scenes/ency_status_effects.gd" id="56_q67lj"]
+[ext_resource type="Texture2D" uid="uid://bgy81ce8bq5lb" path="res://sprites/GUI/gui_hp.png" id="57_ryarp"]
+[ext_resource type="Texture2D" uid="uid://cbgcdtcj2dbnb" path="res://sprites/stamina_gui.png" id="58_4sbl5"]
+[ext_resource type="Texture2D" uid="uid://dm1h8ka4ida74" path="res://sprites/press_turn_icon.png" id="59_6vhek"]
+[ext_resource type="Texture2D" uid="uid://bxbyjk127rn6n" path="res://sprites/GUI/affinity_icon_wk.png" id="60_0bo2n"]
+[ext_resource type="Texture2D" uid="uid://dr7hj3hjn7dgm" path="res://sprites/GUI/gui_skills.png" id="60_16k8h"]
+[ext_resource type="Texture2D" uid="uid://rt48kk0n5u84" path="res://sprites/GUI/affinity_icon_norm.png" id="61_17osn"]
+[ext_resource type="Texture2D" uid="uid://x5lxjowqi2xy" path="res://sprites/GUI/affinity_icon_res.png" id="62_fns1h"]
+[ext_resource type="Texture2D" uid="uid://bye0he76rvvgn" path="res://sprites/GUI/affinity_icon_blk.png" id="63_bgrf0"]
+[ext_resource type="Texture2D" uid="uid://4l2tmg0okxw" path="res://sprites/GUI/affinity_icon_imm.png" id="64_3lelk"]
+[ext_resource type="Texture2D" uid="uid://cneukuwqpayap" path="res://sprites/GUI/elements_fire.png" id="65_fref4"]
 
 [sub_resource type="Animation" id="Animation_1vcaa"]
 length = 0.001
@@ -142,31 +156,31 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Info Stats:position")
+tracks/7/path = NodePath("Info Stats:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(141, 46)]
+"update": 1,
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Info Stats:visible")
+tracks/8/path = NodePath("ExtraSkillsMenu:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Info Stats:modulate")
+tracks/9/path = NodePath("Encyclopedia:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -178,14 +192,62 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("ExtraSkillsMenu:modulate")
+tracks/10/path = NodePath("Encyclopedia:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Encyclopedia:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(30, 55)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("EncylopediaButton:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("EncylopediaButton:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Party:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(823, 295)]
 }
 
 [sub_resource type="Animation" id="Animation_dmynu"]
@@ -298,6 +360,42 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Party:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(823, 295), Vector2(823, 295)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("EncylopediaButton:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("EncylopediaButton:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_nkjg2"]
@@ -435,6 +533,30 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Party:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(823, 295), Vector2(823, 295)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("EncylopediaButton:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_hho0c"]
 resource_name = "to_info_menu"
@@ -514,38 +636,74 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Info Stats:visible")
+tracks/6/path = NodePath("Encyclopedia:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Info Stats:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Encyclopedia:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Info Stats:position")
+tracks/8/path = NodePath("Encyclopedia:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.0333333, 0.4),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(854, 46), Vector2(141, 46)]
+"values": [Vector2(1250, 115), Vector2(130, 115)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("EncylopediaButton:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("EncylopediaButton:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Party:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(15, 295), Vector2(15, 295)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2gytn"]
@@ -1186,10 +1344,11 @@ text = "Boss"
 battle_groups = Array[ExtResource("11_m8hr6")]([ExtResource("31_lth0m")])
 
 [node name="PartyMemberTabs" type="TabContainer" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 200.0
+offset_left = -816.0
 offset_top = 144.0
-offset_right = 759.0
+offset_right = -257.0
 offset_bottom = 545.0
 theme = ExtResource("7_7jsww")
 
@@ -1199,15 +1358,23 @@ libraries = {
 }
 
 [node name="Party" type="Button" parent="MainMenu"]
-visible = false
 layout_mode = 2
-offset_left = 823.0
+offset_left = 15.0
 offset_top = 295.0
-offset_right = 886.0
+offset_right = 78.0
 offset_bottom = 335.0
 theme = ExtResource("7_7jsww")
 disabled = true
 text = "Party"
+
+[node name="EncylopediaButton" type="Button" parent="MainMenu"]
+layout_mode = 2
+offset_left = 1015.0
+offset_top = 295.0
+offset_right = 1138.0
+offset_bottom = 335.0
+theme = ExtResource("7_7jsww")
+text = "Encyclopedia"
 
 [node name="Enemies" type="Button" parent="MainMenu"]
 layout_mode = 2
@@ -1221,10 +1388,11 @@ text = "Enemies"
 
 [node name="Info Stats" type="Panel" parent="MainMenu"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 141.0
+offset_left = 854.0
 offset_top = 46.0
-offset_right = 881.0
+offset_right = 1594.0
 offset_bottom = 557.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/Info Stats"]
@@ -1317,7 +1485,446 @@ text = "Luck
 "
 fit_content = true
 
+[node name="Encyclopedia" type="TabContainer" parent="MainMenu"]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 130.0
+offset_top = 115.0
+offset_right = 1146.0
+offset_bottom = 626.0
+theme = ExtResource("7_7jsww")
+current_tab = 1
+
+[node name="Stats" type="TabBar" parent="MainMenu/Encyclopedia"]
+visible = false
+layout_mode = 2
+theme = ExtResource("7_7jsww")
+script = ExtResource("53_u1kq0")
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/Encyclopedia/Stats"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 38.0
+offset_right = 951.0
+offset_bottom = 461.0
+theme = ExtResource("7_7jsww")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Stats/ScrollContainer"]
+layout_mode = 2
+
+[node name="Strength" parent="MainMenu/Encyclopedia/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("53_sl7pk")]
+custom_minimum_size = Vector2(900, 250)
+layout_mode = 2
+
+[node name="Vitality" parent="MainMenu/Encyclopedia/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("53_sl7pk")]
+custom_minimum_size = Vector2(900, 250)
+layout_mode = 2
+stat_description = 1
+
+[node name="Dexterity" parent="MainMenu/Encyclopedia/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("53_sl7pk")]
+custom_minimum_size = Vector2(900, 250)
+layout_mode = 2
+stat_description = 2
+
+[node name="Agility" parent="MainMenu/Encyclopedia/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("53_sl7pk")]
+custom_minimum_size = Vector2(900, 250)
+layout_mode = 2
+stat_description = 4
+
+[node name="Magic" parent="MainMenu/Encyclopedia/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("53_sl7pk")]
+custom_minimum_size = Vector2(900, 250)
+layout_mode = 2
+stat_description = 3
+
+[node name="Luck" parent="MainMenu/Encyclopedia/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("53_sl7pk")]
+custom_minimum_size = Vector2(900, 250)
+layout_mode = 2
+stat_description = 5
+
+[node name="Elements" type="TabBar" parent="MainMenu/Encyclopedia"]
+layout_mode = 2
+script = ExtResource("55_ir18w")
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/Encyclopedia/Elements"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 22.0
+offset_right = 971.0
+offset_bottom = 451.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Elements/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Status Effects" type="TabBar" parent="MainMenu/Encyclopedia"]
+visible = false
+layout_mode = 2
+script = ExtResource("56_q67lj")
+metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/Encyclopedia/Status Effects"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 22.0
+offset_right = 971.0
+offset_bottom = 451.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Status Effects/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Gameplay" type="TabBar" parent="MainMenu/Encyclopedia"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/Encyclopedia/Gameplay"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 22.0
+offset_right = 971.0
+offset_bottom = 451.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Health" type="Panel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 163.43)
+layout_mode = 2
+theme = ExtResource("7_7jsww")
+
+[node name="GridContainer" type="GridContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Health"]
+layout_mode = 0
+offset_left = 8.2
+offset_top = 9.225
+offset_right = 555.2
+offset_bottom = 237.225
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Health/GridContainer"]
+custom_minimum_size = Vector2(175, 20)
+layout_mode = 2
+
+[node name="StatTexture" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Health/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("57_ryarp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Health/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Health"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Health/GridContainer"]
+custom_minimum_size = Vector2(632.3, 140)
+layout_mode = 2
+
+[node name="Element Desc" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Health/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 119.695)
+layout_mode = 2
+bbcode_enabled = true
+text = "A vital component for both players and enemies. 
+
+Conserving health is important if you want to keep a character in battle, since healing is not an option.
+
+You loose a battle if all your characters' health is 0, and win if all the enemies' health is 0. 
+
+However, regardless of if you loose or win a battle, you can keep everything you have gained.
+
+"
+
+[node name="Stamina" type="Panel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 168.69)
+layout_mode = 2
+theme = ExtResource("7_7jsww")
+
+[node name="GridContainer" type="GridContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Stamina"]
+layout_mode = 0
+offset_left = 8.2
+offset_top = 9.225
+offset_right = 555.2
+offset_bottom = 237.225
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Stamina/GridContainer"]
+custom_minimum_size = Vector2(175, 20)
+layout_mode = 2
+
+[node name="StatTexture" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Stamina/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("58_4sbl5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Stamina/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Stamina"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Stamina/GridContainer"]
+custom_minimum_size = Vector2(540, 140)
+layout_mode = 2
+
+[node name="Element Desc" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Stamina/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 130)
+layout_mode = 2
+bbcode_enabled = true
+text = "Another important component for both players and enemies.
+
+Many abilities consume certain amounts of stamina.
+
+By default, you gain 2 stamina per round. This can be changed depending on which status effects you have.
+"
+
+[node name="PressTurn" type="Panel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 216.42)
+layout_mode = 2
+theme = ExtResource("7_7jsww")
+
+[node name="GridContainer" type="GridContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/PressTurn"]
+layout_mode = 0
+offset_left = 8.2
+offset_top = 9.225
+offset_right = 555.2
+offset_bottom = 237.225
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/PressTurn/GridContainer"]
+custom_minimum_size = Vector2(175, 20)
+layout_mode = 2
+
+[node name="StatTexture" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/PressTurn/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("59_6vhek")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/PressTurn/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Press turn system"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/PressTurn/GridContainer"]
+custom_minimum_size = Vector2(630, 160)
+layout_mode = 2
+
+[node name="Element Desc" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/PressTurn/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 160)
+layout_mode = 2
+bbcode_enabled = true
+text = "The battle system consists of alternating between players' and enemies' rounds.
+
+On each round, turn icons will appear - reperesenting how many actions a respective side can take. The amount of turn icons that appear is often dependent on how many active characters there are.
+
+They always start as a [color=turquoise]\"Full\" turn icon[/color], which becomes a [color=purple]\"Blinking\" icon[/color] instead of being consumed if an opposing side's weakness is exploited or that charcter passes their turn.
+
+[color=red]2 turn icons[/color] will be consumed if a character [color=red]misses[/color] an attack."
+
+[node name="Skills" type="Panel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 216.42)
+layout_mode = 2
+theme = ExtResource("7_7jsww")
+
+[node name="GridContainer" type="GridContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Skills"]
+layout_mode = 0
+offset_left = 8.2
+offset_top = 9.225
+offset_right = 555.2
+offset_bottom = 237.225
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Skills/GridContainer"]
+custom_minimum_size = Vector2(175, 20)
+layout_mode = 2
+
+[node name="StatTexture" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Skills/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("60_16k8h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Skills/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=orange_red]Skills[/color]"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Skills/GridContainer"]
+custom_minimum_size = Vector2(630, 160)
+layout_mode = 2
+
+[node name="Element Desc" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Skills/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 160)
+layout_mode = 2
+bbcode_enabled = true
+text = "These are what characters use in battle, they can be of different elements, [color=orange]power[/color] and targets. Most skills cost some stamina to excecute. The more [color=orange]power[/color] a skill has, the more damage it does. 
+
+In order for a character to gain a skill, they need to fufil the [color=green]stat requirements[/color] that pertains to that skill.
+
+Each character has a couple of skills that they learn naturally. Skills can also be equipped onto a character through the [color=yellow]Extra skills[/color] menu.
+
+Extra skills can be gained via defeating an enemy with skills that are not present on the menu.
+"
+
+[node name="Elemental affinities" type="Panel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 175.585)
+layout_mode = 2
+theme = ExtResource("7_7jsww")
+
+[node name="GridContainer" type="GridContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities"]
+layout_mode = 0
+offset_left = 8.2
+offset_top = 9.225
+offset_right = 555.2
+offset_bottom = 237.225
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer"]
+custom_minimum_size = Vector2(175, 20)
+layout_mode = 2
+
+[node name="Weak" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("60_0bo2n")
+
+[node name="Normal" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("61_17osn")
+
+[node name="Resist" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("62_fns1h")
+
+[node name="Immune" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("63_bgrf0")
+
+[node name="Reflect" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("64_3lelk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Elemental affinities"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer"]
+custom_minimum_size = Vector2(630, 140)
+layout_mode = 2
+
+[node name="Element Desc" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental affinities/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 2
+bbcode_enabled = true
+text = "These represent how much damage a character can take from a move from a single element.
+
+In the status menu, you can see the icons next to the ttle of this section next to each element.
+
+(From left to right):
+- [color=yellow]Weakness[/color]: This makes a whole turn icon pressed as well as doing more damage.
+
+- [color=light_gray]Normal[/color]: Turn icons will be consumed like normal.
+
+- [color=gray]Resist[/color]: Character will take less damage, but turn icon will be consumed like normal.
+
+- [color=dark_red]Void[/color]: Character will take no damage and 2 turn icons will be consumed.
+
+- [color=olive]Reflect[/color]: Target will take no damage, and the attacker will take damage instead. 3 turn icons will be consumed."
+
+[node name="Elemental Potential" type="Panel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 210)
+layout_mode = 2
+theme = ExtResource("7_7jsww")
+
+[node name="GridContainer" type="GridContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental Potential"]
+layout_mode = 0
+offset_left = 8.2
+offset_top = 9.225
+offset_right = 555.2
+offset_bottom = 237.225
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental Potential/GridContainer"]
+custom_minimum_size = Vector2(175, 20)
+layout_mode = 2
+
+[node name="StatTexture" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental Potential/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("65_fref4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental Potential/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Elemental potential"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental Potential/GridContainer"]
+custom_minimum_size = Vector2(630, 140)
+layout_mode = 2
+
+[node name="Element Desc" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Elemental Potential/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 2
+bbcode_enabled = true
+text = "Displayed above the affinities, these are numbers that give a character advantages when it comes to learning and using [color=orange_red]skills[/color] of a certain type.
+
+These advantages are:
+- Increased damage.
+- Lower move stat requirements.
+- Lower stamina cost.
+
+The higher the number, the bigger these advantages are, however, the opposite happens if the number is negative."
+
+[node name="Expereince" type="Panel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 210)
+layout_mode = 2
+theme = ExtResource("7_7jsww")
+
+[node name="GridContainer" type="GridContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Expereince"]
+layout_mode = 0
+offset_left = 8.2
+offset_top = 9.225
+offset_right = 555.2
+offset_bottom = 237.225
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Expereince/GridContainer"]
+custom_minimum_size = Vector2(175, 20)
+layout_mode = 2
+
+[node name="StatTexture" type="TextureRect" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Expereince/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("48_sxbv2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Expereince/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Expereince"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Expereince/GridContainer"]
+custom_minimum_size = Vector2(630, 140)
+layout_mode = 2
+
+[node name="Element Desc" type="RichTextLabel" parent="MainMenu/Encyclopedia/Gameplay/ScrollContainer/VBoxContainer/Expereince/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 2
+bbcode_enabled = true
+text = "Displayed on the top left (or right in battle). This is used to spend on leveling up characters which increase their stats.
+
+Experience is gained by damaging enemies, the amount you get depends on how much damage you do.
+
+Multiplers allow you to gain more experience, it can be increased by exploiting an enemies' weakness or inflicting a status effect on them.
+
+In the end of a battle, you get percentage bonuses if you keep characters alive and defeat enemies."
+
 [node name="Exp count" type="RichTextLabel" parent="."]
+z_index = -24
 offset_left = 20.0
 offset_top = 16.0
 offset_right = 1134.0
@@ -1354,4 +1961,5 @@ bbcode_enabled = true
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/VBoxContainer/Anne Unlock" to="." method="load_battle"]
 [connection signal="load_battle" from="MainMenu/EnemySelectTabs/Malculus/VBoxContainer/Boss" to="." method="load_battle"]
 [connection signal="pressed" from="MainMenu/Party" to="." method="load_party"]
+[connection signal="pressed" from="MainMenu/EncylopediaButton" to="." method="load_encyclopedia_menu"]
 [connection signal="pressed" from="MainMenu/Enemies" to="." method="load_enemy_menu"]

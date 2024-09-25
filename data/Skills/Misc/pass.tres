@@ -1,14 +1,28 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=3 format=3 uid="uid://cwtgv8cirs6b7"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://cwtgv8cirs6b7"]
 
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_jw4i2"]
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_tm2ek"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_apesa"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="2_dte3y"]
+[ext_resource type="Script" path="res://src/scripts/skill/skill_pass.gd" id="3_o5kmd"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_ws2od"]
+
+[sub_resource type="Resource" id="Resource_88y8s"]
+script = ExtResource("4_ws2od")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
 
 [resource]
-script = ExtResource("1_jw4i2")
+script = ExtResource("3_o5kmd")
 name = "Pass"
 learnable = false
 power = 0
 stamina_cost = 0
+repeat_min = 1
+repeat_max = 1
 skill_scope = -1
 skill_element = ExtResource("2_dte3y")
-skill_animation = Array[Resource("res://src/rpg_skill_animation.gd")]([])
+skill_animation = Array[ExtResource("4_ws2od")]([SubResource("Resource_88y8s")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_apesa")]([])
+effects_to_add = Array[ExtResource("1_tm2ek")]([])

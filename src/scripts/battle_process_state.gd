@@ -9,12 +9,13 @@ signal finish_anim()
 
 func start_state():
 	var skill : rpg_skill = battle_globals.selected_move
-	if skill.name == "Pass":
-		battle_globals.final_press_turn_flag= PRESS_TURN.PT.WEAK
-		battle_globals.current_character.update_current_status_effects("after_action")
-		battle_globals.current_character.on_character_end_turn.emit()
-	else:
-		await process_move(skill)
+	await process_move(skill)
+	#if skill.name == "Pass":
+		#battle_globals.final_press_turn_flag= PRESS_TURN.PT.WEAK
+		#battle_globals.current_character.update_current_status_effects("after_action")
+		#battle_globals.current_character.on_character_end_turn.emit()
+	#else:
+		#await process_move(skill)
 	change_state.emit(after_process_state)
 	
 func process_move(skill : rpg_skill):
@@ -53,19 +54,29 @@ func process_move(skill : rpg_skill):
 				anim.SKILL_ANIMATION_TYPE.CALCULATION:
 					#TODO: Maybe put in overwhelm
 					var attack_result = {}
-					if character_target.health > 0:
-						attack_result = character_target.damage_character(character_user, skill)
+					if character_target != null:
+						if character_target.health > 0:
+							#attack_result = character_target.damage_character(character_user, skill)
+							attack_result = skill.process_damage(character_user, character_target)
+							var damage_num  = attack_result["Amount"]
+							var calculated_PT = attack_result["Press_turn"]
+							print("Press turn number: " + str(calculated_PT))
+							if battle_globals.final_press_turn_flag < calculated_PT:
+								battle_globals.final_press_turn_flag = calculated_PT
+							print(damage_num)
+							if attack_result["No_Anim"] == 0:
+								if skill.power > 0:							
+									if calculated_PT != PRESS_TURN.PT.MISS && calculated_PT != PRESS_TURN.PT.VOID:
+										spawn_battle_fx.emit("physical_hit_fx", character_target)
+									put_damage_numbers.emit(character_user, character_target, damage_num, calculated_PT)
+							await get_tree().create_timer(0.4).timeout
+					else:
+						attack_result = skill.process_damage(character_user, character_target)
 						var damage_num  = attack_result["Amount"]
 						var calculated_PT = attack_result["Press_turn"]
-						print("Press turn number: " + str(calculated_PT))
 						if battle_globals.final_press_turn_flag < calculated_PT:
 							battle_globals.final_press_turn_flag = calculated_PT
-						print(damage_num)
-						if skill.power > 0:							
-							if calculated_PT != PRESS_TURN.PT.MISS && calculated_PT != PRESS_TURN.PT.VOID:
-								spawn_battle_fx.emit("physical_hit_fx", character_target)
-							put_damage_numbers.emit(character_user, character_target, damage_num, calculated_PT)
-						await get_tree().create_timer(0.4).timeout
+						
 	character_user.update_current_status_effects("after_action")
 	character_user.on_character_end_turn.emit()
 	

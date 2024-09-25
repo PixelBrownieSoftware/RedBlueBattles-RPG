@@ -4,19 +4,24 @@ class_name battle_press_turn_state
 signal turn_icon_handle(ind, type)
 @export var queue_state : battle_state
 
+func exploit_weakness():
+	if battle_globals.turn > 0:
+		battle_globals.pressed_turn += 1
+		battle_globals.turn -= 1
+		$PressTurnSounds.play()
+		turn_icon_handle.emit(battle_globals.turn, "press")
+	else:
+		battle_globals.pressed_turn -= 1
+		turn_icon_handle.emit(battle_globals.pressed_turn, "disappear")
+
 func start_state():
 	match battle_globals.final_press_turn_flag:
 		PRESS_TURN.PT.NORMAL:
-				use_turn()
+			use_turn()
+		PRESS_TURN.PT.LUCKY:
+			exploit_weakness()
 		PRESS_TURN.PT.WEAK:
-			if battle_globals.turn > 0:
-				battle_globals.pressed_turn += 1
-				battle_globals.turn -= 1
-				$PressTurnSounds.play()
-				turn_icon_handle.emit(battle_globals.turn, "press")
-			else:
-				battle_globals.pressed_turn -= 1
-				turn_icon_handle.emit(battle_globals.pressed_turn, "disappear")
+			exploit_weakness()
 		PRESS_TURN.PT.REFLECT:
 			for i in range(3):
 				if battle_globals.net_turn == 0:

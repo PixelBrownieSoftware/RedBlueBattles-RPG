@@ -49,8 +49,70 @@ func get_desc(chara : battle_character_data) -> String:
 	
 	desc +="\n"
 	return desc
+
+
+func process_damage(attacker: battle_character_data, target: battle_character_data):
+	var calculated_Press_Turn
+	var return_val = {}
+	var damage_amount : int
 	
+	var modifiers = attacker.get_element_potential_modifiers(self)
+	print("Multiplier " + str(modifiers["damage_multipler"]))
 	
+	var str = (attacker.strength_net * skill_element.stats.strength)
+	var agi = (attacker.agility_net * skill_element.stats.agility)
+	var vit = (attacker.vitality_net * skill_element.stats.vitality)
+	var mag = (attacker.magic_pow_net * skill_element.stats.magic_pow)
+	var dex = (attacker.dexterity_net * skill_element.stats.dexterity)
+	var luc = (attacker.luck_net * skill_element.stats.luck)
+	var stat_element = ((str+ dex + luc + agi + mag + vit)/6) * (power)
+	
+	damage_amount = ((stat_element * power) / target.vitality_net) * modifiers["damage_multipler"]
+	var dodge_chance : float = attacker.dexterity_net
+	var will_hit = target.stat_chance(attacker.dexterity_net, target.agility_net, 0.95)
+	
+	var is_lucky = target.stat_chance(attacker.luck_net, target.luck_net, 0.1)
+	var calculated_PT : PRESS_TURN.PT = PRESS_TURN.PT.NORMAL
+	var el_affinity : float = target.get_elemental_affinity(skill_element)
+	if el_affinity >= 2:
+		calculated_PT = PRESS_TURN.PT.WEAK
+	else: if el_affinity < 2 && el_affinity > 0:
+		calculated_PT = PRESS_TURN.PT.NORMAL
+	else: if el_affinity == 0:
+		damage_amount = 0
+		calculated_PT = PRESS_TURN.PT.VOID
+	else: if el_affinity < 0:
+		calculated_PT = PRESS_TURN.PT.REFLECT
+	if power == 0 || skill_element.name == "None":	#crude assumption of status move
+		will_hit = 99
+		calculated_PT = PRESS_TURN.PT.NORMAL
+	if calculated_PT < PRESS_TURN.PT.VOID:
+		if is_lucky:
+			damage_amount *= 1.4
+			calculated_PT = PRESS_TURN.PT.LUCKY
+			target.put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
+	if !will_hit:
+		damage_amount = 0
+		calculated_PT = PRESS_TURN.PT.MISS
+		target.put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
+	else:
+		if calculated_PT != PRESS_TURN.PT.VOID:
+			status_apply(target)
+		calculated_Press_Turn = calculated_PT
+		if power > 0:
+			if calculated_PT != PRESS_TURN.PT.VOID:
+				target.damage(damage_amount)
+	return_val["Press_turn"] = calculated_PT
+	return_val["Amount"] = damage_amount
+	return_val["No_Anim"] = 0	#Damage number stuff
+	return return_val
+
+func status_apply(target: battle_character_data):
+	target.apply_status_effects(skill_element.effects_to_add)
+	target.remove_status_effects(skill_element.effects_to_remove)
+	target.apply_status_effects(effects_to_add)
+	target.remove_status_effects(effects_to_remove)
+
 func get_final_cost(chara : battle_character_data) -> int:
 	var potential : int = chara.get_element_potential_modifiers(self)["stamina_discount"]
 	var total: int  = stamina_cost + potential

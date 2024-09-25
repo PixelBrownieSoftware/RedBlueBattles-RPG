@@ -41,7 +41,11 @@ func debug_stuff():
 				print(ResourceUID.id_to_text(uid))
 			GlobalVariables.add_extra_skill(move)
 	#GlobalVariables.get_all_chara_exsk(chara)
-
+	
+func load_encyclopedia_menu():
+	$MainMenu/AnimationPlayer.play("to_info_menu")
+	previous_menu = "info_menu"
+	
 func load_enemy_menu():
 	$MainMenu/AnimationPlayer.play("to_enemy_menu")
 	previous_menu = "enemy_menu"
@@ -89,5 +93,8 @@ func load_party():
 	if previous_menu == "extra_menu":
 		previous_menu = "player_menu"
 		$MainMenu/AnimationPlayer.play_backwards("to_extra_skills")
+	else:if previous_menu == "info_menu":
+		previous_menu = "player_menu"
+		$MainMenu/AnimationPlayer.play_backwards("to_info_menu")
 	else:
 		$MainMenu/AnimationPlayer.play_backwards("to_enemy_menu")

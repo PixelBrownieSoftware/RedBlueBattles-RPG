@@ -22,17 +22,17 @@ affinity = -0.5
 
 [sub_resource type="Resource" id="Resource_esq08"]
 script = ExtResource("5_13kxw")
-strength = 1
+strength = 0
 vitality = 4
-magic_pow = 1
-dexterity = 1
-agility = 1
-luck = 1
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
 
 [resource]
 script = ExtResource("1_lgoo3")
 name = "Guard"
-turn_duration = 2
+turn_duration = 1
 effects_to_remove = Array[ExtResource("1_lgoo3")]([])
 elemental_affinity_change = Array[ExtResource("2_bp8g7")]([SubResource("Resource_yq18g"), SubResource("Resource_fi6av"), SubResource("Resource_j76ud")])
 stat_changes = SubResource("Resource_esq08")

@@ -67,6 +67,7 @@ const divider : float = 8.4
 		return luc
 
 var pass_turn : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
+var guard : rpg_skill = preload("res://data/Skills/Misc/guard.tres")
 @export var get_natural_skills : Array[rpg_skill]:
 	get:
 		var skills_arr : Array[rpg_skill]
@@ -237,64 +238,6 @@ func get_element_potential_modifiers(skill :rpg_skill):
 			modifiers["damage_multipler"] = 0.55
 			modifiers["requirement_discount"] = 6
 	return modifiers
-
-
-func damage_character(attacker: battle_character_data, skill :rpg_skill):
-	var return_val = {}
-	var damage_amount : int
-	
-	var modifiers = attacker.get_element_potential_modifiers(skill)
-	print("Multiplier " + str(modifiers["damage_multipler"]))
-	
-	var str = (attacker.strength_net * skill.skill_element.stats.strength)
-	var agi = (attacker.agility_net * skill.skill_element.stats.agility)
-	var vit = (attacker.vitality_net * skill.skill_element.stats.vitality)
-	var mag = (attacker.magic_pow_net * skill.skill_element.stats.magic_pow)
-	var dex = (attacker.dexterity_net * skill.skill_element.stats.dexterity)
-	var luc = (attacker.luck_net * skill.skill_element.stats.luck)
-	var stat_element = ((str+ dex + luc + agi + mag + vit)/6) * (skill.power)
-	
-	damage_amount = ((stat_element * skill.power) / vitality_net) * modifiers["damage_multipler"]
-	var dodge_chance : float = attacker.dexterity_net
-	var will_hit = stat_chance(attacker.dexterity_net, agility_net, 0.95)
-	
-	var is_lucky = stat_chance(attacker.luck_net, luck_net, -0.8)
-	var calculated_PT : PRESS_TURN.PT = PRESS_TURN.PT.NORMAL
-	var el_affinity : float = get_elemental_affinity(skill.skill_element)
-	if el_affinity >= 2:
-		calculated_PT = PRESS_TURN.PT.WEAK
-	else: if el_affinity < 2 && el_affinity > 0:
-		calculated_PT = PRESS_TURN.PT.NORMAL
-	else: if el_affinity == 0:
-		damage_amount = 0
-		calculated_PT = PRESS_TURN.PT.VOID
-	else: if el_affinity < 0:
-		calculated_PT = PRESS_TURN.PT.REFLECT
-	if skill.power == 0 || skill.skill_element.name == "None":	#crude assumption of status move
-		will_hit = 99
-		calculated_PT = PRESS_TURN.PT.NORMAL
-	if calculated_PT < PRESS_TURN.PT.VOID:
-		if is_lucky:
-			damage_amount *= 1.4
-			calculated_PT = PRESS_TURN.PT.LUCKY
-			put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
-	if !will_hit:
-		damage_amount = 0
-		calculated_PT = PRESS_TURN.PT.MISS
-		put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
-	else:
-		if calculated_PT != PRESS_TURN.PT.VOID:
-			apply_status_effects(skill.skill_element.effects_to_add)
-			remove_status_effects(skill.skill_element.effects_to_remove)
-			apply_status_effects(skill.effects_to_add)
-			remove_status_effects(skill.effects_to_remove)
-		calculated_Press_Turn = calculated_PT
-		if skill.power > 0:
-			if calculated_PT != PRESS_TURN.PT.VOID:
-				damage(damage_amount)
-	return_val["Press_turn"] = calculated_PT
-	return_val["Amount"] = damage_amount
-	return return_val
 
 func update_current_status_effects(function: String):
 	calculated_Press_Turn = PRESS_TURN.PT.NORMAL

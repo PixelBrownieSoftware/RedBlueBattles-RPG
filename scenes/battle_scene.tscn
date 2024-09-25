@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ckkn8g3r0etlr"]
+[gd_scene load_steps=53 format=3 uid="uid://ckkn8g3r0etlr"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_character_actor_manager.gd" id="1_3w2at"]
 [ext_resource type="Script" path="res://src/scripts/battle_state_machine.gd" id="2_4cala"]
@@ -232,6 +232,38 @@ texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gu8yk"]
+resource_local_to_scene = true
+texture = ExtResource("19_1omjw")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44r36"]
+resource_local_to_scene = true
+texture = ExtResource("19_1omjw")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_722qx"]
+resource_local_to_scene = true
+texture = ExtResource("19_1omjw")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kljd1"]
+resource_local_to_scene = true
+texture = ExtResource("19_1omjw")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sdqfq"]
 resource_local_to_scene = true
 texture = ExtResource("19_1omjw")
 texture_margin_left = 3.0
@@ -757,29 +789,29 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_gu8yk")
 custom_minimum_size = Vector2(90, 25)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gu8yk")
-theme_override_styles/normal = SubResource("StyleBoxTexture_gu8yk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_44r36")
+theme_override_styles/normal = SubResource("StyleBoxTexture_44r36")
 
 [node name="Button10" parent="BattleCanvasLayer/Attack Menu/ScrollContainer/VBoxContainer" instance=ExtResource("11_gjgmc")]
 custom_minimum_size = Vector2(90, 25)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gu8yk")
-theme_override_styles/normal = SubResource("StyleBoxTexture_gu8yk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_722qx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_722qx")
 
 [node name="Button11" parent="BattleCanvasLayer/Attack Menu/ScrollContainer/VBoxContainer" instance=ExtResource("11_gjgmc")]
 custom_minimum_size = Vector2(90, 25)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gu8yk")
-theme_override_styles/normal = SubResource("StyleBoxTexture_gu8yk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kljd1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kljd1")
 
 [node name="Button12" parent="BattleCanvasLayer/Attack Menu/ScrollContainer/VBoxContainer" instance=ExtResource("11_gjgmc")]
 custom_minimum_size = Vector2(90, 25)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gu8yk")
-theme_override_styles/normal = SubResource("StyleBoxTexture_gu8yk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sdqfq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_sdqfq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleCanvasLayer/Attack Menu"]
 libraries = {

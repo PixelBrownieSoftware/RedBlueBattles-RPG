@@ -4,3 +4,9 @@
 
 [node name="GlobalVariables" type="Node"]
 script = ExtResource("1_7mnlu")
+strength_colour = Color(0.847059, 0.407843, 0.521569, 1)
+vitality_colour = Color(0.415686, 0.458824, 0.843137, 1)
+dexterity_colour = Color(0.301961, 0.988235, 0.819608, 1)
+magic_colour = Color(0.670588, 0.290196, 0.815686, 1)
+agility_colour = Color(0.737255, 0.858824, 0.537255, 1)
+luck_colour = Color(0.933333, 0.803922, 0.34902, 1)

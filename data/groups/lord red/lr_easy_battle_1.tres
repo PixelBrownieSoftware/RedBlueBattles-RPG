@@ -1,23 +1,28 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=9 format=3 uid="uid://dp0nw3gmr76s8"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=14 format=3 uid="uid://dp0nw3gmr76s8"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_f52yl"]
 [ext_resource type="Resource" uid="uid://dtiii6cayoafh" path="res://data/characters/Enemies/pinkler.tres" id="1_we840"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_6upsl"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ct4ry"]
 [ext_resource type="Resource" uid="uid://dn8iqklx4h2v7" path="res://data/characters/Enemies/trunko.tres" id="3_vhhci"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_dsmvs"]
+[ext_resource type="Resource" uid="uid://by44w8wph66l2" path="res://data/Skills/Psychic/nightmare.tres" id="5_3id76"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="5_uf5uo"]
+[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="7_h7uwi"]
+[ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/Skills/Status/fire_sheild.tres" id="8_33bfl"]
+[ext_resource type="Resource" uid="uid://bouqpmerlatxl" path="res://data/Skills/Fire/fire_blast.tres" id="9_n74xq"]
 
 [sub_resource type="Resource" id="Resource_3lo37"]
 script = ExtResource("2_6upsl")
 character = ExtResource("1_we840")
-skills = Array[ExtResource("3_ct4ry")]([])
+skills = Array[ExtResource("3_ct4ry")]([ExtResource("4_dsmvs"), ExtResource("5_3id76")])
 min_level = 1
 max_level = 5
 
 [sub_resource type="Resource" id="Resource_32ucd"]
 script = ExtResource("2_6upsl")
 character = ExtResource("3_vhhci")
-skills = Array[ExtResource("3_ct4ry")]([])
+skills = Array[ExtResource("3_ct4ry")]([ExtResource("7_h7uwi"), ExtResource("8_33bfl"), ExtResource("9_n74xq")])
 min_level = 1
 max_level = 4
 

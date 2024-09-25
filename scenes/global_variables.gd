@@ -5,6 +5,12 @@ class_name global_variables
 @export var expereince_score : int = 0
 var multilplier: float = 1
 var extra_skills_limit = 3
+@export var strength_colour : Color
+@export var vitality_colour : Color
+@export var dexterity_colour : Color
+@export var magic_colour : Color
+@export var agility_colour : Color
+@export var luck_colour : Color
 
 func set_multiplier(mul):
 	multilplier = mul
@@ -26,6 +32,7 @@ func reset_multipiler():
 @export var equipped_extra_skills = {}
 @export var enabled_party_members = {}
 @export var element_lookup = {}
+@export var status_effect_lookup = {}
 @export var skill_uid_lookup = {}	#This is specifically for save data
 @export var character_uid_lookup = {}	#This is specifically for save data
 var current_battle : battle_group_data
@@ -48,6 +55,7 @@ func _ready():
 			element_lookup[el.name] = el
 	load_all_skills()
 	load_all_charcters()
+	load_all_status()
 
 func set_flag(flag : global_flag) -> void:
 	global_flags[flag.name] = flag.flag
@@ -61,7 +69,14 @@ func unfuck_file_name(file_name : String) -> String:
 	if file_name.matchn("*.tres.remap"):
 		file_name = file_name.replace(".remap", "")
 	return file_name
-			
+	
+func load_all_status():
+	var status_effects = DirAccess.get_files_at("res://data/status effects/")
+	for status_name in status_effects:
+		print(status_name)
+		var status : status_effect = ResourceLoader.load("res://data/status effects/" + unfuck_file_name(status_name))
+		status_effect_lookup[status.name] = status
+					
 func load_all_skills():
 	var dir = DirAccess.get_directories_at("res://data/Skills/")
 	for folder in dir:
@@ -151,3 +166,19 @@ func assign_skill(chara : battle_character_data, extra_skill : rpg_skill):
 	else:
 		chara.extra_skills.remove_at(ind)
 		equipped_extra_skills[extra_skill.name] = null
+
+func stat_colour(stat_name : stats_name.STATS) -> String:
+	match stat_name:
+		stats_name.STATS.STRENGTH:
+			return "[color=" + strength_colour.to_html() + "]Strength[/color]"
+		stats_name.STATS.VITALITY:
+			return "[color=" + vitality_colour.to_html() + "]Vitality[/color]"
+		stats_name.STATS.DEXTERITY:
+			return "[color=" + dexterity_colour.to_html() + "]Dexterity[/color]"
+		stats_name.STATS.AGILITY:
+			return "[color=" + agility_colour.to_html() + "]Agility[/color]"
+		stats_name.STATS.MAGIC:
+			return "[color=" + magic_colour.to_html() + "]Magic[/color]"
+		stats_name.STATS.LUCK:
+			return "[color=" + luck_colour.to_html() + "]Luck[/color]"
+	return ""

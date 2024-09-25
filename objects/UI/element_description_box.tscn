@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://q4s8g6wtth7d"]
+
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="1_oh0lv"]
+[ext_resource type="Script" path="res://objects/UI/element_description_box.gd" id="2_s4dcv"]
+[ext_resource type="Texture2D" uid="uid://dtl8500ages7g" path="res://sprites/GUI/elements_elc.png" id="3_5dyl8"]
+
+[node name="ElementDescriptionBox" type="Panel" node_paths=PackedStringArray("elemental_desc", "stat_name", "stat_texture")]
+custom_minimum_size = Vector2(650, 100)
+anchors_preset = -1
+anchor_right = 0.497
+anchor_bottom = 0.426
+offset_right = -0.544006
+offset_bottom = -0.0480042
+theme = ExtResource("1_oh0lv")
+script = ExtResource("2_s4dcv")
+elemental_desc = NodePath("GridContainer/VBoxContainer/Element Desc")
+stat_name = NodePath("GridContainer/HBoxContainer/RichTextLabel")
+stat_texture = NodePath("GridContainer/HBoxContainer/StatTexture")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 8.2
+offset_top = 9.225
+offset_right = 555.2
+offset_bottom = 237.225
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer"]
+custom_minimum_size = Vector2(175, 20)
+layout_mode = 2
+
+[node name="StatTexture" type="TextureRect" parent="GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_5dyl8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Strength"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer"]
+custom_minimum_size = Vector2(400, 140)
+layout_mode = 2
+
+[node name="Element Desc" type="RichTextLabel" parent="GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 2
+bbcode_enabled = true

@@ -6,9 +6,11 @@ signal get_targets(skill)
 var menu_skills : Array[rpg_skill]
 
 var pass_skill : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
+var guard_skill : rpg_skill = preload("res://data/Skills/Misc/guard.tres")
 
 func show_skills(skills : Array[rpg_skill]):
 	menu_skills = skills
+	menu_skills.append(guard_skill)
 	menu_skills.append(pass_skill)
 	for button : button_skill in $ScrollContainer/VBoxContainer.get_children():
 		button.visible = false

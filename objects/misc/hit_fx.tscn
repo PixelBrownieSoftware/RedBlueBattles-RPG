@@ -486,10 +486,10 @@ libraries = {
 }
 
 [node name="DamageNumber" type="RichTextLabel" parent="."]
-offset_left = -14.0
-offset_top = -46.0
-offset_right = 87.0
-offset_bottom = 2.0
+offset_left = -52.0
+offset_top = -26.0
+offset_right = 49.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(52, 26)
@@ -509,6 +509,7 @@ tab_size = 6
 shortcut_keys_enabled = false
 
 [node name="AdditionalText" type="RichTextLabel" parent="."]
+visible = false
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -526,7 +527,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.55861, 0.597745, 0.608227, 1)
 theme_override_colors/font_shadow_color = Color(0.132152, 0.0837514, 0.058088, 1)
 theme_override_fonts/normal_font = ExtResource("5_vk7go")
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 1
 theme_override_font_sizes/bold_font_size = 19
 bbcode_enabled = true
 fit_content = true
