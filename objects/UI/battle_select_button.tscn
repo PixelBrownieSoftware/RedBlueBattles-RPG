@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cks6y325db8c4"]
 
-[ext_resource type="Script" path="res://src/buttons/button_group.gd" id="1_0ep0l"]
+[ext_resource type="Script" path="res://src/buttons/button_level.gd" id="1_0ep0l"]
 
 [node name="To battle" type="Button"]
 text = "Fight"

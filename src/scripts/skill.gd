@@ -15,11 +15,15 @@ enum SCOPE {ALLY, FOE, ALL, SELF, NONE = -1}
 @export var usable_by_anyone : bool = false	#stuff like pass and anything exclusive for status effects
 @export var effects_to_remove : Array[status_effect]
 @export var effects_to_add : Array[status_effect_chance]
+@export var custom_icon : Texture2D
 
 func get_desc(chara : battle_character_data) -> String:
 	var desc : String
 	var final_st = get_final_cost(chara)
-	desc += name + "\n"
+	var element_icon = ""
+	if skill_element.icon != null:
+		element_icon = " [img=20]" + skill_element.icon.resource_path + "[/img]"
+	desc +="[color=" + skill_element.colour.to_html() + "]" + name + "[/color]" +element_icon+ "\n"
 	if power > 0:
 		desc += "Power: " + str(power) + "\n"
 	if stamina_cost > 0:
@@ -28,7 +32,8 @@ func get_desc(chara : battle_character_data) -> String:
 			desc += "Stamina Cost: [s]" + str(stamina_cost) + "[/s] ([" + "color=" + cost_colour.to_html() + "]" + str(final_st) + "[/color])" + "\n"
 		else:
 			desc += "Stamina Cost: " + str(stamina_cost) + "\n"
-	desc += "Element: " + "[color=" + skill_element.colour.to_html() + "]" + skill_element.name + "[/color]\n"
+	#if skill_element.name != "None":
+		#desc += "Element: [img=16]" + skill_element.icon.resource_path + "[/img] [color=" + skill_element.colour.to_html() + "]" + skill_element.name + "[/color]\n"
 	var scope : String
 	match skill_scope:
 		SCOPE.SELF:
@@ -41,11 +46,11 @@ func get_desc(chara : battle_character_data) -> String:
 	if skill_element.effects_to_add.size() > 0:
 		desc += "Elemental Status inflict:\n"
 		for status in skill_element.effects_to_add:
-			desc += "	-" + status.status.name + " (" + str(status.chance * 100) + "%)\n"
+			desc += "	-[img=16]" + status.status.icon.resource_path + "[/img] " + status.status.name + " (" + str(status.chance * 100) + "%)\n"
 	if effects_to_add.size() > 0:
 		desc += "Status inflict:\n"
 		for status in effects_to_add:
-			desc += "	-" + status.status.name + " (" + str(status.chance * 100) + "%)\n"
+			desc += "	-[img=16]"+ status.status.icon.resource_path+ "[/img] " + status.status.name + " (" + str(status.chance * 100) + "%)\n"
 	
 	desc +="\n"
 	return desc
@@ -128,6 +133,40 @@ func get_requirements(chara : battle_character_data, stat) -> int:
 	total = clampi(total, 0, 999)
 	return total
 	
+func requirements_met_simulated(chara : battle_character_data, stats):
+	var results =  {}
+	results["str_req_og"] = stat_requirement.strength
+	results["vit_req_og"] = stat_requirement.vitality
+	results["luc_req_og"] = stat_requirement.luck
+	results["agi_req_og"] = stat_requirement.agility
+	results["mag_req_og"] = stat_requirement.magic_pow
+	results["dex_req_og"] = stat_requirement.dexterity
+	results["stamina_req_og"] = stamina_cost
+	
+	results["str_req"] = get_requirements(chara,stat_requirement.strength)
+	results["vit_req"] = get_requirements(chara,stat_requirement.vitality)
+	results["luc_req"] = get_requirements(chara,stat_requirement.luck)
+	results["agi_req"] = get_requirements(chara,stat_requirement.agility)
+	results["mag_req"] = get_requirements(chara,stat_requirement.magic_pow)
+	results["dex_req"] = get_requirements(chara,stat_requirement.dexterity)
+	results["stamina_req"] = get_final_cost(chara)
+	
+	var str_req_sati : bool = (stats["strength"] >= results["str_req"])
+	var vit_req_sati : bool = (stats["vitality"] >= results["vit_req"])
+	var luc_req_sati : bool = (stats["luck"] >= results["luc_req"])
+	var agi_req_sati : bool = (stats["agility"] >= results["agi_req"])
+	var mag_req_sati : bool = (stats["magic_pow"] >= results["mag_req"])
+	var dex_req_sati : bool = (stats["dexterity"] >= results["dex_req"])
+	var stamina_req_sati : bool = (stats["max_stamina"] >= results["stamina_req"])
+	results["req_met"] = str_req_sati && vit_req_sati && luc_req_sati && agi_req_sati && mag_req_sati && dex_req_sati && stamina_req_sati
+	return results
+	
+func on_select():
+	pass
+	
+func on_back():
+	pass
+
 func requirements_met(chara : battle_character_data):
 	#The higher the potential, the lower the requirements
 	#It may also do more damage

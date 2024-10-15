@@ -1,27 +1,55 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=9 format=3 uid="uid://dwuivec0bu3ha"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=17 format=3 uid="uid://dwuivec0bu3ha"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_uewae"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="1_vfrcw"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_gmd2k"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_8mv4e"]
-[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_vaew6"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="5_nkdl1"]
+[ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/Playable/blueler.tres" id="6_7sm04"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="7_d8mu4"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_character.gd" id="7_r7erx"]
+[ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_change_flag.gd" id="9_oot64"]
 
 [sub_resource type="Resource" id="Resource_8asq2"]
 script = ExtResource("2_gmd2k")
 character = ExtResource("1_vfrcw")
-skills = Array[ExtResource("3_8mv4e")]([ExtResource("4_vaew6")])
+skills = Array[ExtResource("3_8mv4e")]([])
 min_level = 1
-max_level = 3
+max_level = 1
 
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("2_gmd2k")
 character = ExtResource("1_vfrcw")
 skills = Array[ExtResource("3_8mv4e")]([])
-min_level = 2
-max_level = 3
+min_level = 1
+max_level = 1
+
+[sub_resource type="Resource" id="Resource_aosn0"]
+script = ExtResource("7_d8mu4")
+name = "blueler_unlocked"
+flag = false
+
+[sub_resource type="Resource" id="Resource_wancf"]
+script = ExtResource("7_r7erx")
+character = ExtResource("6_7sm04")
+flag_req = SubResource("Resource_aosn0")
+
+[sub_resource type="Resource" id="Resource_fmedm"]
+script = ExtResource("7_d8mu4")
+name = "blueler_unlocked"
+flag = false
+
+[sub_resource type="Resource" id="Resource_egife"]
+script = ExtResource("7_d8mu4")
+name = "blueler_unlocked"
+flag = true
+
+[sub_resource type="Resource" id="Resource_agqwu"]
+script = ExtResource("9_oot64")
+flag_change = SubResource("Resource_fmedm")
+flag_req = SubResource("Resource_egife")
 
 [resource]
 script = ExtResource("1_uewae")
 opponents = Array[ExtResource("2_gmd2k")]([SubResource("Resource_8asq2"), SubResource("Resource_0g08n")])
-rewards = Array[ExtResource("5_nkdl1")]([])
+rewards = Array[ExtResource("5_nkdl1")]([SubResource("Resource_wancf"), SubResource("Resource_agqwu")])

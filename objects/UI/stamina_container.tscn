@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0fltiebam8a2"]
 
 [ext_resource type="Script" path="res://objects/UI/stamina_gui.gd" id="1_py6ju"]
-[ext_resource type="Texture2D" uid="uid://cbgcdtcj2dbnb" path="res://sprites/stamina_gui.png" id="2_3gpd2"]
+[ext_resource type="Texture2D" uid="uid://cbgcdtcj2dbnb" path="res://sprites/GUI/stamina_gui.png" id="2_3gpd2"]
 
 [node name="StaminaContainer" type="HBoxContainer"]
-offset_right = 500.0
+offset_right = 343.0
 offset_bottom = 21.0
 scale = Vector2(0.5, 1)
 theme_override_constants/separation = 2
@@ -13,199 +13,74 @@ script = ExtResource("1_py6ju")
 [node name="Stamina" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina2" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina3" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina4" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina5" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina6" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina7" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina8" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina9" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina10" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina11" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina12" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina13" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina14" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
+expand_mode = 2
 
 [node name="Stamina15" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_3gpd2")
-
-[node name="Stamina16" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina17" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina18" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina19" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina20" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina21" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina22" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina23" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina24" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina25" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina26" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina27" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina28" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina29" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina30" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina31" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina32" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina33" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina34" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina35" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina36" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina37" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina38" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina39" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina40" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina41" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina42" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina43" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina44" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina45" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina46" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina47" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina48" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina49" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
-
-[node name="Stamina50" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("2_3gpd2")
+expand_mode = 2

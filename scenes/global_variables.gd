@@ -19,7 +19,9 @@ func reset_multipiler():
 	multilplier = 1
 
 @export var extra_skills : Array[rpg_skill]
+@export var battles_availible : Array[battle_level_group]
 @export var global_flags = {
+	"is_analyse_select" : false,
 	"greenler_defeated" : false,
 	"beno_defeated" : false,
 	"lord_red_defeated" : false,
@@ -33,9 +35,11 @@ func reset_multipiler():
 @export var enabled_party_members = {}
 @export var element_lookup = {}
 @export var status_effect_lookup = {}
+@export var battle_level_lookup = {}
 @export var skill_uid_lookup = {}	#This is specifically for save data
 @export var character_uid_lookup = {}	#This is specifically for save data
 var current_battle : battle_group_data
+var current_level : battle_level_group
 
 func _ready():
 	#You have no idea how long it took for me to figure this out
@@ -56,6 +60,7 @@ func _ready():
 	load_all_skills()
 	load_all_charcters()
 	load_all_status()
+	load_all_levels()
 
 func set_flag(flag : global_flag) -> void:
 	global_flags[flag.name] = flag.flag
@@ -63,6 +68,8 @@ func set_flag_raw(flag_name : String, flag : bool) -> void:
 	global_flags[flag_name] = flag
 func check_flag(flag : global_flag) -> bool:
 	return global_flags[flag.name] == flag.flag
+func check_flag_name(flag_name : String) -> bool:
+	return global_flags[flag_name]
 
 #godot likes to do this stupid .remap shit with the resource files when compiled
 func unfuck_file_name(file_name : String) -> String:
@@ -70,6 +77,13 @@ func unfuck_file_name(file_name : String) -> String:
 		file_name = file_name.replace(".remap", "")
 	return file_name
 	
+func load_all_levels():
+	var levels = DirAccess.get_files_at("res://data/levels/")
+	for level_name in levels:
+		print(level_name)
+		var level : battle_level_group = ResourceLoader.load("res://data/levels/" + unfuck_file_name(level_name))
+		#status_effect_lookup[status.name] = status
+			
 func load_all_status():
 	var status_effects = DirAccess.get_files_at("res://data/status effects/")
 	for status_name in status_effects:
@@ -143,7 +157,16 @@ func add_extra_skill(skill : rpg_skill) -> bool:
 		#if extra_skills[skill] == chara:
 			#skills.append(skill)		
 	#return skills
-	
+func get_characters(group):
+	if group != PartyMembers:
+		return group.get_children()
+	var active_characters : Array[battle_character_data]
+	for character in group.get_children():
+		#This statment below is the only reason this entire funciton exists
+		if GlobalVariables.enabled_party_members[character]:
+			active_characters.append(character)
+	return active_characters
+		
 func save_data():
 	#TODO: SAVE-
 	#- party data (stats, level, members)
@@ -152,33 +175,44 @@ func save_data():
 	#- additional flags (NOT YET IMPLEMENTED)
 	pass
 
+func extra_skill_already_equipped(extra_skill : rpg_skill) -> bool:
+	return equipped_extra_skills[extra_skill.name] != null
+
+func remove_skill(chara : battle_character_data, extra_skill : rpg_skill):
+	var ind = chara.extra_skills.rfind(extra_skill)
+	var chara_exists = equipped_extra_skills[extra_skill.name]
+	#if chara_exists:
+		#ind = chara_exists.extra_skills.rfind(extra_skill)
+		#chara_exists.extra_skills.remove_at(ind)
+		#equipped_extra_skills[extra_skill.name] = null
+		#return
+	chara.extra_skills.remove_at(ind)
+	equipped_extra_skills[extra_skill.name] = null
+
 func assign_skill(chara : battle_character_data, extra_skill : rpg_skill):
 	var ind = chara.extra_skills.rfind(extra_skill)
 	var chara_exists = equipped_extra_skills[extra_skill.name]
-	if chara_exists:
-		ind = chara_exists.extra_skills.rfind(extra_skill)
-		chara_exists.extra_skills.remove_at(ind)
-		equipped_extra_skills[extra_skill.name] = null
-		return
+	#if chara_exists:
+		#ind = chara_exists.extra_skills.rfind(extra_skill)
+		#chara_exists.extra_skills.remove_at(ind)
+		#equipped_extra_skills[extra_skill.name] = null
+		#return
 	if ind == -1:
 		chara.assign_skill(extra_skill)
 		equipped_extra_skills[extra_skill.name] = chara
-	else:
-		chara.extra_skills.remove_at(ind)
-		equipped_extra_skills[extra_skill.name] = null
 
 func stat_colour(stat_name : stats_name.STATS) -> String:
 	match stat_name:
 		stats_name.STATS.STRENGTH:
-			return "[color=" + strength_colour.to_html() + "]Strength[/color]"
+			return "[img=30]sprites/GUI/gui_str.png[/img][color=" + strength_colour.to_html() + "]Strength[/color]"
 		stats_name.STATS.VITALITY:
-			return "[color=" + vitality_colour.to_html() + "]Vitality[/color]"
+			return "[img=30]sprites/GUI/gui_vit.png[/img][color=" + vitality_colour.to_html() + "]Vitality[/color]"
 		stats_name.STATS.DEXTERITY:
-			return "[color=" + dexterity_colour.to_html() + "]Dexterity[/color]"
+			return "[img=30]sprites/GUI/gui_dex.png[/img][color=" + dexterity_colour.to_html() + "]Dexterity[/color]"
 		stats_name.STATS.AGILITY:
-			return "[color=" + agility_colour.to_html() + "]Agility[/color]"
+			return "[img=30]sprites/GUI/gui_ag.png[/img][color=" + agility_colour.to_html() + "]Agility[/color]"
 		stats_name.STATS.MAGIC:
-			return "[color=" + magic_colour.to_html() + "]Magic[/color]"
+			return "[img=30]sprites/GUI/gui_mag.png[/img][color=" + magic_colour.to_html() + "]Magic[/color]"
 		stats_name.STATS.LUCK:
-			return "[color=" + luck_colour.to_html() + "]Luck[/color]"
+			return "[img=30]sprites/GUI/gui_luc.png[/img][color=" + luck_colour.to_html() + "]Luck[/color]"
 	return ""

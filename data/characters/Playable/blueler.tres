@@ -53,7 +53,7 @@ potential = 1
 
 [sub_resource type="Resource" id="Resource_yt1im"]
 script = ExtResource("3_uahto")
-health_min = 2
+health_min = 3
 health_max = 5
 strength = 0.315
 vitality = 0.35
@@ -65,7 +65,7 @@ luck = 0.2
 [sub_resource type="Resource" id="Resource_h63ju"]
 script = ExtResource("4_onqjm")
 strength = 2
-vitality = 3
+vitality = 4
 magic_pow = 4
 dexterity = 3
 agility = 2
@@ -88,4 +88,5 @@ elemental_affinities = Array[ExtResource("2_yj48s")]([SubResource("Resource_bpmx
 elemental_potential = Array[ExtResource("2_wkuab")]([SubResource("Resource_rxp4k"), SubResource("Resource_qx5en"), SubResource("Resource_aycwc"), SubResource("Resource_phcep"), SubResource("Resource_ktrn5")])
 character_colour = Color(0.245911, 0.520267, 0.986298, 1)
 animation_player_loc = "sprite_blueler"
+click_circle_radius = 20.0
 turns = 1

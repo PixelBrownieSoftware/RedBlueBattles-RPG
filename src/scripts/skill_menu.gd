@@ -7,10 +7,12 @@ var menu_skills : Array[rpg_skill]
 
 var pass_skill : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
 var guard_skill : rpg_skill = preload("res://data/Skills/Misc/guard.tres")
+var analyse_skill : rpg_skill = preload("res://data/Skills/Misc/analyse.tres")
 
 func show_skills(skills : Array[rpg_skill]):
 	menu_skills = skills
 	menu_skills.append(guard_skill)
+	menu_skills.append(analyse_skill)
 	menu_skills.append(pass_skill)
 	for button : button_skill in $ScrollContainer/VBoxContainer.get_children():
 		button.visible = false
@@ -46,10 +48,9 @@ func _on_animation_player_animation_finished(anim_name):
 					if skip_this:
 						skill_button.show_anim(false)
 			index += 1
-		$"../Analyse".visible = true
 		$"../Character stats".visible = false
 	else: if anim_name == "menu_hide":
-		$"../Analyse".force_off()
+		globals.selected_move.on_select()
 		call_target_menu.emit()
 
 

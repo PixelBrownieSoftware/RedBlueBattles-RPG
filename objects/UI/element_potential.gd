@@ -6,6 +6,7 @@ extends character_element_relationship_ui
 @export var immune_icon : Texture2D
 @export var reflect_icon : Texture2D
 
+
 func set_potential():
 	var potential : float = character.get_elemental_potential(element_subject)
 	var txt : String = ""

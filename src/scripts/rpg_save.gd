@@ -8,6 +8,9 @@ func save_game():
 	
 	file.store_64(GlobalVariables.expereince_score)
 	file.store_8(GlobalVariables.extra_skills_limit)
+	file.store_16(GlobalVariables.battles_availible.size())
+	for battle : battle_level_group in GlobalVariables.battles_availible:
+		file.store_pascal_string(battle.resource_path)
 	file.store_16(PartyMembers.get_children().size())
 	for player : battle_character_data in PartyMembers.get_children():
 		character_equip_skills[player.name] = []
@@ -56,6 +59,11 @@ func load_game():
 	var file = FileAccess.open(save_path, FileAccess.READ)
 	GlobalVariables.expereince_score = file.get_64()
 	GlobalVariables.extra_skills_limit = file.get_8()
+	var availiable_battles_count = file.get_16()
+	for i in range(availiable_battles_count):
+		var battle_path = file.get_pascal_string()
+		var load_obj = load(battle_path)
+		GlobalVariables.battles_availible.append(load_obj)
 	var party_member_count = file.get_16()
 	for i in range(party_member_count):
 		#var obj_uid = file.get_64()

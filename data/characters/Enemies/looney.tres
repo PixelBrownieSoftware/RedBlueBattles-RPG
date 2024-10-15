@@ -45,7 +45,7 @@ vitality = 0.28
 magic_pow = 0.055
 dexterity = 0.365
 agility = 0.37
-luck = 0.275
+luck = 0.175
 
 [sub_resource type="Resource" id="Resource_eui2d"]
 script = ExtResource("3_ktknx")
@@ -73,4 +73,5 @@ elemental_affinities = Array[ExtResource("3_rpnl5")]([SubResource("Resource_363i
 elemental_potential = Array[ExtResource("4_m1aoi")]([SubResource("Resource_0hswu")])
 character_colour = Color(1, 1, 0.439216, 1)
 animation_player_loc = "sprite_looney"
+click_circle_radius = 20.0
 turns = 1

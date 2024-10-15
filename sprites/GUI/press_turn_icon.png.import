@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brbeh87yj31g4"
-path="res://.godot/imported/right_button.png-a0d6e646d953848a3a3bc78751593232.ctex"
+uid="uid://dm1h8ka4ida74"
+path="res://.godot/imported/press_turn_icon.png-c8171a5a5177b8ea9db91f06625f79f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/right_button.png"
-dest_files=["res://.godot/imported/right_button.png-a0d6e646d953848a3a3bc78751593232.ctex"]
+source_file="res://sprites/GUI/press_turn_icon.png"
+dest_files=["res://.godot/imported/press_turn_icon.png-c8171a5a5177b8ea9db91f06625f79f3.ctex"]
 
 [params]
 

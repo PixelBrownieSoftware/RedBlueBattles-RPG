@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dneei6dge532a"]
+
+[ext_resource type="Script" path="res://objects/UI/overworld_ui/stat_display.gd" id="1_s51mv"]
+
+[node name="Strength" type="HBoxContainer"]
+custom_minimum_size = Vector2(90, 20)
+offset_right = 1573.0
+offset_bottom = 27.0
+script = ExtResource("1_s51mv")
+
+[node name="Name" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Strength"
+fit_content = true
+scroll_active = false
+
+[node name="Stat" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="StatBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(350, 20)
+layout_mode = 2
+max_value = 50.0
+step = 1.0
+show_percentage = false

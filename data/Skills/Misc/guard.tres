@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="skill_stamina" load_steps=9 format=3 uid="uid://dk7q5ls4aqsm1"]
+[gd_resource type="Resource" script_class="skill_stamina_guard" load_steps=10 format=3 uid="uid://dk7q5ls4aqsm1"]
 
 [ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_h1ac5"]
+[ext_resource type="Texture2D" uid="uid://b6y8vox67hbcj" path="res://sprites/GUI/custom_icon_guard.png" id="1_hsqvw"]
 [ext_resource type="Resource" uid="uid://0ga3ybabf28e" path="res://data/status effects/guard.tres" id="2_74xgu"]
 [ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="3_tdx10"]
 [ext_resource type="Script" path="res://src/scripts/skill/skill_stamina_guard.gd" id="4_hjqqt"]
@@ -32,3 +33,4 @@ skill_animation = Array[ExtResource("5_gkq0y")]([SubResource("Resource_72eur")])
 usable_by_anyone = false
 effects_to_remove = Array[ExtResource("3_tdx10")]([])
 effects_to_add = Array[ExtResource("1_h1ac5")]([SubResource("Resource_jxxny")])
+custom_icon = ExtResource("1_hsqvw")

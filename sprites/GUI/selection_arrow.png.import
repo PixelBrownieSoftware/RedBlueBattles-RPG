@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4dtsoru4ys0p"
-path="res://.godot/imported/stamina_gui_empty.png-736078bc863d5bcb2601238d556e3108.ctex"
+uid="uid://7atfknvn78ps"
+path="res://.godot/imported/selection_arrow.png-cb61e517bb024c614852912af4c6561a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/stamina_gui_empty.png"
-dest_files=["res://.godot/imported/stamina_gui_empty.png-736078bc863d5bcb2601238d556e3108.ctex"]
+source_file="res://sprites/GUI/selection_arrow.png"
+dest_files=["res://.godot/imported/selection_arrow.png-cb61e517bb024c614852912af4c6561a.ctex"]
 
 [params]
 

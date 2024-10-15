@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn5bk25l1tlg8"]
+
+[ext_resource type="PackedScene" uid="uid://dneei6dge532a" path="res://objects/UI/overworld_ui/stat_display.tscn" id="1_arjfw"]
+
+[node name="Stats" type="VBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(90, 30)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_right = 398.0
+offset_bottom = 45.0
+bbcode_enabled = true
+text = "Stats"
+
+[node name="Strength" parent="." instance=ExtResource("1_arjfw")]
+layout_mode = 2
+
+[node name="Vitality" parent="." instance=ExtResource("1_arjfw")]
+layout_mode = 2
+st_disp = 1
+
+[node name="Dexterity" parent="." instance=ExtResource("1_arjfw")]
+layout_mode = 2
+st_disp = 2
+
+[node name="Magic" parent="." instance=ExtResource("1_arjfw")]
+layout_mode = 2
+st_disp = 3
+
+[node name="Agility" parent="." instance=ExtResource("1_arjfw")]
+layout_mode = 2
+st_disp = 4
+
+[node name="Luck" parent="." instance=ExtResource("1_arjfw")]
+layout_mode = 2
+st_disp = 5

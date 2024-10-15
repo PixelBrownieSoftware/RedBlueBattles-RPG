@@ -16,7 +16,7 @@
 [ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="12_glg2d"]
 [ext_resource type="Texture2D" uid="uid://c2ejrubsxhqmf" path="res://sprites/GUI/gui_vit.png" id="13_2tnhq"]
 [ext_resource type="Texture2D" uid="uid://dieyq5lsg0wlf" path="res://sprites/GUI/gui_dex.png" id="14_rrg6y"]
-[ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/mag_pow.png" id="15_37bqv"]
+[ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/gui_mag.png" id="15_37bqv"]
 [ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="16_b7e8q"]
 [ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="17_8uxp1"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="18_uqudr"]

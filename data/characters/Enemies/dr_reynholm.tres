@@ -48,4 +48,5 @@ elemental_affinities = Array[ExtResource("2_dgj0r")]([])
 elemental_potential = Array[ExtResource("3_0432o")]([])
 character_colour = Color(0.945098, 0.756863, 0.113725, 1)
 animation_player_loc = "sprite_dr_reyholm"
+click_circle_radius = 20.0
 turns = 1

@@ -41,7 +41,7 @@ func start_state():
 			else:
 				results_list["Defeated"] += 0.04
 
-	if dead_players == PartyMembers.get_children().size():
+	if dead_players == GlobalVariables.get_characters(PartyMembers).size():
 		total_exp = $"../../Variables/ExpereinceWatcher".local_exp_score + get_bonus()
 		show_moves_learned.emit(new_moves_learned)
 		show_exp_results_menu.emit(results_list, total_exp)
@@ -70,8 +70,20 @@ func start_state():
 		show_moves_learned.emit(new_moves_learned)
 		show_exp_results_menu.emit(results_list, total_exp)
 		show_other_rewards.emit(gained_rewards)
+		change_level_stuff()
 		return
 	change_state.emit(queue_state)
+
+func change_level_stuff():
+	for level in GlobalVariables.current_level.battle_groups_remove:
+		var remove_battle_ind = GlobalVariables.battles_availible.rfind(level.name)
+		if remove_battle_ind != -1:
+			GlobalVariables.battles_availible.remove_at(remove_battle_ind)
+	if GlobalVariables.current_level.self_destruct_after_win:
+		var self_dest_index = GlobalVariables.battles_availible.rfind(GlobalVariables.current_level)
+		GlobalVariables.battles_availible.remove_at(self_dest_index)
+	for level in GlobalVariables.current_level.battle_groups_unlock:
+		GlobalVariables.battles_availible.append(level)
 
 func get_bonus() -> int:
 	var bonus_multipler : float = 0

@@ -11,6 +11,8 @@ var style_box :  = preload("res://misc/material/button_texture.tres")
 func show_anim(afford : bool):
 	disabled = true
 	$ElementIcon.texture = selected_skill.skill_element.icon
+	if selected_skill.custom_icon != null:
+		$ElementIcon.texture = selected_skill.custom_icon
 	var style : StyleBoxTexture= style_box.duplicate()
 	var style_pressed : StyleBoxTexture= style_box.duplicate()
 	style.modulate_color = selected_skill.skill_element.colour

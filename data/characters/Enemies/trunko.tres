@@ -75,4 +75,5 @@ elemental_affinities = Array[ExtResource("3_vt0xm")]([SubResource("Resource_66i3
 elemental_potential = Array[ExtResource("3_kc5rl")]([SubResource("Resource_mk3vo")])
 character_colour = Color(0.439216, 0.572549, 0.745098, 1)
 animation_player_loc = "sprite_trunko"
+click_circle_radius = 20.0
 turns = 1

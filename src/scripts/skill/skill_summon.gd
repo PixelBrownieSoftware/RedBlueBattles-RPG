@@ -1,0 +1,1 @@
+extends rpg_skill

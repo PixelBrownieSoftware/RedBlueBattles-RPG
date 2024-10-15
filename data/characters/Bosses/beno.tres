@@ -64,4 +64,5 @@ elemental_affinities = Array[ExtResource("2_x5rhp")]([SubResource("Resource_i4w0
 elemental_potential = Array[ExtResource("3_hucbd")]([SubResource("Resource_10mbn")])
 character_colour = Color(0.383492, 0.394515, 0.915503, 1)
 animation_player_loc = "sprite_beno"
+click_circle_radius = 20.0
 turns = 1

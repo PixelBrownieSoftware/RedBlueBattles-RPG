@@ -109,4 +109,5 @@ elemental_affinities = Array[ExtResource("2_ykyot")]([SubResource("Resource_obi6
 elemental_potential = Array[ExtResource("3_h7i08")]([SubResource("Resource_nc0lf"), SubResource("Resource_2qvge"), SubResource("Resource_86agf"), SubResource("Resource_np1dq"), SubResource("Resource_2g20j"), SubResource("Resource_ltfai")])
 character_colour = Color(3.22476e-06, 0.821183, 0.163293, 1)
 animation_player_loc = "sprite_greendori"
+click_circle_radius = 20.0
 turns = 1

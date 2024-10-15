@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw6swokxytc4n"
-path="res://.godot/imported/targeting.png-d8f6ec8a660e36cd13df9a37b448dbbd.ctex"
+uid="uid://cc7b4rgj3ppvr"
+path="res://.godot/imported/custom_icon_pass.png-517906f30e479da4e6d8407e0d65ec84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/targeting.png"
-dest_files=["res://.godot/imported/targeting.png-d8f6ec8a660e36cd13df9a37b448dbbd.ctex"]
+source_file="res://sprites/GUI/custom_icon_pass.png"
+dest_files=["res://.godot/imported/custom_icon_pass.png-517906f30e479da4e6d8407e0d65ec84.ctex"]
 
 [params]
 

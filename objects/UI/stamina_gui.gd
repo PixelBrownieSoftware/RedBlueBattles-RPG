@@ -1,6 +1,7 @@
 extends HBoxContainer
-var stamina_gui: Texture2D = preload("res://sprites/stamina_gui.png")
-var stamina_gui_empty : Texture2D= preload("res://sprites/stamina_gui_empty.png")
+var stamina_gui: Texture2D = preload("res://sprites/GUI/stamina_gui.png")
+var stamina_gui_empty : Texture2D= preload("res://sprites/GUI/stamina_gui_empty.png")
+@export var width : int = 20
 
 func render_stamina(current, max):
 	for i in get_children().size():

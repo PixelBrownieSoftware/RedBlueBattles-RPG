@@ -59,4 +59,5 @@ elemental_affinities = Array[ExtResource("2_vjepx")]([SubResource("Resource_1g3w
 elemental_potential = Array[ExtResource("3_4k8ha")]([])
 character_colour = Color(0.490196, 0.0745098, 1, 1)
 animation_player_loc = "sprite_malculus"
+click_circle_radius = 20.0
 turns = 4

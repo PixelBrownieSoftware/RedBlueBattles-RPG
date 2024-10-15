@@ -15,4 +15,5 @@ class_name battle_character_base
 @export var elemental_potential : Array[elemental_potential]
 @export var character_colour : Color = Color.WHITE
 @export var animation_player_loc : String
+@export var click_circle_radius : float = 20	#The hitbox where you can select a character
 @export_range(1,4, 1) var turns : int = 1

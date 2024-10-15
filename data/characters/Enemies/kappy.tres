@@ -79,4 +79,5 @@ elemental_affinities = Array[ExtResource("2_6p3u3")]([SubResource("Resource_0mx7
 elemental_potential = Array[ExtResource("3_hp0bo")]([SubResource("Resource_tayqr")])
 character_colour = Color(0.854902, 0.309804, 0.490196, 1)
 animation_player_loc = "sprite_kappy"
+click_circle_radius = 20.0
 turns = 1

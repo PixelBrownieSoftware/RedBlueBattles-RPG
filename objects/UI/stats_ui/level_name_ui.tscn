@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf3gbeyniwq1x"]
+
+[ext_resource type="Script" path="res://scenes/level_name_gui.gd" id="1_ottgv"]
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="1_t8sk6"]
+[ext_resource type="FontFile" uid="uid://bn7h7hhogw0vg" path="res://misc/fonts/Shermlock.ttf" id="2_xxy7s"]
+
+[node name="LevelName" type="HBoxContainer"]
+theme = ExtResource("1_t8sk6")
+script = ExtResource("1_ottgv")
+
+[node name="Name" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(240, 62.565)
+layout_mode = 2
+theme_override_constants/line_separation = 0
+theme_override_fonts/normal_font = ExtResource("2_xxy7s")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Redler[/center]"
+scroll_active = false
+
+[node name="Level" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+theme_override_constants/line_separation = -5
+theme_override_fonts/normal_font = ExtResource("2_xxy7s")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "[center]Lv.5[/center]
+"
+scroll_active = false
+
+[node name="InBattle" type="Button" parent="."]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Enabled"
+
+[connection signal="pressed" from="InBattle" to="." method="enable_disable_partymember"]

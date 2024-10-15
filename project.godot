@@ -27,6 +27,11 @@ SaveSystem="*res://scenes/save_system.tscn"
 GlobalVariables="*res://scenes/global_variables.tscn"
 FadeScene="*res://scenes/fade_scene.tscn"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/editor/plugin.cfg")

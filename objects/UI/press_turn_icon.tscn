@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://o47wvssmmis2"]
 
 [ext_resource type="Script" path="res://objects/UI/press_turn_icon.gd" id="1_3lpwp"]
-[ext_resource type="Texture2D" uid="uid://dm1h8ka4ida74" path="res://sprites/press_turn_icon.png" id="1_5e5pi"]
+[ext_resource type="Texture2D" uid="uid://dm1h8ka4ida74" path="res://sprites/GUI/press_turn_icon.png" id="1_5e5pi"]
 
 [sub_resource type="Animation" id="Animation_ky3h8"]
 length = 0.001

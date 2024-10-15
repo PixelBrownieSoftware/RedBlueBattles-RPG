@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4sqgtj3x672o"
-path="res://.godot/imported/mag_pow.png-c8eec6bb9fc4468799a9b866e6aebd28.ctex"
+uid="uid://b6y8vox67hbcj"
+path="res://.godot/imported/custom_icon_guard.png-88f939b3ad6132b3109b3993c3970acf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/GUI/mag_pow.png"
-dest_files=["res://.godot/imported/mag_pow.png-c8eec6bb9fc4468799a9b866e6aebd28.ctex"]
+source_file="res://sprites/GUI/custom_icon_guard.png"
+dest_files=["res://.godot/imported/custom_icon_guard.png-88f939b3ad6132b3109b3993c3970acf.ctex"]
 
 [params]
 

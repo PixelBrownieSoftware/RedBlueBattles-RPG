@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://i0wtxucbmky8"]
+
+[ext_resource type="Script" path="res://objects/UI/character_button.gd" id="1_5dkpw"]
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="1_v3h0v"]
+
+[node name="CharacterButton" type="Button"]
+anchors_preset = -1
+anchor_left = 0.0303819
+anchor_top = 0.0246914
+anchor_right = 0.0477431
+anchor_bottom = 0.0555556
+theme = ExtResource("1_v3h0v")
+script = ExtResource("1_5dkpw")
+metadata/_edit_use_anchors_ = true

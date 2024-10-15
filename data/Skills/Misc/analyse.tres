@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://dysk5jnrtcwdm"]
+
+[ext_resource type="Texture2D" uid="uid://xdg5tjyicy0w" path="res://sprites/GUI/custom_icon_analyse.png" id="1_67su0"]
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_l5yer"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_m8fib"]
+[ext_resource type="Script" path="res://src/scripts/skill/skill_analyse.gd" id="3_455e7"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_6aenj"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="5_kpvbe"]
+
+[resource]
+script = ExtResource("3_455e7")
+name = "Analyse"
+learnable = false
+power = 0
+stamina_cost = 0
+repeat_min = 1
+repeat_max = 1
+skill_scope = 2
+skill_element = ExtResource("5_kpvbe")
+skill_animation = Array[ExtResource("4_6aenj")]([])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_m8fib")]([])
+effects_to_add = Array[ExtResource("1_l5yer")]([])
+custom_icon = ExtResource("1_67su0")

@@ -1,0 +1,54 @@
+[gd_scene load_steps=12 format=3 uid="uid://bxrq6qspb6bb0"]
+
+[ext_resource type="Script" path="res://scenes/potential_ui.gd" id="1_rufqi"]
+[ext_resource type="PackedScene" uid="uid://mugpveucbeey" path="res://objects/UI/element_potential.tscn" id="2_8rngi"]
+[ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="3_mim82"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="4_lyyet"]
+[ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="5_bt4if"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="6_2iv25"]
+[ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="7_x8n7i"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="8_hkqbg"]
+[ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="9_85n35"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="10_3l37d"]
+[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="11_ymfk7"]
+
+[node name="Potential" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+theme_override_constants/separation = 60
+script = ExtResource("1_rufqi")
+
+[node name="Strike" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("3_mim82")
+
+[node name="Force" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("4_lyyet")
+
+[node name="Peirce" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("5_bt4if")
+
+[node name="Fire" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("6_2iv25")
+
+[node name="Ice" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("7_x8n7i")
+
+[node name="Water" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("8_hkqbg")
+
+[node name="Electric" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("9_85n35")
+
+[node name="Wind" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("10_3l37d")
+
+[node name="Psychic" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("11_ymfk7")

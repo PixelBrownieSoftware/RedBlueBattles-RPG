@@ -4,6 +4,9 @@ class_name  battle_character_actor
 @export var hurt_sound : AudioStream
 @export var defeat_sound : AudioStream
 @export var character_data : battle_character_data
+@export var line_colour : Color
+@onready var selector_arrow : Sprite2D = $SelectArrow
+@onready var selector_arrow_anim : AnimationPlayer = selector_arrow.get_child(0)
 var character_anim : AnimationPlayer
 var character_sprite : Sprite2D
 
@@ -20,6 +23,14 @@ var is_targetable = false
 var target_tween
 
 var character_hovered = false
+
+func _ready() -> void:
+	set_line_colour(line_colour)
+	set_line_thickness(2)
+	var circle : CircleShape2D = CircleShape2D.new()
+	circle.radius= character_data.assigned_data.click_circle_radius
+	$Area2D/CollisionShape2D.shape = circle
+	selector_arrow.visible = false
 
 func play_animation(anim : String):
 	if !character_anim.has_animation(anim):
@@ -99,13 +110,15 @@ func calculate_outline_colour() -> Color:
 
 func hover_emit():
 	hover_character.emit(character_data)
-	set_line_colour(calculate_outline_colour())
-	set_line_thickness(max_select_thickness)
+	selector_arrow_anim.play("selected")
+	#set_line_colour(calculate_outline_colour())
+	#set_line_thickness(max_select_thickness)
 	
 func exit_emit():
 	out_hover_character.emit()
-	set_line_colour(calculate_outline_colour())
-	set_line_thickness(min_select_thickness)
+	selector_arrow_anim.play("not_selected")
+	#set_line_colour(calculate_outline_colour())
+	#set_line_thickness(min_select_thickness)
 
 func _on_mouse_hover() -> void:
 	print("OK!")
@@ -137,14 +150,22 @@ func set_line_thickness(thickness):
 func toggle_highlight(on):
 	is_targetable = on
 	if on:
+		if GlobalVariables.is_player_team(character_data):
+			selector_arrow.flip_h = true
+			selector_arrow.position = Vector2(30,-29)
+		else:
+			selector_arrow.flip_h = false
+			selector_arrow.position = Vector2(-30,-29)
+		selector_arrow.visible = true
 		if character_hovered:
 			hover_emit()
 		else:
-			set_line_colour(calculate_outline_colour())
-			set_line_thickness(min_select_thickness)
+			exit_emit()
+		#else:
 	else:
-		set_line_colour(Color(0,0,0,0))
-		set_line_thickness(0)
+		selector_arrow.visible = false
+		#set_line_colour(Color(0,0,0,0))
+		#set_line_thickness(0)
 
 func _on_clicked(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !is_targetable:
@@ -152,6 +173,7 @@ func _on_clicked(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == 1:
-				set_line_colour(Color(0,0,0,0))
-				set_line_thickness(0)
+				#selector_arrow.visible = false
+				#set_line_colour(Color(0,0,0,0))
+				#set_line_thickness(0)
 				select_character.emit(character_data)

@@ -154,29 +154,58 @@ func assign_skill(move : rpg_skill):
 	if met_requirements && !already_exists:
 		extra_skills.append(move)
 
-func level_up():
+func simulate_level_up(sim_level : int):
+	var level_stats = {
+		"strength" : assigned_data.stats.strength,
+		"vitality" : assigned_data.stats.vitality,
+		"magic_pow" : assigned_data.stats.magic_pow,
+		"dexterity" : assigned_data.stats.dexterity,
+		"agility" : assigned_data.stats.agility,
+		"luck" : assigned_data.stats.luck,
+		"max_health" : assigned_data.health,
+		"max_stamina" : assigned_data.stamina,
+		"expereince_to_NL" : assigned_data.base_exp_to_NL,
+		"unlearned_skills" : null
+	}
+	var unlearned_skills : Array[rpg_skill]
 	var skills_before : Array[rpg_skill] = get_skills
+	for lv in range(sim_level):
+		for increase_stamina in assigned_data.stamina_increase_levels:
+			if increase_stamina == lv:
+				level_stats["max_stamina"] += 1
+		level_stats["max_health"] += assigned_data.stat_increase.health_min
+		level_stats["strength"] += increase_stat(assigned_data.stat_increase.strength, lv)
+		level_stats["vitality"] += increase_stat(assigned_data.stat_increase.vitality, lv)
+		level_stats["magic_pow"] += increase_stat(assigned_data.stat_increase.magic_pow, lv)
+		level_stats["dexterity"] += increase_stat(assigned_data.stat_increase.dexterity, lv)
+		level_stats["agility"] +=  increase_stat(assigned_data.stat_increase.agility, lv)
+		level_stats["luck"] += increase_stat(assigned_data.stat_increase.luck, lv)
+		for move in assigned_data.skills:
+			var sim_req : bool = move.requirements_met_simulated(self,level_stats)["req_met"]
+			if sim_req && skills_before.rfind(move) == -1:
+				unlearned_skills.append(move)
+		level_stats["expereince_to_NL"] += level_stats["expereince_to_NL"] * (assigned_data.exp_req_multipler * (0.8**lv))
+	level_stats["unlearned_skills"] = unlearned_skills
+	return level_stats
+	
+func level_up():
+	#var skills_before : Array[rpg_skill] = get_skills
 	current_level += 1
-	for increase_stamina in assigned_data.stamina_increase_levels:
-		if increase_stamina == current_level:
-			max_stamina += 1
-	max_health += assigned_data.stat_increase.health_min + randi() % assigned_data.stat_increase.health_max
-	#print(fmod(assigned_data.stat_increase.strength * float(current_level), 1))
-	strength += increase_stat(assigned_data.stat_increase.strength)#if fmod(assigned_data.stat_increase.strength * float(current_level), 1) == 0 else 0
-	vitality += increase_stat(assigned_data.stat_increase.vitality)
-	magic_pow += increase_stat(assigned_data.stat_increase.magic_pow)
-	dexterity += increase_stat(assigned_data.stat_increase.dexterity)
-	agility +=  increase_stat(assigned_data.stat_increase.agility)
-	luck += increase_stat(assigned_data.stat_increase.luck)
-	for move in assigned_data.skills:
-		if move.requirements_met(self) && !skills_before.rfind(move):
-			print(name + " learned " + move.name + "!")
-	expereince_to_NL += expereince_to_NL * (assigned_data.exp_req_multipler * (0.8**current_level))
+	var new_stats = simulate_level_up(current_level)
+	max_health = new_stats["max_health"]
+	max_stamina = new_stats["max_stamina"]
+	strength = new_stats["strength"]
+	vitality = new_stats["vitality"]
+	magic_pow = new_stats["magic_pow"]
+	dexterity = new_stats["dexterity"]
+	agility =  new_stats["agility"]
+	luck = new_stats["luck"]
+	expereince_to_NL = new_stats["expereince_to_NL"]
 	health = max_health
 	
-func increase_stat(stat_increase : float) -> int:
-	var prev =  floor(stat_increase * float(current_level - 1))
-	var now = floor(stat_increase * float(current_level))
+func increase_stat(stat_increase : float, level : int) -> int:
+	var prev =  floor(stat_increase * float(level - 1))
+	var now = floor(stat_increase * float(level))
 	var result = now - prev
 	if result >= 1:
 		return 1

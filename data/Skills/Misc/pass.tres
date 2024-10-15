@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=7 format=3 uid="uid://cwtgv8cirs6b7"]
+[gd_resource type="Resource" script_class="skill_pass" load_steps=8 format=3 uid="uid://cwtgv8cirs6b7"]
 
+[ext_resource type="Texture2D" uid="uid://cc7b4rgj3ppvr" path="res://sprites/GUI/custom_icon_pass.png" id="1_7m1fn"]
 [ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_tm2ek"]
 [ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_apesa"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="2_dte3y"]
@@ -26,3 +27,4 @@ skill_animation = Array[ExtResource("4_ws2od")]([SubResource("Resource_88y8s")])
 usable_by_anyone = false
 effects_to_remove = Array[ExtResource("2_apesa")]([])
 effects_to_add = Array[ExtResource("1_tm2ek")]([])
+custom_icon = ExtResource("1_7m1fn")

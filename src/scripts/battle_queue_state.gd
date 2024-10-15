@@ -22,7 +22,8 @@ func start_state():
 		battle_globals.is_player_turn = !battle_globals.is_player_turn
 		if battle_globals.is_player_turn:
 			for character in PartyMembers.get_children():
-				await start_character(character)
+				if GlobalVariables.enabled_party_members[character]:
+					await start_character(character)
 		else:
 			for character in EnemyMembers.get_children():
 				await start_character(character)

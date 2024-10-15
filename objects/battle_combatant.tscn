@@ -1,13 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctea2qykjpd3c"]
+[gd_scene load_steps=9 format=3 uid="uid://ctea2qykjpd3c"]
 
 [ext_resource type="Script" path="res://src/battle_character_actor.gd" id="1_dy7n5"]
 [ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="2_3wq5g"]
+[ext_resource type="Texture2D" uid="uid://7atfknvn78ps" path="res://sprites/GUI/selection_arrow.png" id="3_yav3y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvmo0"]
-radius = 32.0
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_ijii1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_17xgx"]
+resource_name = "not_selected"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.65, 0.7, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 7, 6, 5, 4]
+}
+
+[sub_resource type="Animation" id="Animation_2qxgg"]
+resource_name = "selected"
+length = 0.6
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.45, 0.475, 0.5, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 3, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfoa1"]
+_data = {
+"RESET": SubResource("Animation_ijii1"),
+"not_selected": SubResource("Animation_17xgx"),
+"selected": SubResource("Animation_2qxgg")
+}
 
 [node name="battle_combatant" type="Node2D"]
 script = ExtResource("1_dy7n5")
+line_colour = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="combatant_sfx" type="AudioStreamPlayer2D" parent="."]
 
@@ -16,9 +75,21 @@ script = ExtResource("1_dy7n5")
 [node name="BattleFxBase" parent="." instance=ExtResource("2_3wq5g")]
 
 [node name="Area2D" type="Area2D" parent="."]
+z_index = 150
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_bvmo0")
+
+[node name="SelectArrow" type="Sprite2D" parent="."]
+position = Vector2(47, -29)
+texture = ExtResource("3_yav3y")
+hframes = 3
+vframes = 3
+
+[node name="ArrrowAnimation" type="AnimationPlayer" parent="SelectArrow"]
+libraries = {
+"": SubResource("AnimationLibrary_yfoa1")
+}
 
 [connection signal="input_event" from="Area2D" to="." method="_on_clicked"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_hover"]

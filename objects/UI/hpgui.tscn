@@ -54,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -15), Vector2(0, 0)]
+"values": [Vector2(15, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_3whhx"]
@@ -70,7 +70,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -15)]
+"values": [Vector2(0, 0), Vector2(15, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vabbi"]
@@ -86,11 +86,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -947.0
-offset_bottom = -567.0
+offset_right = -1135.0
+offset_bottom = -646.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dmg4y")
+enemy_hp_colour = Color(0.941176, 0.941176, 0.745098, 1)
 
 [node name="Offset" type="Control" parent="."]
 anchors_preset = 0
@@ -101,7 +102,7 @@ offset_bottom = 85.0
 layout_mode = 0
 offset_left = 4.0
 offset_top = 32.0
-offset_right = 197.0
+offset_right = 144.0
 offset_bottom = 54.0
 theme_override_styles/background = ExtResource("2_wqwuf")
 theme_override_styles/fill = ExtResource("3_r6tqb")
@@ -112,7 +113,7 @@ show_percentage = false
 layout_mode = 0
 offset_left = 4.0
 offset_top = 32.0
-offset_right = 197.0
+offset_right = 144.0
 offset_bottom = 54.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_h62qd")
 theme_override_styles/fill = ExtResource("2_uckqt")
@@ -123,7 +124,7 @@ show_percentage = false
 layout_mode = 0
 offset_left = 4.0
 offset_top = 10.0
-offset_right = 196.0
+offset_right = 143.0
 offset_bottom = 34.0
 theme = ExtResource("5_1adh3")
 bbcode_enabled = true
@@ -133,7 +134,7 @@ text = "Sample"
 layout_mode = 0
 offset_left = 5.0
 offset_top = 34.0
-offset_right = 197.0
+offset_right = 142.0
 offset_bottom = 58.0
 theme = ExtResource("5_1adh3")
 bbcode_enabled = true
@@ -143,13 +144,14 @@ text = "Health"
 layout_mode = 0
 offset_left = 3.0
 offset_top = 56.0
-offset_right = 195.0
+offset_right = 286.0
 offset_bottom = 73.0
+width = 15
 
 [node name="StatusEffects" type="HBoxContainer" parent="Offset"]
 layout_mode = 0
 offset_top = 71.0
-offset_right = 290.0
+offset_right = 143.0
 offset_bottom = 98.0
 theme_override_constants/separation = 20
 
@@ -157,3 +159,5 @@ theme_override_constants/separation = 20
 libraries = {
 "": SubResource("AnimationLibrary_vabbi")
 }
+
+[editable path="Offset/StaminaContainer"]

@@ -13,22 +13,27 @@ func on_character_hover(character : battle_character_data):
 
 func show_menu():
 	playing_backwards = false
-	$AnimationPlayer.play("info_show")
+	visible = true
+	#$AnimationPlayer.play("info_show")
 	
 func hide_menu():
 	playing_backwards = true
-	$AnimationPlayer.play_backwards("info_show")
+	visible = false
+	#$AnimationPlayer.play_backwards("info_show")
 
 func _process(delta: float) -> void:
-	if selected_character != null:
-		$RichTextLabel.text = selected_character.name
-		$ProgressBar.max_value = selected_character.max_health
-		$ProgressBar.min_value = 0
-		$ProgressBar.value = selected_character.health
-		$ProgressBar.visible = true
-	else:
-		$RichTextLabel.text = "Hover on a character and click to select."
-		$ProgressBar.visible = false
+	
+	$RichTextLabel.text = "[center]Hover on a character with an [color=yellow]arrow[/color] and click to select![/center]"
+	#$ProgressBar.visible = false
+	#if selected_character != null:
+		#$RichTextLabel.text = selected_character.name
+		#$ProgressBar.max_value = selected_character.max_health
+		#$ProgressBar.min_value = 0
+		#$ProgressBar.value = selected_character.health
+		#$ProgressBar.visible = true
+	#else:
+		#$RichTextLabel.text = "Hover on a character and click to select."
+		#$ProgressBar.visible = false
 		
 
 func update_stuff():

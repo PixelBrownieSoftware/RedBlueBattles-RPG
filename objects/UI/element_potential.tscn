@@ -24,9 +24,12 @@ reflect_icon = ExtResource("4_o8lgw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.197383
+anchor_bottom = 0.220904
 offset_right = 51.0
 offset_bottom = 23.0
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
@@ -41,8 +44,8 @@ offset_bottom = 40.0
 [node name="AffIcon" type="TextureRect" parent="HBoxContainer/TextureRect/Affinity"]
 layout_mode = 2
 offset_left = 21.0
-offset_right = 37.0
-offset_bottom = 23.0
+offset_right = 49.0
+offset_bottom = 31.0
 texture = ExtResource("2_ukfl8")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/TextureRect/Affinity"]
