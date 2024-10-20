@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=17 format=3 uid="uid://i5x8b1jqq320"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=18 format=3 uid="uid://i5x8b1jqq320"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_7mpj1"]
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="2_bb13t"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_8scd1"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_y38dn"]
 [ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/Skills/Force/oily_punch.tres" id="4_3iovk"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_gn5lo"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_0s3a4"]
@@ -18,22 +19,25 @@
 script = ExtResource("1_7mpj1")
 character = ExtResource("2_bb13t")
 skills = Array[ExtResource("3_8scd1")]([ExtResource("4_3iovk"), ExtResource("5_uq1es")])
-min_level = 3
-max_level = 6
+min_level = 7
+max_level = 7
+inclusion_flag_requirements = Array[ExtResource("3_y38dn")]([])
 
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("1_7mpj1")
 character = ExtResource("4_gn5lo")
 skills = Array[ExtResource("3_8scd1")]([ExtResource("7_1gsoi"), ExtResource("8_5ltv3"), ExtResource("9_ociat")])
-min_level = 4
-max_level = 6
+min_level = 7
+max_level = 7
+inclusion_flag_requirements = Array[ExtResource("3_y38dn")]([])
 
 [sub_resource type="Resource" id="Resource_e0ubi"]
 script = ExtResource("1_7mpj1")
 character = ExtResource("9_akg5r")
 skills = Array[ExtResource("3_8scd1")]([ExtResource("11_tsdhn")])
-min_level = 5
-max_level = 6
+min_level = 7
+max_level = 7
+inclusion_flag_requirements = Array[ExtResource("3_y38dn")]([])
 
 [resource]
 script = ExtResource("5_0s3a4")

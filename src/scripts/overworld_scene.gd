@@ -4,6 +4,7 @@ extends Node2D
 @export var starter_levels : Array[battle_level_group]
 @export var selected_group : battle_group_data
 var party_member_menu = preload("res://objects/UI/party_member_menu.tscn")
+var already_loaded_party_member : bool = false
 
 signal load_chara(character)
 signal initalise()
@@ -71,6 +72,8 @@ func main_menu():
 func load_battle(selected_group):
 	$"MenuBar/HBoxContainer".visible = false
 	for battle_character_member : battle_group_member in selected_group.opponents:
+		if !battle_character_member.check_flags():
+			continue
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var level : int =  rng.randi_range(battle_character_member.min_level, battle_character_member.max_level)
@@ -95,7 +98,9 @@ func load_party():
 	#TODO: We should play an animation rather than crudely disabling and enabling menus
 	#$EnemySelectTabs.visible = false
 	#$PartyMemberTabs.visible = true
-	load_chara.emit(PartyMembers.get_child(0))
+	if !already_loaded_party_member:
+		already_loaded_party_member = true
+		load_chara.emit(PartyMembers.get_child(0))
 	load_menu($MainMenu/PartyMemberMenu)
 	#for tab in $MainMenu/PartyMemberTabs.get_children():
 		#tab.load_skill_buttons()

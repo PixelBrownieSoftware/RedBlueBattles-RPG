@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://gxraq7c7inrf"]
+
+[ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="1_88fyd"]
+[ext_resource type="FontFile" uid="uid://cw43cux05i6m7" path="res://misc/fonts/impact.ttf" id="2_yyddg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 99.0
+offset_bottom = 128.0
+theme = ExtResource("1_88fyd")
+
+[node name="Title" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 266.0
+offset_right = 913.0
+offset_bottom = 482.0
+theme_override_colors/font_outline_color = Color(0.140447, 0.140447, 0.140447, 1)
+theme_override_colors/font_shadow_color = Color(0.169245, 0.169245, 0.169245, 1)
+theme_override_fonts/normal_font = ExtResource("2_yyddg")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]The end[/center]"
+tab_size = 7
+
+[node name="MadeBy" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 609.0
+offset_right = 1148.0
+offset_bottom = 639.0
+bbcode_enabled = true
+text = "[center]PinkBunnySoftware 2024[/center]"
+fit_content = true
+tab_size = 7
+
+[node name="MadeBy2" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 571.0
+offset_right = 376.0
+offset_bottom = 640.0
+bbcode_enabled = true
+text = "This game uses an autosave system.
+It will save when you finish a battle or level up a character."
+fit_content = true
+tab_size = 7

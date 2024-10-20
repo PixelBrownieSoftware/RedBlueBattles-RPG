@@ -12,6 +12,8 @@ func display_exp_req(character : battle_character_data):
 	$LevelUpButton.disabled = !able_to_level_up
 
 func level_up():
+	GlobalVariables.expereince_score -= chara.expereince_to_NL
 	chara.level_up()
+	SaveSystem.save_game()
 	display_exp_req(chara)
 	level_up_update.emit(chara)

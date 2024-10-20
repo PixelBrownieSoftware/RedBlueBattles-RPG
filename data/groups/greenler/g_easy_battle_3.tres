@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=9 format=3 uid="uid://cb257wlalldep"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://cb257wlalldep"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_560f4"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_kqvyy"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_ha4p1"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_uhyvc"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_03rar"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="4_qihmq"]
@@ -13,6 +14,7 @@ character = ExtResource("2_kqvyy")
 skills = Array[ExtResource("3_uhyvc")]([])
 min_level = 1
 max_level = 3
+inclusion_flag_requirements = Array[ExtResource("3_ha4p1")]([])
 
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("1_560f4")
@@ -20,6 +22,7 @@ character = ExtResource("4_03rar")
 skills = Array[ExtResource("3_uhyvc")]([])
 min_level = 1
 max_level = 3
+inclusion_flag_requirements = Array[ExtResource("3_ha4p1")]([])
 
 [resource]
 script = ExtResource("4_qihmq")

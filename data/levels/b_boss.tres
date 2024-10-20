@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=7 format=3 uid="uid://dndx1h2t1egri"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_s4l4p"]
+[ext_resource type="Resource" uid="uid://mv0dwrjyce2a" path="res://data/groups/beno/b_boss.tres" id="2_bvkxu"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_2uiho"]
+[ext_resource type="Resource" uid="uid://bjm56ggelefke" path="res://data/levels/greendori_unlock.tres" id="4_d1p1b"]
+[ext_resource type="Resource" uid="uid://baa06lvmmumsu" path="res://data/levels/b_easy_battle.tres" id="5_y2vvc"]
+[ext_resource type="Resource" uid="uid://cf058tnlykiqg" path="res://data/levels/lr_battle_1.tres" id="6_532ek"]
+
+[resource]
+script = ExtResource("3_2uiho")
+name = "Beno's shootout"
+battle_groups = Array[ExtResource("1_s4l4p")]([ExtResource("2_bvkxu")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("3_2uiho")]([ExtResource("6_532ek")])
+battle_groups_remove = Array[ExtResource("3_2uiho")]([ExtResource("4_d1p1b"), ExtResource("5_y2vvc")])
+type_battle = 0
+terminal = false
+terminal_scene = ""

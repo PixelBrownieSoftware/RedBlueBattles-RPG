@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=21 format=3 uid="uid://dxcyusg00opvd"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=22 format=3 uid="uid://dxcyusg00opvd"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_edqap"]
 [ext_resource type="Resource" uid="uid://dn8iqklx4h2v7" path="res://data/characters/Enemies/trunko.tres" id="1_xv827"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_uiya5"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_1gepa"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="3_6ixe2"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_u2fjj"]
 [ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="4_hedxc"]
@@ -21,29 +22,33 @@
 script = ExtResource("2_uiya5")
 character = ExtResource("1_xv827")
 skills = Array[ExtResource("3_u2fjj")]([ExtResource("4_hedxc")])
-min_level = 9
-max_level = 11
+min_level = 20
+max_level = 25
+inclusion_flag_requirements = Array[ExtResource("3_1gepa")]([])
 
 [sub_resource type="Resource" id="Resource_4e182"]
 script = ExtResource("2_uiya5")
 character = ExtResource("3_6ixe2")
 skills = Array[ExtResource("3_u2fjj")]([ExtResource("6_brou4"), ExtResource("7_vvc2n")])
-min_level = 9
-max_level = 11
+min_level = 20
+max_level = 25
+inclusion_flag_requirements = Array[ExtResource("3_1gepa")]([])
 
 [sub_resource type="Resource" id="Resource_ik5r1"]
 script = ExtResource("2_uiya5")
 character = ExtResource("4_ys2ab")
 skills = Array[ExtResource("3_u2fjj")]([ExtResource("9_lvsdu"), ExtResource("10_cwwtu")])
-min_level = 9
-max_level = 11
+min_level = 20
+max_level = 25
+inclusion_flag_requirements = Array[ExtResource("3_1gepa")]([])
 
 [sub_resource type="Resource" id="Resource_8cjgq"]
 script = ExtResource("2_uiya5")
 character = ExtResource("5_xbbp0")
 skills = Array[ExtResource("3_u2fjj")]([ExtResource("12_pssnp"), ExtResource("13_r51fc"), ExtResource("14_ttn16")])
-min_level = 9
-max_level = 11
+min_level = 20
+max_level = 25
+inclusion_flag_requirements = Array[ExtResource("3_1gepa")]([])
 
 [resource]
 script = ExtResource("1_edqap")

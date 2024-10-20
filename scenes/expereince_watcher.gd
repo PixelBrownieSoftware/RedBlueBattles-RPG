@@ -34,7 +34,7 @@ func exp_points_calc(user : battle_character_data, target : battle_character_dat
 	else:
 		score_add_GUI.text = "+ " + str(total)
 		
-	score_GUI.text = "Score: " + str(local_exp_score) + "\n" + " x " + str(multiplier)
+	score_GUI.text = "[img=45]sprites/GUI/gui_luc.png[/img]" + str(local_exp_score) + " x " + str(multiplier)
 	
 	
 	

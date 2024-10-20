@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=4 format=3 uid="uid://blonc4sd1882k"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_loxvd"]
+[ext_resource type="Resource" uid="uid://bi5h1a7lf2yl1" path="res://data/groups/malculus/ml_boss.tres" id="2_ubkus"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_r185h"]
+
+[resource]
+script = ExtResource("3_r185h")
+name = "Final boss"
+battle_groups = Array[ExtResource("1_loxvd")]([ExtResource("2_ubkus")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("3_r185h")]([])
+battle_groups_remove = Array[ExtResource("3_r185h")]([])
+type_battle = 0

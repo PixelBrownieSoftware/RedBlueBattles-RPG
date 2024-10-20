@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=15 format=3 uid="uid://crtnxxemdyj67"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=17 format=3 uid="uid://crtnxxemdyj67"]
 
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="1_f8ljr"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_od7tk"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="2_7qpbn"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_i54po"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_cq2jp"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_fyteb"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="3_x5rwq"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="4_adxnp"]
 [ext_resource type="Resource" uid="uid://btljbcdehpvvv" path="res://data/Skills/Peirce/stab_frenzy.tres" id="5_08jot"]
 [ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/Skills/Strike/oily_slash.tres" id="5_i75os"]
+[ext_resource type="Resource" uid="uid://bi4wxsbbe53pp" path="res://data/Skills/Strike/wet_slash.tres" id="9_bbmpj"]
 [ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/Skills/Force/oily_punch.tres" id="9_fhh18"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="10_2ns4k"]
 
@@ -16,22 +18,25 @@
 script = ExtResource("2_i54po")
 character = ExtResource("2_7qpbn")
 skills = Array[ExtResource("3_fyteb")]([ExtResource("4_adxnp"), ExtResource("5_i75os")])
-min_level = 5
-max_level = 6
+min_level = 6
+max_level = 8
+inclusion_flag_requirements = Array[ExtResource("3_cq2jp")]([])
 
 [sub_resource type="Resource" id="Resource_eu67n"]
 script = ExtResource("2_i54po")
 character = ExtResource("3_x5rwq")
-skills = Array[ExtResource("3_fyteb")]([ExtResource("5_08jot"), ExtResource("4_adxnp")])
-min_level = 5
-max_level = 7
+skills = Array[ExtResource("3_fyteb")]([ExtResource("5_08jot"), ExtResource("4_adxnp"), ExtResource("9_bbmpj")])
+min_level = 6
+max_level = 8
+inclusion_flag_requirements = Array[ExtResource("3_cq2jp")]([])
 
 [sub_resource type="Resource" id="Resource_e5mwj"]
 script = ExtResource("2_i54po")
 character = ExtResource("1_f8ljr")
 skills = Array[ExtResource("3_fyteb")]([ExtResource("9_fhh18")])
-min_level = 5
+min_level = 6
 max_level = 7
+inclusion_flag_requirements = Array[ExtResource("3_cq2jp")]([])
 
 [resource]
 script = ExtResource("1_od7tk")

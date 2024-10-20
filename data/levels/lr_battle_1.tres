@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=6 format=3 uid="uid://cf058tnlykiqg"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_yfyjk"]
+[ext_resource type="Resource" uid="uid://dfumcsshpil4i" path="res://data/groups/lord red/lr_easy_battle_2.tres" id="2_4v7vy"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_id2y5"]
+[ext_resource type="Resource" uid="uid://gfkofy86m1um" path="res://data/levels/lr_battle_2.tres" id="4_i5t5q"]
+[ext_resource type="Resource" uid="uid://04yywi4hhnut" path="res://data/levels/buckler_unlock.tres" id="5_snq06"]
+
+[resource]
+script = ExtResource("3_id2y5")
+name = "Battle 7"
+battle_groups = Array[ExtResource("1_yfyjk")]([ExtResource("2_4v7vy")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("3_id2y5")]([ExtResource("4_i5t5q"), ExtResource("5_snq06")])
+battle_groups_remove = Array[ExtResource("3_id2y5")]([])
+type_battle = 1
+terminal = false
+terminal_scene = ""

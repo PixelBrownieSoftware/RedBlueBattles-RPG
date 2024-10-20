@@ -466,8 +466,8 @@ script = ExtResource("10_g8410")
 
 [node name="ExpereinceWatcher" type="Node" parent="Variables" node_paths=PackedStringArray("score_GUI", "score_add_GUI")]
 script = ExtResource("13_brywo")
-score_GUI = NodePath("../../BattleCanvasLayer/Score")
-score_add_GUI = NodePath("../../BattleCanvasLayer/Score Add")
+score_GUI = NodePath("../../BattleCanvasLayer/HBoxContainer/Score")
+score_add_GUI = NodePath("../../BattleCanvasLayer/HBoxContainer/Score Add")
 
 [node name="BattleFXFactory" type="Node" parent="."]
 script = ExtResource("15_3gnxd")
@@ -508,7 +508,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 229.0
+offset_left = 305.0
 offset_right = -218.0
 offset_bottom = -54.0
 theme = ExtResource("17_ubshc")
@@ -519,9 +519,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
+offset_left = 13.0
 offset_top = 12.0
-offset_right = -9.0
+offset_right = -8.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -691,19 +691,17 @@ bbcode_enabled = true
 
 [node name="Notification Panel" type="Panel" parent="BattleCanvasLayer"]
 visible = false
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -409.045
-offset_top = -289.0
-offset_right = -22.045
-offset_bottom = -223.0
+offset_left = -416.0
+offset_top = -380.0
+offset_right = -29.0
+offset_bottom = -314.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(192.5, 33)
 theme = ExtResource("17_ubshc")
 script = ExtResource("22_g4le8")
@@ -798,8 +796,10 @@ script = ExtResource("23_ioo5t")
 layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
-offset_right = 216.0
-offset_bottom = 207.0
+offset_right = 273.0
+offset_bottom = 211.0
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
 
 [node name="Continue" type="Button" parent="BattleCanvasLayer/EXP Bonuses"]
 layout_mode = 0
@@ -814,7 +814,16 @@ layout_mode = 0
 offset_left = 266.0
 offset_top = 5.0
 offset_right = 506.0
+offset_bottom = 218.0
+bbcode_enabled = true
+
+[node name="Total" type="RichTextLabel" parent="BattleCanvasLayer/EXP Bonuses"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 216.0
+offset_right = 506.0
 offset_bottom = 261.0
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 
 [node name="Character stats" type="Panel" parent="BattleCanvasLayer"]
@@ -924,19 +933,28 @@ grow_vertical = 2
 theme_override_constants/separation = 100
 metadata/_edit_use_anchors_ = true
 
-[node name="Score" type="RichTextLabel" parent="BattleCanvasLayer"]
-offset_left = 852.0
-offset_top = 70.0
-offset_right = 987.0
-offset_bottom = 139.0
-theme = ExtResource("17_ubshc")
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleCanvasLayer"]
+offset_left = -140.0
+offset_top = 49.0
+offset_right = 204.0
+offset_bottom = 117.0
 
-[node name="Score Add" type="RichTextLabel" parent="BattleCanvasLayer"]
-offset_left = 854.0
-offset_top = 14.0
-offset_right = 987.0
-offset_bottom = 47.0
+[node name="Score" type="RichTextLabel" parent="BattleCanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
 theme = ExtResource("17_ubshc")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+
+[node name="Score Add" type="RichTextLabel" parent="BattleCanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme = ExtResource("17_ubshc")
+bbcode_enabled = true
 
 [node name="BattleCamera2D" type="Camera2D" parent="."]
 position = Vector2(381.87, 322)

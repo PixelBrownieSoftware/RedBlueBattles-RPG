@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=4 format=3 uid="uid://bjm56ggelefke"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_557wl"]
+[ext_resource type="Resource" uid="uid://cylk1tknykcp2" path="res://data/groups/lord red/mini_boss_greendori.tres" id="2_tyxpy"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_13isr"]
+
+[resource]
+script = ExtResource("3_13isr")
+name = "Greendori fight"
+battle_groups = Array[ExtResource("1_557wl")]([ExtResource("2_tyxpy")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("3_13isr")]([])
+battle_groups_remove = Array[ExtResource("3_13isr")]([])
+type_battle = 2
+terminal = false
+terminal_scene = ""

@@ -88,14 +88,14 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 		calculated_PT = PRESS_TURN.PT.VOID
 	else: if el_affinity < 0:
 		calculated_PT = PRESS_TURN.PT.REFLECT
-	if power == 0 || skill_element.name == "None":	#crude assumption of status move
-		will_hit = 99
-		calculated_PT = PRESS_TURN.PT.NORMAL
 	if calculated_PT < PRESS_TURN.PT.VOID:
-		if is_lucky:
+		if is_lucky && el_affinity >= 1:
 			damage_amount *= 1.4
 			calculated_PT = PRESS_TURN.PT.LUCKY
 			target.put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
+	if power == 0 || skill_element.name == "None":	#crude assumption of status move
+		will_hit = 99
+		calculated_PT = PRESS_TURN.PT.NORMAL
 	if !will_hit:
 		damage_amount = 0
 		calculated_PT = PRESS_TURN.PT.MISS

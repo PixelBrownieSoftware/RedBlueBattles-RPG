@@ -23,6 +23,7 @@ func open_menu(character : battle_character_data):
 	visible = true
 	
 func reset_description():
+	assign_button.visible = false
 	description.text = "Click a skill on the left and click the assign button to add it to [color=" + current_character.assigned_data.character_colour.to_html() + "]" + current_character.name + "[/color]'s equpped skills!"
 
 func reset_description_remove():
@@ -33,6 +34,8 @@ func reset_description_remove():
 func update_skills():
 	var skill_ind : int = 0
 	#$"Extra skills limit/limit".text = "Extra skills slots left: " + str(GlobalVariables.extra_skills_limit - chara.extra_skills.size())
+	for button in get_child(0).get_children():
+		button.visible = false
 	for skill in GlobalVariables.extra_skills:
 		if GlobalVariables.extra_skill_already_equipped(skill):
 			continue

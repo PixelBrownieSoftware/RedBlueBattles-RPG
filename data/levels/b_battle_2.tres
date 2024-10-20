@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=6 format=3 uid="uid://dkvm51b64d457"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_a7mvt"]
+[ext_resource type="Resource" uid="uid://i5x8b1jqq320" path="res://data/groups/beno/b_mid_battle_2.tres" id="2_jciui"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_lsqmq"]
+[ext_resource type="Resource" uid="uid://bjm56ggelefke" path="res://data/levels/greendori_unlock.tres" id="4_kfmp7"]
+[ext_resource type="Resource" uid="uid://c6b146udkdbpl" path="res://data/levels/b_battle_3.tres" id="5_ybxre"]
+
+[resource]
+script = ExtResource("3_lsqmq")
+name = "Battle 5"
+battle_groups = Array[ExtResource("1_a7mvt")]([ExtResource("2_jciui")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("3_lsqmq")]([ExtResource("4_kfmp7"), ExtResource("5_ybxre")])
+battle_groups_remove = Array[ExtResource("3_lsqmq")]([])
+type_battle = 1

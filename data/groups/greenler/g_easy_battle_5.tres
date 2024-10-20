@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=7 format=3 uid="uid://bml5fje4pmtfd"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=8 format=3 uid="uid://bml5fje4pmtfd"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_yqj1o"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_bbfxy"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_bciq3"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_fcamv"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="4_fr52n"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_vnej8"]
 
@@ -12,6 +13,7 @@ character = ExtResource("2_bbfxy")
 skills = Array[ExtResource("3_bciq3")]([])
 min_level = 1
 max_level = 3
+inclusion_flag_requirements = Array[ExtResource("3_fcamv")]([])
 
 [resource]
 script = ExtResource("5_vnej8")

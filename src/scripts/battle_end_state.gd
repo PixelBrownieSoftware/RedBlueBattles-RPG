@@ -42,13 +42,15 @@ func start_state():
 				results_list["Defeated"] += 0.04
 
 	if dead_players == GlobalVariables.get_characters(PartyMembers).size():
+		results_list["has_won"] = false
 		total_exp = $"../../Variables/ExpereinceWatcher".local_exp_score + get_bonus()
 		show_moves_learned.emit(new_moves_learned)
 		show_exp_results_menu.emit(results_list, total_exp)
 		return
 	
 	if dead_enemies == EnemyMembers.get_children().size():
-		results_list["All_Defeated"] = 0.1
+		results_list["All defeated"] = 0.1
+		results_list["has_won"] = true
 		total_exp = $"../../Variables/ExpereinceWatcher".local_exp_score + get_bonus()
 		var gained_rewards : Array[String]
 		
@@ -76,7 +78,7 @@ func start_state():
 
 func change_level_stuff():
 	for level in GlobalVariables.current_level.battle_groups_remove:
-		var remove_battle_ind = GlobalVariables.battles_availible.rfind(level.name)
+		var remove_battle_ind = GlobalVariables.battles_availible.rfind(level)
 		if remove_battle_ind != -1:
 			GlobalVariables.battles_availible.remove_at(remove_battle_ind)
 	if GlobalVariables.current_level.self_destruct_after_win:
@@ -88,6 +90,8 @@ func change_level_stuff():
 func get_bonus() -> int:
 	var bonus_multipler : float = 0
 	for bonus in results_list:
+		if bonus == "has_won":
+			continue
 		bonus_multipler += results_list[bonus]
 	return $"../../Variables/ExpereinceWatcher".local_exp_score * (float)(bonus_multipler)
 
@@ -106,4 +110,7 @@ func leave_battle():
 	SaveSystem.save_game()
 	await get_tree().create_timer(0.4).timeout
 	await FadeScene.fade_bg(Color.BLACK, 0.6)
-	get_tree().change_scene_to_file(overworld_scene)
+	if GlobalVariables.current_level.terminal:
+		get_tree().change_scene_to_file(GlobalVariables.current_level.terminal_scene)
+	else:
+		get_tree().change_scene_to_file(overworld_scene)

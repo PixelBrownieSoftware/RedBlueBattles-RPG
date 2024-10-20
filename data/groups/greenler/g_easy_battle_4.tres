@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=7 format=3 uid="uid://b0jkkx6o725s7"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=8 format=3 uid="uid://b0jkkx6o725s7"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_e8uun"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_sin6b"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_o6ab8"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ty1io"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="5_c7grs"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="6_tknem"]
@@ -12,6 +13,7 @@ character = ExtResource("2_sin6b")
 skills = Array[ExtResource("3_ty1io")]([])
 min_level = 1
 max_level = 3
+inclusion_flag_requirements = Array[ExtResource("3_o6ab8")]([])
 
 [resource]
 script = ExtResource("6_tknem")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://gfkofy86m1um"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_23sli"]
+[ext_resource type="Resource" uid="uid://cwrjy4fq7xmd0" path="res://data/groups/lord red/lr_mid_battle_1.tres" id="2_hn80j"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_q1yyg"]
+[ext_resource type="Resource" uid="uid://nsbpu872dnve" path="res://data/levels/lr_battle_3.tres" id="4_tvd8g"]
+
+[resource]
+script = ExtResource("3_q1yyg")
+name = "Battle 8"
+battle_groups = Array[ExtResource("1_23sli")]([ExtResource("2_hn80j")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("3_q1yyg")]([ExtResource("4_tvd8g")])
+battle_groups_remove = Array[ExtResource("3_q1yyg")]([])
+type_battle = 1
+terminal = false
+terminal_scene = ""

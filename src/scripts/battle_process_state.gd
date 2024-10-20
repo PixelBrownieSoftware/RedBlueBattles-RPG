@@ -22,9 +22,9 @@ func process_move(skill : rpg_skill):
 	var character_target : battle_character_data = battle_globals.target_character
 	var character_user : battle_character_data = battle_globals.current_character
 	character_user.stamina -= skill.get_final_cost(character_user)
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.15).timeout
 	notifcation_anim.emit(skill)
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(0.2).timeout
 	var actor_user : battle_character_actor = battle_globals.get_actor(character_user)
 	battle_globals.final_press_turn_flag = PRESS_TURN.PT.NORMAL
 	var num_times : int = randi_range(skill.repeat_min, skill.repeat_max)

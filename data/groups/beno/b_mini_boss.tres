@@ -18,10 +18,11 @@ character = ExtResource("1_mnhtg")
 skills = Array[ExtResource("3_t47q2")]([ExtResource("4_geol8"), ExtResource("5_5m500")])
 min_level = 11
 max_level = 11
+inclusion_flag_requirements = Array[ExtResource("8_d11w2")]([])
 
 [sub_resource type="Resource" id="Resource_3qdlp"]
 script = ExtResource("8_d11w2")
-name = "daleth_defeated"
+name = "buckler_unlocked"
 flag = false
 
 [sub_resource type="Resource" id="Resource_ahgdp"]
@@ -31,12 +32,12 @@ flag_req = SubResource("Resource_3qdlp")
 
 [sub_resource type="Resource" id="Resource_mtbkt"]
 script = ExtResource("8_d11w2")
-name = "daleth_defeated"
+name = "buckler_unlocked"
 flag = true
 
 [sub_resource type="Resource" id="Resource_1rt02"]
 script = ExtResource("8_d11w2")
-name = "daleth_defeated"
+name = "buckler_unlocked"
 flag = false
 
 [sub_resource type="Resource" id="Resource_4tss1"]

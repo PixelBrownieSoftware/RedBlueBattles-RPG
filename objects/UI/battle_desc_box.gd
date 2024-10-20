@@ -12,6 +12,8 @@ func load_battle_level(battle_level : battle_level_group):
 	desc.text = ""
 	for gr in battle_level.battle_groups:
 		for member in gr.opponents:
+			if !member.check_flags():
+				continue
 			if !battle_group["opp"].find_key(member.character):
 				var move_arr : Array[String]
 				battle_group["opp"][member.character.name] = {

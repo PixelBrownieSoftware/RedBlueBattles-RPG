@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://dppx8vsjor20t"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_x3v6f"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="2_an7rv"]
+[ext_resource type="Resource" uid="uid://t6j2xsd5p21d" path="res://data/groups/greenler/g_mid_battle_2.tres" id="2_n5odx"]
+[ext_resource type="Resource" uid="uid://cy1glv8o2vb22" path="res://data/levels/g_battle_3.tres" id="3_tmwgm"]
+
+[resource]
+script = ExtResource("2_an7rv")
+name = "Battle 2"
+battle_groups = Array[ExtResource("1_x3v6f")]([ExtResource("2_n5odx")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("2_an7rv")]([ExtResource("3_tmwgm")])
+battle_groups_remove = Array[ExtResource("2_an7rv")]([])
+type_battle = 1
+terminal = false
+terminal_scene = ""

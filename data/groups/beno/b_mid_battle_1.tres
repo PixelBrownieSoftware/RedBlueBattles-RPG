@@ -16,15 +16,15 @@
 script = ExtResource("1_m4f67")
 character = ExtResource("2_xh1t3")
 skills = Array[ExtResource("3_jbran")]([ExtResource("4_1pcle"), ExtResource("5_jnju4"), ExtResource("6_qwckg")])
-min_level = 2
-max_level = 5
+min_level = 5
+max_level = 7
 
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("1_m4f67")
 character = ExtResource("4_ujugj")
 skills = Array[ExtResource("3_jbran")]([ExtResource("7_rnli4"), ExtResource("8_ed3ed")])
-min_level = 3
-max_level = 5
+min_level = 5
+max_level = 7
 
 [resource]
 script = ExtResource("5_jarxi")

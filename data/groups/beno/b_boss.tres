@@ -21,6 +21,7 @@ character = ExtResource("1_d2q1l")
 skills = Array[ExtResource("3_y3t1s")]([ExtResource("4_5qlni"), ExtResource("5_8kgku")])
 min_level = 15
 max_level = 15
+inclusion_flag_requirements = Array[ExtResource("12_34ttg")]([])
 
 [sub_resource type="Resource" id="Resource_sa3n7"]
 script = ExtResource("2_tt5g3")
@@ -28,6 +29,7 @@ character = ExtResource("6_61bkv")
 skills = Array[ExtResource("3_y3t1s")]([ExtResource("7_frfw5")])
 min_level = 12
 max_level = 12
+inclusion_flag_requirements = Array[ExtResource("12_34ttg")]([])
 
 [sub_resource type="Resource" id="Resource_wmvn0"]
 script = ExtResource("2_tt5g3")
@@ -35,6 +37,7 @@ character = ExtResource("6_61bkv")
 skills = Array[ExtResource("3_y3t1s")]([ExtResource("8_vhby1"), ExtResource("9_a25tu")])
 min_level = 12
 max_level = 12
+inclusion_flag_requirements = Array[ExtResource("12_34ttg")]([])
 
 [sub_resource type="Resource" id="Resource_ocdq1"]
 script = ExtResource("12_34ttg")

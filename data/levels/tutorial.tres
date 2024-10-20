@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_lisdc"]
 [ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="2_7ja3h"]
 [ext_resource type="Resource" uid="uid://023p7lm5i3xw" path="res://data/groups/greenler/tutorial.tres" id="2_riy6a"]
-[ext_resource type="Resource" uid="uid://31ehoj45co5j" path="res://data/levels/battle_1.tres" id="4_6wc8x"]
+[ext_resource type="Resource" uid="uid://31ehoj45co5j" path="res://data/levels/g_battle_1.tres" id="4_pu74f"]
 
 [resource]
 script = ExtResource("2_7ja3h")
 name = "Tutorial"
 battle_groups = Array[ExtResource("1_lisdc")]([ExtResource("2_riy6a")])
 self_destruct_after_win = true
-battle_groups_unlock = Array[ExtResource("2_7ja3h")]([ExtResource("4_6wc8x")])
+battle_groups_unlock = Array[ExtResource("2_7ja3h")]([ExtResource("4_pu74f")])
 battle_groups_remove = Array[ExtResource("2_7ja3h")]([])
 type_battle = 1
+terminal = false
+terminal_scene = ""

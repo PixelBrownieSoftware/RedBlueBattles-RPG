@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=9 format=3 uid="uid://bimu2fhyultbt"]
+
+[ext_resource type="Resource" uid="uid://bhgpt6ai8y88a" path="res://data/groups/greenler/g_boss.tres" id="2_kn4ya"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="2_u1m7w"]
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="3_7pknc"]
+[ext_resource type="Resource" uid="uid://b3rxlsb1stal5" path="res://data/levels/g_easy_battle.tres" id="4_nntuf"]
+[ext_resource type="Resource" uid="uid://cyh3nbarfxkjg" path="res://data/levels/g_medium_battle.tres" id="5_cwvaf"]
+[ext_resource type="Resource" uid="uid://chtcg6bm8xavr" path="res://data/levels/g_hard_battle.tres" id="6_x55i8"]
+[ext_resource type="Resource" uid="uid://ot8ekjudyhrs" path="res://data/levels/b_battle_1.tres" id="7_3udeq"]
+[ext_resource type="Resource" uid="uid://baa06lvmmumsu" path="res://data/levels/b_easy_battle.tres" id="8_q6dgg"]
+
+[resource]
+script = ExtResource("2_u1m7w")
+name = "Greenler boss"
+battle_groups = Array[ExtResource("3_7pknc")]([ExtResource("2_kn4ya")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("2_u1m7w")]([ExtResource("7_3udeq"), ExtResource("8_q6dgg")])
+battle_groups_remove = Array[ExtResource("2_u1m7w")]([ExtResource("4_nntuf"), ExtResource("5_cwvaf"), ExtResource("6_x55i8")])
+type_battle = 0
+terminal = false
+terminal_scene = ""

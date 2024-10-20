@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=4 format=3 uid="uid://bsi7ll02awhgw"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_vv532"]
+[ext_resource type="Resource" uid="uid://b28wvrjcfr86c" path="res://data/groups/malculus/ml_hard_battle_1.tres" id="2_cp4lj"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_fj3gv"]
+
+[resource]
+script = ExtResource("3_fj3gv")
+name = "Hard fight"
+battle_groups = Array[ExtResource("1_vv532")]([ExtResource("2_cp4lj")])
+self_destruct_after_win = false
+battle_groups_unlock = Array[ExtResource("3_fj3gv")]([])
+battle_groups_remove = Array[ExtResource("3_fj3gv")]([])
+type_battle = 3

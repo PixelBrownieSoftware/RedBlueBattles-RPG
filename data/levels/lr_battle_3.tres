@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=6 format=3 uid="uid://nsbpu872dnve"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_gghbt"]
+[ext_resource type="Resource" uid="uid://c6yyfxfvklape" path="res://data/groups/lord red/lr_hard_battle_2.tres" id="2_owj6c"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_jqswk"]
+[ext_resource type="Resource" uid="uid://dehiaobxjje38" path="res://data/levels/lr_boss.tres" id="4_dfqr7"]
+[ext_resource type="Resource" uid="uid://dvc5ylpfniej4" path="res://data/levels/anne_unlock.tres" id="5_dq456"]
+
+[resource]
+script = ExtResource("3_jqswk")
+name = "Battle 9"
+battle_groups = Array[ExtResource("1_gghbt")]([ExtResource("2_owj6c")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("3_jqswk")]([ExtResource("4_dfqr7"), ExtResource("5_dq456")])
+battle_groups_remove = Array[ExtResource("3_jqswk")]([])
+type_battle = 1
+terminal = false
+terminal_scene = ""

@@ -13,3 +13,5 @@ self_destruct_after_win = false
 battle_groups_unlock = Array[ExtResource("2_0d4o4")]([])
 battle_groups_remove = Array[ExtResource("2_0d4o4")]([])
 type_battle = 3
+terminal = false
+terminal_scene = ""

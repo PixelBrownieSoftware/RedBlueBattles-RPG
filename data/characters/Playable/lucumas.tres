@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=25 format=3 uid="uid://bb361jvdkwlrf"]
+
+[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_6bv8w"]
+[ext_resource type="Script" path="res://src/battle_character_behaviour.gd" id="2_ffb7m"]
+[ext_resource type="Script" path="res://src/element_affinity.gd" id="3_2g2pb"]
+[ext_resource type="Script" path="res://src/elemental_potential.gd" id="4_xvxqd"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="5_2e27j"]
+[ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="6_p8yc6"]
+[ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="7_7iot2"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="8_x0iy1"]
+[ext_resource type="Script" path="res://src/battle_character_base.gd" id="9_xdhtv"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="10_0jubc"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="11_la8vi"]
+[ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/Skills/Fire/ember.tres" id="12_q4k6o"]
+[ext_resource type="Resource" uid="uid://dwvgi77b2bucx" path="res://data/Skills/Fire/red_bash.tres" id="13_bprcb"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="14_q46f0"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="15_1seif"]
+
+[sub_resource type="Resource" id="Resource_nocvp"]
+script = ExtResource("1_6bv8w")
+behaviouir_conditions = Array[ExtResource("2_ffb7m")]([])
+condition = 2
+
+[sub_resource type="Resource" id="Resource_o3g53"]
+script = ExtResource("3_2g2pb")
+elementalName = "Fire"
+affinity = 0.5
+
+[sub_resource type="Resource" id="Resource_ng7tn"]
+script = ExtResource("3_2g2pb")
+elementalName = "Ice"
+affinity = 2.0
+
+[sub_resource type="Resource" id="Resource_fnsma"]
+script = ExtResource("4_xvxqd")
+elemental = ExtResource("5_2e27j")
+potential = 3
+
+[sub_resource type="Resource" id="Resource_kj2vm"]
+script = ExtResource("4_xvxqd")
+elemental = ExtResource("6_p8yc6")
+potential = -2
+
+[sub_resource type="Resource" id="Resource_6a2tl"]
+script = ExtResource("4_xvxqd")
+elemental = ExtResource("7_7iot2")
+potential = -1
+
+[sub_resource type="Resource" id="Resource_5313a"]
+script = ExtResource("4_xvxqd")
+elemental = ExtResource("8_x0iy1")
+potential = 1
+
+[sub_resource type="Resource" id="Resource_yt1im"]
+script = ExtResource("14_q46f0")
+health_min = 4
+health_max = 3
+strength = 0.52
+vitality = 0.4
+magic_pow = 0.35
+dexterity = 0.35
+agility = 0.37
+luck = 0.3
+
+[sub_resource type="Resource" id="Resource_h63ju"]
+script = ExtResource("15_1seif")
+strength = 3
+vitality = 3
+magic_pow = 3
+dexterity = 2
+agility = 1
+luck = 2
+
+[resource]
+script = ExtResource("9_xdhtv")
+name = "Lucumas"
+health = 45
+stamina = 10
+stamina_increase_levels = Array[int]([])
+base_exp_score = 50
+base_exp_to_NL = 328
+exp_req_multipler = 1.35
+stats = SubResource("Resource_h63ju")
+stat_increase = SubResource("Resource_yt1im")
+skills = Array[ExtResource("10_0jubc")]([ExtResource("11_la8vi"), ExtResource("12_q4k6o"), ExtResource("13_bprcb")])
+behaviour = Array[ExtResource("1_6bv8w")]([SubResource("Resource_nocvp")])
+elemental_affinities = Array[ExtResource("3_2g2pb")]([SubResource("Resource_o3g53"), SubResource("Resource_ng7tn")])
+elemental_potential = Array[ExtResource("4_xvxqd")]([SubResource("Resource_fnsma"), SubResource("Resource_kj2vm"), SubResource("Resource_6a2tl"), SubResource("Resource_5313a")])
+character_colour = Color(0.564706, 0.160784, 0.529412, 1)
+animation_player_loc = "sprite_redler"
+click_circle_radius = 20.0
+turns = 2

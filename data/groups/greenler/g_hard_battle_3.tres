@@ -1,28 +1,43 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://b5kkykiffgsmm"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=16 format=3 uid="uid://b5kkykiffgsmm"]
 
 [ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_vc010"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_1hlna"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="2_3f3uy"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_b7qsy"]
-[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_bnadn"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_mxnkm"]
 [ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/Skills/Force/oily_punch.tres" id="5_o4j7r"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="6_vy2d7"]
+[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="7_p7nh3"]
+[ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="8_65bmw"]
+[ext_resource type="Resource" uid="uid://bi4wxsbbe53pp" path="res://data/Skills/Strike/wet_slash.tres" id="8_qpe0i"]
+[ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="9_p1084"]
+[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="10_r7itp"]
 
 [sub_resource type="Resource" id="Resource_dsucs"]
 script = ExtResource("1_vc010")
 character = ExtResource("2_1hlna")
 skills = Array[ExtResource("3_b7qsy")]([ExtResource("5_o4j7r")])
 min_level = 7
-max_level = 7
+max_level = 8
+inclusion_flag_requirements = Array[ExtResource("3_mxnkm")]([])
 
-[sub_resource type="Resource" id="Resource_63c3t"]
+[sub_resource type="Resource" id="Resource_wt4mt"]
 script = ExtResource("1_vc010")
-character = ExtResource("2_1hlna")
-skills = Array[ExtResource("3_b7qsy")]([ExtResource("4_bnadn")])
-min_level = 6
-max_level = 7
+character = ExtResource("7_p7nh3")
+skills = Array[ExtResource("3_b7qsy")]([ExtResource("8_qpe0i")])
+min_level = 7
+max_level = 8
+inclusion_flag_requirements = Array[ExtResource("3_mxnkm")]([])
+
+[sub_resource type="Resource" id="Resource_0h073"]
+script = ExtResource("1_vc010")
+character = ExtResource("8_65bmw")
+skills = Array[ExtResource("3_b7qsy")]([ExtResource("9_p1084"), ExtResource("10_r7itp")])
+min_level = 7
+max_level = 8
+inclusion_flag_requirements = Array[ExtResource("3_mxnkm")]([])
 
 [resource]
 script = ExtResource("2_3f3uy")
-opponents = Array[ExtResource("1_vc010")]([SubResource("Resource_dsucs"), SubResource("Resource_63c3t")])
+opponents = Array[ExtResource("1_vc010")]([SubResource("Resource_dsucs"), SubResource("Resource_wt4mt"), SubResource("Resource_0h073")])
 rewards = Array[ExtResource("6_vy2d7")]([])

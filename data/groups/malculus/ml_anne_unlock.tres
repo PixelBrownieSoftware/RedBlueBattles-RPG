@@ -22,15 +22,17 @@
 script = ExtResource("1_xamvb")
 character = ExtResource("2_1c47u")
 skills = Array[ExtResource("3_vg4cl")]([ExtResource("4_7cj3l"), ExtResource("5_8l83x"), ExtResource("6_enq4w"), ExtResource("7_kh0br"), ExtResource("8_2kdm7")])
-min_level = 13
-max_level = 13
+min_level = 29
+max_level = 29
+inclusion_flag_requirements = Array[ExtResource("13_ft2d2")]([])
 
 [sub_resource type="Resource" id="Resource_xidnj"]
 script = ExtResource("1_xamvb")
 character = ExtResource("9_th3li")
 skills = Array[ExtResource("3_vg4cl")]([ExtResource("10_i3uae"), ExtResource("11_reyws")])
-min_level = 13
-max_level = 13
+min_level = 29
+max_level = 29
+inclusion_flag_requirements = Array[ExtResource("13_ft2d2")]([])
 
 [sub_resource type="Resource" id="Resource_buc28"]
 script = ExtResource("13_ft2d2")

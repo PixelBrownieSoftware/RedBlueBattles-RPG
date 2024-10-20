@@ -27,7 +27,7 @@ func reset_multipiler():
 	"lord_red_defeated" : false,
 	"malculus_defeated" : false,
 	"greendori_defeated" : false,
-	"daleth_defeated" : false,
+	"buckler_unlocked" : false,
 	"blueler_unlocked" : false,
 	"anne_unlocked" : false
 }	#string and bool
@@ -54,7 +54,7 @@ func _ready():
 	else:
 		elements = DirAccess.get_files_at("res://data/elements/")
 		for element_obj in elements:
-			print(element_obj)
+			#print(element_obj)
 			var el : element = ResourceLoader.load("res://data/elements/" + unfuck_file_name(element_obj))
 			element_lookup[el.name] = el
 	load_all_skills()
@@ -80,14 +80,14 @@ func unfuck_file_name(file_name : String) -> String:
 func load_all_levels():
 	var levels = DirAccess.get_files_at("res://data/levels/")
 	for level_name in levels:
-		print(level_name)
+		#print(level_name)
 		var level : battle_level_group = ResourceLoader.load("res://data/levels/" + unfuck_file_name(level_name))
 		#status_effect_lookup[status.name] = status
 			
 func load_all_status():
 	var status_effects = DirAccess.get_files_at("res://data/status effects/")
 	for status_name in status_effects:
-		print(status_name)
+		#print(status_name)
 		var status : status_effect = ResourceLoader.load("res://data/status effects/" + unfuck_file_name(status_name))
 		status_effect_lookup[status.name] = status
 					
@@ -101,8 +101,8 @@ func load_all_skills():
 			var move : rpg_skill = ResourceLoader.load(loc)
 			var uid = ResourceLoader.get_resource_uid(loc_OG)
 			skill_uid_lookup[move.name] = uid
-			print("Filename " + "res://data/Skills/" + folder + "/" + unfuck_file_name(move_name))
-			print("Loaded skill ID: " + str(skill_uid_lookup[move.name]))
+			#print("Filename " + "res://data/Skills/" + folder + "/" + unfuck_file_name(move_name))
+			#print("Loaded skill ID: " + str(skill_uid_lookup[move.name]))
 			
 
 func load_all_charcters():
@@ -114,7 +114,7 @@ func load_all_charcters():
 			var character : battle_character_base = ResourceLoader.load(loc)
 			#print(str(ResourceLoader.get_resource_uid(loc)))
 			character_uid_lookup[character.name] = ResourceLoader.get_resource_uid(loc)
-			print("Looaded character ID: " + str(character_uid_lookup[character.name]))
+			#print("Looaded character ID: " + str(character_uid_lookup[character.name]))
 		
 
 func get_element(element_name : String):

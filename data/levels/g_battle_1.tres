@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=7 format=3 uid="uid://31ehoj45co5j"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_rdt2n"]
+[ext_resource type="Resource" uid="uid://dwuivec0bu3ha" path="res://data/groups/greenler/g_easy_battle_1.tres" id="2_knegw"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_5kl4x"]
+[ext_resource type="Resource" uid="uid://b3rxlsb1stal5" path="res://data/levels/g_easy_battle.tres" id="4_b4540"]
+[ext_resource type="Resource" uid="uid://cyh3nbarfxkjg" path="res://data/levels/g_medium_battle.tres" id="5_xi1sw"]
+[ext_resource type="Resource" uid="uid://dppx8vsjor20t" path="res://data/levels/g_battle_2.tres" id="6_61jtt"]
+
+[resource]
+script = ExtResource("3_5kl4x")
+name = "Battle 1"
+battle_groups = Array[ExtResource("1_rdt2n")]([ExtResource("2_knegw")])
+self_destruct_after_win = true
+battle_groups_unlock = Array[ExtResource("3_5kl4x")]([ExtResource("4_b4540"), ExtResource("5_xi1sw"), ExtResource("6_61jtt")])
+battle_groups_remove = Array[ExtResource("3_5kl4x")]([])
+type_battle = 1
+terminal = false
+terminal_scene = ""

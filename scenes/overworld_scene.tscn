@@ -1943,11 +1943,11 @@ offset_bottom = 62.68
 custom_minimum_size = Vector2(1105, 533.225)
 layout_mode = 2
 theme = ExtResource("7_7jsww")
-current_tab = 1
+current_tab = 0
 
 [node name="Stats" type="TabBar" parent="MainMenu/PartyMemberMenu/StatsStuff/PartyMember"]
-visible = false
 layout_mode = 2
+theme = ExtResource("7_7jsww")
 metadata/_tab_index = 0
 
 [node name="StatsOrder" type="HBoxContainer" parent="MainMenu/PartyMemberMenu/StatsStuff/PartyMember/Stats"]
@@ -2138,7 +2138,9 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
 [node name="Extra skills" type="TabBar" parent="MainMenu/PartyMemberMenu/StatsStuff/PartyMember"]
+visible = false
 layout_mode = 2
+theme = ExtResource("7_7jsww")
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/PartyMemberMenu/StatsStuff/PartyMember/Extra skills"]
@@ -2196,6 +2198,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Equip skill" type="Button" parent="MainMenu/PartyMemberMenu/StatsStuff/PartyMember/Extra skills/HBoxContainer/MoveDesc/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 text = "Assign"
 

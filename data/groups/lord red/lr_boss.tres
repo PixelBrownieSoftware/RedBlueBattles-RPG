@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=19 format=3 uid="uid://ck8pds420p0t0"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=25 format=3 uid="uid://ck8pds420p0t0"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_flh4k"]
 [ext_resource type="Resource" uid="uid://d4d5i5yhsjaxb" path="res://data/characters/Bosses/lord_red.tres" id="1_lranj"]
@@ -11,14 +11,43 @@
 [ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="7_74dqu"]
 [ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_extra_skill_count.gd" id="7_o6q85"]
 [ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="8_2xwom"]
+[ext_resource type="Resource" uid="uid://cmfai7ydcxm8h" path="res://data/characters/Playable/buckler.tres" id="9_dvw6d"]
 [ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_change_flag.gd" id="9_xy2tp"]
+[ext_resource type="Resource" uid="uid://divek06ecodu1" path="res://data/characters/Playable/greendori.tres" id="10_voqlb"]
 
 [sub_resource type="Resource" id="Resource_2rbxt"]
 script = ExtResource("2_ot5lq")
 character = ExtResource("1_lranj")
 skills = Array[ExtResource("3_yc5v0")]([ExtResource("4_uqivm"), ExtResource("5_ndpvh"), ExtResource("6_aiag3"), ExtResource("7_74dqu")])
-min_level = 15
-max_level = 15
+min_level = 25
+max_level = 25
+inclusion_flag_requirements = Array[ExtResource("8_2xwom")]([])
+
+[sub_resource type="Resource" id="Resource_rtdko"]
+script = ExtResource("8_2xwom")
+name = "buckler_unlocked"
+flag = false
+
+[sub_resource type="Resource" id="Resource_dv5ip"]
+script = ExtResource("2_ot5lq")
+character = ExtResource("9_dvw6d")
+skills = Array[ExtResource("3_yc5v0")]([])
+min_level = 23
+max_level = 23
+inclusion_flag_requirements = Array[ExtResource("8_2xwom")]([SubResource("Resource_rtdko")])
+
+[sub_resource type="Resource" id="Resource_cxm1p"]
+script = ExtResource("8_2xwom")
+name = "greendori_defeated"
+flag = false
+
+[sub_resource type="Resource" id="Resource_dmvyj"]
+script = ExtResource("2_ot5lq")
+character = ExtResource("10_voqlb")
+skills = Array[ExtResource("3_yc5v0")]([])
+min_level = 23
+max_level = 23
+inclusion_flag_requirements = Array[ExtResource("8_2xwom")]([SubResource("Resource_cxm1p")])
 
 [sub_resource type="Resource" id="Resource_kngdt"]
 script = ExtResource("8_2xwom")
@@ -46,5 +75,5 @@ flag_req = SubResource("Resource_bxx11")
 
 [resource]
 script = ExtResource("1_flh4k")
-opponents = Array[ExtResource("2_ot5lq")]([SubResource("Resource_2rbxt")])
+opponents = Array[ExtResource("2_ot5lq")]([SubResource("Resource_2rbxt"), SubResource("Resource_dv5ip"), SubResource("Resource_dmvyj")])
 rewards = Array[ExtResource("6_uexpp")]([SubResource("Resource_b3xev"), SubResource("Resource_7w5ij")])
