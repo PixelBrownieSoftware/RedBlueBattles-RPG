@@ -1,5 +1,5 @@
 extends Node
-var save_path = OS.get_user_data_dir() + "/save.rbb"
+var save_path = OS.get_user_data_dir() + "/Pixel Brownie Software/RedBlueBattles/save.rbb"
 
 func save_game():
 	print(save_path)
