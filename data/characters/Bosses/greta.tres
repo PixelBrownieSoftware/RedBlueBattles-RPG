@@ -1,34 +1,65 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://d0yqr5txk5fat"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=26 format=3 uid="uid://d0yqr5txk5fat"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_t4rho"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_vwyw1"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_dym0v"]
-[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_f6e3g"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="2_gxco0"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_qjt1d"]
+[ext_resource type="Script" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_w0udc"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_k1h7g"]
 [ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="3_kml5k"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="5_mfh57"]
+[ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="5_xbwg7"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="6_xghph"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="7_lm312"]
+[ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="8_gkwah"]
+[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="9_b7k2q"]
+[ext_resource type="Resource" uid="uid://dbtg8tardrxav" path="res://data/Skills/Ice/ice_fist.tres" id="13_dh17i"]
 
 [sub_resource type="Resource" id="Resource_e38ie"]
 script = ExtResource("2_dym0v")
 elementalName = "Peirce"
-affinity = 2.0
+affinity = 1.2
 
 [sub_resource type="Resource" id="Resource_hr3cb"]
 script = ExtResource("2_dym0v")
 elementalName = "Fire"
-affinity = 0.5
+affinity = 2.0
 
 [sub_resource type="Resource" id="Resource_skvmx"]
 script = ExtResource("2_dym0v")
 elementalName = "Ice"
 affinity = 0.0
 
+[sub_resource type="Resource" id="Resource_iugk0"]
+script = ExtResource("3_k1h7g")
+elemental = ExtResource("5_xbwg7")
+potential = 4
+
+[sub_resource type="Resource" id="Resource_i0lsi"]
+script = ExtResource("3_k1h7g")
+elemental = ExtResource("6_xghph")
+potential = 2
+
+[sub_resource type="Resource" id="Resource_72fjv"]
+script = ExtResource("3_k1h7g")
+elemental = ExtResource("7_lm312")
+potential = 1
+
+[sub_resource type="Resource" id="Resource_d0uy7"]
+script = ExtResource("3_k1h7g")
+elemental = ExtResource("8_gkwah")
+potential = -2
+
+[sub_resource type="Resource" id="Resource_ryxh7"]
+script = ExtResource("3_k1h7g")
+elemental = ExtResource("9_b7k2q")
+potential = 3
+
 [sub_resource type="Resource" id="Resource_lmoca"]
 script = ExtResource("2_qjt1d")
-health_min = 2
-health_max = 3
+health_min = 4
+health_max = 4
 strength = 0.1
 vitality = 0.32
 magic_pow = 0.795
@@ -38,12 +69,12 @@ luck = 0.5
 
 [sub_resource type="Resource" id="Resource_xlw38"]
 script = ExtResource("2_gxco0")
-strength = 1
-vitality = 1
-magic_pow = 1
-dexterity = 1
-agility = 1
-luck = 1
+strength = 2
+vitality = 3
+magic_pow = 5
+dexterity = 2
+agility = 2
+luck = 3
 
 [resource]
 script = ExtResource("1_vwyw1")
@@ -56,10 +87,11 @@ base_exp_to_NL = 50
 exp_req_multipler = 1.2
 stats = SubResource("Resource_xlw38")
 stat_increase = SubResource("Resource_lmoca")
-skills = Array[ExtResource("5_mfh57")]([ExtResource("2_f6e3g"), ExtResource("3_kml5k")])
+skills = Array[ExtResource("5_mfh57")]([ExtResource("3_kml5k"), ExtResource("13_dh17i")])
 behaviour = Array[ExtResource("1_t4rho")]([])
+chara_behaviour = Array[ExtResource("2_w0udc")]([])
 elemental_affinities = Array[ExtResource("2_dym0v")]([SubResource("Resource_e38ie"), SubResource("Resource_hr3cb"), SubResource("Resource_skvmx")])
-elemental_potential = Array[ExtResource("3_k1h7g")]([])
+elemental_potential = Array[ExtResource("3_k1h7g")]([SubResource("Resource_iugk0"), SubResource("Resource_i0lsi"), SubResource("Resource_72fjv"), SubResource("Resource_d0uy7"), SubResource("Resource_ryxh7")])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_greendori"
 click_circle_radius = 20.0

@@ -15,3 +15,4 @@ battle_groups_remove = Array[ExtResource("3_cgunj")]([ExtResource("4_scss3")])
 type_battle = 0
 terminal = true
 terminal_scene = "res://scenes/end_scene.tscn"
+colour_BG = Color(0.705882, 0.470588, 0.470588, 1)

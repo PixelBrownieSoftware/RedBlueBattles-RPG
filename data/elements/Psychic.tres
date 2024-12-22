@@ -15,7 +15,7 @@ vitality = 0.0
 magic_pow = 0.8
 dexterity = 0.0
 agility = 0.0
-luck = 0.3
+luck = 0.2
 
 [resource]
 script = ExtResource("1_nj2ca")

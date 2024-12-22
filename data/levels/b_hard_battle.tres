@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://dp71rolota87m"]
+
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_7m6qx"]
+[ext_resource type="Resource" uid="uid://blfjp3c2qq664" path="res://data/groups/beno/b_hard_battle_1.tres" id="2_rxuan"]
+[ext_resource type="Resource" uid="uid://dgvcce2f434u4" path="res://data/groups/beno/b_hard_battle_2.tres" id="3_6p325"]
+[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="4_4ipjo"]
+
+[resource]
+script = ExtResource("4_4ipjo")
+name = "Hard battle"
+battle_groups = Array[ExtResource("1_7m6qx")]([ExtResource("2_rxuan"), ExtResource("3_6p325")])
+self_destruct_after_win = false
+battle_groups_unlock = Array[ExtResource("4_4ipjo")]([])
+battle_groups_remove = Array[ExtResource("4_4ipjo")]([])
+type_battle = 3
+terminal = false
+terminal_scene = ""
+colour_BG = Color(0.47451, 0.321569, 0.388235, 1)

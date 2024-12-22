@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=10 format=3 uid="uid://dqnlpi4jpmla8"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://dqnlpi4jpmla8"]
 
 [ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_14hhr"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_45tpr"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_s8tpg"]
 [ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="2_yv4n1"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_aihp7"]
+
+[sub_resource type="Resource" id="Resource_w6spu"]
+script = ExtResource("2_cn71c")
+skill_animation = 2
+time_amount = -1.0
+animation_name = "attack"
 
 [sub_resource type="Resource" id="Resource_ffy0w"]
 script = ExtResource("2_cn71c")
@@ -39,7 +45,7 @@ repeat_max = 1
 stat_requirement = SubResource("Resource_mu8yo")
 skill_scope = 1
 skill_element = ExtResource("2_yv4n1")
-skill_animation = Array[ExtResource("2_cn71c")]([SubResource("Resource_ffy0w"), SubResource("Resource_81xe2")])
+skill_animation = Array[ExtResource("2_cn71c")]([SubResource("Resource_w6spu"), SubResource("Resource_ffy0w"), SubResource("Resource_81xe2")])
 usable_by_anyone = false
 effects_to_remove = Array[ExtResource("2_s8tpg")]([])
 effects_to_add = Array[ExtResource("1_14hhr")]([])

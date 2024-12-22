@@ -18,6 +18,8 @@ func start_state():
 	match battle_globals.final_press_turn_flag:
 		PRESS_TURN.PT.NORMAL:
 			use_turn()
+		PRESS_TURN.PT.WEAK_LUCKY:
+			exploit_weakness()
 		PRESS_TURN.PT.LUCKY:
 			exploit_weakness()
 		PRESS_TURN.PT.WEAK:

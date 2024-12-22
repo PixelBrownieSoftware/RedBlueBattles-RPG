@@ -13,17 +13,19 @@
 script = ExtResource("2_tixb4")
 character = ExtResource("1_ee8v1")
 skills = Array[ExtResource("3_q8c2b")]([ExtResource("4_f5txn")])
-min_level = 2
-max_level = 3
+min_level = 1
+max_level = 2
 inclusion_flag_requirements = Array[ExtResource("3_hf8cj")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("2_tixb4")
 character = ExtResource("4_wheg1")
 skills = Array[ExtResource("3_q8c2b")]([])
 min_level = 1
-max_level = 3
+max_level = 2
 inclusion_flag_requirements = Array[ExtResource("3_hf8cj")]([])
+perma_death = false
 
 [resource]
 script = ExtResource("3_8uw7l")

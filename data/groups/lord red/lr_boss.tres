@@ -22,6 +22,7 @@ skills = Array[ExtResource("3_yc5v0")]([ExtResource("4_uqivm"), ExtResource("5_n
 min_level = 25
 max_level = 25
 inclusion_flag_requirements = Array[ExtResource("8_2xwom")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_rtdko"]
 script = ExtResource("8_2xwom")
@@ -35,6 +36,7 @@ skills = Array[ExtResource("3_yc5v0")]([])
 min_level = 23
 max_level = 23
 inclusion_flag_requirements = Array[ExtResource("8_2xwom")]([SubResource("Resource_rtdko")])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_cxm1p"]
 script = ExtResource("8_2xwom")
@@ -48,6 +50,7 @@ skills = Array[ExtResource("3_yc5v0")]([])
 min_level = 23
 max_level = 23
 inclusion_flag_requirements = Array[ExtResource("8_2xwom")]([SubResource("Resource_cxm1p")])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_kngdt"]
 script = ExtResource("8_2xwom")

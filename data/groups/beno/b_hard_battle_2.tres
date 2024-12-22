@@ -20,6 +20,7 @@ skills = Array[ExtResource("3_qss76")]([ExtResource("4_nd5eh"), ExtResource("5_d
 min_level = 9
 max_level = 9
 inclusion_flag_requirements = Array[ExtResource("3_376ah")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("1_hahtb")
@@ -28,6 +29,7 @@ skills = Array[ExtResource("3_qss76")]([ExtResource("7_r42ei"), ExtResource("6_q
 min_level = 9
 max_level = 9
 inclusion_flag_requirements = Array[ExtResource("3_376ah")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_jchnv"]
 script = ExtResource("1_hahtb")
@@ -36,6 +38,7 @@ skills = Array[ExtResource("3_qss76")]([ExtResource("5_dny87")])
 min_level = 9
 max_level = 9
 inclusion_flag_requirements = Array[ExtResource("3_376ah")]([])
+perma_death = false
 
 [resource]
 script = ExtResource("5_5ny3l")

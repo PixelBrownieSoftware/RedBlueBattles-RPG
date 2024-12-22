@@ -2,6 +2,7 @@ extends Node
 class_name global_variables
 
 @export var debug_mode : bool = false
+@export var auto_player : bool = false
 @export var expereince_score : int = 0
 var multilplier: float = 1
 var extra_skills_limit = 3
@@ -100,7 +101,8 @@ func load_all_skills():
 			var loc_OG = "res://data/Skills/" + folder + "/" + move_name
 			var move : rpg_skill = ResourceLoader.load(loc)
 			var uid = ResourceLoader.get_resource_uid(loc_OG)
-			skill_uid_lookup[move.name] = uid
+			var mov_name = move_name.replace(".tres", "")
+			skill_uid_lookup[mov_name] = uid
 			#print("Filename " + "res://data/Skills/" + folder + "/" + unfuck_file_name(move_name))
 			#print("Loaded skill ID: " + str(skill_uid_lookup[move.name]))
 			
@@ -112,8 +114,9 @@ func load_all_charcters():
 		for character_name in characters:
 			var loc = "res://data/characters/" + folder + "/" + unfuck_file_name(character_name)
 			var character : battle_character_base = ResourceLoader.load(loc)
+			var chara_name = character_name.replace(".tres", "")
 			#print(str(ResourceLoader.get_resource_uid(loc)))
-			character_uid_lookup[character.name] = ResourceLoader.get_resource_uid(loc)
+			character_uid_lookup[chara_name] = ResourceLoader.get_resource_uid(loc)
 			#print("Looaded character ID: " + str(character_uid_lookup[character.name]))
 		
 
@@ -151,12 +154,14 @@ func add_extra_skill(skill : rpg_skill) -> bool:
 	print(extra_skills.size())
 	return false
 
-#func get_all_chara_exsk(chara : battle_character_data) -> Array[rpg_skill]:
-	#var skills : Array[rpg_skill] 
-	#for skill in extra_skills:
-		#if extra_skills[skill] == chara:
-			#skills.append(skill)		
-	#return skills
+func get_permadeath_characters(group):
+	group = get_characters(group)
+	var permadeath_characters : Array[battle_character_data]
+	for character in group.get_children():
+		if character.is_permadeath:
+			permadeath_characters.append(character)
+	return permadeath_characters
+
 func get_characters(group):
 	if group != PartyMembers:
 		return group.get_children()

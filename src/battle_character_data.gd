@@ -1,6 +1,7 @@
 extends Node
 class_name battle_character_data
 const divider : float = 8.4
+@export var is_permadeath : bool = false
 @export var current_level : int = 1
 @export var expereince_to_NL : int = 1
 
@@ -217,6 +218,7 @@ func get_element_potential_modifiers(skill :rpg_skill):
 	modifiers["damage_multipler"] = 1.0
 	modifiers["requirement_discount"] = 0
 	var potential = get_elemental_potential(skill.skill_element)
+	#gonna have to make this a resource object
 	match potential:
 		6:
 			modifiers["stamina_discount"] = -3
@@ -301,7 +303,14 @@ func apply_status_effects(effects : Array[status_effect_chance]):
 						increase_multiplier.emit(0.25)
 				await get_tree().create_timer(0.5).timeout
 				print(name + " got " + status.status.name)
-			
+	
+func remove_all_status_effects():
+	for status in status_effects:
+		var status_found = status_effects.rfind(status)
+		if status_found != -1:
+			remove_status_effect.emit(status_found)
+			status_effects.remove_at(status_found)
+					
 func remove_status_effects(effects : Array[status_effect]):
 	for status in effects:
 		var status_found = status_effects.rfind(status)
@@ -328,11 +337,16 @@ func stat_chance(user_val : int, targ_val : int, connect_max : float):
 
 func damage(dmg : int):
 	health -= dmg
-	put_damage_numbers.emit(null, self, dmg, calculated_Press_Turn)
+	#a sneaky hack
+	if calculated_Press_Turn != PRESS_TURN.PT.LUCKY:
+		put_damage_numbers.emit(null, self, dmg, calculated_Press_Turn)
 	play_damage.emit()
 	health = clampi(health,-999 , max_health)
 	if health <= 0:
 		defeat_event.emit()
+		remove_all_status_effects()
+		if is_permadeath:
+			queue_free()
 	
 func change_stamina(dmg : int):
 	stamina += dmg

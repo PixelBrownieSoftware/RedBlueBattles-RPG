@@ -16,8 +16,7 @@ class_name battle_variables
 @export var all_actors : Array[battle_character_actor]:
 	get:
 		var returned_actors : Array[battle_character_actor]
-		returned_actors.append_array(($"../BattleActors/PartyMemberActors".get_children() as Array[battle_character_actor]))
-		returned_actors.append_array(($"../BattleActors/EnemyMemberActors".get_children() as Array[battle_character_actor]))
+		returned_actors.append_array(($"../BattleActors/Actors".get_children() as Array[battle_character_actor]))
 		return returned_actors
 
 func get_actor(char_data : battle_character_data) -> battle_character_actor:

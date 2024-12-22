@@ -55,12 +55,17 @@ func get_desc(chara : battle_character_data) -> String:
 	desc +="\n"
 	return desc
 
+func get_all_status_inflicts():
+	pass
+func get_all_status_effects():
+	var status_array : Array[status_effect]
+	for status in effects_to_add:
+		status_array.append(status.status)
+	for status in skill_element.effects_to_add:
+		status_array.append(status.status)
+	return status_array
 
-func process_damage(attacker: battle_character_data, target: battle_character_data):
-	var calculated_Press_Turn
-	var return_val = {}
-	var damage_amount : int
-	
+func damage_formula(attacker: battle_character_data, target: battle_character_data) -> int:
 	var modifiers = attacker.get_element_potential_modifiers(self)
 	print("Multiplier " + str(modifiers["damage_multipler"]))
 	
@@ -71,8 +76,14 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 	var dex = (attacker.dexterity_net * skill_element.stats.dexterity)
 	var luc = (attacker.luck_net * skill_element.stats.luck)
 	var stat_element = ((str+ dex + luc + agi + mag + vit)/6) * (power)
-	
-	damage_amount = ((stat_element * power) / target.vitality_net) * modifiers["damage_multipler"]
+	var elem_aff = target.get_elemental_affinity(skill_element)
+	return (((stat_element * power) / target.vitality_net ) * modifiers["damage_multipler"]) * elem_aff
+
+func process_damage(attacker: battle_character_data, target: battle_character_data):
+	var calculated_Press_Turn
+	var return_val = {}
+	var damage_amount : int = damage_formula(attacker, target)
+
 	var dodge_chance : float = attacker.dexterity_net
 	var will_hit = target.stat_chance(attacker.dexterity_net, target.agility_net, 0.95)
 	
@@ -91,15 +102,18 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 	if calculated_PT < PRESS_TURN.PT.VOID:
 		if is_lucky && el_affinity >= 1:
 			damage_amount *= 1.4
-			calculated_PT = PRESS_TURN.PT.LUCKY
-			target.put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
+			if calculated_PT == PRESS_TURN.PT.WEAK:
+				calculated_PT = PRESS_TURN.PT.WEAK_LUCKY
+			else:
+				calculated_PT = PRESS_TURN.PT.LUCKY
+			#target.put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
 	if power == 0 || skill_element.name == "None":	#crude assumption of status move
 		will_hit = 99
 		calculated_PT = PRESS_TURN.PT.NORMAL
 	if !will_hit:
 		damage_amount = 0
 		calculated_PT = PRESS_TURN.PT.MISS
-		target.put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
+		#target.put_damage_numbers.emit(attacker, self, damage_amount, calculated_PT)
 	else:
 		if calculated_PT != PRESS_TURN.PT.VOID:
 			status_apply(target)

@@ -19,6 +19,7 @@ skills = Array[ExtResource("3_t47q2")]([ExtResource("4_geol8"), ExtResource("5_5
 min_level = 11
 max_level = 11
 inclusion_flag_requirements = Array[ExtResource("8_d11w2")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_3qdlp"]
 script = ExtResource("8_d11w2")
@@ -28,6 +29,7 @@ flag = false
 [sub_resource type="Resource" id="Resource_ahgdp"]
 script = ExtResource("9_cwhro")
 character = ExtResource("7_7qiyk")
+level = 1
 flag_req = SubResource("Resource_3qdlp")
 
 [sub_resource type="Resource" id="Resource_mtbkt"]

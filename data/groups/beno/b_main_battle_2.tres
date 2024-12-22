@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=13 format=3 uid="uid://cpuu8b5ixkvla"]
+
+[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_hdu6g"]
+[ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="2_61ogc"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_sat66"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="4_vqe2w"]
+[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="5_1qn3f"]
+[ext_resource type="Resource" uid="uid://c8qy2a5takbyp" path="res://data/Skills/Ice/frost_breath.tres" id="6_2ggex"]
+[ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="6_fdyrc"]
+[ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/Skills/Strike/frost_strike.tres" id="7_yxij6"]
+[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="8_kyrgt"]
+[ext_resource type="Script" path="res://src/battle_group_data.gd" id="9_y0tg8"]
+
+[sub_resource type="Resource" id="Resource_vmgoi"]
+script = ExtResource("1_hdu6g")
+character = ExtResource("2_61ogc")
+skills = Array[ExtResource("4_vqe2w")]([ExtResource("5_1qn3f"), ExtResource("6_2ggex")])
+min_level = 11
+max_level = 11
+inclusion_flag_requirements = Array[ExtResource("3_sat66")]([])
+perma_death = false
+
+[sub_resource type="Resource" id="Resource_qggr8"]
+script = ExtResource("1_hdu6g")
+character = ExtResource("6_fdyrc")
+skills = Array[ExtResource("4_vqe2w")]([ExtResource("7_yxij6")])
+min_level = 11
+max_level = 11
+inclusion_flag_requirements = Array[ExtResource("3_sat66")]([])
+perma_death = false
+
+[resource]
+script = ExtResource("9_y0tg8")
+opponents = Array[ExtResource("1_hdu6g")]([SubResource("Resource_vmgoi"), SubResource("Resource_qggr8")])
+rewards = Array[ExtResource("8_kyrgt")]([])

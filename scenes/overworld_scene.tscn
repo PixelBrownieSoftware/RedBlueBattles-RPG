@@ -1,8 +1,9 @@
-[gd_scene load_steps=55 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=56 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="2_8515p"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="3_d65sr"]
+[ext_resource type="AudioStream" uid="uid://cv2s513l4rpde" path="res://sound/encounter.wav" id="6_j5r2p"]
 [ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="7_7jsww"]
 [ext_resource type="Script" path="res://scenes/extra_skills_menu.gd" id="7_jfqex"]
 [ext_resource type="PackedScene" uid="uid://cshn1uy4w7mwl" path="res://objects/UI/skill_equip_button.tscn" id="7_u8djp"]
@@ -726,6 +727,9 @@ script = ExtResource("1_gsfbw")
 battle_scene = "res://scenes/battle_scene.tscn"
 starters = Array[ExtResource("2_8515p")]([ExtResource("3_d65sr")])
 starter_levels = Array[ExtResource("8_ef0s7")]([ExtResource("9_4xroy")])
+
+[node name="BattleStart" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_j5r2p")
 
 [node name="MenuBar" type="MenuBar" parent="."]
 offset_left = 114.0
@@ -1882,8 +1886,10 @@ layout_mode = 0
 offset_top = 672.0
 offset_right = 1284.0
 offset_bottom = 712.0
+alignment = 1
 
 [node name="Party" type="Button" parent="MainMenu/General Crap"]
+modulate = Color(1, 0.42, 0.42, 1)
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme = ExtResource("7_7jsww")
@@ -2242,7 +2248,6 @@ layout_mode = 2
 theme_override_constants/separation = 25
 
 [node name="BattleSelectMenu" type="VBoxContainer" parent="MainMenu"]
-visible = false
 layout_mode = 0
 offset_left = 70.0
 offset_top = 35.0
@@ -2280,7 +2285,7 @@ offset_bottom = 416.0
 script = ExtResource("49_ooein")
 
 [node name="Description" type="Panel" parent="MainMenu/BattleSelectMenu/HBoxContainer" node_paths=PackedStringArray("desc", "button")]
-custom_minimum_size = Vector2(700, 400)
+custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 script = ExtResource("49_qlain")
 desc = NodePath("VBoxContainer/RichTextLabel")
@@ -2306,6 +2311,22 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("50_u6pdu")
 theme_override_font_sizes/font_size = 30
 text = "Start battle!"
+
+[node name="PartySuggestion" type="Panel" parent="MainMenu/BattleSelectMenu/HBoxContainer" node_paths=PackedStringArray("desc")]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+script = ExtResource("49_qlain")
+desc = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/BattleSelectMenu/HBoxContainer/PartySuggestion"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+offset_left = 7.0
+offset_top = 12.0
+offset_right = 307.0
+offset_bottom = 386.0
+bbcode_enabled = true
+text = "Tip: Click the red Party button below to upgrade your characters."
 
 [connection signal="initalise" from="." to="MainMenu/PartyMemberMenu/PartyMembersSelect" method="update_party"]
 [connection signal="initalise" from="." to="MainMenu/BattleSelectMenu/HBoxContainer/Buttons/BattleSelectMenuButtons" method="load_battles"]

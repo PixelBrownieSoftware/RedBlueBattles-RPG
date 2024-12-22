@@ -18,6 +18,8 @@ func exp_points_calc(user : battle_character_data, target : battle_character_dat
 	if !GlobalVariables.is_player_team(user):
 		return
 	match press_turn:
+		PRESS_TURN.PT.WEAK_LUCKY:
+			multiplier += 2.5
 		PRESS_TURN.PT.LUCKY:
 			multiplier += 1.5
 		PRESS_TURN.PT.WEAK:

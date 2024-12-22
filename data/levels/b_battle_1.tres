@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://ot8ekjudyhrs"]
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=6 format=3 uid="uid://ot8ekjudyhrs"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_2j5sw"]
+[ext_resource type="Resource" uid="uid://ds61k43jqhj3n" path="res://data/groups/beno/b_main_battle_1.tres" id="2_bf6ub"]
 [ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="2_wqoeb"]
-[ext_resource type="Resource" uid="uid://bif87pw0pt2il" path="res://data/groups/beno/b_easy_battle_3.tres" id="2_x3pn7"]
 [ext_resource type="Resource" uid="uid://dkvm51b64d457" path="res://data/levels/b_battle_2.tres" id="4_bvd4j"]
+[ext_resource type="Resource" uid="uid://dp71rolota87m" path="res://data/levels/b_hard_battle.tres" id="5_re5li"]
 
 [resource]
 script = ExtResource("2_wqoeb")
 name = "Battle 4"
-battle_groups = Array[ExtResource("1_2j5sw")]([ExtResource("2_x3pn7")])
+battle_groups = Array[ExtResource("1_2j5sw")]([ExtResource("2_bf6ub")])
 self_destruct_after_win = true
-battle_groups_unlock = Array[ExtResource("2_wqoeb")]([ExtResource("4_bvd4j")])
+battle_groups_unlock = Array[ExtResource("2_wqoeb")]([ExtResource("4_bvd4j"), ExtResource("5_re5li")])
 battle_groups_remove = Array[ExtResource("2_wqoeb")]([])
 type_battle = 1
 terminal = false
 terminal_scene = ""
+colour_BG = Color(0.705882, 0.470588, 0.470588, 1)

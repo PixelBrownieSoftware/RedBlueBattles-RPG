@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://cyh3nbarfxkjg"]
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=6 format=3 uid="uid://cyh3nbarfxkjg"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_0oki5"]
 [ext_resource type="Resource" uid="uid://dbfnut1cd2os4" path="res://data/groups/greenler/g_mid_battle_1.tres" id="2_ywyfg"]
 [ext_resource type="Resource" uid="uid://ct7xuwkcj8wl4" path="res://data/groups/greenler/g_mid_battle_3.tres" id="3_r4h41"]
 [ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="4_v151k"]
+[ext_resource type="Texture2D" uid="uid://c3uou57f263sq" path="res://sprites/battle_bgs/dots_bg.png" id="5_fy3g4"]
 
 [resource]
 script = ExtResource("4_v151k")
@@ -15,3 +16,5 @@ battle_groups_remove = Array[ExtResource("4_v151k")]([])
 type_battle = 4
 terminal = false
 terminal_scene = ""
+colour_BG = Color(0.76, 0.1596, 0.39976, 1)
+texture_BG = ExtResource("5_fy3g4")

@@ -10,10 +10,10 @@
 script = ExtResource("2_2hboc")
 health_min = 1
 health_max = 1
-strength = 0.65
+strength = 0.6
 vitality = 0.0
 magic_pow = 0.0
-dexterity = 0.3
+dexterity = 0.4
 agility = 0.0
 luck = 0.0
 

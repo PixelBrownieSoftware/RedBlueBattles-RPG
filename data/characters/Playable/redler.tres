@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=25 format=3 uid="uid://hchecnhgg381"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=26 format=3 uid="uid://hchecnhgg381"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_bija1"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="1_nere0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="2_tqdfv"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_3pmul"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="3_ei662"]
+[ext_resource type="Script" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="3_gr3f5"]
 [ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/Skills/Fire/ember.tres" id="4_ftoxy"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="5_40dp6"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="7_711hc"]
@@ -84,6 +85,7 @@ stats = SubResource("Resource_h63ju")
 stat_increase = SubResource("Resource_yt1im")
 skills = Array[ExtResource("8_ysb20")]([ExtResource("5_40dp6"), ExtResource("4_ftoxy"), ExtResource("11_6o5nc")])
 behaviour = Array[ExtResource("1_bija1")]([SubResource("Resource_nocvp")])
+chara_behaviour = Array[ExtResource("3_gr3f5")]([])
 elemental_affinities = Array[ExtResource("2_4lcgt")]([SubResource("Resource_o3g53"), SubResource("Resource_ng7tn")])
 elemental_potential = Array[ExtResource("2_tqdfv")]([SubResource("Resource_fnsma"), SubResource("Resource_kj2vm"), SubResource("Resource_6a2tl"), SubResource("Resource_5313a")])
 character_colour = Color(1, 0.0666667, 0.188235, 1)

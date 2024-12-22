@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=18 format=3 uid="uid://bpamjdagrg4s"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=21 format=3 uid="uid://bpamjdagrg4s"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_p2qgk"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_quvnl"]
 [ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_54a2p"]
+[ext_resource type="Script" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_hp454"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_rlc8q"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_4ixop"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="3_g1mh3"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_bi2rs"]
 [ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="4_pjgve"]
+[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="6_xp6ka"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_jji3t"]
 [ext_resource type="Resource" uid="uid://ckwmj5smm05b2" path="res://data/Skills/Fire/fire_spark.tres" id="8_p11ln"]
 [ext_resource type="Resource" uid="uid://cagi0wvfpk54g" path="res://data/Skills/Peirce/infectious_bite.tres" id="9_2wcs1"]
@@ -30,6 +32,11 @@ affinity = 2.0
 [sub_resource type="Resource" id="Resource_jytey"]
 script = ExtResource("3_4ixop")
 elemental = ExtResource("4_pjgve")
+potential = 3
+
+[sub_resource type="Resource" id="Resource_21doo"]
+script = ExtResource("3_4ixop")
+elemental = ExtResource("6_xp6ka")
 potential = 3
 
 [sub_resource type="Resource" id="Resource_8tgh7"]
@@ -65,8 +72,9 @@ stats = SubResource("Resource_vbqke")
 stat_increase = SubResource("Resource_8tgh7")
 skills = Array[ExtResource("7_jji3t")]([ExtResource("2_54a2p"), ExtResource("8_p11ln"), ExtResource("9_2wcs1")])
 behaviour = Array[ExtResource("1_p2qgk")]([])
+chara_behaviour = Array[ExtResource("2_hp454")]([])
 elemental_affinities = Array[ExtResource("2_rlc8q")]([SubResource("Resource_tuaft"), SubResource("Resource_3c4ae"), SubResource("Resource_ibkix")])
-elemental_potential = Array[ExtResource("3_4ixop")]([SubResource("Resource_jytey")])
+elemental_potential = Array[ExtResource("3_4ixop")]([SubResource("Resource_jytey"), SubResource("Resource_21doo")])
 character_colour = Color(0.168627, 0.188235, 0.223529, 1)
 animation_player_loc = "sprite_blackler"
 click_circle_radius = 20.0

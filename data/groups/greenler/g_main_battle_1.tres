@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=17 format=3 uid="uid://dwuivec0bu3ha"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=16 format=3 uid="uid://dwuivec0bu3ha"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_uewae"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="1_vfrcw"]
@@ -17,14 +17,7 @@ skills = Array[ExtResource("3_8mv4e")]([])
 min_level = 1
 max_level = 1
 inclusion_flag_requirements = Array[ExtResource("7_d8mu4")]([])
-
-[sub_resource type="Resource" id="Resource_0g08n"]
-script = ExtResource("2_gmd2k")
-character = ExtResource("1_vfrcw")
-skills = Array[ExtResource("3_8mv4e")]([])
-min_level = 1
-max_level = 1
-inclusion_flag_requirements = Array[ExtResource("7_d8mu4")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_aosn0"]
 script = ExtResource("7_d8mu4")
@@ -34,6 +27,7 @@ flag = false
 [sub_resource type="Resource" id="Resource_wancf"]
 script = ExtResource("7_r7erx")
 character = ExtResource("6_7sm04")
+level = 1
 flag_req = SubResource("Resource_aosn0")
 
 [sub_resource type="Resource" id="Resource_fmedm"]
@@ -53,5 +47,5 @@ flag_req = SubResource("Resource_egife")
 
 [resource]
 script = ExtResource("1_uewae")
-opponents = Array[ExtResource("2_gmd2k")]([SubResource("Resource_8asq2"), SubResource("Resource_0g08n")])
+opponents = Array[ExtResource("2_gmd2k")]([SubResource("Resource_8asq2")])
 rewards = Array[ExtResource("5_nkdl1")]([SubResource("Resource_wancf"), SubResource("Resource_agqwu")])

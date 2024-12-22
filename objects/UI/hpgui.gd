@@ -34,6 +34,9 @@ func enable_ui():
 func disable_ui():
 	$AnimationPlayer.play("down")
 	
+func delete_ui():
+	queue_free()	
+
 func init_dmg_bar():
 	old_health = character_data.health
 	$Offset/DamageBar.value = old_health
@@ -52,17 +55,20 @@ func add_status_effect(status : status_effect):
 func damage():
 	$AnimationPlayer.play("damage")
 	$Offset/DamageBar.value = old_health
+	var current_char_health_cache : int = character_data.health
+	var current_char_colour : Color = character_data.assigned_data.character_colour
+	var is_player_team_cache : bool = GlobalVariables.is_player_team(character_data)
 	for i in range(4):
-		if GlobalVariables.is_player_team(character_data):
+		if is_player_team_cache:
 			$Offset/DamageBar.get("theme_override_styles/fill").bg_color = Color.WHITE
 		else:
 			$Offset/DamageBar.get("theme_override_styles/fill").bg_color = Color.CORNFLOWER_BLUE
 		
 		await get_tree().create_timer(0.1).timeout
-		if GlobalVariables.is_player_team(character_data):
-			$Offset/DamageBar.get("theme_override_styles/fill").bg_color = character_data.assigned_data.character_colour
+		if is_player_team_cache:
+			$Offset/DamageBar.get("theme_override_styles/fill").bg_color = current_char_colour
 		else:
 			$Offset/DamageBar.get("theme_override_styles/fill").bg_color = enemy_hp_colour
 		await get_tree().create_timer(0.1).timeout
-	old_health = character_data.health
+	old_health = current_char_health_cache
 	$Offset/DamageBar.value = old_health

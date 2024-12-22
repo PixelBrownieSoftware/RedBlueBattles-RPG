@@ -17,6 +17,7 @@ skills = Array[ExtResource("3_88gex")]([ExtResource("4_y6cma")])
 min_level = 3
 max_level = 5
 inclusion_flag_requirements = Array[ExtResource("3_fbux1")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("1_bbqoa")
@@ -25,6 +26,7 @@ skills = Array[ExtResource("3_88gex")]([ExtResource("6_87ii7")])
 min_level = 3
 max_level = 5
 inclusion_flag_requirements = Array[ExtResource("3_fbux1")]([])
+perma_death = false
 
 [resource]
 script = ExtResource("4_7ji28")

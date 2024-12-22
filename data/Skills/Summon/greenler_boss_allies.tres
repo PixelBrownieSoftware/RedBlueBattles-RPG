@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="skill_summon" load_steps=18 format=3 uid="uid://dyiou0dj1r63h"]
+
+[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_j0k3u"]
+[ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_ce4pg"]
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="2_lejpd"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="3_1m16d"]
+[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_nmiat"]
+[ext_resource type="Script" path="res://src/scripts/skill/skill_summon.gd" id="4_to7el"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="4_ww1u7"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="5_0r3io"]
+[ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="5_jc6kl"]
+[ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="5_r0v8d"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="6_w2xty"]
+[ext_resource type="Resource" uid="uid://bi4wxsbbe53pp" path="res://data/Skills/Strike/wet_slash.tres" id="7_13ygs"]
+[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="7_seulb"]
+
+[sub_resource type="Resource" id="Resource_3uicd"]
+script = ExtResource("1_j0k3u")
+character = ExtResource("2_ce4pg")
+skills = Array[ExtResource("4_ww1u7")]([ExtResource("5_jc6kl")])
+min_level = 8
+max_level = 8
+inclusion_flag_requirements = Array[ExtResource("3_nmiat")]([])
+perma_death = true
+
+[sub_resource type="Resource" id="Resource_b5agy"]
+script = ExtResource("1_j0k3u")
+character = ExtResource("5_r0v8d")
+skills = Array[ExtResource("4_ww1u7")]([ExtResource("7_13ygs")])
+min_level = 8
+max_level = 8
+inclusion_flag_requirements = Array[ExtResource("3_nmiat")]([])
+perma_death = true
+
+[sub_resource type="Resource" id="Resource_8hq48"]
+script = ExtResource("5_0r3io")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_dnv46"]
+script = ExtResource("7_seulb")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("4_to7el")
+characters_to_summon = Array[ExtResource("1_j0k3u")]([SubResource("Resource_3uicd"), SubResource("Resource_b5agy")])
+name = "Call ally"
+learnable = false
+power = 0
+stamina_cost = 2
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_dnv46")
+skill_scope = -1
+skill_element = ExtResource("6_w2xty")
+skill_animation = Array[ExtResource("5_0r3io")]([SubResource("Resource_8hq48")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("3_1m16d")]([])
+effects_to_add = Array[ExtResource("2_lejpd")]([])

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhaibh1w4xrus"
-path="res://.godot/imported/status_effects1.png-67760a41dab4165e402e116d25bc647a.ctex"
+uid="uid://baqsa3nerkuhe"
+path="res://.godot/imported/fxstrange.png-c4204f959e138a9cc368160e0e406e8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/GUI/status_effects1.png"
-dest_files=["res://.godot/imported/status_effects1.png-67760a41dab4165e402e116d25bc647a.ctex"]
+source_file="res://sprites/battle_bgs/fxstrange.png"
+dest_files=["res://.godot/imported/fxstrange.png-c4204f959e138a9cc368160e0e406e8f.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=30 format=3 uid="uid://divek06ecodu1"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=31 format=3 uid="uid://divek06ecodu1"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_5aghu"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_pokjo"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_01hq5"]
-[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="2_7pv4a"]
+[ext_resource type="Script" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_7p2md"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_ykyot"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_h7i08"]
 [ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="3_kjm5o"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="7_051b7"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="8_jrwmc"]
 [ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="9_k3lfs"]
+[ext_resource type="Resource" uid="uid://cp6fwt7nmkbk6" path="res://data/Skills/Psychic/mind_spark.tres" id="16_gu6k5"]
 
 [sub_resource type="Resource" id="Resource_obi67"]
 script = ExtResource("2_ykyot")
@@ -30,7 +31,7 @@ affinity = 1.5
 [sub_resource type="Resource" id="Resource_1s64d"]
 script = ExtResource("2_ykyot")
 elementalName = "Fire"
-affinity = 2.0
+affinity = 1.5
 
 [sub_resource type="Resource" id="Resource_qhvjl"]
 script = ExtResource("2_ykyot")
@@ -85,8 +86,8 @@ luck = 0.5
 
 [sub_resource type="Resource" id="Resource_alhf3"]
 script = ExtResource("3_l0guj")
-strength = 3
-vitality = 2
+strength = 2
+vitality = 3
 magic_pow = 6
 dexterity = 3
 agility = 1
@@ -95,16 +96,17 @@ luck = 1
 [resource]
 script = ExtResource("1_5aghu")
 name = "Greendori"
-health = 14
+health = 17
 stamina = 8
 stamina_increase_levels = Array[int]([5, 7, 8, 10])
 base_exp_score = 50
 base_exp_to_NL = 470
-exp_req_multipler = 1.28
+exp_req_multipler = 1.14
 stats = SubResource("Resource_alhf3")
 stat_increase = SubResource("Resource_aiu6g")
-skills = Array[ExtResource("5_v3ja6")]([ExtResource("2_7pv4a"), ExtResource("3_kjm5o"), ExtResource("4_rtyii")])
+skills = Array[ExtResource("5_v3ja6")]([ExtResource("16_gu6k5"), ExtResource("3_kjm5o"), ExtResource("4_rtyii")])
 behaviour = Array[ExtResource("1_pokjo")]([])
+chara_behaviour = Array[ExtResource("2_7p2md")]([])
 elemental_affinities = Array[ExtResource("2_ykyot")]([SubResource("Resource_obi67"), SubResource("Resource_tcx3v"), SubResource("Resource_1s64d"), SubResource("Resource_qhvjl"), SubResource("Resource_eiu1a")])
 elemental_potential = Array[ExtResource("3_h7i08")]([SubResource("Resource_nc0lf"), SubResource("Resource_2qvge"), SubResource("Resource_86agf"), SubResource("Resource_np1dq"), SubResource("Resource_2g20j"), SubResource("Resource_ltfai")])
 character_colour = Color(3.22476e-06, 0.821183, 0.163293, 1)

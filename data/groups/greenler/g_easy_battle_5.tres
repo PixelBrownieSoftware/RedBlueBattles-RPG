@@ -14,6 +14,7 @@ skills = Array[ExtResource("3_bciq3")]([])
 min_level = 1
 max_level = 3
 inclusion_flag_requirements = Array[ExtResource("3_fcamv")]([])
+perma_death = false
 
 [resource]
 script = ExtResource("5_vnej8")

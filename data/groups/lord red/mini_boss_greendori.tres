@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=27 format=3 uid="uid://cylk1tknykcp2"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=23 format=3 uid="uid://cylk1tknykcp2"]
 
 [ext_resource type="Resource" uid="uid://divek06ecodu1" path="res://data/characters/Playable/greendori.tres" id="1_8l14j"]
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_61l4l"]
@@ -6,11 +6,8 @@
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_k2vut"]
 [ext_resource type="Resource" uid="uid://bayu0f57esgkm" path="res://data/characters/Bosses/emily.tres" id="3_xxtb6"]
 [ext_resource type="Resource" uid="uid://d0yqr5txk5fat" path="res://data/characters/Bosses/greta.tres" id="4_4ckxk"]
-[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="4_wj06q"]
-[ext_resource type="Resource" uid="uid://defk8p5vxg4ba" path="res://data/Skills/Water/acid.tres" id="5_j6suf"]
 [ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/Skills/Status/fire_sheild.tres" id="5_qbo0s"]
 [ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="6_wu8rf"]
-[ext_resource type="Resource" uid="uid://by44w8wph66l2" path="res://data/Skills/Psychic/nightmare.tres" id="6_xvg0p"]
 [ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="7_5jbc0"]
 [ext_resource type="Resource" uid="uid://gudttha38y7d" path="res://data/Skills/Status/ice_sheild.tres" id="7_7roh0"]
 [ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="7_51die"]
@@ -19,14 +16,6 @@
 [ext_resource type="Script" path="res://src/scripts/battle group rewards/reward_change_flag.gd" id="8_o1k2t"]
 [ext_resource type="Resource" uid="uid://c8qy2a5takbyp" path="res://data/Skills/Ice/frost_breath.tres" id="13_f88e8"]
 
-[sub_resource type="Resource" id="Resource_xpu6x"]
-script = ExtResource("2_qp8ax")
-character = ExtResource("1_8l14j")
-skills = Array[ExtResource("3_k2vut")]([ExtResource("4_wj06q"), ExtResource("5_j6suf"), ExtResource("6_xvg0p")])
-min_level = 12
-max_level = 12
-inclusion_flag_requirements = Array[ExtResource("7_51die")]([])
-
 [sub_resource type="Resource" id="Resource_vofty"]
 script = ExtResource("2_qp8ax")
 character = ExtResource("3_xxtb6")
@@ -34,6 +23,7 @@ skills = Array[ExtResource("3_k2vut")]([ExtResource("5_qbo0s"), ExtResource("7_5
 min_level = 12
 max_level = 12
 inclusion_flag_requirements = Array[ExtResource("7_51die")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_lt7y3"]
 script = ExtResource("2_qp8ax")
@@ -42,6 +32,7 @@ skills = Array[ExtResource("3_k2vut")]([ExtResource("7_7roh0"), ExtResource("7_5
 min_level = 12
 max_level = 12
 inclusion_flag_requirements = Array[ExtResource("7_51die")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_cdjmr"]
 script = ExtResource("7_51die")
@@ -51,6 +42,7 @@ flag = false
 [sub_resource type="Resource" id="Resource_iska5"]
 script = ExtResource("7_troax")
 character = ExtResource("1_8l14j")
+level = 8
 flag_req = SubResource("Resource_cdjmr")
 
 [sub_resource type="Resource" id="Resource_n35i5"]
@@ -70,5 +62,5 @@ flag_req = SubResource("Resource_axy1g")
 
 [resource]
 script = ExtResource("1_61l4l")
-opponents = Array[ExtResource("2_qp8ax")]([SubResource("Resource_xpu6x"), SubResource("Resource_vofty"), SubResource("Resource_lt7y3")])
+opponents = Array[ExtResource("2_qp8ax")]([SubResource("Resource_vofty"), SubResource("Resource_lt7y3")])
 rewards = Array[ExtResource("6_wu8rf")]([SubResource("Resource_iska5"), SubResource("Resource_ip3lb")])

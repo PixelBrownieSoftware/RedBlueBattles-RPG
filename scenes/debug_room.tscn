@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://6nwuokuicye2"]
+
+[ext_resource type="Script" path="res://scenes/extra_skills_ui.gd" id="1_2ikqm"]
+
+[node name="DebugRoom" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ExSkills" type="VBoxContainer" parent="Control"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ExSkills"]
+layout_mode = 2
+
+[node name="Header" type="Panel" parent="Control/ExSkills/VBoxContainer"]
+custom_minimum_size = Vector2(90, 30)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ExSkills/VBoxContainer/Header"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 290.0
+offset_bottom = 30.0
+bbcode_enabled = true
+text = "Available skills"
+
+[node name="ExtraSkills" type="ScrollContainer" parent="Control/ExSkills/VBoxContainer" node_paths=PackedStringArray("move_description", "assign_button", "remove_button", "description")]
+custom_minimum_size = Vector2(300, 450)
+layout_mode = 2
+script = ExtResource("1_2ikqm")
+move_description = NodePath("")
+assign_button = NodePath("")
+remove_button = NodePath("")
+description = NodePath("")
+
+[node name="Skills" type="VBoxContainer" parent="Control/ExSkills/VBoxContainer/ExtraSkills"]
+custom_minimum_size = Vector2(250, 440)
+layout_mode = 2
+theme_override_constants/separation = 25

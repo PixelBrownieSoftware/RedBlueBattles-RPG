@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="battle_level_group" load_steps=4 format=3 uid="uid://baa06lvmmumsu"]
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://baa06lvmmumsu"]
 
 [ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_mmwgu"]
-[ext_resource type="Resource" uid="uid://i5x8b1jqq320" path="res://data/groups/beno/b_mid_battle_2.tres" id="2_cija6"]
+[ext_resource type="Resource" uid="uid://dfanj3jqa78ce" path="res://data/groups/beno/b_easy_battle_1.tres" id="2_lgmna"]
 [ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_78wol"]
+[ext_resource type="Resource" uid="uid://d2e0kkck4eqkb" path="res://data/groups/beno/b_easy_battle_2.tres" id="3_dvn31"]
 
 [resource]
 script = ExtResource("3_78wol")
 name = "Easy battle"
-battle_groups = Array[ExtResource("1_mmwgu")]([ExtResource("2_cija6")])
+battle_groups = Array[ExtResource("1_mmwgu")]([ExtResource("2_lgmna"), ExtResource("3_dvn31")])
 self_destruct_after_win = false
 battle_groups_unlock = Array[ExtResource("3_78wol")]([])
 battle_groups_remove = Array[ExtResource("3_78wol")]([])
 type_battle = 5
+terminal = false
+terminal_scene = ""
+colour_BG = Color(0.705882, 0.470588, 0.470588, 1)

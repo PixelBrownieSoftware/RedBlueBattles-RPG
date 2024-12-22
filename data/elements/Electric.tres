@@ -19,7 +19,7 @@ health_max = 1
 strength = 0.0
 vitality = 0.0
 magic_pow = 0.6
-dexterity = 0.2
+dexterity = 0.1
 agility = 0.3
 luck = 0.0
 

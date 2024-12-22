@@ -28,7 +28,8 @@ func process_move(skill : rpg_skill):
 	var actor_user : battle_character_actor = battle_globals.get_actor(character_user)
 	battle_globals.final_press_turn_flag = PRESS_TURN.PT.NORMAL
 	var num_times : int = randi_range(skill.repeat_min, skill.repeat_max)
-	
+	if skill.stamina_cost > 0:
+		$"../../Control".dim_bg()
 	for i in range(num_times):
 		for anim : rpg_skill_animation in skill.skill_animation:
 			match anim.skill_animation:
@@ -76,7 +77,8 @@ func process_move(skill : rpg_skill):
 						var calculated_PT = attack_result["Press_turn"]
 						if battle_globals.final_press_turn_flag < calculated_PT:
 							battle_globals.final_press_turn_flag = calculated_PT
-						
+	if skill.stamina_cost > 0:
+		$"../../Control".light_bg()					
 	character_user.update_current_status_effects("after_action")
 	character_user.on_character_end_turn.emit()
 	

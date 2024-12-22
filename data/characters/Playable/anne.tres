@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=26 format=3 uid="uid://bcwoh7nmviaaf"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=27 format=3 uid="uid://bcwoh7nmviaaf"]
 
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_nplyj"]
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_wasgu"]
+[ext_resource type="Script" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_6cyfc"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_x4nml"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_wcnw3"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="4_vejs7"]
@@ -89,6 +90,7 @@ stats = SubResource("Resource_33o2q")
 stat_increase = SubResource("Resource_b8n4l")
 skills = Array[ExtResource("5_a0npk")]([ExtResource("6_sle31"), ExtResource("7_ny4w1"), ExtResource("8_l58w7")])
 behaviour = Array[ExtResource("1_wasgu")]([])
+chara_behaviour = Array[ExtResource("2_6cyfc")]([])
 elemental_affinities = Array[ExtResource("2_x4nml")]([SubResource("Resource_7isx8"), SubResource("Resource_xbc5s"), SubResource("Resource_n0boc")])
 elemental_potential = Array[ExtResource("3_wcnw3")]([SubResource("Resource_pmmee"), SubResource("Resource_dbm5b"), SubResource("Resource_i221u"), SubResource("Resource_ffasr"), SubResource("Resource_5gyfb")])
 character_colour = Color(0.870588, 0.239216, 1, 1)

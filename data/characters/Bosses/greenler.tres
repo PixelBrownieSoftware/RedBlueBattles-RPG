@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=18 format=3 uid="uid://bcjoka06yw8pm"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=19 format=3 uid="uid://bcjoka06yw8pm"]
 
 [ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_asvms"]
 [ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_n6i0t"]
 [ext_resource type="Resource" uid="uid://btk2gxcepjeit" path="res://data/Skills/Peirce/stab.tres" id="2_32uhm"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="2_a2j4d"]
+[ext_resource type="Script" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_m6ed2"]
 [ext_resource type="Script" path="res://src/element_affinity.gd" id="2_qgbai"]
 [ext_resource type="Script" path="res://src/elemental_potential.gd" id="3_4d838"]
 [ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="3_j31au"]
@@ -15,7 +16,7 @@
 [sub_resource type="Resource" id="Resource_ld0mn"]
 script = ExtResource("2_qgbai")
 elementalName = "Electric"
-affinity = 0.3
+affinity = 0.0
 
 [sub_resource type="Resource" id="Resource_d6e82"]
 script = ExtResource("2_qgbai")
@@ -65,6 +66,7 @@ stats = SubResource("Resource_tt8x0")
 stat_increase = SubResource("Resource_r4ocw")
 skills = Array[ExtResource("5_3tv5s")]([ExtResource("2_32uhm"), ExtResource("3_k4kwr"), ExtResource("9_4uwce")])
 behaviour = Array[ExtResource("1_asvms")]([])
+chara_behaviour = Array[ExtResource("2_m6ed2")]([])
 elemental_affinities = Array[ExtResource("2_qgbai")]([SubResource("Resource_ld0mn"), SubResource("Resource_d6e82"), SubResource("Resource_ap8gi")])
 elemental_potential = Array[ExtResource("3_4d838")]([SubResource("Resource_crmr6")])
 character_colour = Color(0.635294, 1, 0.443137, 1)

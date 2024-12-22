@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=9 format=3 uid="uid://cr8gdygv6hn4g"]
+
+[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_h5xa4"]
+[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_3o2un"]
+[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_g53jl"]
+[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_mmylt"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="5_8xmcl"]
+
+[sub_resource type="Resource" id="Resource_cw7q5"]
+script = ExtResource("4_mmylt")
+skill_animation = 2
+time_amount = -1.0
+animation_name = "attack"
+
+[sub_resource type="Resource" id="Resource_yjei1"]
+script = ExtResource("4_mmylt")
+skill_animation = 4
+time_amount = -1.0
+animation_name = "fire_fx"
+
+[sub_resource type="Resource" id="Resource_wskc7"]
+script = ExtResource("4_mmylt")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[resource]
+script = ExtResource("3_g53jl")
+name = "Fire bash"
+learnable = false
+power = 3
+stamina_cost = 0
+repeat_min = 1
+repeat_max = 1
+skill_scope = 1
+skill_element = ExtResource("5_8xmcl")
+skill_animation = Array[ExtResource("4_mmylt")]([SubResource("Resource_cw7q5"), SubResource("Resource_yjei1"), SubResource("Resource_wskc7")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_3o2un")]([])
+effects_to_add = Array[ExtResource("1_h5xa4")]([])

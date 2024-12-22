@@ -17,3 +17,4 @@ battle_groups_remove = Array[ExtResource("3_2uiho")]([ExtResource("4_d1p1b"), Ex
 type_battle = 0
 terminal = false
 terminal_scene = ""
+colour_BG = Color(0.705882, 0.470588, 0.470588, 1)

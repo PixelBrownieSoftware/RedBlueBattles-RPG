@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://cd376waxto2ys"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=12 format=3 uid="uid://cd376waxto2ys"]
 
 [ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_ac63l"]
 [ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_sfbx6"]
@@ -12,6 +12,12 @@
 script = ExtResource("1_ac63l")
 status = ExtResource("2_567n5")
 chance = 0.225
+
+[sub_resource type="Resource" id="Resource_oh6h2"]
+script = ExtResource("2_vt2l3")
+skill_animation = 2
+time_amount = -1.0
+animation_name = "attack"
 
 [sub_resource type="Resource" id="Resource_67860"]
 script = ExtResource("2_vt2l3")
@@ -39,7 +45,7 @@ repeat_max = 1
 stat_requirement = SubResource("Resource_yynfe")
 skill_scope = 1
 skill_element = ExtResource("3_pgx38")
-skill_animation = Array[ExtResource("2_vt2l3")]([SubResource("Resource_67860")])
+skill_animation = Array[ExtResource("2_vt2l3")]([SubResource("Resource_oh6h2"), SubResource("Resource_67860")])
 usable_by_anyone = false
 effects_to_remove = Array[ExtResource("2_qj4f8")]([])
 effects_to_add = Array[ExtResource("1_ac63l")]([SubResource("Resource_gmhi4")])

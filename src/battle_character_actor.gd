@@ -9,12 +9,14 @@ class_name  battle_character_actor
 @onready var selector_arrow_anim : AnimationPlayer = selector_arrow.get_child(0)
 var character_anim : AnimationPlayer
 var character_sprite : Sprite2D
+var is_player_team : bool
 
 var min_select_thickness = 1.2
 var max_select_thickness = 2.3
 var select_time = 0.3
 
 signal anim_finish_signal()
+signal defeat_anim_finish(character)
 signal select_character(character)
 signal hover_character(character)
 signal out_hover_character()
@@ -60,10 +62,14 @@ func miss_anim():
 	pass
 	
 func defeat_anim():
+	var is_permadeath = character_data.is_permadeath
 	await get_tree().create_timer(0.2).timeout
 	$combatant_sfx_defeat.stream = defeat_sound
 	$combatant_sfx_defeat.play()
-	fade_character_colour(Color(Color.BLACK, 0))
+	await fade_character_colour(Color(Color.BLACK, 0))
+	if is_permadeath:
+		defeat_anim_finish.emit()
+		queue_free()
 
 func set_colour(colour: Color):
 	set_character_colour(colour)
@@ -76,6 +82,7 @@ func fade_character_colour(colour: Color):
 
 func assign_data(data : battle_character_data):
 	character_data = data
+	is_player_team = GlobalVariables.is_player_team(data)
 	character_data.play_damage.connect(play_hurt_sound)
 	character_data.defeat_event.connect(defeat_anim)
 	var locate_anim = load("res://objects/character sprites/" + data.assigned_data.animation_player_loc + ".tscn")

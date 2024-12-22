@@ -30,6 +30,15 @@ offset_right = 643.0
 offset_bottom = 384.0
 text = "Load game"
 
+[node name="Debug" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 520.0
+offset_top = 410.0
+offset_right = 643.0
+offset_bottom = 449.0
+text = "Debug"
+
 [node name="Title" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 338.0
@@ -70,3 +79,4 @@ tab_size = 7
 
 [connection signal="pressed" from="Control/New game" to="." method="new_game"]
 [connection signal="pressed" from="Control/Load game" to="." method="load_game"]
+[connection signal="pressed" from="Control/Debug" to="." method="load_game"]

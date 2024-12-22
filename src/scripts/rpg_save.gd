@@ -1,11 +1,11 @@
 extends Node
-var save_path = OS.get_user_data_dir() + "/Pixel Brownie Software/RedBlueBattles/save.rbb"
-
+var os_path = OS.get_user_data_dir() 
+var save_path ="/RedBlueBattles/"
+var save_file_name = "/save.rbb"
 func save_game():
-	print(save_path)
+	print(os_path + save_file_name)
 	var character_equip_skills = { "None" : [] }
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	
+	var file = FileAccess.open(os_path + save_file_name, FileAccess.WRITE_READ)
 	file.store_64(GlobalVariables.expereince_score)
 	file.store_8(GlobalVariables.extra_skills_limit)
 	file.store_16(GlobalVariables.battles_availible.size())
@@ -14,7 +14,7 @@ func save_game():
 	file.store_16(PartyMembers.get_children().size())
 	for player : battle_character_data in PartyMembers.get_children():
 		character_equip_skills[player.name] = []
-		print("filename character: " + str(GlobalVariables.character_uid_lookup[player.name]))
+		#print("filename character: " + str(GlobalVariables.character_uid_lookup[player.name]))
 		#file.store_64(GlobalVariables.character_uid_lookup[player.name])
 		file.store_pascal_string(player.assigned_data.resource_path)
 		file.store_pascal_string(player.name)
@@ -24,8 +24,10 @@ func save_game():
 	
 	for skill in GlobalVariables.extra_skills:
 		var who_has_skill = GlobalVariables.who_has_equippied_skill(skill)
-		print("filename character" + str(GlobalVariables.skill_uid_lookup[skill.name]))
-		var skill_UID = GlobalVariables.skill_uid_lookup[skill.name]
+		#print("filename character" + str(GlobalVariables.skill_uid_lookup[skill.name]))
+		var move_name : String = str(skill.resource_path.get_file())
+		move_name = move_name.replace(".tres", "")
+		var skill_UID = GlobalVariables.skill_uid_lookup[move_name]
 		if who_has_skill == null:
 			character_equip_skills["None"].append(skill.resource_path)
 		else:
@@ -56,7 +58,7 @@ func save_game():
 	#	- who has the extra skills equipped
 	
 func load_game():
-	var file = FileAccess.open(save_path, FileAccess.READ)
+	var file = FileAccess.open(os_path + save_file_name, FileAccess.READ)
 	GlobalVariables.expereince_score = file.get_64()
 	GlobalVariables.extra_skills_limit = file.get_8()
 	var availiable_battles_count = file.get_16()
