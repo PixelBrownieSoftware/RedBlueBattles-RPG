@@ -15,7 +15,7 @@ config/name_localized={
 "ja": "赤青戦い"
 }
 run/main_scene="res://scenes/title_screen.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -35,7 +35,7 @@ window/size/resizable=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/RPG_editor/plugin.cfg")
 
 [rendering]
 

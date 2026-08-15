@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://b02fnxe32db18"]
 
-[ext_resource type="Script" path="res://src/buttons/button_skill.gd" id="1_06uxy"]
+[ext_resource type="Script" uid="uid://d3kctw8oedror" path="res://src/buttons/button_skill.gd" id="1_06uxy"]
 [ext_resource type="Theme" uid="uid://b7qyogjo30g2i" path="res://misc/material/battle_button.tres" id="1_ds3ya"]
 [ext_resource type="StyleBox" uid="uid://cvgs3mpxmfh4o" path="res://misc/material/button_texture.tres" id="1_oorvk"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_hukdw"]
-[ext_resource type="Texture2D" uid="uid://dai8gwg4iecxk" path="res://sprites/GUI/elements_frc.png" id="3_8y42p"]
+[ext_resource type="Texture2D" uid="uid://dai8gwg4iecxk" path="res://sprites/GUI/elements/elements_frc.png" id="3_8y42p"]
 
 [sub_resource type="Animation" id="Animation_vip75"]
 length = 0.001
@@ -93,9 +93,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7h2v"]
 _data = {
-"RESET": SubResource("Animation_vip75"),
-"button_fade_in": SubResource("Animation_lsrdc"),
-"button_fade_out": SubResource("Animation_4wgdy")
+&"RESET": SubResource("Animation_vip75"),
+&"button_fade_in": SubResource("Animation_lsrdc"),
+&"button_fade_out": SubResource("Animation_4wgdy")
 }
 
 [node name="Button" type="Button"]

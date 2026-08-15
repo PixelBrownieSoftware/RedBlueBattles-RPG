@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=6 format=3 uid="uid://b757l2la34y6o"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=10 format=3 uid="uid://b757l2la34y6o"]
 
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="1_0d8o5"]
-[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="2_14iuh"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="1_0d8o5"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_bmrpa"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_5bddw"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="2_14iuh"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="2_k20bm"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="6_f12xe"]
 
 [sub_resource type="Resource" id="Resource_whk0d"]
 script = ExtResource("2_14iuh")
@@ -16,6 +19,15 @@ skill_animation = 0
 time_amount = -1.0
 animation_name = ""
 
+[sub_resource type="Resource" id="Resource_5lwlv"]
+script = ExtResource("6_f12xe")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
 [resource]
 script = ExtResource("1_0d8o5")
 name = "You're gonna die!"
@@ -24,6 +36,10 @@ power = 4
 stamina_cost = 0
 repeat_min = 3
 repeat_max = 5
+stat_requirement = SubResource("Resource_5lwlv")
 skill_scope = 1
 skill_element = ExtResource("2_k20bm")
 skill_animation = Array[ExtResource("2_14iuh")]([SubResource("Resource_whk0d"), SubResource("Resource_yoflv")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_5bddw")]([])
+effects_to_add = Array[ExtResource("1_bmrpa")]([])

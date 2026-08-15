@@ -1,16 +1,16 @@
 [gd_resource type="Resource" script_class="skill_stamina_guard" load_steps=10 format=3 uid="uid://dk7q5ls4aqsm1"]
 
-[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_h1ac5"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_h1ac5"]
 [ext_resource type="Texture2D" uid="uid://b6y8vox67hbcj" path="res://sprites/GUI/custom_icon_guard.png" id="1_hsqvw"]
-[ext_resource type="Resource" uid="uid://0ga3ybabf28e" path="res://data/status effects/guard.tres" id="2_74xgu"]
-[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="3_tdx10"]
-[ext_resource type="Script" path="res://src/scripts/skill/skill_stamina_guard.gd" id="4_hjqqt"]
-[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="5_gkq0y"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="3_tdx10"]
+[ext_resource type="Resource" uid="uid://0ga3ybabf28e" path="res://data/status_effects/guard.tres" id="3_xd75v"]
+[ext_resource type="Script" uid="uid://bmsbr5w3akse3" path="res://src/scripts/skill/skill_stamina_guard.gd" id="4_hjqqt"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="5_gkq0y"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="6_f8vnf"]
 
 [sub_resource type="Resource" id="Resource_jxxny"]
 script = ExtResource("1_h1ac5")
-status = ExtResource("2_74xgu")
+status = ExtResource("3_xd75v")
 chance = 1.0
 
 [sub_resource type="Resource" id="Resource_72eur"]

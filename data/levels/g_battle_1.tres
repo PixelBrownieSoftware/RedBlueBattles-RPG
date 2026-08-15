@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="battle_level_group" load_steps=8 format=3 uid="uid://31ehoj45co5j"]
 
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_rdt2n"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_rdt2n"]
 [ext_resource type="Resource" uid="uid://dwuivec0bu3ha" path="res://data/groups/greenler/g_main_battle_1.tres" id="2_knegw"]
-[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_5kl4x"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="3_5kl4x"]
 [ext_resource type="Resource" uid="uid://b3rxlsb1stal5" path="res://data/levels/g_easy_battle.tres" id="4_b4540"]
 [ext_resource type="Resource" uid="uid://cyh3nbarfxkjg" path="res://data/levels/g_medium_battle.tres" id="5_xi1sw"]
 [ext_resource type="Resource" uid="uid://dppx8vsjor20t" path="res://data/levels/g_battle_2.tres" id="6_61jtt"]
@@ -20,3 +20,4 @@ terminal = false
 terminal_scene = ""
 colour_BG = Color(0.666667, 0.686275, 0.529412, 1)
 texture_BG = ExtResource("7_gl6j4")
+editor_position = Vector2(480, 360)

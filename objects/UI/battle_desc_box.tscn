@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cm2ufju077vp3"]
 
-[ext_resource type="Script" path="res://objects/UI/battle_desc_box.gd" id="1_3u1ev"]
+[ext_resource type="Script" uid="uid://bpq8add0jxqqj" path="res://objects/UI/battle_desc_box.gd" id="1_3u1ev"]
 
 [node name="BattleDescBox" type="Panel"]
 offset_right = 255.0

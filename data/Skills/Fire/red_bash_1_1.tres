@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=19 format=3 uid="uid://dwvgi77b2bucx"]
+
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_bqr7a"]
+[ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status_effects/burn.tres" id="2_54ddu"]
+[ext_resource type="Resource" uid="uid://brwcqw4l2qpkq" path="res://data/status_effects/down.tres" id="3_20csa"]
+[ext_resource type="Resource" uid="uid://dafhkmba7uni1" path="res://data/status_effects/flammable.tres" id="4_r0ojg"]
+[ext_resource type="Resource" uid="uid://dttvaj5cg8ujv" path="res://data/status_effects/sleepy.tres" id="5_cbl1c"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="6_3lx3w"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="7_flwdu"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="8_408g1"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="9_47b8x"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="10_hqn6a"]
+
+[sub_resource type="Resource" id="Resource_jqn0a"]
+script = ExtResource("1_bqr7a")
+status = ExtResource("2_54ddu")
+chance = 0.37
+
+[sub_resource type="Resource" id="Resource_whjkp"]
+script = ExtResource("1_bqr7a")
+status = ExtResource("3_20csa")
+chance = 0.5
+
+[sub_resource type="Resource" id="Resource_b53ig"]
+script = ExtResource("1_bqr7a")
+status = ExtResource("4_r0ojg")
+chance = 0.17
+
+[sub_resource type="Resource" id="Resource_lo1ox"]
+script = ExtResource("1_bqr7a")
+status = ExtResource("5_cbl1c")
+chance = 0.31
+
+[sub_resource type="Resource" id="Resource_1eq67"]
+script = ExtResource("8_408g1")
+skill_animation = 2
+time_amount = -1.0
+animation_name = "attack"
+
+[sub_resource type="Resource" id="Resource_pl0k6"]
+script = ExtResource("8_408g1")
+skill_animation = 4
+time_amount = -1.0
+animation_name = "fire_fx"
+
+[sub_resource type="Resource" id="Resource_2tomu"]
+script = ExtResource("8_408g1")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_nt4jf"]
+script = ExtResource("10_hqn6a")
+strength = 7
+vitality = 6
+magic_pow = 9
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("7_flwdu")
+name = "Red bash"
+learnable = false
+power = 14
+stamina_cost = 8
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_nt4jf")
+skill_scope = 1
+skill_element = ExtResource("9_47b8x")
+skill_animation = Array[ExtResource("8_408g1")]([SubResource("Resource_1eq67"), SubResource("Resource_pl0k6"), SubResource("Resource_2tomu")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("6_3lx3w")]([])
+effects_to_add = Array[ExtResource("1_bqr7a")]([SubResource("Resource_jqn0a"), SubResource("Resource_whjkp"), SubResource("Resource_b53ig"), SubResource("Resource_lo1ox")])

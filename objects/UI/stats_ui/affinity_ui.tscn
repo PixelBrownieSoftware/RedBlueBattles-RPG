@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://co52huatecj2l"]
 
-[ext_resource type="Script" path="res://scenes/affinity_ui.gd" id="1_1k71s"]
+[ext_resource type="Script" uid="uid://bupjjgu1klntf" path="res://scenes/affinity_ui.gd" id="1_1k71s"]
 [ext_resource type="PackedScene" uid="uid://mugpveucbeey" path="res://objects/UI/element_potential.tscn" id="2_ms5g7"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="3_glbfq"]
 [ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="4_n5mv5"]

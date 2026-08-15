@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_rnuc2"]
 [ext_resource type="Texture2D" uid="uid://b7p4kuiolg2y0" path="res://sprites/lord_red_sprite_sheet.png" id="2_ebxge"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_la2nj"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_la2nj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_npc5u"]
 resource_local_to_scene = true
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nxiy5"]
 _data = {
-"attack": SubResource("Animation_pmboo"),
-"idle": SubResource("Animation_m5owy")
+&"attack": SubResource("Animation_pmboo"),
+&"idle": SubResource("Animation_m5owy")
 }
 
 [node name="sprite_lord_red" instance=ExtResource("1_rnuc2")]

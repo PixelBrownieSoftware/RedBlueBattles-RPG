@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crcw4qncionf1"]
 
-[ext_resource type="Script" path="res://src/battle_character_data.gd" id="1_ion37"]
+[ext_resource type="Script" uid="uid://bgmgi8iwb2t7l" path="res://src/battle_character_data.gd" id="1_ion37"]
 
 [node name="data" type="Node"]
 script = ExtResource("1_ion37")

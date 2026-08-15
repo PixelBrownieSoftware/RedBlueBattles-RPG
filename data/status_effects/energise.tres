@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="status_stamina" load_steps=16 format=3 uid="uid://ccpgmbb03eoy0"]
+
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_bj0ls"]
+[ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_toyf1"]
+[ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="3_buy35"]
+[ext_resource type="Script" uid="uid://d1ofsmcj53y4i" path="res://src/scripts/status effects/status_stamina.gd" id="4_xbiph"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="5_lch3w"]
+
+[sub_resource type="Resource" id="Resource_bj0ls"]
+script = ExtResource("2_toyf1")
+elementalName = "Electric"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_toyf1"]
+script = ExtResource("2_toyf1")
+elementalName = "Fire"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_buy35"]
+script = ExtResource("2_toyf1")
+elementalName = "Force"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_xbiph"]
+script = ExtResource("2_toyf1")
+elementalName = "Ice"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_lch3w"]
+script = ExtResource("2_toyf1")
+elementalName = "Peirce"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_rmcff"]
+script = ExtResource("2_toyf1")
+elementalName = "Psychic"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_7soif"]
+script = ExtResource("2_toyf1")
+elementalName = "Strike"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_appej"]
+script = ExtResource("2_toyf1")
+elementalName = "Water"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_qpalg"]
+script = ExtResource("2_toyf1")
+elementalName = "Wind"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_wjec8"]
+script = ExtResource("5_lch3w")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("4_xbiph")
+damage = 2
+name = "Energise"
+turn_duration = 2
+effects_to_remove = Array[ExtResource("1_bj0ls")]([])
+elemental_affinity_change = Array[ExtResource("2_toyf1")]([SubResource("Resource_bj0ls"), SubResource("Resource_toyf1"), SubResource("Resource_buy35"), SubResource("Resource_xbiph"), SubResource("Resource_lch3w"), SubResource("Resource_rmcff"), SubResource("Resource_7soif"), SubResource("Resource_appej"), SubResource("Resource_qpalg")])
+stat_changes = SubResource("Resource_wjec8")
+icon = ExtResource("3_buy35")
+round_start = true
+after_action = false
+turn_start = false
+contribute_multipler = false

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://c6b146udkdbpl"]
 
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_stctr"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_stctr"]
 [ext_resource type="Resource" uid="uid://dgvcce2f434u4" path="res://data/groups/beno/b_hard_battle_2.tres" id="2_hnpot"]
-[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_15gmi"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="3_15gmi"]
 [ext_resource type="Resource" uid="uid://dndx1h2t1egri" path="res://data/levels/b_boss.tres" id="4_acc7o"]
 
 [resource]
@@ -15,3 +15,5 @@ battle_groups_remove = Array[ExtResource("3_15gmi")]([])
 type_battle = 1
 terminal = false
 terminal_scene = ""
+colour_BG = Color(0.705882, 0.470588, 0.470588, 1)
+editor_position = Vector2(100, -120)

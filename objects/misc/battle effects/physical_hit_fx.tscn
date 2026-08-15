@@ -36,15 +36,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c4dqw"]
 _data = {
-"RESET": SubResource("Animation_ckga5"),
-"fx_animation": SubResource("Animation_t1agt")
+&"RESET": SubResource("Animation_ckga5"),
+&"fx_animation": SubResource("Animation_t1agt")
 }
 
 [node name="physical_hit_fx" instance=ExtResource("1_nlnae")]
 
 [node name="AnimationPlayer" parent="." index="0"]
 libraries = {
-"": SubResource("AnimationLibrary_c4dqw")
+&"": SubResource("AnimationLibrary_c4dqw")
 }
 
 [node name="hit_sprite" type="Sprite2D" parent="." index="2"]

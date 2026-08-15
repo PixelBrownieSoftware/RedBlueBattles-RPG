@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="skill_summon" load_steps=18 format=3 uid="uid://dyiou0dj1r63h"]
 
-[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_j0k3u"]
+[ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_j0k3u"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_ce4pg"]
-[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="2_lejpd"]
-[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="3_1m16d"]
-[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_nmiat"]
-[ext_resource type="Script" path="res://src/scripts/skill/skill_summon.gd" id="4_to7el"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="4_ww1u7"]
-[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="5_0r3io"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="2_lejpd"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="3_1m16d"]
+[ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_nmiat"]
+[ext_resource type="Script" uid="uid://c1f56gjmj4301" path="res://src/scripts/skill/skill_summon.gd" id="4_to7el"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="4_ww1u7"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="5_0r3io"]
 [ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="5_jc6kl"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="5_r0v8d"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="6_w2xty"]
 [ext_resource type="Resource" uid="uid://bi4wxsbbe53pp" path="res://data/Skills/Strike/wet_slash.tres" id="7_13ygs"]
-[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="7_seulb"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="7_seulb"]
 
 [sub_resource type="Resource" id="Resource_3uicd"]
 script = ExtResource("1_j0k3u")
@@ -50,6 +50,7 @@ luck = 1
 [resource]
 script = ExtResource("4_to7el")
 characters_to_summon = Array[ExtResource("1_j0k3u")]([SubResource("Resource_3uicd"), SubResource("Resource_b5agy")])
+amount = 0
 name = "Call ally"
 learnable = false
 power = 0

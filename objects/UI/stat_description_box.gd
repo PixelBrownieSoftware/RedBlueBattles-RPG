@@ -5,12 +5,12 @@ extends Panel
 @export var base_desc : RichTextLabel
 @export var stat_name : RichTextLabel
 @export var stat_texture : TextureRect
-var str_texture : Texture2D = preload("res://sprites/GUI/gui_str.png")
-var vit_texture : Texture2D = preload("res://sprites/GUI/gui_vit.png")
-var mag_texture : Texture2D = preload("res://sprites/GUI/gui_mag.png")
-var dex_texture : Texture2D = preload("res://sprites/GUI/gui_dex.png")
+var str_texture : Texture2D = preload("res://sprites/GUI/stats/gui_str.png")
+var vit_texture : Texture2D = preload("res://sprites/GUI/stats/gui_vit.png")
+var mag_texture : Texture2D = preload("res://sprites/GUI/stats/gui_mag.png")
+var dex_texture : Texture2D = preload("res://sprites/GUI/stats/gui_dex.png")
 var ag_texture : Texture2D = preload("res://sprites/GUI/gui_ag.png")
-var luc_texture : Texture2D = preload("res://sprites/GUI/gui_luc.png")
+var luc_texture : Texture2D = preload("res://sprites/GUI/stats/gui_luc.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

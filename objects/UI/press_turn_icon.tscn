@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://o47wvssmmis2"]
 
-[ext_resource type="Script" path="res://objects/UI/press_turn_icon.gd" id="1_3lpwp"]
+[ext_resource type="Script" uid="uid://dnuq5v5lyhnq7" path="res://objects/UI/press_turn_icon.gd" id="1_3lpwp"]
 [ext_resource type="Texture2D" uid="uid://dm1h8ka4ida74" path="res://sprites/GUI/press_turn_icon.png" id="1_5e5pi"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_gdatt"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_gdatt"]
 [ext_resource type="Texture2D" uid="uid://c8bt0llenitbo" path="res://sprites/GUI/press_turn_icon_player.png" id="2_yyary"]
 [ext_resource type="Texture2D" uid="uid://bw2e3ye20h18s" path="res://sprites/GUI/press_turn_icon_enemy.png" id="3_0eo5a"]
 
@@ -252,10 +252,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rt2un"]
 _data = {
-"RESET": SubResource("Animation_ky3h8"),
-"appear": SubResource("Animation_5nnlr"),
-"disappear": SubResource("Animation_k6jna"),
-"glowing": SubResource("Animation_d4duq")
+&"RESET": SubResource("Animation_ky3h8"),
+&"appear": SubResource("Animation_5nnlr"),
+&"disappear": SubResource("Animation_k6jna"),
+&"glowing": SubResource("Animation_d4duq")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ow5s"]

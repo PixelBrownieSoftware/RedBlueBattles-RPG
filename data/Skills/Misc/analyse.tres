@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=7 format=3 uid="uid://dysk5jnrtcwdm"]
 
 [ext_resource type="Texture2D" uid="uid://xdg5tjyicy0w" path="res://sprites/GUI/custom_icon_analyse.png" id="1_67su0"]
-[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_l5yer"]
-[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_m8fib"]
-[ext_resource type="Script" path="res://src/scripts/skill/skill_analyse.gd" id="3_455e7"]
-[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_6aenj"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_l5yer"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_m8fib"]
+[ext_resource type="Script" uid="uid://cs3t4gppyf866" path="res://src/scripts/skill/skill_analyse.gd" id="3_455e7"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_6aenj"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="5_kpvbe"]
 
 [resource]

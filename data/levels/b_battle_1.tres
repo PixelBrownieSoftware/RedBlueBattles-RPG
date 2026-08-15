@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="battle_level_group" load_steps=6 format=3 uid="uid://ot8ekjudyhrs"]
 
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_2j5sw"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_2j5sw"]
 [ext_resource type="Resource" uid="uid://ds61k43jqhj3n" path="res://data/groups/beno/b_main_battle_1.tres" id="2_bf6ub"]
-[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="2_wqoeb"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="2_wqoeb"]
 [ext_resource type="Resource" uid="uid://dkvm51b64d457" path="res://data/levels/b_battle_2.tres" id="4_bvd4j"]
 [ext_resource type="Resource" uid="uid://dp71rolota87m" path="res://data/levels/b_hard_battle.tres" id="5_re5li"]
 
@@ -17,3 +17,4 @@ type_battle = 1
 terminal = false
 terminal_scene = ""
 colour_BG = Color(0.705882, 0.470588, 0.470588, 1)
+editor_position = Vector2(2000, 550)

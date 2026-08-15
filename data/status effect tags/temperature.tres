@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="status_effect_tag" load_steps=11 format=3 uid="uid://fsfulyl7vjy8"]
 
-[ext_resource type="Script" path="res://src/status_effect_tags.gd" id="1_oy8u1"]
-[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_srlqk"]
-[ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status effects/burn.tres" id="3_7d0ur"]
-[ext_resource type="Script" path="res://src/status_effect_tag_instruction.gd" id="3_utwit"]
-[ext_resource type="Resource" uid="uid://cimel63kfbwmx" path="res://data/status effects/frozen.tres" id="4_xebok"]
-[ext_resource type="Resource" uid="uid://boopskh5scdtx" path="res://data/status effects/wet.tres" id="5_n7o7i"]
+[ext_resource type="Script" uid="uid://cwb5sl7xt6jai" path="res://src/status_effect_tags.gd" id="1_oy8u1"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_srlqk"]
+[ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status_effects/burn.tres" id="3_7muum"]
+[ext_resource type="Script" uid="uid://0ou8c18gp1df" path="res://src/status_effect_tag_instruction.gd" id="3_utwit"]
+[ext_resource type="Resource" uid="uid://cimel63kfbwmx" path="res://data/status_effects/frozen.tres" id="4_tasdi"]
+[ext_resource type="Resource" uid="uid://boopskh5scdtx" path="res://data/status_effects/wet.tres" id="5_my5ya"]
 
 [sub_resource type="Resource" id="Resource_b1rk4"]
 script = ExtResource("3_utwit")
@@ -33,5 +33,5 @@ status_effect_affect_id = 1
 
 [resource]
 script = ExtResource("1_oy8u1")
-status_effects = Array[ExtResource("2_srlqk")]([ExtResource("3_7d0ur"), ExtResource("4_xebok"), ExtResource("5_n7o7i")])
+status_effects = Array[ExtResource("2_srlqk")]([ExtResource("3_7muum"), ExtResource("4_tasdi"), ExtResource("5_my5ya")])
 status_table = Array[ExtResource("3_utwit")]([SubResource("Resource_b1rk4"), SubResource("Resource_em08k"), SubResource("Resource_kvdjc"), SubResource("Resource_wouop")])

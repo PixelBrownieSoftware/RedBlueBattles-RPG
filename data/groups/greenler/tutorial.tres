@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=8 format=3 uid="uid://023p7lm5i3xw"]
 
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_0dy0l"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_0dy0l"]
 [ext_resource type="Resource" uid="uid://8s6w1jqap08l" path="res://data/characters/Enemies/nitwit.tres" id="2_2j37c"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_3sbad"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_2um12"]
-[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_xpd1f"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="4_7cg3x"]
+[ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_3sbad"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_2um12"]
+[ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_xpd1f"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="4_7cg3x"]
 
 [sub_resource type="Resource" id="Resource_ljdav"]
 script = ExtResource("2_3sbad")

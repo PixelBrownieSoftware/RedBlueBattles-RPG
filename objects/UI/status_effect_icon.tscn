@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://etotnuxeye8"]
 
-[ext_resource type="Script" path="res://objects/UI/status_effect_icon.gd" id="1_4dee6"]
+[ext_resource type="Script" uid="uid://c6rq18b7v47ix" path="res://objects/UI/status_effect_icon.gd" id="1_4dee6"]
 [ext_resource type="Texture2D" uid="uid://cdddglbaq7knm" path="res://sprites/GUI/status_effects_bld.png" id="1_h88r3"]
 
 [sub_resource type="Animation" id="Animation_253ao"]
@@ -164,10 +164,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tharq"]
 _data = {
-"RESET": SubResource("Animation_253ao"),
-"status_fade": SubResource("Animation_6hk1p"),
-"status_fading": SubResource("Animation_v0k0d"),
-"status_idle": SubResource("Animation_7druw")
+&"RESET": SubResource("Animation_253ao"),
+&"status_fade": SubResource("Animation_6hk1p"),
+&"status_fading": SubResource("Animation_v0k0d"),
+&"status_idle": SubResource("Animation_7druw")
 }
 
 [node name="StatusEffectIcon" type="Control"]

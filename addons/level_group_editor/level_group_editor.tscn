@@ -1,0 +1,136 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjaidp7bosgbq"]
+
+[ext_resource type="Script" uid="uid://c8t7em0fw4c3w" path="res://addons/level_group_editor/level_group_editor.gd" id="1_script"]
+
+[node name="LevelGroupEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 260
+
+[node name="Left" type="VBoxContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SubgroupLabel" type="Label" parent="HSplitContainer/Left"]
+layout_mode = 2
+text = "Subgroup Folder:"
+
+[node name="SubgroupSelect" type="OptionButton" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "📁 All Subgroups"
+popup/item_0/id = 0
+
+[node name="SearchBar" type="LineEdit" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Search level groups..."
+clear_button_enabled = true
+
+[node name="TopActions" type="HBoxContainer" parent="HSplitContainer/Left"]
+layout_mode = 2
+
+[node name="RefreshButton" type="Button" parent="HSplitContainer/Left/TopActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Refresh List"
+
+[node name="NewSubgroupButton" type="Button" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ New Subgroup (Folder)"
+
+[node name="NewLevelGroupButton" type="Button" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ New Level Group (Root)"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Left"]
+layout_mode = 2
+
+[node name="LevelList" type="ItemList" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 25
+item_0/text = "⚔️ Anne unlock"
+item_1/text = "⚔️ Battle 4"
+item_2/text = "⚔️ Battle 5"
+item_3/text = "⚔️ Battle 6"
+item_4/text = "⚔️ Beno's shootout"
+item_5/text = "⚔️ Easy battle"
+item_6/text = "⚔️ Hard battle"
+item_7/text = "⚔️ Medium battle"
+item_8/text = "⚔️ Buckler unlock"
+item_9/text = "⚔️ Battle 1"
+item_10/text = "⚔️ Battle 2"
+item_11/text = "⚔️ Battle 3"
+item_12/text = "⚔️ Greenler boss"
+item_13/text = "⚔️ Easy battle"
+item_14/text = "⚔️ Hard battle"
+item_15/text = "⚔️ Medium battle"
+item_16/text = "⚔️ Greendori fight"
+item_17/text = "⚔️ Battle 7"
+item_18/text = "⚔️ Battle 8"
+item_19/text = "⚔️ Battle 9"
+item_20/text = "⚔️ Lord red boss"
+item_21/text = "⚔️ Final boss"
+item_22/text = "⚔️ Easy fight"
+item_23/text = "⚔️ Hard fight"
+item_24/text = "⚔️ Tutorial"
+
+[node name="Right" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Toolbar" type="HBoxContainer" parent="HSplitContainer/Right"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Save to Disk"
+
+[node name="RevertButton" type="Button" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Revert"
+
+[node name="StatusLabel" type="Label" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select a Level Group on the left."
+horizontal_alignment = 2
+
+[node name="FormScroll" type="ScrollContainer" parent="HSplitContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FormRoot" type="VBoxContainer" parent="HSplitContainer/Right/FormScroll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10

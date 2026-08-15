@@ -96,8 +96,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_35rcg"]
 _data = {
-"RESET": SubResource("Animation_mwpjy"),
-"fx_animation": SubResource("Animation_rwhqj")
+&"RESET": SubResource("Animation_mwpjy"),
+&"fx_animation": SubResource("Animation_rwhqj")
 }
 
 [node name="FireFx" instance=ExtResource("1_qcrey")]

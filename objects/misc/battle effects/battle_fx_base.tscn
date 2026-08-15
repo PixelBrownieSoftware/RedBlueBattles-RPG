@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://x47pvwqv71wt"]
 
-[ext_resource type="Script" path="res://objects/misc/battle effects/battle_fx.gd" id="1_m1mpw"]
+[ext_resource type="Script" uid="uid://ny72xvr4x03n" path="res://objects/misc/battle effects/battle_fx.gd" id="1_m1mpw"]
 
 [node name="BattleFxBase" type="Node2D" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_m1mpw")

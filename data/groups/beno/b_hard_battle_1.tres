@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=18 format=3 uid="uid://blfjp3c2qq664"]
 
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="1_vcj2j"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_6smlj"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_jxq45"]
-[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_kt7vd"]
+[ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_6smlj"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_jxq45"]
+[ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_kt7vd"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="3_ses84"]
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="3_yelng"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="3_yelng"]
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="4_3wyrl"]
 [ext_resource type="Resource" uid="uid://gudttha38y7d" path="res://data/Skills/Status/ice_sheild.tres" id="4_ac6nf"]
 [ext_resource type="Resource" uid="uid://c8qy2a5takbyp" path="res://data/Skills/Ice/frost_breath.tres" id="5_cvn3u"]
@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="7_ecw5g"]
 [ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/Skills/Psychic/brain_shock.tres" id="8_abavw"]
 [ext_resource type="Resource" uid="uid://btljbcdehpvvv" path="res://data/Skills/Peirce/stab_frenzy.tres" id="10_soji2"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="11_o7jjk"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="11_o7jjk"]
 
 [sub_resource type="Resource" id="Resource_anqou"]
 script = ExtResource("2_6smlj")

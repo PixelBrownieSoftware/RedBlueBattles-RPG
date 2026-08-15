@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4gw6qachu4ih"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_w8ekg"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_isdh7"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_isdh7"]
 [ext_resource type="Texture2D" uid="uid://c3uoep0gshr2" path="res://sprites/kappy_sprite_sheet.png" id="2_v74l1"]
 [ext_resource type="AudioStream" uid="uid://dohb1povbojm1" path="res://sound/slash2.wav" id="3_ijpjk"]
 
@@ -72,9 +72,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pqucx"]
 _data = {
-"RESET": SubResource("Animation_tcuwf"),
-"attack": SubResource("Animation_iydb3"),
-"idle": SubResource("Animation_iywb7")
+&"RESET": SubResource("Animation_tcuwf"),
+&"attack": SubResource("Animation_iydb3"),
+&"idle": SubResource("Animation_iywb7")
 }
 
 [node name="sprite_kappy" instance=ExtResource("1_w8ekg")]

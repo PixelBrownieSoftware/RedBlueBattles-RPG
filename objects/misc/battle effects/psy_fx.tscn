@@ -84,8 +84,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38u3c"]
 _data = {
-"RESET": SubResource("Animation_yty4k"),
-"fx_animation": SubResource("Animation_3txvb")
+&"RESET": SubResource("Animation_yty4k"),
+&"fx_animation": SubResource("Animation_3txvb")
 }
 
 [node name="PsyFx" instance=ExtResource("1_f03o5")]

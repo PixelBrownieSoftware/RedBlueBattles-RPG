@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=11 format=3 uid="uid://t6j2xsd5p21d"]
 
-[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_8gwl5"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ae4jx"]
-[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_m15q0"]
+[ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_8gwl5"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_ae4jx"]
+[ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_m15q0"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_qt4e1"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="5_2fkon"]
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="5_fwj4k"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="5_fwj4k"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="7_2llxh"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="7_vbwil"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="7_vbwil"]
 
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("1_8gwl5")

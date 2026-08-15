@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctea2qykjpd3c"]
 
-[ext_resource type="Script" path="res://src/battle_character_actor.gd" id="1_dy7n5"]
+[ext_resource type="Script" uid="uid://bcstqcrao1eu4" path="res://src/battle_character_actor.gd" id="1_dy7n5"]
 [ext_resource type="PackedScene" uid="uid://x47pvwqv71wt" path="res://objects/misc/battle effects/battle_fx_base.tscn" id="2_3wq5g"]
 [ext_resource type="Texture2D" uid="uid://7atfknvn78ps" path="res://sprites/GUI/selection_arrow.png" id="3_yav3y"]
 
@@ -59,9 +59,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yfoa1"]
 _data = {
-"RESET": SubResource("Animation_ijii1"),
-"not_selected": SubResource("Animation_17xgx"),
-"selected": SubResource("Animation_2qxgg")
+&"RESET": SubResource("Animation_ijii1"),
+&"not_selected": SubResource("Animation_17xgx"),
+&"selected": SubResource("Animation_2qxgg")
 }
 
 [node name="battle_combatant" type="Node2D"]

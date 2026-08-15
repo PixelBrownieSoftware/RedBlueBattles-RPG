@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://6nwuokuicye2"]
 
-[ext_resource type="Script" path="res://scenes/extra_skills_ui.gd" id="1_2ikqm"]
+[ext_resource type="Script" uid="uid://b1b38d4x4keqc" path="res://scenes/extra_skills_ui.gd" id="1_2ikqm"]
 
 [node name="DebugRoom" type="Node2D"]
 

@@ -28,7 +28,12 @@ func add_character(chara):
 	chara.increase_multiplier.connect(exp_watch.increase_multiplier)
 	var actor : battle_character_actor = base_character_actor.instantiate()
 	var position_groups = $"../PartyPositions" if GlobalVariables.is_player_team(chara) else $"../EnemyPositions"
-	var pos_node = position_groups.get_child(chara.get_index())
+	var pos_index = 0
+	if GlobalVariables.is_player_team(chara):
+		pos_index = PartyMembers.get_children().filter(func(x): return GlobalVariables.enabled_party_members[x]).find(chara)
+	else:
+		pos_index = chara.get_index()
+	var pos_node = position_groups.get_child(pos_index)#chara.get_index())
 	actor.position = pos_node.position
 	actor.assign_data(chara)
 	actor.hurt_sound = hurt_sound_enemy

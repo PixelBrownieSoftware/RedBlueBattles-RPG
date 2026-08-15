@@ -1,3 +1,4 @@
+@tool
 extends Node
 class_name global_variables
 
@@ -6,6 +7,7 @@ class_name global_variables
 @export var expereince_score : int = 0
 var multilplier: float = 1
 var extra_skills_limit = 3
+@export var lucky_damage_bonus : float = 1.4
 @export var strength_colour : Color
 @export var vitality_colour : Color
 @export var dexterity_colour : Color

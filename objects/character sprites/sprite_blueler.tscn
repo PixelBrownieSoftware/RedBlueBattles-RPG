@@ -176,10 +176,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iufy3"]
 _data = {
-"RESET": SubResource("Animation_3rku1"),
-"attack": SubResource("Animation_62l6s"),
-"idle": SubResource("Animation_7niyj"),
-"idle_active": SubResource("Animation_ly0i3")
+&"RESET": SubResource("Animation_3rku1"),
+&"attack": SubResource("Animation_62l6s"),
+&"idle": SubResource("Animation_7niyj"),
+&"idle_active": SubResource("Animation_ly0i3")
 }
 
 [node name="sprite_blueler" instance=ExtResource("1_mtdsp")]

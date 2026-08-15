@@ -10,6 +10,7 @@ class_name battle_level_group
 @export var terminal_scene : String
 @export var colour_BG : Color = Color(180.0/255.0,120.0/255.0,120.0/255.0)
 @export var texture_BG : Texture2D
+@export var editor_position : Vector2
 
 enum battle_type {
 	BOSS,

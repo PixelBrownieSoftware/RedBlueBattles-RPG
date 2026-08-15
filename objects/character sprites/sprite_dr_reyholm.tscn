@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_6snpg"]
 [ext_resource type="Texture2D" uid="uid://cv32m40ckrb7k" path="res://sprites/dr_reyholm_sprite_sheet.png" id="2_i73gr"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_soarm"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_soarm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pcsn3"]
 resource_local_to_scene = true
@@ -76,10 +76,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56win"]
 _data = {
-"RESET": SubResource("Animation_b2uxm"),
-"attack": SubResource("Animation_8v3oy"),
-"hurt": SubResource("Animation_lrj7b"),
-"idle": SubResource("Animation_5fmn4")
+&"RESET": SubResource("Animation_b2uxm"),
+&"attack": SubResource("Animation_8v3oy"),
+&"hurt": SubResource("Animation_lrj7b"),
+&"idle": SubResource("Animation_5fmn4")
 }
 
 [node name="sprite_dr_reyholm" instance=ExtResource("1_6snpg")]

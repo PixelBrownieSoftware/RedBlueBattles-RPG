@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://2y2lo8lg2cg2"]
+
+[ext_resource type="Script" uid="uid://s2ki6ygshkl3" path="res://addons/RPG_editor/rpg_editor.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://ybh2ve8hfkrt" path="res://addons/character_stats_editor/character_stats_editor.tscn" id="2_char_editor"]
+[ext_resource type="PackedScene" path="res://addons/element_editor/element_editor.tscn" id="3_element_editor"]
+[ext_resource type="PackedScene" uid="uid://cxtx0ronqpi74" path="res://addons/skill_editor/skill_editor.tscn" id="4_skill_editor"]
+[ext_resource type="PackedScene" uid="uid://c72wt0w3icu24" path="res://addons/status_effect_editor/status_effect_editor.tscn" id="5_status_editor"]
+[ext_resource type="PackedScene" uid="uid://bapmqf5kgirwi" path="res://addons/battle_tester/battle_tester.tscn" id="6_battle_tester"]
+[ext_resource type="PackedScene" uid="uid://bxu8wjvfvylr" path="res://addons/battle_group_editor/battle_group_editor.tscn" id="6_group_editor"]
+[ext_resource type="PackedScene" uid="uid://bjaidp7bosgbq" path="res://addons/level_group_editor/level_group_editor.tscn" id="7_level_group_editor"]
+
+[node name="RPGEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 5
+
+[node name="Characters" parent="TabContainer" instance=ExtResource("2_char_editor")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Elements" parent="TabContainer" instance=ExtResource("3_element_editor")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Skills" parent="TabContainer" instance=ExtResource("4_skill_editor")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Status Effects" parent="TabContainer" instance=ExtResource("5_status_editor")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Level Groups" parent="TabContainer" instance=ExtResource("7_level_group_editor")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="Battle Tester" parent="TabContainer" instance=ExtResource("6_battle_tester")]
+layout_mode = 2
+metadata/_tab_index = 5
+
+[node name="BattleGroupEditor" parent="TabContainer" instance=ExtResource("6_group_editor")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 6

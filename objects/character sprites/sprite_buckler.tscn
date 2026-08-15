@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bxyrw85sebfi3"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_04853"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_ma1s1"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_ma1s1"]
 [ext_resource type="Texture2D" uid="uid://c8oso5s5p0f15" path="res://sprites/buckler_sprite_sheet.png" id="2_xdtbt"]
 [ext_resource type="AudioStream" uid="uid://wlxmon7nkn6x" path="res://sound/gunshot.wav" id="3_x40oj"]
 
@@ -122,10 +122,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t6d34"]
 _data = {
-"RESET": SubResource("Animation_u83kc"),
-"attack": SubResource("Animation_jp2lw"),
-"idle": SubResource("Animation_jxci1"),
-"shoot": SubResource("Animation_3nj0y")
+&"RESET": SubResource("Animation_u83kc"),
+&"attack": SubResource("Animation_jp2lw"),
+&"idle": SubResource("Animation_jxci1"),
+&"shoot": SubResource("Animation_3nj0y")
 }
 
 [node name="sprite_buckler" instance=ExtResource("1_04853")]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=4 format=3 uid="uid://dk5sdo3a7orc8"]
+
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_pekp8"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="2_k0r50"]
+[ext_resource type="Resource" uid="uid://byg8a2ywl8b8o" path="res://data/groups/test/party_battle.tres" id="2_m1jj8"]
+
+[resource]
+script = ExtResource("2_k0r50")
+name = "Party Battle"
+battle_groups = Array[ExtResource("1_pekp8")]([ExtResource("2_m1jj8")])
+self_destruct_after_win = false
+battle_groups_unlock = Array[ExtResource("2_k0r50")]([])
+battle_groups_remove = Array[ExtResource("2_k0r50")]([])
+type_battle = 0
+terminal = false
+terminal_scene = ""
+colour_BG = Color(0.705882, 0.470588, 0.470588, 1)
+editor_position = Vector2(0, 0)

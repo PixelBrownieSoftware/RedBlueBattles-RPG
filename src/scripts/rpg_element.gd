@@ -1,3 +1,4 @@
+@tool
 extends Resource
 class_name element
 @export var name : String = "Blank"

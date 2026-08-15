@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cl40nao1ibtcf"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_6w02r"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_i2ofj"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_i2ofj"]
 [ext_resource type="Texture2D" uid="uid://cosrhf3sluv6i" path="res://sprites/greenler_sprite_sheet.png" id="2_qincn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y4745"]
@@ -160,10 +160,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jg2ei"]
 _data = {
-"RESET": SubResource("Animation_hxfja"),
-"attack": SubResource("Animation_qevge"),
-"idle": SubResource("Animation_84cfk"),
-"idle_active": SubResource("Animation_ra4if")
+&"RESET": SubResource("Animation_hxfja"),
+&"attack": SubResource("Animation_qevge"),
+&"idle": SubResource("Animation_84cfk"),
+&"idle_active": SubResource("Animation_ra4if")
 }
 
 [node name="sprite_greenler" instance=ExtResource("1_6w02r")]

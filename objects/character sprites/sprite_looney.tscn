@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_wwuws"]
 [ext_resource type="Texture2D" uid="uid://7cwr4p5jvm0c" path="res://sprites/looney_sprite_sheet.png" id="2_anp4n"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_kmct0"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_kmct0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ihnjy"]
 resource_local_to_scene = true
@@ -43,8 +43,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqdgj"]
 _data = {
-"attack": SubResource("Animation_pmoux"),
-"idle": SubResource("Animation_gnkmi")
+&"attack": SubResource("Animation_pmoux"),
+&"idle": SubResource("Animation_gnkmi")
 }
 
 [node name="sprite_looney" instance=ExtResource("1_wwuws")]

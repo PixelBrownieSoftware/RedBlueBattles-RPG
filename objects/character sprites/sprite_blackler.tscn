@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_po85i"]
 [ext_resource type="Texture2D" uid="uid://bn5uvfkbpaj2h" path="res://sprites/blackler_sprite_sheet.png" id="2_q2o7c"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_s1t6f"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_s1t6f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_spm7i"]
 resource_local_to_scene = true
@@ -43,8 +43,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ah3md"]
 _data = {
-"attack": SubResource("Animation_dk5te"),
-"idle": SubResource("Animation_mboyh")
+&"attack": SubResource("Animation_dk5te"),
+&"idle": SubResource("Animation_mboyh")
 }
 
 [node name="sprite_blackler" instance=ExtResource("1_po85i")]

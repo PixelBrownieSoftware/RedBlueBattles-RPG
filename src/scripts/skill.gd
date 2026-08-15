@@ -1,3 +1,4 @@
+@tool
 extends Resource
 class_name rpg_skill
 
@@ -64,18 +65,34 @@ func get_all_status_effects():
 	for status in skill_element.effects_to_add:
 		status_array.append(status.status)
 	return status_array
-
-func damage_formula(attacker: battle_character_data, target: battle_character_data) -> int:
-	var modifiers = attacker.get_element_potential_modifiers(self)
-	print("Multiplier " + str(modifiers["damage_multipler"]))
 	
+func calculate_raw_power(attacker: battle_character_data):
+	const total_stats = 6
 	var str = (attacker.strength_net * skill_element.stats.strength)
 	var agi = (attacker.agility_net * skill_element.stats.agility)
 	var vit = (attacker.vitality_net * skill_element.stats.vitality)
 	var mag = (attacker.magic_pow_net * skill_element.stats.magic_pow)
 	var dex = (attacker.dexterity_net * skill_element.stats.dexterity)
 	var luc = (attacker.luck_net * skill_element.stats.luck)
-	var stat_element = ((str+ dex + luc + agi + mag + vit)/6) * (power)
+	var total = (str+ dex + luc + agi + mag + vit)
+	var mean = (total/total_stats)
+	var stat_element = mean * power
+	return {
+		"str":str,
+		"agi":agi,
+		"vit":vit,
+		"mag":mag,
+		"dex":dex,
+		"luc":luc,
+		"total": total,
+		"mean": mean,
+		"output": stat_element
+		}
+
+func damage_formula(attacker: battle_character_data, target: battle_character_data) -> int:
+	var modifiers = attacker.get_element_potential_modifiers(self)
+	print("Multiplier " + str(modifiers["damage_multipler"]))
+	var stat_element = calculate_raw_power(attacker)["output"]
 	var elem_aff = target.get_elemental_affinity(skill_element)
 	return (((stat_element * power) / target.vitality_net ) * modifiers["damage_multipler"]) * elem_aff
 
@@ -101,7 +118,7 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 		calculated_PT = PRESS_TURN.PT.REFLECT
 	if calculated_PT < PRESS_TURN.PT.VOID:
 		if is_lucky && el_affinity >= 1:
-			damage_amount *= 1.4
+			damage_amount *= GlobalVariables.lucky_damage_bonus
 			if calculated_PT == PRESS_TURN.PT.WEAK:
 				calculated_PT = PRESS_TURN.PT.WEAK_LUCKY
 			else:

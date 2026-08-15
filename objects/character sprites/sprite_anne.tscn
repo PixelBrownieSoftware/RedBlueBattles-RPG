@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_3d5dd"]
 [ext_resource type="Texture2D" uid="uid://cqmoyvfkpl637" path="res://sprites/anne_sprite_sheet.png" id="2_bhps1"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_ly2jb"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_ly2jb"]
 [ext_resource type="AudioStream" uid="uid://dohb1povbojm1" path="res://sound/slash2.wav" id="3_5sjq1"]
 [ext_resource type="AudioStream" uid="uid://wlxmon7nkn6x" path="res://sound/gunshot.wav" id="4_2wr8y"]
 
@@ -151,10 +151,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_02o7m"]
 _data = {
-"RESET": SubResource("Animation_ho5nf"),
-"attack": SubResource("Animation_f5vtw"),
-"idle": SubResource("Animation_bb5ed"),
-"shoot": SubResource("Animation_r7qbr")
+&"RESET": SubResource("Animation_ho5nf"),
+&"attack": SubResource("Animation_f5vtw"),
+&"idle": SubResource("Animation_bb5ed"),
+&"shoot": SubResource("Animation_r7qbr")
 }
 
 [node name="sprite_anne" instance=ExtResource("1_3d5dd")]

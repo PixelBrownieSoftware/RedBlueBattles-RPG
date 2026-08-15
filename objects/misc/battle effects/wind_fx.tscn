@@ -133,8 +133,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ttros"]
 _data = {
-"RESET": SubResource("Animation_sddok"),
-"fx_animation": SubResource("Animation_1f0nw")
+&"RESET": SubResource("Animation_sddok"),
+&"fx_animation": SubResource("Animation_1f0nw")
 }
 
 [node name="WindFx" instance=ExtResource("1_hq5cs")]

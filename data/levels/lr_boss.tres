@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://dehiaobxjje38"]
 
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_d21vm"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_d21vm"]
 [ext_resource type="Resource" uid="uid://ck8pds420p0t0" path="res://data/groups/lord red/lr_boss.tres" id="2_nfxbr"]
-[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_cgunj"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="3_cgunj"]
 [ext_resource type="Resource" uid="uid://04yywi4hhnut" path="res://data/levels/buckler_unlock.tres" id="4_scss3"]
 
 [resource]
@@ -16,3 +16,4 @@ type_battle = 0
 terminal = true
 terminal_scene = "res://scenes/end_scene.tscn"
 colour_BG = Color(0.705882, 0.470588, 0.470588, 1)
+editor_position = Vector2(4280, 250)

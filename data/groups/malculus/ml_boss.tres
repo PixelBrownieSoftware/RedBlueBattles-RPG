@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=14 format=3 uid="uid://bi5h1a7lf2yl1"]
 
 [ext_resource type="Resource" uid="uid://cquom4g51vu7d" path="res://data/characters/Bosses/malculus.tres" id="1_6i7jd"]
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_rlcc1"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="2_fcpnp"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_crrxb"]
-[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_u6m7d"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="4_ofywq"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_rlcc1"]
+[ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_fcpnp"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_crrxb"]
+[ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_u6m7d"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="4_ofywq"]
 [ext_resource type="Resource" uid="uid://divek06ecodu1" path="res://data/characters/Playable/greendori.tres" id="5_r4ger"]
 [ext_resource type="Resource" uid="uid://cmfai7ydcxm8h" path="res://data/characters/Playable/buckler.tres" id="6_2afsa"]
 
@@ -16,6 +16,7 @@ skills = Array[ExtResource("3_crrxb")]([])
 min_level = 35
 max_level = 35
 inclusion_flag_requirements = Array[ExtResource("3_u6m7d")]([])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_d448l"]
 script = ExtResource("3_u6m7d")
@@ -29,6 +30,7 @@ skills = Array[ExtResource("3_crrxb")]([])
 min_level = 30
 max_level = 30
 inclusion_flag_requirements = Array[ExtResource("3_u6m7d")]([SubResource("Resource_d448l")])
+perma_death = false
 
 [sub_resource type="Resource" id="Resource_q78j4"]
 script = ExtResource("3_u6m7d")
@@ -42,6 +44,7 @@ skills = Array[ExtResource("3_crrxb")]([])
 min_level = 30
 max_level = 30
 inclusion_flag_requirements = Array[ExtResource("3_u6m7d")]([SubResource("Resource_q78j4")])
+perma_death = false
 
 [resource]
 script = ExtResource("1_rlcc1")

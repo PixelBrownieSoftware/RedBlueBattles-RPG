@@ -1,55 +1,56 @@
-[gd_scene load_steps=56 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=57 format=3 uid="uid://ckmw47six2iym"]
 
-[ext_resource type="Script" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="2_8515p"]
+[ext_resource type="Script" uid="uid://dnw24pnj4ti18" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
+[ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="2_8515p"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="3_d65sr"]
 [ext_resource type="AudioStream" uid="uid://cv2s513l4rpde" path="res://sound/encounter.wav" id="6_j5r2p"]
+[ext_resource type="Resource" uid="uid://dk5sdo3a7orc8" path="res://data/levels/party_battle.tres" id="6_n80yj"]
 [ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="7_7jsww"]
-[ext_resource type="Script" path="res://scenes/extra_skills_menu.gd" id="7_jfqex"]
+[ext_resource type="Script" uid="uid://dfek1nnwgr5pu" path="res://scenes/extra_skills_menu.gd" id="7_jfqex"]
 [ext_resource type="PackedScene" uid="uid://cshn1uy4w7mwl" path="res://objects/UI/skill_equip_button.tscn" id="7_u8djp"]
 [ext_resource type="PackedScene" uid="uid://cks6y325db8c4" path="res://objects/UI/battle_select_button.tscn" id="8_0fx3b"]
-[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="8_ef0s7"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="8_ef0s7"]
 [ext_resource type="Resource" uid="uid://by8qmiqumrouq" path="res://data/levels/tutorial.tres" id="9_4xroy"]
 [ext_resource type="PackedScene" uid="uid://bmv0o1ywk4p43" path="res://objects/misc/level_lock.tscn" id="9_e0sob"]
-[ext_resource type="Script" path="res://src/active_party_members.gd" id="11_byyvb"]
+[ext_resource type="Script" uid="uid://rfwou4rd76ue" path="res://src/active_party_members.gd" id="11_byyvb"]
 [ext_resource type="PackedScene" uid="uid://cf4s1n8tbgm7o" path="res://objects/UI/member_select_button.tscn" id="12_tpcla"]
 [ext_resource type="PackedScene" uid="uid://cm2ufju077vp3" path="res://objects/UI/battle_desc_box.tscn" id="23_qmmf3"]
-[ext_resource type="Texture2D" uid="uid://ro16bqpwgidv" path="res://sprites/GUI/gui_str.png" id="43_71yog"]
-[ext_resource type="Texture2D" uid="uid://c2ejrubsxhqmf" path="res://sprites/GUI/gui_vit.png" id="44_6ay7a"]
-[ext_resource type="Texture2D" uid="uid://dieyq5lsg0wlf" path="res://sprites/GUI/gui_dex.png" id="45_netp6"]
-[ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/gui_mag.png" id="46_wvy3d"]
+[ext_resource type="Texture2D" uid="uid://ro16bqpwgidv" path="res://sprites/GUI/stats/gui_str.png" id="43_71yog"]
+[ext_resource type="Texture2D" uid="uid://c2ejrubsxhqmf" path="res://sprites/GUI/stats/gui_vit.png" id="44_6ay7a"]
+[ext_resource type="Texture2D" uid="uid://dieyq5lsg0wlf" path="res://sprites/GUI/stats/gui_dex.png" id="45_netp6"]
+[ext_resource type="Texture2D" uid="uid://c4sqgtj3x672o" path="res://sprites/GUI/stats/gui_mag.png" id="46_wvy3d"]
 [ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="47_oagt6"]
-[ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/gui_luc.png" id="48_sxbv2"]
-[ext_resource type="Script" path="res://scenes/battle_menu_buttons.gd" id="49_ooein"]
-[ext_resource type="Script" path="res://objects/UI/battle_desc_box.gd" id="49_qlain"]
+[ext_resource type="Texture2D" uid="uid://dxri16hvit14o" path="res://sprites/GUI/stats/gui_luc.png" id="48_sxbv2"]
+[ext_resource type="Script" uid="uid://d3gqr2q0be7dn" path="res://scenes/battle_menu_buttons.gd" id="49_ooein"]
+[ext_resource type="Script" uid="uid://bpq8add0jxqqj" path="res://objects/UI/battle_desc_box.gd" id="49_qlain"]
 [ext_resource type="FontFile" uid="uid://bn7h7hhogw0vg" path="res://misc/fonts/Shermlock.ttf" id="50_u6pdu"]
 [ext_resource type="PackedScene" uid="uid://cpp0df3vxsggx" path="res://objects/UI/stat_description_box.tscn" id="53_sl7pk"]
-[ext_resource type="Script" path="res://scenes/ency_stats.gd" id="53_u1kq0"]
-[ext_resource type="Script" path="res://scenes/ency_elements.gd" id="55_ir18w"]
-[ext_resource type="Script" path="res://scenes/ency_status_effects.gd" id="56_q67lj"]
-[ext_resource type="Texture2D" uid="uid://bgy81ce8bq5lb" path="res://sprites/GUI/gui_hp.png" id="57_ryarp"]
+[ext_resource type="Script" uid="uid://cnjfs0t15kqow" path="res://scenes/ency_stats.gd" id="53_u1kq0"]
+[ext_resource type="Script" uid="uid://cr26pkes0iypn" path="res://scenes/ency_elements.gd" id="55_ir18w"]
+[ext_resource type="Script" uid="uid://bi34omxjlxqyk" path="res://scenes/ency_status_effects.gd" id="56_q67lj"]
+[ext_resource type="Texture2D" uid="uid://bgy81ce8bq5lb" path="res://sprites/GUI/stats/gui_hp.png" id="57_ryarp"]
 [ext_resource type="Texture2D" uid="uid://cbgcdtcj2dbnb" path="res://sprites/GUI/stamina_gui.png" id="58_4sbl5"]
 [ext_resource type="Texture2D" uid="uid://dm1h8ka4ida74" path="res://sprites/GUI/press_turn_icon.png" id="59_6vhek"]
-[ext_resource type="Texture2D" uid="uid://bxbyjk127rn6n" path="res://sprites/GUI/affinity_icon_wk.png" id="60_0bo2n"]
-[ext_resource type="Texture2D" uid="uid://dr7hj3hjn7dgm" path="res://sprites/GUI/gui_skills.png" id="60_16k8h"]
-[ext_resource type="Texture2D" uid="uid://rt48kk0n5u84" path="res://sprites/GUI/affinity_icon_norm.png" id="61_17osn"]
-[ext_resource type="Texture2D" uid="uid://x5lxjowqi2xy" path="res://sprites/GUI/affinity_icon_res.png" id="62_fns1h"]
-[ext_resource type="Texture2D" uid="uid://bye0he76rvvgn" path="res://sprites/GUI/affinity_icon_blk.png" id="63_bgrf0"]
-[ext_resource type="Texture2D" uid="uid://4l2tmg0okxw" path="res://sprites/GUI/affinity_icon_imm.png" id="64_3lelk"]
-[ext_resource type="Texture2D" uid="uid://cneukuwqpayap" path="res://sprites/GUI/elements_fire.png" id="65_fref4"]
-[ext_resource type="Script" path="res://scenes/party_members_select.gd" id="67_8j0em"]
+[ext_resource type="Texture2D" uid="uid://bxbyjk127rn6n" path="res://sprites/GUI/affinity/affinity_icon_wk.png" id="60_0bo2n"]
+[ext_resource type="Texture2D" uid="uid://dr7hj3hjn7dgm" path="res://sprites/GUI/stats/gui_skills.png" id="60_16k8h"]
+[ext_resource type="Texture2D" uid="uid://rt48kk0n5u84" path="res://sprites/GUI/affinity/affinity_icon_norm.png" id="61_17osn"]
+[ext_resource type="Texture2D" uid="uid://x5lxjowqi2xy" path="res://sprites/GUI/affinity/affinity_icon_res.png" id="62_fns1h"]
+[ext_resource type="Texture2D" uid="uid://bye0he76rvvgn" path="res://sprites/GUI/affinity/affinity_icon_blk.png" id="63_bgrf0"]
+[ext_resource type="Texture2D" uid="uid://4l2tmg0okxw" path="res://sprites/GUI/affinity/affinity_icon_imm.png" id="64_3lelk"]
+[ext_resource type="Texture2D" uid="uid://cneukuwqpayap" path="res://sprites/GUI/elements/elements_fire.png" id="65_fref4"]
+[ext_resource type="Script" uid="uid://bhi4p5yljhf2a" path="res://scenes/party_members_select.gd" id="67_8j0em"]
 [ext_resource type="Texture2D" uid="uid://cpimagv4prdu1" path="res://sprites/redler_sprite_sheet.png" id="67_wj7hi"]
-[ext_resource type="Script" path="res://scenes/stats_content.gd" id="68_thq7m"]
-[ext_resource type="Script" path="res://scenes/expereince_ui.gd" id="71_glf8n"]
+[ext_resource type="Script" uid="uid://ep80a04dxkk5" path="res://scenes/stats_content.gd" id="68_thq7m"]
+[ext_resource type="Script" uid="uid://b4s3gssfxerg3" path="res://scenes/expereince_ui.gd" id="71_glf8n"]
 [ext_resource type="PackedScene" uid="uid://cf3gbeyniwq1x" path="res://objects/UI/stats_ui/level_name_ui.tscn" id="72_cabri"]
 [ext_resource type="PackedScene" uid="uid://co52huatecj2l" path="res://objects/UI/stats_ui/affinity_ui.tscn" id="77_ey05g"]
 [ext_resource type="PackedScene" uid="uid://bn5bk25l1tlg8" path="res://objects/UI/stats_ui/stats_ui.tscn" id="78_gjf2v"]
 [ext_resource type="PackedScene" uid="uid://bxrq6qspb6bb0" path="res://objects/UI/stats_ui/potential_ui.tscn" id="78_nje4g"]
 [ext_resource type="PackedScene" uid="uid://dolrm8q8r70u6" path="res://objects/UI/skill_menu_button.tscn" id="82_tk7au"]
-[ext_resource type="Script" path="res://scenes/next_skill_ui.gd" id="88_on70i"]
-[ext_resource type="Script" path="res://scenes/extra_skills_ui.gd" id="89_cp064"]
+[ext_resource type="Script" uid="uid://chnlmtc78satw" path="res://scenes/next_skill_ui.gd" id="88_on70i"]
+[ext_resource type="Script" uid="uid://b1b38d4x4keqc" path="res://scenes/extra_skills_ui.gd" id="89_cp064"]
 [ext_resource type="PackedScene" uid="uid://ctm7jofl2qopg" path="res://objects/UI/stats_ui/skills_ui.tscn" id="90_5vi25"]
-[ext_resource type="Script" path="res://scenes/eq_extra_skills_ui.gd" id="90_d8w2s"]
+[ext_resource type="Script" uid="uid://bvsf5pmxf4wsc" path="res://scenes/eq_extra_skills_ui.gd" id="90_d8w2s"]
 
 [sub_resource type="Animation" id="Animation_1vcaa"]
 length = 0.001
@@ -716,17 +717,17 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2gytn"]
 _data = {
-"RESET": SubResource("Animation_1vcaa"),
-"to_enemy_menu": SubResource("Animation_dmynu"),
-"to_extra_skills": SubResource("Animation_nkjg2"),
-"to_info_menu": SubResource("Animation_hho0c")
+&"RESET": SubResource("Animation_1vcaa"),
+&"to_enemy_menu": SubResource("Animation_dmynu"),
+&"to_extra_skills": SubResource("Animation_nkjg2"),
+&"to_info_menu": SubResource("Animation_hho0c")
 }
 
 [node name="OverworldMenu" type="Node2D"]
 script = ExtResource("1_gsfbw")
 battle_scene = "res://scenes/battle_scene.tscn"
 starters = Array[ExtResource("2_8515p")]([ExtResource("3_d65sr")])
-starter_levels = Array[ExtResource("8_ef0s7")]([ExtResource("9_4xroy")])
+starter_levels = Array[ExtResource("8_ef0s7")]([ExtResource("9_4xroy"), ExtResource("6_n80yj")])
 
 [node name="BattleStart" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_j5r2p")
@@ -1328,7 +1329,7 @@ theme = ExtResource("7_7jsww")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
 active = false
 libraries = {
-"": SubResource("AnimationLibrary_2gytn")
+&"": SubResource("AnimationLibrary_2gytn")
 }
 
 [node name="Info Stats" type="Panel" parent="MainMenu"]
@@ -2337,8 +2338,8 @@ text = "Tip: Click the red Party button below to upgrade your characters."
 [connection signal="load_chara" from="." to="MainMenu/PartyMemberMenu/StatsStuff/PartyMember/Extra skills/HBoxContainer/EquippedSkills/EqSkills" method="load_skill_buttons"]
 [connection signal="pressed" from="BackToMenu" to="." method="main_menu"]
 [connection signal="pressed" from="Unlocker/UnlockButton" to="LevelLock" method="unlock"]
-[connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="go_to_extra_menu"]
 [connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="close_party_menu"]
+[connection signal="close_party_menu" from="MainMenu/ExtraSkillsMenu" to="." method="go_to_extra_menu"]
 [connection signal="pressed" from="MainMenu/ExtraSkillsMenu/MoveDesc/Equip skill" to="MainMenu/ExtraSkillsMenu" method="assign_skill"]
 [connection signal="pressed" from="MainMenu/ExtraSkillsMenu/Back2" to="." method="load_party"]
 [connection signal="tab_clicked" from="MainMenu/EnemySelectTabs" to="LevelLock" method="on_tab_open"]

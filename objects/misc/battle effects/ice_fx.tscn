@@ -145,8 +145,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l5sew"]
 _data = {
-"RESET": SubResource("Animation_fcl4q"),
-"fx_animation": SubResource("Animation_6axxi")
+&"RESET": SubResource("Animation_fcl4q"),
+&"fx_animation": SubResource("Animation_6axxi")
 }
 
 [node name="ice_fx" instance=ExtResource("1_rkpnr")]

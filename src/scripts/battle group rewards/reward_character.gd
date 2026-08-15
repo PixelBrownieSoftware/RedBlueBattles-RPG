@@ -1,3 +1,4 @@
+@tool
 extends battle_group_reward
 class_name reward_character
 @export var character : battle_character_base

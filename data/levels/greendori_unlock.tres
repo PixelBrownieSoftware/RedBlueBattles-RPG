@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="battle_level_group" load_steps=4 format=3 uid="uid://bjm56ggelefke"]
 
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_557wl"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_557wl"]
 [ext_resource type="Resource" uid="uid://cylk1tknykcp2" path="res://data/groups/lord red/mini_boss_greendori.tres" id="2_tyxpy"]
-[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="3_13isr"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="3_13isr"]
 
 [resource]
 script = ExtResource("3_13isr")
@@ -15,3 +15,4 @@ type_battle = 2
 terminal = false
 terminal_scene = ""
 colour_BG = Color(0.705882, 0.470588, 0.470588, 1)
+editor_position = Vector2(3140, 350)

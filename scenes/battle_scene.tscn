@@ -1,38 +1,38 @@
 [gd_scene load_steps=71 format=3 uid="uid://ckkn8g3r0etlr"]
 
-[ext_resource type="Script" path="res://src/scripts/battle_character_actor_manager.gd" id="1_3w2at"]
-[ext_resource type="Script" path="res://src/scripts/battle_state_machine.gd" id="2_4cala"]
-[ext_resource type="Script" path="res://src/scripts/battle_starter.gd" id="3_8yjjp"]
-[ext_resource type="Script" path="res://src/scripts/battle_character_skills.gd" id="5_agysm"]
-[ext_resource type="Script" path="res://src/scripts/battle_queue_state.gd" id="6_sc1mp"]
-[ext_resource type="Script" path="res://src/scripts/battle_press_turn_state.gd" id="7_am20o"]
-[ext_resource type="Script" path="res://src/scripts/battle_variables.gd" id="7_amfna"]
-[ext_resource type="Script" path="res://src/scripts/battle_process_state.gd" id="7_x53et"]
-[ext_resource type="Script" path="res://src/scripts/target_menu.gd" id="8_1e15q"]
-[ext_resource type="Script" path="res://src/scripts/battle_end_state.gd" id="8_j42ai"]
+[ext_resource type="Script" uid="uid://qxdr1enbvh8u" path="res://src/scripts/battle_character_actor_manager.gd" id="1_3w2at"]
+[ext_resource type="Script" uid="uid://c4iab0xsxxbni" path="res://src/scripts/battle engine/battle_state_machine.gd" id="2_4cala"]
+[ext_resource type="Script" uid="uid://f67rgkgilpx5" path="res://src/scripts/battle engine/battle_starter.gd" id="3_8yjjp"]
+[ext_resource type="Script" uid="uid://bxt60os1ea4r7" path="res://src/scripts/battle_character_skills.gd" id="5_agysm"]
+[ext_resource type="Script" uid="uid://1uc2s47il0dt" path="res://src/scripts/battle engine/battle_queue_state.gd" id="6_sc1mp"]
+[ext_resource type="Script" uid="uid://i2f16fw2axv6" path="res://src/scripts/battle engine/battle_press_turn_state.gd" id="7_am20o"]
+[ext_resource type="Script" uid="uid://cf4w55oq8ly24" path="res://src/scripts/battle_variables.gd" id="7_amfna"]
+[ext_resource type="Script" uid="uid://cn2ll8d0taiwt" path="res://src/scripts/battle engine/battle_process_state.gd" id="7_x53et"]
+[ext_resource type="Script" uid="uid://dv0pjb6o5tkik" path="res://src/scripts/target_menu.gd" id="8_1e15q"]
+[ext_resource type="Script" uid="uid://cb1j077qi5jvt" path="res://src/scripts/battle engine/battle_end_state.gd" id="8_j42ai"]
 [ext_resource type="AudioStream" uid="uid://bhd5xcufnsukj" path="res://sound/pass_turn.wav" id="8_l5wts"]
-[ext_resource type="Script" path="res://src/scripts/battle_npc_behaviour.gd" id="9_h0ylf"]
-[ext_resource type="Script" path="res://src/scripts/skill_menu.gd" id="10_fffb2"]
-[ext_resource type="Script" path="res://src/move_target_selector.gd" id="10_g8410"]
+[ext_resource type="Script" uid="uid://nbo30pnwdfk" path="res://src/scripts/battle_npc_behaviour.gd" id="9_h0ylf"]
+[ext_resource type="Script" uid="uid://cnskktekjc0jd" path="res://src/scripts/skill_menu.gd" id="10_fffb2"]
+[ext_resource type="Script" uid="uid://cfg60qbrbrm72" path="res://src/move_target_selector.gd" id="10_g8410"]
 [ext_resource type="PackedScene" uid="uid://b02fnxe32db18" path="res://objects/UI/skill_button.tscn" id="11_gjgmc"]
-[ext_resource type="Script" path="res://scenes/expereince_watcher.gd" id="13_brywo"]
-[ext_resource type="Script" path="res://src/scripts/BattleFXFactory.gd" id="15_3gnxd"]
-[ext_resource type="Script" path="res://scenes/character_info.gd" id="17_2ggqq"]
-[ext_resource type="Script" path="res://scenes/BattleCamera2D.gd" id="17_rggii"]
+[ext_resource type="Script" uid="uid://bvk2tticisibk" path="res://scenes/expereince_watcher.gd" id="13_brywo"]
+[ext_resource type="Script" uid="uid://cc4jn01fhptfk" path="res://src/scripts/BattleFXFactory.gd" id="15_3gnxd"]
+[ext_resource type="Script" uid="uid://dx2oae0hnu8y0" path="res://scenes/character_info.gd" id="17_2ggqq"]
+[ext_resource type="Script" uid="uid://bpeujiln5nn17" path="res://scenes/BattleCamera2D.gd" id="17_rggii"]
 [ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="17_ubshc"]
 [ext_resource type="AudioStream" uid="uid://dbeovxi5euq8" path="res://sound/cursor_move.wav" id="18_1wiqb"]
-[ext_resource type="Script" path="res://scenes/press_turn_ui.gd" id="18_d32v8"]
+[ext_resource type="Script" uid="uid://b2qq4aiaooe8c" path="res://scenes/press_turn_ui.gd" id="18_d32v8"]
 [ext_resource type="PackedScene" uid="uid://o47wvssmmis2" path="res://objects/UI/press_turn_icon.tscn" id="18_iu8l8"]
 [ext_resource type="Texture2D" uid="uid://y2qpxhu3bbrn" path="res://sprites/GUI/button.png" id="19_1omjw"]
-[ext_resource type="Script" path="res://scenes/notification_skill.gd" id="22_g4le8"]
-[ext_resource type="Script" path="res://scenes/exp_bonuses_menu.gd" id="23_ioo5t"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="25_2ijvm"]
+[ext_resource type="Script" uid="uid://bghfryujfpbv1" path="res://scenes/notification_skill.gd" id="22_g4le8"]
+[ext_resource type="Script" uid="uid://fhofupye5ew2" path="res://scenes/exp_bonuses_menu.gd" id="23_ioo5t"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="25_2ijvm"]
 [ext_resource type="PackedScene" uid="uid://co52huatecj2l" path="res://objects/UI/stats_ui/affinity_ui.tscn" id="28_2io8s"]
 [ext_resource type="PackedScene" uid="uid://cf3gbeyniwq1x" path="res://objects/UI/stats_ui/level_name_ui.tscn" id="28_7kwon"]
 [ext_resource type="PackedScene" uid="uid://bxrq6qspb6bb0" path="res://objects/UI/stats_ui/potential_ui.tscn" id="28_jcgnj"]
 [ext_resource type="PackedScene" uid="uid://ctm7jofl2qopg" path="res://objects/UI/stats_ui/skills_ui.tscn" id="29_f8sl5"]
 [ext_resource type="PackedScene" uid="uid://bn5bk25l1tlg8" path="res://objects/UI/stats_ui/stats_ui.tscn" id="30_7g773"]
-[ext_resource type="Script" path="res://scenes/bg_setter.gd" id="32_lm7c8"]
+[ext_resource type="Script" uid="uid://cdlullkxr63ql" path="res://scenes/bg_setter.gd" id="32_lm7c8"]
 
 [sub_resource type="Shader" id="Shader_xy8p2"]
 code = "shader_type canvas_item;
@@ -101,8 +101,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dgobb"]
 _data = {
-"RESET": SubResource("Animation_17b5m"),
-"fade": SubResource("Animation_jpte3")
+&"RESET": SubResource("Animation_17b5m"),
+&"fade": SubResource("Animation_jpte3")
 }
 
 [sub_resource type="Animation" id="Animation_hvis0"]
@@ -162,8 +162,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ecoer"]
 _data = {
-"RESET": SubResource("Animation_hvis0"),
-"menu_show": SubResource("Animation_1jedq")
+&"RESET": SubResource("Animation_hvis0"),
+&"menu_show": SubResource("Animation_1jedq")
 }
 
 [sub_resource type="Animation" id="Animation_tqodl"]
@@ -199,8 +199,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4luyb"]
 _data = {
-"RESET": SubResource("Animation_tqodl"),
-"info_show": SubResource("Animation_v1fkt")
+&"RESET": SubResource("Animation_tqodl"),
+&"info_show": SubResource("Animation_v1fkt")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_anfnf"]
@@ -386,9 +386,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n8b7w"]
 _data = {
-"RESET": SubResource("Animation_r7yil"),
-"menu_hide": SubResource("Animation_gl2hr"),
-"menu_show": SubResource("Animation_tsgoh")
+&"RESET": SubResource("Animation_r7yil"),
+&"menu_hide": SubResource("Animation_gl2hr"),
+&"menu_show": SubResource("Animation_tsgoh")
 }
 
 [sub_resource type="Animation" id="Animation_wd45m"]
@@ -433,7 +433,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6wx8"]
 _data = {
-"notification_up": SubResource("Animation_wd45m")
+&"notification_up": SubResource("Animation_wd45m")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_682i6"]
@@ -526,7 +526,7 @@ color = Color(0.528509, 0.44068, 0.495167, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 libraries = {
-"": SubResource("AnimationLibrary_dgobb")
+&"": SubResource("AnimationLibrary_dgobb")
 }
 
 [node name="BattleActors" type="Node" parent="."]
@@ -651,7 +651,7 @@ text = "Back"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleCanvasLayer/Target Menu"]
 libraries = {
-"": SubResource("AnimationLibrary_ecoer")
+&"": SubResource("AnimationLibrary_ecoer")
 }
 
 [node name="CharacterInfo" type="Panel" parent="BattleCanvasLayer/Target Menu"]
@@ -682,7 +682,7 @@ fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleCanvasLayer/Target Menu/CharacterInfo"]
 libraries = {
-"": SubResource("AnimationLibrary_4luyb")
+&"": SubResource("AnimationLibrary_4luyb")
 }
 
 [node name="Status" type="HBoxContainer" parent="BattleCanvasLayer/Target Menu/CharacterInfo"]
@@ -822,7 +822,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_sdqfq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleCanvasLayer/Attack Menu"]
 libraries = {
-"": SubResource("AnimationLibrary_n8b7w")
+&"": SubResource("AnimationLibrary_n8b7w")
 }
 
 [node name="Panel" type="Panel" parent="BattleCanvasLayer/Attack Menu"]
@@ -876,7 +876,7 @@ fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleCanvasLayer/Notification Panel"]
 libraries = {
-"": SubResource("AnimationLibrary_m6wx8")
+&"": SubResource("AnimationLibrary_m6wx8")
 }
 
 [node name="PressTurnUI" type="CanvasLayer" parent="BattleCanvasLayer"]
@@ -902,8 +902,7 @@ layout_mode = 2
 
 [node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon" index="1"]
 material = SubResource("ShaderMaterial_682i6")
-offset_left = -22.24
-offset_right = -22.24
+offset_right = 20.0
 offset_bottom = -13.0
 
 [node name="PressTurnIcon2" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
@@ -911,8 +910,7 @@ layout_mode = 2
 
 [node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon2" index="1"]
 material = SubResource("ShaderMaterial_wap3j")
-offset_left = -22.24
-offset_right = -22.24
+offset_right = 20.0
 offset_bottom = -13.0
 
 [node name="PressTurnIcon3" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
@@ -920,8 +918,7 @@ layout_mode = 2
 
 [node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon3" index="1"]
 material = SubResource("ShaderMaterial_x38m8")
-offset_left = -22.24
-offset_right = -22.24
+offset_right = 20.0
 offset_bottom = -13.0
 
 [node name="PressTurnIcon4" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
@@ -929,8 +926,7 @@ layout_mode = 2
 
 [node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon4" index="1"]
 material = SubResource("ShaderMaterial_ueb3l")
-offset_left = -22.24
-offset_right = -22.24
+offset_right = 20.0
 offset_bottom = -13.0
 
 [node name="PressTurnIcon5" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
@@ -938,8 +934,7 @@ layout_mode = 2
 
 [node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon5" index="1"]
 material = SubResource("ShaderMaterial_afe21")
-offset_left = -22.24
-offset_right = -22.24
+offset_right = 20.0
 offset_bottom = -13.0
 
 [node name="PressTurnIcon6" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
@@ -947,8 +942,39 @@ layout_mode = 2
 
 [node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon6" index="1"]
 material = SubResource("ShaderMaterial_73vmx")
-offset_left = -22.24
-offset_right = -22.24
+offset_right = 20.0
+offset_bottom = -13.0
+
+[node name="PressTurnIcon7" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon7" index="1"]
+material = SubResource("ShaderMaterial_73vmx")
+offset_right = 20.0
+offset_bottom = -13.0
+
+[node name="PressTurnIcon8" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon8" index="1"]
+material = SubResource("ShaderMaterial_73vmx")
+offset_right = 20.0
+offset_bottom = -13.0
+
+[node name="PressTurnIcon9" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon9" index="1"]
+material = SubResource("ShaderMaterial_73vmx")
+offset_right = 20.0
+offset_bottom = -13.0
+
+[node name="PressTurnIcon10" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer" instance=ExtResource("18_iu8l8")]
+layout_mode = 2
+
+[node name="Icon" parent="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon10" index="1"]
+material = SubResource("ShaderMaterial_73vmx")
+offset_right = 20.0
 offset_bottom = -13.0
 
 [node name="EXP Bonuses" type="Panel" parent="BattleCanvasLayer"]
@@ -1142,11 +1168,6 @@ script = ExtResource("17_rggii")
 [connection signal="behaviour_call" from="BattleStateMachine/Select" to="Variables/Behaviour" method="behaviour_process"]
 [connection signal="change_state" from="BattleStateMachine/Select" to="BattleStateMachine" method="change_state"]
 [connection signal="show_skills" from="BattleStateMachine/Select" to="BattleCanvasLayer/Attack Menu" method="show_skills"]
-[connection signal="change_state" from="BattleStateMachine/Process" to="BattleStateMachine" method="change_state"]
-[connection signal="notifcation_anim" from="BattleStateMachine/Process" to="BattleCanvasLayer/Notification Panel" method="notificaiton_up"]
-[connection signal="put_damage_numbers" from="BattleStateMachine/Process" to="Variables/ExpereinceWatcher" method="exp_points_calc"]
-[connection signal="put_damage_numbers" from="BattleStateMachine/Process" to="BattleFXFactory" method="spawn_damage_obj"]
-[connection signal="spawn_battle_fx" from="BattleStateMachine/Process" to="BattleFXFactory" method="spawn_attack_effect"]
 [connection signal="change_state" from="BattleStateMachine/PressTurn" to="BattleStateMachine" method="change_state"]
 [connection signal="turn_icon_handle" from="BattleStateMachine/PressTurn" to="BattleCanvasLayer/PressTurnUI" method="turn_icon_change"]
 [connection signal="change_state" from="BattleStateMachine/EndBattle" to="BattleStateMachine" method="change_state"]
@@ -1206,4 +1227,8 @@ script = ExtResource("17_rggii")
 [editable path="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon4"]
 [editable path="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon5"]
 [editable path="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon6"]
+[editable path="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon7"]
+[editable path="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon8"]
+[editable path="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon9"]
+[editable path="BattleCanvasLayer/PressTurnUI/PressTurnContainer/PressTurnIcon10"]
 [editable path="BattleCanvasLayer/Character stats/VBoxContainer/Stats"]

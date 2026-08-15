@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="status_effect" load_steps=16 format=3 uid="uid://cafrak0ankisj"]
+
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_1gt3u"]
+[ext_resource type="Resource" uid="uid://d337xaf1p2n4w" path="res://data/status_effects/smirk.tres" id="2_4tuhi"]
+[ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_jlac3"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="3_6pi52"]
+[ext_resource type="Texture2D" uid="uid://dabr2tfui85pm" path="res://sprites/GUI/status_effects_fry.png" id="4_mqw4s"]
+
+[sub_resource type="Resource" id="Resource_lslc1"]
+script = ExtResource("2_jlac3")
+elementalName = "Electric"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_ds8iw"]
+script = ExtResource("2_jlac3")
+elementalName = "Fire"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_0a27a"]
+script = ExtResource("2_jlac3")
+elementalName = "Force"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_31kfw"]
+script = ExtResource("2_jlac3")
+elementalName = "Ice"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_pgblq"]
+script = ExtResource("2_jlac3")
+elementalName = "Peirce"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_ma18w"]
+script = ExtResource("2_jlac3")
+elementalName = "Psychic"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_rlcry"]
+script = ExtResource("2_jlac3")
+elementalName = "Strike"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_ws5q8"]
+script = ExtResource("2_jlac3")
+elementalName = "Water"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_xdpr6"]
+script = ExtResource("2_jlac3")
+elementalName = "Wind"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_b04fr"]
+script = ExtResource("3_6pi52")
+strength = 2
+vitality = -2
+magic_pow = 0
+dexterity = -2
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("1_1gt3u")
+name = "Fury"
+turn_duration = 2
+effects_to_remove = Array[ExtResource("1_1gt3u")]([ExtResource("2_4tuhi")])
+elemental_affinity_change = Array[ExtResource("2_jlac3")]([SubResource("Resource_lslc1"), SubResource("Resource_ds8iw"), SubResource("Resource_0a27a"), SubResource("Resource_31kfw"), SubResource("Resource_pgblq"), SubResource("Resource_ma18w"), SubResource("Resource_rlcry"), SubResource("Resource_ws5q8"), SubResource("Resource_xdpr6")])
+stat_changes = SubResource("Resource_b04fr")
+icon = ExtResource("4_mqw4s")
+round_start = false
+after_action = true
+turn_start = false
+contribute_multipler = true

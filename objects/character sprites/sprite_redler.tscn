@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_43nnm"]
 [ext_resource type="Texture2D" uid="uid://cpimagv4prdu1" path="res://sprites/redler_sprite_sheet.png" id="2_kyfqr"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_yi2m3"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_yi2m3"]
 [ext_resource type="AudioStream" uid="uid://dohb1povbojm1" path="res://sound/slash2.wav" id="3_k8mu2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e2p7r"]
@@ -210,10 +210,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7u3h"]
 _data = {
-"RESET": SubResource("Animation_gcqal"),
-"attack": SubResource("Animation_l3fi4"),
-"idle": SubResource("Animation_4xkss"),
-"idle_active": SubResource("Animation_gepce")
+&"RESET": SubResource("Animation_gcqal"),
+&"attack": SubResource("Animation_l3fi4"),
+&"idle": SubResource("Animation_4xkss"),
+&"idle_active": SubResource("Animation_gepce")
 }
 
 [node name="sprite_redler" instance=ExtResource("1_43nnm")]

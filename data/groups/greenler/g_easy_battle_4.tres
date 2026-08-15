@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=8 format=3 uid="uid://b0jkkx6o725s7"]
 
-[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_e8uun"]
+[ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_e8uun"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_sin6b"]
-[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_o6ab8"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_ty1io"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="5_c7grs"]
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="6_tknem"]
+[ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_o6ab8"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_ty1io"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="5_c7grs"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="6_tknem"]
 
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("1_e8uun")

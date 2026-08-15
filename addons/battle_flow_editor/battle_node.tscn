@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtp87gklpy83h"]
+
+[ext_resource type="Script" uid="uid://btxx52ks8p0lq" path="res://addons/battle_flow_editor/battle_node.gd" id="1_script"]
+
+[node name="BattleGraphNode" type="GraphNode"]
+offset_right = 240.0
+offset_bottom = 150.0
+title = "Battle Node"
+script = ExtResource("1_script")

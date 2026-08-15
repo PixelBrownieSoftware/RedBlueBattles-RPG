@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="battle_level_group" load_steps=5 format=3 uid="uid://4bsgfhb436r4"]
 
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="1_0ir4y"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_0ir4y"]
 [ext_resource type="Resource" uid="uid://c1icwtpdayr6w" path="res://data/groups/beno/b_mid_battle_1.tres" id="2_0b0ds"]
 [ext_resource type="Resource" uid="uid://i5x8b1jqq320" path="res://data/groups/beno/b_mid_battle_2.tres" id="3_15p8m"]
-[ext_resource type="Script" path="res://src/scripts/battle group/battle_level_group.gd" id="4_7ig1o"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="4_7ig1o"]
 
 [resource]
 script = ExtResource("4_7ig1o")
@@ -16,3 +16,4 @@ type_battle = 4
 terminal = false
 terminal_scene = ""
 colour_BG = Color(0.705882, 0.470588, 0.470588, 1)
+editor_position = Vector2(2000, 750)

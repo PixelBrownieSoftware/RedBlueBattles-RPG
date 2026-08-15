@@ -1,0 +1,259 @@
+[gd_scene load_steps=12 format=3 uid="uid://cxtx0ronqpi74"]
+
+[ext_resource type="Script" uid="uid://blmnhajaqaqey" path="res://addons/skill_editor/skill_editor.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cplxcy2p5obc8" path="res://sprites/GUI/elements/elements_bio.png" id="2_judsa"]
+[ext_resource type="Texture2D" uid="uid://dtl8500ages7g" path="res://sprites/GUI/elements/elements_elc.png" id="3_quctx"]
+[ext_resource type="Texture2D" uid="uid://cneukuwqpayap" path="res://sprites/GUI/elements/elements_fire.png" id="4_2bj16"]
+[ext_resource type="Texture2D" uid="uid://dai8gwg4iecxk" path="res://sprites/GUI/elements/elements_frc.png" id="5_kod6i"]
+[ext_resource type="Texture2D" uid="uid://btkper5utqey3" path="res://sprites/GUI/elements/elements_ice.png" id="6_uh6cb"]
+[ext_resource type="Texture2D" uid="uid://bemavklrcfair" path="res://sprites/GUI/elements/elements_prc.png" id="7_1nkiy"]
+[ext_resource type="Texture2D" uid="uid://bqsuse00m8kn8" path="res://sprites/GUI/elements/elements_psy.png" id="8_14c4v"]
+[ext_resource type="Texture2D" uid="uid://ba35uqo2jr3ys" path="res://sprites/GUI/elements/elements_strike.png" id="9_25xb6"]
+[ext_resource type="Texture2D" uid="uid://kjhkgjbjd6hm" path="res://sprites/GUI/elements/elements_wtr.png" id="10_3xl42"]
+[ext_resource type="Texture2D" uid="uid://yxvdts8cqdwo" path="res://sprites/GUI/elements/elements_wnd.png" id="11_p3io4"]
+
+[node name="SkillEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 260
+
+[node name="Left" type="VBoxContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ElementFilterLabel" type="Label" parent="HSplitContainer/Left"]
+layout_mode = 2
+text = "Filter by Element:"
+
+[node name="ElementFilterSelect" type="OptionButton" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 11
+popup/item_0/text = "All Elements"
+popup/item_0/id = 0
+popup/item_1/text = "Electric"
+popup/item_1/id = 1
+popup/item_2/text = "Fire"
+popup/item_2/id = 2
+popup/item_3/text = "Force"
+popup/item_3/id = 3
+popup/item_4/text = "Ice"
+popup/item_4/id = 4
+popup/item_5/text = "None"
+popup/item_5/id = 5
+popup/item_6/text = "Peirce"
+popup/item_6/id = 6
+popup/item_7/text = "Psychic"
+popup/item_7/id = 7
+popup/item_8/text = "Strike"
+popup/item_8/id = 8
+popup/item_9/text = "Water"
+popup/item_9/id = 9
+popup/item_10/text = "Wind"
+popup/item_10/id = 10
+
+[node name="SearchBar" type="LineEdit" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Search moves..."
+clear_button_enabled = true
+
+[node name="TopActions" type="HBoxContainer" parent="HSplitContainer/Left"]
+layout_mode = 2
+
+[node name="RefreshButton" type="Button" parent="HSplitContainer/Left/TopActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Refresh List"
+
+[node name="NewSkillButton" type="Button" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ New Skill"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Left"]
+layout_mode = 2
+
+[node name="SkillList" type="ItemList" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 67
+item_0/text = "Shadow ball"
+item_0/icon = ExtResource("2_judsa")
+item_1/text = "To the future!"
+item_2/text = "You're gonna die!"
+item_3/text = "Light Flash"
+item_3/icon = ExtResource("3_quctx")
+item_4/text = "Lightning"
+item_4/icon = ExtResource("3_quctx")
+item_5/text = "Spark"
+item_5/icon = ExtResource("3_quctx")
+item_6/text = "Zeus spear"
+item_6/icon = ExtResource("3_quctx")
+item_7/text = "Ember"
+item_7/icon = ExtResource("4_2bj16")
+item_8/text = "Fire bash"
+item_8/icon = ExtResource("4_2bj16")
+item_9/text = "Fire blast"
+item_9/icon = ExtResource("4_2bj16")
+item_10/text = "Fire spark"
+item_10/icon = ExtResource("4_2bj16")
+item_11/text = "Red bash"
+item_11/icon = ExtResource("4_2bj16")
+item_12/text = "Bash"
+item_12/icon = ExtResource("5_kod6i")
+item_13/text = "Blinding Punch"
+item_13/icon = ExtResource("5_kod6i")
+item_14/text = "Drowsy punch"
+item_14/icon = ExtResource("5_kod6i")
+item_15/text = "Oily punch"
+item_15/icon = ExtResource("5_kod6i")
+item_16/text = "Rampage"
+item_16/icon = ExtResource("5_kod6i")
+item_17/text = "Silly punch"
+item_17/icon = ExtResource("5_kod6i")
+item_18/text = "Tackle"
+item_18/icon = ExtResource("5_kod6i")
+item_19/text = "Blizzard"
+item_19/icon = ExtResource("6_uh6cb")
+item_20/text = "Blue blast"
+item_20/icon = ExtResource("6_uh6cb")
+item_21/text = "Frost breath"
+item_21/icon = ExtResource("6_uh6cb")
+item_22/text = "Ice fist"
+item_22/icon = ExtResource("6_uh6cb")
+item_23/text = "Icicle"
+item_23/icon = ExtResource("6_uh6cb")
+item_24/text = "Analyse"
+item_25/text = "Guard"
+item_26/text = "Pass"
+item_27/text = "Burn shot"
+item_27/icon = ExtResource("7_1nkiy")
+item_28/text = "Infectious bite"
+item_28/icon = ExtResource("7_1nkiy")
+item_29/text = "Machine gun"
+item_29/icon = ExtResource("7_1nkiy")
+item_30/text = "Poison needle"
+item_30/icon = ExtResource("7_1nkiy")
+item_31/text = "Shadow Snipe"
+item_31/icon = ExtResource("7_1nkiy")
+item_32/text = "Shoot"
+item_32/icon = ExtResource("7_1nkiy")
+item_33/text = "Stab"
+item_33/icon = ExtResource("7_1nkiy")
+item_34/text = "Stab frenzy"
+item_34/icon = ExtResource("7_1nkiy")
+item_35/text = "Brain shock"
+item_35/icon = ExtResource("8_14c4v")
+item_36/text = "Mind spark"
+item_36/icon = ExtResource("8_14c4v")
+item_37/text = "Nightmare"
+item_37/icon = ExtResource("8_14c4v")
+item_38/text = "Sweet dreams"
+item_39/text = "Awake potion"
+item_40/text = "Dodge"
+item_41/text = "Electric sheild"
+item_41/icon = ExtResource("3_quctx")
+item_42/text = "Energy pulse"
+item_42/icon = ExtResource("8_14c4v")
+item_43/text = "Fire sheild"
+item_43/icon = ExtResource("4_2bj16")
+item_44/text = "Ice sheild"
+item_44/icon = ExtResource("6_uh6cb")
+item_45/text = "Poison potion"
+item_46/text = "Protect"
+item_46/icon = ExtResource("8_14c4v")
+item_47/text = "Sheild Killer"
+item_47/icon = ExtResource("8_14c4v")
+item_48/text = "Burning slash"
+item_48/icon = ExtResource("9_25xb6")
+item_49/text = "Cleave"
+item_49/icon = ExtResource("9_25xb6")
+item_50/text = "Frost strike"
+item_50/icon = ExtResource("9_25xb6")
+item_51/text = "Multi-slash"
+item_51/icon = ExtResource("9_25xb6")
+item_52/text = "Oily slash"
+item_52/icon = ExtResource("9_25xb6")
+item_53/text = "Slash"
+item_53/icon = ExtResource("9_25xb6")
+item_54/text = "Wet slash"
+item_54/icon = ExtResource("9_25xb6")
+item_55/text = "Call ally"
+item_56/text = "Call redler"
+item_57/text = "Acid"
+item_57/icon = ExtResource("10_3xl42")
+item_58/text = "Aqua blade"
+item_58/icon = ExtResource("10_3xl42")
+item_59/text = "Aqua shot"
+item_59/icon = ExtResource("10_3xl42")
+item_60/text = "Splash"
+item_60/icon = ExtResource("10_3xl42")
+item_61/text = "Typhoon"
+item_61/icon = ExtResource("10_3xl42")
+item_62/text = "Wave tide"
+item_62/icon = ExtResource("10_3xl42")
+item_63/text = "Air blade"
+item_63/icon = ExtResource("11_p3io4")
+item_64/text = "Gust"
+item_64/icon = ExtResource("11_p3io4")
+item_65/text = "Hurricaine"
+item_65/icon = ExtResource("11_p3io4")
+item_66/text = "Windy storm"
+item_66/icon = ExtResource("11_p3io4")
+
+[node name="Right" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Toolbar" type="HBoxContainer" parent="HSplitContainer/Right"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Save to Disk"
+
+[node name="RevertButton" type="Button" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Revert"
+
+[node name="StatusLabel" type="Label" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select a Skill on the left."
+horizontal_alignment = 2
+
+[node name="FormScroll" type="ScrollContainer" parent="HSplitContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FormRoot" type="VBoxContainer" parent="HSplitContainer/Right/FormScroll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10

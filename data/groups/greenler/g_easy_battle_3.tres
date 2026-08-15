@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=10 format=3 uid="uid://cb257wlalldep"]
 
-[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_560f4"]
+[ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_560f4"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_kqvyy"]
-[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_ha4p1"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_uhyvc"]
+[ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_ha4p1"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_uhyvc"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_03rar"]
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="4_qihmq"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="5_g8hhp"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="4_qihmq"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="5_g8hhp"]
 
 [sub_resource type="Resource" id="Resource_8asq2"]
 script = ExtResource("1_560f4")

@@ -1,0 +1,161 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxu8wjvfvylr"]
+
+[ext_resource type="Script" uid="uid://qtyrbsixto8c" path="res://addons/battle_group_editor/battle_group_editor.gd" id="1_script"]
+
+[node name="BattleGroupEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 260
+
+[node name="Left" type="VBoxContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SubgroupLabel" type="Label" parent="HSplitContainer/Left"]
+layout_mode = 2
+text = "Subgroup Folder:"
+
+[node name="SubgroupSelect" type="OptionButton" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 6
+popup/item_0/text = "📁 All Subgroups"
+popup/item_0/id = 0
+popup/item_1/text = "📂 beno"
+popup/item_1/id = 1
+popup/item_2/text = "📂 greenler"
+popup/item_2/id = 2
+popup/item_3/text = "📂 lord red"
+popup/item_3/id = 3
+popup/item_4/text = "📂 malculus"
+popup/item_4/id = 4
+popup/item_5/text = "📂 test"
+popup/item_5/id = 5
+
+[node name="SearchBar" type="LineEdit" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Search battle groups..."
+clear_button_enabled = true
+
+[node name="TopActions" type="HBoxContainer" parent="HSplitContainer/Left"]
+layout_mode = 2
+
+[node name="RefreshButton" type="Button" parent="HSplitContainer/Left/TopActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Refresh List"
+
+[node name="NewSubgroupButton" type="Button" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ New Subgroup (Folder)"
+
+[node name="NewGroupButton" type="Button" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ New Battle Group (Root)"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Left"]
+layout_mode = 2
+
+[node name="GroupList" type="ItemList" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 40
+item_0/text = "🛡️ b_boss"
+item_1/text = "🛡️ b_easy_battle_1"
+item_2/text = "🛡️ b_easy_battle_2"
+item_3/text = "🛡️ b_hard_battle_1"
+item_4/text = "🛡️ b_hard_battle_2"
+item_5/text = "🛡️ b_main_battle_1"
+item_6/text = "🛡️ b_main_battle_2"
+item_7/text = "🛡️ b_mid_battle_1"
+item_8/text = "🛡️ b_mid_battle_2"
+item_9/text = "🛡️ b_mini_boss"
+item_10/text = "🛡️ g_blueler_unlock"
+item_11/text = "🛡️ g_boss"
+item_12/text = "🛡️ g_easy_battle_2"
+item_13/text = "🛡️ g_easy_battle_3"
+item_14/text = "🛡️ g_easy_battle_4"
+item_15/text = "🛡️ g_easy_battle_5"
+item_16/text = "🛡️ g_hard_battle_1"
+item_17/text = "🛡️ g_hard_battle_2"
+item_18/text = "🛡️ g_hard_battle_3"
+item_19/text = "🛡️ g_hard_battle_4"
+item_20/text = "🛡️ g_main_battle_1"
+item_21/text = "🛡️ g_main_battle_2"
+item_22/text = "🛡️ g_main_battle_3"
+item_23/text = "🛡️ g_mid_battle_1"
+item_24/text = "🛡️ g_mid_battle_2"
+item_25/text = "🛡️ g_mid_battle_3"
+item_26/text = "🛡️ g_mid_battle_4"
+item_27/text = "🛡️ tutorial"
+item_28/text = "🛡️ lr_boss"
+item_29/text = "🛡️ lr_easy_battle_1"
+item_30/text = "🛡️ lr_easy_battle_2"
+item_31/text = "🛡️ lr_hard_battle_1"
+item_32/text = "🛡️ lr_hard_battle_2"
+item_33/text = "🛡️ lr_mid_battle_1"
+item_34/text = "🛡️ mini_boss_greendori"
+item_35/text = "🛡️ ml_anne_unlock"
+item_36/text = "🛡️ ml_boss"
+item_37/text = "🛡️ ml_easy_battle_1"
+item_38/text = "🛡️ ml_hard_battle_1"
+item_39/text = "🛡️ party_battle"
+
+[node name="Right" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Toolbar" type="HBoxContainer" parent="HSplitContainer/Right"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Save to Disk"
+
+[node name="RevertButton" type="Button" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Revert"
+
+[node name="StatusLabel" type="Label" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select a Battle Group on the left."
+horizontal_alignment = 2
+
+[node name="FormScroll" type="ScrollContainer" parent="HSplitContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FormRoot" type="VBoxContainer" parent="HSplitContainer/Right/FormScroll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10

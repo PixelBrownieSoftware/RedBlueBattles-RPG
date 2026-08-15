@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dolrm8q8r70u6"]
 
-[ext_resource type="Script" path="res://objects/UI/skill_show_button.gd" id="1_fcsqg"]
+[ext_resource type="Script" uid="uid://cj4h5xtvv6s73" path="res://objects/UI/skill_show_button.gd" id="1_fcsqg"]
 [ext_resource type="PackedScene" uid="uid://b0fltiebam8a2" path="res://objects/UI/stamina_container.tscn" id="2_4b73p"]
-[ext_resource type="Texture2D" uid="uid://dai8gwg4iecxk" path="res://sprites/GUI/elements_frc.png" id="3_1gy1y"]
+[ext_resource type="Texture2D" uid="uid://dai8gwg4iecxk" path="res://sprites/GUI/elements/elements_frc.png" id="3_1gy1y"]
 
 [node name="skill_menu_button" type="Button"]
 anchors_preset = -1

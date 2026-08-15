@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_l0ire"]
 [ext_resource type="Texture2D" uid="uid://dcvbhyrlkrc70" path="res://sprites/pinkler_sprite_sheet.png" id="2_83csx"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_qb61o"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_qb61o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g117v"]
 resource_local_to_scene = true
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5tw1t"]
 _data = {
-"attack": SubResource("Animation_ccata"),
-"idle": SubResource("Animation_8oqnn")
+&"attack": SubResource("Animation_ccata"),
+&"idle": SubResource("Animation_8oqnn")
 }
 
 [node name="sprite_pinkler" instance=ExtResource("1_l0ire")]

@@ -1,3 +1,4 @@
+@tool
 extends Node
 class_name battle_character_data
 const divider : float = 8.4
@@ -69,6 +70,7 @@ const divider : float = 8.4
 
 var pass_turn : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
 var guard : rpg_skill = preload("res://data/Skills/Misc/guard.tres")
+var flags : Dictionary = {}
 @export var get_natural_skills : Array[rpg_skill]:
 	get:
 		var skills_arr : Array[rpg_skill]
@@ -301,7 +303,8 @@ func apply_status_effects(effects : Array[status_effect_chance]):
 				if !GlobalVariables.is_player_team(self):
 					if status.status.contribute_multipler:
 						increase_multiplier.emit(0.25)
-				await get_tree().create_timer(0.5).timeout
+				if !Engine.is_editor_hint():
+					await get_tree().create_timer(0.5).timeout
 				print(name + " got " + status.status.name)
 	
 func remove_all_status_effects():
@@ -323,11 +326,22 @@ func has_status(status : status_effect) -> bool:
 			return true
 	return false
 
+func calculate_chance(user_val : int, targ_val : int, connect_max : float):
+	var safe_targ: float = maxf(1.0, float(targ_val))
+	var safe_user: float = maxf(1.0, float(user_val))
+	var stat_ratio: float = safe_user / safe_targ
+	var log_bonus: float = log(stat_ratio) * 0.1
+	var base_accuracy: float = 0.85
+	var attack_connect_chance: float = (base_accuracy + log_bonus)
+	return clampf(attack_connect_chance, 0.05, connect_max)
+	#var total : int = user_val + targ_val
+	#var user_modify: float = user_val * (float)(user_val * connect_max)
+	#var attack_connect_chance : float = (user_modify/total)
+	#return attack_connect_chance
+
 func stat_chance(user_val : int, targ_val : int, connect_max : float):
-	var total : int = user_val + targ_val
-	var user_modify: float = user_val * (float)(user_val * connect_max)
-	var attack_connect_chance : float = (user_modify/total)
 	#print("Connection: " + str(attack_connect_chance))
+	var attack_connect_chance = calculate_chance(user_val, targ_val, connect_max)
 	var will_hit : float = randf()
 	#print("Roll: " + str(will_hit))
 	if will_hit > attack_connect_chance:

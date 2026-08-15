@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=13 format=3 uid="uid://be8fg8k2wyswj"]
 
-[ext_resource type="Script" path="res://src/scripts/battle_group_member.gd" id="1_51ita"]
+[ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_51ita"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_8llrt"]
-[ext_resource type="Script" path="res://src/battle_group_data.gd" id="2_xljxi"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_jv28s"]
-[ext_resource type="Script" path="res://src/scripts/gl_flag.gd" id="3_pov17"]
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="2_xljxi"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_jv28s"]
+[ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_pov17"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_d886g"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="4_ef0xt"]
-[ext_resource type="Script" path="res://src/scripts/battle_group_reward.gd" id="7_j2pmk"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="7_j2pmk"]
 [ext_resource type="Resource" uid="uid://bi4wxsbbe53pp" path="res://data/Skills/Strike/wet_slash.tres" id="7_xwo1r"]
 [ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="9_y2hpm"]
 

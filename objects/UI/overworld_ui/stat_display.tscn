@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dneei6dge532a"]
 
-[ext_resource type="Script" path="res://objects/UI/overworld_ui/stat_display.gd" id="1_s51mv"]
+[ext_resource type="Script" uid="uid://c55tjyef3tgkt" path="res://objects/UI/overworld_ui/stat_display.gd" id="1_s51mv"]
 
 [node name="Strength" type="HBoxContainer"]
 custom_minimum_size = Vector2(90, 20)

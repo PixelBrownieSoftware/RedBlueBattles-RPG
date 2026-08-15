@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="status_effect" load_steps=8 format=3 uid="uid://b3f5iw8sswr2x"]
+
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_6666e"]
+[ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_loew6"]
+[ext_resource type="Texture2D" uid="uid://bbwx0ufv842b7" path="res://sprites/GUI/status_effects_conf.png" id="3_o1qao"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_82g1g"]
+
+[sub_resource type="Resource" id="Resource_6666e"]
+script = ExtResource("2_loew6")
+elementalName = "Force"
+affinity = 0.5
+
+[sub_resource type="Resource" id="Resource_loew6"]
+script = ExtResource("2_loew6")
+elementalName = "Psychic"
+affinity = 1.0
+
+[sub_resource type="Resource" id="Resource_m2s1m"]
+script = ExtResource("4_82g1g")
+strength = 0
+vitality = 0
+magic_pow = -4
+dexterity = -1
+agility = 0
+luck = -2
+
+[resource]
+script = ExtResource("1_6666e")
+name = "Headache"
+turn_duration = 2
+effects_to_remove = Array[ExtResource("1_6666e")]([])
+elemental_affinity_change = Array[ExtResource("2_loew6")]([SubResource("Resource_6666e"), SubResource("Resource_loew6")])
+stat_changes = SubResource("Resource_m2s1m")
+icon = ExtResource("3_o1qao")
+round_start = true
+after_action = false
+turn_start = false
+contribute_multipler = false

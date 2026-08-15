@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0fltiebam8a2"]
 
-[ext_resource type="Script" path="res://objects/UI/stamina_gui.gd" id="1_py6ju"]
+[ext_resource type="Script" uid="uid://d78aaxm317dh" path="res://objects/UI/stamina_gui.gd" id="1_py6ju"]
 [ext_resource type="Texture2D" uid="uid://cbgcdtcj2dbnb" path="res://sprites/GUI/stamina_gui.png" id="2_3gpd2"]
 
 [node name="StaminaContainer" type="HBoxContainer"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://u6rmk7cwgbqj"]
 
-[ext_resource type="Script" path="res://objects/misc/hit_fx.gd" id="1_siypt"]
+[ext_resource type="Script" uid="uid://cqc6mf5yefx2w" path="res://objects/misc/hit_fx.gd" id="1_siypt"]
 [ext_resource type="Texture2D" uid="uid://bh0uy04tf38vl" path="res://sprites/effects/hit_fx.png" id="1_yiord"]
-[ext_resource type="Shader" path="res://objects/misc/hit_fx.gdshader" id="2_2dbdq"]
+[ext_resource type="Shader" uid="uid://f82ptnpd75ji" path="res://objects/misc/hit_fx.gdshader" id="2_2dbdq"]
 [ext_resource type="AudioStream" uid="uid://betxhc3s4y53c" path="res://sound/miss.wav" id="4_1aw4r"]
 [ext_resource type="AudioStream" uid="uid://dvh1ylp5aqnql" path="res://sound/block.wav" id="4_ehjkc"]
 [ext_resource type="FontFile" uid="uid://bn7h7hhogw0vg" path="res://misc/fonts/Shermlock.ttf" id="5_vk7go"]
@@ -462,10 +462,10 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pccph"]
 _data = {
-"RESET": SubResource("Animation_g8iah"),
-"block_animation": SubResource("Animation_5505m"),
-"damage_animation": SubResource("Animation_nkgii"),
-"miss_animation": SubResource("Animation_8jy7q")
+&"RESET": SubResource("Animation_g8iah"),
+&"block_animation": SubResource("Animation_5505m"),
+&"damage_animation": SubResource("Animation_nkgii"),
+&"miss_animation": SubResource("Animation_8jy7q")
 }
 
 [node name="HitFx" type="Node2D"]
@@ -482,7 +482,7 @@ vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_pccph")
+&"": SubResource("AnimationLibrary_pccph")
 }
 
 [node name="DamageNumber" type="RichTextLabel" parent="."]

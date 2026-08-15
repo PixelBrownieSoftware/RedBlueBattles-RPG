@@ -84,8 +84,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mlpvu"]
 _data = {
-"RESET": SubResource("Animation_n03jb"),
-"fx_animation": SubResource("Animation_nkyj2")
+&"RESET": SubResource("Animation_n03jb"),
+&"fx_animation": SubResource("Animation_nkyj2")
 }
 
 [node name="ElectricFx" instance=ExtResource("1_k0r0c")]

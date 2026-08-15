@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_62rtr"]
 [ext_resource type="Texture2D" uid="uid://bsdfig48gow5d" path="res://sprites/skar_sprite_sheet.png" id="2_3fda2"]
-[ext_resource type="Shader" path="res://misc/material/character_highlight.gdshader" id="2_mbsnf"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_mbsnf"]
 [ext_resource type="AudioStream" uid="uid://brvjhs7immdfy" path="res://sound/slash.wav" id="3_fjjsa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u8vh3"]
@@ -97,9 +97,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1mkri"]
 _data = {
-"RESET": SubResource("Animation_j324m"),
-"attack": SubResource("Animation_oovew"),
-"idle": SubResource("Animation_so7vk")
+&"RESET": SubResource("Animation_j324m"),
+&"attack": SubResource("Animation_oovew"),
+&"idle": SubResource("Animation_so7vk")
 }
 
 [node name="sprite_skar" instance=ExtResource("1_62rtr")]

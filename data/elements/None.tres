@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="element" load_steps=4 format=3 uid="uid://s418qyh2m41u"]
 
-[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_aip2b"]
-[ext_resource type="Script" path="res://src/scripts/rpg_element.gd" id="1_co12r"]
-[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_502dn"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_aip2b"]
+[ext_resource type="Script" uid="uid://d1arxadnd8gs7" path="res://src/scripts/rpg_element.gd" id="1_co12r"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_502dn"]
 
 [resource]
 script = ExtResource("1_co12r")

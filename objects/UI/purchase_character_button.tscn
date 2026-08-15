@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhbseyus4wf23"]
 
-[ext_resource type="Script" path="res://objects/UI/purchase_character_button.gd" id="1_frvuu"]
+[ext_resource type="Script" uid="uid://uyn26o0363d3" path="res://objects/UI/purchase_character_button.gd" id="1_frvuu"]
 
 [node name="PurchaseCharacterButton" type="Control"]
 layout_mode = 3

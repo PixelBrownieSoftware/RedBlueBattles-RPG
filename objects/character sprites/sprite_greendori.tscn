@@ -37,8 +37,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5cmhd"]
 _data = {
-"attack": SubResource("Animation_72emb"),
-"idle": SubResource("Animation_oun8u")
+&"attack": SubResource("Animation_72emb"),
+&"idle": SubResource("Animation_oun8u")
 }
 
 [node name="sprite_greendori" instance=ExtResource("1_ra5p7")]

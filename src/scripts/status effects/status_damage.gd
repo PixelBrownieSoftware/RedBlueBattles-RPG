@@ -1,3 +1,4 @@
+@tool
 extends status_effect
 class_name status_damage
 @export var damage : int

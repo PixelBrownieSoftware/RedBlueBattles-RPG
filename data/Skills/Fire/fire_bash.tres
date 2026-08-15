@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="rpg_skill" load_steps=9 format=3 uid="uid://cr8gdygv6hn4g"]
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://cr8gdygv6hn4g"]
 
-[ext_resource type="Script" path="res://src/scripts/status_effects_chance.gd" id="1_h5xa4"]
-[ext_resource type="Script" path="res://src/scripts/status_effect.gd" id="2_3o2un"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="3_g53jl"]
-[ext_resource type="Script" path="res://src/rpg_skill_animation.gd" id="4_mmylt"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_h5xa4"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_3o2un"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_g53jl"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_mmylt"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="5_8xmcl"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="6_x3uke"]
 
 [sub_resource type="Resource" id="Resource_cw7q5"]
 script = ExtResource("4_mmylt")
@@ -24,6 +25,15 @@ skill_animation = 0
 time_amount = -1.0
 animation_name = ""
 
+[sub_resource type="Resource" id="Resource_q2dhr"]
+script = ExtResource("6_x3uke")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
 [resource]
 script = ExtResource("3_g53jl")
 name = "Fire bash"
@@ -32,6 +42,7 @@ power = 3
 stamina_cost = 0
 repeat_min = 1
 repeat_max = 1
+stat_requirement = SubResource("Resource_q2dhr")
 skill_scope = 1
 skill_element = ExtResource("5_8xmcl")
 skill_animation = Array[ExtResource("4_mmylt")]([SubResource("Resource_cw7q5"), SubResource("Resource_yjei1"), SubResource("Resource_wskc7")])

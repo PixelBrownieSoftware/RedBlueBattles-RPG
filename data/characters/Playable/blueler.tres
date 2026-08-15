@@ -1,62 +1,62 @@
 [gd_resource type="Resource" script_class="battle_character_base" load_steps=26 format=3 uid="uid://bog42i8lb7wr0"]
 
-[ext_resource type="Script" path="res://src/battle_move_behaviour.gd" id="1_6omnb"]
-[ext_resource type="Script" path="res://src/battle_character_base.gd" id="1_hkc4q"]
+[ext_resource type="Script" uid="uid://busuf10bv87qy" path="res://src/battle_move_behaviour.gd" id="1_6omnb"]
+[ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="1_hkc4q"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="1_n1mic"]
-[ext_resource type="Script" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_fc855"]
-[ext_resource type="Script" path="res://src/elemental_potential.gd" id="2_wkuab"]
-[ext_resource type="Script" path="res://src/element_affinity.gd" id="2_yj48s"]
+[ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_fc855"]
+[ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="2_wkuab"]
+[ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_yj48s"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="3_demxa"]
-[ext_resource type="Script" path="res://src/scripts/rpg_stat_increase.gd" id="3_uahto"]
-[ext_resource type="Script" path="res://src/scripts/rpg_stats.gd" id="4_onqjm"]
-[ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="5_24amv"]
+[ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="3_uahto"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_onqjm"]
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="6_ddvyw"]
-[ext_resource type="Script" path="res://src/scripts/skill.gd" id="7_1jd67"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="7_47xtd"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="8_attjp"]
-[ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/Skills/Strike/slash.tres" id="9_2ldpt"]
-[ext_resource type="Resource" uid="uid://ddo5u7jkibmw1" path="res://data/Skills/Ice/blue_blast.tres" id="10_670kk"]
+[ext_resource type="Resource" uid="uid://ddo5u7jkibmw1" path="res://data/Skills/Ice/blue_blast.tres" id="11_fcb4o"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="11_iluny"]
+[ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="12_iluny"]
+[ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/Skills/Strike/slash.tres" id="13_p4phi"]
 
-[sub_resource type="Resource" id="Resource_bpmx4"]
+[sub_resource type="Resource" id="Resource_hvqsv"]
 script = ExtResource("2_yj48s")
 elementalName = "Fire"
 affinity = 2.0
 
-[sub_resource type="Resource" id="Resource_b5du1"]
+[sub_resource type="Resource" id="Resource_o0xxc"]
 script = ExtResource("2_yj48s")
 elementalName = "Ice"
 affinity = 0.5
 
-[sub_resource type="Resource" id="Resource_rxp4k"]
-script = ExtResource("2_wkuab")
-elemental = ExtResource("1_n1mic")
-potential = 3
-
-[sub_resource type="Resource" id="Resource_qx5en"]
-script = ExtResource("2_wkuab")
-elemental = ExtResource("3_demxa")
-potential = -2
-
-[sub_resource type="Resource" id="Resource_aycwc"]
+[sub_resource type="Resource" id="Resource_6dw8m"]
 script = ExtResource("2_wkuab")
 elemental = ExtResource("6_ddvyw")
 potential = 1
 
-[sub_resource type="Resource" id="Resource_phcep"]
+[sub_resource type="Resource" id="Resource_uah8w"]
 script = ExtResource("2_wkuab")
-elemental = ExtResource("7_47xtd")
-potential = 1
+elemental = ExtResource("3_demxa")
+potential = -2
 
-[sub_resource type="Resource" id="Resource_ktrn5"]
+[sub_resource type="Resource" id="Resource_4xbcj"]
+script = ExtResource("2_wkuab")
+elemental = ExtResource("1_n1mic")
+potential = 3
+
+[sub_resource type="Resource" id="Resource_vc43r"]
 script = ExtResource("2_wkuab")
 elemental = ExtResource("8_attjp")
+potential = 1
+
+[sub_resource type="Resource" id="Resource_qr4av"]
+script = ExtResource("2_wkuab")
+elemental = ExtResource("7_47xtd")
 potential = 1
 
 [sub_resource type="Resource" id="Resource_yt1im"]
 script = ExtResource("3_uahto")
 health_min = 3
 health_max = 5
-strength = 0.315
+strength = 0.32
 vitality = 0.35
 magic_pow = 0.45
 dexterity = 0.45
@@ -83,11 +83,11 @@ base_exp_to_NL = 365
 exp_req_multipler = 1.1
 stats = SubResource("Resource_h63ju")
 stat_increase = SubResource("Resource_yt1im")
-skills = Array[ExtResource("7_1jd67")]([ExtResource("9_2ldpt"), ExtResource("5_24amv"), ExtResource("10_670kk")])
+skills = Array[ExtResource("11_iluny")]([ExtResource("11_fcb4o"), ExtResource("12_iluny"), ExtResource("13_p4phi")])
 behaviour = Array[ExtResource("1_6omnb")]([])
 chara_behaviour = Array[ExtResource("2_fc855")]([])
-elemental_affinities = Array[ExtResource("2_yj48s")]([SubResource("Resource_bpmx4"), SubResource("Resource_b5du1")])
-elemental_potential = Array[ExtResource("2_wkuab")]([SubResource("Resource_rxp4k"), SubResource("Resource_qx5en"), SubResource("Resource_aycwc"), SubResource("Resource_phcep"), SubResource("Resource_ktrn5")])
+elemental_affinities = Array[ExtResource("2_yj48s")]([SubResource("Resource_hvqsv"), SubResource("Resource_o0xxc")])
+elemental_potential = Array[ExtResource("2_wkuab")]([SubResource("Resource_6dw8m"), SubResource("Resource_uah8w"), SubResource("Resource_4xbcj"), SubResource("Resource_vc43r"), SubResource("Resource_qr4av")])
 character_colour = Color(0.245911, 0.520267, 0.986298, 1)
 animation_player_loc = "sprite_blueler"
 click_circle_radius = 20.0

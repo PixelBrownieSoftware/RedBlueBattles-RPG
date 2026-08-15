@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bta702emm1p4b"]
 
-[ext_resource type="Script" path="res://objects/UI/hpgui.gd" id="1_dmg4y"]
+[ext_resource type="Script" uid="uid://c8g18p2htpx3v" path="res://objects/UI/hpgui.gd" id="1_dmg4y"]
 [ext_resource type="StyleBox" uid="uid://pr3lsbr0mu53" path="res://misc/material/hp_bar_style.tres" id="2_uckqt"]
 [ext_resource type="StyleBox" uid="uid://bp821ifm25r1a" path="res://misc/material/hp_bar_empty_style.tres" id="2_wqwuf"]
 [ext_resource type="StyleBox" uid="uid://pjd0ykgsvpmm" path="res://misc/material/hp_bar_damage_style.tres" id="3_r6tqb"]
@@ -75,10 +75,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vabbi"]
 _data = {
-"RESET": SubResource("Animation_hf84b"),
-"damage": SubResource("Animation_n82qk"),
-"down": SubResource("Animation_rm8a0"),
-"up": SubResource("Animation_3whhx")
+&"RESET": SubResource("Animation_hf84b"),
+&"damage": SubResource("Animation_n82qk"),
+&"down": SubResource("Animation_rm8a0"),
+&"up": SubResource("Animation_3whhx")
 }
 
 [node name="HPGUI_1" type="Control"]
@@ -157,7 +157,7 @@ theme_override_constants/separation = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vabbi")
+&"": SubResource("AnimationLibrary_vabbi")
 }
 
 [editable path="Offset/StaminaContainer"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctm7jofl2qopg"]
 
-[ext_resource type="Script" path="res://scenes/skills_section.gd" id="1_y0dqb"]
+[ext_resource type="Script" uid="uid://d313q28hwlico" path="res://scenes/skills_section.gd" id="1_y0dqb"]
 [ext_resource type="PackedScene" uid="uid://dolrm8q8r70u6" path="res://objects/UI/skill_menu_button.tscn" id="2_4t2cb"]
 
 [node name="Skills" type="ScrollContainer"]

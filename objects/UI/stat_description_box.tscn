@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpp0df3vxsggx"]
 
-[ext_resource type="Script" path="res://objects/UI/stat_description_box.gd" id="1_44hdk"]
-[ext_resource type="Texture2D" uid="uid://ro16bqpwgidv" path="res://sprites/GUI/gui_str.png" id="1_louk3"]
+[ext_resource type="Script" uid="uid://bjpaswhxdfo43" path="res://objects/UI/stat_description_box.gd" id="1_44hdk"]
+[ext_resource type="Texture2D" uid="uid://ro16bqpwgidv" path="res://sprites/GUI/stats/gui_str.png" id="1_louk3"]
 [ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="1_y0bii"]
 
 [node name="StatDescriptionBox" type="Panel" node_paths=PackedStringArray("elemental_desc", "base_desc", "stat_name", "stat_texture")]
