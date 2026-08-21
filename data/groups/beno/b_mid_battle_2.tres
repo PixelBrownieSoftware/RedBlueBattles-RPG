@@ -2,23 +2,23 @@
 
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_7mpj1"]
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="2_bb13t"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_8scd1"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_y38dn"]
-[ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/Skills/Force/oily_punch.tres" id="4_3iovk"]
+[ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/skills/Force/oily_punch.tres" id="4_3iovk"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_fdsu3"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_gn5lo"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="5_0s3a4"]
-[ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="5_uq1es"]
-[ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/Skills/Fire/ember.tres" id="7_1gsoi"]
-[ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/Skills/Strike/multi_slash.tres" id="8_5ltv3"]
+[ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/skills/Wind/gust.tres" id="5_uq1es"]
+[ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/skills/Fire/ember.tres" id="7_1gsoi"]
+[ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/skills/Strike/multi_slash.tres" id="8_5ltv3"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="9_akg5r"]
-[ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/Skills/Status/fire_sheild.tres" id="9_ociat"]
-[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/splash.tres" id="11_tsdhn"]
+[ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/skills/Status/fire_sheild.tres" id="9_ociat"]
+[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/skills/Water/splash.tres" id="11_tsdhn"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="12_g4x85"]
 
 [sub_resource type="Resource" id="Resource_anqou"]
 script = ExtResource("1_7mpj1")
 character = ExtResource("2_bb13t")
-skills = Array[ExtResource("3_8scd1")]([ExtResource("4_3iovk"), ExtResource("5_uq1es")])
+skills = Array[ExtResource("4_fdsu3")]([ExtResource("4_3iovk"), ExtResource("5_uq1es")])
 min_level = 7
 max_level = 7
 inclusion_flag_requirements = Array[ExtResource("3_y38dn")]([])
@@ -27,7 +27,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("1_7mpj1")
 character = ExtResource("4_gn5lo")
-skills = Array[ExtResource("3_8scd1")]([ExtResource("7_1gsoi"), ExtResource("8_5ltv3"), ExtResource("9_ociat")])
+skills = Array[ExtResource("4_fdsu3")]([ExtResource("7_1gsoi"), ExtResource("8_5ltv3"), ExtResource("9_ociat")])
 min_level = 7
 max_level = 7
 inclusion_flag_requirements = Array[ExtResource("3_y38dn")]([])
@@ -36,7 +36,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_e0ubi"]
 script = ExtResource("1_7mpj1")
 character = ExtResource("9_akg5r")
-skills = Array[ExtResource("3_8scd1")]([ExtResource("11_tsdhn")])
+skills = Array[ExtResource("4_fdsu3")]([ExtResource("11_tsdhn")])
 min_level = 7
 max_level = 7
 inclusion_flag_requirements = Array[ExtResource("3_y38dn")]([])

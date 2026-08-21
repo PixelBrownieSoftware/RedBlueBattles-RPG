@@ -2,18 +2,18 @@
 
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_bbqoa"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_xapom"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_88gex"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_fbux1"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="4_7ji28"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_a5oxf"]
-[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_y6cma"]
-[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="6_87ii7"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_rg0qo"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/skills/Force/drowsy_punch.tres" id="4_y6cma"]
+[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/skills/Status/dodge.tres" id="6_87ii7"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="7_u13v2"]
 
 [sub_resource type="Resource" id="Resource_8asq2"]
 script = ExtResource("1_bbqoa")
 character = ExtResource("2_xapom")
-skills = Array[ExtResource("3_88gex")]([ExtResource("4_y6cma")])
+skills = Array[ExtResource("4_rg0qo")]([ExtResource("4_y6cma")])
 min_level = 3
 max_level = 5
 inclusion_flag_requirements = Array[ExtResource("3_fbux1")]([])
@@ -22,7 +22,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("1_bbqoa")
 character = ExtResource("4_a5oxf")
-skills = Array[ExtResource("3_88gex")]([ExtResource("6_87ii7")])
+skills = Array[ExtResource("4_rg0qo")]([ExtResource("6_87ii7")])
 min_level = 3
 max_level = 5
 inclusion_flag_requirements = Array[ExtResource("3_fbux1")]([])

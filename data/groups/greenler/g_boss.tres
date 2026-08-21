@@ -3,11 +3,11 @@
 [ext_resource type="Resource" uid="uid://bcjoka06yw8pm" path="res://data/characters/Bosses/greenler.tres" id="1_f5e3f"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_vd15c"]
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_caloy"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_imtdy"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_62i7i"]
-[ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/Skills/Strike/multi_slash.tres" id="4_httky"]
-[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="5_lpt3h"]
-[ext_resource type="Resource" uid="uid://bioayifxbn765" path="res://data/Skills/Peirce/poison_needle.tres" id="6_lsuq8"]
+[ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/skills/Strike/multi_slash.tres" id="4_httky"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_k6aw8"]
+[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/skills/Status/dodge.tres" id="5_lpt3h"]
+[ext_resource type="Resource" uid="uid://bioayifxbn765" path="res://data/skills/Peirce/poison_needle.tres" id="6_lsuq8"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="9_o1hx2"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="10_56s6p"]
 [ext_resource type="Script" uid="uid://7s4vo7yfhbbk" path="res://src/scripts/battle group rewards/reward_change_flag.gd" id="11_260dc"]
@@ -16,7 +16,7 @@
 [sub_resource type="Resource" id="Resource_edg03"]
 script = ExtResource("2_caloy")
 character = ExtResource("1_f5e3f")
-skills = Array[ExtResource("3_imtdy")]([ExtResource("4_httky"), ExtResource("5_lpt3h"), ExtResource("6_lsuq8")])
+skills = Array[ExtResource("4_k6aw8")]([ExtResource("4_httky"), ExtResource("5_lpt3h"), ExtResource("6_lsuq8")])
 min_level = 10
 max_level = 10
 inclusion_flag_requirements = Array[ExtResource("10_56s6p")]([])
@@ -25,7 +25,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_3x272"]
 script = ExtResource("2_caloy")
 character = ExtResource("4_62i7i")
-skills = Array[ExtResource("3_imtdy")]([ExtResource("4_httky")])
+skills = Array[ExtResource("4_k6aw8")]([ExtResource("4_httky")])
 min_level = 9
 max_level = 9
 inclusion_flag_requirements = Array[ExtResource("10_56s6p")]([])

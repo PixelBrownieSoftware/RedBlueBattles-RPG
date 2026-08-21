@@ -4,19 +4,19 @@
 [ext_resource type="Resource" uid="uid://dtiii6cayoafh" path="res://data/characters/Enemies/pinkler.tres" id="1_we840"]
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_6upsl"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_2034y"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_ct4ry"]
 [ext_resource type="Resource" uid="uid://dn8iqklx4h2v7" path="res://data/characters/Enemies/trunko.tres" id="3_vhhci"]
-[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_dsmvs"]
-[ext_resource type="Resource" uid="uid://by44w8wph66l2" path="res://data/Skills/Psychic/nightmare.tres" id="5_3id76"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_2034y"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/skills/Force/drowsy_punch.tres" id="4_dsmvs"]
+[ext_resource type="Resource" uid="uid://by44w8wph66l2" path="res://data/skills/Psychic/nightmare.tres" id="5_3id76"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="5_uf5uo"]
-[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="7_h7uwi"]
-[ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/Skills/Status/fire_sheild.tres" id="8_33bfl"]
-[ext_resource type="Resource" uid="uid://bouqpmerlatxl" path="res://data/Skills/Fire/fire_blast.tres" id="9_n74xq"]
+[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/skills/Status/energy_pulse.tres" id="7_h7uwi"]
+[ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/skills/Status/fire_sheild.tres" id="8_33bfl"]
+[ext_resource type="Resource" uid="uid://bouqpmerlatxl" path="res://data/skills/Fire/fire_blast.tres" id="9_n74xq"]
 
 [sub_resource type="Resource" id="Resource_3lo37"]
 script = ExtResource("2_6upsl")
 character = ExtResource("1_we840")
-skills = Array[ExtResource("3_ct4ry")]([ExtResource("4_dsmvs"), ExtResource("5_3id76")])
+skills = Array[ExtResource("4_2034y")]([ExtResource("4_dsmvs"), ExtResource("5_3id76")])
 min_level = 1
 max_level = 5
 inclusion_flag_requirements = Array[ExtResource("3_2034y")]([])
@@ -25,7 +25,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_32ucd"]
 script = ExtResource("2_6upsl")
 character = ExtResource("3_vhhci")
-skills = Array[ExtResource("3_ct4ry")]([ExtResource("7_h7uwi"), ExtResource("8_33bfl"), ExtResource("9_n74xq")])
+skills = Array[ExtResource("4_2034y")]([ExtResource("7_h7uwi"), ExtResource("8_33bfl"), ExtResource("9_n74xq")])
 min_level = 1
 max_level = 4
 inclusion_flag_requirements = Array[ExtResource("3_2034y")]([])

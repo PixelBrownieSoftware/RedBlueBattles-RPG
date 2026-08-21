@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="3_g288e"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="3_nstbm"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="5_4q2cf"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="5_dnlvr"]
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="6_l1x2b"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="7_4h8a7"]
-[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="8_otdkf"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/skills/Force/bash.tres" id="8_otdkf"]
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="9_ug850"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="10_f7glw"]
 
@@ -45,7 +45,7 @@ base_exp_to_NL = 50
 exp_req_multipler = 1.2
 stats = SubResource("Resource_eui2d")
 stat_increase = SubResource("Resource_6lsdj")
-skills = Array[ExtResource("7_4h8a7")]([ExtResource("8_otdkf")])
+skills = Array[ExtResource("5_dnlvr")]([ExtResource("8_otdkf")])
 override_default_behaviours = false
 chara_behaviour = Array[ExtResource("3_nstbm")]([])
 elemental_affinities = Array[ExtResource("3_g288e")]([SubResource("Resource_iqb27")])

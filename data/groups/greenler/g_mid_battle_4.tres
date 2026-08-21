@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_5uq2m"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_5tl5p"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_fnune"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="4_r5o7c"]
-[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="5_eme6j"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_2j10q"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/skills/Force/drowsy_punch.tres" id="5_eme6j"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="8_jqx5f"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="9_2i8r4"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="10_ruesa"]
@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_8asq2"]
 script = ExtResource("1_5uq2m")
 character = ExtResource("2_5tl5p")
-skills = Array[ExtResource("4_r5o7c")]([ExtResource("5_eme6j")])
+skills = Array[ExtResource("4_2j10q")]([ExtResource("5_eme6j")])
 min_level = 6
 max_level = 6
 inclusion_flag_requirements = Array[ExtResource("3_fnune")]([])
@@ -21,7 +21,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_ddxl8"]
 script = ExtResource("1_5uq2m")
 character = ExtResource("8_jqx5f")
-skills = Array[ExtResource("4_r5o7c")]([])
+skills = Array[ExtResource("4_2j10q")]([])
 min_level = 5
 max_level = 5
 inclusion_flag_requirements = Array[ExtResource("3_fnune")]([])

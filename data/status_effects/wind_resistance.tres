@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_2ip3j"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_xij4w"]
-[ext_resource type="Texture2D" uid="uid://bjj6ecj35yum" path="res://sprites/GUI/status_effects_grd.png" id="3_jwbg4"]
+[ext_resource type="Texture2D" uid="uid://js4mdr2gfvrk" path="res://sprites/GUI/status_effects_wnd_shld.png" id="3_2ip3j"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_ewtwf"]
 
-[sub_resource type="Resource" id="Resource_pc6eo"]
+[sub_resource type="Resource" id="Resource_xij4w"]
 script = ExtResource("2_xij4w")
 elementalName = "Wind"
 affinity = -1.0
@@ -24,9 +24,9 @@ script = ExtResource("1_2ip3j")
 name = "Wind resistance"
 turn_duration = 0
 effects_to_remove = Array[ExtResource("1_2ip3j")]([])
-elemental_affinity_change = Array[ExtResource("2_xij4w")]([SubResource("Resource_pc6eo")])
+elemental_affinity_change = Array[ExtResource("2_xij4w")]([SubResource("Resource_xij4w")])
 stat_changes = SubResource("Resource_kwko5")
-icon = ExtResource("3_jwbg4")
+icon = ExtResource("3_2ip3j")
 round_start = false
 after_action = false
 turn_start = false

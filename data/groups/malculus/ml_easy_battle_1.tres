@@ -5,23 +5,23 @@
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_uiya5"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_1gepa"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="3_6ixe2"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_u2fjj"]
-[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="4_hedxc"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_7ncdj"]
+[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/skills/Status/energy_pulse.tres" id="4_hedxc"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_ys2ab"]
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="5_xbbp0"]
-[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="6_brou4"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/skills/Force/drowsy_punch.tres" id="6_brou4"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="7_jh06x"]
 [ext_resource type="Resource" uid="uid://ctgrru2oc8gj1" path="res://data/Skills/Force/silly_punch.tres" id="7_vvc2n"]
-[ext_resource type="Resource" uid="uid://bjuovr1ld32gp" path="res://data/Skills/Strike/burning_slash.tres" id="9_lvsdu"]
-[ext_resource type="Resource" uid="uid://bioayifxbn765" path="res://data/Skills/Peirce/poison_needle.tres" id="10_cwwtu"]
-[ext_resource type="Resource" uid="uid://c8qy2a5takbyp" path="res://data/Skills/Ice/frost_breath.tres" id="12_pssnp"]
-[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="13_r51fc"]
-[ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="14_ttn16"]
+[ext_resource type="Resource" uid="uid://bjuovr1ld32gp" path="res://data/skills/Strike/burning_slash.tres" id="9_lvsdu"]
+[ext_resource type="Resource" uid="uid://bioayifxbn765" path="res://data/skills/Peirce/poison_needle.tres" id="10_cwwtu"]
+[ext_resource type="Resource" uid="uid://c8qy2a5takbyp" path="res://data/skills/Ice/frost_breath.tres" id="12_pssnp"]
+[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/skills/Status/protect.tres" id="13_r51fc"]
+[ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/skills/Electric/spark.tres" id="14_ttn16"]
 
 [sub_resource type="Resource" id="Resource_xyyck"]
 script = ExtResource("2_uiya5")
 character = ExtResource("1_xv827")
-skills = Array[ExtResource("3_u2fjj")]([ExtResource("4_hedxc")])
+skills = Array[ExtResource("4_7ncdj")]([ExtResource("4_hedxc")])
 min_level = 20
 max_level = 25
 inclusion_flag_requirements = Array[ExtResource("3_1gepa")]([])
@@ -30,7 +30,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_4e182"]
 script = ExtResource("2_uiya5")
 character = ExtResource("3_6ixe2")
-skills = Array[ExtResource("3_u2fjj")]([ExtResource("6_brou4"), ExtResource("7_vvc2n")])
+skills = Array[ExtResource("4_7ncdj")]([ExtResource("6_brou4"), ExtResource("7_vvc2n")])
 min_level = 20
 max_level = 25
 inclusion_flag_requirements = Array[ExtResource("3_1gepa")]([])
@@ -39,7 +39,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_ik5r1"]
 script = ExtResource("2_uiya5")
 character = ExtResource("4_ys2ab")
-skills = Array[ExtResource("3_u2fjj")]([ExtResource("9_lvsdu"), ExtResource("10_cwwtu")])
+skills = Array[ExtResource("4_7ncdj")]([ExtResource("9_lvsdu"), ExtResource("10_cwwtu")])
 min_level = 20
 max_level = 25
 inclusion_flag_requirements = Array[ExtResource("3_1gepa")]([])
@@ -48,7 +48,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_8cjgq"]
 script = ExtResource("2_uiya5")
 character = ExtResource("5_xbbp0")
-skills = Array[ExtResource("3_u2fjj")]([ExtResource("12_pssnp"), ExtResource("13_r51fc"), ExtResource("14_ttn16")])
+skills = Array[ExtResource("4_7ncdj")]([ExtResource("12_pssnp"), ExtResource("13_r51fc"), ExtResource("14_ttn16")])
 min_level = 20
 max_level = 25
 inclusion_flag_requirements = Array[ExtResource("3_1gepa")]([])

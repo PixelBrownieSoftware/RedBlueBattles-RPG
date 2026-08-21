@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=6 format=3 uid="uid://bh7sbhcrs82fh"]
+
+[ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/battle_character_behaviour.gd" id="1_m7usl"]
+[ext_resource type="Resource" uid="uid://capw7vx5dvpy2" path="res://data/Skills/none/charge.tres" id="2_d18t3"]
+[ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_nqlue"]
+
+[sub_resource type="Resource" id="Resource_4s3gs"]
+script = ExtResource("1_m7usl")
+is_NOT = true
+condition = 0
+compare = 0
+percentage = 0.0
+elemental = 0.0
+exact_number = 6
+execution_chance = 0.0
+subject = 5
+skill_condition = 0
+target_condition = 0
+
+[sub_resource type="Resource" id="Resource_yqxkq"]
+script = ExtResource("1_m7usl")
+is_NOT = false
+condition = 0
+compare = 0
+percentage = 0.0
+elemental = 0.0
+exact_number = 0
+execution_chance = 0.0
+subject = 2
+skill_condition = 0
+target_condition = 0
+specific_skill = ExtResource("2_d18t3")
+
+[resource]
+script = ExtResource("2_nqlue")
+condiitons = Array[ExtResource("1_m7usl")]([SubResource("Resource_4s3gs"), SubResource("Resource_yqxkq")])
+percentage = 0.63
+priority = 0

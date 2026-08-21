@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_a6iep"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_0j3g1"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_exgp8"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_8vxrt"]
-[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="4_i62vj"]
+[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/skills/Status/protect.tres" id="4_i62vj"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_qygt3"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="5_8f6dy"]
-[ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/Skills/Strike/oily_slash.tres" id="6_2jah4"]
+[ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/skills/Strike/oily_slash.tres" id="6_2jah4"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="6_vnwud"]
 
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("1_a6iep")
 character = ExtResource("4_8vxrt")
-skills = Array[ExtResource("3_exgp8")]([ExtResource("4_i62vj")])
+skills = Array[ExtResource("4_qygt3")]([ExtResource("4_i62vj")])
 min_level = 7
 max_level = 8
 inclusion_flag_requirements = Array[ExtResource("3_0j3g1")]([])
@@ -21,7 +21,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_uv6ft"]
 script = ExtResource("1_a6iep")
 character = ExtResource("4_8vxrt")
-skills = Array[ExtResource("3_exgp8")]([ExtResource("6_2jah4")])
+skills = Array[ExtResource("4_qygt3")]([ExtResource("6_2jah4")])
 min_level = 7
 max_level = 8
 inclusion_flag_requirements = Array[ExtResource("3_0j3g1")]([])

@@ -1,14 +1,12 @@
-[gd_scene load_steps=59 format=3 uid="uid://ckmw47six2iym"]
+[gd_scene load_steps=57 format=3 uid="uid://ckmw47six2iym"]
 
 [ext_resource type="Script" uid="uid://dnw24pnj4ti18" path="res://src/scripts/overworld_scene.gd" id="1_gsfbw"]
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="2_8515p"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="3_d65sr"]
-[ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/Playable/blueler.tres" id="3_ra21e"]
 [ext_resource type="AudioStream" uid="uid://cv2s513l4rpde" path="res://sound/encounter.wav" id="6_j5r2p"]
-[ext_resource type="Resource" uid="uid://dk5sdo3a7orc8" path="res://data/levels/party_battle.tres" id="6_n80yj"]
+[ext_resource type="Resource" uid="uid://b56u2i1hj0lna" path="res://data/levels/redler_vs_blueler.tres" id="6_n80yj"]
 [ext_resource type="Theme" uid="uid://d0rjml5auq708" path="res://misc/material/party_member_menu.tres" id="7_7jsww"]
 [ext_resource type="Script" uid="uid://dfek1nnwgr5pu" path="res://scenes/extra_skills_menu.gd" id="7_jfqex"]
-[ext_resource type="Resource" uid="uid://dtxxb2va3acqf" path="res://data/levels/test_ai_level.tres" id="7_ra21e"]
 [ext_resource type="PackedScene" uid="uid://cshn1uy4w7mwl" path="res://objects/UI/skill_equip_button.tscn" id="7_u8djp"]
 [ext_resource type="PackedScene" uid="uid://cks6y325db8c4" path="res://objects/UI/battle_select_button.tscn" id="8_0fx3b"]
 [ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="8_ef0s7"]
@@ -728,8 +726,8 @@ _data = {
 [node name="OverworldMenu" type="Node2D"]
 script = ExtResource("1_gsfbw")
 battle_scene = "res://scenes/battle_scene.tscn"
-starters = Array[ExtResource("2_8515p")]([ExtResource("3_d65sr"), ExtResource("3_ra21e")])
-starter_levels = Array[ExtResource("8_ef0s7")]([ExtResource("9_4xroy"), ExtResource("6_n80yj"), ExtResource("7_ra21e")])
+starters = Array[ExtResource("2_8515p")]([ExtResource("3_d65sr")])
+starter_levels = Array[ExtResource("8_ef0s7")]([ExtResource("9_4xroy"), ExtResource("6_n80yj")])
 
 [node name="BattleStart" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_j5r2p")

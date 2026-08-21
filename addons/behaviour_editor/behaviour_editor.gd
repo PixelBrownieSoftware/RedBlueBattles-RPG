@@ -18,10 +18,12 @@ const STATUS_DIR := "res://data/status_effects"
 @onready var status_label: Label = %StatusLabel
 @onready var form_root: VBoxContainer = %FormRoot
 
-# Rename UI Controls
+# File Management Controls
 var rename_button: Button
+var delete_button: Button
 var rename_dialog: ConfirmationDialog
 var rename_input: LineEdit
+var delete_confirm_dialog: ConfirmationDialog
 
 var current_path: String = ""
 var current_res: battle_chara_behaviour = null
@@ -45,7 +47,7 @@ func _ready() -> void:
 	if not is_instance_valid(behaviour_list):
 		return
 
-	_setup_rename_ui()
+	_setup_file_management_ui()
 
 	refresh_button.pressed.connect(_refresh_all)
 	search_bar.text_changed.connect(func(_q): _filter_and_populate_list())
@@ -61,7 +63,7 @@ func _ready() -> void:
 	call_deferred("_refresh_all")
 
 
-func _setup_rename_ui() -> void:
+func _setup_file_management_ui() -> void:
 	var toolbar: HBoxContainer = %SaveButton.get_parent()
 
 	rename_button = Button.new()
@@ -71,7 +73,13 @@ func _setup_rename_ui() -> void:
 	toolbar.add_child(rename_button)
 	toolbar.move_child(rename_button, 1)
 
-	# Build Confirmation Dialog for renaming
+	delete_button = Button.new()
+	delete_button.text = "Delete File"
+	delete_button.disabled = true
+	delete_button.pressed.connect(_on_delete_pressed)
+	toolbar.add_child(delete_button)
+	toolbar.move_child(delete_button, 2)
+
 	rename_dialog = ConfirmationDialog.new()
 	rename_dialog.title = "Rename Behaviour Resource"
 	rename_dialog.size = Vector2i(350, 100)
@@ -88,6 +96,12 @@ func _setup_rename_ui() -> void:
 	rename_dialog.add_child(vbox)
 	rename_dialog.confirmed.connect(_confirm_rename)
 	add_child(rename_dialog)
+
+	delete_confirm_dialog = ConfirmationDialog.new()
+	delete_confirm_dialog.title = "Delete Behaviour Resource?"
+	delete_confirm_dialog.dialog_text = "Are you sure you want to delete this behaviour file permanently?"
+	delete_confirm_dialog.confirmed.connect(_confirm_delete)
+	add_child(delete_confirm_dialog)
 
 
 func _on_rename_pressed() -> void:
@@ -118,7 +132,6 @@ func _confirm_rename() -> void:
 		status_label.text = "Rename failed: File '%s' already exists!" % new_name
 		return
 
-	# Perform disk rename
 	var err := DirAccess.rename_absolute(current_path, new_full_path)
 	if err == OK:
 		current_path = new_full_path
@@ -126,6 +139,29 @@ func _confirm_rename() -> void:
 		_filter_and_populate_list()
 	else:
 		status_label.text = "Rename failed (error %d)" % err
+
+
+func _on_delete_pressed() -> void:
+	if current_path == "":
+		return
+	delete_confirm_dialog.dialog_text = "Are you sure you want to delete '%s'?" % current_path.get_file()
+	delete_confirm_dialog.popup_centered()
+
+
+func _confirm_delete() -> void:
+	if current_path == "":
+		return
+
+	var file_to_delete := current_path
+	var err := DirAccess.remove_absolute(file_to_delete)
+	if err == OK:
+		status_label.text = "Deleted behaviour: " + file_to_delete.get_file()
+		current_path = ""
+		current_res = null
+		_set_form_enabled(false)
+		_filter_and_populate_list()
+	else:
+		status_label.text = "Failed to delete file (error %d)" % err
 
 
 func _refresh_all() -> void:
@@ -318,7 +354,6 @@ func _build_form() -> void:
 	)
 	form_root.add_child(add_cond_btn)
 
-
 func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 	if not cond_res:
 		cond_res = battle_character_behaviour.new()
@@ -349,6 +384,12 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 
 	var row1 := HBoxContainer.new()
 	row1.add_theme_constant_override("separation", 8)
+
+	# is_NOT CheckBox (Safely typecast boolean)
+	var not_cb := CheckBox.new()
+	not_cb.text = "NOT"
+	not_cb.button_pressed = bool(cond_res.is_NOT) if "is_NOT" in cond_res and cond_res.is_NOT != null else false
+	row1.add_child(not_cb)
 
 	var sub_lbl := Label.new()
 	sub_lbl.text = "Subject:"
@@ -459,7 +500,8 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 	var skill_select := OptionButton.new()
 	skill_select.add_item("Specific Skill: None", 0)
 	for i in range(loaded_skills.size()):
-		skill_select.add_item("⚔️ " + loaded_skills[i].name, i + 1)
+		var s_name: String = loaded_skills[i].name if ("name" in loaded_skills[i] and loaded_skills[i].name != "") else loaded_skills[i].resource_path.get_file()
+		skill_select.add_item("⚔️ " + s_name, i + 1)
 		skill_select.set_item_metadata(i + 1, loaded_skills[i])
 		if loaded_skills[i] == cond_res.specific_skill:
 			skill_select.select(i + 1)
@@ -469,7 +511,8 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 	var elem_select := OptionButton.new()
 	elem_select.add_item("Specific Element: None", 0)
 	for i in range(loaded_elements.size()):
-		elem_select.add_item("⚡ " + loaded_elements[i].name, i + 1)
+		var el_name: String = loaded_elements[i].name if "name" in loaded_elements[i] else "Element " + str(i + 1)
+		elem_select.add_item("⚡ " + el_name, i + 1)
 		elem_select.set_item_metadata(i + 1, loaded_elements[i])
 		if loaded_elements[i] == cond_res.specific_element:
 			elem_select.select(i + 1)
@@ -479,7 +522,8 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 	var status_select := OptionButton.new()
 	status_select.add_item("Specific Status: None", 0)
 	for i in range(loaded_status_effects.size()):
-		status_select.add_item("🧪 " + loaded_status_effects[i].name, i + 1)
+		var st_name: String = loaded_status_effects[i].name if "name" in loaded_status_effects[i] else "Status " + str(i + 1)
+		status_select.add_item("🧪 " + st_name, i + 1)
 		status_select.set_item_metadata(i + 1, loaded_status_effects[i])
 		if loaded_status_effects[i] == cond_res.specific_status:
 			status_select.select(i + 1)
@@ -489,6 +533,7 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 	vbox.add_child(res_row)
 
 	var update_card_state := func():
+		cond_res.is_NOT = not_cb.button_pressed
 		cond_res.subject = sub_select.selected as battle_character_behaviour.SUBJECT
 		cond_res.compare = comp_select.selected as battle_character_behaviour.NUMBER_COMP
 		cond_res.target_condition = target_cond_select.selected as battle_character_behaviour.TARGET_CONDITION
@@ -539,7 +584,7 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 				battle_character_behaviour.SKILL_CONDITION.STATUS:
 					status_select.visible = true
 
-		elif sb == battle_character_behaviour.SUBJECT.TURN or sb == battle_character_behaviour.SUBJECT.ROUND:
+		elif sb == battle_character_behaviour.SUBJECT.TURN or sb == battle_character_behaviour.SUBJECT.ROUND or sb == battle_character_behaviour.SUBJECT.EVERY_X_ROUND:
 			num_sub_row.visible = true
 
 		if cond_res.has_method("get_description"):
@@ -547,6 +592,7 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 		else:
 			desc_lbl.text = "Rule: " + battle_character_behaviour.SUBJECT.keys()[cond_res.subject]
 
+	not_cb.toggled.connect(func(_b): update_card_state.call(); _on_field_changed())
 	sub_select.item_selected.connect(func(_i): update_card_state.call(); _on_field_changed())
 	comp_select.item_selected.connect(func(_i): update_card_state.call(); _on_field_changed())
 	target_cond_select.item_selected.connect(func(_i): update_card_state.call(); _on_field_changed())
@@ -565,7 +611,6 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 	update_card_state.call()
 
 	conditions_vbox.add_child(card)
-
 
 func _find_resources_recursive(path: String) -> Array[String]:
 	var results: Array[String] = []
@@ -595,6 +640,7 @@ func _load_behaviour(path: String) -> void:
 	save_button.disabled = true
 	revert_button.disabled = true
 	rename_button.disabled = false
+	delete_button.disabled = false
 	status_label.text = "Editing: " + current_path.get_file()
 
 
@@ -623,6 +669,8 @@ func _set_form_enabled(enabled: bool) -> void:
 	form_root.modulate.a = 1.0 if enabled else 0.5
 	if is_instance_valid(rename_button):
 		rename_button.disabled = not enabled
+	if is_instance_valid(delete_button):
+		delete_button.disabled = not enabled
 	_set_container_editable(form_root, enabled)
 
 

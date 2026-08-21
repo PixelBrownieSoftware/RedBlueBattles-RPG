@@ -5,12 +5,12 @@
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_jt3ox"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="3_5kefn"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="4_h8eqt"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="6_5njjm"]
 [ext_resource type="Resource" uid="uid://btmlr8hx3jaev" path="res://data/Skills/Water/aqua_shot.tres" id="7_5njjm"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="7_dwwcg"]
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="8_a25sj"]
-[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="8_dwwcg"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/skills/Force/bash.tres" id="8_dwwcg"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="9_fqg46"]
-[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/splash.tres" id="9_xlxw0"]
+[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/skills/Water/splash.tres" id="9_xlxw0"]
 
 [sub_resource type="Resource" id="Resource_pb636"]
 script = ExtResource("2_jt3ox")
@@ -68,7 +68,7 @@ base_exp_to_NL = 50
 exp_req_multipler = 1.2
 stats = SubResource("Resource_rvu4r")
 stat_increase = SubResource("Resource_tkrup")
-skills = Array[ExtResource("7_dwwcg")]([ExtResource("7_5njjm"), ExtResource("8_dwwcg"), ExtResource("9_xlxw0")])
+skills = Array[ExtResource("6_5njjm")]([ExtResource("7_5njjm"), ExtResource("8_dwwcg"), ExtResource("9_xlxw0")])
 override_default_behaviours = false
 chara_behaviour = Array[ExtResource("2_5njjm")]([])
 elemental_affinities = Array[ExtResource("2_jt3ox")]([SubResource("Resource_pb636"), SubResource("Resource_2ly07"), SubResource("Resource_474k2"), SubResource("Resource_evchm")])

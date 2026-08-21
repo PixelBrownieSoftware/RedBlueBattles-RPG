@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_0w8tl"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_672b1"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_obx6o"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="4_78jgx"]
-[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="5_nq6ik"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_blovl"]
+[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/skills/Status/dodge.tres" id="5_nq6ik"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="6_81lyq"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="7_pnm63"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="8_xhgrl"]
@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("1_0w8tl")
 character = ExtResource("2_672b1")
-skills = Array[ExtResource("4_78jgx")]([ExtResource("5_nq6ik")])
+skills = Array[ExtResource("4_blovl")]([ExtResource("5_nq6ik")])
 min_level = 6
 max_level = 6
 inclusion_flag_requirements = Array[ExtResource("3_obx6o")]([])
@@ -21,7 +21,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_ddxl8"]
 script = ExtResource("1_0w8tl")
 character = ExtResource("6_81lyq")
-skills = Array[ExtResource("4_78jgx")]([])
+skills = Array[ExtResource("4_blovl")]([])
 min_level = 5
 max_level = 5
 inclusion_flag_requirements = Array[ExtResource("3_obx6o")]([])

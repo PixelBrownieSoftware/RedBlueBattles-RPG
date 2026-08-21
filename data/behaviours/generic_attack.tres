@@ -5,6 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_ogqme"]
 script = ExtResource("1_ogqme")
+is_NOT = false
 condition = 0
 compare = 3
 percentage = 0.0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=4 format=3 uid="uid://b56u2i1hj0lna"]
+
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_n50rf"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="2_k0r50"]
+[ext_resource type="Resource" uid="uid://jvq0jwm4s57a" path="res://data/groups/test/redler_vs_blueler.tres" id="2_m1jj8"]
+
+[resource]
+script = ExtResource("2_k0r50")
+name = "Redler Vs Blueler"
+battle_groups = Array[ExtResource("1_n50rf")]([ExtResource("2_m1jj8")])
+self_destruct_after_win = false
+battle_groups_unlock = Array[ExtResource("2_k0r50")]([])
+battle_groups_remove = Array[ExtResource("2_k0r50")]([])
+type_battle = 0
+terminal = false
+terminal_scene = ""
+colour_BG = Color(0.996094, 0.564194, 0.564194, 1)
+editor_position = Vector2(0, 0)

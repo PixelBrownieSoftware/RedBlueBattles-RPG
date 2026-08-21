@@ -5,12 +5,12 @@
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_f6u3f"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_t11e6"]
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="2_wkhle"]
-[ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/Skills/Peirce/shoot.tres" id="2_xjg6k"]
+[ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/skills/Peirce/shoot.tres" id="2_xjg6k"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="3_uwtcv"]
 [ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="4_g1hkk"]
 [ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="5_bf80v"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="5_vjj4i"]
-[ext_resource type="Resource" uid="uid://dn51uarfcbmjd" path="res://data/Skills/Peirce/shadow_snipe.tres" id="8_q1bkm"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="7_dnglh"]
+[ext_resource type="Resource" uid="uid://dn51uarfcbmjd" path="res://data/skills/Peirce/shadow_snipe.tres" id="8_q1bkm"]
 
 [sub_resource type="Resource" id="Resource_u0sol"]
 script = ExtResource("2_f6u3f")
@@ -58,7 +58,7 @@ base_exp_to_NL = 350
 exp_req_multipler = 1.45
 stats = SubResource("Resource_1ol2t")
 stat_increase = SubResource("Resource_g2hmx")
-skills = Array[ExtResource("5_vjj4i")]([ExtResource("2_xjg6k"), ExtResource("8_q1bkm")])
+skills = Array[ExtResource("7_dnglh")]([ExtResource("2_xjg6k"), ExtResource("8_q1bkm")])
 override_default_behaviours = false
 chara_behaviour = Array[ExtResource("2_t11e6")]([])
 elemental_affinities = Array[ExtResource("2_f6u3f")]([SubResource("Resource_u0sol")])

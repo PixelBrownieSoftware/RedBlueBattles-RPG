@@ -12,12 +12,17 @@ func _process(delta):
 		hp_clamp = clampi(character_data.health ,0 ,character_data.max_health)
 		var character_colour = character_data.assigned_data.character_colour
 		var status_colour = Color.WHITE
+		var txt = ""
 		if hp_clamp == 0:
 			status_colour = Color.DARK_RED
 		if !GlobalVariables.is_player_team(character_data):
 			character_colour = Color.WHITE
+			var perc = float(character_data.health)/float(character_data.max_health)* 100.0
+			txt ="[color=" + status_colour.to_html() + "]" + "HP "+ str(snapped(perc,0.01)) + "%[/color]" 
+		else:
+			txt ="[color=" + status_colour.to_html() + "]" + "HP "+ str(hp_clamp) + "/" +str(character_data.max_health)+ "[/color]" 
 		$Offset/Name.text = "[color=" + character_colour.to_html() + "]" + character_data.name + "[/color]" 
-		$Offset/Hp.text ="[color=" + status_colour.to_html() + "]" + "HP "+ str(hp_clamp) + "/" +str(character_data.max_health)+ "[/color]" 
+		$Offset/Hp.text =txt
 		$Offset/HealthBar.max_value = character_data.max_health
 		$Offset/HealthBar.min_value = 0
 		$Offset/HealthBar.value = clampi(character_data.health, 0, character_data.max_health)
@@ -53,11 +58,12 @@ func add_status_effect(status : status_effect):
 	$Offset/StatusEffects.add_child(status_gui)
 
 func damage():
-	$AnimationPlayer.play("damage")
 	$Offset/DamageBar.value = old_health
 	var current_char_health_cache : int = character_data.health
 	var current_char_colour : Color = character_data.assigned_data.character_colour
 	var is_player_team_cache : bool = GlobalVariables.is_player_team(character_data)
+	if (old_health - current_char_health_cache) > 0:
+		$AnimationPlayer.play("damage")
 	for i in range(4):
 		if is_player_team_cache:
 			$Offset/DamageBar.get("theme_override_styles/fill").bg_color = Color.WHITE

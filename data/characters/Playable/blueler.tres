@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=25 format=3 uid="uid://bog42i8lb7wr0"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=26 format=3 uid="uid://bog42i8lb7wr0"]
 
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="1_hkc4q"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="1_n1mic"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_fc855"]
+[ext_resource type="Resource" uid="uid://dg5l6v8h4v5m" path="res://data/behaviours/sheild_from_element.tres" id="2_fcb4o"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="2_wkuab"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_yj48s"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="3_demxa"]
@@ -11,42 +12,42 @@
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="6_ddvyw"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="7_47xtd"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="8_attjp"]
-[ext_resource type="Resource" uid="uid://ddo5u7jkibmw1" path="res://data/Skills/Ice/blue_blast.tres" id="11_fcb4o"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="11_iluny"]
-[ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="12_iluny"]
-[ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/Skills/Strike/slash.tres" id="13_p4phi"]
+[ext_resource type="Resource" uid="uid://ddo5u7jkibmw1" path="res://data/skills/Ice/blue_blast.tres" id="11_fcb4o"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="11_iluny"]
+[ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/skills/Ice/icicle.tres" id="12_iluny"]
+[ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/skills/Strike/slash.tres" id="13_p4phi"]
 
-[sub_resource type="Resource" id="Resource_hvqsv"]
+[sub_resource type="Resource" id="Resource_iluny"]
 script = ExtResource("2_yj48s")
 elementalName = "Fire"
 affinity = 2.0
 
-[sub_resource type="Resource" id="Resource_o0xxc"]
+[sub_resource type="Resource" id="Resource_p4phi"]
 script = ExtResource("2_yj48s")
 elementalName = "Ice"
 affinity = 0.5
 
-[sub_resource type="Resource" id="Resource_6dw8m"]
+[sub_resource type="Resource" id="Resource_hvqsv"]
 script = ExtResource("2_wkuab")
 elemental = ExtResource("6_ddvyw")
 potential = 1
 
-[sub_resource type="Resource" id="Resource_uah8w"]
+[sub_resource type="Resource" id="Resource_o0xxc"]
 script = ExtResource("2_wkuab")
 elemental = ExtResource("3_demxa")
 potential = -2
 
-[sub_resource type="Resource" id="Resource_4xbcj"]
+[sub_resource type="Resource" id="Resource_6dw8m"]
 script = ExtResource("2_wkuab")
 elemental = ExtResource("1_n1mic")
 potential = 3
 
-[sub_resource type="Resource" id="Resource_vc43r"]
+[sub_resource type="Resource" id="Resource_uah8w"]
 script = ExtResource("2_wkuab")
 elemental = ExtResource("8_attjp")
 potential = 1
 
-[sub_resource type="Resource" id="Resource_qr4av"]
+[sub_resource type="Resource" id="Resource_4xbcj"]
 script = ExtResource("2_wkuab")
 elemental = ExtResource("7_47xtd")
 potential = 1
@@ -84,9 +85,9 @@ stats = SubResource("Resource_h63ju")
 stat_increase = SubResource("Resource_yt1im")
 skills = Array[ExtResource("11_iluny")]([ExtResource("11_fcb4o"), ExtResource("12_iluny"), ExtResource("13_p4phi")])
 override_default_behaviours = false
-chara_behaviour = Array[ExtResource("2_fc855")]([])
-elemental_affinities = Array[ExtResource("2_yj48s")]([SubResource("Resource_hvqsv"), SubResource("Resource_o0xxc")])
-elemental_potential = Array[ExtResource("2_wkuab")]([SubResource("Resource_6dw8m"), SubResource("Resource_uah8w"), SubResource("Resource_4xbcj"), SubResource("Resource_vc43r"), SubResource("Resource_qr4av")])
+chara_behaviour = Array[ExtResource("2_fc855")]([ExtResource("2_fcb4o")])
+elemental_affinities = Array[ExtResource("2_yj48s")]([SubResource("Resource_iluny"), SubResource("Resource_p4phi")])
+elemental_potential = Array[ExtResource("2_wkuab")]([SubResource("Resource_hvqsv"), SubResource("Resource_o0xxc"), SubResource("Resource_6dw8m"), SubResource("Resource_uah8w"), SubResource("Resource_4xbcj")])
 character_colour = Color(0.245911, 0.520267, 0.986298, 1)
 animation_player_loc = "sprite_blueler"
 click_circle_radius = 20.0

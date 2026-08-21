@@ -6,18 +6,20 @@
 
 [sub_resource type="Resource" id="Resource_o6dd7"]
 script = ExtResource("1_ogqme")
+is_NOT = false
 condition = 0
 compare = 0
 percentage = 0.0
 elemental = 0.0
-exact_number = 3
+exact_number = 6
 execution_chance = 0.0
-subject = 4
+subject = 5
 skill_condition = 0
 target_condition = 0
 
 [sub_resource type="Resource" id="Resource_2apin"]
 script = ExtResource("1_ogqme")
+is_NOT = false
 condition = 0
 compare = 0
 percentage = 0.0

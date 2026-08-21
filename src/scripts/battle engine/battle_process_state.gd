@@ -74,7 +74,7 @@ func process_move(skill : rpg_skill):
 							print(damage_num)
 							if attack_result["No_Anim"] == 0:
 								if skill.power > 0:							
-									if calculated_PT != PRESS_TURN.PT.MISS && calculated_PT != PRESS_TURN.PT.VOID:
+									if calculated_PT != PRESS_TURN.PT.MISS && calculated_PT != PRESS_TURN.PT.VOID && damage_num >= 0:
 										spawn_battle_fx.emit("physical_hit_fx", character_target)
 									put_damage_numbers.emit(character_user, character_target, damage_num, calculated_PT)
 							await get_tree().create_timer(0.4).timeout

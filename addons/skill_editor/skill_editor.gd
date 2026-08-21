@@ -6,6 +6,7 @@ const SKILL_DIR := "res://data/skills"
 const ELEMENT_DIR := "res://data/elements"
 const STATUS_DIR := "res://data/status_effects"
 const STAT_ICON_DIR := "res://sprites/GUI/stats/"
+const SCRIPT_DIR := "res://src/scripts/skill/"
 
 @onready var element_filter_select: OptionButton = %ElementFilterSelect
 @onready var search_bar: LineEdit = %SearchBar
@@ -18,13 +19,29 @@ const STAT_ICON_DIR := "res://sprites/GUI/stats/"
 @onready var status_label: Label = %StatusLabel
 @onready var form_root: VBoxContainer = %FormRoot
 
+# File Management UI Controls
+var rename_button: Button
+var delete_button: Button
+var rename_dialog: ConfirmationDialog
+var rename_input: LineEdit
+var delete_confirm_dialog: ConfirmationDialog
+
 var current_path : String = ""
 var current_res : rpg_skill = null
 var elements : Array = []        # Array of loaded element resources
 var status_effects : Array = []  # Array of loaded status_effect resources
 var loaded_skills : Array = []   # Array of { "path": String, "res": rpg_skill }
+var loaded_skill_scripts : Array[Dictionary] = [] # Array of { "display_name": String, "path": String, "script": Script }
 
-# Form Controls
+# Class Type Selector Controls
+var class_type_select : OptionButton
+var dynamic_fields_vbox : VBoxContainer
+var dynamic_controls : Dictionary = {}
+
+# Skill Animation Controls
+var anim_vbox : VBoxContainer
+
+# Base Form Controls
 var name_edit : LineEdit
 var learnable_check : CheckBox
 var usable_anyone_check : CheckBox
@@ -38,13 +55,13 @@ var element_select : OptionButton
 var icon_preview : TextureRect
 var file_dialog : EditorFileDialog
 
-var stat_req_edits : Dictionary = {}           # String "strength" -> SpinBox
-var status_enable_checks : Dictionary = {}     # status_effect resource -> CheckBox
-var status_rows : Dictionary = {}              # status_effect resource -> Control
-var status_active_vbox : VBoxContainer         # Container for active/selected status cards
-var active_status_sliders : Dictionary = {}    # status_effect resource -> HSlider
-var active_status_labels : Dictionary = {}     # status_effect resource -> Label
-var active_status_chances : Dictionary = {}    # status_effect resource -> float (0.0 - 100.0)
+var stat_req_edits : Dictionary = {}
+var status_enable_checks : Dictionary = {}
+var status_rows : Dictionary = {}
+var status_active_vbox : VBoxContainer
+var active_status_sliders : Dictionary = {}
+var active_status_labels : Dictionary = {}
+var active_status_chances : Dictionary = {}
 
 var elemental_status_label : RichTextLabel
 var status_search_edit : LineEdit
@@ -58,6 +75,7 @@ func _ready() -> void:
 		return
 
 	_setup_file_dialog()
+	_setup_file_management_ui()
 
 	refresh_button.pressed.connect(_refresh_all)
 	search_bar.text_changed.connect(func(_q): _filter_and_populate_list())
@@ -72,10 +90,114 @@ func _ready() -> void:
 	call_deferred("_refresh_all")
 
 
+func _setup_file_management_ui() -> void:
+	var toolbar: HBoxContainer = %SaveButton.get_parent()
+
+	rename_button = Button.new()
+	rename_button.text = "Rename File"
+	rename_button.disabled = true
+	rename_button.pressed.connect(_on_rename_pressed)
+	toolbar.add_child(rename_button)
+	toolbar.move_child(rename_button, 1)
+
+	delete_button = Button.new()
+	delete_button.text = "Delete File"
+	delete_button.disabled = true
+	delete_button.pressed.connect(_on_delete_pressed)
+	toolbar.add_child(delete_button)
+	toolbar.move_child(delete_button, 2)
+
+	rename_dialog = ConfirmationDialog.new()
+	rename_dialog.title = "Rename Skill Resource"
+	rename_dialog.size = Vector2i(350, 100)
+
+	var vbox := VBoxContainer.new()
+	var lbl := Label.new()
+	lbl.text = "Enter new file name:"
+	vbox.add_child(lbl)
+
+	rename_input = LineEdit.new()
+	rename_input.placeholder_text = "new_skill_name"
+	vbox.add_child(rename_input)
+
+	rename_dialog.add_child(vbox)
+	rename_dialog.confirmed.connect(_confirm_rename)
+	add_child(rename_dialog)
+
+	delete_confirm_dialog = ConfirmationDialog.new()
+	delete_confirm_dialog.title = "Delete Skill Resource?"
+	delete_confirm_dialog.dialog_text = "Are you sure you want to delete this skill file permanently?"
+	delete_confirm_dialog.confirmed.connect(_confirm_delete)
+	add_child(delete_confirm_dialog)
+
+
+func _on_rename_pressed() -> void:
+	if current_path == "":
+		return
+	var current_name := current_path.get_file().get_basename()
+	rename_input.text = current_name
+	rename_dialog.popup_centered()
+	rename_input.select_all()
+	rename_input.grab_focus()
+
+
+func _confirm_rename() -> void:
+	var new_name := rename_input.text.strip_edges()
+	if new_name == "" or not current_res:
+		return
+
+	if not new_name.ends_with(".tres") and not new_name.ends_with(".res"):
+		new_name += ".tres"
+
+	var parent_dir := current_path.get_base_dir()
+	var new_full_path := parent_dir.path_join(new_name)
+
+	if new_full_path == current_path:
+		return
+
+	if FileAccess.file_exists(new_full_path):
+		status_label.text = "Rename failed: File '%s' already exists!" % new_name
+		return
+
+	var err := DirAccess.rename_absolute(current_path, new_full_path)
+	if err == OK:
+		current_path = new_full_path
+		status_label.text = "Renamed file to: " + new_name
+		_load_all_skills()
+		_filter_and_populate_list()
+	else:
+		status_label.text = "Rename failed (error %d)" % err
+
+
+func _on_delete_pressed() -> void:
+	if current_path == "":
+		return
+	delete_confirm_dialog.dialog_text = "Are you sure you want to delete '%s'?" % current_path.get_file()
+	delete_confirm_dialog.popup_centered()
+
+
+func _confirm_delete() -> void:
+	if current_path == "":
+		return
+
+	var file_to_delete := current_path
+	var err := DirAccess.remove_absolute(file_to_delete)
+	if err == OK:
+		status_label.text = "Deleted skill: " + file_to_delete.get_file()
+		current_path = ""
+		current_res = null
+		_set_form_enabled(false)
+		_load_all_skills()
+		_filter_and_populate_list()
+	else:
+		status_label.text = "Failed to delete file (error %d)" % err
+
+
 func _refresh_all() -> void:
 	_ensure_directories_exist()
 	_load_elements()
 	_load_status_effects()
+	_load_skill_scripts()
 	_build_form()
 	_populate_element_filter_dropdown()
 	_load_all_skills()
@@ -86,7 +208,7 @@ func _refresh_all() -> void:
 
 
 func _ensure_directories_exist() -> void:
-	for dir_path in [SKILL_DIR, ELEMENT_DIR, STATUS_DIR]:
+	for dir_path in [SKILL_DIR, ELEMENT_DIR, STATUS_DIR, SCRIPT_DIR]:
 		if not DirAccess.dir_exists_absolute(dir_path):
 			DirAccess.make_dir_recursive_absolute(dir_path)
 
@@ -149,6 +271,15 @@ func _make_int_spin(min_v: float, max_v: float, step: float = 1.0) -> SpinBox:
 	return s
 
 
+func _make_float_spin(min_v: float, max_v: float, step: float = 0.01) -> SpinBox:
+	var s := SpinBox.new()
+	s.min_value = min_v
+	s.max_value = max_v
+	s.step = step
+	s.value_changed.connect(func(_v): _on_field_changed())
+	return s
+
+
 func _load_gui_icon(dir_path: String, prefix: String, item_name: String) -> Texture2D:
 	var clean_name := item_name.to_lower().strip_edges()
 	var full_path := dir_path.path_join(prefix + clean_name + ".png")
@@ -200,9 +331,35 @@ func _load_status_effects() -> void:
 	)
 
 
+func _load_skill_scripts() -> void:
+	loaded_skill_scripts.clear()
+	
+	# Always include default rpg_skill
+	loaded_skill_scripts.append({
+		"display_name": "Base Skill (rpg_skill)",
+		"path": "",
+		"script": rpg_skill
+	})
+
+	if DirAccess.dir_exists_absolute(SCRIPT_DIR):
+		var paths := _find_resources_recursive(SCRIPT_DIR, [".gd"])
+		paths.sort()
+		for path in paths:
+			var scr = load(path) as Script
+			if scr:
+				var script_name := path.get_file().get_basename()
+				var global_name := scr.get_global_name()
+				var display_name : String= (global_name if global_name != "" else script_name) + " (" + script_name + ".gd)"
+				loaded_skill_scripts.append({
+					"display_name": display_name,
+					"path": path,
+					"script": scr
+				})
+
+
 func _load_all_skills() -> void:
 	loaded_skills.clear()
-	var paths := _find_resources_recursive(SKILL_DIR)
+	var paths := _find_resources_recursive(SKILL_DIR, [".tres", ".res"])
 	paths.sort()
 
 	for spath in paths:
@@ -302,6 +459,21 @@ func _build_form() -> void:
 	for child in form_root.get_children():
 		child.queue_free()
 
+	# ---- Class Type Selector ----
+	form_root.add_child(_section_header("Skill Script Class (res://src/scripts/skill/)"))
+
+	class_type_select = OptionButton.new()
+	class_type_select.clear()
+	for idx in range(loaded_skill_scripts.size()):
+		var info := loaded_skill_scripts[idx]
+		class_type_select.add_item("📜 " + info.display_name, idx)
+		class_type_select.set_item_metadata(idx, info)
+
+	class_type_select.item_selected.connect(_on_class_type_changed)
+	form_root.add_child(_labeled_row("Script Class", class_type_select))
+
+	form_root.add_child(_hsep())
+
 	# ---- General Attributes ----
 	form_root.add_child(_section_header("General Attributes"))
 
@@ -320,6 +492,11 @@ func _build_form() -> void:
 	form_root.add_child(_labeled_row("Usable By Anyone", usable_anyone_check))
 
 	form_root.add_child(_hsep())
+
+	# ---- Dynamic Custom Fields Container ----
+	dynamic_fields_vbox = VBoxContainer.new()
+	dynamic_fields_vbox.add_theme_constant_override("separation", 6)
+	form_root.add_child(dynamic_fields_vbox)
 
 	# ---- Combat Parameters ----
 	form_root.add_child(_section_header("Combat Parameters"))
@@ -348,6 +525,23 @@ func _build_form() -> void:
 	element_select = OptionButton.new()
 	element_select.item_selected.connect(_on_element_changed)
 	form_root.add_child(_labeled_row("Skill Element", element_select))
+
+	form_root.add_child(_hsep())
+
+	# ---- Skill Animation Sequence Editor ----
+	form_root.add_child(_section_header("Skill Animations (skill_animation)"))
+
+	anim_vbox = VBoxContainer.new()
+	anim_vbox.add_theme_constant_override("separation", 6)
+	form_root.add_child(anim_vbox)
+
+	var add_anim_btn := Button.new()
+	add_anim_btn.text = "+ Add Animation Step"
+	add_anim_btn.pressed.connect(func():
+		_add_animation_step_card(rpg_skill_animation.new())
+		_on_field_changed()
+	)
+	form_root.add_child(add_anim_btn)
 
 	form_root.add_child(_hsep())
 
@@ -459,6 +653,205 @@ func _build_form() -> void:
 		form_root.add_child(_labeled_row(stat_name.capitalize() + " Req", s, icon))
 
 
+func _on_class_type_changed(idx: int) -> void:
+	if not current_res or idx < 0 or idx >= loaded_skill_scripts.size():
+		return
+
+	var info: Dictionary = loaded_skill_scripts[idx]
+	var target_script: Script = info.script
+
+	if current_res.get_script() == target_script:
+		return
+
+	var new_inst = target_script.new() if target_script else rpg_skill.new()
+
+	# Copy shared parameters
+	if "name" in current_res and "name" in new_inst: new_inst.name = current_res.name
+	if "learnable" in current_res and "learnable" in new_inst: new_inst.learnable = current_res.learnable
+	if "usable_by_anyone" in current_res and "usable_by_anyone" in new_inst: new_inst.usable_by_anyone = current_res.usable_by_anyone
+	if "power" in current_res and "power" in new_inst: new_inst.power = current_res.power
+	if "stamina_cost" in current_res and "stamina_cost" in new_inst: new_inst.stamina_cost = current_res.stamina_cost
+	if "repeat_min" in current_res and "repeat_min" in new_inst: new_inst.repeat_min = current_res.repeat_min
+	if "repeat_max" in current_res and "repeat_max" in new_inst: new_inst.repeat_max = current_res.repeat_max
+	if "skill_scope" in current_res and "skill_scope" in new_inst: new_inst.skill_scope = current_res.skill_scope
+	if "skill_element" in current_res and "skill_element" in new_inst: new_inst.skill_element = current_res.skill_element
+	if "custom_icon" in current_res and "custom_icon" in new_inst: new_inst.custom_icon = current_res.custom_icon
+	if "skill_animation" in current_res and "skill_animation" in new_inst: new_inst.skill_animation = current_res.skill_animation
+
+	current_res = new_inst
+	_populate_form()
+	_on_field_changed()
+
+
+func _build_dynamic_fields_for_custom_type() -> void:
+	for child in dynamic_fields_vbox.get_children():
+		child.queue_free()
+
+	dynamic_controls.clear()
+
+	if not current_res:
+		return
+
+	var base_properties := ["script", "Built-in Script", "name", "learnable", "usable_by_anyone", 
+		"power", "stamina_cost", "repeat_min", "repeat_max", "skill_scope", "skill_element", "element",
+		"skill_animation", "effects_to_add", "effects_to_remove", "custom_icon", "stat_requirement"]
+
+	var props := current_res.get_property_list()
+	var custom_props: Array[Dictionary] = []
+
+	for p in props:
+		if p.usage & PROPERTY_USAGE_SCRIPT_VARIABLE or p.usage & PROPERTY_USAGE_EDITOR:
+			if not base_properties.has(p.name):
+				custom_props.append(p)
+
+	if custom_props.is_empty():
+		return
+
+	var current_scr = current_res.get_script()
+	var scr_name: String = current_scr.get_global_name() if (current_scr and current_scr.get_global_name() != "") else (current_scr.resource_path.get_file() if current_scr else "Subclass")
+	dynamic_fields_vbox.add_child(_section_header("Custom Script Properties (" + scr_name + ")"))
+
+	for p in custom_props:
+		var p_name: String = p.name
+		var p_type: int = p.type
+		var val = current_res.get(p_name)
+
+		match p_type:
+			TYPE_BOOL:
+				var cb := CheckBox.new()
+				cb.button_pressed = bool(val)
+				cb.toggled.connect(func(_t): _on_field_changed())
+				dynamic_controls[p_name] = cb
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), cb))
+
+			TYPE_INT:
+				if p.hint == PROPERTY_HINT_ENUM:
+					var opt := OptionButton.new()
+					var enum_entries: PackedStringArray = p.hint_string.split(",")
+					for e_idx in range(enum_entries.size()):
+						var entry := enum_entries[e_idx].strip_edges()
+						var kv: PackedStringArray = entry.split(":")
+						var key_name := kv[0]
+						var val_int := int(kv[1]) if kv.size() > 1 else e_idx
+						opt.add_item(key_name, val_int)
+						opt.set_item_metadata(e_idx, val_int)
+						if val == val_int:
+							opt.select(e_idx)
+
+					opt.item_selected.connect(func(_i): _on_field_changed())
+					dynamic_controls[p_name] = opt
+					dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), opt))
+				else:
+					var spin := _make_int_spin(-99999, 99999, 1)
+					spin.value = int(val) if val != null else 0
+					dynamic_controls[p_name] = spin
+					dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), spin))
+		
+			TYPE_FLOAT:
+				var spin := _make_float_spin(-99999.0, 99999.0, 0.01)
+				spin.value = float(val) if val != null else 0.0
+				dynamic_controls[p_name] = spin
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), spin))
+
+			TYPE_STRING:
+				var le := LineEdit.new()
+				le.text = str(val) if val != null else ""
+				le.text_changed.connect(func(_t): _on_field_changed())
+				dynamic_controls[p_name] = le
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), le))
+
+			TYPE_COLOR:
+				var cpb := ColorPickerButton.new()
+				cpb.color = val if val is Color else Color.WHITE
+				cpb.custom_minimum_size = Vector2(0, 26)
+				cpb.color_changed.connect(func(_c): _on_field_changed())
+				dynamic_controls[p_name] = cpb
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), cpb))
+
+			TYPE_OBJECT:
+				var row := HBoxContainer.new()
+				var path_lbl := Label.new()
+				path_lbl.text = (val.resource_path.get_file() if val and val is Resource and val.resource_path != "" else ("Assigned Object" if val else "Null"))
+				path_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				row.add_child(path_lbl)
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), row))
+
+			TYPE_ARRAY:
+				var lbl := Label.new()
+				var arr_size: int = val.size() if val is Array else 0
+				lbl.text = "Array (" + str(arr_size) + " items)"
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), lbl))
+
+
+func _add_animation_step_card(anim_res: rpg_skill_animation = null) -> void:
+	if not anim_res:
+		anim_res = rpg_skill_animation.new()
+
+	var card := PanelContainer.new()
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.18, 0.22, 0.28, 0.9)
+	style.set_content_margin_all(6)
+	card.add_theme_stylebox_override("panel", style)
+
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+
+	var type_lbl := Label.new()
+	type_lbl.text = "Type:"
+	row.add_child(type_lbl)
+
+	var type_select := OptionButton.new()
+	type_select.add_item("CALCULATION", rpg_skill_animation.SKILL_ANIMATION_TYPE.CALCULATION)
+	type_select.add_item("MOVE_TO", rpg_skill_animation.SKILL_ANIMATION_TYPE.MOVE_TO)
+	type_select.add_item("ANIMATION", rpg_skill_animation.SKILL_ANIMATION_TYPE.ANIMATION)
+	type_select.add_item("WAIT", rpg_skill_animation.SKILL_ANIMATION_TYPE.WAIT)
+	type_select.add_item("FX_ANIMATION", rpg_skill_animation.SKILL_ANIMATION_TYPE.FX_ANIMATION)
+
+	type_select.select(anim_res.skill_animation)
+	type_select.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	type_select.item_selected.connect(func(_i): _on_field_changed())
+	row.add_child(type_select)
+
+	var name_lbl := Label.new()
+	name_lbl.text = "Anim Name:"
+	row.add_child(name_lbl)
+
+	var name_input := LineEdit.new()
+	name_input.text = anim_res.animation_name
+	name_input.placeholder_text = "e.g., attack_slash"
+	name_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	name_input.text_changed.connect(func(_t): _on_field_changed())
+	row.add_child(name_input)
+
+	var time_lbl := Label.new()
+	time_lbl.text = "Time:"
+	row.add_child(time_lbl)
+
+	var time_spin := SpinBox.new()
+	time_spin.min_value = -1.0
+	time_spin.max_value = 99.0
+	time_spin.step = 0.05
+	time_spin.value = anim_res.time_amount
+	time_spin.value_changed.connect(func(_v): _on_field_changed())
+	row.add_child(time_spin)
+
+	var del_btn := Button.new()
+	del_btn.text = "X"
+	del_btn.pressed.connect(func():
+		card.queue_free()
+		_on_field_changed()
+	)
+	row.add_child(del_btn)
+
+	card.add_child(row)
+	card.set_meta("anim_instance", anim_res)
+	card.set_meta("type_select", type_select)
+	card.set_meta("name_input", name_input)
+	card.set_meta("time_spin", time_spin)
+
+	anim_vbox.add_child(card)
+
+
 func _toggle_status_active(st, is_active: bool, chance_val: float = 100.0) -> void:
 	if not active_status_chances.has(st):
 		active_status_chances[st] = chance_val
@@ -563,8 +956,8 @@ func _on_element_changed(_idx: int) -> void:
 
 
 func _update_elemental_status_display() -> void:
-	if element_select.selected >= 0 and element_select.get_item_count() > 0 and element_select.selected < elements.size():
-		var chosen_el = elements[element_select.selected]
+	if element_select.selected >= 0 and element_select.get_item_count() > 0:
+		var chosen_el = element_select.get_item_metadata(element_select.selected)
 		if chosen_el and "effects_to_add" in chosen_el and chosen_el.effects_to_add.size() > 0:
 			var txt := ""
 			for sec in chosen_el.effects_to_add:
@@ -595,6 +988,10 @@ func _set_icon_texture(tex: Texture2D) -> void:
 
 func _set_form_enabled(enabled: bool) -> void:
 	form_root.modulate.a = 1.0 if enabled else 0.5
+	if is_instance_valid(rename_button):
+		rename_button.disabled = not enabled
+	if is_instance_valid(delete_button):
+		delete_button.disabled = not enabled
 	_set_container_editable(form_root, enabled)
 
 
@@ -608,7 +1005,7 @@ func _set_container_editable(node: Node, enabled: bool) -> void:
 			_set_container_editable(child, enabled)
 
 
-func _find_resources_recursive(path: String) -> Array[String]:
+func _find_resources_recursive(path: String, valid_extensions: Array[String] = [".tres", ".res"]) -> Array[String]:
 	var results: Array[String] = []
 	var dir := DirAccess.open(path)
 	if dir:
@@ -618,9 +1015,12 @@ func _find_resources_recursive(path: String) -> Array[String]:
 			if not file_name.begins_with("."):
 				var full_path := path.path_join(file_name)
 				if dir.current_is_dir():
-					results.append_array(_find_resources_recursive(full_path))
-				elif file_name.ends_with(".tres") or file_name.ends_with(".res"):
-					results.append(full_path)
+					results.append_array(_find_resources_recursive(full_path, valid_extensions))
+				else:
+					for ext in valid_extensions:
+						if file_name.ends_with(ext):
+							results.append(full_path)
+							break
 			file_name = dir.get_next()
 		dir.list_dir_end()
 	return results
@@ -634,12 +1034,25 @@ func _load_skill(path: String) -> void:
 	dirty = false
 	save_button.disabled = true
 	revert_button.disabled = true
+	rename_button.disabled = false
+	delete_button.disabled = false
 	var sk_name: String = current_res.name if ("name" in current_res and current_res.name != "") else current_path.get_file()
 	status_label.text = "Editing: " + sk_name
 
 
 func _populate_form() -> void:
 	suppress_signals = true
+
+	var cur_script = current_res.get_script()
+	var selected_scr_idx := 0
+	for idx in range(loaded_skill_scripts.size()):
+		var info = loaded_skill_scripts[idx]
+		if info.script == cur_script:
+			selected_scr_idx = idx
+			break
+
+	class_type_select.select(selected_scr_idx)
+	_build_dynamic_fields_for_custom_type()
 
 	if "name" in current_res: name_edit.text = current_res.name
 	if "learnable" in current_res: learnable_check.button_pressed = current_res.learnable
@@ -674,6 +1087,14 @@ func _populate_form() -> void:
 				break
 
 	_update_elemental_status_display()
+
+	for c in anim_vbox.get_children():
+		c.queue_free()
+
+	if "skill_animation" in current_res and current_res.skill_animation:
+		for anim in current_res.skill_animation:
+			if anim:
+				_add_animation_step_card(anim)
 
 	if status_search_edit:
 		status_search_edit.text = ""
@@ -750,7 +1171,38 @@ func _apply_form_to_resource() -> void:
 	elif "element" in current_res:
 		current_res.element = chosen_elem
 
-	# FIXED: Assign elements into typed array using assign() to avoid Variant Array crashes
+	for p_name in dynamic_controls.keys():
+		var ctrl = dynamic_controls[p_name]
+		if ctrl is SpinBox:
+			current_res.set(p_name, ctrl.value)
+		elif ctrl is CheckBox:
+			current_res.set(p_name, ctrl.button_pressed)
+		elif ctrl is LineEdit:
+			current_res.set(p_name, ctrl.text)
+		elif ctrl is ColorPickerButton:
+			current_res.set(p_name, ctrl.color)
+		elif ctrl is OptionButton:
+			var opt_btn := ctrl as OptionButton
+			var sel_idx: int = opt_btn.selected
+			if sel_idx >= 0:
+				current_res.set(p_name, opt_btn.get_item_metadata(sel_idx))
+
+	var new_anims: Array[rpg_skill_animation] = []
+	for card in anim_vbox.get_children():
+		var anim_res: rpg_skill_animation = card.get_meta("anim_instance")
+		var type_select: OptionButton = card.get_meta("type_select")
+		var name_input: LineEdit = card.get_meta("name_input")
+		var time_spin: SpinBox = card.get_meta("time_spin")
+
+		if anim_res:
+			anim_res.skill_animation = type_select.selected as rpg_skill_animation.SKILL_ANIMATION_TYPE
+			anim_res.animation_name = name_input.text
+			anim_res.time_amount = time_spin.value
+			new_anims.append(anim_res)
+
+	if "skill_animation" in current_res:
+		current_res.skill_animation.assign(new_anims)
+
 	if "effects_to_add" in current_res:
 		var new_effects: Array[status_effect_chance] = []
 		for st in status_effects:
@@ -782,7 +1234,6 @@ func _on_save_pressed() -> void:
 
 	_apply_form_to_resource()
 
-	# Relocate file to folder based on assigned element
 	var target_dir := SKILL_DIR
 	var chosen_elem = current_res.skill_element if "skill_element" in current_res else (current_res.element if "element" in current_res else null)
 

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://dkx6ro6wkvbk3"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_fcgvg"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="1_spwwq"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="2_1f6ac"]
 [ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_52ljh"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="2_oiyug"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="3_mpcvs"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_qgdqv"]
 
 [sub_resource type="Resource" id="Resource_kn7s4"]
@@ -35,7 +35,7 @@ agility = 1
 luck = 1
 
 [resource]
-script = ExtResource("1_spwwq")
+script = ExtResource("3_mpcvs")
 name = "Icicle"
 learnable = true
 power = 8

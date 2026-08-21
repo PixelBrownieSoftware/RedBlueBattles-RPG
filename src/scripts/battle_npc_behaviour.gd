@@ -112,79 +112,6 @@ func get_possible_targets_for_moves(skill : rpg_skill) -> Array[battle_character
 	return targets
 	#battle_globals.current_character.chara_behaviour(battle_globals.current_character, skills_targets)
 
-# func process_behaviour():
-# 	var best_behaviours = {}
-# 	var character_skills : Array[rpg_skill] = battle_globals.current_character.get_skills
-# 	var behaviours : Array[battle_chara_behaviour] = battle_globals.current_character.assigned_data.chara_behaviour
-# 	for skill in character_skills:
-# 		if skill is skill_summon:
-# 			if GlobalVariables.is_player_team(battle_globals.current_character):
-# 				if PartyMembers.get_child_count() == 5:
-# 					continue
-# 			else:
-# 				if EnemyMembers.get_child_count() == 5:
-# 					continue
-# 		if skill.skill_scope == skill.SCOPE.SELF:
-# 			var skip_this = true
-# 			for status in skill.effects_to_add:
-# 				if !battle_globals.current_character.has_status(status.status):
-# 					skip_this = false
-# 					break
-# 			if skip_this:
-# 				continue
-# 		if battle_globals.current_character.stamina < skill.get_final_cost(battle_globals.current_character):
-# 			continue
-# 		var targets :  Array[battle_character_data] = get_all_possible_targets_for_move(skill)
-# 		if targets == null:
-# 			continue
-# 		else: if targets.size() == 0:
-# 			continue
-# 		var skill_behaviours = {}
-# 		for behaviour_conds in behaviours:
-# 			var behaviour_targs : Array[battle_character_data]
-# 			for conds in behaviour_conds.condiitons:
-# 				var cond_fuffilled : bool = false
-# 				for targ in targets:
-# 					if conds.check_cond(battle_globals.current_character,targ,skill, 0):
-# 						behaviour_targs.append(targ)
-# 						cond_fuffilled = true
-# 				if !cond_fuffilled:
-# 					break
-# 			skill_behaviours.append({chance: behaviour_conds.execution_chance, targets: behaviour_targs})
-# 		best_behaviours[skill] = skill_behaviours
-			
-# 	if best_behaviours.size() > 0:
-# 		#Firstly add all the excectuion chances together, find the mean of each one
-# 		#pick a random number between 0 - 1.0 and whichever it lands on, pick that behaviour and then pick a random target from the list of targets for that behaviour
-# 		var total_chance : float = 0.0
-# 		for skill in best_behaviours.keys():
-# 			for behaviour in best_behaviours[skill]:
-# 				total_chance += behaviour.chance
-# 		for skill in best_behaviours.keys():
-# 			for behaviour in best_behaviours[skill]:
-# 				behaviour.chance = behaviour.chance / total_chance
-# 		var rng = RandomNumberGenerator.new()
-# 		rng.randomize()
-# 		var random_num : float = rng.randf_range(0.0, 1.0)
-# 		var current_chance : float = 0.0
-# 		for skill in best_behaviours.keys():
-# 			for behaviour in best_behaviours[skill]:
-# 				current_chance += behaviour.chance
-# 				if random_num <= current_chance:
-# 					battle_globals.selected_move = skill
-# 					behavour_targets = behaviour.targets
-# 					if behavour_targets.size() > 0:
-# 						var random_targ = behavour_targets.pick_random()
-# 						battle_globals.target_character = random_targ
-# 		# var random_move = best_behaviours.keys().pick_random()
-# 		# battle_globals.selected_move = random_move
-# 		# var random_targ = best_behaviours[random_move].pick_random()
-# 		# battle_globals.target_character = random_targ
-# 	else:
-# 		battle_globals.selected_move = guard_move
-# 		battle_globals.target_character = battle_globals.current_character
-# 	start_process_state.emit()
-
 func process_behaviour():
 	# Store candidate actions per priority level
 	# Map: priority (int) -> Array[Dictionary]
@@ -212,7 +139,7 @@ func process_behaviour():
 	
 	
 	var turn_num: int = battle_globals.turn_count if "turn_count" in battle_globals else 0
-	var round_num: int = battle_globals.round_number if "turn_count" in battle_globals else 0
+	var round_num: int = battle_globals.round_number if "round_number" in battle_globals else 0
 
 	# 1. Loop through behaviours and evaluate conditions
 	for behaviour_group in behaviours:
@@ -239,6 +166,8 @@ func process_behaviour():
 					if not battle_globals.current_character.has_status(status.status):
 						skip_this = false
 						break
+				if skill is skill_stamina_guard:
+					skip_this = false
 				if skip_this:
 					continue
 

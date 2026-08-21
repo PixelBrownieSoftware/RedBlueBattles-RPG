@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_cufwe"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="2_nsr2o"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_ywmoy"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_2e418"]
-[ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/Skills/Strike/multi_slash.tres" id="4_2f1e5"]
-[ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/Skills/Strike/frost_strike.tres" id="5_6t47a"]
+[ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/skills/Strike/multi_slash.tres" id="4_2f1e5"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_2tkdw"]
+[ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/skills/Strike/frost_strike.tres" id="5_6t47a"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="6_777f1"]
 [ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/Playable/blueler.tres" id="6_wth3c"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="7_wt765"]
@@ -15,7 +15,7 @@
 [sub_resource type="Resource" id="Resource_pptr6"]
 script = ExtResource("1_cufwe")
 character = ExtResource("4_2e418")
-skills = Array[ExtResource("3_ywmoy")]([ExtResource("4_2f1e5"), ExtResource("5_6t47a")])
+skills = Array[ExtResource("4_2tkdw")]([ExtResource("4_2f1e5"), ExtResource("5_6t47a")])
 min_level = 9
 max_level = 9
 inclusion_flag_requirements = Array[ExtResource("7_wt765")]([])

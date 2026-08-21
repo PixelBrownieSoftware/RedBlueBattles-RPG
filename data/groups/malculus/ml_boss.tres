@@ -3,8 +3,8 @@
 [ext_resource type="Resource" uid="uid://cquom4g51vu7d" path="res://data/characters/Bosses/malculus.tres" id="1_6i7jd"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_rlcc1"]
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_fcpnp"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="3_crrxb"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_u6m7d"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_45mrj"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="4_ofywq"]
 [ext_resource type="Resource" uid="uid://divek06ecodu1" path="res://data/characters/Playable/greendori.tres" id="5_r4ger"]
 [ext_resource type="Resource" uid="uid://cmfai7ydcxm8h" path="res://data/characters/Playable/buckler.tres" id="6_2afsa"]
@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_518pq"]
 script = ExtResource("2_fcpnp")
 character = ExtResource("1_6i7jd")
-skills = Array[ExtResource("3_crrxb")]([])
+skills = Array[ExtResource("4_45mrj")]([])
 min_level = 35
 max_level = 35
 inclusion_flag_requirements = Array[ExtResource("3_u6m7d")]([])
@@ -26,7 +26,7 @@ flag = false
 [sub_resource type="Resource" id="Resource_e8fk7"]
 script = ExtResource("2_fcpnp")
 character = ExtResource("5_r4ger")
-skills = Array[ExtResource("3_crrxb")]([])
+skills = Array[ExtResource("4_45mrj")]([])
 min_level = 30
 max_level = 30
 inclusion_flag_requirements = Array[ExtResource("3_u6m7d")]([SubResource("Resource_d448l")])
@@ -40,7 +40,7 @@ flag = false
 [sub_resource type="Resource" id="Resource_e3nt4"]
 script = ExtResource("2_fcpnp")
 character = ExtResource("6_2afsa")
-skills = Array[ExtResource("3_crrxb")]([])
+skills = Array[ExtResource("4_45mrj")]([])
 min_level = 30
 max_level = 30
 inclusion_flag_requirements = Array[ExtResource("3_u6m7d")]([SubResource("Resource_q78j4")])

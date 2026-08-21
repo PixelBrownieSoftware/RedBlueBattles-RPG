@@ -1,7 +1,9 @@
+# res://data/behaviours/battle_character_behaviour.gd
 @tool
 extends Resource
 class_name battle_character_behaviour
 
+@export var is_NOT : bool = false
 @export var condition : BEHAVIOUR_CONDITION
 @export var compare : NUMBER_COMP
 @export_range(0,1,0.01) var percentage: float 
@@ -23,7 +25,8 @@ enum SUBJECT {
 	TARGET_INVERSE,
 	SKILL,
 	TURN,
-	ROUND
+	ROUND,
+	EVERY_X_ROUND
 }
 
 enum SKILL_CONDITION {
@@ -58,27 +61,32 @@ enum NUMBER_COMP {
 
 func check_cond(character: battle_character_data, target: battle_character_data, skill: rpg_skill, turn_number: int, round_number: int) -> bool:
 	"""
-	Check if this behaviour condition is met
+	Check if this behaviour condition is met (taking is_NOT into account)
 	"""
+	var result := false
 	
 	match subject:
 		SUBJECT.TARGET:
-			return check_target(target, skill)
+			result = check_target(target, skill)
 		
 		SUBJECT.TARGET_INVERSE:
 			# If checking enemy, check ally instead
-			return check_target(character, skill)
+			result = check_target(character, skill)
 		
 		SUBJECT.SKILL:
-			return check_skill(skill)
+			print("Skill: "+ skill.name)
+			result = check_skill(skill)
 		
 		SUBJECT.TURN:
-			return compare_numbers(turn_number, exact_number)
+			result = compare_numbers(turn_number, exact_number)
+		
+		SUBJECT.EVERY_X_ROUND:
+			result = (round_number % exact_number == 0) #if exact_number != 0 else false
 		
 		SUBJECT.ROUND:
-			return compare_numbers(round_number, exact_number)
-	
-	return false
+			result = compare_numbers(round_number, exact_number)
+
+	return !result if is_NOT else result
 
 
 func check_target(target: battle_character_data, skill: rpg_skill) -> bool:
@@ -102,13 +110,12 @@ func check_target(target: battle_character_data, skill: rpg_skill) -> bool:
 		
 		TARGET_CONDITION.ELEMENTAL_AFFINITY:
 			# If no specific element, use skill's element
-			var check_element = specific_element if specific_element != null else skill.skill_element
+			var check_element = specific_element if specific_element != null else (skill.skill_element if skill else null)
 			
 			if check_element == null:
 				return false
 			
 			var affinity = target.get_elemental_affinity(check_element)
-			print("Target name: "+ target.name + " Affinity Check: " + str(int(affinity * 100)) + " against element "+ check_element.name)
 			return compare_numbers(int(affinity * 100), int(elemental * 100))
 		
 		TARGET_CONDITION.STATUS_MODIFY_AFFINITY:
@@ -126,33 +133,27 @@ func check_affinity_after_status(target: battle_character_data, skill: rpg_skill
 	if skill == null:
 		return false
 	
-	# Get all status effects from the skill
 	var status_effects = skill.get_all_status_effects()
 	
 	if status_effects.is_empty():
 		return false
 	
-	# Calculate predicted affinities after status application
 	var predicted_affinities = {}
 	
-	# Start with current affinities
-	for el in GlobalVariables.element_lookup:  # Assuming this exists
+	for el in GlobalVariables.element_lookup:
 		predicted_affinities[el] = target.get_elemental_affinity(GlobalVariables.get_element(el))
 	
-	# Apply status effect changes
 	for status in status_effects:
 		for affinity_change in status.elemental_affinity_change:
 			var element = GlobalVariables.get_element(affinity_change.elementalName)
 			if element != null:
 				predicted_affinities[affinity_change.elementalName] += affinity_change.affinity
-				print("Affinity Change: " + str(predicted_affinities[affinity_change.elementalName]))
 	
-	# Check if ANY predicted affinity meets the condition
 	for element in predicted_affinities:
 		var predicted = predicted_affinities[element]
 		
 		if compare_numbers(int(predicted * 100), int(elemental * 100)):
-			return true  # At least one affinity meets requirement
+			return true
 	
 	return false
 
@@ -173,7 +174,6 @@ func check_skill(skill: rpg_skill) -> bool:
 			return skill.skill_element == specific_element
 		
 		SKILL_CONDITION.POWER:
-			# Use exact_number for power comparison
 			return compare_numbers(int(skill.power), exact_number)
 		
 		SKILL_CONDITION.STATUS:
@@ -210,18 +210,17 @@ func get_description() -> String:
 	
 	var subject_str = SUBJECT.keys()[subject]
 	var condition_str = ""
+	var not_prefix = "NOT " if is_NOT else ""
 	
 	match subject:
-		SUBJECT.TARGET:
-			var target_cond = TARGET_CONDITION.keys()[target_condition]
-			
+		SUBJECT.TARGET, SUBJECT.TARGET_INVERSE:
 			match target_condition:
 				TARGET_CONDITION.HEALTH:
 					condition_str = "HP %s %.0f%%" % [NUMBER_COMP.keys()[compare], percentage * 100]
 				TARGET_CONDITION.STAMINA:
 					condition_str = "Stamina %s %.0f%%" % [NUMBER_COMP.keys()[compare], percentage * 100]
 				TARGET_CONDITION.STATUS_EFFECT:
-					condition_str = "Has %s" % specific_status.status_name if specific_status else "Has status"
+					condition_str = "Has %s" % (specific_status.status_name if specific_status else "status")
 				TARGET_CONDITION.ELEMENTAL_AFFINITY:
 					var elem_name = specific_element.element_name if specific_element else "Skill element"
 					condition_str = "%s affinity %s %.1f" % [elem_name, NUMBER_COMP.keys()[compare], elemental]
@@ -229,11 +228,9 @@ func get_description() -> String:
 					condition_str = "After status: affinity %s %.1f" % [NUMBER_COMP.keys()[compare], elemental]
 		
 		SUBJECT.SKILL:
-			var skill_cond = SKILL_CONDITION.keys()[skill_condition]
-			
 			match skill_condition:
 				SKILL_CONDITION.SPECIFIC:
-					condition_str = "%s: %s" % [skill_cond, specific_skill.name if specific_skill else "?"]
+					condition_str = "Specific: %s" % (specific_skill.name if specific_skill else "?")
 				SKILL_CONDITION.ELEMENT:
 					condition_str = "Element: %s" % (specific_element.name if specific_element else "?")
 				SKILL_CONDITION.POWER:
@@ -246,5 +243,8 @@ func get_description() -> String:
 		
 		SUBJECT.ROUND:
 			condition_str = "Round %s %s" % [NUMBER_COMP.keys()[compare], exact_number]
+			
+		SUBJECT.EVERY_X_ROUND:
+			condition_str = "Every %d Rounds" % exact_number
 	
-	return "%s: %s" % [subject_str, condition_str]
+	return "%s%s: %s" % [not_prefix, subject_str, condition_str]
