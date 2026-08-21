@@ -5,6 +5,7 @@ extends Control
 const CHAR_DIR := "res://data/characters"
 const ELEMENT_DIR := "res://data/elements"
 const SKILL_DIR := "res://data/skills"
+const BEHAVIOUR_DIR := "res://data/behaviours"
 
 const STAT_ICON_DIR := "res://sprites/GUI/stats/"
 const ELEMENT_ICON_DIR := "res://sprites/GUI/elements/"
@@ -16,15 +17,24 @@ const ELEMENT_ICON_DIR := "res://sprites/GUI/elements/"
 @onready var status_label: Label = %StatusLabel
 @onready var form_root: VBoxContainer = %FormRoot
 
+# File Management UI Controls
+var new_char_button: Button
+var delete_char_button: Button
+var new_char_dialog: ConfirmationDialog
+var new_char_name_input: LineEdit
+var folder_select_option: OptionButton
+var delete_confirm_dialog: ConfirmationDialog
+
 var current_path : String = ""
 var current_res : battle_character_base = null
 var elements : Array = []
-var loaded_skills : Array = [] # Array of loaded rpg_skill resources
+var loaded_skills : Array = []
+var loaded_behaviours : Array[battle_chara_behaviour] = []
 
 var stat_edits : Dictionary = {}
 var increase_edits : Dictionary = {}
 var potential_edits : Dictionary = {}
-var affinity_display : ElementalAffinityDisplay # Custom control class with -1 to 2 sliders
+var affinity_display : ElementalAffinityDisplay
 
 var name_edit : LineEdit
 var colour_edit : ColorPickerButton
@@ -38,9 +48,12 @@ var stamina_level_spins : Array[SpinBox] = []
 
 # Skill Assignment Controls
 var skill_search_edit : LineEdit
-var skill_enable_checks : Dictionary = {}  # skill -> CheckBox
-var skill_level_spins : Dictionary = {}     # skill -> SpinBox (level learned)
-var skill_rows : Dictionary = {}            # skill -> HBoxContainer
+var skill_enable_checks : Dictionary = {}
+var skill_rows : Dictionary = {}
+
+# Behaviour Assignment Controls
+var override_behaviour_check : CheckBox
+var behaviour_vbox : VBoxContainer
 
 var exp_score_edit : SpinBox
 var exp_to_nl_edit : SpinBox
@@ -56,6 +69,8 @@ func _ready() -> void:
 	if not is_instance_valid(tree):
 		return
 
+	_setup_file_management_ui()
+
 	refresh_button.pressed.connect(_populate_tree)
 	tree.item_selected.connect(_on_tree_item_selected)
 	save_button.pressed.connect(_on_save_pressed)
@@ -66,9 +81,160 @@ func _ready() -> void:
 
 	_load_elements()
 	_load_skills()
+	_load_behaviours()
 	_build_form()
 	_set_form_enabled(false)
 	call_deferred("_populate_tree")
+
+
+func _setup_file_management_ui() -> void:
+	var left_vbox: VBoxContainer = tree.get_parent()
+
+	# Create button bar above the Tree view
+	var action_hbox := HBoxContainer.new()
+	action_hbox.add_theme_constant_override("separation", 6)
+
+	new_char_button = Button.new()
+	new_char_button.text = "+ New Character"
+	new_char_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	new_char_button.pressed.connect(_on_new_character_pressed)
+	action_hbox.add_child(new_char_button)
+
+	delete_char_button = Button.new()
+	delete_char_button.text = "Delete"
+	delete_char_button.disabled = true
+	delete_char_button.pressed.connect(_on_delete_character_pressed)
+	action_hbox.add_child(delete_char_button)
+
+	# Insert above the tree view
+	var refresh_idx := refresh_button.get_index()
+	left_vbox.add_child(action_hbox)
+	left_vbox.move_child(action_hbox, refresh_idx + 1)
+
+	# Setup "New Character" Confirmation Dialog
+	new_char_dialog = ConfirmationDialog.new()
+	new_char_dialog.title = "Create New Character"
+	new_char_dialog.size = Vector2i(360, 160)
+
+	var dialog_vbox := VBoxContainer.new()
+	dialog_vbox.add_theme_constant_override("separation", 8)
+
+	var name_lbl := Label.new()
+	name_lbl.text = "Character File Name:"
+	dialog_vbox.add_child(name_lbl)
+
+	new_char_name_input = LineEdit.new()
+	new_char_name_input.placeholder_text = "new_character"
+	dialog_vbox.add_child(new_char_name_input)
+
+	var folder_lbl := Label.new()
+	folder_lbl.text = "Target Category Folder:"
+	dialog_vbox.add_child(folder_lbl)
+
+	folder_select_option = OptionButton.new()
+	dialog_vbox.add_child(folder_select_option)
+
+	new_char_dialog.add_child(dialog_vbox)
+	new_char_dialog.confirmed.connect(_confirm_new_character)
+	add_child(new_char_dialog)
+
+	# Setup "Delete Character" Confirmation Dialog
+	delete_confirm_dialog = ConfirmationDialog.new()
+	delete_confirm_dialog.title = "Delete Character Resource?"
+	delete_confirm_dialog.dialog_text = "Are you sure you want to delete this character file permanently?"
+	delete_confirm_dialog.confirmed.connect(_confirm_delete_character)
+	add_child(delete_confirm_dialog)
+
+
+func _scan_character_folders() -> Array[String]:
+	var folders: Array[String] = []
+	if not DirAccess.dir_exists_absolute(CHAR_DIR):
+		DirAccess.make_dir_recursive_absolute(CHAR_DIR)
+
+	var dir := DirAccess.open(CHAR_DIR)
+	if dir:
+		dir.list_dir_begin()
+		var file_name := dir.get_next()
+		while file_name != "":
+			if not file_name.begins_with(".") and dir.current_is_dir():
+				folders.append(file_name)
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	
+	folders.sort()
+	return folders
+
+
+func _on_new_character_pressed() -> void:
+	folder_select_option.clear()
+	var folders := _scan_character_folders()
+
+	folder_select_option.add_item("📁 Root (/data/characters)", 0)
+	folder_select_option.set_item_metadata(0, CHAR_DIR)
+
+	for idx in range(folders.size()):
+		var folder_name := folders[idx]
+		var full_path := CHAR_DIR.path_join(folder_name)
+		folder_select_option.add_item("📂 " + folder_name, idx + 1)
+		folder_select_option.set_item_metadata(idx + 1, full_path)
+
+	new_char_name_input.text = "new_character"
+	new_char_dialog.popup_centered()
+	new_char_name_input.select_all()
+	new_char_name_input.grab_focus()
+
+
+func _confirm_new_character() -> void:
+	var char_name := new_char_name_input.text.strip_edges()
+	if char_name == "":
+		return
+
+	if not char_name.ends_with(".tres") and not char_name.ends_with(".res"):
+		char_name += ".tres"
+
+	var folder_idx := folder_select_option.selected
+	var parent_dir: String = folder_select_option.get_item_metadata(folder_idx) if folder_idx >= 0 else CHAR_DIR
+
+	var file_path := parent_dir.path_join(char_name)
+	if FileAccess.file_exists(file_path):
+		status_label.text = "Error: File '%s' already exists!" % char_name
+		return
+
+	var new_res := battle_character_base.new()
+	new_res.name = char_name.get_basename().capitalize()
+
+	var err := ResourceSaver.save(new_res, file_path)
+	if err == OK:
+		status_label.text = "Created character at: " + file_path
+		_populate_tree()
+		_load_character(file_path)
+	else:
+		status_label.text = "Failed to create file (error %d)" % err
+
+
+func _on_delete_character_pressed() -> void:
+	if current_path == "":
+		return
+
+	delete_confirm_dialog.dialog_text = "Are you sure you want to delete '%s'?" % current_path.get_file()
+	delete_confirm_dialog.popup_centered()
+
+
+func _confirm_delete_character() -> void:
+	if current_path == "":
+		return
+
+	var file_to_delete := current_path
+	var err := DirAccess.remove_absolute(file_to_delete)
+	if err == OK:
+		status_label.text = "Deleted character: " + file_to_delete.get_file()
+		current_path = ""
+		current_res = null
+		_set_form_enabled(false)
+		delete_char_button.disabled = true
+		_populate_tree()
+	else:
+		status_label.text = "Failed to delete file (error %d)" % err
 
 
 func _section_header(text: String) -> PanelContainer:
@@ -162,7 +328,6 @@ func _build_form() -> void:
 	stamina_edit = _make_int_spin(0, 999, 1)
 	form_root.add_child(_labeled_row("Max Stamina", stamina_edit))
 
-	# Dynamic Stamina-Up Levels Array Editor
 	var stamina_array_row := VBoxContainer.new()
 	stamina_array_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
@@ -189,7 +354,7 @@ func _build_form() -> void:
 	form_root.add_child(_labeled_row("Filter Skills", skill_search_edit))
 
 	var skill_scroll := ScrollContainer.new()
-	skill_scroll.custom_minimum_size = Vector2(0, 200)
+	skill_scroll.custom_minimum_size = Vector2(0, 180)
 	skill_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 
 	var skill_vbox := VBoxContainer.new()
@@ -208,7 +373,6 @@ func _build_form() -> void:
 		skill_enable_checks[sk] = enable_cb
 		row.add_child(enable_cb)
 
-		# Skill Icon
 		var icon_tex: Texture2D = sk.get("custom_icon") if sk.get("custom_icon") != null else sk.get("icon")
 		if icon_tex:
 			var tr := TextureRect.new()
@@ -218,7 +382,6 @@ func _build_form() -> void:
 			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			row.add_child(tr)
 
-
 		skill_rows[sk] = row
 		skill_vbox.add_child(row)
 
@@ -227,7 +390,29 @@ func _build_form() -> void:
 
 	form_root.add_child(_hsep())
 
-	# ---- Elemental Potential (Horizontal Icon Bar) ----
+	# ---- Character Behaviours (chara_behaviour) ----
+	form_root.add_child(_section_header("Character Behaviours (chara_behaviour)"))
+
+	override_behaviour_check = CheckBox.new()
+	override_behaviour_check.text = "Override Default Behaviours (Ignore AI Defaults)"
+	override_behaviour_check.toggled.connect(func(_t): _on_field_changed(0))
+	form_root.add_child(override_behaviour_check)
+
+	behaviour_vbox = VBoxContainer.new()
+	behaviour_vbox.add_theme_constant_override("separation", 6)
+	form_root.add_child(behaviour_vbox)
+
+	var add_behaviour_btn := Button.new()
+	add_behaviour_btn.text = "+ Assign Behaviour Slot"
+	add_behaviour_btn.pressed.connect(func():
+		_add_behaviour_slot(null)
+		_on_field_changed(0)
+	)
+	form_root.add_child(add_behaviour_btn)
+
+	form_root.add_child(_hsep())
+
+	# ---- Elemental Potential ----
 	form_root.add_child(_section_header("Elemental Potential"))
 	var pot_container := HFlowContainer.new()
 	pot_container.add_theme_constant_override("h_separation", 16)
@@ -260,17 +445,17 @@ func _build_form() -> void:
 
 	form_root.add_child(_hsep())
 
-	# ---- Elemental Affinities (Using ElementalAffinityDisplay control class) ----
+	# ---- Elemental Affinities ----
 	form_root.add_child(_section_header("Elemental Affinities (-1 to 2 Sliders)"))
 	affinity_display = ElementalAffinityDisplay.new()
 	affinity_display.upper_lower_limit = Vector2(-1.0, 2.0)
-	affinity_display.default_value = 1.0 # Characters default to 1.0
+	affinity_display.default_value = 1.0
 	affinity_display.affinity_changed.connect(func(_el, _val): _on_field_changed(0))
 	form_root.add_child(affinity_display)
 
 	form_root.add_child(_hsep())
 
-	# ---- Main Stats (With GUI Stat Icons) ----
+	# ---- Main Stats ----
 	form_root.add_child(_section_header("Stats"))
 	var stats_list := ["strength", "vitality", "dexterity", "magic_pow", "agility", "luck"]
 	for stat_name in stats_list:
@@ -305,7 +490,43 @@ func _build_form() -> void:
 	form_root.add_child(_labeled_row("EXP Requirement Multiplier", exp_mult_edit))
 
 
-# Helper functions for Stamina-Up Levels UI
+func _add_behaviour_slot(selected_beh: battle_chara_behaviour = null) -> void:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+
+	var beh_select := OptionButton.new()
+	beh_select.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	beh_select.add_item("None (Empty Slot)", 0)
+
+	var match_idx := 0
+	for idx in range(loaded_behaviours.size()):
+		var beh := loaded_behaviours[idx]
+		var path_name := beh.resource_path.get_file().get_basename()
+		var display_text := "🧠 " + path_name + " (Priority: " + str(beh.priority if "priority" in beh else 0) + ")"
+		beh_select.add_item(display_text, idx + 1)
+		beh_select.set_item_metadata(idx + 1, beh)
+
+		if selected_beh and beh == selected_beh:
+			match_idx = idx + 1
+
+	if match_idx > 0:
+		beh_select.select(match_idx)
+
+	beh_select.item_selected.connect(func(_idx): _on_field_changed(0))
+	row.add_child(beh_select)
+
+	var del_btn := Button.new()
+	del_btn.text = "Remove"
+	del_btn.pressed.connect(func():
+		row.queue_free()
+		_on_field_changed(0)
+	)
+	row.add_child(del_btn)
+
+	row.set_meta("beh_select", beh_select)
+	behaviour_vbox.add_child(row)
+
+
 func _add_stamina_level_item(level_val: int = 1) -> void:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 6)
@@ -348,6 +569,8 @@ func _on_skill_search_changed(query: String) -> void:
 
 func _set_form_enabled(enabled: bool) -> void:
 	form_root.modulate.a = 1.0 if enabled else 0.5
+	if is_instance_valid(delete_char_button):
+		delete_char_button.disabled = not enabled
 	if is_instance_valid(affinity_display):
 		affinity_display.is_editable = enabled
 	_set_container_editable(form_root, enabled)
@@ -383,6 +606,16 @@ func _load_skills() -> void:
 		if res is rpg_skill:
 			loaded_skills.append(res)
 	loaded_skills.sort_custom(func(a, b): return a.name < b.name)
+
+
+func _load_behaviours() -> void:
+	loaded_behaviours.clear()
+	if DirAccess.dir_exists_absolute(BEHAVIOUR_DIR):
+		var paths := _find_resources_recursive(BEHAVIOUR_DIR)
+		for path in paths:
+			var res = load(path)
+			if res is battle_chara_behaviour:
+				loaded_behaviours.append(res)
 
 
 func _find_resources_recursive(path: String) -> Array[String]:
@@ -466,11 +699,13 @@ func _on_tree_item_selected() -> void:
 func _load_character(path: String) -> void:
 	current_path = path
 	current_res = load(path)
+	_load_behaviours()
 	_populate_form()
 	_set_form_enabled(true)
 	dirty = false
 	save_button.disabled = true
 	revert_button.disabled = true
+	delete_char_button.disabled = false
 	status_label.text = "Editing: " + current_res.name
 
 
@@ -483,7 +718,6 @@ func _populate_form() -> void:
 	health_edit.value = current_res.health
 	stamina_edit.value = current_res.stamina
 
-	# Clear and rebuild Stamina Level SpinBoxes
 	stamina_level_spins.clear()
 	for child in stamina_levels_vbox.get_children():
 		child.queue_free()
@@ -492,17 +726,12 @@ func _populate_form() -> void:
 		for lvl in current_res.stamina_increase_levels:
 			_add_stamina_level_item(lvl)
 
-	# Reset skill filter search box
 	if skill_search_edit:
 		skill_search_edit.text = ""
 		_on_skill_search_changed("")
 
-	# Populate Assigned Skills
-	# Supports character_skills array containing skill entries or custom structs
 	for sk in loaded_skills:
 		var has_skill := false
-		var learned_lvl := 1
-
 		var char_skills = current_res.get("character_skills")
 		if char_skills == null:
 			char_skills = current_res.get("skills")
@@ -511,15 +740,25 @@ func _populate_form() -> void:
 			for entry in char_skills:
 				if entry == null:
 					continue
-				# Check direct skill match or struct property match
 				var entry_skill = entry if entry is rpg_skill else entry.get("skill")
 				if entry_skill == sk or (entry_skill and entry_skill.name == sk.name):
 					has_skill = true
-					if not (entry is rpg_skill):
-						learned_lvl = int(entry.get("level"))
 					break
 
 		skill_enable_checks[sk].button_pressed = has_skill
+
+	if "override_default_behaviours" in current_res:
+		override_behaviour_check.button_pressed = current_res.override_default_behaviours
+	else:
+		override_behaviour_check.button_pressed = false
+
+	for child in behaviour_vbox.get_children():
+		child.queue_free()
+
+	if current_res.chara_behaviour:
+		for beh in current_res.chara_behaviour:
+			if beh:
+				_add_behaviour_slot(beh)
 
 	for stat_name in stat_edits.keys():
 		stat_edits[stat_name].value = current_res.stats.get(stat_name)
@@ -565,34 +804,33 @@ func _apply_form_to_resource() -> void:
 	current_res.health = int(health_edit.value)
 	current_res.stamina = int(stamina_edit.value)
 
-	# Read Stamina-Up Levels from SpinBox Array
 	var levels: Array[int] = []
 	for spin in stamina_level_spins:
 		if is_instance_valid(spin):
 			levels.append(int(spin.value))
 	current_res.stamina_increase_levels = levels
 
-	# Build Character Skills array
 	var new_character_skills: Array = []
 	for sk in loaded_skills:
 		if skill_enable_checks[sk].button_pressed:
-			# Check if character resource expects struct or direct skill reference
-			if ClassDB.class_exists("character_skill") or ResourceLoader.exists("res://scripts/resources/character_skill.gd"):
-				var cs_res = load("res://scripts/resources/character_skill.gd")
-				if cs_res:
-					var cs = cs_res.new()
-					cs.skill = sk
-					cs.level = int(skill_level_spins[sk].value)
-					new_character_skills.append(cs)
-				else:
-					new_character_skills.append(sk)
-			else:
-				new_character_skills.append(sk)
+			new_character_skills.append(sk)
 
 	if "character_skills" in current_res:
 		current_res.set("character_skills", new_character_skills)
 	elif "skills" in current_res:
 		current_res.set("skills", new_character_skills)
+
+	if "override_default_behaviours" in current_res:
+		current_res.override_default_behaviours = override_behaviour_check.button_pressed
+
+	var assigned_behaviours: Array[battle_chara_behaviour] = []
+	for row in behaviour_vbox.get_children():
+		var beh_select: OptionButton = row.get_meta("beh_select")
+		if beh_select and beh_select.selected > 0:
+			var selected_beh: battle_chara_behaviour = beh_select.get_item_metadata(beh_select.selected)
+			if selected_beh:
+				assigned_behaviours.append(selected_beh)
+	current_res.chara_behaviour = assigned_behaviours
 
 	for stat_name in stat_edits.keys():
 		current_res.stats.set(stat_name, int(stat_edits[stat_name].value))

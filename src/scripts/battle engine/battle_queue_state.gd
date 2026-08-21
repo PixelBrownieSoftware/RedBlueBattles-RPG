@@ -29,6 +29,7 @@ func requeue():
 func start_state():
 	if battle_globals.net_turn == 0:
 		queue.clear()
+		battle_globals.increment_round()
 		battle_globals.is_player_turn = !battle_globals.is_player_turn
 		if battle_globals.is_player_turn:
 			for character in PartyMembers.get_children():
@@ -47,7 +48,6 @@ func start_state():
 			use_turn()
 		else:
 			requeue()
-		
 	battle_globals.current_character.update_current_status_effects("turn_start")
 	change_state.emit(select_move_state)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2y2lo8lg2cg2"]
+[gd_scene load_steps=10 format=3 uid="uid://2y2lo8lg2cg2"]
 
 [ext_resource type="Script" uid="uid://s2ki6ygshkl3" path="res://addons/RPG_editor/rpg_editor.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://ybh2ve8hfkrt" path="res://addons/character_stats_editor/character_stats_editor.tscn" id="2_char_editor"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bapmqf5kgirwi" path="res://addons/battle_tester/battle_tester.tscn" id="6_battle_tester"]
 [ext_resource type="PackedScene" uid="uid://bxu8wjvfvylr" path="res://addons/battle_group_editor/battle_group_editor.tscn" id="6_group_editor"]
 [ext_resource type="PackedScene" uid="uid://bjaidp7bosgbq" path="res://addons/level_group_editor/level_group_editor.tscn" id="7_level_group_editor"]
+[ext_resource type="PackedScene" uid="uid://duoheoqyxg6p7" path="res://addons/behaviour_editor/behaviour_editor.tscn" id="9_5u461"]
 
 [node name="RPGEditor" type="Control"]
 layout_mode = 3
@@ -63,3 +64,8 @@ metadata/_tab_index = 5
 visible = false
 layout_mode = 2
 metadata/_tab_index = 6
+
+[node name="BehaviourEditor" parent="TabContainer" instance=ExtResource("9_5u461")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 7

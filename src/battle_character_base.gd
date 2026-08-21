@@ -10,7 +10,7 @@ class_name battle_character_base
 @export var stats : rpg_stats = rpg_stats.new()
 @export var stat_increase : rpg_stats_increase = rpg_stats_increase.new()
 @export var skills : Array[rpg_skill]
-@export var behaviour : Array[battle_move_behaviour]
+@export var override_default_behaviours : bool = false
 @export var chara_behaviour : Array[battle_chara_behaviour]
 @export var elemental_affinities : Array[elemental_affinity]
 @export var elemental_potential : Array[elemental_potential]

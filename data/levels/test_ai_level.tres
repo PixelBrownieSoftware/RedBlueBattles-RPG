@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="battle_level_group" load_steps=4 format=3 uid="uid://dtxxb2va3acqf"]
+
+[ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_7ewp8"]
+[ext_resource type="Resource" uid="uid://dngacp8arbxml" path="res://data/groups/test_ai_group.tres" id="2_g7ast"]
+[ext_resource type="Script" uid="uid://dhwld0v7qa3p3" path="res://src/scripts/battle group/battle_level_group.gd" id="3_wctxn"]
+
+[resource]
+script = ExtResource("3_wctxn")
+name = "TestAI"
+battle_groups = Array[ExtResource("1_7ewp8")]([ExtResource("2_g7ast")])
+self_destruct_after_win = false
+battle_groups_unlock = Array[ExtResource("3_wctxn")]([])
+battle_groups_remove = Array[ExtResource("3_wctxn")]([])
+type_battle = 1
+terminal = false
+terminal_scene = ""
+colour_BG = Color(0.705882, 0.470588, 0.470588, 1)
+editor_position = Vector2(0, 0)

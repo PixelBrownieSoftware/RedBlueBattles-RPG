@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=24 format=3 uid="uid://dvbhcjiya6bjc"]
+
+[ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="1_h2ian"]
+[ext_resource type="Resource" uid="uid://crepqahdqcovh" path="res://data/behaviours/smart_ai_test.tres" id="2_erdcl"]
+[ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_leed6"]
+[ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="3_82grj"]
+[ext_resource type="Resource" uid="uid://cg20lauvwa885" path="res://data/behaviours/oddball_AI_test.tres" id="3_mpyin"]
+[ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="4_xq5cf"]
+[ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="6_wf6j4"]
+[ext_resource type="Resource" uid="uid://defk8p5vxg4ba" path="res://data/skills/Water/acid.tres" id="7_m78at"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="7_skwlg"]
+[ext_resource type="Resource" uid="uid://buhnvgb0e82yd" path="res://data/skills/Ice/blizzard.tres" id="8_cgej1"]
+[ext_resource type="Resource" uid="uid://bjuovr1ld32gp" path="res://data/skills/Strike/burning_slash.tres" id="9_hrlo5"]
+[ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/skills/Force/drowsy_punch.tres" id="10_7d27x"]
+[ext_resource type="Resource" uid="uid://bouqpmerlatxl" path="res://data/skills/Fire/fire_blast.tres" id="11_xxtkl"]
+[ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/skills/Strike/frost_strike.tres" id="12_iyt5h"]
+[ext_resource type="Resource" uid="uid://cagi0wvfpk54g" path="res://data/skills/Peirce/infectious_bite.tres" id="13_gk47c"]
+[ext_resource type="Resource" uid="uid://1t2mb83d8mp2" path="res://data/skills/Peirce/machine_gun.tres" id="14_t77v5"]
+[ext_resource type="Resource" uid="uid://c4hatg1c5unq5" path="res://data/skills/Force/oily_punch.tres" id="15_8el8b"]
+[ext_resource type="Resource" uid="uid://bioayifxbn765" path="res://data/skills/Peirce/poison_needle.tres" id="16_hsr0p"]
+[ext_resource type="Resource" uid="uid://btljbcdehpvvv" path="res://data/skills/Peirce/stab_frenzy.tres" id="17_khodj"]
+[ext_resource type="Resource" uid="uid://ccvqwy5iklcp" path="res://data/skills/Psychic/sweet_dreams.tres" id="18_a75h4"]
+[ext_resource type="Resource" uid="uid://b757l2la34y6o" path="res://data/skills/Debug/multiple_hurt.tres" id="18_ipylc"]
+
+[sub_resource type="Resource" id="Resource_p61m0"]
+script = ExtResource("6_wf6j4")
+health_min = 1
+health_max = 1
+strength = 0.5
+vitality = 0.5
+magic_pow = 0.5
+dexterity = 0.5
+agility = 0.5
+luck = 0.5
+
+[sub_resource type="Resource" id="Resource_hwtex"]
+script = ExtResource("7_skwlg")
+strength = 20
+vitality = 20
+magic_pow = 20
+dexterity = 20
+agility = 20
+luck = 20
+
+[resource]
+script = ExtResource("4_xq5cf")
+name = "Test AI"
+health = 1000
+stamina = 10
+stamina_increase_levels = Array[int]([])
+base_exp_score = 50
+base_exp_to_NL = 50
+exp_req_multipler = 1.2
+stats = SubResource("Resource_hwtex")
+stat_increase = SubResource("Resource_p61m0")
+skills = [ExtResource("7_m78at"), ExtResource("8_cgej1"), ExtResource("9_hrlo5"), ExtResource("10_7d27x"), ExtResource("11_xxtkl"), ExtResource("12_iyt5h"), ExtResource("13_gk47c"), ExtResource("14_t77v5"), ExtResource("15_8el8b"), ExtResource("16_hsr0p"), ExtResource("17_khodj"), ExtResource("18_a75h4"), ExtResource("18_ipylc")]
+override_default_behaviours = true
+chara_behaviour = Array[ExtResource("1_h2ian")]([ExtResource("2_erdcl"), ExtResource("3_mpyin")])
+elemental_affinities = Array[ExtResource("2_leed6")]([])
+elemental_potential = Array[ExtResource("3_82grj")]([])
+character_colour = Color(1, 1, 1, 1)
+animation_player_loc = "sprite_redler"
+click_circle_radius = 20.0
+turns = 3

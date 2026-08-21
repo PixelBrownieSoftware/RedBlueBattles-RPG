@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bbwx0ufv842b7" path="res://sprites/GUI/status_effects_conf.png" id="1_y5e7d"]
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="2_cnk8d"]
-[ext_resource type="Resource" uid="uid://b3f5iw8sswr2x" path="res://data/status_effects/aura.tres" id="3_tgsfc"]
+[ext_resource type="Resource" uid="uid://b3f5iw8sswr2x" path="res://data/status_effects/headache.tres" id="3_tgsfc"]
 [ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="4_gvywr"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="5_vqpq5"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="6_f37ie"]

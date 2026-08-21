@@ -10,6 +10,7 @@ const STATUS_SCENE = preload("res://addons/status_effect_editor/status_effect_ed
 const GROUP_SCENE = preload("res://addons/battle_group_editor/battle_group_editor.tscn")
 const LEVEL_GROUP_SCENE = preload("res://addons/level_group_editor/level_group_editor.tscn")
 const TESTER_SCENE = preload("res://addons/battle_tester/battle_tester.tscn")
+const BEHAVIOUR_SCENE = preload("res://addons/behaviour_editor/behaviour_editor.tscn")
 
 
 func _ready() -> void:
@@ -25,6 +26,7 @@ func _ready() -> void:
 		_add_tab("Battle Groups", GROUP_SCENE)
 		_add_tab("Level Groups", LEVEL_GROUP_SCENE)
 		_add_tab("Battle Tester", TESTER_SCENE)
+		_add_tab("Behaviour", BEHAVIOUR_SCENE)
 
 	if not tab_container.tab_changed.is_connected(_on_tab_changed):
 		tab_container.tab_changed.connect(_on_tab_changed)
@@ -61,3 +63,6 @@ func _on_tab_changed(tab_idx: int) -> void:
 
 	if active_child.has_method("_filter_and_populate_levels"):
 		active_child._filter_and_populate_levels()
+
+	if active_child.has_method("_filter_and_populate_list"):
+		active_child._filter_and_populate_list()

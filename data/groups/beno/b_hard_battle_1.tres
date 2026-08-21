@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://c8qy2a5takbyp" path="res://data/Skills/Ice/frost_breath.tres" id="5_cvn3u"]
 [ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="5_us18a"]
 [ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="7_ecw5g"]
-[ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/Skills/Psychic/brain_shock.tres" id="8_abavw"]
+[ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/Skills/Psychic/brain_shock_1_1.tres" id="8_abavw"]
 [ext_resource type="Resource" uid="uid://btljbcdehpvvv" path="res://data/Skills/Peirce/stab_frenzy.tres" id="10_soji2"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="11_o7jjk"]
 

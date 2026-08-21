@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=25 format=3 uid="uid://bayu0f57esgkm"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=24 format=3 uid="uid://bayu0f57esgkm"]
 
-[ext_resource type="Script" uid="uid://busuf10bv87qy" path="res://src/battle_move_behaviour.gd" id="1_croyg"]
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="1_ysccb"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="2_5eyx8"]
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="2_5t6vl"]
@@ -83,7 +82,7 @@ exp_req_multipler = 1.2
 stats = SubResource("Resource_lycxc")
 stat_increase = SubResource("Resource_4f44w")
 skills = Array[ExtResource("5_iakp7")]([ExtResource("9_8upu4"), ExtResource("3_d05nd"), ExtResource("4_1es2o")])
-behaviour = Array[ExtResource("1_croyg")]([])
+override_default_behaviours = false
 chara_behaviour = Array[ExtResource("2_7iyek")]([])
 elemental_affinities = Array[ExtResource("2_8bl0q")]([SubResource("Resource_va054"), SubResource("Resource_25n4j"), SubResource("Resource_llvve")])
 elemental_potential = Array[ExtResource("3_1s3bu")]([SubResource("Resource_vwwii"), SubResource("Resource_k34nf"), SubResource("Resource_tt5u5"), SubResource("Resource_d01uo")])

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=6 format=3 uid="uid://cg20lauvwa885"]
+
+[ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/battle_character_behaviour.gd" id="1_ogqme"]
+[ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_o3o6j"]
+[ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/skills/Electric/lightning.tres" id="2_oftj0"]
+
+[sub_resource type="Resource" id="Resource_o6dd7"]
+script = ExtResource("1_ogqme")
+condition = 0
+compare = 0
+percentage = 0.0
+elemental = 0.0
+exact_number = 3
+execution_chance = 0.0
+subject = 4
+skill_condition = 0
+target_condition = 0
+
+[sub_resource type="Resource" id="Resource_2apin"]
+script = ExtResource("1_ogqme")
+condition = 0
+compare = 0
+percentage = 0.0
+elemental = 0.0
+exact_number = 0
+execution_chance = 0.0
+subject = 2
+skill_condition = 0
+target_condition = 0
+specific_skill = ExtResource("2_oftj0")
+
+[resource]
+script = ExtResource("2_o3o6j")
+condiitons = Array[ExtResource("1_ogqme")]([SubResource("Resource_o6dd7"), SubResource("Resource_2apin")])
+percentage = 1.0
+priority = 1

@@ -1,8 +1,6 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=19 format=3 uid="uid://1hhl1ce3yyl6"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=16 format=3 uid="uid://1hhl1ce3yyl6"]
 
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="1_4lwdj"]
-[ext_resource type="Script" uid="uid://busuf10bv87qy" path="res://src/battle_move_behaviour.gd" id="1_7pksv"]
-[ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/battle_character_behaviour.gd" id="2_i4hge"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_x5rhp"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="3_hucbd"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="3_na3v2"]
@@ -12,11 +10,6 @@
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill.gd" id="8_1ywon"]
 [ext_resource type="Resource" uid="uid://1t2mb83d8mp2" path="res://data/Skills/Peirce/machine_gun.tres" id="8_r356l"]
 [ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/Skills/Peirce/shoot.tres" id="9_1ywon"]
-
-[sub_resource type="Resource" id="Resource_pli85"]
-script = ExtResource("1_7pksv")
-behaviouir_conditions = Array[ExtResource("2_i4hge")]([])
-condition = 2
 
 [sub_resource type="Resource" id="Resource_r356l"]
 script = ExtResource("2_x5rhp")
@@ -65,7 +58,7 @@ exp_req_multipler = 1.2
 stats = SubResource("Resource_jdtyv")
 stat_increase = SubResource("Resource_rccwk")
 skills = Array[ExtResource("8_1ywon")]([ExtResource("8_r356l"), ExtResource("9_1ywon")])
-behaviour = Array[ExtResource("1_7pksv")]([SubResource("Resource_pli85")])
+override_default_behaviours = false
 chara_behaviour = Array[ExtResource("3_na3v2")]([])
 elemental_affinities = Array[ExtResource("2_x5rhp")]([SubResource("Resource_r356l"), SubResource("Resource_1ywon")])
 elemental_potential = Array[ExtResource("3_hucbd")]([SubResource("Resource_pe37i")])

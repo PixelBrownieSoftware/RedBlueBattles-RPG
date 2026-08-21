@@ -12,6 +12,8 @@ class_name battle_variables
 @export var target_character : battle_character_data
 @export var selected_move : rpg_skill
 @export var final_press_turn_flag : PRESS_TURN.PT
+var turn_number : int = 0
+var round_number : int = 0	#Player turn -> Enemy turn = 1+ round
 @export var targets : Array[battle_character_data]
 @export var all_actors : Array[battle_character_actor]:
 	get:
@@ -19,6 +21,10 @@ class_name battle_variables
 		returned_actors.append_array(($"../BattleActors/Actors".get_children() as Array[battle_character_actor]))
 		return returned_actors
 
+func increment_round():
+	if !is_player_turn:
+		round_number += 1
+	
 func get_actor(char_data : battle_character_data) -> battle_character_actor:
 	for chara_actor : battle_character_actor in all_actors:
 		if chara_actor.character_data == char_data:

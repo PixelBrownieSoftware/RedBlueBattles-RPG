@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=7 format=3 uid="uid://crepqahdqcovh"]
+
+[ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/battle_character_behaviour.gd" id="1_ogqme"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="2_j635l"]
+[ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_o3o6j"]
+
+[sub_resource type="Resource" id="Resource_1g0q4"]
+script = ExtResource("1_ogqme")
+condition = 0
+compare = 3
+percentage = 0.0
+elemental = 0.0
+exact_number = 15
+execution_chance = 0.0
+subject = 2
+skill_condition = 2
+target_condition = 0
+specific_element = ExtResource("2_j635l")
+
+[sub_resource type="Resource" id="Resource_j635l"]
+script = ExtResource("1_ogqme")
+condition = 0
+compare = 3
+percentage = 0.5
+elemental = 0.0
+exact_number = 0
+execution_chance = 0.0
+subject = 0
+skill_condition = 0
+target_condition = 0
+
+[sub_resource type="Resource" id="Resource_gl87h"]
+script = ExtResource("1_ogqme")
+condition = 0
+compare = 4
+percentage = 0.0
+elemental = 1.5
+exact_number = 0
+execution_chance = 0.0
+subject = 0
+skill_condition = 0
+target_condition = 3
+
+[resource]
+script = ExtResource("2_o3o6j")
+condiitons = Array[ExtResource("1_ogqme")]([SubResource("Resource_1g0q4"), SubResource("Resource_j635l"), SubResource("Resource_gl87h")])
+percentage = 0.48
+priority = 0

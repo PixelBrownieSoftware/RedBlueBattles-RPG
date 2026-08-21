@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/Skills/Strike/multi_slash.tres" id="4_nd5eh"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="5_5ny3l"]
 [ext_resource type="Resource" uid="uid://bi4wxsbbe53pp" path="res://data/Skills/Strike/wet_slash.tres" id="5_dny87"]
-[ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/skills/Psychic/brain_shock_1_1.tres" id="6_quf7e"]
+[ext_resource type="Resource" uid="uid://d1gs83g82ocdx" path="res://data/Skills/Psychic/brain_shock_1_1.tres" id="6_quf7e"]
 [ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/Skills/Electric/lightning.tres" id="7_r42ei"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="10_f4gvu"]
 

@@ -1165,7 +1165,7 @@ script = ExtResource("17_rggii")
 [connection signal="change_state" from="BattleStateMachine/Starter" to="BattleStateMachine" method="change_state"]
 [connection signal="change_state" from="BattleStateMachine/Queue" to="BattleStateMachine" method="change_state"]
 [connection signal="turn_icon_handle" from="BattleStateMachine/Queue" to="BattleCanvasLayer/PressTurnUI" method="turn_icon_change"]
-[connection signal="behaviour_call" from="BattleStateMachine/Select" to="Variables/Behaviour" method="behaviour_process"]
+[connection signal="behaviour_call" from="BattleStateMachine/Select" to="Variables/Behaviour" method="process_behaviour"]
 [connection signal="change_state" from="BattleStateMachine/Select" to="BattleStateMachine" method="change_state"]
 [connection signal="show_skills" from="BattleStateMachine/Select" to="BattleCanvasLayer/Attack Menu" method="show_skills"]
 [connection signal="change_state" from="BattleStateMachine/PressTurn" to="BattleStateMachine" method="change_state"]

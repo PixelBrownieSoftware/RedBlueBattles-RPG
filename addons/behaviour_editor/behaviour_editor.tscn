@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://duoheoqyxg6p7"]
+
+[ext_resource type="Script" uid="uid://bhccum1pre2bj" path="res://addons/behaviour_editor/behaviour_editor.gd" id="1_script"]
+
+[node name="BehaviourEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 260
+
+[node name="Left" type="VBoxContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="FolderLabel" type="Label" parent="HSplitContainer/Left"]
+layout_mode = 2
+text = "Folder:"
+
+[node name="FolderSelect" type="OptionButton" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "📁 All Folders"
+popup/item_0/id = 0
+
+[node name="SearchBar" type="LineEdit" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Search behaviour sets..."
+clear_button_enabled = true
+
+[node name="RefreshButton" type="Button" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Refresh List"
+
+[node name="NewBehaviourButton" type="Button" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ New Chara Behaviour"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Left"]
+layout_mode = 2
+
+[node name="BehaviourList" type="ItemList" parent="HSplitContainer/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Right" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Toolbar" type="HBoxContainer" parent="HSplitContainer/Right"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Save to Disk"
+
+[node name="RevertButton" type="Button" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Revert"
+
+[node name="StatusLabel" type="Label" parent="HSplitContainer/Right/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select a battle_chara_behaviour on the left."
+horizontal_alignment = 2
+
+[node name="FormScroll" type="ScrollContainer" parent="HSplitContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FormRoot" type="VBoxContainer" parent="HSplitContainer/Right/FormScroll"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
