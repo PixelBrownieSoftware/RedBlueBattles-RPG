@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="skill_stamina_guard" load_steps=9 format=3 uid="uid://capw7vx5dvpy2"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_ycjd3"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_qahoh"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_qahoh"]
 [ext_resource type="Script" uid="uid://bmsbr5w3akse3" path="res://src/scripts/skill/skill_stamina_guard.gd" id="3_duqry"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_bihea"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="5_wkndl"]
@@ -26,7 +26,8 @@ luck = 1
 script = ExtResource("3_duqry")
 name = "Charge"
 learnable = false
-power = 3
+can_select_inactive = true
+power = 99
 stamina_cost = 0
 repeat_min = 1
 repeat_max = 1

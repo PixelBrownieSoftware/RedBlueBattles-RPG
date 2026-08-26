@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="status_stamina" load_steps=16 format=3 uid="uid://ccpgmbb03eoy0"]
 
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_bj0ls"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_bj0ls"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_toyf1"]
 [ext_resource type="Texture2D" uid="uid://b2o8dtx7xbvvd" path="res://sprites/GUI/gui_ag.png" id="3_buy35"]
 [ext_resource type="Script" uid="uid://d1ofsmcj53y4i" path="res://src/scripts/status effects/status_stamina.gd" id="4_xbiph"]

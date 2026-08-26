@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_ac63l"]
 [ext_resource type="Resource" uid="uid://b3d4hvninv1y5" path="res://data/status_effects/bleed.tres" id="2_cylsv"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_qj4f8"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_qj4f8"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="2_vt2l3"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="3_pgx38"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_0kiuh"]
@@ -38,6 +38,7 @@ luck = 1
 script = ExtResource("4_t2bxv")
 name = "Cleave"
 learnable = true
+can_select_inactive = false
 power = 7
 stamina_cost = 4
 repeat_min = 1

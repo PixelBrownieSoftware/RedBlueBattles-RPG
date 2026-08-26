@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="rpg_skill" load_steps=10 format=3 uid="uid://ckwmj5smm05b2"]
 
-[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_t3db5"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_7w6ub"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="3_jr44q"]
-[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_0wo33"]
-[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="5_3jxbq"]
-[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="6_rpp4t"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_r0y3j"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_qtwkn"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="3_u2txr"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_vgaxs"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="5_7h12g"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="6_gu2tf"]
 
 [sub_resource type="Resource" id="Resource_qs23i"]
-script = ExtResource("4_0wo33")
+script = ExtResource("4_vgaxs")
 skill_animation = 4
-time_amount = -1.0
+time_amount = 0.45
 animation_name = "fire_fx"
 
 [sub_resource type="Resource" id="Resource_20va2"]
-script = ExtResource("4_0wo33")
+script = ExtResource("4_vgaxs")
 skill_animation = 0
 time_amount = -1.0
 animation_name = ""
 
 [sub_resource type="Resource" id="Resource_v13km"]
-script = ExtResource("6_rpp4t")
+script = ExtResource("6_gu2tf")
 strength = 1
 vitality = 1
 magic_pow = 4
@@ -29,17 +29,18 @@ agility = 2
 luck = 1
 
 [resource]
-script = ExtResource("3_jr44q")
+script = ExtResource("3_u2txr")
 name = "Fire spark"
 learnable = true
+can_select_inactive = false
 power = 4
 stamina_cost = 3
-repeat_min = 1
+repeat_min = 2
 repeat_max = 3
 stat_requirement = SubResource("Resource_v13km")
 skill_scope = 1
-skill_element = ExtResource("5_3jxbq")
-skill_animation = Array[ExtResource("4_0wo33")]([SubResource("Resource_qs23i"), SubResource("Resource_20va2")])
+skill_element = ExtResource("5_7h12g")
+skill_animation = Array[ExtResource("4_vgaxs")]([SubResource("Resource_qs23i"), SubResource("Resource_20va2")])
 usable_by_anyone = false
-effects_to_remove = Array[ExtResource("2_7w6ub")]([])
-effects_to_add = Array[ExtResource("1_t3db5")]([])
+effects_to_remove = Array[ExtResource("2_qtwkn")]([])
+effects_to_add = Array[ExtResource("1_r0y3j")]([])

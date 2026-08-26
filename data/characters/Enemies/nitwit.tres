@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="9_ug850"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="10_f7glw"]
 
-[sub_resource type="Resource" id="Resource_iqb27"]
+[sub_resource type="Resource" id="Resource_bjcv5"]
 script = ExtResource("3_g288e")
 elementalName = "Fire"
 affinity = 2.0
@@ -37,7 +37,7 @@ luck = 2
 [resource]
 script = ExtResource("6_l1x2b")
 name = "Nitwit"
-health = 45
+health = 80
 stamina = 4
 stamina_increase_levels = Array[int]([])
 base_exp_score = 25
@@ -48,7 +48,7 @@ stat_increase = SubResource("Resource_6lsdj")
 skills = Array[ExtResource("5_dnlvr")]([ExtResource("8_otdkf")])
 override_default_behaviours = false
 chara_behaviour = Array[ExtResource("3_nstbm")]([])
-elemental_affinities = Array[ExtResource("3_g288e")]([SubResource("Resource_iqb27")])
+elemental_affinities = Array[ExtResource("3_g288e")]([SubResource("Resource_bjcv5")])
 elemental_potential = Array[ExtResource("5_4q2cf")]([])
 character_colour = Color(1, 1, 1, 1)
 animation_player_loc = "sprite_looney"

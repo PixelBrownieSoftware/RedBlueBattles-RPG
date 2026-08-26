@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_cg6tv"]
 [ext_resource type="Resource" uid="uid://baoj1lhme3etp" path="res://data/status_effects/blindness.tres" id="2_euud4"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_f8itp"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_f8itp"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_hwcq8"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_khqte"]
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="5_t40ak"]
@@ -38,6 +38,7 @@ luck = 0
 script = ExtResource("4_khqte")
 name = "Light Flash"
 learnable = true
+can_select_inactive = false
 power = 8
 stamina_cost = 5
 repeat_min = 1

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_jpnbj"]
 [ext_resource type="Resource" uid="uid://baoj1lhme3etp" path="res://data/status_effects/blindness.tres" id="2_6pyak"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_nmnji"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_nmnji"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="2_p3j3e"]
 [ext_resource type="Resource" uid="uid://cimel63kfbwmx" path="res://data/status_effects/frozen.tres" id="3_2btyw"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="3_v1b2e"]
@@ -56,6 +56,7 @@ luck = 1
 script = ExtResource("6_6pyak")
 name = "Blue blast"
 learnable = false
+can_select_inactive = false
 power = 6
 stamina_cost = 7
 repeat_min = 5

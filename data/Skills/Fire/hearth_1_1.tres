@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="skill_heal" load_steps=10 format=3 uid="uid://byt5v4o6dxfy8"]
+
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_chaxt"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_dyh8c"]
+[ext_resource type="Resource" uid="uid://cimel63kfbwmx" path="res://data/status_effects/frozen.tres" id="3_8ad3s"]
+[ext_resource type="Script" uid="uid://ctesr776gn4rq" path="res://src/scripts/skill/skill_heal.gd" id="4_gj8wg"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="5_rg4kg"]
+[ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="6_fj0g5"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="7_dvro7"]
+
+[sub_resource type="Resource" id="Resource_ycjd3"]
+script = ExtResource("5_rg4kg")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_qahoh"]
+script = ExtResource("7_dvro7")
+strength = 4
+vitality = 1
+magic_pow = 6
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("4_gj8wg")
+name = "Hearth"
+learnable = true
+can_select_inactive = true
+power = 3
+stamina_cost = 4
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_qahoh")
+skill_scope = 0
+skill_element = ExtResource("6_fj0g5")
+skill_animation = Array[ExtResource("5_rg4kg")]([SubResource("Resource_ycjd3")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_dyh8c")]([ExtResource("3_8ad3s")])
+effects_to_add = Array[ExtResource("1_chaxt")]([])

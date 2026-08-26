@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="rpg_skill" load_steps=12 format=3 uid="uid://c4hatg1c5unq5"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_chcdy"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_3qhkx"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_3qhkx"]
 [ext_resource type="Resource" uid="uid://dafhkmba7uni1" path="res://data/status_effects/flammable.tres" id="2_d4uj0"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_8laus"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_u3mt6"]
@@ -38,6 +38,7 @@ luck = 1
 script = ExtResource("4_u3mt6")
 name = "Oily punch"
 learnable = true
+can_select_inactive = false
 power = 6
 stamina_cost = 2
 repeat_min = 1

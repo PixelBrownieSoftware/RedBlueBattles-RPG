@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=10 format=3 uid="uid://dw1ymsy3mmq6t"]
+
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_0jhdh"]
+[ext_resource type="Resource" uid="uid://voip5uftd3vl" path="res://data/status_effects/wind_resistance.tres" id="2_bp8d5"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="3_ok5sk"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_fd4wc"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="5_acn1h"]
+[ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="6_atlq8"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="7_smxmy"]
+
+[sub_resource type="Resource" id="Resource_0jhdh"]
+script = ExtResource("1_0jhdh")
+status = ExtResource("2_bp8d5")
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_2rgxe"]
+script = ExtResource("7_smxmy")
+strength = 1
+vitality = 1
+magic_pow = 6
+dexterity = 1
+agility = 5
+luck = 1
+
+[resource]
+script = ExtResource("4_fd4wc")
+name = "Wind shield"
+learnable = true
+can_select_inactive = false
+power = 0
+stamina_cost = 0
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_2rgxe")
+skill_scope = 3
+skill_element = ExtResource("6_atlq8")
+skill_animation = Array[ExtResource("5_acn1h")]([])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("3_ok5sk")]([])
+effects_to_add = Array[ExtResource("1_0jhdh")]([SubResource("Resource_0jhdh")])

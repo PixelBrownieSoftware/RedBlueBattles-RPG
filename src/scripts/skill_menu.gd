@@ -31,6 +31,8 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "menu_show":
 		var index = 0
 		for sk in menu_skills:
+			if sk is skill_passive:
+				continue
 			var skill_button : button_skill = $ScrollContainer/VBoxContainer.get_child(index) as button_skill
 			skill_button.selected_skill = sk
 			skill_button.current_char = globals.current_character

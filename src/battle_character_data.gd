@@ -1,7 +1,8 @@
+# res://src/scripts/battle/battle_character_data.gd
 @tool
 extends Node
 class_name battle_character_data
-const divider : float = 8.4
+#const divider : float = 8.4
 @export var is_permadeath : bool = false
 @export var current_level : int = 1
 @export var expereince_to_NL : int = 1
@@ -22,55 +23,85 @@ const divider : float = 8.4
 @export var strength_net : int:
 	get:
 		var str = strength
+		for passive in get_skills:
+			if passive is skill_passive and passive.stat_changes:
+				str += passive.stat_changes.strength
 		for effect in status_effects:
-			str += effect.stat_changes.strength
+			if effect.stat_changes:
+				str += effect.stat_changes.strength
 		if str <= 0:
 			return 1
 		return str
+
 @export var vitality_net : int:
 	get:
 		var vit = vitality
+		for passive in get_skills:
+			if passive is skill_passive and passive.stat_changes:
+				vit += passive.stat_changes.vitality
 		for effect in status_effects:
-			vit += effect.stat_changes.vitality
+			if effect.stat_changes:
+				vit += effect.stat_changes.vitality
 		if vit <= 0:
 			return 1
 		return vit	
+
 @export var magic_pow_net : int:
 	get:
 		var mag = magic_pow
+		for passive in get_skills:
+			if passive is skill_passive and passive.stat_changes:
+				mag += passive.stat_changes.magic_pow
 		for effect in status_effects:
-			mag += effect.stat_changes.magic_pow
+			if effect.stat_changes:
+				mag += effect.stat_changes.magic_pow
 		if mag <= 0:
 			return 1
 		return mag		
+
 @export var dexterity_net : int:
 	get:
 		var dex = dexterity
+		for passive in get_skills:
+			if passive is skill_passive and passive.stat_changes:
+				dex += passive.stat_changes.dexterity
 		for effect in status_effects:
-			dex += effect.stat_changes.dexterity
-		if dex <=0:
+			if effect.stat_changes:
+				dex += effect.stat_changes.dexterity
+		if dex <= 0:
 			return 1
 		return dex
+
 @export var agility_net : int:
 	get:
 		var agi = agility
+		for passive in get_skills:
+			if passive is skill_passive and passive.stat_changes:
+				agi += passive.stat_changes.agility
 		for effect in status_effects:
-			agi += effect.stat_changes.agility
-		if agi <=0:
+			if effect.stat_changes:
+				agi += effect.stat_changes.agility
+		if agi <= 0:
 			return 1
 		return agi
+
 @export var luck_net : int:
 	get:
 		var luc = luck
+		for passive in get_skills:
+			if passive is skill_passive and passive.stat_changes:
+				luc += passive.stat_changes.luck
 		for effect in status_effects:
-			luc += effect.stat_changes.luck
-		if luc <=0:
+			if effect.stat_changes:
+				luc += effect.stat_changes.luck
+		if luc <= 0:
 			return 1
 		return luc
 
 var pass_turn : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
 var guard : rpg_skill = preload("res://data/Skills/Misc/guard.tres")
 var flags : Dictionary = {}
+
 @export var get_natural_skills : Array[rpg_skill]:
 	get:
 		var skills_arr : Array[rpg_skill]
@@ -192,7 +223,6 @@ func simulate_level_up(sim_level : int):
 	return level_stats
 	
 func level_up():
-	#var skills_before : Array[rpg_skill] = get_skills
 	current_level += 1
 	var new_stats = simulate_level_up(current_level)
 	max_health = new_stats["max_health"]
@@ -214,13 +244,13 @@ func increase_stat(stat_increase : float, level : int) -> int:
 		return 1
 	return 0
 
+#TODO: Make a centralised resource object containing each of these rather than them being hard-coded
 func get_element_potential_modifiers(skill :rpg_skill):
 	var modifiers = {}
 	modifiers["stamina_discount"] = 0
 	modifiers["damage_multipler"] = 1.0
 	modifiers["requirement_discount"] = 0
 	var potential = get_elemental_potential(skill.skill_element)
-	#gonna have to make this a resource object
 	match potential:
 		6:
 			modifiers["stamina_discount"] = -3
@@ -290,7 +320,6 @@ func update_current_status_effects(function: String):
 			status_effects.remove_at(status_effects.rfind(status))
 			
 func apply_status_effects(effects : Array[status_effect_chance]):
-
 	for status in effects:
 		var inflict_chance = status.chance
 		var will_inflcit : float = randf()
@@ -307,18 +336,21 @@ func apply_status_effects(effects : Array[status_effect_chance]):
 					await get_tree().create_timer(0.5).timeout
 				print(name + " got " + status.status.name)
 	
-func remove_all_status_effects():
-	for status in status_effects:
-		var status_found = status_effects.rfind(status)
-		if status_found != -1:
-			remove_status_effect.emit(status_found)
-			status_effects.remove_at(status_found)
-					
-func remove_status_effects(effects : Array[status_effect]):
+func remove_all_status_effects() -> void:
+	for i in range(status_effects.size() - 1, -1, -1):
+		var status = status_effects[i]
+		remove_status_effect.emit(status)
+		status_effects.remove_at(i)
+
+func remove_status_effects(effects: Array[status_effect]) -> void:
 	for status in effects:
-		var status_found = status_effects.rfind(status)
-		if status_found != -1:
-			status_effects.remove_at(status_found)
+		if not status:
+			continue
+		for i in range(status_effects.size() - 1, -1, -1):
+			var active_status = status_effects[i]
+			if active_status and (active_status == status or active_status.name == status.name):
+				remove_status_effect.emit(active_status)
+				status_effects.remove_at(i)
 
 func has_status(status : status_effect) -> bool:
 	for stat in status_effects:
@@ -334,24 +366,16 @@ func calculate_chance(user_val : int, targ_val : int, connect_max : float):
 	var base_accuracy: float = 0.85
 	var attack_connect_chance: float = (base_accuracy + log_bonus)
 	return clampf(attack_connect_chance, 0.05, connect_max)
-	#var total : int = user_val + targ_val
-	#var user_modify: float = user_val * (float)(user_val * connect_max)
-	#var attack_connect_chance : float = (user_modify/total)
-	#return attack_connect_chance
 
 func stat_chance(user_val : int, targ_val : int, connect_max : float):
-	#print("Connection: " + str(attack_connect_chance))
 	var attack_connect_chance = calculate_chance(user_val, targ_val, connect_max)
 	var will_hit : float = randf()
-	#print("Roll: " + str(will_hit))
 	if will_hit > attack_connect_chance:
 		return false
 	return true
 
-
 func damage(dmg : int):
 	health -= dmg
-	#a sneaky hack
 	if calculated_Press_Turn != PRESS_TURN.PT.LUCKY:
 		put_damage_numbers.emit(null, self, dmg, calculated_Press_Turn)
 	play_damage.emit()
@@ -367,13 +391,24 @@ func change_stamina(dmg : int):
 	stamina = clampi(stamina,0 , max_stamina)
 	
 func get_elemental_affinity(el : element) -> float:
-	var elemental_aff : float = 1
+	var elemental_aff : float = 1.0
 	for elemental in assigned_data.elemental_affinities:
 		var element_look = GlobalVariables.get_element(elemental.elementalName)
 		if el == element_look:
 			elemental_aff = elemental.affinity
+
+	# Add passive elemental affinity modifiers
+	for passive in get_skills:
+		if passive is skill_passive and "elemental_affinity_change" in passive:
+			for elemental in passive.elemental_affinity_change:
+				var element_look = GlobalVariables.get_element(elemental.elementalName)
+				if el == element_look:
+					elemental_aff += elemental.affinity
+
+	# Add status effect elemental affinity modifiers
 	for eff in status_effects:
 		elemental_aff += eff.find_elemental_change(el)
+
 	return elemental_aff
 	
 func get_base_elemental_affinity(el : element) -> float:
@@ -389,6 +424,16 @@ func get_elemental_potential(el : element) -> int:
 			return elemental.potential
 	return 0
 
+func set_flag(flag_name : String, value : Variant):
+	flags.set(flag_name, value)
+	
+func increment_flag(flag_name : String, value : Variant):
+	var val = flags.get(flag_name)
+	if !flags.has(flag_name):
+		flags.set(flag_name, value)
+	else:
+		var final_val = val + value
+		flags.set(flag_name, final_val)
 
 func _on_clicked(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	print(event)

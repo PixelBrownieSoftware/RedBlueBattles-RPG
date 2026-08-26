@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_c1jcq"]
 [ext_resource type="Resource" uid="uid://b3d4hvninv1y5" path="res://data/status_effects/bleed.tres" id="2_3ibv0"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_8vgic"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_8vgic"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="2_xej48"]
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="3_7f2cl"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_dt4xh"]
@@ -44,6 +44,7 @@ luck = 1
 script = ExtResource("4_dt4xh")
 name = "Zeus spear"
 learnable = false
+can_select_inactive = false
 power = 8
 stamina_cost = 5
 repeat_min = 1

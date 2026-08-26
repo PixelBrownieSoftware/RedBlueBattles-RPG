@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="status_stamina" load_steps=17 format=3 uid="uid://dttvaj5cg8ujv"]
 
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_tpna2"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_tpna2"]
 [ext_resource type="Resource" uid="uid://d337xaf1p2n4w" path="res://data/status_effects/smirk.tres" id="2_i1tmy"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="3_ltmc4"]
-[ext_resource type="Texture2D" uid="uid://d4lwexiwdko0f" path="res://sprites/GUI/status_effects_slp.png" id="4_tsnit"]
+[ext_resource type="Texture2D" uid="uid://d4lwexiwdko0f" path="res://sprites/GUI/fx/status_effects_slp.png" id="4_tpna2"]
 [ext_resource type="Script" uid="uid://d1ofsmcj53y4i" path="res://src/scripts/status effects/status_stamina.gd" id="5_0fanv"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="6_3ly4j"]
 
@@ -25,7 +25,7 @@ affinity = 1.25
 [sub_resource type="Resource" id="Resource_tsnit"]
 script = ExtResource("3_ltmc4")
 elementalName = "Ice"
-affinity = 1.5
+affinity = 0.75
 
 [sub_resource type="Resource" id="Resource_0fanv"]
 script = ExtResource("3_ltmc4")
@@ -55,7 +55,7 @@ affinity = 1.5
 [sub_resource type="Resource" id="Resource_kaj6f"]
 script = ExtResource("6_3ly4j")
 strength = -2
-vitality = -4
+vitality = -3
 magic_pow = 0
 dexterity = -5
 agility = -7
@@ -69,7 +69,7 @@ turn_duration = 2
 effects_to_remove = Array[ExtResource("1_tpna2")]([ExtResource("2_i1tmy")])
 elemental_affinity_change = Array[ExtResource("3_ltmc4")]([SubResource("Resource_tpna2"), SubResource("Resource_i1tmy"), SubResource("Resource_ltmc4"), SubResource("Resource_tsnit"), SubResource("Resource_0fanv"), SubResource("Resource_3ly4j"), SubResource("Resource_20iip"), SubResource("Resource_ij4ht"), SubResource("Resource_kyj2j")])
 stat_changes = SubResource("Resource_kaj6f")
-icon = ExtResource("4_tsnit")
+icon = ExtResource("4_tpna2")
 round_start = true
 after_action = false
 turn_start = false

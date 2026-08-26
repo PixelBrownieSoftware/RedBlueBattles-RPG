@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_qutlt"]
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="2_3nmbo"]
 [ext_resource type="Resource" uid="uid://cimel63kfbwmx" path="res://data/status_effects/frozen.tres" id="2_7fjrh"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_gok5j"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_gok5j"]
 [ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status_effects/burn.tres" id="4_8niby"]
 [ext_resource type="Texture2D" uid="uid://btkper5utqey3" path="res://sprites/GUI/elements/elements_ice.png" id="4_g2mlu"]
 

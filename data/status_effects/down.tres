@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="status_effect" load_steps=7 format=3 uid="uid://brwcqw4l2qpkq"]
 
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_ct0sr"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_ct0sr"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_kttb3"]
 [ext_resource type="Texture2D" uid="uid://rt48kk0n5u84" path="res://sprites/GUI/affinity/affinity_icon_norm.png" id="3_42xsy"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_up87e"]

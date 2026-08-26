@@ -4,7 +4,7 @@ extends battle_state
 @export var queue : Array[battle_character_data]
 
 signal turn_icon_handle(ind, type)
-
+var first_round = true
 
 func start_character(character : battle_character_data):
 	add_to_queue(character)
@@ -29,7 +29,11 @@ func requeue():
 func start_state():
 	if battle_globals.net_turn == 0:
 		queue.clear()
-		battle_globals.increment_round()
+		if !first_round:
+			battle_globals.increment_round()
+		else:
+			first_round = false
+		print("Round: " + str(battle_globals.round_number))
 		battle_globals.is_player_turn = !battle_globals.is_player_turn
 		if battle_globals.is_player_turn:
 			for character in PartyMembers.get_children():

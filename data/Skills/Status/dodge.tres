@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://gfxvnfosvc0l"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_878jp"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_xmo2w"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_xmo2w"]
 [ext_resource type="Resource" uid="uid://c7rp1p26br7gk" path="res://data/status_effects/alert.tres" id="2_ij7l1"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_4jydn"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_ilqcn"]
@@ -32,6 +32,7 @@ luck = 1
 script = ExtResource("4_4jydn")
 name = "Dodge"
 learnable = true
+can_select_inactive = false
 power = 0
 stamina_cost = 3
 repeat_min = 1

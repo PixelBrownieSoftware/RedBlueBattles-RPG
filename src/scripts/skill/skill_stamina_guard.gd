@@ -1,3 +1,4 @@
+@tool
 extends rpg_skill
 class_name skill_stamina_guard
 

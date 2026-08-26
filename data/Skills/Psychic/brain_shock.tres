@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=16 format=3 uid="uid://dy5xpa57nkq0h"]
+
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_rpbxa"]
+[ext_resource type="Resource" uid="uid://baoj1lhme3etp" path="res://data/status_effects/blindness.tres" id="2_bgs4v"]
+[ext_resource type="Resource" uid="uid://tves5bwqkwdx" path="res://data/status_effects/fear.tres" id="3_ctlm0"]
+[ext_resource type="Resource" uid="uid://dttvaj5cg8ujv" path="res://data/status_effects/sleepy.tres" id="4_0hbi7"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="5_4xbjs"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="6_hun0p"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="7_akwyo"]
+[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="8_traqt"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="9_7ncot"]
+
+[sub_resource type="Resource" id="Resource_uuly8"]
+script = ExtResource("1_rpbxa")
+status = ExtResource("2_bgs4v")
+chance = 0.35
+
+[sub_resource type="Resource" id="Resource_ao8ds"]
+script = ExtResource("1_rpbxa")
+status = ExtResource("3_ctlm0")
+chance = 0.2
+
+[sub_resource type="Resource" id="Resource_fkmi6"]
+script = ExtResource("1_rpbxa")
+status = ExtResource("4_0hbi7")
+chance = 0.17
+
+[sub_resource type="Resource" id="Resource_453ef"]
+script = ExtResource("7_akwyo")
+skill_animation = 4
+time_amount = -1.0
+animation_name = "psy_fx"
+
+[sub_resource type="Resource" id="Resource_oj0td"]
+script = ExtResource("7_akwyo")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_wirj8"]
+script = ExtResource("9_7ncot")
+strength = 1
+vitality = 1
+magic_pow = 7
+dexterity = 1
+agility = 1
+luck = 5
+
+[resource]
+script = ExtResource("6_hun0p")
+name = "Brain shock"
+learnable = true
+can_select_inactive = false
+power = 3
+stamina_cost = 3
+repeat_min = 1
+repeat_max = 3
+stat_requirement = SubResource("Resource_wirj8")
+skill_scope = 1
+skill_element = ExtResource("8_traqt")
+skill_animation = Array[ExtResource("7_akwyo")]([SubResource("Resource_453ef"), SubResource("Resource_oj0td")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("5_4xbjs")]([])
+effects_to_add = Array[ExtResource("1_rpbxa")]([SubResource("Resource_uuly8"), SubResource("Resource_ao8ds"), SubResource("Resource_fkmi6")])

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=6 format=3 uid="uid://r6puop00d2nc"]
+
+[ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/scripts/behaviour/battle_character_behaviour.gd" id="1_ogqme"]
+[ext_resource type="Resource" uid="uid://dqjbrdfm4xf7c" path="res://data/skills/Electric/zeus_spear.tres" id="2_e7pgv"]
+[ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_o3o6j"]
+
+[sub_resource type="Resource" id="Resource_lfneu"]
+script = ExtResource("1_ogqme")
+is_NOT = false
+condition = 0
+compare = 0
+percentage = 1.0
+elemental = 0.0
+exact_number = 5
+execution_chance = 0.0
+subject = 2
+skill_condition = 0
+target_condition = 1
+
+[sub_resource type="Resource" id="Resource_vi7v1"]
+script = ExtResource("1_ogqme")
+is_NOT = false
+condition = 0
+compare = 0
+percentage = 0.0
+elemental = 0.0
+exact_number = 0
+execution_chance = 0.0
+subject = 3
+skill_condition = 0
+target_condition = 0
+specific_skill = ExtResource("2_e7pgv")
+
+[resource]
+script = ExtResource("2_o3o6j")
+condiitons = Array[ExtResource("1_ogqme")]([SubResource("Resource_lfneu"), SubResource("Resource_vi7v1")])
+percentage = 1.0
+priority = 1

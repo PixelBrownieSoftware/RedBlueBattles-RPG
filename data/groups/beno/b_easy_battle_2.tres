@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_a6iep"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_0j3g1"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_8vxrt"]
-[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/skills/Status/protect.tres" id="4_i62vj"]
+[ext_resource type="Resource" uid="uid://rqxuxduuoe7e" path="res://data/Skills/Status/protect.tres" id="4_i62vj"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_qygt3"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="5_8f6dy"]
 [ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/skills/Strike/oily_slash.tres" id="6_2jah4"]

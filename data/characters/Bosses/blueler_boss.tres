@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=26 format=3 uid="uid://phgfeevhx66u"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=27 format=3 uid="uid://phgfeevhx66u"]
 
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="1_2a8wh"]
 [ext_resource type="Resource" uid="uid://dg5l6v8h4v5m" path="res://data/behaviours/sheild_from_element.tres" id="2_1lb28"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="8_rklse"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="9_0725y"]
 [ext_resource type="Resource" uid="uid://ddo5u7jkibmw1" path="res://data/skills/Ice/blue_blast.tres" id="11_1lb28"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="12_3tukf"]
 [ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/skills/Ice/icicle.tres" id="12_nl6ak"]
 [ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/skills/Strike/slash.tres" id="13_3tukf"]
 
@@ -83,7 +84,7 @@ base_exp_to_NL = 365
 exp_req_multipler = 1.1
 stats = SubResource("Resource_1lb28")
 stat_increase = SubResource("Resource_arxix")
-skills = [ExtResource("11_1lb28"), ExtResource("12_nl6ak"), ExtResource("13_3tukf")]
+skills = Array[ExtResource("12_3tukf")]([ExtResource("11_1lb28"), ExtResource("12_nl6ak"), ExtResource("13_3tukf")])
 override_default_behaviours = false
 chara_behaviour = Array[ExtResource("1_2a8wh")]([ExtResource("2_1lb28"), ExtResource("3_nl6ak")])
 elemental_affinities = Array[ExtResource("2_ocmf6")]([SubResource("Resource_3tukf"), SubResource("Resource_yqlfx")])

@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="rpg_skill" load_steps=14 format=3 uid="uid://cbr646u1ptkfx"]
+
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_a83ai"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_qoeqd"]
+[ext_resource type="Resource" uid="uid://dwdbfstswl5n7" path="res://data/status_effects/electric_resistance.tres" id="3_00cj3"]
+[ext_resource type="Resource" uid="uid://dhnlkuoedqukn" path="res://data/status_effects/fire_resistance.tres" id="4_buoex"]
+[ext_resource type="Resource" uid="uid://0ga3ybabf28e" path="res://data/status_effects/guard.tres" id="5_hji4m"]
+[ext_resource type="Resource" uid="uid://6lfsr08aofxo" path="res://data/status_effects/ice_resistance.tres" id="6_eb33g"]
+[ext_resource type="Resource" uid="uid://cwya20a1lol40" path="res://data/status_effects/psychic_resistance.tres" id="7_cnda6"]
+[ext_resource type="Resource" uid="uid://voip5uftd3vl" path="res://data/status_effects/wind_resistance.tres" id="8_eelq7"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="9_253jq"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="10_e45qy"]
+[ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="11_88m8p"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="12_e6w1g"]
+
+[sub_resource type="Resource" id="Resource_4n66u"]
+script = ExtResource("12_e6w1g")
+strength = 1
+vitality = 1
+magic_pow = 8
+dexterity = 1
+agility = 1
+luck = 6
+
+[resource]
+script = ExtResource("9_253jq")
+name = "Shield Killer"
+learnable = true
+can_select_inactive = false
+power = 0
+stamina_cost = 6
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_4n66u")
+skill_scope = 1
+skill_element = ExtResource("11_88m8p")
+skill_animation = Array[ExtResource("10_e45qy")]([])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_qoeqd")]([ExtResource("3_00cj3"), ExtResource("4_buoex"), ExtResource("5_hji4m"), ExtResource("6_eb33g"), ExtResource("7_cnda6"), ExtResource("8_eelq7")])
+effects_to_add = Array[ExtResource("1_a83ai")]([])

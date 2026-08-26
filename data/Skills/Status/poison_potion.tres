@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_wohtj"]
 [ext_resource type="Resource" uid="uid://bkcch0kv2s2fg" path="res://data/status_effects/poison.tres" id="2_l6wt0"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_mttl1"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_mttl1"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_mkttf"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_ps488"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="5_iodhy"]
@@ -32,6 +32,7 @@ luck = 1
 script = ExtResource("4_mkttf")
 name = "Poison potion"
 learnable = false
+can_select_inactive = false
 power = 0
 stamina_cost = 1
 repeat_min = 1

@@ -1,8 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cy45r1tjxrvqv"]
+[gd_scene load_steps=11 format=3 uid="uid://cy45r1tjxrvqv"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_mtdsp"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_kvy80"]
 [ext_resource type="Texture2D" uid="uid://ber45r4ahcunl" path="res://sprites/blueler_sprite_modified.png" id="2_tgb2x"]
 [ext_resource type="AudioStream" uid="uid://dohb1povbojm1" path="res://sound/slash2.wav" id="3_qfxv0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j268"]
+resource_local_to_scene = true
+shader = ExtResource("2_kvy80")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
+shader_parameter/character_colour = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
 [sub_resource type="Animation" id="Animation_3rku1"]
 length = 0.001
@@ -45,7 +53,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_62l6s"]
 resource_name = "attack"
-length = 0.6
+length = 0.3
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -53,7 +62,7 @@ tracks/0/path = NodePath("sprite_blueler/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.2),
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [3, 4, 5, 6, 7, 8]
@@ -185,13 +194,15 @@ _data = {
 [node name="sprite_blueler" instance=ExtResource("1_mtdsp")]
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_1j268")
 texture = ExtResource("2_tgb2x")
 hframes = 4
 vframes = 3
+frame = 8
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_iufy3")
+&"": SubResource("AnimationLibrary_iufy3")
 }
 
 [node name="sound_player" parent="." index="2"]

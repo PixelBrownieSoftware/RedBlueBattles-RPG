@@ -5,6 +5,7 @@ class_name rpg_skill
 enum SCOPE {ALLY, FOE, ALL, SELF, NONE = -1}
 @export var name : String = "Empty"
 @export var learnable : bool = true
+@export var can_select_inactive : bool = false
 @export var power : int = 0
 @export var stamina_cost : int = 0
 @export var repeat_min : int = 1
@@ -68,17 +69,17 @@ func get_all_status_effects():
 	
 func calculate_raw_power(attacker: battle_character_data):
 	const total_stats = 6
-	var str = (attacker.strength_net * skill_element.stats.strength)
+	var stre = (attacker.strength_net * skill_element.stats.strength)
 	var agi = (attacker.agility_net * skill_element.stats.agility)
 	var vit = (attacker.vitality_net * skill_element.stats.vitality)
 	var mag = (attacker.magic_pow_net * skill_element.stats.magic_pow)
 	var dex = (attacker.dexterity_net * skill_element.stats.dexterity)
 	var luc = (attacker.luck_net * skill_element.stats.luck)
-	var total = (str+ dex + luc + agi + mag + vit)
+	var total = (stre+ dex + luc + agi + mag + vit)
 	var mean = (total/total_stats)
 	var stat_element = mean * power
 	return {
-		"str":str,
+		"str":stre,
 		"agi":agi,
 		"vit":vit,
 		"mag":mag,
@@ -138,6 +139,10 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 		if power > 0:
 			if calculated_PT != PRESS_TURN.PT.VOID:
 				target.damage(damage_amount)
+	if calculated_PT == PRESS_TURN.PT.WEAK_LUCKY || calculated_PT == PRESS_TURN.PT.WEAK || calculated_PT == PRESS_TURN.PT.LUCKY:
+		target.increment_flag("weakpoint_hit",1)
+	else:
+		target.set_flag("weakpoint_hit",0)
 	return_val["Press_turn"] = calculated_PT
 	return_val["Amount"] = damage_amount
 	return_val["No_Anim"] = 0	#Damage number stuff

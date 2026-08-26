@@ -1,3 +1,4 @@
+@tool
 extends rpg_skill
 class_name skill_heal
 
@@ -8,7 +9,7 @@ func damage_formula(attacker: battle_character_data, target: battle_character_da
 	var modifiers = attacker.get_element_potential_modifiers(self)
 	print("Multiplier " + str(modifiers["damage_multipler"]))
 	var stat_element = calculate_raw_power(attacker)["output"]
-	return (((stat_element * power)) * modifiers["damage_multipler"]) * -1
+	return (((stat_element * (power*1.5))) * modifiers["damage_multipler"]) * -1
 
 func process_damage(attacker: battle_character_data, target: battle_character_data):
 	var return_val = {}

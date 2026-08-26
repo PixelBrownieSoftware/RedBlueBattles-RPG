@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=9 format=3 uid="uid://crepqahdqcovh"]
 
-[ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/battle_character_behaviour.gd" id="1_ogqme"]
+[ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/scripts/behaviour/battle_character_behaviour.gd" id="1_ogqme"]
 [ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="2_j635l"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_o3o6j"]
 [ext_resource type="Resource" uid="uid://bhvnvarvl483s" path="res://data/skills/Electric/lightning.tres" id="3_j635l"]

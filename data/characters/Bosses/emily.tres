@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_7iyek"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_8bl0q"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="3_1s3bu"]
-[ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/skills/Fire/ember.tres" id="3_d05nd"]
+[ext_resource type="Resource" uid="uid://cpgb8iguvjhyr" path="res://data/skills/Fire/ember_1.tres" id="3_d05nd"]
 [ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/skills/Ice/icicle.tres" id="4_1es2o"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="5_1gl60"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="6_sq35a"]

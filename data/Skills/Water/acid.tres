@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="rpg_skill" load_steps=11 format=3 uid="uid://defk8p5vxg4ba"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_l3g1t"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_aetld"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_aetld"]
 [ext_resource type="Resource" uid="uid://bkcch0kv2s2fg" path="res://data/status_effects/poison.tres" id="2_gx8yu"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_tox2b"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_wjrx7"]
@@ -32,6 +32,7 @@ luck = 1
 script = ExtResource("4_wjrx7")
 name = "Acid"
 learnable = true
+can_select_inactive = false
 power = 7
 stamina_cost = 5
 repeat_min = 1

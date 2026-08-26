@@ -1,3 +1,4 @@
+@tool
 extends rpg_skill
 class_name skill_summon
 @export var characters_to_summon : Array[battle_group_member]

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="skill_passive" load_steps=10 format=3 uid="uid://sm3k0fn8f405"]
+
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_ycjd3"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_qahoh"]
+[ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="3_dj7vh"]
+[ext_resource type="Script" uid="uid://d2opa1osdvodx" path="res://src/scripts/skill/skill_passive.gd" id="4_3xk3i"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_bihea"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="5_wkndl"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="6_v86x1"]
+
+[sub_resource type="Resource" id="Resource_dj7vh"]
+script = ExtResource("6_v86x1")
+strength = 0
+vitality = 3
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
+
+[sub_resource type="Resource" id="Resource_1dhcw"]
+script = ExtResource("6_v86x1")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("4_3xk3i")
+elemental_affinity_change = Array[ExtResource("3_dj7vh")]([])
+stat_changes = SubResource("Resource_dj7vh")
+name = "Defence Up"
+learnable = true
+can_select_inactive = false
+power = 0
+stamina_cost = 0
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_1dhcw")
+skill_scope = 0
+skill_element = ExtResource("5_wkndl")
+skill_animation = Array[ExtResource("4_bihea")]([])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_qahoh")]([])
+effects_to_add = Array[ExtResource("1_ycjd3")]([])

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="status_effect" load_steps=16 format=3 uid="uid://baoj1lhme3etp"]
 
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_41ukc"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_41ukc"]
 [ext_resource type="Resource" uid="uid://d337xaf1p2n4w" path="res://data/status_effects/smirk.tres" id="2_wd2du"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="3_flm5k"]
-[ext_resource type="Texture2D" uid="uid://cldn22elkcsp" path="res://sprites/GUI/status_effects_fear.png" id="4_7kf0i"]
+[ext_resource type="Texture2D" uid="uid://cldn22elkcsp" path="res://sprites/GUI/fx/status_effects_fear.png" id="4_41ukc"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="5_po2q0"]
 
 [sub_resource type="Resource" id="Resource_462f3"]
@@ -67,7 +67,7 @@ turn_duration = 5
 effects_to_remove = Array[ExtResource("1_41ukc")]([ExtResource("2_wd2du")])
 elemental_affinity_change = Array[ExtResource("3_flm5k")]([SubResource("Resource_462f3"), SubResource("Resource_wjikk"), SubResource("Resource_12lxb"), SubResource("Resource_4sjbh"), SubResource("Resource_22kos"), SubResource("Resource_f0fek"), SubResource("Resource_p67ms"), SubResource("Resource_bk0pn"), SubResource("Resource_6ccs6")])
 stat_changes = SubResource("Resource_1n461")
-icon = ExtResource("4_7kf0i")
+icon = ExtResource("4_41ukc")
 round_start = false
 after_action = true
 turn_start = false

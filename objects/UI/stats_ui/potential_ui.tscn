@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxrq6qspb6bb0"]
+[gd_scene load_steps=13 format=3 uid="uid://bxrq6qspb6bb0"]
 
 [ext_resource type="Script" uid="uid://ckpg8xyee62w4" path="res://scenes/potential_ui.gd" id="1_rufqi"]
 [ext_resource type="PackedScene" uid="uid://mugpveucbeey" path="res://objects/UI/element_potential.tscn" id="2_8rngi"]
@@ -11,10 +11,11 @@
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="9_85n35"]
 [ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="10_3l37d"]
 [ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="11_ymfk7"]
+[ext_resource type="Resource" uid="uid://ddgvaj1mvfkan" path="res://data/elements/Heal.tres" id="12_dve8x"]
 
 [node name="Potential" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 35)
-theme_override_constants/separation = 60
+theme_override_constants/separation = 55
 script = ExtResource("1_rufqi")
 
 [node name="Strike" parent="." instance=ExtResource("2_8rngi")]
@@ -52,3 +53,7 @@ element_subject = ExtResource("10_3l37d")
 [node name="Psychic" parent="." instance=ExtResource("2_8rngi")]
 layout_mode = 2
 element_subject = ExtResource("11_ymfk7")
+
+[node name="Heal" parent="." instance=ExtResource("2_8rngi")]
+layout_mode = 2
+element_subject = ExtResource("12_dve8x")

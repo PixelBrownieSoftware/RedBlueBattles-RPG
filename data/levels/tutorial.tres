@@ -10,10 +10,10 @@
 script = ExtResource("2_7ja3h")
 name = "Tutorial"
 battle_groups = Array[ExtResource("1_r4whg")]([ExtResource("2_riy6a")])
-self_destruct_after_win = false
+self_destruct_after_win = true
 battle_groups_unlock = Array[ExtResource("2_7ja3h")]([ExtResource("4_pu74f")])
 battle_groups_remove = Array[ExtResource("2_7ja3h")]([])
-type_battle = 0
+type_battle = 1
 terminal = false
 terminal_scene = ""
 colour_BG = Color(0.74902, 0.67451, 0.419608, 1)

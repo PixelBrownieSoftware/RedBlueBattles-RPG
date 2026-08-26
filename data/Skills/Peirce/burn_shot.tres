@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_v53hw"]
 [ext_resource type="Resource" uid="uid://dbr8umauuyg2h" path="res://data/status_effects/burn.tres" id="2_gwpxe"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_ualbt"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_ualbt"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_7t2r5"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_r3a6g"]
 [ext_resource type="Resource" uid="uid://mgdvrn65ktxq" path="res://data/elements/Peirce.tres" id="6_ewm7x"]
@@ -38,6 +38,7 @@ luck = 1
 script = ExtResource("4_r3a6g")
 name = "Burn shot"
 learnable = true
+can_select_inactive = false
 power = 7
 stamina_cost = 3
 repeat_min = 1

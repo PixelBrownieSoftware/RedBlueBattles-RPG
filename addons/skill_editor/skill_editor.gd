@@ -45,6 +45,7 @@ var anim_vbox : VBoxContainer
 var name_edit : LineEdit
 var learnable_check : CheckBox
 var usable_anyone_check : CheckBox
+var can_select_defeated : CheckBox
 var power_edit : SpinBox
 var stamina_cost_edit : SpinBox
 var repeat_min_edit : SpinBox
@@ -56,15 +57,23 @@ var icon_preview : TextureRect
 var file_dialog : EditorFileDialog
 
 var stat_req_edits : Dictionary = {}
-var status_enable_checks : Dictionary = {}
-var status_rows : Dictionary = {}
+var status_add_checks : Dictionary = {}
+var status_add_rows : Dictionary = {}
+var status_remove_checks : Dictionary = {}
+var status_remove_rows : Dictionary = {}
+
+# Effects to Add active controls
 var status_active_vbox : VBoxContainer
 var active_status_sliders : Dictionary = {}
 var active_status_labels : Dictionary = {}
 var active_status_chances : Dictionary = {}
 
+# Effects to Remove active controls
+var status_remove_active_vbox : VBoxContainer
+
 var elemental_status_label : RichTextLabel
-var status_search_edit : LineEdit
+var status_add_search_edit : LineEdit
+var status_remove_search_edit : LineEdit
 
 var dirty : bool = false
 var suppress_signals : bool = false
@@ -334,7 +343,6 @@ func _load_status_effects() -> void:
 func _load_skill_scripts() -> void:
 	loaded_skill_scripts.clear()
 	
-	# Always include default rpg_skill
 	loaded_skill_scripts.append({
 		"display_name": "Base Skill (rpg_skill)",
 		"path": "",
@@ -349,7 +357,7 @@ func _load_skill_scripts() -> void:
 			if scr:
 				var script_name := path.get_file().get_basename()
 				var global_name := scr.get_global_name()
-				var display_name : String= (global_name if global_name != "" else script_name) + " (" + script_name + ".gd)"
+				var display_name: String = (global_name if global_name != "" else script_name) + " (" + script_name + ".gd)"
 				loaded_skill_scripts.append({
 					"display_name": display_name,
 					"path": path,
@@ -491,6 +499,11 @@ func _build_form() -> void:
 	usable_anyone_check.toggled.connect(func(_t): _on_field_changed())
 	form_root.add_child(_labeled_row("Usable By Anyone", usable_anyone_check))
 
+	can_select_defeated = CheckBox.new()
+	can_select_defeated.text = "Can select defeated characters"
+	can_select_defeated.toggled.connect(func(_t): _on_field_changed())
+	form_root.add_child(_labeled_row("Can Select Defeated", can_select_defeated))
+	
 	form_root.add_child(_hsep())
 
 	# ---- Dynamic Custom Fields Container ----
@@ -555,11 +568,11 @@ func _build_form() -> void:
 
 	form_root.add_child(_hsep())
 
-	# ---- Skill Status Inflict Configurator ----
+	# ---- Skill Status Inflict Configurator (effects_to_add) ----
 	form_root.add_child(_section_header("Skill Status Inflict (effects_to_add)"))
 
 	var active_hdr := Label.new()
-	active_hdr.text = "Active Status Effects (Adjust Chance 0% - 100%):"
+	active_hdr.text = "Active Status Effects to Inflict (Adjust Chance 0% - 100%):"
 	form_root.add_child(active_hdr)
 
 	status_active_vbox = VBoxContainer.new()
@@ -568,22 +581,22 @@ func _build_form() -> void:
 
 	form_root.add_child(HSeparator.new())
 
-	status_search_edit = LineEdit.new()
-	status_search_edit.placeholder_text = "Search status effects to toggle..."
-	status_search_edit.clear_button_enabled = true
-	status_search_edit.text_changed.connect(_on_status_search_changed)
-	form_root.add_child(_labeled_row("Filter Statuses", status_search_edit))
+	status_add_search_edit = LineEdit.new()
+	status_add_search_edit.placeholder_text = "Search status effects to toggle..."
+	status_add_search_edit.clear_button_enabled = true
+	status_add_search_edit.text_changed.connect(func(q): _filter_status_rows(q, status_add_rows))
+	form_root.add_child(_labeled_row("Filter Add Statuses", status_add_search_edit))
 
-	var status_scroll := ScrollContainer.new()
-	status_scroll.custom_minimum_size = Vector2(0, 180)
-	status_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	var add_status_scroll := ScrollContainer.new()
+	add_status_scroll.custom_minimum_size = Vector2(0, 140)
+	add_status_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 
-	var status_vbox := VBoxContainer.new()
-	status_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	status_vbox.add_theme_constant_override("separation", 4)
+	var add_status_vbox := VBoxContainer.new()
+	add_status_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	add_status_vbox.add_theme_constant_override("separation", 4)
 
-	status_rows.clear()
-	status_enable_checks.clear()
+	status_add_rows.clear()
+	status_add_checks.clear()
 
 	for st in status_effects:
 		var row := HBoxContainer.new()
@@ -597,7 +610,7 @@ func _build_form() -> void:
 			_toggle_status_active(st, is_checked)
 			_on_field_changed()
 		)
-		status_enable_checks[st] = enable_cb
+		status_add_checks[st] = enable_cb
 		row.add_child(enable_cb)
 
 		if "icon" in st and st.icon:
@@ -608,11 +621,72 @@ func _build_form() -> void:
 			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			row.add_child(tr)
 
-		status_rows[st] = row
-		status_vbox.add_child(row)
+		status_add_rows[st] = row
+		add_status_vbox.add_child(row)
 
-	status_scroll.add_child(status_vbox)
-	form_root.add_child(status_scroll)
+	add_status_scroll.add_child(add_status_vbox)
+	form_root.add_child(add_status_scroll)
+
+	form_root.add_child(_hsep())
+
+	# ---- Skill Status Cleansing Configurator (effects_to_remove) ----
+	form_root.add_child(_section_header("Statuses to Remove (effects_to_remove)"))
+
+	var remove_active_hdr := Label.new()
+	remove_active_hdr.text = "Active Status Effects to Cleansed/Removed:"
+	form_root.add_child(remove_active_hdr)
+
+	status_remove_active_vbox = VBoxContainer.new()
+	status_remove_active_vbox.add_theme_constant_override("separation", 6)
+	form_root.add_child(status_remove_active_vbox)
+
+	form_root.add_child(HSeparator.new())
+
+	status_remove_search_edit = LineEdit.new()
+	status_remove_search_edit.placeholder_text = "Search status effects to cleanse..."
+	status_remove_search_edit.clear_button_enabled = true
+	status_remove_search_edit.text_changed.connect(func(q): _filter_status_rows(q, status_remove_rows))
+	form_root.add_child(_labeled_row("Filter Remove Statuses", status_remove_search_edit))
+
+	var remove_status_scroll := ScrollContainer.new()
+	remove_status_scroll.custom_minimum_size = Vector2(0, 140)
+	remove_status_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+
+	var remove_status_vbox := VBoxContainer.new()
+	remove_status_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	remove_status_vbox.add_theme_constant_override("separation", 4)
+
+	status_remove_rows.clear()
+	status_remove_checks.clear()
+
+	for st in status_effects:
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 8)
+
+		var st_name: String = st.name if "name" in st else "Status"
+		var remove_cb := CheckBox.new()
+		remove_cb.text = st_name
+		remove_cb.custom_minimum_size = Vector2(160, 0)
+		remove_cb.toggled.connect(func(is_checked):
+			_toggle_status_remove_active(st, is_checked)
+			_on_field_changed()
+		)
+		status_remove_checks[st] = remove_cb
+		row.add_child(remove_cb)
+
+		if "icon" in st and st.icon:
+			var tr := TextureRect.new()
+			tr.texture = st.icon
+			tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			tr.custom_minimum_size = Vector2(20, 20)
+			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			row.add_child(tr)
+
+		status_remove_rows[st] = row
+		remove_status_vbox.add_child(row)
+
+	remove_status_scroll.add_child(remove_status_vbox)
+	form_root.add_child(remove_status_scroll)
 
 	form_root.add_child(_hsep())
 
@@ -665,10 +739,10 @@ func _on_class_type_changed(idx: int) -> void:
 
 	var new_inst = target_script.new() if target_script else rpg_skill.new()
 
-	# Copy shared parameters
 	if "name" in current_res and "name" in new_inst: new_inst.name = current_res.name
 	if "learnable" in current_res and "learnable" in new_inst: new_inst.learnable = current_res.learnable
 	if "usable_by_anyone" in current_res and "usable_by_anyone" in new_inst: new_inst.usable_by_anyone = current_res.usable_by_anyone
+	if "can_select_inactive" in current_res and "can_select_inactive" in new_inst: new_inst.can_select_inactive = current_res.can_select_inactive
 	if "power" in current_res and "power" in new_inst: new_inst.power = current_res.power
 	if "stamina_cost" in current_res and "stamina_cost" in new_inst: new_inst.stamina_cost = current_res.stamina_cost
 	if "repeat_min" in current_res and "repeat_min" in new_inst: new_inst.repeat_min = current_res.repeat_min
@@ -692,7 +766,7 @@ func _build_dynamic_fields_for_custom_type() -> void:
 	if not current_res:
 		return
 
-	var base_properties := ["script", "Built-in Script", "name", "learnable", "usable_by_anyone", 
+	var base_properties := ["script", "Built-in Script", "name", "learnable", "usable_by_anyone", "can_select_inactive",
 		"power", "stamina_cost", "repeat_min", "repeat_max", "skill_scope", "skill_element", "element",
 		"skill_animation", "effects_to_add", "effects_to_remove", "custom_icon", "stat_requirement"]
 
@@ -714,7 +788,38 @@ func _build_dynamic_fields_for_custom_type() -> void:
 	for p in custom_props:
 		var p_name: String = p.name
 		var p_type: int = p.type
+		var p_class: String = p.class_name
 		var val = current_res.get(p_name)
+
+		# Custom handling for Elemental Affinity Change arrays -> renders interactive sliders
+		if p_name == "elemental_affinity_change" or (p_type == TYPE_ARRAY and "elemental_affinity" in p.hint_string):
+			var aff_disp := ElementalAffinityDisplay.new()
+			aff_disp.upper_lower_limit = Vector2(-2.0, 2.0)
+			aff_disp.default_value = 0.0
+			aff_disp.custom_minimum_size = Vector2(0, 120)
+			aff_disp.affinity_changed.connect(func(_el, _v): _on_field_changed())
+			dynamic_controls[p_name] = aff_disp
+			dynamic_fields_vbox.add_child(_section_header(p_name.capitalize() + " (-2 to +2 Sliders)"))
+			dynamic_fields_vbox.add_child(aff_disp)
+			continue
+
+		# Custom handling for rpg_stats properties -> renders stat spinboxes with icons
+		if p_class == "rpg_stats" or p_name == "stat_changes" or p_name == "stat_modifier" or p_name == "stat_requirements":
+			var stats_group := VBoxContainer.new()
+			stats_group.add_theme_constant_override("separation", 4)
+			var stat_spin_dict: Dictionary = {}
+			var stats_list := ["strength", "vitality", "dexterity", "magic_pow", "agility", "luck"]
+
+			for stat_name in stats_list:
+				var icon := _load_gui_icon(STAT_ICON_DIR, "gui_", stat_name)
+				var spin := _make_int_spin(-999, 999, 1)
+				stat_spin_dict[stat_name] = spin
+				stats_group.add_child(_labeled_row(stat_name.capitalize() + " Change", spin, icon))
+
+			dynamic_controls[p_name] = stat_spin_dict
+			dynamic_fields_vbox.add_child(_section_header(p_name.capitalize() + " (rpg_stats)"))
+			dynamic_fields_vbox.add_child(stats_group)
+			continue
 
 		match p_type:
 			TYPE_BOOL:
@@ -915,8 +1020,8 @@ func _render_active_status_card(st) -> void:
 	var remove_btn := Button.new()
 	remove_btn.text = "X"
 	remove_btn.pressed.connect(func():
-		if status_enable_checks.has(st):
-			status_enable_checks[st].button_pressed = false
+		if status_add_checks.has(st):
+			status_add_checks[st].button_pressed = false
 		_remove_active_status_card(st)
 		_on_field_changed()
 	)
@@ -939,15 +1044,71 @@ func _remove_active_status_card(st) -> void:
 			card.queue_free()
 
 
-func _on_status_search_changed(query: String) -> void:
+func _toggle_status_remove_active(st, is_active: bool) -> void:
+	if is_active:
+		_render_remove_status_card(st)
+	else:
+		_remove_remove_status_card(st)
+
+
+func _render_remove_status_card(st) -> void:
+	for child in status_remove_active_vbox.get_children():
+		if child.has_meta("status_ref") and child.get_meta("status_ref") == st:
+			return
+
+	var panel := PanelContainer.new()
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.32, 0.18, 0.18, 0.85)
+	style.border_color = Color(0.75, 0.35, 0.35, 1.0)
+	style.set_border_width_all(1)
+	style.set_content_margin_all(6)
+	panel.add_theme_stylebox_override("panel", style)
+
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+
+	var st_name: String = st.name if "name" in st else "Status"
+
+	if "icon" in st and st.icon:
+		var tr := TextureRect.new()
+		tr.texture = st.icon
+		tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		tr.custom_minimum_size = Vector2(20, 20)
+		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		row.add_child(tr)
+
+	var name_lbl := Label.new()
+	name_lbl.text = "Cleanses: " + st_name
+	name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(name_lbl)
+
+	var remove_btn := Button.new()
+	remove_btn.text = "X"
+	remove_btn.pressed.connect(func():
+		if status_remove_checks.has(st):
+			status_remove_checks[st].button_pressed = false
+		_remove_remove_status_card(st)
+		_on_field_changed()
+	)
+	row.add_child(remove_btn)
+
+	panel.add_child(row)
+	panel.set_meta("status_ref", st)
+	status_remove_active_vbox.add_child(panel)
+
+
+func _remove_remove_status_card(st) -> void:
+	for card in status_remove_active_vbox.get_children():
+		if card.has_meta("status_ref") and card.get_meta("status_ref") == st:
+			card.queue_free()
+
+
+func _filter_status_rows(query: String, row_dict: Dictionary) -> void:
 	var filter := query.strip_edges().to_lower()
-	for st in status_rows.keys():
-		var row: Control = status_rows[st]
+	for st in row_dict.keys():
+		var row: Control = row_dict[st]
 		var st_name: String = st.name if "name" in st else ""
-		if filter == "" or st_name.to_lower().contains(filter):
-			row.visible = true
-		else:
-			row.visible = false
+		row.visible = (filter == "" or st_name.to_lower().contains(filter))
 
 
 func _on_element_changed(_idx: int) -> void:
@@ -1057,6 +1218,7 @@ func _populate_form() -> void:
 	if "name" in current_res: name_edit.text = current_res.name
 	if "learnable" in current_res: learnable_check.button_pressed = current_res.learnable
 	if "usable_by_anyone" in current_res: usable_anyone_check.button_pressed = current_res.usable_by_anyone
+	if "can_select_inactive" in current_res: can_select_defeated.button_pressed = bool(current_res.can_select_inactive) if current_res.can_select_inactive != null else false
 	if "power" in current_res: power_edit.value = current_res.power
 	if "stamina_cost" in current_res: stamina_cost_edit.value = current_res.stamina_cost
 	if "repeat_min" in current_res: repeat_min_edit.value = current_res.repeat_min
@@ -1096,9 +1258,13 @@ func _populate_form() -> void:
 			if anim:
 				_add_animation_step_card(anim)
 
-	if status_search_edit:
-		status_search_edit.text = ""
-		_on_status_search_changed("")
+	if status_add_search_edit:
+		status_add_search_edit.text = ""
+		_filter_status_rows("", status_add_rows)
+
+	if status_remove_search_edit:
+		status_remove_search_edit.text = ""
+		_filter_status_rows("", status_remove_rows)
 
 	active_status_sliders.clear()
 	active_status_labels.clear()
@@ -1106,6 +1272,10 @@ func _populate_form() -> void:
 	for c in status_active_vbox.get_children():
 		c.queue_free()
 
+	for c in status_remove_active_vbox.get_children():
+		c.queue_free()
+
+	# Populate effects_to_add
 	for st in status_effects:
 		var has_status := false
 		var status_chance := 100.0
@@ -1116,11 +1286,26 @@ func _populate_form() -> void:
 					if "chance" in sec: status_chance = sec.chance * 100.0
 					break
 
-		if status_enable_checks.has(st):
-			status_enable_checks[st].button_pressed = has_status
+		if status_add_checks.has(st):
+			status_add_checks[st].button_pressed = has_status
 
 		if has_status:
 			_toggle_status_active(st, true, status_chance)
+
+	# Populate effects_to_remove
+	for st in status_effects:
+		var is_cleansed := false
+		if "effects_to_remove" in current_res and current_res.effects_to_remove:
+			for rem_st in current_res.effects_to_remove:
+				if rem_st == st or (rem_st and "name" in rem_st and "name" in st and rem_st.name == st.name):
+					is_cleansed = true
+					break
+
+		if status_remove_checks.has(st):
+			status_remove_checks[st].button_pressed = is_cleansed
+
+		if is_cleansed:
+			_toggle_status_remove_active(st, true)
 
 	if "custom_icon" in current_res:
 		icon_preview.texture = current_res.custom_icon
@@ -1129,6 +1314,21 @@ func _populate_form() -> void:
 		for stat_name in stat_req_edits.keys():
 			if stat_name is String and stat_req_edits.has(stat_name):
 				stat_req_edits[stat_name].value = current_res.stat_requirement.get(stat_name)
+
+	# Populate custom properties controls
+	for p_name in dynamic_controls.keys():
+		var ctrl = dynamic_controls[p_name]
+		if ctrl is ElementalAffinityDisplay:
+			var existing_affinities = current_res.get(p_name)
+			if existing_affinities != null:
+				ctrl.display_affinities(existing_affinities)
+		elif ctrl is Dictionary:
+			# Handles custom rpg_stats spinbox dictionary
+			var stat_res = current_res.get(p_name)
+			if stat_res != null:
+				for stat_name in ctrl.keys():
+					if ctrl[stat_name] is SpinBox and stat_res.get(stat_name) != null:
+						ctrl[stat_name].value = stat_res.get(stat_name)
 
 	suppress_signals = false
 
@@ -1155,6 +1355,7 @@ func _apply_form_to_resource() -> void:
 	if "name" in current_res: current_res.name = name_edit.text
 	if "learnable" in current_res: current_res.learnable = learnable_check.button_pressed
 	if "usable_by_anyone" in current_res: current_res.usable_by_anyone = usable_anyone_check.button_pressed
+	if "can_select_inactive" in current_res: current_res.can_select_inactive = can_select_defeated.button_pressed
 	if "power" in current_res: current_res.power = int(power_edit.value)
 	if "stamina_cost" in current_res: current_res.stamina_cost = int(stamina_cost_edit.value)
 	if "repeat_min" in current_res: current_res.repeat_min = int(repeat_min_edit.value)
@@ -1173,7 +1374,31 @@ func _apply_form_to_resource() -> void:
 
 	for p_name in dynamic_controls.keys():
 		var ctrl = dynamic_controls[p_name]
-		if ctrl is SpinBox:
+		if ctrl is ElementalAffinityDisplay:
+			var aff_disp := ctrl as ElementalAffinityDisplay
+			var current_aff_dict: Dictionary = aff_disp.get_affinities()
+			var new_affinities: Array[elemental_affinity] = []
+			for el_name in current_aff_dict.keys():
+				var val: float = current_aff_dict[el_name]
+				if not is_zero_approx(val):
+					var entry := elemental_affinity.new()
+					if "elementalName" in entry:
+						entry.elementalName = str(el_name)
+					elif "element" in entry:
+						entry.element = el_name
+					if "affinity" in entry:
+						entry.affinity = val
+					new_affinities.append(entry)
+			current_res.set(p_name, new_affinities)
+		elif ctrl is Dictionary:
+			var stat_res = current_res.get(p_name)
+			if not stat_res or not (stat_res is rpg_stats):
+				stat_res = rpg_stats.new()
+			for stat_name in ctrl.keys():
+				if ctrl[stat_name] is SpinBox:
+					stat_res.set(stat_name, int(ctrl[stat_name].value))
+			current_res.set(p_name, stat_res)
+		elif ctrl is SpinBox:
 			current_res.set(p_name, ctrl.value)
 		elif ctrl is CheckBox:
 			current_res.set(p_name, ctrl.button_pressed)
@@ -1203,10 +1428,11 @@ func _apply_form_to_resource() -> void:
 	if "skill_animation" in current_res:
 		current_res.skill_animation.assign(new_anims)
 
+	# Save effects_to_add
 	if "effects_to_add" in current_res:
 		var new_effects: Array[status_effect_chance] = []
 		for st in status_effects:
-			if status_enable_checks.has(st) and status_enable_checks[st].button_pressed:
+			if status_add_checks.has(st) and status_add_checks[st].button_pressed:
 				var sec := status_effect_chance.new()
 				if "status" in sec: sec.status = st
 				
@@ -1216,8 +1442,17 @@ func _apply_form_to_resource() -> void:
 		
 		current_res.effects_to_add.assign(new_effects)
 
+	# Save effects_to_remove
+	if "effects_to_remove" in current_res:
+		var remove_effects: Array[status_effect] = []
+		for st in status_effects:
+			if status_remove_checks.has(st) and status_remove_checks[st].button_pressed:
+				remove_effects.append(st)
+		
+		current_res.effects_to_remove.assign(remove_effects)
+
 	if "custom_icon" in current_res:
-		current_res.custom_icon = icon_preview.texture
+		icon_preview.texture = icon_preview.texture
 
 	if "stat_requirement" in current_res:
 		if not current_res.stat_requirement:
@@ -1249,15 +1484,17 @@ func _on_save_pressed() -> void:
 
 	if desired_path != current_path:
 		if FileAccess.file_exists(desired_path):
-			var count := 1
-			var base_name := file_name.get_basename()
-			while FileAccess.file_exists(target_dir.path_join(base_name + "_" + str(count) + ".tres")):
-				count += 1
-			desired_path = target_dir.path_join(base_name + "_" + str(count) + ".tres")
+			DirAccess.remove_absolute(desired_path)
 
-		var rename_err := DirAccess.rename_absolute(current_path, desired_path)
+		var old_path := current_path
+		var rename_err := DirAccess.rename_absolute(old_path, desired_path)
+		
 		if rename_err == OK:
 			current_path = desired_path
+		else:
+			current_path = desired_path
+			if FileAccess.file_exists(old_path):
+				DirAccess.remove_absolute(old_path)
 
 	var err := ResourceSaver.save(current_res, current_path)
 	if err == OK:

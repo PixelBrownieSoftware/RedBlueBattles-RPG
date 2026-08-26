@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="status_damage" load_steps=7 format=3 uid="uid://dghopi63i45ug"]
+
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_3xijj"]
+[ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_xuf2t"]
+[ext_resource type="Script" uid="uid://c6hefipxcx6mp" path="res://src/scripts/status effects/status_damage.gd" id="3_0merp"]
+[ext_resource type="Texture2D" uid="uid://d08gy3v11rx36" path="res://sprites/GUI/fx/regen.png" id="3_j578h"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_j578h"]
+
+[sub_resource type="Resource" id="Resource_cxkm3"]
+script = ExtResource("4_j578h")
+strength = 0
+vitality = 0
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("3_0merp")
+damage = -5
+name = "Regenerate"
+turn_duration = 3
+effects_to_remove = Array[ExtResource("1_3xijj")]([])
+elemental_affinity_change = Array[ExtResource("2_xuf2t")]([])
+stat_changes = SubResource("Resource_cxkm3")
+icon = ExtResource("3_j578h")
+round_start = false
+after_action = true
+turn_start = false
+contribute_multipler = false

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_4kev2"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="2_hh3y0"]
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="2_ou7y1"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="3_efmmo"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="3_efmmo"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_ndoe7"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_l6nqg"]
 [ext_resource type="Script" uid="uid://c1f56gjmj4301" path="res://src/scripts/skill/skill_summon.gd" id="4_v3qbq"]
@@ -41,6 +41,7 @@ characters_to_summon = Array[ExtResource("1_4kev2")]([SubResource("Resource_0xgp
 amount = 2
 name = "Call redler"
 learnable = false
+can_select_inactive = false
 power = 0
 stamina_cost = 0
 repeat_min = 1

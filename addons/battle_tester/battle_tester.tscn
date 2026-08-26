@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bapmqf5kgirwi"]
+[gd_scene load_steps=2 format=3 uid="uid://bn0cqoyh4mgie"]
 
 [ext_resource type="Script" uid="uid://dkgmh7ot1ubp8" path="res://addons/battle_tester/battle_tester.gd" id="1_script"]
 
@@ -13,68 +13,79 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_script")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainVBox" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="TopBar" type="HBoxContainer" parent="VBoxContainer"]
+[node name="TopToolbar" type="HBoxContainer" parent="MainVBox"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="RefreshButton" type="Button" parent="VBoxContainer/TopBar"]
+[node name="CalculateButton" type="Button" parent="MainVBox/TopToolbar"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Refresh Data"
+text = " ▶ Run Damage Simulation "
 
-[node name="CalculateButton" type="Button" parent="VBoxContainer/TopBar"]
+[node name="RefreshButton" type="Button" parent="MainVBox/TopToolbar"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Run Damage Calculation"
+text = " 🔄 Refresh Data "
 
-[node name="MaxLvlLabel" type="Label" parent="VBoxContainer/TopBar"]
+[node name="VSeparator" type="VSeparator" parent="MainVBox/TopToolbar"]
 layout_mode = 2
-text = "Max Level:"
 
-[node name="MaxLevelSpin" type="SpinBox" parent="VBoxContainer/TopBar"]
+[node name="MaxLevelLabel" type="Label" parent="MainVBox/TopToolbar"]
+layout_mode = 2
+text = "Max Slider Level:"
+
+[node name="MaxLevelSpin" type="SpinBox" parent="MainVBox/TopToolbar"]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 10.0
 max_value = 999.0
-value = 99.0
+value = 100.0
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+[node name="MainVSplit" type="VSplitContainer" parent="MainVBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-split_offset = 350
 
-[node name="Left" type="HBoxContainer" parent="VBoxContainer/HSplitContainer"]
+[node name="TopColumnsHBox" type="HBoxContainer" parent="MainVBox/MainVSplit"]
+custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 12
+size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="AttackerPanel" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Left"]
+[node name="AttackerPanel" type="PanelContainer" parent="MainVBox/MainVSplit/TopColumnsHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel"]
+layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="AttackerHeader" type="PanelContainer" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel"]
+[node name="Header" type="Label" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel/AttackerHeader"]
-layout_mode = 2
-text = "ATTACKER"
+text = "⚔ Attacker Options"
 horizontal_alignment = 1
 
-[node name="AttackerSelect" type="OptionButton" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel"]
+[node name="AttackerSelect" type="OptionButton" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
-item_count = 23
+item_count = 25
 popup/item_0/text = "Anne"
 popup/item_0/id = 0
 popup/item_1/text = "Beno"
@@ -83,123 +94,150 @@ popup/item_2/text = "Blackler"
 popup/item_2/id = 2
 popup/item_3/text = "Blueler"
 popup/item_3/id = 3
-popup/item_4/text = "Buckler"
+popup/item_4/text = "Blueler"
 popup/item_4/id = 4
-popup/item_5/text = "Chirema"
+popup/item_5/text = "Buckler"
 popup/item_5/id = 5
-popup/item_6/text = "Daleth"
+popup/item_6/text = "Chirema"
 popup/item_6/id = 6
-popup/item_7/text = "Dr Reynholm"
+popup/item_7/text = "Daleth"
 popup/item_7/id = 7
-popup/item_8/text = "Emily"
+popup/item_8/text = "Dr Reynholm"
 popup/item_8/id = 8
-popup/item_9/text = "Greendori"
+popup/item_9/text = "Emily"
 popup/item_9/id = 9
-popup/item_10/text = "Greenler"
+popup/item_10/text = "Greendori"
 popup/item_10/id = 10
-popup/item_11/text = "Greta"
+popup/item_11/text = "Greenler"
 popup/item_11/id = 11
-popup/item_12/text = "Kappy"
+popup/item_12/text = "Greta"
 popup/item_12/id = 12
-popup/item_13/text = "Looney"
+popup/item_13/text = "Kappy"
 popup/item_13/id = 13
-popup/item_14/text = "Lord Red"
+popup/item_14/text = "Looney"
 popup/item_14/id = 14
-popup/item_15/text = "Lucumas"
+popup/item_15/text = "Lord Red"
 popup/item_15/id = 15
-popup/item_16/text = "Malculus"
+popup/item_16/text = "Lucumas"
 popup/item_16/id = 16
-popup/item_17/text = "Nitwit"
+popup/item_17/text = "Malculus"
 popup/item_17/id = 17
-popup/item_18/text = "Noah"
+popup/item_18/text = "Nitwit"
 popup/item_18/id = 18
-popup/item_19/text = "Pinkler"
+popup/item_19/text = "Noah"
 popup/item_19/id = 19
-popup/item_20/text = "Redler"
+popup/item_20/text = "Pinkler"
 popup/item_20/id = 20
-popup/item_21/text = "Skar"
+popup/item_21/text = "Redler"
 popup/item_21/id = 21
-popup/item_22/text = "Trunko"
+popup/item_22/text = "Skar"
 popup/item_22/id = 22
+popup/item_23/text = "Test AI"
+popup/item_23/id = 23
+popup/item_24/text = "Trunko"
+popup/item_24/id = 24
 
-[node name="LvlRow" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel"]
+[node name="LevelHBox" type="HBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox"]
 layout_mode = 2
-theme_override_constants/separation = 8
 
-[node name="AttackerLvlLabel" type="Label" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel/LvlRow"]
+[node name="AttackerLvlLabel" type="Label" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox/LevelHBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Lvl: 1"
 
-[node name="AttackerLevelSlider" type="HSlider" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel/LvlRow"]
+[node name="AttackerLevelSlider" type="HSlider" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox/LevelHBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 min_value = 1.0
-max_value = 99.0
 value = 1.0
 
-[node name="AttackerStatusSearch" type="LineEdit" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel"]
-unique_name_in_owner = true
+[node name="HSeparator" type="HSeparator" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox"]
 layout_mode = 2
-placeholder_text = "Search status effects..."
 
-[node name="StatusScroll" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel"]
+[node name="AttackerStatusTabs" type="TabContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 
-[node name="AttackerStatusVBox" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Left/AttackerPanel/StatusScroll"]
-unique_name_in_owner = true
+[node name="Assigned" type="ScrollContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox/AttackerStatusTabs"]
 layout_mode = 2
-size_flags_horizontal = 3
+metadata/_tab_index = 0
 
-[node name="SkillPanel" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Left"]
+[node name="AttackerActiveVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox/AttackerStatusTabs/Assigned"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="SkillHeader" type="PanelContainer" parent="VBoxContainer/HSplitContainer/Left/SkillPanel"]
+[node name="All Statuses" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox/AttackerStatusTabs"]
+visible = false
 layout_mode = 2
+theme_override_constants/separation = 6
+metadata/_tab_index = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/Left/SkillPanel/SkillHeader"]
-layout_mode = 2
-text = "ATTACK SKILL"
-horizontal_alignment = 1
-
-[node name="SkillSearch" type="LineEdit" parent="VBoxContainer/HSplitContainer/Left/SkillPanel"]
+[node name="AttackerStatusSearch" type="LineEdit" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox/AttackerStatusTabs/All Statuses"]
 unique_name_in_owner = true
 layout_mode = 2
-placeholder_text = "Search skills..."
+placeholder_text = "🔍 Search Statuses..."
+clear_button_enabled = true
 
-[node name="SkillScroll" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/Left/SkillPanel"]
+[node name="StatusScroll" type="ScrollContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox/AttackerStatusTabs/All Statuses"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SkillVBox" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/Left/SkillPanel/SkillScroll"]
+[node name="AttackerStatusVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/AttackerPanel/VBox/AttackerStatusTabs/All Statuses/StatusScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DefenderPanel" type="VBoxContainer" parent="VBoxContainer/HSplitContainer"]
+[node name="SkillPanel" type="PanelContainer" parent="MainVBox/MainVSplit/TopColumnsHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/SkillPanel"]
+layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="DefenderHeader" type="PanelContainer" parent="VBoxContainer/HSplitContainer/DefenderPanel"]
+[node name="Header" type="Label" parent="MainVBox/MainVSplit/TopColumnsHBox/SkillPanel/VBox"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/DefenderPanel/DefenderHeader"]
-layout_mode = 2
-text = "DEFENDER"
+text = "🔥 Attacking Skill"
 horizontal_alignment = 1
 
-[node name="DefenderSelect" type="OptionButton" parent="VBoxContainer/HSplitContainer/DefenderPanel"]
+[node name="SkillSearch" type="LineEdit" parent="MainVBox/MainVSplit/TopColumnsHBox/SkillPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "🔍 Search Skills..."
+clear_button_enabled = true
+
+[node name="SkillScroll" type="ScrollContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/SkillPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SkillVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/SkillPanel/VBox/SkillScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DefenderPanel" type="PanelContainer" parent="MainVBox/MainVSplit/TopColumnsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="Label" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox"]
+layout_mode = 2
+text = "🛡 Defender Options"
+horizontal_alignment = 1
+
+[node name="DefenderSelect" type="OptionButton" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 selected = 1
-item_count = 23
+item_count = 25
 popup/item_0/text = "Anne"
 popup/item_0/id = 0
 popup/item_1/text = "Beno"
@@ -208,88 +246,191 @@ popup/item_2/text = "Blackler"
 popup/item_2/id = 2
 popup/item_3/text = "Blueler"
 popup/item_3/id = 3
-popup/item_4/text = "Buckler"
+popup/item_4/text = "Blueler"
 popup/item_4/id = 4
-popup/item_5/text = "Chirema"
+popup/item_5/text = "Buckler"
 popup/item_5/id = 5
-popup/item_6/text = "Daleth"
+popup/item_6/text = "Chirema"
 popup/item_6/id = 6
-popup/item_7/text = "Dr Reynholm"
+popup/item_7/text = "Daleth"
 popup/item_7/id = 7
-popup/item_8/text = "Emily"
+popup/item_8/text = "Dr Reynholm"
 popup/item_8/id = 8
-popup/item_9/text = "Greendori"
+popup/item_9/text = "Emily"
 popup/item_9/id = 9
-popup/item_10/text = "Greenler"
+popup/item_10/text = "Greendori"
 popup/item_10/id = 10
-popup/item_11/text = "Greta"
+popup/item_11/text = "Greenler"
 popup/item_11/id = 11
-popup/item_12/text = "Kappy"
+popup/item_12/text = "Greta"
 popup/item_12/id = 12
-popup/item_13/text = "Looney"
+popup/item_13/text = "Kappy"
 popup/item_13/id = 13
-popup/item_14/text = "Lord Red"
+popup/item_14/text = "Looney"
 popup/item_14/id = 14
-popup/item_15/text = "Lucumas"
+popup/item_15/text = "Lord Red"
 popup/item_15/id = 15
-popup/item_16/text = "Malculus"
+popup/item_16/text = "Lucumas"
 popup/item_16/id = 16
-popup/item_17/text = "Nitwit"
+popup/item_17/text = "Malculus"
 popup/item_17/id = 17
-popup/item_18/text = "Noah"
+popup/item_18/text = "Nitwit"
 popup/item_18/id = 18
-popup/item_19/text = "Pinkler"
+popup/item_19/text = "Noah"
 popup/item_19/id = 19
-popup/item_20/text = "Redler"
+popup/item_20/text = "Pinkler"
 popup/item_20/id = 20
-popup/item_21/text = "Skar"
+popup/item_21/text = "Redler"
 popup/item_21/id = 21
-popup/item_22/text = "Trunko"
+popup/item_22/text = "Skar"
 popup/item_22/id = 22
+popup/item_23/text = "Test AI"
+popup/item_23/id = 23
+popup/item_24/text = "Trunko"
+popup/item_24/id = 24
 
-[node name="LvlRow" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/DefenderPanel"]
+[node name="LevelHBox" type="HBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox"]
 layout_mode = 2
-theme_override_constants/separation = 8
 
-[node name="DefenderLvlLabel" type="Label" parent="VBoxContainer/HSplitContainer/DefenderPanel/LvlRow"]
+[node name="DefenderLvlLabel" type="Label" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox/LevelHBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Lvl: 1"
 
-[node name="DefenderLevelSlider" type="HSlider" parent="VBoxContainer/HSplitContainer/DefenderPanel/LvlRow"]
+[node name="DefenderLevelSlider" type="HSlider" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox/LevelHBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 min_value = 1.0
-max_value = 99.0
 value = 1.0
 
-[node name="DefenderStatusSearch" type="LineEdit" parent="VBoxContainer/HSplitContainer/DefenderPanel"]
+[node name="HSeparator" type="HSeparator" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox"]
+layout_mode = 2
+
+[node name="DefenderStatusTabs" type="TabContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Assigned" type="ScrollContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox/DefenderStatusTabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="DefenderActiveVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox/DefenderStatusTabs/Assigned"]
 unique_name_in_owner = true
 layout_mode = 2
-placeholder_text = "Search status effects..."
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
 
-[node name="StatusScroll" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/DefenderPanel"]
+[node name="All Statuses" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox/DefenderStatusTabs"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+metadata/_tab_index = 1
+
+[node name="DefenderStatusSearch" type="LineEdit" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox/DefenderStatusTabs/All Statuses"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "🔍 Search Statuses..."
+clear_button_enabled = true
+
+[node name="StatusScroll" type="ScrollContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox/DefenderStatusTabs/All Statuses"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DefenderStatusVBox" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DefenderPanel/StatusScroll"]
+[node name="DefenderStatusVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/TopColumnsHBox/DefenderPanel/VBox/DefenderStatusTabs/All Statuses/StatusScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LogHeader" type="PanelContainer" parent="VBoxContainer"]
+[node name="BottomResultPanel" type="PanelContainer" parent="MainVBox/MainVSplit"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResultVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/BottomResultPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CardsHBox" type="HBoxContainer" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="AtkCard" type="PanelContainer" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AtkCardVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/AtkCard"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/LogHeader"]
+[node name="AtkHeader" type="Label" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/AtkCard/AtkCardVBox"]
 layout_mode = 2
-text = "CALCULATION OUTPUT LOG"
+text = "⚔ Attacker Stats"
+horizontal_alignment = 1
 
-[node name="LogOutput" type="RichTextLabel" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/AtkCard/AtkCardVBox"]
+layout_mode = 2
+
+[node name="AtkStatsLabel" type="RichTextLabel" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/AtkCard/AtkCardVBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center][color=gray]No Attacker Loaded[/color][/center]"
+
+[node name="SkillCard" type="PanelContainer" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillCardVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/SkillCard"]
+layout_mode = 2
+
+[node name="SkillHeader" type="Label" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/SkillCard/SkillCardVBox"]
+layout_mode = 2
+text = "🔥 Skill & Combat Mods"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/SkillCard/SkillCardVBox"]
+layout_mode = 2
+
+[node name="SkillStatsLabel" type="RichTextLabel" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/SkillCard/SkillCardVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center][color=gray]No Skill Selected[/color][/center]"
+
+[node name="DefCard" type="PanelContainer" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DefCardVBox" type="VBoxContainer" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/DefCard"]
+layout_mode = 2
+
+[node name="DefHeader" type="Label" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/DefCard/DefCardVBox"]
+layout_mode = 2
+text = "🛡 Defender Stats"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/DefCard/DefCardVBox"]
+layout_mode = 2
+
+[node name="DefStatsLabel" type="RichTextLabel" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/CardsHBox/DefCard/DefCardVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center][color=gray]No Defender Loaded[/color][/center]"
+
+[node name="DamageBanner" type="PanelContainer" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="DamageLabel" type="RichTextLabel" parent="MainVBox/MainVSplit/BottomResultPanel/ResultVBox/DamageBanner"]
+unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
-text = "Click 'Run Damage Calculation' to test."
+text = "[center][font_size=20][b]TOTAL DAMAGE: [color=gray]--[/color][/b][/font_size][/center]"

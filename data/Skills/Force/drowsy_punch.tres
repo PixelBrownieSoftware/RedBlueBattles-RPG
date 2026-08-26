@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="rpg_skill" load_steps=12 format=3 uid="uid://b2dyk0jh6s4m4"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_gvhw7"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="2_phkta"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_phkta"]
 [ext_resource type="Resource" uid="uid://dttvaj5cg8ujv" path="res://data/status_effects/sleepy.tres" id="2_yeufa"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_maog5"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_o68mq"]
@@ -38,6 +38,7 @@ luck = 3
 script = ExtResource("4_o68mq")
 name = "Drowsy punch"
 learnable = true
+can_select_inactive = false
 power = 6
 stamina_cost = 3
 repeat_min = 1

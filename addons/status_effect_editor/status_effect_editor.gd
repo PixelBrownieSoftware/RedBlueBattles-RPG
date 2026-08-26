@@ -5,6 +5,7 @@ extends Control
 const STATUS_DIR := "res://data/status_effects"
 const ELEMENT_DIR := "res://data/elements"
 const STAT_ICON_DIR := "res://sprites/GUI/stats/"
+const SCRIPT_DIR := "res://src/scripts/status_effects/" # Adjust path if custom status scripts reside elsewhere
 
 var tree: Tree
 var refresh_button: Button
@@ -14,32 +15,46 @@ var revert_button: Button
 var status_label: Label
 var form_root: VBoxContainer
 
-var current_path : String = ""
-var current_res : status_effect = null
-var elements : Array = []
+# File Management UI Controls
+var rename_button: Button
+var delete_button: Button
+var rename_dialog: ConfirmationDialog
+var rename_input: LineEdit
+var delete_confirm_dialog: ConfirmationDialog
+
+# Type Selector Controls
+var class_type_select: OptionButton
+var dynamic_fields_vbox: VBoxContainer
+var dynamic_controls: Dictionary = {}
+
+var current_path: String = ""
+var current_res: status_effect = null
+var elements: Array = []
+var loaded_status_scripts: Array[Dictionary] = [] # Array of { "display_name": String, "script": Script }
 
 # Form Controls
-var name_edit : LineEdit
-var duration_edit : SpinBox
+var name_edit: LineEdit
+var duration_edit: SpinBox
 
-var round_start_check : CheckBox
-var after_action_check : CheckBox
-var turn_start_check : CheckBox
-var contribute_mult_check : CheckBox
+var round_start_check: CheckBox
+var after_action_check: CheckBox
+var turn_start_check: CheckBox
+var contribute_mult_check: CheckBox
 
-var icon_preview : TextureRect
-var file_dialog : EditorFileDialog
+var icon_preview: TextureRect
+var file_dialog: EditorFileDialog
 
-var stat_change_edits : Dictionary = {}
-var affinity_display : ElementalAffinityDisplay
+var stat_change_edits: Dictionary = {}
+var affinity_display: ElementalAffinityDisplay
 
-var dirty : bool = false
-var suppress_signals : bool = false
+var dirty: bool = false
+var suppress_signals: bool = false
 
 
 func _ready() -> void:
 	_bind_ui_nodes()
 	_setup_file_dialog()
+	_setup_file_management_ui()
 
 	if is_instance_valid(refresh_button):
 		refresh_button.pressed.connect(_populate_tree)
@@ -57,6 +72,7 @@ func _ready() -> void:
 			child.queue_free()
 
 	_load_elements()
+	_load_status_scripts()
 	_build_form()
 	_set_form_enabled(false)
 	call_deferred("_populate_tree")
@@ -70,6 +86,114 @@ func _bind_ui_nodes() -> void:
 	revert_button = _find_control_node("RevertButton") as Button
 	status_label = _find_control_node("StatusLabel") as Label
 	form_root = _find_control_node("FormRoot") as VBoxContainer
+
+
+func _setup_file_management_ui() -> void:
+	var toolbar: HBoxContainer = null
+	if is_instance_valid(save_button):
+		toolbar = save_button.get_parent() as HBoxContainer
+
+	if toolbar:
+		rename_button = Button.new()
+		rename_button.text = "Rename File"
+		rename_button.disabled = true
+		rename_button.pressed.connect(_on_rename_pressed)
+		toolbar.add_child(rename_button)
+
+		delete_button = Button.new()
+		delete_button.text = "Delete File"
+		delete_button.disabled = true
+		delete_button.pressed.connect(_on_delete_pressed)
+		toolbar.add_child(delete_button)
+
+	rename_dialog = ConfirmationDialog.new()
+	rename_dialog.title = "Rename Status Resource"
+	rename_dialog.size = Vector2i(350, 100)
+
+	var vbox := VBoxContainer.new()
+	var lbl := Label.new()
+	lbl.text = "Enter new file name:"
+	vbox.add_child(lbl)
+
+	rename_input = LineEdit.new()
+	rename_input.placeholder_text = "new_status_effect"
+	vbox.add_child(rename_input)
+
+	rename_dialog.add_child(vbox)
+	rename_dialog.confirmed.connect(_confirm_rename)
+	add_child(rename_dialog)
+
+	delete_confirm_dialog = ConfirmationDialog.new()
+	delete_confirm_dialog.title = "Delete Status Resource?"
+	delete_confirm_dialog.dialog_text = "Are you sure you want to delete this status effect file permanently?"
+	delete_confirm_dialog.confirmed.connect(_confirm_delete)
+	add_child(delete_confirm_dialog)
+
+
+func _on_rename_pressed() -> void:
+	if current_path == "":
+		return
+	var current_name := current_path.get_file().get_basename()
+	rename_input.text = current_name
+	rename_dialog.popup_centered()
+	rename_input.select_all()
+	rename_input.grab_focus()
+
+
+func _confirm_rename() -> void:
+	var new_name := rename_input.text.strip_edges()
+	if new_name == "" or not current_res:
+		return
+
+	if not new_name.ends_with(".tres") and not new_name.ends_with(".res"):
+		new_name += ".tres"
+
+	var parent_dir := current_path.get_base_dir()
+	var new_full_path := parent_dir.path_join(new_name)
+
+	if new_full_path == current_path:
+		return
+
+	if FileAccess.file_exists(new_full_path):
+		if is_instance_valid(status_label):
+			status_label.text = "Rename failed: File '%s' already exists!" % new_name
+		return
+
+	var old_path := current_path
+	var err := DirAccess.rename_absolute(old_path, new_full_path)
+	if err == OK:
+		current_path = new_full_path
+		if is_instance_valid(status_label):
+			status_label.text = "Renamed file to: " + new_name
+		_populate_tree()
+	else:
+		if is_instance_valid(status_label):
+			status_label.text = "Rename failed (error %d)" % err
+
+
+func _on_delete_pressed() -> void:
+	if current_path == "":
+		return
+	delete_confirm_dialog.dialog_text = "Are you sure you want to delete '%s'?" % current_path.get_file()
+	delete_confirm_dialog.popup_centered()
+
+
+func _confirm_delete() -> void:
+	if current_path == "":
+		return
+
+	var file_to_delete := current_path
+	var err := DirAccess.remove_absolute(file_to_delete)
+	if err == OK:
+		if is_instance_valid(status_label):
+			status_label.text = "Deleted status effect: " + file_to_delete.get_file()
+		current_path = ""
+		current_res = null
+		_set_form_enabled(false)
+		_populate_tree()
+	else:
+		if is_instance_valid(status_label):
+			status_label.text = "Failed to delete file (error %d)" % err
 
 
 func _find_control_node(node_name: String) -> Node:
@@ -173,9 +297,51 @@ func _load_elements() -> void:
 	)
 
 
+func _load_status_scripts() -> void:
+	loaded_status_scripts.clear()
+
+	# Register core status types
+	loaded_status_scripts.append({"display_name": "Base Status Effect (status_effect)", "script": status_effect})
+	loaded_status_scripts.append({"display_name": "Damage Over Time (status_damage)", "script": status_damage})
+	loaded_status_scripts.append({"display_name": "Stamina Drain/Boost (status_stamina)", "script": status_stamina})
+
+	if DirAccess.dir_exists_absolute(SCRIPT_DIR):
+		var paths := _find_resources_recursive(SCRIPT_DIR, [".gd"])
+		paths.sort()
+		for path in paths:
+			var scr = load(path) as Script
+			if scr and scr.inherits("status_effect"):
+				var script_name := path.get_file().get_basename()
+				var global_name := scr.get_global_name()
+				var display_name: String = (global_name if global_name != "" else script_name) + " (" + script_name + ".gd)"
+				
+				var already_exists := false
+				for item in loaded_status_scripts:
+					if item.script == scr:
+						already_exists = true
+						break
+				if not already_exists:
+					loaded_status_scripts.append({"display_name": display_name, "script": scr})
+
+
 func _build_form() -> void:
 	if not is_instance_valid(form_root):
 		return
+
+	# ---- Class Type Selector ----
+	form_root.add_child(_section_header("Status Type Class"))
+
+	class_type_select = OptionButton.new()
+	class_type_select.clear()
+	for idx in range(loaded_status_scripts.size()):
+		var info := loaded_status_scripts[idx]
+		class_type_select.add_item("📜 " + info.display_name, idx)
+		class_type_select.set_item_metadata(idx, info)
+
+	class_type_select.item_selected.connect(_on_class_type_changed)
+	form_root.add_child(_labeled_row("Status Type", class_type_select))
+
+	form_root.add_child(_hsep())
 
 	# ---- Identity & Duration ----
 	form_root.add_child(_section_header("Identity & Duration"))
@@ -188,6 +354,11 @@ func _build_form() -> void:
 	form_root.add_child(_labeled_row("Turn Duration", duration_edit))
 
 	form_root.add_child(_hsep())
+
+	# ---- Dynamic Custom Fields Container ----
+	dynamic_fields_vbox = VBoxContainer.new()
+	dynamic_fields_vbox.add_theme_constant_override("separation", 6)
+	form_root.add_child(dynamic_fields_vbox)
 
 	# ---- Trigger Flags ----
 	form_root.add_child(_section_header("Trigger Conditions & Flags"))
@@ -255,10 +426,97 @@ func _build_form() -> void:
 	form_root.add_child(_section_header("Elemental Affinity Modifiers (-1 to 2 Sliders)"))
 	affinity_display = ElementalAffinityDisplay.new()
 	affinity_display.upper_lower_limit = Vector2(-1.0, 2.0)
-	affinity_display.default_value = 0.0 # Status effects default to 0.0
+	affinity_display.default_value = 0.0
 	affinity_display.custom_minimum_size = Vector2(0, 100)
 	affinity_display.affinity_changed.connect(func(_el, _val): _on_field_changed())
 	form_root.add_child(affinity_display)
+
+
+func _on_class_type_changed(idx: int) -> void:
+	if not current_res or idx < 0 or idx >= loaded_status_scripts.size():
+		return
+
+	var info: Dictionary = loaded_status_scripts[idx]
+	var target_script: Script = info.script
+
+	if current_res.get_script() == target_script:
+		return
+
+	var new_inst: status_effect = target_script.new() if target_script else status_effect.new()
+
+	if "name" in current_res and "name" in new_inst: new_inst.name = current_res.name
+	if "turn_duration" in current_res and "turn_duration" in new_inst: new_inst.turn_duration = current_res.turn_duration
+	if "round_start" in current_res and "round_start" in new_inst: new_inst.round_start = current_res.round_start
+	if "after_action" in current_res and "after_action" in new_inst: new_inst.after_action = current_res.after_action
+	if "turn_start" in current_res and "turn_start" in new_inst: new_inst.turn_start = current_res.turn_start
+	if "contribute_multipler" in current_res and "contribute_multipler" in new_inst: new_inst.contribute_multipler = current_res.contribute_multipler
+	if "icon" in current_res and "icon" in new_inst: new_inst.icon = current_res.icon
+	if "stat_changes" in current_res and "stat_changes" in new_inst: new_inst.stat_changes = current_res.stat_changes
+	if "elemental_affinity_change" in current_res and "elemental_affinity_change" in new_inst: new_inst.elemental_affinity_change = current_res.elemental_affinity_change
+
+	current_res = new_inst
+	_populate_form()
+	_on_field_changed()
+
+
+func _build_dynamic_fields_for_custom_type() -> void:
+	for child in dynamic_fields_vbox.get_children():
+		child.queue_free()
+
+	dynamic_controls.clear()
+
+	if not current_res:
+		return
+
+	var base_properties := ["script", "Built-in Script", "name", "turn_duration", "round_start", 
+		"after_action", "turn_start", "contribute_multipler", "icon", "stat_changes", "elemental_affinity_change", "effects_to_remove"]
+
+	var props := current_res.get_property_list()
+	var custom_props: Array[Dictionary] = []
+
+	for p in props:
+		if p.usage & PROPERTY_USAGE_SCRIPT_VARIABLE or p.usage & PROPERTY_USAGE_EDITOR:
+			if not base_properties.has(p.name):
+				custom_props.append(p)
+
+	if custom_props.is_empty():
+		return
+
+	var current_scr = current_res.get_script()
+	var scr_name: String = current_scr.get_global_name() if (current_scr and current_scr.get_global_name() != "") else (current_scr.resource_path.get_file() if current_scr else "Subclass")
+	dynamic_fields_vbox.add_child(_section_header("Custom Status Properties (" + scr_name + ")"))
+
+	for p in custom_props:
+		var p_name: String = p.name
+		var p_type: int = p.type
+		var val = current_res.get(p_name)
+
+		match p_type:
+			TYPE_BOOL:
+				var cb := CheckBox.new()
+				cb.button_pressed = bool(val)
+				cb.toggled.connect(func(_t): _on_field_changed())
+				dynamic_controls[p_name] = cb
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), cb))
+
+			TYPE_INT:
+				var spin := _make_int_spin(-99999, 99999, 1)
+				spin.value = int(val) if val != null else 0
+				dynamic_controls[p_name] = spin
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), spin))
+
+			TYPE_FLOAT:
+				var spin := _make_float_spin(-99999.0, 99999.0, 0.01)
+				spin.value = float(val) if val != null else 0.0
+				dynamic_controls[p_name] = spin
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), spin))
+
+			TYPE_STRING:
+				var le := LineEdit.new()
+				le.text = str(val) if val != null else ""
+				le.text_changed.connect(func(_t): _on_field_changed())
+				dynamic_controls[p_name] = le
+				dynamic_fields_vbox.add_child(_labeled_row(p_name.capitalize(), le))
 
 
 func _on_new_status_pressed() -> void:
@@ -306,6 +564,10 @@ func _set_form_enabled(enabled: bool) -> void:
 		_set_container_editable(form_root, enabled)
 	if is_instance_valid(affinity_display):
 		affinity_display.is_editable = enabled
+	if is_instance_valid(rename_button):
+		rename_button.disabled = not enabled
+	if is_instance_valid(delete_button):
+		delete_button.disabled = not enabled
 
 
 func _set_container_editable(node: Node, enabled: bool) -> void:
@@ -314,13 +576,13 @@ func _set_container_editable(node: Node, enabled: bool) -> void:
 			continue
 		if child is SpinBox or child is LineEdit:
 			child.editable = enabled
-		elif child is Button or child is ColorPickerButton or child is CheckBox:
+		elif child is Button or child is ColorPickerButton or child is CheckBox or child is OptionButton:
 			child.disabled = not enabled
 		else:
 			_set_container_editable(child, enabled)
 
 
-func _find_resources_recursive(path: String) -> Array[String]:
+func _find_resources_recursive(path: String, valid_extensions: Array[String] = [".tres", ".res"]) -> Array[String]:
 	var results: Array[String] = []
 	var dir := DirAccess.open(path)
 	if dir:
@@ -330,9 +592,12 @@ func _find_resources_recursive(path: String) -> Array[String]:
 			if not file_name.begins_with("."):
 				var full_path := path.path_join(file_name)
 				if dir.current_is_dir():
-					results.append_array(_find_resources_recursive(full_path))
-				elif file_name.ends_with(".tres") or file_name.ends_with(".res"):
-					results.append(full_path)
+					results.append_array(_find_resources_recursive(full_path, valid_extensions))
+				else:
+					for ext in valid_extensions:
+						if file_name.ends_with(ext):
+							results.append(full_path)
+							break
 			file_name = dir.get_next()
 		dir.list_dir_end()
 	return results
@@ -357,9 +622,13 @@ func _populate_tree() -> void:
 			item.set_text(0, display_name)
 			item.set_metadata(0, epath)
 
+			# Display icon alongside status effect name if it exists
+			if "icon" in res and res.icon is Texture2D:
+				item.set_icon(0, res.icon)
+				item.set_icon_max_width(0, 20)
+
 	if current_path != "":
 		_select_item_by_path(current_path)
-
 
 func _select_item_by_path(path: String) -> void:
 	if not is_instance_valid(tree):
@@ -400,6 +669,17 @@ func _load_status_effect(path: String) -> void:
 func _populate_form() -> void:
 	suppress_signals = true
 
+	var cur_script = current_res.get_script()
+	var selected_scr_idx := 0
+	for idx in range(loaded_status_scripts.size()):
+		var info = loaded_status_scripts[idx]
+		if info.script == cur_script:
+			selected_scr_idx = idx
+			break
+
+	class_type_select.select(selected_scr_idx)
+	_build_dynamic_fields_for_custom_type()
+
 	name_edit.text = current_res.name if current_res.name != null else ""
 	duration_edit.value = current_res.turn_duration
 	round_start_check.button_pressed = bool(current_res.round_start)
@@ -413,14 +693,10 @@ func _populate_form() -> void:
 			if stat_name is String and stat_change_edits.has(stat_name):
 				stat_change_edits[stat_name].value = current_res.stat_changes.get(stat_name)
 
-	# Ensure display_affinities is safely passed the existing resource array
 	if is_instance_valid(affinity_display) and current_res.elemental_affinity_change != null:
 		affinity_display.display_affinities(current_res.elemental_affinity_change)
 
 	suppress_signals = false
-
-
-
 
 
 func _on_field_changed() -> void:
@@ -443,6 +719,15 @@ func _apply_form_to_resource() -> void:
 	current_res.contribute_multipler = contribute_mult_check.button_pressed
 	current_res.icon = icon_preview.texture
 
+	for p_name in dynamic_controls.keys():
+		var ctrl = dynamic_controls[p_name]
+		if ctrl is SpinBox:
+			current_res.set(p_name, ctrl.value)
+		elif ctrl is CheckBox:
+			current_res.set(p_name, ctrl.button_pressed)
+		elif ctrl is LineEdit:
+			current_res.set(p_name, ctrl.text)
+
 	if not current_res.stat_changes:
 		current_res.stat_changes = rpg_stats.new()
 
@@ -450,13 +735,11 @@ func _apply_form_to_resource() -> void:
 		if stat_name is String and stat_change_edits[stat_name] is SpinBox:
 			current_res.stat_changes.set(stat_name, int(stat_change_edits[stat_name].value))
 
-	# Rebuild elemental affinities using 0 as neutral base
 	var new_affinities: Array[elemental_affinity] = []
 	if is_instance_valid(affinity_display):
 		var current_aff_dict: Dictionary = affinity_display.get_affinities()
 		for el_name in current_aff_dict.keys():
 			var val: float = current_aff_dict[el_name]
-			# Only save entries that are non-zero!
 			if not is_zero_approx(val):
 				var entry := elemental_affinity.new()
 				if "elementalName" in entry:
@@ -468,6 +751,7 @@ func _apply_form_to_resource() -> void:
 				new_affinities.append(entry)
 
 	current_res.elemental_affinity_change.assign(new_affinities)
+
 
 func _sanitize_filename(fname: String) -> String:
 	var clean := fname.strip_edges().to_lower().replace(" ", "_")
@@ -482,24 +766,7 @@ func _on_save_pressed() -> void:
 
 	_apply_form_to_resource()
 
-	var target_path := current_path
-	var clean_name := _sanitize_filename(current_res.name)
-
-	if clean_name != "":
-		var desired_path := STATUS_DIR.path_join(clean_name + ".tres")
-		if desired_path != current_path:
-			if FileAccess.file_exists(desired_path):
-				var count := 1
-				while FileAccess.file_exists(STATUS_DIR.path_join(clean_name + "_" + str(count) + ".tres")):
-					count += 1
-				desired_path = STATUS_DIR.path_join(clean_name + "_" + str(count) + ".tres")
-
-			var rename_err := DirAccess.rename_absolute(current_path, desired_path)
-			if rename_err == OK:
-				target_path = desired_path
-				current_path = desired_path
-
-	var err := ResourceSaver.save(current_res, target_path)
+	var err := ResourceSaver.save(current_res, current_path)
 	if err == OK:
 		dirty = false
 		if is_instance_valid(save_button): save_button.disabled = true

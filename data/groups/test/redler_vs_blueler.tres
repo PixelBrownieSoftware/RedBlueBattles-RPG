@@ -1,28 +1,17 @@
-[gd_resource type="Resource" script_class="present_group_data" load_steps=21 format=3 uid="uid://jvq0jwm4s57a"]
+[gd_resource type="Resource" script_class="present_group_data" load_steps=10 format=3 uid="uid://jvq0jwm4s57a"]
 
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_bhwrf"]
 [ext_resource type="Resource" uid="uid://phgfeevhx66u" path="res://data/characters/Bosses/blueler_boss.tres" id="2_2xs2q"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="2_yvj1u"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_dl4dc"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_qbyxd"]
-[ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/skills/Strike/frost_strike.tres" id="5_q2muu"]
-[ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/skills/Strike/oily_slash.tres" id="6_r7jpp"]
-[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/skills/Status/energy_pulse.tres" id="7_gry25"]
-[ext_resource type="Resource" uid="uid://d22uowhnrbcan" path="res://data/skills/Status/fire_sheild.tres" id="8_sxj57"]
 [ext_resource type="Resource" uid="uid://hchecnhgg381" path="res://data/characters/Playable/redler.tres" id="8_tly4r"]
-[ext_resource type="Resource" uid="uid://clj0qk5c7p8fs" path="res://data/skills/Strike/multi_slash.tres" id="9_v5e31"]
-[ext_resource type="Resource" uid="uid://capw7vx5dvpy2" path="res://data/skills/none/charge.tres" id="10_c4055"]
-[ext_resource type="Resource" uid="uid://gudttha38y7d" path="res://data/skills/Status/ice_sheild.tres" id="10_qbyxd"]
-[ext_resource type="Resource" uid="uid://cagi0wvfpk54g" path="res://data/skills/Peirce/infectious_bite.tres" id="10_swmig"]
 [ext_resource type="Script" uid="uid://cv7rw7qh3dji3" path="res://src/scripts/battle group/preset_party_group.gd" id="11_40nh3"]
-[ext_resource type="Resource" uid="uid://d3wggvfc4mplg" path="res://data/skills/Force/rampage.tres" id="11_qbyxd"]
-[ext_resource type="Resource" uid="uid://dkbekej7gpsuo" path="res://data/skills/heal/recover.tres" id="12_ohqdn"]
-[ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/skills/Status/dodge.tres" id="14_v5e31"]
 
 [sub_resource type="Resource" id="Resource_3x7e0"]
 script = ExtResource("1_bhwrf")
 character = ExtResource("2_2xs2q")
-skills = Array[ExtResource("4_qbyxd")]([ExtResource("5_q2muu"), ExtResource("6_r7jpp"), ExtResource("7_gry25"), ExtResource("8_sxj57"), ExtResource("9_v5e31"), ExtResource("10_c4055")])
+skills = Array[ExtResource("4_qbyxd")]([])
 min_level = 20
 max_level = 20
 inclusion_flag_requirements = Array[ExtResource("3_dl4dc")]([])
@@ -31,7 +20,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_p00m6"]
 script = ExtResource("1_bhwrf")
 character = ExtResource("8_tly4r")
-skills = Array[ExtResource("4_qbyxd")]([ExtResource("10_qbyxd"), ExtResource("10_swmig"), ExtResource("11_qbyxd"), ExtResource("12_ohqdn"), ExtResource("14_v5e31")])
+skills = Array[ExtResource("4_qbyxd")]([])
 min_level = 20
 max_level = 21
 inclusion_flag_requirements = Array[ExtResource("3_dl4dc")]([])

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="status_effect" load_steps=15 format=3 uid="uid://d337xaf1p2n4w"]
 
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="1_1ncbg"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_1ncbg"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_xsk4f"]
-[ext_resource type="Texture2D" uid="uid://lgsc72k64x6l" path="res://sprites/GUI/status_effects_smk.png" id="3_lwitn"]
+[ext_resource type="Texture2D" uid="uid://lgsc72k64x6l" path="res://sprites/GUI/fx/status_effects_smk.png" id="3_1ncbg"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_c0otw"]
 
 [sub_resource type="Resource" id="Resource_1ncbg"]
@@ -66,7 +66,7 @@ turn_duration = 2
 effects_to_remove = Array[ExtResource("1_1ncbg")]([])
 elemental_affinity_change = Array[ExtResource("2_xsk4f")]([SubResource("Resource_1ncbg"), SubResource("Resource_xsk4f"), SubResource("Resource_lwitn"), SubResource("Resource_c0otw"), SubResource("Resource_g64rh"), SubResource("Resource_jo88e"), SubResource("Resource_ims2a"), SubResource("Resource_kdh7p"), SubResource("Resource_gy88b")])
 stat_changes = SubResource("Resource_yxrd0")
-icon = ExtResource("3_lwitn")
+icon = ExtResource("3_1ncbg")
 round_start = false
 after_action = true
 turn_start = false

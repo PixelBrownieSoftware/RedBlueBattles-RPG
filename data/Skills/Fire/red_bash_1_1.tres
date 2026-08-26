@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://brwcqw4l2qpkq" path="res://data/status_effects/down.tres" id="3_20csa"]
 [ext_resource type="Resource" uid="uid://dafhkmba7uni1" path="res://data/status_effects/flammable.tres" id="4_r0ojg"]
 [ext_resource type="Resource" uid="uid://dttvaj5cg8ujv" path="res://data/status_effects/sleepy.tres" id="5_cbl1c"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status_effect.gd" id="6_3lx3w"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="6_3lx3w"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="7_5stkb"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="8_408g1"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="9_47b8x"]
@@ -62,6 +62,7 @@ luck = 1
 script = ExtResource("7_5stkb")
 name = "Red bash"
 learnable = false
+can_select_inactive = false
 power = 14
 stamina_cost = 8
 repeat_min = 1

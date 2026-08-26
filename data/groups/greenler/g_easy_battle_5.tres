@@ -7,16 +7,16 @@
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="4_fr52n"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="5_vnej8"]
 
-[sub_resource type="Resource" id="Resource_0g08n"]
+[sub_resource type="Resource" id="Resource_b5aul"]
 script = ExtResource("1_yqj1o")
 character = ExtResource("2_bbfxy")
 skills = Array[ExtResource("4_b5aul")]([])
 min_level = 1
-max_level = 3
+max_level = 2
 inclusion_flag_requirements = Array[ExtResource("3_fcamv")]([])
 perma_death = false
 
 [resource]
 script = ExtResource("5_vnej8")
-opponents = Array[ExtResource("1_yqj1o")]([SubResource("Resource_0g08n")])
+opponents = Array[ExtResource("1_yqj1o")]([SubResource("Resource_b5aul")])
 rewards = Array[ExtResource("4_fr52n")]([])
