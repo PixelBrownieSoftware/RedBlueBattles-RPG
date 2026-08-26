@@ -1,4 +1,6 @@
+# res://src/scripts/gui/party_skill_menu.gd
 extends Control
+
 @export var chara : battle_character_data
 var selected_skill : rpg_skill
 var buttons : Array[Button]
@@ -13,8 +15,11 @@ func open_menu(character : battle_character_data):
 			button.visible = false
 	update_skills()
 	visible = true
-	
+
 func update_skills():
+	# Prune any extra skills that no longer meet requirements (e.g. after removing a passive)
+	_clean_invalid_skills()
+
 	var skill_ind : int = 0
 	$"Extra skills limit/limit".text = "Extra skills slots left: " + str(GlobalVariables.extra_skills_limit - chara.extra_skills.size())
 	for skill in GlobalVariables.extra_skills:
@@ -26,11 +31,26 @@ func update_skills():
 		
 		button.selected_skill = skill
 		button.character = chara
-		button.load_skill.connect(add_skill)
+		if not button.load_skill.is_connected(add_skill):
+			button.load_skill.connect(add_skill)
 		button.text = skill.name
 		button.visible = true
 		skill_ind += 1
+
+func _clean_invalid_skills() -> void:
+	if not chara:
+		return
 		
+	# Iterating backwards to safely remove invalid skills from extra_skills
+	for i in range(chara.extra_skills.size() - 1, -1, -1):
+		var skill = chara.extra_skills[i]
+		if skill:
+			var req_check = skill.requirements_met(chara)
+			if not req_check["req_met"]:
+				chara.extra_skills.remove_at(i)
+				if GlobalVariables.equipped_extra_skills.has(skill.name) and GlobalVariables.equipped_extra_skills[skill.name] == chara:
+					GlobalVariables.equipped_extra_skills[skill.name] = null
+
 func display_skills():
 	var description : String = ""
 	description += "Name: " + selected_skill.name
@@ -43,17 +63,17 @@ func display_skills():
 	var req_met = selected_skill.requirements_met(chara)
 
 	if req_met["str_req_og"] > 1:
-		description += display_stat("Strength",req_met["str_req"] , chara.strength)
+		description += display_stat("Strength", req_met["str_req"], chara.strength_net)
 	if req_met["vit_req_og"] > 1:
-		description += display_stat("Vitality", req_met["vit_req"], chara.vitality)
+		description += display_stat("Vitality", req_met["vit_req"], chara.vitality_net)
 	if req_met["dex_req_og"] > 1:
-		description += display_stat("Dexterity", req_met["dex_req"], chara.dexterity)
+		description += display_stat("Dexterity", req_met["dex_req"], chara.dexterity_net)
 	if req_met["agi_req_og"] > 1:
-		description += display_stat("Agility", req_met["agi_req"], chara.agility)
+		description += display_stat("Agility", req_met["agi_req"], chara.agility_net)
 	if req_met["mag_req_og"] > 1:
-		description += display_stat("Magic power", req_met["mag_req"], chara.magic_pow)
+		description += display_stat("Magic power", req_met["mag_req"], chara.magic_pow_net)
 	if req_met["luc_req_og"] > 1:
-		description += display_stat("Luck", req_met["luc_req"], chara.luck)
+		description += display_stat("Luck", req_met["luc_req"], chara.luck_net)
 	if selected_skill.effects_to_add.size() > 0:
 		description += "Status inflict:\n"
 		for status in selected_skill.effects_to_add:
@@ -70,7 +90,7 @@ func display_stat(stat_name, stat_req, user_stat) -> String:
 	var colour : Color = Color.RED
 	if user_stat >= stat_req:
 		colour = Color.GREEN 
-	return "[color=" +str(colour.to_html())+"]" + disp + "[/color]"  + "\n"
+	return "[color=" +str(colour.to_html())+"]" + disp + "[/color]" + "\n"
 	
 func add_skill(move):
 	selected_skill = move
@@ -81,6 +101,10 @@ func assign_skill():
 	if skill_limit_exceeded:
 		if GlobalVariables.equipped_extra_skills[selected_skill.name] != chara:
 			return
-	GlobalVariables.assign_skill(chara,selected_skill)
+	GlobalVariables.assign_skill(chara, selected_skill)
+	
+	# Validate remaining skills after adding/removing selected_skill
+	_clean_invalid_skills()
+	
 	display_skills()
 	update_skills()

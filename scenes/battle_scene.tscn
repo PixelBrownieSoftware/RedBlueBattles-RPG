@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://ckkn8g3r0etlr"]
+[gd_scene load_steps=72 format=3 uid="uid://ckkn8g3r0etlr"]
 
 [ext_resource type="Script" uid="uid://qxdr1enbvh8u" path="res://src/scripts/battle_character_actor_manager.gd" id="1_3w2at"]
 [ext_resource type="Script" uid="uid://c4iab0xsxxbni" path="res://src/scripts/battle engine/battle_state_machine.gd" id="2_4cala"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dv0pjb6o5tkik" path="res://src/scripts/target_menu.gd" id="8_1e15q"]
 [ext_resource type="Script" uid="uid://cb1j077qi5jvt" path="res://src/scripts/battle engine/battle_end_state.gd" id="8_j42ai"]
 [ext_resource type="AudioStream" uid="uid://bhd5xcufnsukj" path="res://sound/pass_turn.wav" id="8_l5wts"]
-[ext_resource type="Script" uid="uid://nbo30pnwdfk" path="res://src/scripts/battle_npc_behaviour.gd" id="9_h0ylf"]
+[ext_resource type="Script" uid="uid://nbo30pnwdfk" path="res://src/scripts/behaviour/battle_npc_behaviour.gd" id="9_h0ylf"]
 [ext_resource type="Script" uid="uid://cnskktekjc0jd" path="res://src/scripts/skill_menu.gd" id="10_fffb2"]
 [ext_resource type="Script" uid="uid://cfg60qbrbrm72" path="res://src/move_target_selector.gd" id="10_g8410"]
 [ext_resource type="PackedScene" uid="uid://b02fnxe32db18" path="res://objects/UI/skill_button.tscn" id="11_gjgmc"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://bxrq6qspb6bb0" path="res://objects/UI/stats_ui/potential_ui.tscn" id="28_jcgnj"]
 [ext_resource type="PackedScene" uid="uid://ctm7jofl2qopg" path="res://objects/UI/stats_ui/skills_ui.tscn" id="29_f8sl5"]
 [ext_resource type="PackedScene" uid="uid://bn5bk25l1tlg8" path="res://objects/UI/stats_ui/stats_ui.tscn" id="30_7g773"]
+[ext_resource type="Script" uid="uid://bvl2ns4gawmo" path="res://scenes/debug_enemy_behaviour_display.gd" id="32_iy28q"]
 [ext_resource type="Script" uid="uid://cdlullkxr63ql" path="res://scenes/bg_setter.gd" id="32_lm7c8"]
 
 [sub_resource type="Shader" id="Shader_xy8p2"]
@@ -1149,6 +1150,28 @@ scroll_active = false
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme = ExtResource("17_ubshc")
+bbcode_enabled = true
+
+[node name="EnemyBehaviourDisplay" type="Panel" parent="BattleCanvasLayer" node_paths=PackedStringArray("npc_behaviour_node")]
+offset_left = 800.0
+offset_top = 436.0
+offset_right = 1118.0
+offset_bottom = 689.0
+theme = ExtResource("17_ubshc")
+script = ExtResource("32_iy28q")
+npc_behaviour_node = NodePath("../../Variables/Behaviour")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleCanvasLayer/EnemyBehaviourDisplay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = -14.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
 bbcode_enabled = true
 
 [node name="BattleFXFactory" type="Node" parent="."]

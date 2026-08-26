@@ -136,6 +136,8 @@ func is_player_team(char_data : battle_character_data) -> bool:
 	return false
 
 func who_has_equippied_skill(skill : rpg_skill):
+	if not skill or not equipped_extra_skills.has(skill.name):
+		return null
 	return equipped_extra_skills[skill.name]
 	
 func get_enabled_party_members_count() -> int:
@@ -145,15 +147,15 @@ func get_enabled_party_members_count() -> int:
 			number += 1
 	return number
 
-#Check whether the skill exists in the extra skills bit
 func add_extra_skill(skill : rpg_skill) -> bool:
-	if extra_skills.rfind(skill) != -1:
+	if not skill:
 		return true
-	print(extra_skills.size())
+	for s in extra_skills:
+		if s == skill or s.name == skill.name:
+			return true
 	extra_skills.append(skill)
 	equipped_extra_skills[skill.name] = null
 	print("Gained " + skill.name + "!")
-	print(extra_skills.size())
 	return false
 
 func get_permadeath_characters(group):
@@ -183,27 +185,22 @@ func save_data():
 	pass
 
 func extra_skill_already_equipped(extra_skill : rpg_skill) -> bool:
+	if not extra_skill or not equipped_extra_skills.has(extra_skill.name):
+		return false
 	return equipped_extra_skills[extra_skill.name] != null
 
 func remove_skill(chara : battle_character_data, extra_skill : rpg_skill):
+	if not extra_skill or not chara:
+		return
 	var ind = chara.extra_skills.rfind(extra_skill)
-	var chara_exists = equipped_extra_skills[extra_skill.name]
-	#if chara_exists:
-		#ind = chara_exists.extra_skills.rfind(extra_skill)
-		#chara_exists.extra_skills.remove_at(ind)
-		#equipped_extra_skills[extra_skill.name] = null
-		#return
-	chara.extra_skills.remove_at(ind)
+	if ind != -1:
+		chara.extra_skills.remove_at(ind)
 	equipped_extra_skills[extra_skill.name] = null
 
 func assign_skill(chara : battle_character_data, extra_skill : rpg_skill):
+	if not extra_skill or not chara:
+		return
 	var ind = chara.extra_skills.rfind(extra_skill)
-	var chara_exists = equipped_extra_skills[extra_skill.name]
-	#if chara_exists:
-		#ind = chara_exists.extra_skills.rfind(extra_skill)
-		#chara_exists.extra_skills.remove_at(ind)
-		#equipped_extra_skills[extra_skill.name] = null
-		#return
 	if ind == -1:
 		chara.assign_skill(extra_skill)
 		equipped_extra_skills[extra_skill.name] = chara
