@@ -34,5 +34,3 @@ specific_element = ExtResource("2_xq0ym")
 [resource]
 script = ExtResource("2_o3o6j")
 condiitons = Array[ExtResource("1_ogqme")]([SubResource("Resource_kok58"), SubResource("Resource_qc2y8")])
-percentage = 0.25
-priority = 0

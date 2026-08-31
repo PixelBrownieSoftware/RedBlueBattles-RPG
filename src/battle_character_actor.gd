@@ -61,6 +61,9 @@ func play_hurt_sound():
 func miss_anim():
 	pass
 	
+func heal_anim():
+	await fade_character_colour(Color(Color.WHITE, 1))
+
 func defeat_anim():
 	var is_permadeath = character_data.is_permadeath
 	await get_tree().create_timer(0.2).timeout
@@ -74,16 +77,17 @@ func defeat_anim():
 func set_colour(colour: Color):
 	set_character_colour(colour)
 
-func fade_character_colour(colour: Color):
+func fade_character_colour(colour: Color, default_time : float = 0.3):
 	var tween_fade = create_tween()
 	await tween_fade.tween_method(set_character_colour,
-	 Color.WHITE, colour,select_time).set_trans(Tween.TRANS_SINE)
+	 Color.WHITE, colour,default_time).set_trans(Tween.TRANS_SINE)
 	anim_finish_signal.emit()
 
 func assign_data(data : battle_character_data):
 	character_data = data
 	is_player_team = GlobalVariables.is_player_team(data)
 	character_data.play_damage.connect(play_hurt_sound)
+	character_data.play_heal.connect(heal_anim)
 	character_data.defeat_event.connect(defeat_anim)
 	var locate_anim = load("res://objects/character sprites/" + data.assigned_data.animation_player_loc + ".tscn")
 	if locate_anim != null:

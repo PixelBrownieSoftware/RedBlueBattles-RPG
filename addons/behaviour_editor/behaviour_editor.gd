@@ -34,9 +34,6 @@ var loaded_elements: Array[element] = []
 var loaded_status_effects: Array[status_effect] = []
 
 # Form UI controls
-var priority_spin: SpinBox
-var percentage_slider: HSlider
-var percentage_lbl: Label
 var conditions_vbox: VBoxContainer
 
 var suppress_signals: bool = false
@@ -298,48 +295,7 @@ func _build_form() -> void:
 	for c in form_root.get_children():
 		c.queue_free()
 
-	# ---- 1. Behaviour Settings ----
-	form_root.add_child(_section_header("Behaviour Properties"))
-
-	# Priority Integer SpinBox
-	var prio_row := HBoxContainer.new()
-	var prio_lbl := Label.new()
-	prio_lbl.text = "Priority (Higher = Priority):"
-	prio_lbl.custom_minimum_size = Vector2(200, 0)
-	prio_row.add_child(prio_lbl)
-
-	priority_spin = SpinBox.new()
-	priority_spin.min_value = -99
-	priority_spin.max_value = 99
-	priority_spin.value = 0
-	priority_spin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	priority_spin.value_changed.connect(func(_v): _on_field_changed())
-	prio_row.add_child(priority_spin)
-	form_root.add_child(prio_row)
-
-	# Percentage Slider
-	var perc_row := HBoxContainer.new()
-	percentage_lbl = Label.new()
-	percentage_lbl.text = "Percentage Weight: 100%"
-	percentage_lbl.custom_minimum_size = Vector2(200, 0)
-	perc_row.add_child(percentage_lbl)
-
-	percentage_slider = HSlider.new()
-	percentage_slider.min_value = 0.0
-	percentage_slider.max_value = 1.0
-	percentage_slider.step = 0.01
-	percentage_slider.value = 1.0
-	percentage_slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	percentage_slider.value_changed.connect(func(v):
-		percentage_lbl.text = "Percentage Weight: %d%%" % int(v * 100)
-		_on_field_changed()
-	)
-	perc_row.add_child(percentage_slider)
-	form_root.add_child(perc_row)
-
-	form_root.add_child(HSeparator.new())
-
-	# ---- 2. Conditions List Section ----
+	# Conditions List Section
 	form_root.add_child(_section_header("Conditions List (condiitons)"))
 
 	conditions_vbox = VBoxContainer.new()
@@ -353,6 +309,7 @@ func _build_form() -> void:
 		_on_field_changed()
 	)
 	form_root.add_child(add_cond_btn)
+
 
 func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 	if not cond_res:
@@ -385,7 +342,6 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 	var row1 := HBoxContainer.new()
 	row1.add_theme_constant_override("separation", 8)
 
-	# is_NOT CheckBox (Safely typecast boolean)
 	var not_cb := CheckBox.new()
 	not_cb.text = "NOT"
 	not_cb.button_pressed = bool(cond_res.is_NOT) if "is_NOT" in cond_res and cond_res.is_NOT != null else false
@@ -549,8 +505,14 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 		cond_res.specific_status = status_select.get_item_metadata(status_select.selected) if status_select.selected > 0 else null
 
 		var sb := cond_res.subject
-		target_cond_lbl.visible = (sb == battle_character_behaviour.SUBJECT.TARGET or sb == battle_character_behaviour.SUBJECT.TARGET_INVERSE)
-		target_cond_select.visible = target_cond_lbl.visible
+		var is_character_target := (
+			sb == battle_character_behaviour.SUBJECT.TARGET or 
+			sb == battle_character_behaviour.SUBJECT.TARGET_INVERSE or 
+			sb == battle_character_behaviour.SUBJECT.SELF
+		)
+
+		target_cond_lbl.visible = is_character_target
+		target_cond_select.visible = is_character_target
 		skill_cond_lbl.visible = (sb == battle_character_behaviour.SUBJECT.SKILL)
 		skill_cond_select.visible = skill_cond_lbl.visible
 
@@ -561,7 +523,7 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 		elem_select.visible = false
 		status_select.visible = false
 
-		if sb == battle_character_behaviour.SUBJECT.TARGET or sb == battle_character_behaviour.SUBJECT.TARGET_INVERSE:
+		if is_character_target:
 			match cond_res.target_condition:
 				battle_character_behaviour.TARGET_CONDITION.HEALTH, battle_character_behaviour.TARGET_CONDITION.STAMINA:
 					perc_sub_row.visible = true
@@ -612,6 +574,7 @@ func _add_condition_card(cond_res: battle_character_behaviour = null) -> void:
 
 	conditions_vbox.add_child(card)
 
+
 func _find_resources_recursive(path: String) -> Array[String]:
 	var results: Array[String] = []
 	var dir := DirAccess.open(path)
@@ -632,7 +595,7 @@ func _find_resources_recursive(path: String) -> Array[String]:
 
 func _load_behaviour(path: String) -> void:
 	current_path = path
-	current_res = load(path)
+	current_res = load(path) as battle_chara_behaviour
 	_load_reference_resources()
 	_populate_form()
 	_set_form_enabled(true)
@@ -649,10 +612,6 @@ func _populate_form() -> void:
 		return
 
 	suppress_signals = true
-
-	priority_spin.value = current_res.priority if "priority" in current_res else 0
-	percentage_slider.value = current_res.percentage
-	percentage_lbl.text = "Percentage Weight: %d%%" % int(current_res.percentage * 100)
 
 	for c in conditions_vbox.get_children():
 		c.queue_free()
@@ -697,10 +656,6 @@ func _apply_ui_to_resource() -> void:
 	if not current_res:
 		return
 
-	if "priority" in current_res:
-		current_res.priority = int(priority_spin.value)
-	current_res.percentage = percentage_slider.value
-
 	var cond_list: Array[battle_character_behaviour] = []
 	for card in conditions_vbox.get_children():
 		var cond_res: battle_character_behaviour = card.get_meta("cond_instance")
@@ -730,7 +685,7 @@ func _on_save_pressed() -> void:
 func _on_revert_pressed() -> void:
 	if current_path == "":
 		return
-	current_res = ResourceLoader.load(current_path, "", ResourceLoader.CACHE_MODE_REPLACE)
+	current_res = ResourceLoader.load(current_path, "", ResourceLoader.CACHE_MODE_REPLACE) as battle_chara_behaviour
 	_populate_form()
 	dirty = false
 	save_button.disabled = true

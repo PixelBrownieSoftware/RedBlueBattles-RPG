@@ -138,6 +138,7 @@ var flags : Dictionary = {}
 var calculated_Press_Turn
 
 signal play_damage()
+signal play_heal()
 signal increase_multiplier(amount)
 signal add_status_effect(status_fx)
 signal update_status_effect(status_fx)
@@ -339,6 +340,7 @@ func apply_status_effects(effects : Array[status_effect_chance]):
 func remove_all_status_effects() -> void:
 	for i in range(status_effects.size() - 1, -1, -1):
 		var status = status_effects[i]
+		status.end_status()
 		remove_status_effect.emit(status)
 		status_effects.remove_at(i)
 
@@ -349,6 +351,7 @@ func remove_status_effects(effects: Array[status_effect]) -> void:
 		for i in range(status_effects.size() - 1, -1, -1):
 			var active_status = status_effects[i]
 			if active_status and (active_status == status or active_status.name == status.name):
+				active_status.end_status()
 				remove_status_effect.emit(active_status)
 				status_effects.remove_at(i)
 
@@ -375,10 +378,13 @@ func stat_chance(user_val : int, targ_val : int, connect_max : float):
 	return true
 
 func damage(dmg : int):
+	var old_HP = health
 	health -= dmg
 	if calculated_Press_Turn != PRESS_TURN.PT.LUCKY:
 		put_damage_numbers.emit(null, self, dmg, calculated_Press_Turn)
 	play_damage.emit()
+	if health > old_HP:
+		play_heal.emit()
 	health = clampi(health,-999 , max_health)
 	if health <= 0:
 		defeat_event.emit()

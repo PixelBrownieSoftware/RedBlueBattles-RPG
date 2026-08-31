@@ -24,8 +24,9 @@ func get_targets_from_move(skill : rpg_skill):
 			targets.append_array(active_enemy_members)
 		-1:
 			globals.targets.clear()
-	if targets.size() > 0 && !skill.can_select_inactive:
-		for targ : battle_character_data in targets:
-			if targ.health <= 0:
-				targets.erase(targ)
+	if targets.size() > 0:
+		if !skill.can_select_inactive:
+			for targ : battle_character_data in targets:
+				if targ.health <= 0:
+					targets.erase(targ)
 	globals.targets = targets

@@ -8,7 +8,7 @@
 script = ExtResource("1_ogqme")
 is_NOT = false
 condition = 0
-compare = 0
+compare = 4
 percentage = 1.0
 elemental = 0.0
 exact_number = 5
@@ -34,5 +34,3 @@ specific_skill = ExtResource("2_e7pgv")
 [resource]
 script = ExtResource("2_o3o6j")
 condiitons = Array[ExtResource("1_ogqme")]([SubResource("Resource_lfneu"), SubResource("Resource_vi7v1")])
-percentage = 1.0
-priority = 1

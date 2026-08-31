@@ -19,5 +19,3 @@ target_condition = 0
 [resource]
 script = ExtResource("2_o3o6j")
 condiitons = Array[ExtResource("1_tooy2")]([SubResource("Resource_ogqme")])
-percentage = 0.0
-priority = 0

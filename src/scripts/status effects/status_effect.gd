@@ -14,6 +14,9 @@ class_name status_effect
 @export var turn_start : bool = false
 @export var contribute_multipler : bool = false
 
+func end_status():
+	turn_duration = 0
+
 func find_elemental_change(el : element) -> float:
 	for elemental in elemental_affinity_change:
 		if GlobalVariables.get_element(elemental.elementalName) == el:

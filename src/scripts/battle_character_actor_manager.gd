@@ -53,6 +53,7 @@ func add_character(chara):
 	chara.assign_add_status_signal(chara_ui.add_status_effect)
 	chara.assign_add_status_signal(fx_factory.spawn_status_add_effect_info)
 	chara.assign_remove_status_signal(fx_factory.spawn_status_remove_effect_info)
+	chara.assign_remove_status_signal(chara_ui.update_status)
 	chara.assign_update_status_signal(chara_ui.update_status)
 	chara.assign_start_turn_signal(chara_ui.enable_ui)
 	chara.assign_start_turn_signal(actor.play_idle_active)

@@ -1,34 +1,34 @@
-[gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=5 format=3 uid="uid://bgyyy8ep40rqs"]
+[gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=5 format=3 uid="uid://cpwubglouvw0b"]
 
 [ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/scripts/behaviour/battle_character_behaviour.gd" id="1_ogqme"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_o3o6j"]
 
-[sub_resource type="Resource" id="Resource_x4jag"]
+[sub_resource type="Resource" id="Resource_ogqme"]
 script = ExtResource("1_ogqme")
 is_NOT = false
 condition = 0
-compare = 0
+compare = 4
 percentage = 0.0
-elemental = 0.0
-exact_number = 2
+elemental = 2.0
+exact_number = 0
 execution_chance = 0.0
-subject = 5
+subject = 0
 skill_condition = 0
-target_condition = 0
+target_condition = 4
 
-[sub_resource type="Resource" id="Resource_5k0s5"]
+[sub_resource type="Resource" id="Resource_o3o6j"]
 script = ExtResource("1_ogqme")
 is_NOT = false
 condition = 0
-compare = 2
-percentage = 0.6
+compare = 3
+percentage = 0.4
 elemental = 0.0
 exact_number = 0
 execution_chance = 0.0
 subject = 0
 skill_condition = 0
-target_condition = 1
+target_condition = 0
 
 [resource]
 script = ExtResource("2_o3o6j")
-condiitons = Array[ExtResource("1_ogqme")]([SubResource("Resource_x4jag"), SubResource("Resource_5k0s5")])
+condiitons = Array[ExtResource("1_ogqme")]([SubResource("Resource_ogqme"), SubResource("Resource_o3o6j")])

@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="8_l0wt6"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="9_orjou"]
 
-[sub_resource type="Resource" id="Resource_7kfoi"]
+[sub_resource type="Resource" id="Resource_d08gv"]
 script = ExtResource("1_twmev")
 character = ExtResource("2_dbxd4")
 skills = Array[ExtResource("4_gf1w8")]([ExtResource("5_a7gsa"), ExtResource("7_d08gv"), ExtResource("7_bpnrv")])
@@ -21,16 +21,16 @@ max_level = 10
 inclusion_flag_requirements = Array[ExtResource("3_01y5d")]([])
 perma_death = false
 
-[sub_resource type="Resource" id="Resource_d7rwd"]
+[sub_resource type="Resource" id="Resource_bpnrv"]
 script = ExtResource("1_twmev")
 character = ExtResource("6_imsrt")
 skills = Array[ExtResource("4_gf1w8")]([ExtResource("7_arkis")])
-min_level = 6
+min_level = 5
 max_level = 8
 inclusion_flag_requirements = Array[ExtResource("3_01y5d")]([])
 perma_death = false
 
 [resource]
 script = ExtResource("9_orjou")
-opponents = Array[ExtResource("1_twmev")]([SubResource("Resource_7kfoi"), SubResource("Resource_d7rwd")])
+opponents = Array[ExtResource("1_twmev")]([SubResource("Resource_d08gv"), SubResource("Resource_bpnrv")])
 rewards = Array[ExtResource("8_l0wt6")]([])

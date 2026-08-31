@@ -101,7 +101,7 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 	var calculated_Press_Turn
 	var return_val = {}
 	var damage_amount : int = damage_formula(attacker, target)
-
+	
 	var dodge_chance : float = attacker.dexterity_net
 	var will_hit = target.stat_chance(attacker.dexterity_net, target.agility_net, 0.95)
 	

@@ -12,6 +12,7 @@ class_name battle_character_base
 @export var skills : Array[rpg_skill]
 @export var override_default_behaviours : bool = false
 @export var chara_behaviour : Array[battle_chara_behaviour]
+@export var chara_behaviour_n : Array[battle_ch_bh_perc]
 @export var elemental_affinities : Array[elemental_affinity]
 @export var elemental_potential : Array[elemental_potential]
 @export var character_colour : Color = Color.WHITE

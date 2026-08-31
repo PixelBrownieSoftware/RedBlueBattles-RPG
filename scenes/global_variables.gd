@@ -70,7 +70,11 @@ func set_flag(flag : global_flag) -> void:
 func set_flag_raw(flag_name : String, flag : bool) -> void:
 	global_flags[flag_name] = flag
 func check_flag(flag : global_flag) -> bool:
-	return global_flags[flag.name] == flag.flag
+	if flag == null:
+		return false
+	if global_flags.has(flag.name):
+		return global_flags[flag.name] == flag.flag
+	return false
 func check_flag_name(flag_name : String) -> bool:
 	return global_flags[flag_name]
 

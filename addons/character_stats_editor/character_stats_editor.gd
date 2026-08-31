@@ -69,7 +69,7 @@ var unassigned_skills_vbox : VBoxContainer
 var skill_cards : Dictionary = {}           # rpg_skill -> Control (Card Container)
 var skill_enable_checks : Dictionary = {}   # rpg_skill -> CheckBox
 
-# Behaviour Assignment Controls
+# Behaviour Assignment Controls (chara_behaviour_n using battle_ch_bh_perc)
 var override_behaviour_check : CheckBox
 var behaviour_vbox : VBoxContainer
 
@@ -148,8 +148,8 @@ func _refresh_behaviour_dropdown_options() -> void:
 	if not is_instance_valid(behaviour_vbox):
 		return
 
-	for row in behaviour_vbox.get_children():
-		var beh_select: OptionButton = row.get_meta("beh_select") if row.has_meta("beh_select") else null
+	for card in behaviour_vbox.get_children():
+		var beh_select: OptionButton = card.get_meta("beh_select") if card.has_meta("beh_select") else null
 		if not is_instance_valid(beh_select):
 			continue
 
@@ -164,7 +164,7 @@ func _refresh_behaviour_dropdown_options() -> void:
 		for idx in range(loaded_behaviours.size()):
 			var beh := loaded_behaviours[idx]
 			var path_name := beh.resource_path.get_file().get_basename()
-			var display_text := "🧠 " + path_name + " (Priority: " + str(beh.priority if "priority" in beh else 0) + ")"
+			var display_text := "🧠 " + path_name
 			beh_select.add_item(display_text, idx + 1)
 			beh_select.set_item_metadata(idx + 1, beh)
 
@@ -374,7 +374,7 @@ func _on_copy_character_pressed() -> void:
 	var count := 0
 	for path in char_paths:
 		if path == current_path:
-			continue # Exclude current character
+			continue
 		var res = load(path)
 		if res is battle_character_base:
 			var display_name : String = res.name if res.name != "" else path.get_file()
@@ -424,20 +424,17 @@ func _execute_copy_data() -> void:
 
 
 func _copy_character_data(src: battle_character_base, target: battle_character_base) -> void:
-	# Copy color, turns, health, stamina, stamina increase levels
 	target.character_colour = src.character_colour
 	target.turns = src.turns
 	target.health = src.health
 	target.stamina = src.stamina
 
-	# Copy Sprite name
 	for prop in ["animation_player_loc", "character_sprite", "sprite", "character_sprite_scene"]:
 		if prop in src and prop in target:
 			target.set(prop, src.get(prop))
 
 	target.stamina_increase_levels = src.stamina_increase_levels.duplicate() if src.stamina_increase_levels != null else []
 
-	# Copy stats
 	if src.stats and target.stats:
 		target.stats.strength = src.stats.strength
 		target.stats.vitality = src.stats.vitality
@@ -446,7 +443,6 @@ func _copy_character_data(src: battle_character_base, target: battle_character_b
 		target.stats.agility = src.stats.agility
 		target.stats.luck = src.stats.luck
 
-	# Copy level growth rates
 	if src.stat_increase and target.stat_increase:
 		target.stat_increase.health_min = src.stat_increase.health_min
 		target.stat_increase.health_max = src.stat_increase.health_max
@@ -457,12 +453,10 @@ func _copy_character_data(src: battle_character_base, target: battle_character_b
 		target.stat_increase.agility = src.stat_increase.agility
 		target.stat_increase.luck = src.stat_increase.luck
 
-	# Copy experience ratings
 	target.base_exp_score = src.base_exp_score
 	target.base_exp_to_NL = src.base_exp_to_NL
 	target.exp_req_multipler = src.exp_req_multipler
 
-	# Copy skills
 	var src_skills = src.get("character_skills") if "character_skills" in src else src.get("skills")
 	if src_skills is Array:
 		var copied_skills: Array = src_skills.duplicate()
@@ -471,14 +465,21 @@ func _copy_character_data(src: battle_character_base, target: battle_character_b
 		elif "skills" in target:
 			target.set("skills", copied_skills)
 
-	# Copy behaviours & behavior override flag
 	if "override_default_behaviours" in src and "override_default_behaviours" in target:
 		target.override_default_behaviours = src.override_default_behaviours
 
-	if src.chara_behaviour:
-		target.chara_behaviour = src.chara_behaviour.duplicate()
+	# Copy chara_behaviour_n
+	var new_behaviours_n: Array[battle_ch_bh_perc] = []
+	if src.chara_behaviour_n:
+		for entry in src.chara_behaviour_n:
+			if entry:
+				var new_entry := battle_ch_bh_perc.new()
+				new_entry.behaviour = entry.behaviour
+				new_entry.percentage = entry.percentage
+				new_entry.priority = entry.priority
+				new_behaviours_n.append(new_entry)
+	target.chara_behaviour_n = new_behaviours_n
 
-	# Deep Copy Elemental Potentials
 	var new_potentials: Array[elemental_potential] = []
 	if src.elemental_potential:
 		for pot in src.elemental_potential:
@@ -489,7 +490,6 @@ func _copy_character_data(src: battle_character_base, target: battle_character_b
 				new_potentials.append(new_pot)
 	target.elemental_potential = new_potentials
 
-	# Deep Copy Elemental Affinities
 	var new_affinities: Array[elemental_affinity] = []
 	if src.elemental_affinities:
 		for aff in src.elemental_affinities:
@@ -693,7 +693,7 @@ func _build_form() -> void:
 
 	form_root.add_child(_hsep())
 
-	# ---- Skill Assignment Configurator (Tabbed View) ----
+	# ---- Skill Assignment Configurator ----
 	form_root.add_child(_section_header("Character Skills"))
 
 	skill_search_edit = LineEdit.new()
@@ -704,7 +704,6 @@ func _build_form() -> void:
 	skill_tab_container = TabContainer.new()
 	skill_tab_container.custom_minimum_size = Vector2(0, 260)
 
-	# 1. Assigned Moves Tab
 	var assigned_scroll := ScrollContainer.new()
 	assigned_scroll.name = "Assigned Moves"
 	assigned_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -714,7 +713,6 @@ func _build_form() -> void:
 	assigned_skills_vbox.add_theme_constant_override("separation", 6)
 	assigned_scroll.add_child(assigned_skills_vbox)
 
-	# 2. Unassigned Moves Tab
 	var unassigned_scroll := ScrollContainer.new()
 	unassigned_scroll.name = "Unassigned Moves"
 	unassigned_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -736,8 +734,8 @@ func _build_form() -> void:
 
 	form_root.add_child(_hsep())
 
-	# ---- Character Behaviours (chara_behaviour) ----
-	form_root.add_child(_section_header("Character Behaviours (chara_behaviour)"))
+	# ---- Character Behaviours (chara_behaviour_n) ----
+	form_root.add_child(_section_header("Character Behaviours (chara_behaviour_n)"))
 
 	override_behaviour_check = CheckBox.new()
 	override_behaviour_check.text = "Override Default Behaviours (Ignore AI Defaults)"
@@ -745,13 +743,13 @@ func _build_form() -> void:
 	form_root.add_child(override_behaviour_check)
 
 	behaviour_vbox = VBoxContainer.new()
-	behaviour_vbox.add_theme_constant_override("separation", 6)
+	behaviour_vbox.add_theme_constant_override("separation", 8)
 	form_root.add_child(behaviour_vbox)
 
 	var add_behaviour_btn := Button.new()
 	add_behaviour_btn.text = "+ Assign Behaviour Slot"
 	add_behaviour_btn.pressed.connect(func():
-		_add_behaviour_slot(null)
+		_add_behaviour_slot(null, 1.0, 0)
 		_on_field_changed(0)
 	)
 	form_root.add_child(add_behaviour_btn)
@@ -909,9 +907,18 @@ func _move_skill_card_to_tab(sk: rpg_skill, is_assigned: bool) -> void:
 		unassigned_skills_vbox.add_child(card)
 
 
-func _add_behaviour_slot(selected_beh: battle_chara_behaviour = null) -> void:
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
+func _add_behaviour_slot(selected_beh: battle_chara_behaviour = null, perc_val: float = 1.0, prio_val: int = 0) -> void:
+	var card := PanelContainer.new()
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.18, 0.18, 0.18, 0.9)
+	style.set_content_margin_all(6)
+	card.add_theme_stylebox_override("panel", style)
+
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 4)
+
+	var row1 := HBoxContainer.new()
+	row1.add_theme_constant_override("separation", 8)
 
 	var beh_select := OptionButton.new()
 	beh_select.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -921,7 +928,7 @@ func _add_behaviour_slot(selected_beh: battle_chara_behaviour = null) -> void:
 	for idx in range(loaded_behaviours.size()):
 		var beh := loaded_behaviours[idx]
 		var path_name := beh.resource_path.get_file().get_basename()
-		var display_text := "🧠 " + path_name + " (Priority: " + str(beh.priority if "priority" in beh else 0) + ")"
+		var display_text := "🧠 " + path_name
 		beh_select.add_item(display_text, idx + 1)
 		beh_select.set_item_metadata(idx + 1, beh)
 
@@ -932,18 +939,56 @@ func _add_behaviour_slot(selected_beh: battle_chara_behaviour = null) -> void:
 		beh_select.select(match_idx)
 
 	beh_select.item_selected.connect(func(_idx): _on_field_changed(0))
-	row.add_child(beh_select)
+	row1.add_child(beh_select)
 
 	var del_btn := Button.new()
-	del_btn.text = "Remove"
+	del_btn.text = "Remove Slot"
 	del_btn.pressed.connect(func():
-		row.queue_free()
+		card.queue_free()
 		_on_field_changed(0)
 	)
-	row.add_child(del_btn)
+	row1.add_child(del_btn)
+	vbox.add_child(row1)
 
-	row.set_meta("beh_select", beh_select)
-	behaviour_vbox.add_child(row)
+	var row2 := HBoxContainer.new()
+	row2.add_theme_constant_override("separation", 8)
+
+	var prio_lbl := Label.new()
+	prio_lbl.text = "Priority:"
+	row2.add_child(prio_lbl)
+
+	var prio_spin := SpinBox.new()
+	prio_spin.min_value = -99
+	prio_spin.max_value = 99
+	prio_spin.value = prio_val
+	prio_spin.value_changed.connect(func(_v): _on_field_changed(0))
+	row2.add_child(prio_spin)
+
+	var perc_lbl := Label.new()
+	perc_lbl.text = "Weight: %d%%" % int(perc_val * 100)
+	perc_lbl.custom_minimum_size = Vector2(90, 0)
+	row2.add_child(perc_lbl)
+
+	var perc_slider := HSlider.new()
+	perc_slider.min_value = 0.0
+	perc_slider.max_value = 1.0
+	perc_slider.step = 0.01
+	perc_slider.value = perc_val
+	perc_slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	perc_slider.value_changed.connect(func(v):
+		perc_lbl.text = "Weight: %d%%" % int(v * 100)
+		_on_field_changed(0)
+	)
+	row2.add_child(perc_slider)
+
+	vbox.add_child(row2)
+	card.add_child(vbox)
+
+	card.set_meta("beh_select", beh_select)
+	card.set_meta("prio_spin", prio_spin)
+	card.set_meta("perc_slider", perc_slider)
+
+	behaviour_vbox.add_child(card)
 
 
 func _add_stamina_level_item(level_val: int = 1) -> void:
@@ -1163,7 +1208,6 @@ func _populate_form() -> void:
 
 	_refresh_sprite_dropdown_options()
 
-	# Match character sprite string name (e.g. animation_player_loc)
 	var current_sprite_str := ""
 	for prop in ["animation_player_loc", "character_sprite", "sprite", "character_sprite_scene"]:
 		if prop in current_res and current_res.get(prop) is String:
@@ -1172,7 +1216,6 @@ func _populate_form() -> void:
 				break
 
 	if current_sprite_str != "":
-		# Extract basename if a path was stored previously
 		var clean_sprite_name := current_sprite_str.get_file().get_basename() if "/" in current_sprite_str or "." in current_sprite_str else current_sprite_str
 
 		var match_idx := 0
@@ -1181,7 +1224,6 @@ func _populate_form() -> void:
 				match_idx = i
 				break
 
-		# If assigned sprite string isn't in SPRITE_DIR, append it as a temporary item
 		if match_idx == 0:
 			var new_idx := sprite_select.get_item_count()
 			sprite_select.add_item("🎬 (Custom/Missing) " + clean_sprite_name, new_idx)
@@ -1229,10 +1271,10 @@ func _populate_form() -> void:
 	for child in behaviour_vbox.get_children():
 		child.queue_free()
 
-	if current_res.chara_behaviour:
-		for beh in current_res.chara_behaviour:
-			if beh:
-				_add_behaviour_slot(beh)
+	if current_res.chara_behaviour_n:
+		for entry in current_res.chara_behaviour_n:
+			if entry:
+				_add_behaviour_slot(entry.behaviour, entry.percentage, entry.priority)
 
 	for stat_name in stat_edits.keys():
 		stat_edits[stat_name].value = current_res.stats.get(stat_name)
@@ -1278,7 +1320,6 @@ func _apply_form_to_resource() -> void:
 	current_res.health = int(health_edit.value)
 	current_res.stamina = int(stamina_edit.value)
 
-	# Apply Sprite Selection (Name Only)
 	var chosen_sprite_name: String = sprite_select.get_item_metadata(sprite_select.selected) if sprite_select.selected > 0 else ""
 
 	for prop in ["animation_player_loc", "character_sprite", "sprite", "character_sprite_scene"]:
@@ -1304,14 +1345,22 @@ func _apply_form_to_resource() -> void:
 	if "override_default_behaviours" in current_res:
 		current_res.override_default_behaviours = override_behaviour_check.button_pressed
 
-	var assigned_behaviours: Array[battle_chara_behaviour] = []
-	for row in behaviour_vbox.get_children():
-		var beh_select: OptionButton = row.get_meta("beh_select")
+	var assigned_behaviours_n: Array[battle_ch_bh_perc] = []
+	for card in behaviour_vbox.get_children():
+		var beh_select: OptionButton = card.get_meta("beh_select")
+		var prio_spin: SpinBox = card.get_meta("prio_spin")
+		var perc_slider: HSlider = card.get_meta("perc_slider")
+
 		if beh_select and beh_select.selected > 0:
 			var selected_beh: battle_chara_behaviour = beh_select.get_item_metadata(beh_select.selected)
 			if selected_beh:
-				assigned_behaviours.append(selected_beh)
-	current_res.chara_behaviour = assigned_behaviours
+				var entry := battle_ch_bh_perc.new()
+				entry.behaviour = selected_beh
+				entry.percentage = perc_slider.value
+				entry.priority = int(prio_spin.value)
+				assigned_behaviours_n.append(entry)
+
+	current_res.chara_behaviour_n = assigned_behaviours_n
 
 	for stat_name in stat_edits.keys():
 		current_res.stats.set(stat_name, int(stat_edits[stat_name].value))

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=18 format=3 uid="uid://cquom4g51vu7d"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=19 format=3 uid="uid://cquom4g51vu7d"]
 
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="1_enux8"]
+[ext_resource type="Script" uid="uid://o660r8odwqil" path="res://src/scripts/behaviour/battle_chara_bh_perc.gd" id="2_47p4c"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_kdifn"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_vjepx"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="3_4k8ha"]
@@ -66,6 +67,7 @@ stat_increase = SubResource("Resource_2y283")
 skills = Array[ExtResource("5_su4ie")]([ExtResource("6_lejrf"), ExtResource("7_oxxjt"), ExtResource("9_qxi2o"), ExtResource("10_wvbr4")])
 override_default_behaviours = false
 chara_behaviour = Array[ExtResource("2_kdifn")]([])
+chara_behaviour_n = Array[ExtResource("2_47p4c")]([])
 elemental_affinities = Array[ExtResource("2_vjepx")]([SubResource("Resource_kdifn"), SubResource("Resource_47p4c"), SubResource("Resource_42mrm"), SubResource("Resource_dc34p")])
 elemental_potential = Array[ExtResource("3_4k8ha")]([])
 character_colour = Color(0.490196, 0.0745098, 1, 1)

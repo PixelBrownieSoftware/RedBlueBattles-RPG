@@ -151,30 +151,54 @@ func get_acceptable_behaviours() -> Array[Dictionary]:
 	
 	var character_skills: Array[rpg_skill] = battle_globals.current_character.get_skills
 	var character_data: battle_character_base = battle_globals.current_character.assigned_data
-	var behaviours: Array[battle_chara_behaviour] = []
+	
+	# Array of Dictionary: { "behaviour": battle_chara_behaviour, "percentage": float, "priority": int }
+	var behaviour_entries: Array[Dictionary] = []
 
 	if "override_default_behaviours" in character_data and character_data.override_default_behaviours:
-		behaviours = character_data.chara_behaviour.duplicate()
+		if character_data.chara_behaviour_n and not character_data.chara_behaviour_n.is_empty():
+			for entry in character_data.chara_behaviour_n:
+				if entry and entry.behaviour:
+					behaviour_entries.append({
+						"behaviour": entry.behaviour,
+						"percentage": entry.percentage,
+						"priority": entry.priority
+					})
 	else:
+		# Populate default behaviours if not overriding
 		for path in DEFAULT_BEHAVIOURS:
 			if ResourceLoader.exists(path):
 				var res = load(path)
 				if res is battle_chara_behaviour:
-					behaviours.append(res)
-		if character_data.chara_behaviour:
-			behaviours.append_array(character_data.chara_behaviour)
+					behaviour_entries.append({
+						"behaviour": res,
+						"percentage": res.percentage if "percentage" in res else 1.0,
+						"priority": res.priority if "priority" in res else 0
+					})
+		# Append base chara_behaviour_n entries
+		if character_data.chara_behaviour_n:
+			for entry in character_data.chara_behaviour_n:
+				if entry and entry.behaviour:
+					behaviour_entries.append({
+						"behaviour": entry.behaviour,
+						"percentage": entry.percentage,
+						"priority": entry.priority
+					})
 	
 	var turn_num: int = battle_globals.turn_count if "turn_count" in battle_globals else 0
 	var round_num: int = battle_globals.round_number if "round_number" in battle_globals else 0
 
 	var max_priority: int = -1
 
-	# 1. Gather all valid candidates and track highest priority
-	for behaviour_group in behaviours:
+	# 1. Evaluate valid candidates and track highest priority
+	for entry in behaviour_entries:
+		var behaviour_group: battle_chara_behaviour = entry["behaviour"]
 		if behaviour_group == null or behaviour_group.condiitons.is_empty():
 			continue
-		var group_priority: int = behaviour_group.priority
-		var group_percentage: float = behaviour_group.percentage
+			
+		var group_priority: int = entry["priority"]
+		var group_percentage: float = entry["percentage"]
+
 		for skill in character_skills:
 			if skill is skill_summon:
 				if GlobalVariables.is_player_team(battle_globals.current_character):
@@ -225,7 +249,7 @@ func get_acceptable_behaviours() -> Array[Dictionary]:
 					"behaviour_name": behaviour_group.resource_name if behaviour_group.resource_name != "" else "Unnamed Behaviour"
 				})
 
-	# 2. Filter list to keep ONLY behaviours with the highest priority
+	# 2. Filter list to keep ONLY candidates with the highest priority
 	var top_priority_candidates: Array[Dictionary] = []
 	for candidate in acceptable_candidates:
 		if candidate["priority"] == max_priority:

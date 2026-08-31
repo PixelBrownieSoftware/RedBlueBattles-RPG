@@ -9,11 +9,11 @@ signal update_status_effect(status)
 func _process(delta):
 	if character_data != null:
 		var hp_clamp: int = 0
-		hp_clamp = clampi(character_data.health ,0 ,character_data.max_health)
+		hp_clamp = clampi(character_data.health ,-999 ,character_data.max_health)
 		var character_colour = character_data.assigned_data.character_colour
 		var status_colour = Color.WHITE
 		var txt = ""
-		if hp_clamp == 0:
+		if hp_clamp <= 0:
 			status_colour = Color.DARK_RED
 		if !GlobalVariables.is_player_team(character_data):
 			character_colour = Color.WHITE

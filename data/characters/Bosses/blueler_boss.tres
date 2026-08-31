@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=27 format=3 uid="uid://phgfeevhx66u"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=26 format=3 uid="uid://phgfeevhx66u"]
 
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="1_2a8wh"]
-[ext_resource type="Resource" uid="uid://dg5l6v8h4v5m" path="res://data/behaviours/sheild_from_element.tres" id="2_1lb28"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_ocmf6"]
-[ext_resource type="Resource" uid="uid://bgyyy8ep40rqs" path="res://data/behaviours/charge_rest.tres" id="3_nl6ak"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="3_ylisd"]
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="4_dyaat"]
+[ext_resource type="Script" uid="uid://o660r8odwqil" path="res://src/scripts/behaviour/battle_chara_bh_perc.gd" id="4_yqlfx"]
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="5_nl6ak"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="6_3tukf"]
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="6_uqol7"]
@@ -86,7 +85,8 @@ stats = SubResource("Resource_1lb28")
 stat_increase = SubResource("Resource_arxix")
 skills = Array[ExtResource("12_3tukf")]([ExtResource("11_1lb28"), ExtResource("12_nl6ak"), ExtResource("13_3tukf")])
 override_default_behaviours = false
-chara_behaviour = Array[ExtResource("1_2a8wh")]([ExtResource("2_1lb28"), ExtResource("3_nl6ak")])
+chara_behaviour = Array[ExtResource("1_2a8wh")]([])
+chara_behaviour_n = Array[ExtResource("4_yqlfx")]([])
 elemental_affinities = Array[ExtResource("2_ocmf6")]([SubResource("Resource_3tukf"), SubResource("Resource_yqlfx")])
 elemental_potential = Array[ExtResource("3_ylisd")]([SubResource("Resource_rklse"), SubResource("Resource_0725y"), SubResource("Resource_00qaf"), SubResource("Resource_1soln"), SubResource("Resource_3jbbi")])
 character_colour = Color(0.245911, 0.520267, 0.986298, 1)

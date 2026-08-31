@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="status_effect" load_steps=9 format=3 uid="uid://bmsm8u58qrkv3"]
+
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_dpou5"]
+[ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_jxk45"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="3_d8kx3"]
+[ext_resource type="Texture2D" uid="uid://nnvuydldwp8y" path="res://sprites/GUI/fx/status_effects11.png" id="3_e6kfq"]
+
+[sub_resource type="Resource" id="Resource_1h5fp"]
+script = ExtResource("2_jxk45")
+elementalName = "Force"
+affinity = -1.0
+
+[sub_resource type="Resource" id="Resource_am50p"]
+script = ExtResource("2_jxk45")
+elementalName = "Peirce"
+affinity = -1.0
+
+[sub_resource type="Resource" id="Resource_gvskr"]
+script = ExtResource("2_jxk45")
+elementalName = "Strike"
+affinity = -1.0
+
+[sub_resource type="Resource" id="Resource_e6kfq"]
+script = ExtResource("3_d8kx3")
+strength = 0
+vitality = 2
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("1_dpou5")
+name = "Physical resistance"
+turn_duration = 2
+effects_to_remove = Array[ExtResource("1_dpou5")]([])
+elemental_affinity_change = Array[ExtResource("2_jxk45")]([SubResource("Resource_1h5fp"), SubResource("Resource_am50p"), SubResource("Resource_gvskr")])
+stat_changes = SubResource("Resource_e6kfq")
+icon = ExtResource("3_e6kfq")
+round_start = true
+after_action = false
+turn_start = false
+contribute_multipler = false

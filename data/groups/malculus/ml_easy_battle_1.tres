@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bpamjdagrg4s" path="res://data/characters/Enemies/blackler.tres" id="5_xbbp0"]
 [ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/skills/Force/drowsy_punch.tres" id="6_brou4"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="7_jh06x"]
-[ext_resource type="Resource" uid="uid://ctgrru2oc8gj1" path="res://data/Skills/Force/silly_punch.tres" id="7_vvc2n"]
+[ext_resource type="Resource" uid="uid://ctgrru2oc8gj1" path="res://data/skills/Force/silly_punch.tres" id="7_vvc2n"]
 [ext_resource type="Resource" uid="uid://bjuovr1ld32gp" path="res://data/skills/Strike/burning_slash.tres" id="9_lvsdu"]
 [ext_resource type="Resource" uid="uid://bioayifxbn765" path="res://data/skills/Peirce/poison_needle.tres" id="10_cwwtu"]
 [ext_resource type="Resource" uid="uid://c8qy2a5takbyp" path="res://data/skills/Ice/frost_breath.tres" id="12_pssnp"]

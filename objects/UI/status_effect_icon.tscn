@@ -199,7 +199,7 @@ fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_tharq")
+&"": SubResource("AnimationLibrary_tharq")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

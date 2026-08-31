@@ -51,10 +51,10 @@ func _on_animation_player_animation_finished(anim_name):
 		if !anim_backwards:
 			#var index = 0
 			for targ in globals.targets:
-				if targ.health > 0:
+				#if targ.health > 0:
 					#var targ_button : Button = get_child(0).get_child(index)
 					#targ_button.selected_character = targ
-					globals.get_actor(targ).toggle_highlight(true)
+				globals.get_actor(targ).toggle_highlight(true)
 					#targ_button.position =  globals.get_actor(targ).position + Vector2(85,165) - $"../../BattleCamera2D".position + $"../../BattleCamera2D".offset
 					#targ_button.show_hp()
 					#targ_button.text = targ.name

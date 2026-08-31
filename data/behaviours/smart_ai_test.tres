@@ -62,5 +62,3 @@ specific_skill = ExtResource("3_j635l")
 [resource]
 script = ExtResource("2_o3o6j")
 condiitons = Array[ExtResource("1_ogqme")]([SubResource("Resource_1g0q4"), SubResource("Resource_j635l"), SubResource("Resource_gl87h"), SubResource("Resource_yjvjv")])
-percentage = 0.64
-priority = 0

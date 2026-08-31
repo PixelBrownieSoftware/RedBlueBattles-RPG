@@ -65,7 +65,8 @@ func check_cond(character: battle_character_data, target: battle_character_data,
 	Check if this behaviour condition is met (taking is_NOT into account)
 	"""
 	var result := false
-	
+	if skill is skill_passive:
+		return false
 	match subject:
 		SUBJECT.TARGET:
 			result = check_target(target, skill)

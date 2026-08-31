@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="battle_character_base" load_steps=17 format=3 uid="uid://dvbhcjiya6bjc"]
+[gd_resource type="Resource" script_class="battle_character_base" load_steps=15 format=3 uid="uid://dvbhcjiya6bjc"]
 
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="1_h2ian"]
-[ext_resource type="Resource" uid="uid://crepqahdqcovh" path="res://data/behaviours/smart_ai_test.tres" id="2_erdcl"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_leed6"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="3_82grj"]
-[ext_resource type="Resource" uid="uid://cg20lauvwa885" path="res://data/behaviours/oddball_AI_test.tres" id="3_mpyin"]
-[ext_resource type="Resource" uid="uid://bh7sbhcrs82fh" path="res://data/behaviours/test_charge_behaviour.tres" id="4_cgej1"]
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="4_xq5cf"]
+[ext_resource type="Script" uid="uid://o660r8odwqil" path="res://src/scripts/behaviour/battle_chara_bh_perc.gd" id="5_hwtex"]
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="6_wf6j4"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="7_skwlg"]
 [ext_resource type="Resource" uid="uid://buhnvgb0e82yd" path="res://data/skills/Ice/blizzard.tres" id="8_mpyin"]
@@ -48,7 +46,8 @@ stats = SubResource("Resource_hwtex")
 stat_increase = SubResource("Resource_p61m0")
 skills = Array[ExtResource("8_p61m0")]([ExtResource("8_mpyin"), ExtResource("11_7d27x"), ExtResource("11_hrlo5"), ExtResource("15_cgej1")])
 override_default_behaviours = true
-chara_behaviour = Array[ExtResource("1_h2ian")]([ExtResource("3_mpyin"), ExtResource("4_cgej1"), ExtResource("2_erdcl")])
+chara_behaviour = Array[ExtResource("1_h2ian")]([])
+chara_behaviour_n = Array[ExtResource("5_hwtex")]([])
 elemental_affinities = Array[ExtResource("2_leed6")]([])
 elemental_potential = Array[ExtResource("3_82grj")]([])
 character_colour = Color(1, 1, 1, 1)

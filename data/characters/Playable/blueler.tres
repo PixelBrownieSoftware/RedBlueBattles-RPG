@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://dom1b5kvbpvi2" path="res://src/battle_character_base.gd" id="1_hkc4q"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="1_n1mic"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_fc855"]
-[ext_resource type="Resource" uid="uid://dg5l6v8h4v5m" path="res://data/behaviours/sheild_from_element.tres" id="2_fcb4o"]
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="2_wkuab"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_yj48s"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="3_demxa"]
+[ext_resource type="Script" uid="uid://o660r8odwqil" path="res://src/scripts/behaviour/battle_chara_bh_perc.gd" id="3_hvqsv"]
 [ext_resource type="Script" uid="uid://b0r5n5ybg2pgl" path="res://src/scripts/rpg_stat_increase.gd" id="3_uahto"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_onqjm"]
 [ext_resource type="Resource" uid="uid://bwtglqquja4h1" path="res://data/elements/Electric.tres" id="6_ddvyw"]
@@ -91,7 +91,8 @@ stats = SubResource("Resource_h63ju")
 stat_increase = SubResource("Resource_yt1im")
 skills = Array[ExtResource("12_hvqsv")]([ExtResource("12_p4phi"), ExtResource("13_hvqsv"), ExtResource("14_o0xxc")])
 override_default_behaviours = false
-chara_behaviour = Array[ExtResource("2_fc855")]([ExtResource("2_fcb4o")])
+chara_behaviour = Array[ExtResource("2_fc855")]([])
+chara_behaviour_n = Array[ExtResource("3_hvqsv")]([])
 elemental_affinities = Array[ExtResource("2_yj48s")]([SubResource("Resource_6dw8m"), SubResource("Resource_uah8w")])
 elemental_potential = Array[ExtResource("2_wkuab")]([SubResource("Resource_4xbcj"), SubResource("Resource_vc43r"), SubResource("Resource_qr4av"), SubResource("Resource_kdskc"), SubResource("Resource_uprca"), SubResource("Resource_ddnqc")])
 character_colour = Color(0.245911, 0.520267, 0.986298, 1)
