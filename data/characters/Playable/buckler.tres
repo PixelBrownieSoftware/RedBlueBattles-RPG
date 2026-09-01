@@ -14,9 +14,9 @@
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="6_2b1pw"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="9_iit0l"]
 [ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="10_tbbbk"]
-[ext_resource type="Resource" uid="uid://dn51uarfcbmjd" path="res://data/skills/Peirce/shadow_snipe.tres" id="12_0yx2w"]
+[ext_resource type="Resource" uid="uid://dn51uarfcbmjd" path="res://data/Skills/Peirce/shadow_snipe.tres" id="12_0yx2w"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="12_2b1pw"]
-[ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/skills/Peirce/shoot.tres" id="13_2b1pw"]
+[ext_resource type="Resource" uid="uid://c3q6aauj4as7y" path="res://data/Skills/Peirce/shoot.tres" id="13_2b1pw"]
 
 [sub_resource type="Resource" id="Resource_0yx2w"]
 script = ExtResource("2_f6u3f")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="rpg_skill" load_steps=8 format=3 uid="uid://bvece8bvmiv63"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_2rgxe"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_omdum"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_ybb7s"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="3_ybb7s"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_a4du0"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="5_2rgxe"]
@@ -30,5 +30,5 @@ skill_scope = 1
 skill_element = ExtResource("5_2rgxe")
 skill_animation = Array[ExtResource("4_a4du0")]([])
 usable_by_anyone = false
-effects_to_remove = Array[ExtResource("2_omdum")]([])
+effects_to_remove = Array[ExtResource("2_ybb7s")]([])
 effects_to_add = Array[ExtResource("1_2rgxe")]([])

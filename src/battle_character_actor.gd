@@ -103,7 +103,7 @@ func assign_data(data : battle_character_data):
 
 func calculate_outline_colour() -> Color:
 	var current_health : float = character_data.health
-	var max_health : float = character_data.max_health
+	var max_health : float = character_data.health_net
 	var colour_health : float = (current_health/max_health)
 	var colour = Color.GREEN
 	if colour_health < 0.75 && colour_health > 0.5:

@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=8 format=3 uid="uid://cdnde8cyg0q5s"]
+[gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=7 format=3 uid="uid://cdnde8cyg0q5s"]
 
 [ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/scripts/behaviour/battle_character_behaviour.gd" id="1_ogqme"]
-[ext_resource type="Resource" uid="uid://dqjbrdfm4xf7c" path="res://data/skills/Electric/zeus_spear.tres" id="2_jbol7"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_o3o6j"]
-[ext_resource type="Resource" uid="uid://capw7vx5dvpy2" path="res://data/skills/none/charge.tres" id="3_4evgc"]
+[ext_resource type="Resource" uid="uid://capw7vx5dvpy2" path="res://data/Skills/none/charge.tres" id="3_4evgc"]
 
 [sub_resource type="Resource" id="Resource_jbol7"]
 script = ExtResource("1_ogqme")
@@ -30,7 +29,6 @@ execution_chance = 0.0
 subject = 3
 skill_condition = 0
 target_condition = 0
-specific_skill = ExtResource("2_jbol7")
 
 [sub_resource type="Resource" id="Resource_1xfwy"]
 script = ExtResource("1_ogqme")

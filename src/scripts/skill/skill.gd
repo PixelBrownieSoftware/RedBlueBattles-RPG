@@ -148,9 +148,10 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 	return_val["No_Anim"] = 0	#Damage number stuff
 	return return_val
 
-func status_apply(target: battle_character_data):
-	target.apply_status_effects(skill_element.effects_to_add)
-	target.remove_status_effects(skill_element.effects_to_remove)
+func status_apply(target: battle_character_data, element_add : bool = true):
+	if element_add:
+		target.apply_status_effects(skill_element.effects_to_add)
+		target.remove_status_effects(skill_element.effects_to_remove)
 	target.apply_status_effects(effects_to_add)
 	target.remove_status_effects(effects_to_remove)
 

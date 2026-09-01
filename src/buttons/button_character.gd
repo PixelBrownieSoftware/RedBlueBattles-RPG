@@ -23,7 +23,7 @@ func hide_anim():
 	$AnimationPlayer.play("button_fade_out")
 	
 func show_hp():
-	$HealthBar.max_value = selected_character.max_health
+	$HealthBar.max_value = selected_character.health_net
 	$HealthBar.value = selected_character.health
 
 func _on_pressed():

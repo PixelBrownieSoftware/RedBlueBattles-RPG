@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="1_uewae"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="1_vfrcw"]
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_gmd2k"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_0sr2u"]
-[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="5_nkdl1"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_nuidf"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="5_0sr2u"]
 [ext_resource type="Resource" uid="uid://bog42i8lb7wr0" path="res://data/characters/Playable/blueler.tres" id="6_7sm04"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="7_d8mu4"]
 [ext_resource type="Script" uid="uid://cpdnno7efgm72" path="res://src/scripts/battle group rewards/reward_character.gd" id="7_r7erx"]
@@ -13,7 +13,7 @@
 [sub_resource type="Resource" id="Resource_8asq2"]
 script = ExtResource("2_gmd2k")
 character = ExtResource("1_vfrcw")
-skills = Array[ExtResource("4_0sr2u")]([])
+skills = Array[ExtResource("4_nuidf")]([])
 min_level = 1
 max_level = 1
 inclusion_flag_requirements = Array[ExtResource("7_d8mu4")]([])
@@ -48,4 +48,4 @@ flag_req = SubResource("Resource_egife")
 [resource]
 script = ExtResource("1_uewae")
 opponents = Array[ExtResource("2_gmd2k")]([SubResource("Resource_8asq2")])
-rewards = Array[ExtResource("5_nkdl1")]([SubResource("Resource_wancf"), SubResource("Resource_agqwu")])
+rewards = Array[ExtResource("5_0sr2u")]([SubResource("Resource_wancf"), SubResource("Resource_agqwu")])

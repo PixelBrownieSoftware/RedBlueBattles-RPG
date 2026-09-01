@@ -96,6 +96,7 @@ func load_game():
 				for chara in PartyMembers.get_children():
 					if chara.name == character_name:
 						GlobalVariables.assign_skill(chara, skill_obj)
+					chara.health = chara.health_net
 	for flag in GlobalVariables.global_flags:
 		GlobalVariables.set_flag_raw(flag, file.get_8()) 
 	file.close()

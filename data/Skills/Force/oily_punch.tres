@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="rpg_skill" load_steps=12 format=3 uid="uid://c4hatg1c5unq5"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_chcdy"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_3qhkx"]
 [ext_resource type="Resource" uid="uid://dafhkmba7uni1" path="res://data/status_effects/flammable.tres" id="2_d4uj0"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="3_d4uj0"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_8laus"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_u3mt6"]
 [ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="6_2pp0u"]
@@ -48,5 +48,5 @@ skill_scope = 1
 skill_element = ExtResource("6_2pp0u")
 skill_animation = Array[ExtResource("4_8laus")]([SubResource("Resource_re3dk"), SubResource("Resource_d1o76")])
 usable_by_anyone = false
-effects_to_remove = Array[ExtResource("2_3qhkx")]([])
+effects_to_remove = Array[ExtResource("3_d4uj0")]([])
 effects_to_add = Array[ExtResource("1_chcdy")]([SubResource("Resource_aprj8")])

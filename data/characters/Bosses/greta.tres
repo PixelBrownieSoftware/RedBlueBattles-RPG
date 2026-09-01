@@ -13,8 +13,8 @@
 [ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="8_gkwah"]
 [ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="9_b7k2q"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="10_yfln8"]
-[ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/skills/Wind/gust.tres" id="11_yfln8"]
-[ext_resource type="Resource" uid="uid://dbtg8tardrxav" path="res://data/skills/Ice/ice_fist.tres" id="12_brshw"]
+[ext_resource type="Resource" uid="uid://dqnlpi4jpmla8" path="res://data/Skills/Wind/gust.tres" id="11_yfln8"]
+[ext_resource type="Resource" uid="uid://dbtg8tardrxav" path="res://data/Skills/Ice/ice_fist.tres" id="12_brshw"]
 
 [sub_resource type="Resource" id="Resource_hshrj"]
 script = ExtResource("2_dym0v")

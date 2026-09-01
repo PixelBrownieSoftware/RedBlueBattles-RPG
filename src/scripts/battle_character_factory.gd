@@ -9,7 +9,7 @@ func destroy_character(chara : battle_character_data):
 	delete_character_notification.emit(chara)
 	#chara.queue_free()
 
-func create_new_character(base : battle_character_base, party, level, permadeath : bool = false) -> battle_character_data:
+func create_new_character(base : battle_character_base, party, level, permadeath : bool = false, added_skills : Array[rpg_skill] = []) -> battle_character_data:
 	var chara : battle_character_data = battle_char_obj.instantiate()
 	chara.new_data(base, level)
 	chara.name = base.name
@@ -27,5 +27,9 @@ func create_new_character(base : battle_character_base, party, level, permadeath
 		else:
 			GlobalVariables.enabled_party_members[chara] = false
 	create_character_notification.emit(chara)
+	if added_skills != null:
+		for skill in added_skills:
+			chara.assign_skill(skill)
+	chara.health = chara.health_net
 	return chara
 	

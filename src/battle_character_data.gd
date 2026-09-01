@@ -19,7 +19,14 @@ class_name battle_character_data
 @export var dexterity : int = 1
 @export var agility : int = 1
 @export var luck : int = 1
-
+@export var health_net : int:
+	get:
+		var base_hp = max_health
+		var net_hp = base_hp
+		for passive in get_skills:
+			if passive is skill_passive:
+				net_hp += base_hp*passive.life_percentage
+		return net_hp
 @export var strength_net : int:
 	get:
 		var str = strength
@@ -169,8 +176,6 @@ func assign_end_turn_signal(function : Callable):
 	
 func new_data(base_data : battle_character_base, level):
 	assigned_data = base_data
-	max_health = base_data.health
-	health = max_health
 	stamina = 0
 	max_stamina = assigned_data.stamina
 	expereince_to_NL = base_data.base_exp_to_NL
@@ -182,6 +187,7 @@ func new_data(base_data : battle_character_base, level):
 	luck = base_data.stats.luck
 	for l in level - 1:
 		level_up()
+	health = health_net
 
 func assign_skill(move : rpg_skill):
 	var met_requirements = move.requirements_met(self)
@@ -385,7 +391,7 @@ func damage(dmg : int):
 	play_damage.emit()
 	if health > old_HP:
 		play_heal.emit()
-	health = clampi(health,-999 , max_health)
+	health = clampi(health,-999 , health_net)
 	if health <= 0:
 		defeat_event.emit()
 		remove_all_status_effects()

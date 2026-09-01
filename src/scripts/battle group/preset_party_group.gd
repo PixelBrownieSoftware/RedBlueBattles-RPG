@@ -20,8 +20,9 @@ func start_battle():
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var level : int =  rng.randi_range(chara.min_level, chara.max_level)
-		var character : battle_character_data = CharacterFactory.create_new_character(chara.character,PartyMembers , level)
+		var character : battle_character_data = CharacterFactory.create_new_character(chara.character,PartyMembers , level, false, chara.skills)
 		character.flags.set("temp", true)
-		for skill in chara.skills:
-			character.assign_skill(skill)
+		#for skill in chara.skills:
+			#character.assign_skill(skill)
+		#character.health = character.health_net
 	super()

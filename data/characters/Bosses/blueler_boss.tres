@@ -12,10 +12,10 @@
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="7_yqlfx"]
 [ext_resource type="Resource" uid="uid://5en31hxrc1ca" path="res://data/elements/Strike.tres" id="8_rklse"]
 [ext_resource type="Resource" uid="uid://denev0eb5urku" path="res://data/elements/Water.tres" id="9_0725y"]
-[ext_resource type="Resource" uid="uid://ddo5u7jkibmw1" path="res://data/skills/Ice/blue_blast.tres" id="11_1lb28"]
+[ext_resource type="Resource" uid="uid://ddo5u7jkibmw1" path="res://data/Skills/Ice/blue_blast.tres" id="11_1lb28"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="12_3tukf"]
-[ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/skills/Ice/icicle.tres" id="12_nl6ak"]
-[ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/skills/Strike/slash.tres" id="13_3tukf"]
+[ext_resource type="Resource" uid="uid://dkx6ro6wkvbk3" path="res://data/Skills/Ice/icicle.tres" id="12_nl6ak"]
+[ext_resource type="Resource" uid="uid://drpkulcvfkwmg" path="res://data/Skills/Strike/slash.tres" id="13_3tukf"]
 
 [sub_resource type="Resource" id="Resource_3tukf"]
 script = ExtResource("2_ocmf6")

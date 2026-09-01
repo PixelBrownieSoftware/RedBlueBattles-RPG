@@ -9,7 +9,7 @@ signal update_status_effect(status)
 func _process(delta):
 	if character_data != null:
 		var hp_clamp: int = 0
-		hp_clamp = clampi(character_data.health ,-999 ,character_data.max_health)
+		hp_clamp = clampi(character_data.health ,-999 ,character_data.health_net)
 		var character_colour = character_data.assigned_data.character_colour
 		var status_colour = Color.WHITE
 		var txt = ""
@@ -17,15 +17,15 @@ func _process(delta):
 			status_colour = Color.DARK_RED
 		if !GlobalVariables.is_player_team(character_data):
 			character_colour = Color.WHITE
-			var perc = float(character_data.health)/float(character_data.max_health)* 100.0
+			var perc = float(character_data.health)/float(character_data.health_net)* 100.0
 			txt ="[color=" + status_colour.to_html() + "]" + "HP "+ str(snapped(perc,0.01)) + "%[/color]" 
 		else:
-			txt ="[color=" + status_colour.to_html() + "]" + "HP "+ str(hp_clamp) + "/" +str(character_data.max_health)+ "[/color]" 
+			txt ="[color=" + status_colour.to_html() + "]" + "HP "+ str(hp_clamp) + "/" +str(character_data.health_net)+ "[/color]" 
 		$Offset/Name.text = "[color=" + character_colour.to_html() + "]" + character_data.name + "[/color]" 
 		$Offset/Hp.text =txt
-		$Offset/HealthBar.max_value = character_data.max_health
+		$Offset/HealthBar.max_value = character_data.health_net
 		$Offset/HealthBar.min_value = 0
-		$Offset/HealthBar.value = clampi(character_data.health, 0, character_data.max_health)
+		$Offset/HealthBar.value = clampi(character_data.health, 0, character_data.health_net)
 		if GlobalVariables.is_player_team(character_data):
 			$Offset/HealthBar.get("theme_override_styles/fill").bg_color = character_data.assigned_data.character_colour
 		else:
@@ -45,7 +45,7 @@ func delete_ui():
 func init_dmg_bar():
 	old_health = character_data.health
 	$Offset/DamageBar.value = old_health
-	$Offset/DamageBar.max_value = character_data.max_health
+	$Offset/DamageBar.max_value = character_data.health_net
 	
 func update_status(status : status_effect):
 	update_status_effect.emit(status)

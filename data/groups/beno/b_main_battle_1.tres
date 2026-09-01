@@ -1,34 +1,34 @@
 [gd_resource type="Resource" script_class="battle_group_data" load_steps=12 format=3 uid="uid://ds61k43jqhj3n"]
 
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_umyt1"]
-[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="2_cj5im"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="2_l74lq"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="3_mjmr5"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_n80k7"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_8b4d0"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_eyjrl"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="5_c0iho"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="5_prjam"]
 [ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/Skills/Strike/frost_strike.tres" id="6_0mc56"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="8_8b4d0"]
 
-[sub_resource type="Resource" id="Resource_vmgoi"]
+[sub_resource type="Resource" id="Resource_8b4d0"]
 script = ExtResource("1_umyt1")
 character = ExtResource("2_l74lq")
-skills = Array[ExtResource("4_8b4d0")]([ExtResource("5_c0iho")])
-min_level = 9
-max_level = 9
+skills = Array[ExtResource("4_eyjrl")]([ExtResource("5_c0iho")])
+min_level = 10
+max_level = 10
 inclusion_flag_requirements = Array[ExtResource("3_n80k7")]([])
 perma_death = false
 
-[sub_resource type="Resource" id="Resource_qggr8"]
+[sub_resource type="Resource" id="Resource_twp02"]
 script = ExtResource("1_umyt1")
 character = ExtResource("5_prjam")
-skills = Array[ExtResource("4_8b4d0")]([ExtResource("6_0mc56")])
-min_level = 9
-max_level = 9
+skills = Array[ExtResource("4_eyjrl")]([ExtResource("6_0mc56")])
+min_level = 11
+max_level = 11
 inclusion_flag_requirements = Array[ExtResource("3_n80k7")]([])
 perma_death = false
 
 [resource]
 script = ExtResource("3_mjmr5")
-opponents = Array[ExtResource("1_umyt1")]([SubResource("Resource_vmgoi"), SubResource("Resource_qggr8")])
-rewards = Array[ExtResource("2_cj5im")]([])
+opponents = Array[ExtResource("1_umyt1")]([SubResource("Resource_8b4d0"), SubResource("Resource_twp02")])
+rewards = Array[ExtResource("8_8b4d0")]([])

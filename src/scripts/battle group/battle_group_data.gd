@@ -13,7 +13,9 @@ func start_battle():
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var level : int =  rng.randi_range(battle_character_member.min_level, battle_character_member.max_level)
-		var character : battle_character_data = CharacterFactory.create_new_character(battle_character_member.character,EnemyMembers , level)
+		var character : battle_character_data = CharacterFactory.create_new_character(battle_character_member.character,EnemyMembers , level, false, battle_character_member.skills)
 		character.is_permadeath = battle_character_member.perma_death
-		for skill in battle_character_member.skills:
-			character.assign_skill(skill)
+		#for skill in battle_character_member.skills:
+			#character.assign_skill(skill)
+		#character.health = character.health_net
+			

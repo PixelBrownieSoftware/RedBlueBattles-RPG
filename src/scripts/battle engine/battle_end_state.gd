@@ -26,7 +26,7 @@ func start_state():
 	for character in EnemyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
 		if chara.health <= 0:
-			if chara.health <= -(chara.max_health /2):
+			if chara.health <= -(chara.health_net /2):
 				if !results_list.has("Overwhelm"):
 					results_list["Overwhelm"] = 0.08
 				else:
@@ -55,8 +55,13 @@ func start_state():
 		var gained_rewards : Array[String]
 		
 		for reward in GlobalVariables.current_battle.rewards:
-			print("Flag name: " + reward.flag_req.name + " " + str(reward.flag_req.flag))
-			if GlobalVariables.check_flag(reward.flag_req):
+			var reward_fufilled = false
+			if reward.flag_req !=null:
+				reward_fufilled = GlobalVariables.check_flag(reward.flag_req)
+				print("Flag name: " + reward.flag_req.name + " " + str(reward.flag_req.flag))
+			else:
+				reward_fufilled = true
+			if reward_fufilled:
 				reward.give_reward()
 				gained_rewards.append(reward.return_message())
 		
@@ -101,7 +106,7 @@ func leave_battle():
 	GlobalVariables.expereince_score += bonus
 	for character in PartyMembers.get_children():
 		var chara : battle_character_data = character as battle_character_data
-		chara.health = chara.max_health
+		chara.health = chara.health_net
 		chara.stamina = 0
 		chara.status_effects.clear()
 	for character in EnemyMembers.get_children():

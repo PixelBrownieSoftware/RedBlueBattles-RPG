@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_jpnbj"]
 [ext_resource type="Resource" uid="uid://baoj1lhme3etp" path="res://data/status_effects/blindness.tres" id="2_6pyak"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_nmnji"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="2_p3j3e"]
 [ext_resource type="Resource" uid="uid://cimel63kfbwmx" path="res://data/status_effects/frozen.tres" id="3_2btyw"]
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="3_v1b2e"]
 [ext_resource type="Resource" uid="uid://dttvaj5cg8ujv" path="res://data/status_effects/sleepy.tres" id="4_7diff"]
 [ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_j7lgl"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="5_tg4rn"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="6_6pyak"]
 
 [sub_resource type="Resource" id="Resource_2fxmt"]
@@ -66,5 +66,5 @@ skill_scope = 1
 skill_element = ExtResource("3_v1b2e")
 skill_animation = Array[ExtResource("2_p3j3e")]([SubResource("Resource_us0ba"), SubResource("Resource_rbrk0"), SubResource("Resource_yktb2")])
 usable_by_anyone = false
-effects_to_remove = Array[ExtResource("2_nmnji")]([])
+effects_to_remove = Array[ExtResource("5_tg4rn")]([])
 effects_to_add = Array[ExtResource("1_jpnbj")]([SubResource("Resource_2fxmt"), SubResource("Resource_cfvar"), SubResource("Resource_8l7qs")])

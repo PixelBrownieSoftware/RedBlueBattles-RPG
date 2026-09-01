@@ -17,9 +17,8 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var level : int =  rng.randi_range(summon_chara.min_level, summon_chara.max_level)
-		var character = CharacterFactory.create_new_character(summon_chara.character, party, level, true)
-		for skill in summon_chara.skills:
-			character.assign_skill(skill)
+		var character = CharacterFactory.create_new_character(summon_chara.character, party, level, true,summon_chara.skills)
+		
 	if amount == 1:
 		return_val["Press_turn"] = PRESS_TURN.PT.WEAK
 	else:

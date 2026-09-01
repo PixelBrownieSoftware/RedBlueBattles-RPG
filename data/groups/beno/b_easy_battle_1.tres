@@ -5,16 +5,16 @@
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_rbhru"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_aldty"]
 [ext_resource type="Resource" uid="uid://dob7n2ouxbutx" path="res://data/Skills/Strike/frost_strike.tres" id="4_0wy8y"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_27bd6"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_xklcy"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_yit6n"]
-[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/skills/Water/splash.tres" id="5_1hbgt"]
-[ext_resource type="Resource" uid="uid://bjuovr1ld32gp" path="res://data/skills/Strike/burning_slash.tres" id="6_ecl35"]
-[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="8_s6pe3"]
+[ext_resource type="Resource" uid="uid://cgoisyv034l7v" path="res://data/Skills/Water/splash.tres" id="5_1hbgt"]
+[ext_resource type="Resource" uid="uid://bjuovr1ld32gp" path="res://data/Skills/Strike/burning_slash.tres" id="6_ecl35"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="9_yit6n"]
 
 [sub_resource type="Resource" id="Resource_anqou"]
 script = ExtResource("2_rbhru")
 character = ExtResource("1_tq017")
-skills = Array[ExtResource("4_yit6n")]([ExtResource("4_0wy8y"), ExtResource("5_1hbgt")])
+skills = Array[ExtResource("4_27bd6")]([ExtResource("4_0wy8y"), ExtResource("5_1hbgt")])
 min_level = 7
 max_level = 8
 inclusion_flag_requirements = Array[ExtResource("3_aldty")]([])
@@ -23,7 +23,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_m0muy"]
 script = ExtResource("2_rbhru")
 character = ExtResource("4_xklcy")
-skills = Array[ExtResource("4_yit6n")]([ExtResource("6_ecl35")])
+skills = Array[ExtResource("4_27bd6")]([ExtResource("6_ecl35")])
 min_level = 7
 max_level = 8
 inclusion_flag_requirements = Array[ExtResource("3_aldty")]([])
@@ -32,4 +32,4 @@ perma_death = false
 [resource]
 script = ExtResource("1_pvmsn")
 opponents = Array[ExtResource("2_rbhru")]([SubResource("Resource_anqou"), SubResource("Resource_m0muy")])
-rewards = Array[ExtResource("8_s6pe3")]([])
+rewards = Array[ExtResource("9_yit6n")]([])

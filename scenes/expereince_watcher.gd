@@ -24,7 +24,7 @@ func exp_points_calc(user : battle_character_data, target : battle_character_dat
 			multiplier += 1.5
 		PRESS_TURN.PT.WEAK:
 			multiplier += 1
-	var dmg_perc : float = ((float)(damage)/(float)(target.max_health))
+	var dmg_perc : float = ((float)(damage)/(float)(target.health_net))
 	var lvl_perc : float = ((float)(target.current_level)/(float)(user.current_level))
 	var total : int = ((dmg_perc * lvl_perc) * target.assigned_data.base_exp_score)
 	print(lvl_perc)

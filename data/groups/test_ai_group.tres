@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_bhwrf"]
 [ext_resource type="Resource" uid="uid://dvbhcjiya6bjc" path="res://data/characters/Enemies/TestAI.tres" id="2_f7q38"]
-[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="2_yvj1u"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_kuy5d"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="3_vr7p1"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_kiqcs"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_fbht5"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="5_kiqcs"]
 
 [sub_resource type="Resource" id="Resource_sgneo"]
 script = ExtResource("1_bhwrf")
 character = ExtResource("2_f7q38")
-skills = Array[ExtResource("4_kiqcs")]([])
+skills = Array[ExtResource("4_fbht5")]([])
 min_level = 1
 max_level = 1
 inclusion_flag_requirements = Array[ExtResource("3_kuy5d")]([])
@@ -19,4 +19,4 @@ perma_death = false
 [resource]
 script = ExtResource("3_vr7p1")
 opponents = Array[ExtResource("1_bhwrf")]([SubResource("Resource_sgneo")])
-rewards = Array[ExtResource("2_yvj1u")]([])
+rewards = Array[ExtResource("5_kiqcs")]([])

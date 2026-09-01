@@ -6,7 +6,7 @@ class_name global_variables
 @export var auto_player : bool = false
 @export var expereince_score : int = 0
 var multilplier: float = 1
-var extra_skills_limit = 3
+var extra_skills_limit = 4
 @export var lucky_damage_bonus : float = 1.4
 @export var strength_colour : Color
 @export var vitality_colour : Color

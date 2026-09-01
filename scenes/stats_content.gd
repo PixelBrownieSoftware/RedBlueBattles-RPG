@@ -2,7 +2,7 @@ extends HBoxContainer
 @export var stamina_show : RichTextLabel
 
 func update_stats(character : battle_character_data) -> void:
-	$VBoxContainer/Health.text = "Health: " + str(character.max_health)
+	$VBoxContainer/Health.text = "Health: " + str(character.health_net)
 	var stamina_text = ""
 	for i in range(character.max_stamina):
 		stamina_text += "[img=18]sprites/GUI/stamina_gui.png[/img]"

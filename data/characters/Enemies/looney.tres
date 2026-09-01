@@ -9,9 +9,9 @@
 [ext_resource type="Script" uid="uid://dtf3mh3guebac" path="res://src/elemental_potential.gd" id="4_m1aoi"]
 [ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="5_gtdf1"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="6_bv07t"]
-[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/skills/Force/bash.tres" id="6_fy71s"]
-[ext_resource type="Resource" uid="uid://c23sjcxxaxmqd" path="res://data/skills/Force/tackle.tres" id="7_65ps6"]
-[ext_resource type="Resource" uid="uid://d3wggvfc4mplg" path="res://data/skills/Force/rampage.tres" id="10_lqq0k"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="6_fy71s"]
+[ext_resource type="Resource" uid="uid://c23sjcxxaxmqd" path="res://data/Skills/Force/tackle.tres" id="7_65ps6"]
+[ext_resource type="Resource" uid="uid://d3wggvfc4mplg" path="res://data/Skills/Force/rampage.tres" id="10_lqq0k"]
 
 [sub_resource type="Resource" id="Resource_363iu"]
 script = ExtResource("3_rpnl5")

@@ -4,15 +4,15 @@
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="2_tixb4"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="3_8uw7l"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_hf8cj"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_dkvdt"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_12xwv"]
 [ext_resource type="Resource" uid="uid://b2dyk0jh6s4m4" path="res://data/Skills/Force/drowsy_punch.tres" id="4_f5txn"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="4_wheg1"]
-[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="6_np5tj"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="7_dkvdt"]
 
 [sub_resource type="Resource" id="Resource_8asq2"]
 script = ExtResource("2_tixb4")
 character = ExtResource("1_ee8v1")
-skills = Array[ExtResource("4_dkvdt")]([ExtResource("4_f5txn")])
+skills = Array[ExtResource("4_12xwv")]([ExtResource("4_f5txn")])
 min_level = 1
 max_level = 2
 inclusion_flag_requirements = Array[ExtResource("3_hf8cj")]([])
@@ -21,7 +21,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_0g08n"]
 script = ExtResource("2_tixb4")
 character = ExtResource("4_wheg1")
-skills = Array[ExtResource("4_dkvdt")]([])
+skills = Array[ExtResource("4_12xwv")]([])
 min_level = 1
 max_level = 2
 inclusion_flag_requirements = Array[ExtResource("3_hf8cj")]([])
@@ -30,4 +30,4 @@ perma_death = false
 [resource]
 script = ExtResource("3_8uw7l")
 opponents = Array[ExtResource("2_tixb4")]([SubResource("Resource_8asq2"), SubResource("Resource_0g08n")])
-rewards = Array[ExtResource("6_np5tj")]([])
+rewards = Array[ExtResource("7_dkvdt")]([])

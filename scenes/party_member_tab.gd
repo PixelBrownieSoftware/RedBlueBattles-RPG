@@ -62,7 +62,7 @@ const max_stats = 50
 func _process(delta):
 	if current_character != null:
 		$Panel/NLH/Name.text = "[center]" + current_character.name + "[/center]"
-		var health_stamina = "[center]"+"Health: "+  str(current_character.max_health) + "[/center]\n"
+		var health_stamina = "[center]"+"Health: "+  str(current_character.health_net) + "[/center]\n"
 		health_stamina += "[center]"+"Stamina: "+  str(current_character.max_stamina) + "[/center]"
 		$Panel/NLH/Health.text = health_stamina
 		if !in_battle:

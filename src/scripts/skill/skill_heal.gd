@@ -15,7 +15,7 @@ func process_damage(attacker: battle_character_data, target: battle_character_da
 	var return_val = {}
 	var damage_amount : int = damage_formula(attacker, target)
 	target.damage(damage_amount)
-	status_apply(target)
+	status_apply(target, false)
 	return_val["Press_turn"] = PRESS_TURN.PT.NORMAL
 	return_val["Amount"] = 0
 	return_val["No_Anim"] = 1

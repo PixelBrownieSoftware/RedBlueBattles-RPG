@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="battle_chara_behaviour" load_steps=7 format=3 uid="uid://r6puop00d2nc"]
 
 [ext_resource type="Script" uid="uid://7i4afhbbrx55" path="res://src/scripts/behaviour/battle_character_behaviour.gd" id="1_ogqme"]
-[ext_resource type="Resource" uid="uid://capw7vx5dvpy2" path="res://data/skills/none/charge.tres" id="2_hxuca"]
+[ext_resource type="Resource" uid="uid://capw7vx5dvpy2" path="res://data/Skills/none/charge.tres" id="2_hxuca"]
 [ext_resource type="Script" uid="uid://bukaddx1o34t1" path="res://src/scripts/behaviour/battle_chara_behaviour.gd" id="2_o3o6j"]
 
 [sub_resource type="Resource" id="Resource_ogqme"]

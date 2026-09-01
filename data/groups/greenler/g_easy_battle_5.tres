@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_yqj1o"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_bbfxy"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_fcamv"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_b5aul"]
-[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="4_fr52n"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_cftxg"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="5_b5aul"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="5_vnej8"]
 
 [sub_resource type="Resource" id="Resource_b5aul"]
 script = ExtResource("1_yqj1o")
 character = ExtResource("2_bbfxy")
-skills = Array[ExtResource("4_b5aul")]([])
+skills = Array[ExtResource("4_cftxg")]([])
 min_level = 1
 max_level = 2
 inclusion_flag_requirements = Array[ExtResource("3_fcamv")]([])
@@ -19,4 +19,4 @@ perma_death = false
 [resource]
 script = ExtResource("5_vnej8")
 opponents = Array[ExtResource("1_yqj1o")]([SubResource("Resource_b5aul")])
-rewards = Array[ExtResource("4_fr52n")]([])
+rewards = Array[ExtResource("5_b5aul")]([])

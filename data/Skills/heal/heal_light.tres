@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="skill_heal" load_steps=9 format=3 uid="uid://pcnooeip2ej5"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_j4ew7"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_o11d1"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_quxcs"]
 [ext_resource type="Script" uid="uid://ctesr776gn4rq" path="res://src/scripts/skill/skill_heal.gd" id="3_tpq5v"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_3fsq4"]
 [ext_resource type="Resource" uid="uid://ddgvaj1mvfkan" path="res://data/elements/Heal.tres" id="5_eo08h"]
@@ -26,7 +26,7 @@ luck = 2
 script = ExtResource("3_tpq5v")
 name = "Heal light"
 learnable = true
-can_select_inactive = false
+can_select_inactive = true
 power = 2
 stamina_cost = 3
 repeat_min = 1
@@ -36,5 +36,5 @@ skill_scope = 0
 skill_element = ExtResource("5_eo08h")
 skill_animation = Array[ExtResource("4_3fsq4")]([SubResource("Resource_j7bms")])
 usable_by_anyone = false
-effects_to_remove = Array[ExtResource("2_o11d1")]([])
+effects_to_remove = Array[ExtResource("2_quxcs")]([])
 effects_to_add = Array[ExtResource("1_j4ew7")]([])

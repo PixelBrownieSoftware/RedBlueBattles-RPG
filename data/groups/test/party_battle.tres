@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bcwoh7nmviaaf" path="res://data/characters/Playable/anne.tres" id="8_1f5mo"]
 [ext_resource type="Resource" uid="uid://bcjoka06yw8pm" path="res://data/characters/Bosses/greenler.tres" id="8_l0ren"]
 [ext_resource type="Script" uid="uid://cv7rw7qh3dji3" path="res://src/scripts/battle group/preset_party_group.gd" id="9_m3up2"]
-[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/skills/Status/energy_pulse.tres" id="9_qam82"]
+[ext_resource type="Resource" uid="uid://bfxysyy86s6n5" path="res://data/Skills/Status/energy_pulse.tres" id="9_qam82"]
 [ext_resource type="Resource" uid="uid://d4d5i5yhsjaxb" path="res://data/characters/Bosses/lord_red.tres" id="19_a0efh"]
 
 [sub_resource type="Resource" id="Resource_k1kys"]

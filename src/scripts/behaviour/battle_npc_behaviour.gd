@@ -320,7 +320,7 @@ func search_target_weaknesses_hp_pc(el : element, num : float, hp_perc : float):
 	var best_HP : int = 9999
 	var chosen_target : battle_character_data
 	for target in potential_targs:
-		if target.health < target.max_health * hp_perc:
+		if target.health < target.health_net * hp_perc:
 			if target.health < best_HP:
 				best_HP = target.health
 				chosen_target = target
@@ -355,7 +355,7 @@ func find_target_conditions(conditions : Array[battle_character_behaviour], move
 		for behaviour in conditions:
 			match behaviour.condition:
 				behaviour.BEHAVIOUR_CONDITION.TARGET_HP:
-					if character.health <= (character.max_health * behaviour.percentage):
+					if character.health <= (character.health_net * behaviour.percentage):
 						score += 1
 					else:
 						pass

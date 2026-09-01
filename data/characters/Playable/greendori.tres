@@ -14,9 +14,9 @@
 [ext_resource type="Resource" uid="uid://crru00x2wa00j" path="res://data/elements/Ice.tres" id="7_051b7"]
 [ext_resource type="Resource" uid="uid://coeopvywj2svk" path="res://data/elements/Fire.tres" id="8_jrwmc"]
 [ext_resource type="Resource" uid="uid://bklqrvbv5vcp1" path="res://data/elements/Wind.tres" id="9_k3lfs"]
-[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/skills/Force/bash.tres" id="12_mpa0n"]
+[ext_resource type="Resource" uid="uid://dfyswlpvqjjts" path="res://data/Skills/Force/bash.tres" id="12_mpa0n"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="12_vipo8"]
-[ext_resource type="Resource" uid="uid://cp6fwt7nmkbk6" path="res://data/skills/Psychic/mind_spark_1_1.tres" id="13_vipo8"]
+[ext_resource type="Resource" uid="uid://cp6fwt7nmkbk6" path="res://data/Skills/Psychic/mind_spark_1_1.tres" id="13_vipo8"]
 
 [sub_resource type="Resource" id="Resource_34tcw"]
 script = ExtResource("2_ykyot")

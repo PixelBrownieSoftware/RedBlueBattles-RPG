@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://baoj1lhme3etp" path="res://data/status_effects/blindness.tres" id="2_bgs4v"]
 [ext_resource type="Resource" uid="uid://tves5bwqkwdx" path="res://data/status_effects/fear.tres" id="3_ctlm0"]
 [ext_resource type="Resource" uid="uid://dttvaj5cg8ujv" path="res://data/status_effects/sleepy.tres" id="4_0hbi7"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="5_4xbjs"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="5_5ot5x"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="6_hun0p"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="7_akwyo"]
 [ext_resource type="Resource" uid="uid://dgra6r7q0f6n1" path="res://data/elements/Psychic.tres" id="8_traqt"]
@@ -60,5 +60,5 @@ skill_scope = 1
 skill_element = ExtResource("8_traqt")
 skill_animation = Array[ExtResource("7_akwyo")]([SubResource("Resource_453ef"), SubResource("Resource_oj0td")])
 usable_by_anyone = false
-effects_to_remove = Array[ExtResource("5_4xbjs")]([])
+effects_to_remove = Array[ExtResource("5_5ot5x")]([])
 effects_to_add = Array[ExtResource("1_rpbxa")]([SubResource("Resource_uuly8"), SubResource("Resource_ao8ds"), SubResource("Resource_fkmi6")])

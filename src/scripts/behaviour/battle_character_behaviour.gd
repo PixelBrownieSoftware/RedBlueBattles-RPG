@@ -104,7 +104,7 @@ func check_target(target: battle_character_data, skill: rpg_skill) -> bool:
 	match target_condition:
 		TARGET_CONDITION.HEALTH:
 			var target_hp = target.health
-			var threshold = target.max_health * percentage
+			var threshold = target.health_net * percentage
 			return compare_numbers(int(target_hp), int(threshold))
 		
 		TARGET_CONDITION.STAMINA:
@@ -175,7 +175,7 @@ func check_skill(skill: rpg_skill) -> bool:
 	
 	match skill_condition:
 		SKILL_CONDITION.SPECIFIC:
-			print("Is specific skill " + specific_skill.name + ": " + str(skill == specific_skill))
+			#print("Is specific skill " + specific_skill.name + ": " + str(skill == specific_skill))
 			return skill == specific_skill
 		
 		SKILL_CONDITION.ELEMENT:

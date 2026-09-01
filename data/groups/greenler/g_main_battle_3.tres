@@ -4,16 +4,16 @@
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="2_8llrt"]
 [ext_resource type="Script" uid="uid://mwrbgjf2xrq6" path="res://src/scripts/battle group/battle_group_data.gd" id="2_xljxi"]
 [ext_resource type="Script" uid="uid://c7geqf83mrtos" path="res://src/scripts/gl_flag.gd" id="3_pov17"]
+[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_7jtxu"]
 [ext_resource type="Resource" uid="uid://ddccocy0dls7i" path="res://data/characters/Enemies/kappy.tres" id="4_d886g"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="4_ef0xt"]
-[ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_sprxv"]
-[ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/skills/Strike/oily_slash.tres" id="6_1ijs1"]
-[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="7_j2pmk"]
+[ext_resource type="Resource" uid="uid://bsyluugevdlwg" path="res://data/Skills/Strike/oily_slash.tres" id="6_1ijs1"]
+[ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="8_sprxv"]
 
 [sub_resource type="Resource" id="Resource_qj4yx"]
 script = ExtResource("1_51ita")
 character = ExtResource("2_8llrt")
-skills = Array[ExtResource("4_sprxv")]([ExtResource("4_ef0xt")])
+skills = Array[ExtResource("4_7jtxu")]([ExtResource("4_ef0xt")])
 min_level = 6
 max_level = 6
 inclusion_flag_requirements = Array[ExtResource("3_pov17")]([])
@@ -22,7 +22,7 @@ perma_death = false
 [sub_resource type="Resource" id="Resource_ba0rl"]
 script = ExtResource("1_51ita")
 character = ExtResource("4_d886g")
-skills = Array[ExtResource("4_sprxv")]([ExtResource("6_1ijs1")])
+skills = Array[ExtResource("4_7jtxu")]([ExtResource("6_1ijs1")])
 min_level = 6
 max_level = 6
 inclusion_flag_requirements = Array[ExtResource("3_pov17")]([])
@@ -31,4 +31,4 @@ perma_death = false
 [resource]
 script = ExtResource("2_xljxi")
 opponents = Array[ExtResource("1_51ita")]([SubResource("Resource_qj4yx"), SubResource("Resource_ba0rl")])
-rewards = Array[ExtResource("7_j2pmk")]([])
+rewards = Array[ExtResource("8_sprxv")]([])

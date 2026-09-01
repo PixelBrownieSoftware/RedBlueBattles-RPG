@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_6adq0"]
 [ext_resource type="Resource" uid="uid://baoj1lhme3etp" path="res://data/status_effects/blindness.tres" id="2_02x7s"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_chv60"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="3_02x7s"]
 [ext_resource type="Script" uid="uid://bh47pcimh60tf" path="res://src/scripts/skill/skill.gd" id="4_02x7s"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_ipb6k"]
 [ext_resource type="Resource" uid="uid://bifw64maj2juu" path="res://data/elements/Force.tres" id="5_r7exo"]
@@ -48,5 +48,5 @@ skill_scope = 1
 skill_element = ExtResource("5_r7exo")
 skill_animation = Array[ExtResource("4_ipb6k")]([SubResource("Resource_qwplt"), SubResource("Resource_1srld")])
 usable_by_anyone = false
-effects_to_remove = Array[ExtResource("2_chv60")]([])
+effects_to_remove = Array[ExtResource("3_02x7s")]([])
 effects_to_add = Array[ExtResource("1_6adq0")]([SubResource("Resource_02x7s")])

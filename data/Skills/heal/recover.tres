@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="skill_heal" load_steps=9 format=3 uid="uid://dkbekej7gpsuo"]
 
 [ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_ubami"]
-[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_n4ql1"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_ubami"]
 [ext_resource type="Script" uid="uid://ctesr776gn4rq" path="res://src/scripts/skill/skill_heal.gd" id="3_fpfaa"]
 [ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_v4ryk"]
 [ext_resource type="Resource" uid="uid://ddgvaj1mvfkan" path="res://data/elements/Heal.tres" id="5_l223i"]
@@ -26,7 +26,7 @@ luck = 1
 script = ExtResource("3_fpfaa")
 name = "Recover"
 learnable = true
-can_select_inactive = false
+can_select_inactive = true
 power = 5
 stamina_cost = 5
 repeat_min = 1
@@ -36,5 +36,5 @@ skill_scope = 0
 skill_element = ExtResource("5_l223i")
 skill_animation = Array[ExtResource("4_v4ryk")]([SubResource("Resource_ubami")])
 usable_by_anyone = false
-effects_to_remove = Array[ExtResource("2_n4ql1")]([])
+effects_to_remove = Array[ExtResource("2_ubami")]([])
 effects_to_add = Array[ExtResource("1_ubami")]([])
