@@ -105,8 +105,8 @@ class_name battle_character_data
 			return 1
 		return luc
 
-var pass_turn : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
-var guard : rpg_skill = preload("res://data/Skills/Misc/guard.tres")
+var pass_turn : rpg_skill = preload("res://data/Skills/none/pass.tres")
+var guard : rpg_skill = preload("res://data/Skills/none/guard.tres")
 var flags : Dictionary = {}
 
 @export var get_natural_skills : Array[rpg_skill]:
@@ -177,6 +177,7 @@ func assign_end_turn_signal(function : Callable):
 func new_data(base_data : battle_character_base, level):
 	assigned_data = base_data
 	stamina = 0
+	max_health = assigned_data.health
 	max_stamina = assigned_data.stamina
 	expereince_to_NL = base_data.base_exp_to_NL
 	strength = base_data.stats.strength

@@ -113,7 +113,7 @@ func leave_battle():
 		var chara : battle_character_data = character as battle_character_data
 		chara.queue_free()
 	GlobalVariables.current_battle.end_battle()
-	SaveSystem.save_game()
+	SaveSystem.save_game(GlobalVariables.current_slot_index)
 	await get_tree().create_timer(0.4).timeout
 	await FadeScene.fade_bg(Color.BLACK, 0.6)
 	if GlobalVariables.current_level.terminal:

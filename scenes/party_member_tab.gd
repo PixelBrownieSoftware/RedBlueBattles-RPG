@@ -48,7 +48,7 @@ func level_up():
 	GlobalVariables.expereince_score -= current_character.expereince_to_NL
 	current_character.level_up()
 	load_skill_buttons()
-	SaveSystem.save_game()
+	SaveSystem.save_game(GlobalVariables.current_slot_index)
 
 func set_elements():
 	for potential in $Panel/PA/Potential.get_children():

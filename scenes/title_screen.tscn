@@ -10,41 +10,16 @@ script = ExtResource("1_5y3j7")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 99.0
-offset_bottom = 128.0
+offset_right = 1152.0
+offset_bottom = 648.0
 theme = ExtResource("2_3uq5d")
-
-[node name="New game" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 521.0
-offset_top = 287.0
-offset_right = 644.0
-offset_bottom = 326.0
-text = "New game"
-
-[node name="Load game" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 520.0
-offset_top = 345.0
-offset_right = 643.0
-offset_bottom = 384.0
-text = "Load game"
-
-[node name="Debug" type="Button" parent="Control"]
-visible = false
-layout_mode = 0
-offset_left = 520.0
-offset_top = 410.0
-offset_right = 643.0
-offset_bottom = 449.0
-text = "Debug"
 
 [node name="Title" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 338.0
-offset_top = 80.0
+offset_top = 40.0
 offset_right = 828.0
-offset_bottom = 237.0
+offset_bottom = 197.0
 theme_override_colors/font_outline_color = Color(0.140447, 0.140447, 0.140447, 1)
 theme_override_colors/font_shadow_color = Color(0.169245, 0.169245, 0.169245, 1)
 theme_override_fonts/normal_font = ExtResource("3_nxy5x")
@@ -53,6 +28,15 @@ bbcode_enabled = true
 text = "[center][color=red]Red[/color] [color=cornflowerblue]Blue[/color] [/center]
 [center]BATTLES[/center]"
 tab_size = 7
+
+[node name="SlotsContainer" type="VBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 416.0
+offset_top = 220.0
+offset_right = 736.0
+offset_bottom = 500.0
+theme_override_constants/separation = 10
 
 [node name="MadeBy" type="RichTextLabel" parent="Control"]
 layout_mode = 0
@@ -76,7 +60,3 @@ text = "This game uses an autosave system.
 It will save when you finish a battle or level up a character."
 fit_content = true
 tab_size = 7
-
-[connection signal="pressed" from="Control/New game" to="." method="new_game"]
-[connection signal="pressed" from="Control/Load game" to="." method="load_game"]
-[connection signal="pressed" from="Control/Debug" to="." method="load_game"]

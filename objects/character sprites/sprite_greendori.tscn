@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn0vswt8n3rbd"]
+[gd_scene load_steps=8 format=3 uid="uid://bn0vswt8n3rbd"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_ra5p7"]
+[ext_resource type="Shader" uid="uid://ccv3ekwwfk7q2" path="res://misc/material/character_highlight.gdshader" id="2_dk34b"]
 [ext_resource type="Texture2D" uid="uid://m3je0exy41ca" path="res://sprites/greendori_sprite_sheet.png" id="2_vduqm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpw81"]
+resource_local_to_scene = true
+shader = ExtResource("2_dk34b")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
+shader_parameter/character_colour = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
 [sub_resource type="Animation" id="Animation_72emb"]
 resource_name = "attack"
-length = 0.8
-step = 0.05
+length = 0.3
+step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14,10 +22,10 @@ tracks/0/path = NodePath("sprite_greendori/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+"values": [6, 7, 8, 9, 10, 11, 12, 13, 14]
 }
 
 [sub_resource type="Animation" id="Animation_oun8u"]
@@ -44,11 +52,13 @@ _data = {
 [node name="sprite_greendori" instance=ExtResource("1_ra5p7")]
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_tpw81")
 texture = ExtResource("2_vduqm")
 hframes = 4
 vframes = 4
+frame = 14
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_5cmhd")
+&"": SubResource("AnimationLibrary_5cmhd")
 }

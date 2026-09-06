@@ -8,7 +8,7 @@ var to_next_state : bool = true
 var anim_backwards : bool = false
 
 var is_selecting_characters : bool = false
-
+	
 func show_targets():
 	$CharacterInfo.show_menu()
 	print(globals.targets.size())

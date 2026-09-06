@@ -1,17 +1,30 @@
-[gd_resource type="Resource" script_class="status_damage" load_steps=4 format=3 uid="uid://bkcch0kv2s2fg"]
+[gd_resource type="Resource" script_class="status_damage" load_steps=7 format=3 uid="uid://bkcch0kv2s2fg"]
 
 [ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="1_xuped"]
 [ext_resource type="Script" uid="uid://fntcp4nf1hrv" path="res://src/element_affinity.gd" id="2_376pu"]
+[ext_resource type="Texture2D" uid="uid://c21w47hq72d21" path="res://sprites/GUI/fx/status_effects1.png" id="3_ctlhf"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="4_376pu"]
 [ext_resource type="Script" uid="uid://c6hefipxcx6mp" path="res://src/scripts/status effects/status_damage.gd" id="4_r83wl"]
+
+[sub_resource type="Resource" id="Resource_ctlhf"]
+script = ExtResource("4_376pu")
+strength = 0
+vitality = -2
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
 
 [resource]
 script = ExtResource("4_r83wl")
 damage = 3
-name = ""
-turn_duration = 0
+name = "Poison"
+turn_duration = 4
 effects_to_remove = Array[ExtResource("1_xuped")]([])
 elemental_affinity_change = Array[ExtResource("2_376pu")]([])
+stat_changes = SubResource("Resource_ctlhf")
+icon = ExtResource("3_ctlhf")
 round_start = false
 after_action = false
-turn_start = false
-contribute_multipler = false
+turn_start = true
+contribute_multipler = true

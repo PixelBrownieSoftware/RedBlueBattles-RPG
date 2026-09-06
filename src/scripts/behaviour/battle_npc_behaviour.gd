@@ -2,7 +2,7 @@ extends Node
 @onready var battle_globals : battle_variables = get_node("..")
 signal get_targets(skill)
 signal start_process_state()
-var guard_move = preload("res://data/Skills/Misc/guard.tres")
+var guard_move = preload("res://data/Skills/none/guard.tres")
 const DEFAULT_BEHAVIOURS: Array[String] = [
 	"res://data/behaviours/generic_attack.tres",
 	"res://data/behaviours/exploit_weakness.tres",

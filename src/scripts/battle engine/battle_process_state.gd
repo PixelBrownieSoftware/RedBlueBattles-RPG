@@ -8,11 +8,11 @@ signal spawn_battle_fx(anim_name, battle_char)
 signal finish_anim()
 
 func _ready() -> void:
+	super()
 	notifcation_anim.connect($"../../BattleCanvasLayer/Notification Panel".notificaiton_up)
 	spawn_battle_fx.connect($"../../BattleFXFactory".spawn_attack_effect)
 	put_damage_numbers.connect($"../../BattleFXFactory".spawn_damage_obj)
 	put_damage_numbers.connect($"../../Variables/ExpereinceWatcher".exp_points_calc)
-	change_state.connect($"..".change_state)
 
 func start_state():
 	var skill : rpg_skill = battle_globals.selected_move

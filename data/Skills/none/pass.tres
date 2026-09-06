@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="skill_pass" load_steps=10 format=3 uid="uid://cwtgv8cirs6b7"]
+
+[ext_resource type="Texture2D" uid="uid://cc7b4rgj3ppvr" path="res://sprites/GUI/custom_icon_pass.png" id="1_83y5w"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="1_sye2n"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="2_f08em"]
+[ext_resource type="Script" uid="uid://ucmwyv8ryv6v" path="res://src/scripts/skill/skill_pass.gd" id="3_wyx1o"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="4_csi6q"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="5_skq06"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="6_otaq8"]
+
+[sub_resource type="Resource" id="Resource_f08em"]
+script = ExtResource("4_csi6q")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_p5sbc"]
+script = ExtResource("6_otaq8")
+strength = 0
+vitality = 5
+magic_pow = 0
+dexterity = 0
+agility = 0
+luck = 0
+
+[resource]
+script = ExtResource("3_wyx1o")
+name = "Pass"
+learnable = false
+can_select_inactive = false
+power = 0
+stamina_cost = 0
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_p5sbc")
+skill_scope = -1
+skill_element = ExtResource("5_skq06")
+skill_animation = Array[ExtResource("4_csi6q")]([SubResource("Resource_f08em")])
+usable_by_anyone = false
+effects_to_remove = Array[ExtResource("2_f08em")]([])
+effects_to_add = Array[ExtResource("1_sye2n")]([])
+custom_icon = ExtResource("1_83y5w")

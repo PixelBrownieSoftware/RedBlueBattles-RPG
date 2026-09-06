@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="skill_stamina_guard" load_steps=12 format=3 uid="uid://dk7q5ls4aqsm1"]
+
+[ext_resource type="Texture2D" uid="uid://b6y8vox67hbcj" path="res://sprites/GUI/custom_icon_guard.png" id="1_s431d"]
+[ext_resource type="Script" uid="uid://cr1nl1nt51f6o" path="res://src/scripts/status_effects_chance.gd" id="2_m7owf"]
+[ext_resource type="Resource" uid="uid://0ga3ybabf28e" path="res://data/status_effects/guard.tres" id="3_41piv"]
+[ext_resource type="Script" uid="uid://db37ouov58pbh" path="res://src/scripts/status effects/status_effect.gd" id="4_spr24"]
+[ext_resource type="Script" uid="uid://bmsbr5w3akse3" path="res://src/scripts/skill/skill_stamina_guard.gd" id="5_50cf0"]
+[ext_resource type="Script" uid="uid://hyhgegw22euj" path="res://src/rpg_skill_animation.gd" id="6_3yt81"]
+[ext_resource type="Resource" uid="uid://s418qyh2m41u" path="res://data/elements/None.tres" id="7_g3yf3"]
+[ext_resource type="Script" uid="uid://bcigjanu4bl2c" path="res://src/scripts/rpg_stats.gd" id="8_ts40q"]
+
+[sub_resource type="Resource" id="Resource_vi8bp"]
+script = ExtResource("2_m7owf")
+status = ExtResource("3_41piv")
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_72eur"]
+script = ExtResource("6_3yt81")
+skill_animation = 0
+time_amount = -1.0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_2w34k"]
+script = ExtResource("8_ts40q")
+strength = 1
+vitality = 1
+magic_pow = 1
+dexterity = 1
+agility = 1
+luck = 1
+
+[resource]
+script = ExtResource("5_50cf0")
+name = "Guard"
+learnable = false
+can_select_inactive = false
+power = 1
+stamina_cost = 0
+repeat_min = 1
+repeat_max = 1
+stat_requirement = SubResource("Resource_2w34k")
+skill_scope = 3
+skill_element = ExtResource("7_g3yf3")
+skill_animation = Array[ExtResource("6_3yt81")]([SubResource("Resource_72eur")])
+usable_by_anyone = true
+effects_to_remove = Array[ExtResource("4_spr24")]([])
+effects_to_add = Array[ExtResource("2_m7owf")]([SubResource("Resource_vi8bp")])
+custom_icon = ExtResource("1_s431d")

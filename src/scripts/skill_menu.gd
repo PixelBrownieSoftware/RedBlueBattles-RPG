@@ -5,8 +5,8 @@ signal call_target_menu()
 signal get_targets(skill)
 var menu_skills : Array[rpg_skill]
 
-var pass_skill : rpg_skill = preload("res://data/Skills/Misc/pass.tres")
-var guard_skill : rpg_skill = preload("res://data/Skills/Misc/guard.tres")
+var pass_skill : rpg_skill = preload("res://data/Skills/none/pass.tres")
+var guard_skill : rpg_skill = preload("res://data/Skills/none/guard.tres")
 var analyse_skill : rpg_skill = preload("res://data/Skills/Misc/analyse.tres")
 
 func show_skills(skills : Array[rpg_skill]):

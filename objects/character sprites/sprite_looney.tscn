@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4ar0q4v0pjsk"]
+[gd_scene load_steps=9 format=3 uid="uid://c4ar0q4v0pjsk"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkoxgyyxhag" path="res://objects/battlecharacter_sprite_base.tscn" id="1_wwuws"]
 [ext_resource type="Texture2D" uid="uid://7cwr4p5jvm0c" path="res://sprites/looney_sprite_sheet.png" id="2_anp4n"]
@@ -13,6 +13,7 @@ shader_parameter/line_thickness = 0.0
 
 [sub_resource type="Animation" id="Animation_pmoux"]
 resource_name = "attack"
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,7 +21,7 @@ tracks/0/path = NodePath("sprite_looney/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.0666667, 0.233333, 0.266667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -41,8 +42,12 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_wk5x3"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqdgj"]
 _data = {
+&"RESET": SubResource("Animation_wk5x3"),
 &"attack": SubResource("Animation_pmoux"),
 &"idle": SubResource("Animation_gnkmi")
 }
@@ -53,8 +58,9 @@ _data = {
 material = SubResource("ShaderMaterial_ihnjy")
 texture = ExtResource("2_anp4n")
 hframes = 2
+frame = 3
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_eqdgj")
+&"": SubResource("AnimationLibrary_eqdgj")
 }

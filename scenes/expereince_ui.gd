@@ -14,6 +14,6 @@ func display_exp_req(character : battle_character_data):
 func level_up():
 	GlobalVariables.expereince_score -= chara.expereince_to_NL
 	chara.level_up()
-	SaveSystem.save_game()
+	SaveSystem.save_game(GlobalVariables.current_slot_index)
 	display_exp_req(chara)
 	level_up_update.emit(chara)

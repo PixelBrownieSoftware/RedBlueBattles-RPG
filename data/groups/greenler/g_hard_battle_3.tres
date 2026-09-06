@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="battle_group_data" load_steps=16 format=3 uid="uid://b5kkykiffgsmm"]
+[gd_resource type="Resource" script_class="battle_group_data" load_steps=17 format=3 uid="uid://b5kkykiffgsmm"]
 
 [ext_resource type="Script" uid="uid://wqq8mq5wj1xd" path="res://src/scripts/battle_group_member.gd" id="1_vc010"]
 [ext_resource type="Resource" uid="uid://dml8a01r6lspa" path="res://data/characters/Enemies/looney.tres" id="2_1hlna"]
@@ -9,21 +9,22 @@
 [ext_resource type="Resource" uid="uid://dflrlwtbfdfww" path="res://data/Skills/none/new_skill.tres" id="6_wekxu"]
 [ext_resource type="Resource" uid="uid://cwtu3fvvdunnr" path="res://data/Skills/none/defence_up.tres" id="7_67jco"]
 [ext_resource type="Resource" uid="uid://cgrs5l53n7sfw" path="res://data/characters/Enemies/skar.tres" id="8_65bmw"]
+[ext_resource type="Resource" uid="uid://c524ak6lxu0xl" path="res://data/skills/none/strength_up.tres" id="8_m2iuo"]
 [ext_resource type="Resource" uid="uid://icteb255wbla" path="res://data/Skills/Electric/spark.tres" id="9_p1084"]
 [ext_resource type="Resource" uid="uid://hj3uqihib8ru" path="res://data/Skills/heal/cure_wound.tres" id="9_ww4mq"]
 [ext_resource type="Resource" uid="uid://gfxvnfosvc0l" path="res://data/Skills/Status/dodge.tres" id="10_r7itp"]
 [ext_resource type="Script" uid="uid://cqrv8uqwa1xhg" path="res://src/scripts/battle_group_reward.gd" id="12_67jco"]
 
-[sub_resource type="Resource" id="Resource_m2iuo"]
+[sub_resource type="Resource" id="Resource_b3fwa"]
 script = ExtResource("1_vc010")
 character = ExtResource("2_1hlna")
-skills = Array[ExtResource("4_wekxu")]([ExtResource("5_o4j7r"), ExtResource("6_wekxu"), ExtResource("7_67jco")])
+skills = Array[ExtResource("4_wekxu")]([ExtResource("5_o4j7r"), ExtResource("6_wekxu"), ExtResource("7_67jco"), ExtResource("8_m2iuo")])
 min_level = 7
 max_level = 8
 inclusion_flag_requirements = Array[ExtResource("3_mxnkm")]([])
 perma_death = false
 
-[sub_resource type="Resource" id="Resource_b3fwa"]
+[sub_resource type="Resource" id="Resource_oc2ib"]
 script = ExtResource("1_vc010")
 character = ExtResource("8_65bmw")
 skills = Array[ExtResource("4_wekxu")]([ExtResource("9_p1084"), ExtResource("10_r7itp"), ExtResource("9_ww4mq")])
@@ -34,5 +35,5 @@ perma_death = false
 
 [resource]
 script = ExtResource("2_3f3uy")
-opponents = Array[ExtResource("1_vc010")]([SubResource("Resource_m2iuo"), SubResource("Resource_b3fwa")])
+opponents = Array[ExtResource("1_vc010")]([SubResource("Resource_b3fwa"), SubResource("Resource_oc2ib")])
 rewards = Array[ExtResource("12_67jco")]([])

@@ -48,11 +48,17 @@ func get_desc(chara : battle_character_data) -> String:
 	if skill_element.effects_to_add.size() > 0:
 		desc += "Elemental Status inflict:\n"
 		for status in skill_element.effects_to_add:
-			desc += "	-[img=16]" + status.status.icon.resource_path + "[/img] " + status.status.name + " (" + str(status.chance * 100) + "%)\n"
+			var icon_path = status.status.icon.resource_path
+			if icon_path == null:
+				icon_path = ""
+			desc += "	-[img=16]" + icon_path + "[/img] " + status.status.name + " (" + str(status.chance * 100) + "%)\n"
 	if effects_to_add.size() > 0:
 		desc += "Status inflict:\n"
 		for status in effects_to_add:
-			desc += "	-[img=16]"+ status.status.icon.resource_path+ "[/img] " + status.status.name + " (" + str(status.chance * 100) + "%)\n"
+			var icon_path = status.status.icon.resource_path
+			if icon_path == null:
+				icon_path = ""
+			desc += "	-[img=16]"+ icon_path+ "[/img] " + status.status.name + " (" + str(status.chance * 100) + "%)\n"
 	
 	desc +="\n"
 	return desc

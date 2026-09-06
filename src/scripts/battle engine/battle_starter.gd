@@ -5,6 +5,7 @@ var queue_state : battle_state
 @export var actor_manager : battle_character_actor_manager
 
 signal add_characters(group, actor_group)
+
 # Called when the node enters the scene tree for the first time.
 func start_state():
 	CharacterFactory.connect("create_character_notification", actor_manager.add_character)

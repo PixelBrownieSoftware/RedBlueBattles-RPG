@@ -14,6 +14,7 @@ var extra_skills_limit = 4
 @export var magic_colour : Color
 @export var agility_colour : Color
 @export var luck_colour : Color
+var current_slot_index = 0
 
 func set_multiplier(mul):
 	multilplier = mul
